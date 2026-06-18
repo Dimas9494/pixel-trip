@@ -24,6 +24,7 @@ function staticDirMiddleware(baseDir, contentTypes) {
 }
 
 export default defineConfig({
+  base: "./",
   root: ".",
   publicDir: "public",
   server: {

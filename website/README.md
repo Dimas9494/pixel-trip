@@ -1,35 +1,44 @@
 # PIXEL TRIP — Landing
 
-Лёгкий лендинг коллекции: hero + 6 превью + описание слоёв.
+English landing page with 6 animated previews.
 
-## Локально
+## 1. Copy preview GIFs (required once)
 
 ```powershell
 cd "D:\Promt\Пиксель\website"
+powershell -ExecutionPolicy Bypass -File .\setup-images.ps1
+```
+
+This copies 6 GIFs into `public/images/` so Netlify can serve them.
+
+## 2. Local preview
+
+```powershell
 npm install
 npm run dev
 ```
 
-Перед запуском скрипт копирует **6 GIF** из `../collection/build/images/` в `public/images/`.
+Open `http://localhost:5173`
 
-## GitHub + Netlify
-
-- Base directory: `website`
-- Build: `npm run build`
-- Publish: `dist`
-- **COPY_IMAGES не нужен** — копируются только featured GIF
-
-После изменений:
+## 3. Deploy to GitHub + Netlify
 
 ```powershell
 cd "D:\Promt\Пиксель"
 git add website/
-git commit -m "Redesign site as landing with featured previews"
+git commit -m "English landing with preview images"
 git push
 ```
 
-Netlify пересоберёт сайт автоматически.
+Netlify settings:
 
-## Сменить превью
+| Field | Value |
+|-------|-------|
+| Base directory | `website` |
+| Build command | `npm run build` |
+| Publish directory | `dist` |
 
-Отредактируйте `public/data/config.json` → `featured` и пути в `index.html`.
+After push: Netlify → **Deploys** → wait for green check → **Ctrl+F5** on the site.
+
+## Change preview NFTs
+
+Edit `public/data/config.json` and `index.html`, then run `setup-images.ps1` again with new edition numbers.

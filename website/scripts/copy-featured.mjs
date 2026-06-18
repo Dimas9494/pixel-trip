@@ -24,21 +24,31 @@ const uniqueEditions = [...new Set(editions)];
 
 mkdirSync(publicImagesDir, { recursive: true });
 
-if (!existsSync(imagesDir)) {
-  console.warn(`Images source not found: ${imagesDir}`);
-  process.exit(0);
-}
-
 let copied = 0;
-for (const edition of uniqueEditions) {
-  const source = path.join(imagesDir, `${edition}.gif`);
-  const target = path.join(publicImagesDir, `${edition}.gif`);
-  if (!existsSync(source)) {
-    console.warn(`Missing GIF: ${source}`);
-    continue;
+
+if (existsSync(imagesDir)) {
+  for (const edition of uniqueEditions) {
+    const source = path.join(imagesDir, `${edition}.gif`);
+    const target = path.join(publicImagesDir, `${edition}.gif`);
+    if (!existsSync(source)) {
+      console.warn(`Missing source GIF: ${source}`);
+      continue;
+    }
+    copyFileSync(source, target);
+    copied += 1;
   }
-  copyFileSync(source, target);
-  copied += 1;
+  console.log(`Copied ${copied} featured GIFs from collection -> ${publicImagesDir}`);
+} else {
+  console.warn(`Collection images not found: ${imagesDir}`);
 }
 
-console.log(`Copied ${copied} featured GIFs -> ${publicImagesDir}`);
+const missing = uniqueEditions.filter(
+  (edition) => !existsSync(path.join(publicImagesDir, `${edition}.gif`))
+);
+
+if (missing.length > 0) {
+  console.error(`Missing preview GIFs in public/images: ${missing.join(", ")}`);
+  process.exit(1);
+}
+
+console.log(`All ${uniqueEditions.length} preview GIFs ready in public/images`);

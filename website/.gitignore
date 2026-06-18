@@ -1,7 +1,8 @@
 node_modules/
 dist/
 public/data/collection.json
-public/images/
 .env
 .env.local
 .DS_Store
+
+# Featured preview GIFs ARE committed (only ~6 files in public/images/)
