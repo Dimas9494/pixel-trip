@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #911",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/911.gif",
+  "dna": "663d5e5d9f13662713be7b343689805a59f2763c",
+  "edition": 911,
+  "date": 1781773641067,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Pattern_Weave"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Big_Head_Alien"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Kraken_Ink"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/911.gif"
+}

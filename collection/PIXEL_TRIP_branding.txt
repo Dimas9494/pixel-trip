@@ -1,0 +1,36 @@
+PIXEL TRIP — тексты для коллекции
+================================
+
+НАЗВАНИЕ (токен в метаданных)
+  PIXEL TRIP #1 … PIXEL TRIP #291
+
+--- ОПИСАНИЕ ДЛЯ МЕТАДАННЫХ / OPENSEA (основное, в config.json) ---
+
+🌀 PIXEL TRIP — 291 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.
+
+--- РАСШИРЕННОЕ (About / сайт) ---
+
+Welcome to PIXEL TRIP.
+
+291 souls stacked in motion — not a flat avatar, but a full ride through pixels. 
+Layer one: animated backgrounds that pulse, drift, and glitch. 
+Layer two: 291 hand-crafted characters — cyborgs, demons, cats, skulls, aliens, and everything between. 
+Layer three: animated frames that crown, distort, and seal each portrait.
+
+Rarity runs through every layer — background, character, and frame.
+
+Same engine. Same loop. Never the same DNA.
+
+Take the trip. Hold the frame. Own the glitch.
+
+--- КОРОТКОЕ (Twitter / bio) ---
+
+291 animated pixel portraits. Background → Character → Frame. PIXEL TRIP.
+
+--- ОДНА СТРОКА ---
+
+Born in pixels. Framed in motion. 291 trips, zero repeats.
+
+--- ХЭШТЕГИ ---
+
+#PixelTrip #PixelArt #AnimatedNFT #PFP #291

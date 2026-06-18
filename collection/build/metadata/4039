@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #4039",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/4039.gif",
+  "dna": "334b790f74575c8af82211117f0b4abe070031e8",
+  "edition": 4039,
+  "date": 1781773641805,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Diffusion"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cosmic_Wojak"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Northern_Curtain"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/4039.gif"
+}

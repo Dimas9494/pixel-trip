@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #927",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/927.gif",
+  "dna": "3039a1a99e1048c41c7a8f082a83ccaa1217e305",
+  "edition": 927,
+  "date": 1781773641070,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Stream"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Pink_Goggles_Lady"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Eclipse_Corona"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/927.gif"
+}

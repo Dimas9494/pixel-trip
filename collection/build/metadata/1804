@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #1804",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/1804.gif",
+  "dna": "936e84a88ce941a49e6bfed6feb125618970c70d",
+  "edition": 1804,
+  "date": 1781773641273,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Hologram"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Stoned_Rapper"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Retro_Block"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/1804.gif"
+}

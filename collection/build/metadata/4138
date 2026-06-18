@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #4138",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/4138.gif",
+  "dna": "53032f0bfd2098811993f31ef1c27fd744110b61",
+  "edition": 4138,
+  "date": 1781773641829,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Metaball"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Fire_Elemental"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Steampunk_Brass"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/4138.gif"
+}

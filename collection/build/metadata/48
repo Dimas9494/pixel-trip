@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #48",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/48.gif",
+  "dna": "bd91eae59448408d40c8dd9958d5944ca6f34c95",
+  "edition": 48,
+  "date": 1781773640844,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Pond"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Big_Old_Satoshi"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Breath_Frame"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/48.gif"
+}

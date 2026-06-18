@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #921",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/921.gif",
+  "dna": "4fabc7567f83e9749c5ae29150c795eee99421c0",
+  "edition": 921,
+  "date": 1781773641069,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Fusion_Meta_Caustic"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Anaglyph_Woman"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Tesserae_Lay"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/921.gif"
+}

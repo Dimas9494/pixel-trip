@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #2387",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/2387.gif",
+  "dna": "31dcfc6a3836d1890370f94aa40b23857da12b34",
+  "edition": 2387,
+  "date": 1781773641406,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Lake"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Rainbow_Dreads_Lady"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Polar_Day"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/2387.gif"
+}

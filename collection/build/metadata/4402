@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #4402",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/4402.gif",
+  "dna": "e1e7bcb2d6e9dbb6593ea4ad77563e47b6d74c4e",
+  "edition": 4402,
+  "date": 1781773641897,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Moire"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Teal_Cowboy"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Phase_Gate"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/4402.gif"
+}

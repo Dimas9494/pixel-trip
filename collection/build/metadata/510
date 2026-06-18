@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #510",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/510.gif",
+  "dna": "ca67066a70b9803002c809aaf45397e128e10111",
+  "edition": 510,
+  "date": 1781773640964,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Dot_Fabric"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Bubble_Bear"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Triangle_March"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/510.gif"
+}

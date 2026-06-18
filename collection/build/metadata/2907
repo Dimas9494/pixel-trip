@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #2907",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/2907.gif",
+  "dna": "fb0def67c50a11aa6addd43995f1dcfdda00dc9d",
+  "edition": 2907,
+  "date": 1781773641534,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "CRT"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Bowtie_Owl"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Bsod_Crash"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/2907.gif"
+}

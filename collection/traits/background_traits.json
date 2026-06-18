@@ -1,0 +1,926 @@
+{
+  "Supernova": {
+    "value": "Supernova",
+    "tier": "Mythic",
+    "score": 810,
+    "weight": 1
+  },
+  "Diamond": {
+    "value": "Diamond",
+    "tier": "Mythic",
+    "score": 711,
+    "weight": 1
+  },
+  "Nebula_Cloud": {
+    "value": "Nebula_Cloud",
+    "tier": "Legendary",
+    "score": 702,
+    "weight": 3
+  },
+  "Glitch": {
+    "value": "Glitch",
+    "tier": "Legendary",
+    "score": 608,
+    "weight": 3
+  },
+  "Fusion_Glitch_Field": {
+    "value": "Fusion_Glitch_Field",
+    "tier": "Legendary",
+    "score": 600,
+    "weight": 3
+  },
+  "Pulsar": {
+    "value": "Pulsar",
+    "tier": "Epic",
+    "score": 500,
+    "weight": 10
+  },
+  "Constellation": {
+    "value": "Constellation",
+    "tier": "Epic",
+    "score": 212,
+    "weight": 10
+  },
+  "Rain_Puddles": {
+    "value": "Rain_Puddles",
+    "tier": "Epic",
+    "score": 112,
+    "weight": 10
+  },
+  "Prism_Rainbow": {
+    "value": "Prism_Rainbow",
+    "tier": "Epic",
+    "score": 103,
+    "weight": 10
+  },
+  "Code_Rain": {
+    "value": "Code_Rain",
+    "tier": "Epic",
+    "score": 100,
+    "weight": 10
+  },
+  "Tile_Mosaic": {
+    "value": "Tile_Mosaic",
+    "tier": "Epic",
+    "score": 16,
+    "weight": 10
+  },
+  "Tessellation": {
+    "value": "Tessellation",
+    "tier": "Epic",
+    "score": 16,
+    "weight": 10
+  },
+  "Snowflake": {
+    "value": "Snowflake",
+    "tier": "Epic",
+    "score": 16,
+    "weight": 10
+  },
+  "Prism": {
+    "value": "Prism",
+    "tier": "Epic",
+    "score": 16,
+    "weight": 10
+  },
+  "Magnetic_Goo": {
+    "value": "Magnetic_Goo",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Galaxy_Spin": {
+    "value": "Galaxy_Spin",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Finale_Plasma_Kaleido": {
+    "value": "Finale_Plasma_Kaleido",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Finale_Moire_Data": {
+    "value": "Finale_Moire_Data",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Decoder": {
+    "value": "Decoder",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Current": {
+    "value": "Current",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Caustics": {
+    "value": "Caustics",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Cardioid": {
+    "value": "Cardioid",
+    "tier": "Rare",
+    "score": 16,
+    "weight": 25
+  },
+  "Zebra_Turing": {
+    "value": "Zebra_Turing",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Worms": {
+    "value": "Worms",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Water_Gleam": {
+    "value": "Water_Gleam",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Synth": {
+    "value": "Synth",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Symmetry": {
+    "value": "Symmetry",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Print_Dot": {
+    "value": "Print_Dot",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Engraving": {
+    "value": "Engraving",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Data_Port": {
+    "value": "Data_Port",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Colony": {
+    "value": "Colony",
+    "tier": "Rare",
+    "score": 15,
+    "weight": 25
+  },
+  "Voxel_Beat": {
+    "value": "Voxel_Beat",
+    "tier": "Rare",
+    "score": 14,
+    "weight": 25
+  },
+  "Vortex": {
+    "value": "Vortex",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Trails": {
+    "value": "Trails",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Stream": {
+    "value": "Stream",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Penrose": {
+    "value": "Penrose",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Fractal_Rug": {
+    "value": "Fractal_Rug",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Bee_Grid": {
+    "value": "Bee_Grid",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Voronoi": {
+    "value": "Voronoi",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Strange_Loop": {
+    "value": "Strange_Loop",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Spirograph": {
+    "value": "Spirograph",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Rose_Curve": {
+    "value": "Rose_Curve",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Milky_Way": {
+    "value": "Milky_Way",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Metaball": {
+    "value": "Metaball",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Membrane": {
+    "value": "Membrane",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Crystal_Grid": {
+    "value": "Crystal_Grid",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Tornado": {
+    "value": "Tornado",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Sound_Wave": {
+    "value": "Sound_Wave",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Glass": {
+    "value": "Glass",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Chimera": {
+    "value": "Chimera",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Infinity_Loop": {
+    "value": "Infinity_Loop",
+    "tier": "Uncommon",
+    "score": 11,
+    "weight": 60
+  },
+  "Hyper_Vortex": {
+    "value": "Hyper_Vortex",
+    "tier": "Uncommon",
+    "score": 11,
+    "weight": 60
+  },
+  "Finale_Tunnel_Orbs": {
+    "value": "Finale_Tunnel_Orbs",
+    "tier": "Uncommon",
+    "score": 11,
+    "weight": 60
+  },
+  "Coral": {
+    "value": "Coral",
+    "tier": "Uncommon",
+    "score": 11,
+    "weight": 60
+  },
+  "Automata": {
+    "value": "Automata",
+    "tier": "Uncommon",
+    "score": 11,
+    "weight": 60
+  },
+  "RGB_Shift": {
+    "value": "RGB_Shift",
+    "tier": "Uncommon",
+    "score": 10,
+    "weight": 60
+  },
+  "Plasma_Flow": {
+    "value": "Plasma_Flow",
+    "tier": "Uncommon",
+    "score": 10,
+    "weight": 60
+  },
+  "Mirror": {
+    "value": "Mirror",
+    "tier": "Uncommon",
+    "score": 10,
+    "weight": 60
+  },
+  "Mandala_Spiral": {
+    "value": "Mandala_Spiral",
+    "tier": "Uncommon",
+    "score": 10,
+    "weight": 60
+  },
+  "Grid_Tunnel": {
+    "value": "Grid_Tunnel",
+    "tier": "Uncommon",
+    "score": 10,
+    "weight": 60
+  },
+  "Finale_Star_Crystal": {
+    "value": "Finale_Star_Crystal",
+    "tier": "Uncommon",
+    "score": 10,
+    "weight": 60
+  },
+  "Cyclone": {
+    "value": "Cyclone",
+    "tier": "Uncommon",
+    "score": 10,
+    "weight": 60
+  },
+  "Whirlpool": {
+    "value": "Whirlpool",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "VHS_Warp": {
+    "value": "VHS_Warp",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "Stars": {
+    "value": "Stars",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "Pond": {
+    "value": "Pond",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "Plasma": {
+    "value": "Plasma",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "Path_Trace": {
+    "value": "Path_Trace",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "Fusion_Warp_Halftone": {
+    "value": "Fusion_Warp_Halftone",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "Funnel": {
+    "value": "Funnel",
+    "tier": "Uncommon",
+    "score": 9,
+    "weight": 60
+  },
+  "Finale_Cosmos_Waves": {
+    "value": "Finale_Cosmos_Waves",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Eddy_Field": {
+    "value": "Eddy_Field",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Cortex": {
+    "value": "Cortex",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Wind": {
+    "value": "Wind",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Spores": {
+    "value": "Spores",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Ripple": {
+    "value": "Ripple",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Reaction": {
+    "value": "Reaction",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Pattern_Weave": {
+    "value": "Pattern_Weave",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Merge": {
+    "value": "Merge",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Jelly": {
+    "value": "Jelly",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Hologram": {
+    "value": "Hologram",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Fractal_Depth": {
+    "value": "Fractal_Depth",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Facets": {
+    "value": "Facets",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Cells": {
+    "value": "Cells",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Wave_Moire": {
+    "value": "Wave_Moire",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Warp_Field": {
+    "value": "Warp_Field",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Tissue": {
+    "value": "Tissue",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Signal": {
+    "value": "Signal",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Scanline": {
+    "value": "Scanline",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Moire": {
+    "value": "Moire",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Gem_Cut": {
+    "value": "Gem_Cut",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Fusion_Penrose_Flow": {
+    "value": "Fusion_Penrose_Flow",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Drop": {
+    "value": "Drop",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Dot_Fabric": {
+    "value": "Dot_Fabric",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Data_Stream": {
+    "value": "Data_Stream",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Chromatic": {
+    "value": "Chromatic",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Blob_Capsule": {
+    "value": "Blob_Capsule",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Axis_Spin": {
+    "value": "Axis_Spin",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Waves": {
+    "value": "Waves",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Viscous": {
+    "value": "Viscous",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Spiral_Arms": {
+    "value": "Spiral_Arms",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Radial": {
+    "value": "Radial",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Quartz": {
+    "value": "Quartz",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Oscillator": {
+    "value": "Oscillator",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Mobius": {
+    "value": "Mobius",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Line_Ripple": {
+    "value": "Line_Ripple",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Light_Ray": {
+    "value": "Light_Ray",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Lake": {
+    "value": "Lake",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Curl": {
+    "value": "Curl",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Rosette": {
+    "value": "Rosette",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Ornament": {
+    "value": "Ornament",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Interlace": {
+    "value": "Interlace",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Fusion_Meta_Caustic": {
+    "value": "Fusion_Meta_Caustic",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Fusion_CRT_Life": {
+    "value": "Fusion_CRT_Life",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "CRT": {
+    "value": "CRT",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Stripes": {
+    "value": "Stripes",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Star_Burst": {
+    "value": "Star_Burst",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "RD_Layers": {
+    "value": "RD_Layers",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Kaleidoscope": {
+    "value": "Kaleidoscope",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Gouache": {
+    "value": "Gouache",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Fusion_Fractal_Worms": {
+    "value": "Fusion_Fractal_Worms",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Amoeba": {
+    "value": "Amoeba",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Turbulence": {
+    "value": "Turbulence",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Singularity": {
+    "value": "Singularity",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Parquet": {
+    "value": "Parquet",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Magnet_Field": {
+    "value": "Magnet_Field",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Interference": {
+    "value": "Interference",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Goo_Bubbles": {
+    "value": "Goo_Bubbles",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Flow_Field": {
+    "value": "Flow_Field",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Eddy": {
+    "value": "Eddy",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Diffusion": {
+    "value": "Diffusion",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Corridor": {
+    "value": "Corridor",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Slime": {
+    "value": "Slime",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Network": {
+    "value": "Network",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Grid_Moire": {
+    "value": "Grid_Moire",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Glitter": {
+    "value": "Glitter",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Fusion_Voronoi_RD": {
+    "value": "Fusion_Voronoi_RD",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Fusion_Node_Spiro": {
+    "value": "Fusion_Node_Spiro",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Fractal_Mosaic": {
+    "value": "Fractal_Mosaic",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Event_Horizon": {
+    "value": "Event_Horizon",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Distortion": {
+    "value": "Distortion",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Crystal": {
+    "value": "Crystal",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Spiral_Path": {
+    "value": "Spiral_Path",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Organic": {
+    "value": "Organic",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Morphogenesis": {
+    "value": "Morphogenesis",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Mandala": {
+    "value": "Mandala",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Finale_Mandala_Pulse": {
+    "value": "Finale_Mandala_Pulse",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Curl_Field": {
+    "value": "Curl_Field",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Pixel_Sort": {
+    "value": "Pixel_Sort",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Halftone": {
+    "value": "Halftone",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Bio_Foam": {
+    "value": "Bio_Foam",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Beat_Pulse": {
+    "value": "Beat_Pulse",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Asteroid_Belt": {
+    "value": "Asteroid_Belt",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Aether": {
+    "value": "Aether",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  }
+}

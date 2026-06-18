@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #4094",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/4094.gif",
+  "dna": "818104f49943a25e07ccb8e2074319a996abf2aa",
+  "edition": 4094,
+  "date": 1781773641818,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Fusion_Meta_Caustic"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Wooden_Puppet"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Magma_Crust"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/4094.gif"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #1593",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/1593.gif",
+  "dna": "cf5933450b35099f7a646a662686212659eae5ad",
+  "edition": 1593,
+  "date": 1781773641222,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Parquet"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Suit_Devil"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Mosaic_Shift"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/1593.gif"
+}

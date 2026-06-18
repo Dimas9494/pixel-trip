@@ -1,0 +1,26 @@
+{
+  "name": "PIXEL TRIP",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "editionSize": 4444,
+  "oneOfOnes": [
+    "Bryan",
+    "You_Know",
+    "Brey_Skull",
+    "Costa",
+    "Wale_Moca",
+    "Tic_Punk",
+    "Medici",
+    "Gary",
+    "Adam_Beam",
+    "Norm",
+    "Vitalik",
+    "Tinoch_Punk",
+    "TMA_Bag"
+  ],
+  "stats": {
+    "backgrounds": 154,
+    "characters": 291,
+    "frames": 200
+  },
+  "heroEditions": [25, 42, 133, 2847]
+}

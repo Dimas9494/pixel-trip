@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #200",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/200.gif",
+  "dna": "c5ba13b60694528daaeb6089e96491a2b309af2e",
+  "edition": 200,
+  "date": 1781773640884,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Parquet"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Bucktooth_Nerd"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Perspective_Lines"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/200.gif"
+}

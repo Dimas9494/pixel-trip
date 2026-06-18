@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #724",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/724.gif",
+  "dna": "8bc8c231d97bf781985a5e353a9f083bd82c2743",
+  "edition": 724,
+  "date": 1781773641014,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Milky_Way"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Tongue_Orc"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Royal_Ink"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/724.gif"
+}

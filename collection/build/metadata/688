@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #688",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/688.gif",
+  "dna": "0adae7ed8c62d85542718ba5330e792226d1a5f0",
+  "edition": 688,
+  "date": 1781773641006,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Ornament"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Fedora_Detective"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Ouroboros"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/688.gif"
+}

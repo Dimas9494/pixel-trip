@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #2022",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/2022.gif",
+  "dna": "f6ea5468cc185c94c70d45bf1301efa322909dcf",
+  "edition": 2022,
+  "date": 1781773641325,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Magnetic_Goo"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Banana_Cowboy"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Pixel_Chain"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/2022.gif"
+}

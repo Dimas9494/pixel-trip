@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #2926",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/2926.gif",
+  "dna": "da9e5bad40e905cc167c5974cf5b0fe3aa3efc64",
+  "edition": 2926,
+  "date": 1781773641539,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Beat_Pulse"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Goblin_Rogue"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Icon_Triptych"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/2926.gif"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #3409",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/3409.gif",
+  "dna": "73a43044a9d08125b8702b672dbe062a156d5d32",
+  "edition": 3409,
+  "date": 1781773641654,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Crystal"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Mad_Professor"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Holographic_Foil"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/3409.gif"
+}

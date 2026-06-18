@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #538",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/538.gif",
+  "dna": "bb46121586d7469c3fa41c025d967d4fe09041e2",
+  "edition": 538,
+  "date": 1781773640971,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Rosette"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Motley_Jester"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Glitch_Rgb"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/538.gif"
+}

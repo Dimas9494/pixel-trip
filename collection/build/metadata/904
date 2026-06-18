@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #904",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/904.gif",
+  "dna": "b5bdc4d96f35ab36195a2a1e533a94b8a3320472",
+  "edition": 904,
+  "date": 1781773641065,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Distortion"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Sleepy_Moon"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Ion_Flash"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/904.gif"
+}

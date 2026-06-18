@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #1083",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/1083.gif",
+  "dna": "8514d09485dbf125409b5333c72df9a406e6e4a1",
+  "edition": 1083,
+  "date": 1781773641107,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Mirror"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Dapper_Ghoul"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Galaxy_Spiral"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/1083.gif"
+}

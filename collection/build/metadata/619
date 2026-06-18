@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #619",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/619.gif",
+  "dna": "df08aef84c58dcf99b8a3d6f6ea0af4de817d73a",
+  "edition": 619,
+  "date": 1781773640989,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Fusion_Penrose_Flow"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Beret_Pug"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Portal_Ring"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/619.gif"
+}

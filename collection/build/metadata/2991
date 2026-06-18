@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #2991",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/2991.gif",
+  "dna": "775c8deacf7933438494691852bfd9782c8c6a74",
+  "edition": 2991,
+  "date": 1781773641554,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Parquet"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Jester_Cat"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Breath_Frame"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/2991.gif"
+}

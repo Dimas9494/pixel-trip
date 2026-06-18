@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #2021",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/2021.gif",
+  "dna": "3dcb1cc2f9ad5c02e5e0687c163c68f108584cab",
+  "edition": 2021,
+  "date": 1781773641325,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Cardioid"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Long_Eared_Aristocrat"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Blizzard_Wall"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/2021.gif"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #169",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/169.gif",
+  "dna": "6cd612cf426df5b32ec400481498f15556bd8c12",
+  "edition": 169,
+  "date": 1781773640875,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Reaction"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Bandana_Biker"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Entropy_Shuffle"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/169.gif"
+}

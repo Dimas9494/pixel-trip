@@ -1,0 +1,72 @@
+{
+  "folders": {
+    "background": "D:\\Promt\\Пиксель\\Backgrounds",
+    "characters": "D:\\Promt\\Пиксель\\Characters",
+    "frames": "D:\\Promt\\Пиксель\\Frames"
+  },
+  "counts": {
+    "background": 154,
+    "character": 291,
+    "frame": 200
+  },
+  "tierQuotas": {
+    "Mythic": 0.01,
+    "Legendary": 0.02,
+    "Epic": 0.06,
+    "Rare": 0.12,
+    "Uncommon": 0.25,
+    "Common": 0.5
+  },
+  "distribution": {
+    "background": {
+      "Mythic": 2,
+      "Legendary": 3,
+      "Epic": 9,
+      "Rare": 18,
+      "Uncommon": 38,
+      "Common": 84
+    },
+    "character": {
+      "Mythic": 3,
+      "Legendary": 6,
+      "Epic": 17,
+      "Rare": 35,
+      "Uncommon": 73,
+      "Common": 157
+    },
+    "frame": {
+      "Mythic": 2,
+      "Legendary": 4,
+      "Epic": 12,
+      "Rare": 24,
+      "Uncommon": 50,
+      "Common": 108
+    }
+  },
+  "weights": {
+    "Common": {
+      "weight": 120,
+      "score": 1
+    },
+    "Uncommon": {
+      "weight": 60,
+      "score": 2
+    },
+    "Rare": {
+      "weight": 25,
+      "score": 3
+    },
+    "Epic": {
+      "weight": 10,
+      "score": 4
+    },
+    "Legendary": {
+      "weight": 3,
+      "score": 5
+    },
+    "Mythic": {
+      "weight": 1,
+      "score": 6
+    }
+  }
+}

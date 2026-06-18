@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #953",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/953.gif",
+  "dna": "5f0b7478fd32de0c79a772c48d3705b68055b3ee",
+  "edition": 953,
+  "date": 1781773641077,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Decoder"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Mossy_Gargoyle"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Frost_Coat"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/953.gif"
+}

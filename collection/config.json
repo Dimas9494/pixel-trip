@@ -1,0 +1,50 @@
+{
+  "namePrefix": "PIXEL TRIP",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "editionSize": 4444,
+  "imageBaseUrl": "https://your-domain.com/images",
+  "imageFormat": "gif",
+  "animationUseSameAsImage": true,
+  "animationBaseUrl": "https://your-domain.com/images",
+  "compiler": "Pixel Collection Engine",
+  "canvasSize": 1024,
+  "paths": {
+    "characters": "../Characters",
+    "backgrounds": "../Background",
+    "frames": "../Frames",
+    "traits": "./traits",
+    "build": "./build"
+  },
+  "layersOrder": ["Background", "Character", "Frame"],
+  "oneOfOneCharacters": [
+    "Bryan",
+    "You_Know",
+    "Brey_Skull",
+    "Costa",
+    "Wale_Moca",
+    "Tic_Punk",
+    "Medici",
+    "Gary",
+    "Adam_Beam",
+    "Norm",
+    "Vitalik",
+    "Tinoch_Punk",
+    "TMA_Bag"
+  ],
+  "rarityTiers": {
+    "Common": { "weight": 100 },
+    "Uncommon": { "weight": 45 },
+    "Rare": { "weight": 18 },
+    "Epic": { "weight": 6 }
+  },
+  "tierQuotas": {
+    "Epic": 0.05,
+    "Rare": 0.12,
+    "Uncommon": 0.28,
+    "Common": 0.55
+  },
+  "animationMaster": "frame",
+  "animationMaxFrames": 256,
+  "animationDurationMs": 3000,
+  "webpMethod": 4
+}

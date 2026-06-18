@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #985",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/985.gif",
+  "dna": "1cac01cd14b248ba28d23a9b47216d8ff7097bdf",
+  "edition": 985,
+  "date": 1781773641083,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Cardioid"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cursed_Elmo"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Digital_Melt"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/985.gif"
+}

@@ -1,0 +1,64 @@
+{
+  "races": [
+  {
+    "id": "ironborn",
+    "name": "Ironborn",
+    "description": "Cyborg, machine, and circuit-bound souls."
+  },
+  {
+    "id": "voidkin",
+    "name": "Voidkin",
+    "description": "Aliens, cosmic horrors, and star-touched beings."
+  },
+  {
+    "id": "ashborn",
+    "name": "Ashborn",
+    "description": "Undead, skulls, vampires, and grave-walkers."
+  },
+  {
+    "id": "hellspawn",
+    "name": "Hellspawn",
+    "description": "Demons, devils, and infernal masks."
+  },
+  {
+    "id": "wildkin",
+    "name": "Wildkin",
+    "description": "Beasts, critters, and feral hunters."
+  },
+  {
+    "id": "highborn",
+    "name": "Highborn",
+    "description": "Humans, scholars, soldiers, and city folk."
+  },
+  {
+    "id": "eldritch",
+    "name": "Eldritch",
+    "description": "Glitch entities, monitors, and uncanny minds."
+  },
+  {
+    "id": "verdant",
+    "name": "Verdant",
+    "description": "Elves, dryads, moss spirits, and forest kin."
+  },
+  {
+    "id": "mythic",
+    "name": "Mythic",
+    "description": "Angels, samurai, pharaohs, and legendary icons."
+  },
+  {
+    "id": "corsair",
+    "name": "Corsair",
+    "description": "Pirates, rogues, jesters, and outlaws."
+  },
+  {
+    "id": "runeborn",
+    "name": "Runeborn",
+    "description": "Golems, puppets, gargoyles, and carved forms."
+  },
+  {
+    "id": "primal",
+    "name": "Primal",
+    "description": "Ogres, trolls, goblins, and brute tribes."
+  }
+  ]
+}

@@ -1,0 +1,1202 @@
+{
+  "One_Of_One_Aura": {
+    "value": "One_Of_One_Aura",
+    "tier": "Mythic",
+    "score": 1000,
+    "weight": 1
+  },
+  "Genesis_Block": {
+    "value": "Genesis_Block",
+    "tier": "Mythic",
+    "score": 1000,
+    "weight": 1
+  },
+  "White_Hole": {
+    "value": "White_Hole",
+    "tier": "Legendary",
+    "score": 950,
+    "weight": 3
+  },
+  "Supernova_Shock": {
+    "value": "Supernova_Shock",
+    "tier": "Legendary",
+    "score": 950,
+    "weight": 3
+  },
+  "Supernova_Remnant": {
+    "value": "Supernova_Remnant",
+    "tier": "Legendary",
+    "score": 950,
+    "weight": 3
+  },
+  "Quantum_Superposition": {
+    "value": "Quantum_Superposition",
+    "tier": "Legendary",
+    "score": 950,
+    "weight": 3
+  },
+  "Quantum_Flux": {
+    "value": "Quantum_Flux",
+    "tier": "Epic",
+    "score": 907,
+    "weight": 10
+  },
+  "Eclipse_Corona": {
+    "value": "Eclipse_Corona",
+    "tier": "Epic",
+    "score": 815,
+    "weight": 10
+  },
+  "Paradox_Mobius": {
+    "value": "Paradox_Mobius",
+    "tier": "Epic",
+    "score": 806,
+    "weight": 10
+  },
+  "Doppelganger": {
+    "value": "Doppelganger",
+    "tier": "Epic",
+    "score": 804,
+    "weight": 10
+  },
+  "Chrome_Dip": {
+    "value": "Chrome_Dip",
+    "tier": "Epic",
+    "score": 715,
+    "weight": 10
+  },
+  "Diamond_Edge": {
+    "value": "Diamond_Edge",
+    "tier": "Epic",
+    "score": 714,
+    "weight": 10
+  },
+  "Golden_Spiral": {
+    "value": "Golden_Spiral",
+    "tier": "Epic",
+    "score": 710,
+    "weight": 10
+  },
+  "Holographic_Foil": {
+    "value": "Holographic_Foil",
+    "tier": "Epic",
+    "score": 709,
+    "weight": 10
+  },
+  "Diamond_Facet": {
+    "value": "Diamond_Facet",
+    "tier": "Epic",
+    "score": 705,
+    "weight": 10
+  },
+  "Golden_Ratio": {
+    "value": "Golden_Ratio",
+    "tier": "Epic",
+    "score": 702,
+    "weight": 10
+  },
+  "Celestial_Zodiac": {
+    "value": "Celestial_Zodiac",
+    "tier": "Epic",
+    "score": 701,
+    "weight": 10
+  },
+  "Datamosh_Tear": {
+    "value": "Datamosh_Tear",
+    "tier": "Epic",
+    "score": 612,
+    "weight": 10
+  },
+  "Witch_Hex": {
+    "value": "Witch_Hex",
+    "tier": "Rare",
+    "score": 611,
+    "weight": 25
+  },
+  "Torn_Edge_Glitch": {
+    "value": "Torn_Edge_Glitch",
+    "tier": "Rare",
+    "score": 610,
+    "weight": 25
+  },
+  "Glitch_Repair": {
+    "value": "Glitch_Repair",
+    "tier": "Rare",
+    "score": 610,
+    "weight": 25
+  },
+  "Glitch_Shift": {
+    "value": "Glitch_Shift",
+    "tier": "Rare",
+    "score": 609,
+    "weight": 25
+  },
+  "Entropy_Shuffle": {
+    "value": "Entropy_Shuffle",
+    "tier": "Rare",
+    "score": 607,
+    "weight": 25
+  },
+  "Qr_Glitch": {
+    "value": "Qr_Glitch",
+    "tier": "Rare",
+    "score": 606,
+    "weight": 25
+  },
+  "Blood_Drip": {
+    "value": "Blood_Drip",
+    "tier": "Rare",
+    "score": 602,
+    "weight": 25
+  },
+  "Glitch_Rgb": {
+    "value": "Glitch_Rgb",
+    "tier": "Rare",
+    "score": 601,
+    "weight": 25
+  },
+  "Fusion_Glitch_Pulse": {
+    "value": "Fusion_Glitch_Pulse",
+    "tier": "Rare",
+    "score": 601,
+    "weight": 25
+  },
+  "Royal_Ink": {
+    "value": "Royal_Ink",
+    "tier": "Rare",
+    "score": 516,
+    "weight": 25
+  },
+  "Laurel_Wreath": {
+    "value": "Laurel_Wreath",
+    "tier": "Rare",
+    "score": 513,
+    "weight": 25
+  },
+  "Scale_Armor": {
+    "value": "Scale_Armor",
+    "tier": "Rare",
+    "score": 509,
+    "weight": 25
+  },
+  "Baroque_Gilt": {
+    "value": "Baroque_Gilt",
+    "tier": "Rare",
+    "score": 507,
+    "weight": 25
+  },
+  "Chainmail_Weave": {
+    "value": "Chainmail_Weave",
+    "tier": "Rare",
+    "score": 504,
+    "weight": 25
+  },
+  "Laser_Cross": {
+    "value": "Laser_Cross",
+    "tier": "Rare",
+    "score": 415,
+    "weight": 25
+  },
+  "Fusion_Pixel_Neon": {
+    "value": "Fusion_Pixel_Neon",
+    "tier": "Rare",
+    "score": 413,
+    "weight": 25
+  },
+  "Neon_Rainbow": {
+    "value": "Neon_Rainbow",
+    "tier": "Rare",
+    "score": 412,
+    "weight": 25
+  },
+  "Lunar_Eclipse": {
+    "value": "Lunar_Eclipse",
+    "tier": "Rare",
+    "score": 410,
+    "weight": 25
+  },
+  "Pulsar_Beam": {
+    "value": "Pulsar_Beam",
+    "tier": "Rare",
+    "score": 407,
+    "weight": 25
+  },
+  "Meteor_Impact": {
+    "value": "Meteor_Impact",
+    "tier": "Rare",
+    "score": 406,
+    "weight": 25
+  },
+  "Fusion_Pulse_Neon": {
+    "value": "Fusion_Pulse_Neon",
+    "tier": "Rare",
+    "score": 406,
+    "weight": 25
+  },
+  "Neon_Strobe": {
+    "value": "Neon_Strobe",
+    "tier": "Rare",
+    "score": 405,
+    "weight": 25
+  },
+  "Eclipse_Ring": {
+    "value": "Eclipse_Ring",
+    "tier": "Rare",
+    "score": 403,
+    "weight": 25
+  },
+  "Neon_Tubes": {
+    "value": "Neon_Tubes",
+    "tier": "Rare",
+    "score": 400,
+    "weight": 25
+  },
+  "Neon_Flash": {
+    "value": "Neon_Flash",
+    "tier": "Uncommon",
+    "score": 400,
+    "weight": 60
+  },
+  "Henna_Lace": {
+    "value": "Henna_Lace",
+    "tier": "Uncommon",
+    "score": 313,
+    "weight": 60
+  },
+  "Stained_Glass": {
+    "value": "Stained_Glass",
+    "tier": "Uncommon",
+    "score": 312,
+    "weight": 60
+  },
+  "Marble_Vein": {
+    "value": "Marble_Vein",
+    "tier": "Uncommon",
+    "score": 312,
+    "weight": 60
+  },
+  "Stained_Fill": {
+    "value": "Stained_Fill",
+    "tier": "Uncommon",
+    "score": 307,
+    "weight": 60
+  },
+  "Mosaic_Shift": {
+    "value": "Mosaic_Shift",
+    "tier": "Uncommon",
+    "score": 306,
+    "weight": 60
+  },
+  "Embroidery_Stitch": {
+    "value": "Embroidery_Stitch",
+    "tier": "Uncommon",
+    "score": 306,
+    "weight": 60
+  },
+  "Marble_Inlay": {
+    "value": "Marble_Inlay",
+    "tier": "Uncommon",
+    "score": 301,
+    "weight": 60
+  },
+  "Roots_Grip": {
+    "value": "Roots_Grip",
+    "tier": "Uncommon",
+    "score": 216,
+    "weight": 60
+  },
+  "Frost_Breath": {
+    "value": "Frost_Breath",
+    "tier": "Uncommon",
+    "score": 215,
+    "weight": 60
+  },
+  "Dungeon_Torch": {
+    "value": "Dungeon_Torch",
+    "tier": "Uncommon",
+    "score": 206,
+    "weight": 60
+  },
+  "Frost_Crystal": {
+    "value": "Frost_Crystal",
+    "tier": "Uncommon",
+    "score": 205,
+    "weight": 60
+  },
+  "Torch_Wall": {
+    "value": "Torch_Wall",
+    "tier": "Uncommon",
+    "score": 204,
+    "weight": 60
+  },
+  "Frost_Crawl": {
+    "value": "Frost_Crawl",
+    "tier": "Uncommon",
+    "score": 204,
+    "weight": 60
+  },
+  "Bamboo_Grove": {
+    "value": "Bamboo_Grove",
+    "tier": "Uncommon",
+    "score": 204,
+    "weight": 60
+  },
+  "Torch_Flicker": {
+    "value": "Torch_Flicker",
+    "tier": "Uncommon",
+    "score": 203,
+    "weight": 60
+  },
+  "Frost_Coat": {
+    "value": "Frost_Coat",
+    "tier": "Uncommon",
+    "score": 200,
+    "weight": 60
+  },
+  "Continue_Screen": {
+    "value": "Continue_Screen",
+    "tier": "Uncommon",
+    "score": 116,
+    "weight": 60
+  },
+  "Game_Over": {
+    "value": "Game_Over",
+    "tier": "Uncommon",
+    "score": 115,
+    "weight": 60
+  },
+  "Auction_Hammer": {
+    "value": "Auction_Hammer",
+    "tier": "Uncommon",
+    "score": 115,
+    "weight": 60
+  },
+  "Camera_Leak": {
+    "value": "Camera_Leak",
+    "tier": "Uncommon",
+    "score": 102,
+    "weight": 60
+  },
+  "Rain_Window": {
+    "value": "Rain_Window",
+    "tier": "Uncommon",
+    "score": 100,
+    "weight": 60
+  },
+  "Vhs_Tracking": {
+    "value": "Vhs_Tracking",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60
+  },
+  "Portal_Ring": {
+    "value": "Portal_Ring",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60
+  },
+  "Pixel_Dither": {
+    "value": "Pixel_Dither",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60
+  },
+  "Rotating_Binary": {
+    "value": "Rotating_Binary",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Plasma_Blob": {
+    "value": "Plasma_Blob",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Pi_Digits": {
+    "value": "Pi_Digits",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Nebula_Mist": {
+    "value": "Nebula_Mist",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Moir_Edge": {
+    "value": "Moir_Edge",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Height_Map": {
+    "value": "Height_Map",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Harmonic_Wave": {
+    "value": "Harmonic_Wave",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Electron_Orbit": {
+    "value": "Electron_Orbit",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60
+  },
+  "Star_Chart": {
+    "value": "Star_Chart",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Snow_Static": {
+    "value": "Snow_Static",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Phantom_Trace": {
+    "value": "Phantom_Trace",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Lava_Glass": {
+    "value": "Lava_Glass",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Ink_Bleed": {
+    "value": "Ink_Bleed",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Galaxy_Spiral": {
+    "value": "Galaxy_Spiral",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60
+  },
+  "Vine_Creep": {
+    "value": "Vine_Creep",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Tidal_Lock": {
+    "value": "Tidal_Lock",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Quad_Split": {
+    "value": "Quad_Split",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Pinwheel": {
+    "value": "Pinwheel",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Ocean_Ripple": {
+    "value": "Ocean_Ripple",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Fusion_Wave_Corner": {
+    "value": "Fusion_Wave_Corner",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Chip_Pins": {
+    "value": "Chip_Pins",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60
+  },
+  "Wave_All_Edges": {
+    "value": "Wave_All_Edges",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Ring_Scanner": {
+    "value": "Ring_Scanner",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Pixel_Chain": {
+    "value": "Pixel_Chain",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Peacock_Iris": {
+    "value": "Peacock_Iris",
+    "tier": "Uncommon",
+    "score": 12,
+    "weight": 60
+  },
+  "Mandala_Reveal": {
+    "value": "Mandala_Reveal",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120
+  },
+  "Hourglass_Turn": {
+    "value": "Hourglass_Turn",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120
+  },
+  "Grid_Depth": {
+    "value": "Grid_Depth",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120
+  },
+  "Fusion_Scan_Rotate": {
+    "value": "Fusion_Scan_Rotate",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120
+  },
+  "Bsod_Crash": {
+    "value": "Bsod_Crash",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120
+  },
+  "Zoetrope_Slits": {
+    "value": "Zoetrope_Slits",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Petri_Culture": {
+    "value": "Petri_Culture",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Ouroboros": {
+    "value": "Ouroboros",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Magma_Crust": {
+    "value": "Magma_Crust",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Infinity_Loop": {
+    "value": "Infinity_Loop",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Flicker_Pulse": {
+    "value": "Flicker_Pulse",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Dust_Orbit": {
+    "value": "Dust_Orbit",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Depth_Grid": {
+    "value": "Depth_Grid",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Deep_Space": {
+    "value": "Deep_Space",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Circuit_Maze": {
+    "value": "Circuit_Maze",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Checker_Scroll": {
+    "value": "Checker_Scroll",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120
+  },
+  "Spinning_Segments": {
+    "value": "Spinning_Segments",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120
+  },
+  "Proton_Glow": {
+    "value": "Proton_Glow",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120
+  },
+  "Particle_Trail": {
+    "value": "Particle_Trail",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120
+  },
+  "Gray_Code_Walk": {
+    "value": "Gray_Code_Walk",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120
+  },
+  "Digital_Melt": {
+    "value": "Digital_Melt",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120
+  },
+  "Wave_Pulse_Combo": {
+    "value": "Wave_Pulse_Combo",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Perspective_Lines": {
+    "value": "Perspective_Lines",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Isometric_Grid": {
+    "value": "Isometric_Grid",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Gradient_Pulse": {
+    "value": "Gradient_Pulse",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Edge_Glow_Pulse": {
+    "value": "Edge_Glow_Pulse",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Color_Wheel_Border": {
+    "value": "Color_Wheel_Border",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Circuit_Trace": {
+    "value": "Circuit_Trace",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Aurora_Flow": {
+    "value": "Aurora_Flow",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120
+  },
+  "Wire_Spaghetti": {
+    "value": "Wire_Spaghetti",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Time_Loop_Scar": {
+    "value": "Time_Loop_Scar",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Quasar_Beam": {
+    "value": "Quasar_Beam",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Phase_Gate": {
+    "value": "Phase_Gate",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Deep_Angler": {
+    "value": "Deep_Angler",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Breath_Frame": {
+    "value": "Breath_Frame",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Block_Corrupt": {
+    "value": "Block_Corrupt",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120
+  },
+  "Tsunami_Wave": {
+    "value": "Tsunami_Wave",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Steampunk_Brass": {
+    "value": "Steampunk_Brass",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Scatter_Rift": {
+    "value": "Scatter_Rift",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Lichen_Growth": {
+    "value": "Lichen_Growth",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120
+  },
+  "Y2k_Chrome": {
+    "value": "Y2k_Chrome",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Wave_Interference": {
+    "value": "Wave_Interference",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "VHS_Tear": {
+    "value": "VHS_Tear",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Stardust": {
+    "value": "Stardust",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Slow_Pulse": {
+    "value": "Slow_Pulse",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Sacred_Flower": {
+    "value": "Sacred_Flower",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Retro_Block": {
+    "value": "Retro_Block",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Pixel_Noise": {
+    "value": "Pixel_Noise",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Morse_Sos": {
+    "value": "Morse_Sos",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Mercury_Blob": {
+    "value": "Mercury_Blob",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Kraken_Ink": {
+    "value": "Kraken_Ink",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Fusion_Rotate_Wave": {
+    "value": "Fusion_Rotate_Wave",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Fractal_Edge": {
+    "value": "Fractal_Edge",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Clock_Tick": {
+    "value": "Clock_Tick",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120
+  },
+  "Triangle_March": {
+    "value": "Triangle_March",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Sandfall_Cascade": {
+    "value": "Sandfall_Cascade",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Rivet_Plate": {
+    "value": "Rivet_Plate",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Prime_Lock": {
+    "value": "Prime_Lock",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Polar_Day": {
+    "value": "Polar_Day",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Pixel_Sparkle": {
+    "value": "Pixel_Sparkle",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Moire_Interference": {
+    "value": "Moire_Interference",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Mandala_Spin": {
+    "value": "Mandala_Spin",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Leaf_Rustle": {
+    "value": "Leaf_Rustle",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Bullion_Stack": {
+    "value": "Bullion_Stack",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Blizzard_Wall": {
+    "value": "Blizzard_Wall",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Blizzard": {
+    "value": "Blizzard",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Bayer_Edge": {
+    "value": "Bayer_Edge",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120
+  },
+  "Xp_Levelup": {
+    "value": "Xp_Levelup",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Normal_Shimmer": {
+    "value": "Normal_Shimmer",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Nexus_Pulse": {
+    "value": "Nexus_Pulse",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Light_Veil": {
+    "value": "Light_Veil",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Ionosphere": {
+    "value": "Ionosphere",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Heartbeat_Border": {
+    "value": "Heartbeat_Border",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Constellation_Map": {
+    "value": "Constellation_Map",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120
+  },
+  "Rust_Decay": {
+    "value": "Rust_Decay",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Ring_Pulse": {
+    "value": "Ring_Pulse",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Northern_Curtain": {
+    "value": "Northern_Curtain",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Nebula_Shell": {
+    "value": "Nebula_Shell",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Moire_Reveal": {
+    "value": "Moire_Reveal",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Magnetic_Field": {
+    "value": "Magnetic_Field",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Icon_Triptych": {
+    "value": "Icon_Triptych",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Hive_Swarm": {
+    "value": "Hive_Swarm",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Hex_Grid_Edge": {
+    "value": "Hex_Grid_Edge",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Ekg_Heartbeat": {
+    "value": "Ekg_Heartbeat",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "DNA_Helix": {
+    "value": "DNA_Helix",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Arabesque_Arch": {
+    "value": "Arabesque_Arch",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Antimatter": {
+    "value": "Antimatter",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120
+  },
+  "Wave_Phase_Shift": {
+    "value": "Wave_Phase_Shift",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Penrose_Tile": {
+    "value": "Penrose_Tile",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Penrose_Stairs": {
+    "value": "Penrose_Stairs",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Kaleidoscope_Four": {
+    "value": "Kaleidoscope_Four",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Barcode_Scroll": {
+    "value": "Barcode_Scroll",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120
+  },
+  "Tesserae_Lay": {
+    "value": "Tesserae_Lay",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Static_Noise": {
+    "value": "Static_Noise",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "RGB_Split_Border": {
+    "value": "RGB_Split_Border",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Pink_Glass": {
+    "value": "Pink_Glass",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Chromosome_Paint": {
+    "value": "Chromosome_Paint",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Border_Pulse": {
+    "value": "Border_Pulse",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120
+  },
+  "Stone_Brick": {
+    "value": "Stone_Brick",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Pulse_Wave": {
+    "value": "Pulse_Wave",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Polar_Sheen": {
+    "value": "Polar_Sheen",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "LED_Circuit_Blink": {
+    "value": "LED_Circuit_Blink",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Ion_Flash": {
+    "value": "Ion_Flash",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Ice_Mirror": {
+    "value": "Ice_Mirror",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Dual_Layer_Pulse": {
+    "value": "Dual_Layer_Pulse",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Diagonal_Wave": {
+    "value": "Diagonal_Wave",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Collatz_Orbit": {
+    "value": "Collatz_Orbit",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  },
+  "Asteroid_Belt": {
+    "value": "Asteroid_Belt",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120
+  }
+}

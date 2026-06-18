@@ -1,0 +1,24 @@
+{
+  "name": "PIXEL TRIP #689",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/images/689.gif",
+  "dna": "f5d98734db864192c3b9eb1ab7c6e3f7def958eb",
+  "edition": 689,
+  "date": 1781773641006,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Morphogenesis"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cyan_Mustache_Chief"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Y2k_Chrome"
+    }
+  ],
+  "compiler": "Pixel Collection Engine",
+  "animation_url": "https://your-domain.com/images/689.gif"
+}

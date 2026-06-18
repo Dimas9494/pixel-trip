@@ -1,0 +1,17 @@
+# Dependencies
+website/node_modules/
+website/dist/
+
+# Generated at build time (Netlify rebuilds from metadata)
+website/public/data/collection.json
+
+# Optional local image copy target
+website/public/images/
+
+# Large GIF assets — host via CDN or Git LFS + COPY_IMAGES=1
+collection/build/images/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

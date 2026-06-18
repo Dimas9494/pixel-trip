@@ -1,0 +1,2039 @@
+{
+  "Grim_Reaper": {
+    "value": "Grim_Reaper",
+    "tier": "Mythic",
+    "score": 1000,
+    "weight": 1,
+    "race": "mythic"
+  },
+  "Crimson_Samurai": {
+    "value": "Crimson_Samurai",
+    "tier": "Mythic",
+    "score": 950,
+    "weight": 1,
+    "race": "mythic"
+  },
+  "Brain_Zombie": {
+    "value": "Brain_Zombie",
+    "tier": "Mythic",
+    "score": 863,
+    "weight": 1,
+    "race": "ashborn"
+  },
+  "Tentacle_Alien": {
+    "value": "Tentacle_Alien",
+    "tier": "Legendary",
+    "score": 860,
+    "weight": 3,
+    "race": "voidkin"
+  },
+  "Teal_Mindflayer": {
+    "value": "Teal_Mindflayer",
+    "tier": "Legendary",
+    "score": 860,
+    "weight": 3,
+    "race": "voidkin"
+  },
+  "Flame_Skull": {
+    "value": "Flame_Skull",
+    "tier": "Legendary",
+    "score": 766,
+    "weight": 3,
+    "race": "ashborn"
+  },
+  "Cyber_Bear": {
+    "value": "Cyber_Bear",
+    "tier": "Legendary",
+    "score": 758,
+    "weight": 3,
+    "race": "ironborn"
+  },
+  "Gold_Warrior": {
+    "value": "Gold_Warrior",
+    "tier": "Legendary",
+    "score": 756,
+    "weight": 3,
+    "race": "mythic"
+  },
+  "Winged_Demon": {
+    "value": "Winged_Demon",
+    "tier": "Legendary",
+    "score": 755,
+    "weight": 3,
+    "race": "hellspawn"
+  },
+  "Angel": {
+    "value": "Angel",
+    "tier": "Epic",
+    "score": 663,
+    "weight": 10,
+    "race": "highborn"
+  },
+  "Pale_Vampire": {
+    "value": "Pale_Vampire",
+    "tier": "Epic",
+    "score": 662,
+    "weight": 10,
+    "race": "ashborn"
+  },
+  "Pharaoh": {
+    "value": "Pharaoh",
+    "tier": "Epic",
+    "score": 656,
+    "weight": 10,
+    "race": "mythic"
+  },
+  "Crying_Demon": {
+    "value": "Crying_Demon",
+    "tier": "Epic",
+    "score": 566,
+    "weight": 10,
+    "race": "hellspawn"
+  },
+  "Scarred_Cyborg": {
+    "value": "Scarred_Cyborg",
+    "tier": "Epic",
+    "score": 565,
+    "weight": 10,
+    "race": "ironborn"
+  },
+  "Oni_Mask": {
+    "value": "Oni_Mask",
+    "tier": "Epic",
+    "score": 565,
+    "weight": 10,
+    "race": "hellspawn"
+  },
+  "Horned_Demon": {
+    "value": "Horned_Demon",
+    "tier": "Epic",
+    "score": 565,
+    "weight": 10,
+    "race": "hellspawn"
+  },
+  "Frost_Yeti": {
+    "value": "Frost_Yeti",
+    "tier": "Epic",
+    "score": 564,
+    "weight": 10,
+    "race": "wildkin"
+  },
+  "Blue_Oni": {
+    "value": "Blue_Oni",
+    "tier": "Epic",
+    "score": 564,
+    "weight": 10,
+    "race": "hellspawn"
+  },
+  "Smiley_Monitor": {
+    "value": "Smiley_Monitor",
+    "tier": "Epic",
+    "score": 563,
+    "weight": 10,
+    "race": "ironborn"
+  },
+  "Glitch_Cyborg": {
+    "value": "Glitch_Cyborg",
+    "tier": "Epic",
+    "score": 561,
+    "weight": 10,
+    "race": "ironborn"
+  },
+  "Bug_Eyed_Alien": {
+    "value": "Bug_Eyed_Alien",
+    "tier": "Epic",
+    "score": 561,
+    "weight": 10,
+    "race": "voidkin"
+  },
+  "Monitor_Head": {
+    "value": "Monitor_Head",
+    "tier": "Epic",
+    "score": 557,
+    "weight": 10,
+    "race": "ironborn"
+  },
+  "Green_Alien": {
+    "value": "Green_Alien",
+    "tier": "Epic",
+    "score": 557,
+    "weight": 10,
+    "race": "voidkin"
+  },
+  "Snow_Yeti": {
+    "value": "Snow_Yeti",
+    "tier": "Epic",
+    "score": 555,
+    "weight": 10,
+    "race": "wildkin"
+  },
+  "Trippy_Alien": {
+    "value": "Trippy_Alien",
+    "tier": "Epic",
+    "score": 554,
+    "weight": 10,
+    "race": "voidkin"
+  },
+  "Big_Head_Alien": {
+    "value": "Big_Head_Alien",
+    "tier": "Epic",
+    "score": 554,
+    "weight": 10,
+    "race": "voidkin"
+  },
+  "Split_Cyborg": {
+    "value": "Split_Cyborg",
+    "tier": "Rare",
+    "score": 553,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Green_Cyborg_Elf": {
+    "value": "Green_Cyborg_Elf",
+    "tier": "Rare",
+    "score": 553,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Red_Cyborg": {
+    "value": "Red_Cyborg",
+    "tier": "Rare",
+    "score": 550,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Zombie_Pirate": {
+    "value": "Zombie_Pirate",
+    "tier": "Rare",
+    "score": 464,
+    "weight": 25,
+    "race": "ashborn"
+  },
+  "Wire_Skull": {
+    "value": "Wire_Skull",
+    "tier": "Rare",
+    "score": 464,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Tricorn_Skull": {
+    "value": "Tricorn_Skull",
+    "tier": "Rare",
+    "score": 464,
+    "weight": 25,
+    "race": "mythic"
+  },
+  "Flower_Zombie": {
+    "value": "Flower_Zombie",
+    "tier": "Rare",
+    "score": 463,
+    "weight": 25,
+    "race": "ashborn"
+  },
+  "Blue_Skull": {
+    "value": "Blue_Skull",
+    "tier": "Rare",
+    "score": 461,
+    "weight": 25,
+    "race": "ashborn"
+  },
+  "Glow_Skull": {
+    "value": "Glow_Skull",
+    "tier": "Rare",
+    "score": 459,
+    "weight": 25,
+    "race": "voidkin"
+  },
+  "Antler_Skull": {
+    "value": "Antler_Skull",
+    "tier": "Rare",
+    "score": 459,
+    "weight": 25,
+    "race": "ashborn"
+  },
+  "Steel_Robot": {
+    "value": "Steel_Robot",
+    "tier": "Rare",
+    "score": 457,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Gilded_Skull": {
+    "value": "Gilded_Skull",
+    "tier": "Rare",
+    "score": 457,
+    "weight": 25,
+    "race": "mythic"
+  },
+  "Skull_Flytrap": {
+    "value": "Skull_Flytrap",
+    "tier": "Rare",
+    "score": 455,
+    "weight": 25,
+    "race": "ashborn"
+  },
+  "Brey_Skull": {
+    "value": "Brey_Skull",
+    "tier": "Rare",
+    "score": 454,
+    "weight": 25,
+    "race": "ashborn"
+  },
+  "Skull_King": {
+    "value": "Skull_King",
+    "tier": "Rare",
+    "score": 452,
+    "weight": 25,
+    "race": "ashborn"
+  },
+  "Cross_Robot": {
+    "value": "Cross_Robot",
+    "tier": "Rare",
+    "score": 452,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Glitch_Smirk": {
+    "value": "Glitch_Smirk",
+    "tier": "Rare",
+    "score": 450,
+    "weight": 25,
+    "race": "eldritch"
+  },
+  "Cyber_Ninja": {
+    "value": "Cyber_Ninja",
+    "tier": "Rare",
+    "score": 366,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Feather_Chief": {
+    "value": "Feather_Chief",
+    "tier": "Rare",
+    "score": 364,
+    "weight": 25,
+    "race": "mythic"
+  },
+  "Tribal_Chief": {
+    "value": "Tribal_Chief",
+    "tier": "Rare",
+    "score": 363,
+    "weight": 25,
+    "race": "highborn"
+  },
+  "Parrot_Pirate": {
+    "value": "Parrot_Pirate",
+    "tier": "Rare",
+    "score": 363,
+    "weight": 25,
+    "race": "corsair"
+  },
+  "Pirate_Cat": {
+    "value": "Pirate_Cat",
+    "tier": "Rare",
+    "score": 362,
+    "weight": 25,
+    "race": "wildkin"
+  },
+  "Viking_Banana": {
+    "value": "Viking_Banana",
+    "tier": "Rare",
+    "score": 361,
+    "weight": 25,
+    "race": "highborn"
+  },
+  "Horned_Viking": {
+    "value": "Horned_Viking",
+    "tier": "Rare",
+    "score": 359,
+    "weight": 25,
+    "race": "hellspawn"
+  },
+  "Frost_Viking": {
+    "value": "Frost_Viking",
+    "tier": "Rare",
+    "score": 358,
+    "weight": 25,
+    "race": "highborn"
+  },
+  "Green_Assassin": {
+    "value": "Green_Assassin",
+    "tier": "Rare",
+    "score": 357,
+    "weight": 25,
+    "race": "corsair"
+  },
+  "Shadow_Ninja": {
+    "value": "Shadow_Ninja",
+    "tier": "Rare",
+    "score": 355,
+    "weight": 25,
+    "race": "corsair"
+  },
+  "Cyan_Mustache_Chief": {
+    "value": "Cyan_Mustache_Chief",
+    "tier": "Rare",
+    "score": 355,
+    "weight": 25,
+    "race": "highborn"
+  },
+  "Pirate": {
+    "value": "Pirate",
+    "tier": "Rare",
+    "score": 352,
+    "weight": 25,
+    "race": "corsair"
+  },
+  "Bitcoin_Ninja": {
+    "value": "Bitcoin_Ninja",
+    "tier": "Rare",
+    "score": 351,
+    "weight": 25,
+    "race": "corsair"
+  },
+  "Paper_Fan": {
+    "value": "Paper_Fan",
+    "tier": "Rare",
+    "score": 266,
+    "weight": 25,
+    "race": "highborn"
+  },
+  "Goggle_Monkey": {
+    "value": "Goggle_Monkey",
+    "tier": "Rare",
+    "score": 265,
+    "weight": 25,
+    "race": "wildkin"
+  },
+  "Orange_Hound": {
+    "value": "Orange_Hound",
+    "tier": "Rare",
+    "score": 264,
+    "weight": 25,
+    "race": "wildkin"
+  },
+  "Stoned_Fox": {
+    "value": "Stoned_Fox",
+    "tier": "Rare",
+    "score": 260,
+    "weight": 25,
+    "race": "wildkin"
+  },
+  "Spiked_Bulldog": {
+    "value": "Spiked_Bulldog",
+    "tier": "Rare",
+    "score": 260,
+    "weight": 25,
+    "race": "wildkin"
+  },
+  "Noir_Cat": {
+    "value": "Noir_Cat",
+    "tier": "Uncommon",
+    "score": 260,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Goggle_Fox": {
+    "value": "Goggle_Fox",
+    "tier": "Uncommon",
+    "score": 260,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Cat_Woman": {
+    "value": "Cat_Woman",
+    "tier": "Uncommon",
+    "score": 260,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Red_Fez_Ape": {
+    "value": "Red_Fez_Ape",
+    "tier": "Uncommon",
+    "score": 259,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Gear_Owl": {
+    "value": "Gear_Owl",
+    "tier": "Uncommon",
+    "score": 255,
+    "weight": 60,
+    "race": "ironborn"
+  },
+  "Street_Ape": {
+    "value": "Street_Ape",
+    "tier": "Uncommon",
+    "score": 253,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Cat_Headphones": {
+    "value": "Cat_Headphones",
+    "tier": "Uncommon",
+    "score": 253,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Jester_Cat": {
+    "value": "Jester_Cat",
+    "tier": "Uncommon",
+    "score": 251,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Grumpy_Cat": {
+    "value": "Grumpy_Cat",
+    "tier": "Uncommon",
+    "score": 251,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Bowtie_Owl": {
+    "value": "Bowtie_Owl",
+    "tier": "Uncommon",
+    "score": 251,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Stoned_Cat": {
+    "value": "Stoned_Cat",
+    "tier": "Uncommon",
+    "score": 250,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Green_Doge": {
+    "value": "Green_Doge",
+    "tier": "Uncommon",
+    "score": 250,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Ape_Beard": {
+    "value": "Ape_Beard",
+    "tier": "Uncommon",
+    "score": 250,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Dollar_Hood": {
+    "value": "Dollar_Hood",
+    "tier": "Uncommon",
+    "score": 164,
+    "weight": 60,
+    "race": "corsair"
+  },
+  "Hooded_Doom": {
+    "value": "Hooded_Doom",
+    "tier": "Uncommon",
+    "score": 163,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Camo_Soldier": {
+    "value": "Camo_Soldier",
+    "tier": "Uncommon",
+    "score": 163,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Beanie_Sage": {
+    "value": "Beanie_Sage",
+    "tier": "Uncommon",
+    "score": 162,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Circuit_Hood": {
+    "value": "Circuit_Hood",
+    "tier": "Uncommon",
+    "score": 161,
+    "weight": 60,
+    "race": "ironborn"
+  },
+  "Beanie_Cyclops": {
+    "value": "Beanie_Cyclops",
+    "tier": "Uncommon",
+    "score": 160,
+    "weight": 60,
+    "race": "primal"
+  },
+  "Pink_Beanie": {
+    "value": "Pink_Beanie",
+    "tier": "Uncommon",
+    "score": 158,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Fish_Diver": {
+    "value": "Fish_Diver",
+    "tier": "Uncommon",
+    "score": 155,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Roaring_Sage": {
+    "value": "Roaring_Sage",
+    "tier": "Uncommon",
+    "score": 152,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Neko_Hood": {
+    "value": "Neko_Hood",
+    "tier": "Uncommon",
+    "score": 151,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Brass_Diver": {
+    "value": "Brass_Diver",
+    "tier": "Uncommon",
+    "score": 151,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Triple_Eye_Freak": {
+    "value": "Triple_Eye_Freak",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Teal_Monster": {
+    "value": "Teal_Monster",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Spiky_Flame": {
+    "value": "Spiky_Flame",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Smoke_Lady": {
+    "value": "Smoke_Lady",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Shocked_Fishman": {
+    "value": "Shocked_Fishman",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Rainbow_Dreads_Lady": {
+    "value": "Rainbow_Dreads_Lady",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Purple_Grin": {
+    "value": "Purple_Grin",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Mushroom_Dude": {
+    "value": "Mushroom_Dude",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "eldritch"
+  },
+  "Motley_Jester": {
+    "value": "Motley_Jester",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "corsair"
+  },
+  "Moss_Titan": {
+    "value": "Moss_Titan",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "verdant"
+  },
+  "Mint_Cyclops": {
+    "value": "Mint_Cyclops",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "primal"
+  },
+  "Hippie_Cyclops": {
+    "value": "Hippie_Cyclops",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "primal"
+  },
+  "Cowboy": {
+    "value": "Cowboy",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Bandana_Rebel": {
+    "value": "Bandana_Rebel",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "corsair"
+  },
+  "Banana_Cowboy": {
+    "value": "Banana_Cowboy",
+    "tier": "Uncommon",
+    "score": 16,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "You_Know": {
+    "value": "You_Know",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Tiki_Mask": {
+    "value": "Tiki_Mask",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "runeborn"
+  },
+  "Split_Mask": {
+    "value": "Split_Mask",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "runeborn"
+  },
+  "Neon_Mohawk": {
+    "value": "Neon_Mohawk",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Eskimo": {
+    "value": "Eskimo",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Derpy_Slime": {
+    "value": "Derpy_Slime",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "eldritch"
+  },
+  "Cyan_Imp": {
+    "value": "Cyan_Imp",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "voidkin"
+  },
+  "Chill_Tabby": {
+    "value": "Chill_Tabby",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Bucktooth_Nerd": {
+    "value": "Bucktooth_Nerd",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "primal"
+  },
+  "Blue_Cap_Boy": {
+    "value": "Blue_Cap_Boy",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Alpine_Hunter": {
+    "value": "Alpine_Hunter",
+    "tier": "Uncommon",
+    "score": 15,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Unicorn_Girl": {
+    "value": "Unicorn_Girl",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Triple_Eye": {
+    "value": "Triple_Eye",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Street_Kid": {
+    "value": "Street_Kid",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Shadow_Mage": {
+    "value": "Shadow_Mage",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Ring_Girl": {
+    "value": "Ring_Girl",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Pink_Trilobe": {
+    "value": "Pink_Trilobe",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "voidkin"
+  },
+  "Pink_Elvis": {
+    "value": "Pink_Elvis",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Party_Pug": {
+    "value": "Party_Pug",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Norm": {
+    "value": "Norm",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Gnome": {
+    "value": "Gnome",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Forest_Spirit": {
+    "value": "Forest_Spirit",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Derpy_Slug": {
+    "value": "Derpy_Slug",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Cyan_INO": {
+    "value": "Cyan_INO",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Bubble_Girl": {
+    "value": "Bubble_Girl",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Baby_Lips": {
+    "value": "Baby_Lips",
+    "tier": "Uncommon",
+    "score": 14,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Teal_Villain": {
+    "value": "Teal_Villain",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Swamp_Beast": {
+    "value": "Swamp_Beast",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Straw_Hick": {
+    "value": "Straw_Hick",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Purple_Cyclops": {
+    "value": "Purple_Cyclops",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "primal"
+  },
+  "Purple_Crystal": {
+    "value": "Purple_Crystal",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Prism_Statue": {
+    "value": "Prism_Statue",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Pipe_Detective": {
+    "value": "Pipe_Detective",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "corsair"
+  },
+  "Moss_Golem": {
+    "value": "Moss_Golem",
+    "tier": "Uncommon",
+    "score": 13,
+    "weight": 60,
+    "race": "verdant"
+  },
+  "Long_Eared_Aristocrat": {
+    "value": "Long_Eared_Aristocrat",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Gremlin": {
+    "value": "Gremlin",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Gob": {
+    "value": "Gob",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Glow_Pilot": {
+    "value": "Glow_Pilot",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "voidkin"
+  },
+  "Gladiator": {
+    "value": "Gladiator",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cursed_Elmo": {
+    "value": "Cursed_Elmo",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cave_Man": {
+    "value": "Cave_Man",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Bubble_DJ": {
+    "value": "Bubble_DJ",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Bog_Lizard": {
+    "value": "Bog_Lizard",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Blank_Bot": {
+    "value": "Blank_Bot",
+    "tier": "Common",
+    "score": 13,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Tongue_Orc": {
+    "value": "Tongue_Orc",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "primal"
+  },
+  "Stoned_Rapper": {
+    "value": "Stoned_Rapper",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "runeborn"
+  },
+  "Stoned_Dude": {
+    "value": "Stoned_Dude",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "runeborn"
+  },
+  "Shocked_Face": {
+    "value": "Shocked_Face",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "eldritch"
+  },
+  "Revolutionary": {
+    "value": "Revolutionary",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Red_Eye_Astro": {
+    "value": "Red_Eye_Astro",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Purple_Prince": {
+    "value": "Purple_Prince",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Pink_Fangs": {
+    "value": "Pink_Fangs",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "hellspawn"
+  },
+  "Oracle": {
+    "value": "Oracle",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Mad_Professor": {
+    "value": "Mad_Professor",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cosmic_Wojak": {
+    "value": "Cosmic_Wojak",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Adam_Beam": {
+    "value": "Adam_Beam",
+    "tier": "Common",
+    "score": 12,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Winged_Lion": {
+    "value": "Winged_Lion",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Suit_Devil": {
+    "value": "Suit_Devil",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "hellspawn"
+  },
+  "Snake_Hair": {
+    "value": "Snake_Hair",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Shadow_Eyes": {
+    "value": "Shadow_Eyes",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Neon_Pulse": {
+    "value": "Neon_Pulse",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Gray_Elvis": {
+    "value": "Gray_Elvis",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Dark_Elf": {
+    "value": "Dark_Elf",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "verdant"
+  },
+  "Daring_Queen": {
+    "value": "Daring_Queen",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cyber_Rebel": {
+    "value": "Cyber_Rebel",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Cyan_Punk": {
+    "value": "Cyan_Punk",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cactus": {
+    "value": "Cactus",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "verdant"
+  },
+  "Bubble_Astronaut": {
+    "value": "Bubble_Astronaut",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Brave_Knight": {
+    "value": "Brave_Knight",
+    "tier": "Common",
+    "score": 11,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Spiky_Artist": {
+    "value": "Spiky_Artist",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Redeye_Cyclops": {
+    "value": "Redeye_Cyclops",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "primal"
+  },
+  "One_Straw_Patch": {
+    "value": "One_Straw_Patch",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Mint_Troll": {
+    "value": "Mint_Troll",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Medici": {
+    "value": "Medici",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Mad_Aviator": {
+    "value": "Mad_Aviator",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Grumpy_Storm": {
+    "value": "Grumpy_Storm",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "primal"
+  },
+  "Diva": {
+    "value": "Diva",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Crying_Bling": {
+    "value": "Crying_Bling",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Costa": {
+    "value": "Costa",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cosmic_Matter": {
+    "value": "Cosmic_Matter",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Chill_Goat": {
+    "value": "Chill_Goat",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Bushy_Brow": {
+    "value": "Bushy_Brow",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Brain_Tentacle": {
+    "value": "Brain_Tentacle",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "voidkin"
+  },
+  "Brain_Bot": {
+    "value": "Brain_Bot",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Boxy_Bot": {
+    "value": "Boxy_Bot",
+    "tier": "Common",
+    "score": 10,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Vitalik": {
+    "value": "Vitalik",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Neon_Visor": {
+    "value": "Neon_Visor",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Leaf_Elf": {
+    "value": "Leaf_Elf",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "verdant"
+  },
+  "Grinning_Donkey": {
+    "value": "Grinning_Donkey",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Gilded_Bot": {
+    "value": "Gilded_Bot",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "mythic"
+  },
+  "Fin_Merman": {
+    "value": "Fin_Merman",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Diamond_Face": {
+    "value": "Diamond_Face",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Dapper_Ghoul": {
+    "value": "Dapper_Ghoul",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Bolt_Block": {
+    "value": "Bolt_Block",
+    "tier": "Common",
+    "score": 9,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Weary_Wizard": {
+    "value": "Weary_Wizard",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Violet_Blob": {
+    "value": "Violet_Blob",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "voidkin"
+  },
+  "Teal_Cowboy": {
+    "value": "Teal_Cowboy",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Shocked_Rooster": {
+    "value": "Shocked_Rooster",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "eldritch"
+  },
+  "SWAT": {
+    "value": "SWAT",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Red_Nose_Clown": {
+    "value": "Red_Nose_Clown",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Crying_Mime": {
+    "value": "Crying_Mime",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "corsair"
+  },
+  "Babushka": {
+    "value": "Babushka",
+    "tier": "Common",
+    "score": 8,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Toxic_Mohawk": {
+    "value": "Toxic_Mohawk",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Tinoch_Punk": {
+    "value": "Tinoch_Punk",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Surprised Gorilla": {
+    "value": "Surprised Gorilla",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Sleepy_Koala": {
+    "value": "Sleepy_Koala",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Pink_Goggles_Lady": {
+    "value": "Pink_Goggles_Lady",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Monk": {
+    "value": "Monk",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Manic_Goblin": {
+    "value": "Manic_Goblin",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Lava_Beast": {
+    "value": "Lava_Beast",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Laughing_Dark_Boy": {
+    "value": "Laughing_Dark_Boy",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Goblin_Rogue": {
+    "value": "Goblin_Rogue",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Fire_Elemental": {
+    "value": "Fire_Elemental",
+    "tier": "Common",
+    "score": 7,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Wooden_Puppet": {
+    "value": "Wooden_Puppet",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "runeborn"
+  },
+  "Two_Faced_Green": {
+    "value": "Two_Faced_Green",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Teal_Luchador": {
+    "value": "Teal_Luchador",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "corsair"
+  },
+  "Stone_Gargoyle": {
+    "value": "Stone_Gargoyle",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Steampunk": {
+    "value": "Steampunk",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Sleepy_Candle": {
+    "value": "Sleepy_Candle",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Pipe_Sleuth": {
+    "value": "Pipe_Sleuth",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "corsair"
+  },
+  "Old_Gas_Mask": {
+    "value": "Old_Gas_Mask",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "runeborn"
+  },
+  "Mantis": {
+    "value": "Mantis",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Grumpy_Cyclops": {
+    "value": "Grumpy_Cyclops",
+    "tier": "Common",
+    "score": 6,
+    "weight": 120,
+    "race": "primal"
+  },
+  "Static_Screen": {
+    "value": "Static_Screen",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Purple_Balaclava": {
+    "value": "Purple_Balaclava",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Pale_Wraith": {
+    "value": "Pale_Wraith",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "ashborn"
+  },
+  "Graffiti_Artist": {
+    "value": "Graffiti_Artist",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Glowing_Gillman": {
+    "value": "Glowing_Gillman",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "voidkin"
+  },
+  "Funky_Geek": {
+    "value": "Funky_Geek",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Copper_Aviator": {
+    "value": "Copper_Aviator",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Bot_Cyclops": {
+    "value": "Bot_Cyclops",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Bark_Dryad": {
+    "value": "Bark_Dryad",
+    "tier": "Common",
+    "score": 5,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Wale_Moca": {
+    "value": "Wale_Moca",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "TMA_Bag": {
+    "value": "TMA_Bag",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Specs_Witch": {
+    "value": "Specs_Witch",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Sombrero_Smile": {
+    "value": "Sombrero_Smile",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Shroom_Knight": {
+    "value": "Shroom_Knight",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "eldritch"
+  },
+  "Office_Sloth": {
+    "value": "Office_Sloth",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Lightning_Glam": {
+    "value": "Lightning_Glam",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Horned_Devil": {
+    "value": "Horned_Devil",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "hellspawn"
+  },
+  "Happy_Slime": {
+    "value": "Happy_Slime",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "eldritch"
+  },
+  "Goggle_Hamster": {
+    "value": "Goggle_Hamster",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cyan_Cloude": {
+    "value": "Cyan_Cloude",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cowboy_Cactus": {
+    "value": "Cowboy_Cactus",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "verdant"
+  },
+  "Bucktooth_Cyclops": {
+    "value": "Bucktooth_Cyclops",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "primal"
+  },
+  "Bubble_Bear": {
+    "value": "Bubble_Bear",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Bryan": {
+    "value": "Bryan",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Bolt_Franken": {
+    "value": "Bolt_Franken",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Beret_Pug": {
+    "value": "Beret_Pug",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Bandana_Biker": {
+    "value": "Bandana_Biker",
+    "tier": "Common",
+    "score": 4,
+    "weight": 120,
+    "race": "corsair"
+  },
+  "Space_Chimp": {
+    "value": "Space_Chimp",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "voidkin"
+  },
+  "Pinstripe_Boss": {
+    "value": "Pinstripe_Boss",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Mossy_Gargoyle": {
+    "value": "Mossy_Gargoyle",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Moss_Goblin": {
+    "value": "Moss_Goblin",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Mint_Disco_Dancer": {
+    "value": "Mint_Disco_Dancer",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Horned_Cyclops": {
+    "value": "Horned_Cyclops",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "hellspawn"
+  },
+  "Grandma": {
+    "value": "Grandma",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Fedora_Detective": {
+    "value": "Fedora_Detective",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "corsair"
+  },
+  "Big_Old_Satoshi": {
+    "value": "Big_Old_Satoshi",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Banana_Guy": {
+    "value": "Banana_Guy",
+    "tier": "Common",
+    "score": 3,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Tri_Cross_Bot": {
+    "value": "Tri_Cross_Bot",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Stoned_Jason": {
+    "value": "Stoned_Jason",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "runeborn"
+  },
+  "Square_Professor": {
+    "value": "Square_Professor",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Safari_Turkey": {
+    "value": "Safari_Turkey",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Miner": {
+    "value": "Miner",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Masked_Ranger": {
+    "value": "Masked_Ranger",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "runeborn"
+  },
+  "Lucha_Mask": {
+    "value": "Lucha_Mask",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "corsair"
+  },
+  "Gary": {
+    "value": "Gary",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Fanged_Hippie": {
+    "value": "Fanged_Hippie",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "hellspawn"
+  },
+  "Druid": {
+    "value": "Druid",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cyber_Duck": {
+    "value": "Cyber_Duck",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "ironborn"
+  },
+  "Blue_Ogre": {
+    "value": "Blue_Ogre",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "primal"
+  },
+  "Bloodshot_Mummy": {
+    "value": "Bloodshot_Mummy",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Anaglyph_Woman": {
+    "value": "Anaglyph_Woman",
+    "tier": "Common",
+    "score": 2,
+    "weight": 120,
+    "race": "eldritch"
+  },
+  "Tic_Punk": {
+    "value": "Tic_Punk",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Sleepy_Moon": {
+    "value": "Sleepy_Moon",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120,
+    "race": "voidkin"
+  },
+  "Rainbow_Elf": {
+    "value": "Rainbow_Elf",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120,
+    "race": "verdant"
+  },
+  "Gummy_Shock": {
+    "value": "Gummy_Shock",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Gold_Tooth": {
+    "value": "Gold_Tooth",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Crybaby_Rocker": {
+    "value": "Crybaby_Rocker",
+    "tier": "Common",
+    "score": 1,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "War_Bonnet": {
+    "value": "War_Bonnet",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "mythic"
+  },
+  "Stoned_Burrito": {
+    "value": "Stoned_Burrito",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "runeborn"
+  },
+  "Satyr": {
+    "value": "Satyr",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Sad_Scoop": {
+    "value": "Sad_Scoop",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Purple_Bustard": {
+    "value": "Purple_Bustard",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "voidkin"
+  },
+  "Painted_Mime": {
+    "value": "Painted_Mime",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "corsair"
+  },
+  "Kabuki_Face": {
+    "value": "Kabuki_Face",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Hungry_Flytrap": {
+    "value": "Hungry_Flytrap",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Fat_Nerd": {
+    "value": "Fat_Nerd",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Cool_Banana": {
+    "value": "Cool_Banana",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "highborn"
+  },
+  "Bandaged_Dude": {
+    "value": "Bandaged_Dude",
+    "tier": "Common",
+    "score": 0,
+    "weight": 120,
+    "race": "highborn"
+  }
+}
