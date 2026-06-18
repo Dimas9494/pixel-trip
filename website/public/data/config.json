@@ -1,7 +1,16 @@
 {
   "name": "PIXEL TRIP",
-  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "description": "4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames.",
   "editionSize": 4444,
+  "heroEdition": 25,
+  "featured": [
+    { "edition": 1, "character": "Mantis" },
+    { "edition": 25, "character": "Cursed_Elmo" },
+    { "edition": 42, "character": "Gold_Tooth" },
+    { "edition": 56, "character": "Crybaby_Rocker" },
+    { "edition": 100, "character": "Bolt_Block" },
+    { "edition": 133, "character": "Dapper_Ghoul" }
+  ],
   "oneOfOnes": [
     "Bryan",
     "You_Know",
@@ -22,5 +31,9 @@
     "characters": 291,
     "frames": 200
   },
-  "heroEditions": [25, 42, 133, 2847]
+  "links": {
+    "twitter": "https://twitter.com",
+    "discord": "https://discord.com",
+    "opensea": "https://opensea.io"
+  }
 }

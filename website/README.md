@@ -1,6 +1,6 @@
-# PIXEL TRIP — Website
+# PIXEL TRIP — Landing
 
-Сайт коллекции NFT **PIXEL TRIP** (4444 animated pixel portraits).
+Лёгкий лендинг коллекции: hero + 6 превью + описание слоёв.
 
 ## Локально
 
@@ -10,25 +10,26 @@ npm install
 npm run dev
 ```
 
-Откройте `http://localhost:5173`. GIF берутся из `../collection/build/images/`.
+Перед запуском скрипт копирует **6 GIF** из `../collection/build/images/` в `public/images/`.
 
 ## GitHub + Netlify
 
-Пошаговая инструкция: **[DEPLOY.md](./DEPLOY.md)**
+- Base directory: `website`
+- Build: `npm run build`
+- Publish: `dist`
+- **COPY_IMAGES не нужен** — копируются только featured GIF
 
-Кратко:
-- GitHub: monorepo из `D:\Promt\Пиксель`
-- Netlify base directory: `website`
-- GIF: через `VITE_IMAGE_BASE_URL` или `COPY_IMAGES=1`
-
-## Сборка
+После изменений:
 
 ```powershell
-npm run build
-npm run preview
+cd "D:\Promt\Пиксель"
+git add website/
+git commit -m "Redesign site as landing with featured previews"
+git push
 ```
 
-## Настройка
+Netlify пересоберёт сайт автоматически.
 
-- Ссылки Twitter / Discord / OpenSea — в `index.html`
-- Hero-превью — `public/data/config.json` → `heroEditions`
+## Сменить превью
+
+Отредактируйте `public/data/config.json` → `featured` и пути в `index.html`.

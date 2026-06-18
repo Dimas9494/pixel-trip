@@ -4,11 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "generate": "node scripts/build-data.mjs",
-    "predev": "node scripts/build-data.mjs",
+    "predev": "node scripts/copy-featured.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/build-data.mjs",
-    "build": "node scripts/copy-images.mjs && vite build",
+    "prebuild": "node scripts/copy-featured.mjs",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
