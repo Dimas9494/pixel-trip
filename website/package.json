@@ -4,9 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/copy-featured.mjs",
+    "setup-images": "node scripts/copy-featured.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/copy-featured.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -5,8 +5,8 @@ website/dist/
 # Generated at build time (Netlify rebuilds from metadata)
 website/public/data/collection.json
 
-# Optional local image copy target
-website/public/images/
+# Optional local image copy target (featured GIFs in website/public/images are tracked)
+# website/public/images/
 
 # Large GIF assets — host via CDN or Git LFS + COPY_IMAGES=1
 collection/build/images/
