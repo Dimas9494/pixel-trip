@@ -6,9 +6,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const websiteRoot = path.resolve(__dirname, "..");
 const burnDir = path.join(websiteRoot, "public/images/burn");
 const files = [
-  { name: "level-1.png", label: "Level 1 — Genesis" },
-  { name: "level-2.png", label: "Level 2 — Awakened" },
-  { name: "level-3.png", label: "Level 3 — Ascended" },
+  { name: "1.png", label: "Level 1 — Genesis" },
+  { name: "2.png", label: "Level 2 — Awakened" },
+  { name: "3.png", label: "Level 3 — Ascended" },
 ];
 
 const args = process.argv.slice(2);
@@ -39,8 +39,7 @@ for (const file of files) {
 const missing = files.filter((file) => !existsSync(path.join(burnDir, file.name)));
 if (missing.length > 0) {
   console.log("");
-  console.log("Copy 3 PNG files into public/images/burn/ with these names, or run:");
-  console.log('  node scripts/setup-burn.mjs "path\\level1.png" "path\\level2.png" "path\\level3.png"');
+  console.log("Copy 3 PNG files into public/images/burn/ as 1.png, 2.png, 3.png");
   process.exit(missing.length === files.length ? 1 : 0);
 }
 
