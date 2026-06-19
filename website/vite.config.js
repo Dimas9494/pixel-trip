@@ -8,15 +8,23 @@ const publicImages = path.join(__dirname, "public/images");
 const collectionImages = path.resolve(__dirname, "../collection/build/images");
 
 function serveImageMiddleware(req, res, next) {
-  const name = path.basename(decodeURIComponent((req.url || "/").split("?")[0]));
+  const rel = decodeURIComponent((req.url || "/").split("?")[0].replace(/^\//, ""));
   const candidates = [
-    path.join(publicImages, name),
-    path.join(collectionImages, name),
+    path.join(publicImages, rel),
+    path.join(publicImages, path.basename(rel)),
+    path.join(collectionImages, path.basename(rel)),
   ];
+
+  const types = {
+    ".gif": "image/gif",
+    ".png": "image/png",
+    ".webp": "image/webp",
+  };
 
   for (const filePath of candidates) {
     if (existsSync(filePath)) {
-      res.setHeader("Content-Type", "image/gif");
+      const ext = path.extname(filePath).toLowerCase();
+      res.setHeader("Content-Type", types[ext] || "application/octet-stream");
       createReadStream(filePath).pipe(res);
       return;
     }
@@ -46,7 +54,7 @@ export default defineConfig({
         }
         const distImages = path.join(__dirname, "dist/images");
         cpSync(publicImages, distImages, { recursive: true, force: true });
-        console.log("Ensured preview GIFs in dist/images");
+        console.log("Ensured images in dist/images");
       },
     },
   ],
