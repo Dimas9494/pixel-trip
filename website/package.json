@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "setup-images": "node scripts/copy-featured.mjs",
+    "setup-burn": "node scripts/setup-burn.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
