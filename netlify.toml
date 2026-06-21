@@ -1,10 +1,14 @@
 [build]
-  base = "website"
+  base    = "website"
   command = "npm run build"
-  publish = "website/dist"
+  publish = "dist"
+  functions = "netlify/functions"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION    = "20"
+  EVOLVE_CONTRACT = "0x44dC167e639e238B8fCbd3A0b72D69Bd03F0d1Bc"
+  MAINNET_RPC_URL = "https://ethereum-rpc.publicnode.com"
+  IMAGE_BASE_URL  = "https://pixeltripnft.website/Test/stage2/images"
 
 [[headers]]
   for = "/images/*"
