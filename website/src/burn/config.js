@@ -1,6 +1,15 @@
 // Stage 1 — SeaDrop collection (Ethereum Mainnet)
 export const STAGE1_ADDRESS = "0x63cec36A9D7e755510ab04A2419666442EC05F2d";
 
+// Characters that currently have Stage 2 art ready.
+// Add new character names here when Stage 2 art for them is deployed.
+export const BURNABLE_CHARS = new Set([
+  "Ape_Beard",
+  "Beanie_Cyclops",
+  "Diva",
+  "Alpine_Hunter",
+]);
+
 // Stage 2/3 — EvolvePixelTrip contract (Ethereum Mainnet)
 export const EVOLVE_ADDRESS = import.meta.env.VITE_EVOLVE_CONTRACT || "0x44dC167e639e238B8fCbd3A0b72D69Bd03F0d1Bc";
 

@@ -11,6 +11,7 @@ import {
   EVOLVE_ADDRESS,
   STAGE1_ABI,
   EVOLVE_ABI,
+  BURNABLE_CHARS,
 } from "./config.js";
 
 const els = {
@@ -107,11 +108,16 @@ async function loadStage1Tokens() {
       meta = await fetchMetadata(uri);
     } catch { /* skip */ }
 
+    const character = extractCharacter(meta?.attributes);
+
+    // Only show tokens whose character has Stage 2 art ready
+    if (character && !BURNABLE_CHARS.has(character)) continue;
+
     loaded.push({
       tokenId:   Number(i),
       name:      meta?.name  || `Stage 1 #${i}`,
       image:     meta?.image || null,
-      character: extractCharacter(meta?.attributes),
+      character,
       stage:     1,
       source:    "stage1",
     });
