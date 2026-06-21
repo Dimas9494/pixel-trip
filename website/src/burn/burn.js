@@ -94,48 +94,30 @@ const TRANSFER_EVENT = {
 };
 
 async function loadStage1Tokens() {
-  // Paginate getLogs in 50k-block chunks to stay within RPC limits
-  const CHUNK       = 50000n;
-  const START_BLOCK = 19000000n; // SeaDrop collection deploy era
-  const latest      = await publicClient.getBlockNumber();
-  const allLogs     = [];
-
-  for (let from = START_BLOCK; from <= latest; from += CHUNK + 1n) {
-    const to = from + CHUNK <= latest ? from + CHUNK : latest;
-    try {
-      const chunk = await publicClient.getLogs({
-        address:   STAGE1_ADDRESS,
-        event:     TRANSFER_EVENT,
-        args:      { to: account },
-        fromBlock: from,
-        toBlock:   to,
-      });
-      allLogs.push(...chunk);
-    } catch { /* skip chunk on error */ }
-  }
-
-  const logs = allLogs;
-
-  // Deduplicate token IDs
-  const candidateIds = [...new Set(logs.map(l => Number(l.args.tokenId)))];
-
-  // Verify current ownership and fetch metadata in parallel batches
-  const BATCH = 20;
+  // Scan all possible token IDs in parallel batches (covers non-sequential IDs up to 4444)
+  const MAX_ID = 4444;
+  const BATCH  = 50;
   const loaded = [];
 
-  for (let b = 0; b < candidateIds.length; b += BATCH) {
-    const batch = candidateIds.slice(b, b + BATCH);
-    const results = await Promise.all(batch.map(async (id) => {
+  for (let start = 0; start <= MAX_ID; start += BATCH) {
+    const ids = Array.from(
+      { length: Math.min(BATCH, MAX_ID - start + 1) },
+      (_, j) => start + j
+    );
+
+    const results = await Promise.all(ids.map(async (id) => {
       try {
         const owner = await publicClient.readContract({
-          address: STAGE1_ADDRESS, abi: STAGE1_ABI, functionName: "ownerOf", args: [BigInt(id)],
+          address: STAGE1_ADDRESS, abi: STAGE1_ABI,
+          functionName: "ownerOf", args: [BigInt(id)],
         });
         if (owner.toLowerCase() !== account.toLowerCase()) return null;
 
         let meta = null;
         try {
           const uri = await publicClient.readContract({
-            address: STAGE1_ADDRESS, abi: STAGE1_ABI, functionName: "tokenURI", args: [BigInt(id)],
+            address: STAGE1_ADDRESS, abi: STAGE1_ABI,
+            functionName: "tokenURI", args: [BigInt(id)],
           });
           meta = await fetchMetadata(uri);
         } catch { /* skip */ }
@@ -349,7 +331,7 @@ async function connectWallet() {
   if (!EVOLVE_ADDRESS) { setMessage("Deploy EvolvePixelTrip and set VITE_EVOLVE_CONTRACT in .env.", "error"); return; }
 
   try {
-    publicClient = createPublicClient({ chain: mainnet, transport: http("https://ethereum-rpc.publicnode.com") });
+    publicClient = createPublicClient({ chain: mainnet, transport: http("https://cloudflare-eth.com") });
     walletClient = createWalletClient({ chain: mainnet, transport: custom(provider) });
 
     const [address] = await walletClient.requestAddresses();
