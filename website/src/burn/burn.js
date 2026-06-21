@@ -331,7 +331,8 @@ async function connectWallet() {
   if (!EVOLVE_ADDRESS) { setMessage("Deploy EvolvePixelTrip and set VITE_EVOLVE_CONTRACT in .env.", "error"); return; }
 
   try {
-    publicClient = createPublicClient({ chain: mainnet, transport: http("https://cloudflare-eth.com") });
+    // Use wallet provider for both read and write — avoids CORS on all public RPCs
+    publicClient = createPublicClient({ chain: mainnet, transport: custom(provider) });
     walletClient = createWalletClient({ chain: mainnet, transport: custom(provider) });
 
     const [address] = await walletClient.requestAddresses();
