@@ -34,8 +34,9 @@ export const BURNABLE_CHARS = new Set([
   "Alpine_Hunter",
 ]);
 
-// Stage 2/3 — EvolvePixelTrip contract (Ethereum Mainnet)
-export const EVOLVE_ADDRESS = import.meta.env.VITE_EVOLVE_CONTRACT || "0x44dC167e639e238B8fCbd3A0b72D69Bd03F0d1Bc";
+// EvolvePixelTrip v2 — in-place evolution (no new tokens minted)
+// Update this after deploying the new contract via Remix
+export const EVOLVE_ADDRESS = import.meta.env.VITE_EVOLVE_CONTRACT || "";
 
 export const STAGE1_ABI = [
   {
@@ -76,7 +77,14 @@ export const STAGE1_ABI = [
   },
 ];
 
+// EvolvePixelTrip v2 ABI — in-place evolution, no minting
 export const EVOLVE_ABI = [
+  {
+    type: "function", name: "evolvedStage",
+    stateMutability: "view",
+    inputs:  [{ name: "tokenId", type: "uint256" }],
+    outputs: [{ type: "uint8" }],
+  },
   {
     type: "function", name: "stage1Character",
     stateMutability: "view",
@@ -86,38 +94,14 @@ export const EVOLVE_ABI = [
   {
     type: "function", name: "evolveFromStage1",
     stateMutability: "nonpayable",
-    inputs:  [{ name: "tokenIdA", type: "uint256" }, { name: "tokenIdB", type: "uint256" }],
+    inputs:  [{ name: "keepId", type: "uint256" }, { name: "burnId", type: "uint256" }],
     outputs: [],
   },
   {
     type: "function", name: "evolveFromStage2",
     stateMutability: "nonpayable",
-    inputs:  [{ name: "tokenIdA", type: "uint256" }, { name: "tokenIdB", type: "uint256" }],
+    inputs:  [{ name: "keepId", type: "uint256" }, { name: "burnId", type: "uint256" }],
     outputs: [],
-  },
-  {
-    type: "function", name: "balanceOf",
-    stateMutability: "view",
-    inputs:  [{ name: "owner", type: "address" }],
-    outputs: [{ type: "uint256" }],
-  },
-  {
-    type: "function", name: "tokenOfOwnerByIndex",
-    stateMutability: "view",
-    inputs:  [{ name: "owner", type: "address" }, { name: "index", type: "uint256" }],
-    outputs: [{ type: "uint256" }],
-  },
-  {
-    type: "function", name: "tokenInfo",
-    stateMutability: "view",
-    inputs:  [{ name: "tokenId", type: "uint256" }],
-    outputs: [{ name: "charId", type: "uint8" }, { name: "stage", type: "uint8" }],
-  },
-  {
-    type: "function", name: "tokenURI",
-    stateMutability: "view",
-    inputs:  [{ name: "tokenId", type: "uint256" }],
-    outputs: [{ type: "string" }],
   },
   {
     type: "function", name: "totalEvolved",
@@ -126,24 +110,13 @@ export const EVOLVE_ABI = [
     outputs: [{ type: "uint256" }],
   },
   {
-    type: "event", name: "EvolvedToStage2",
+    type: "event", name: "Evolved",
     inputs: [
-      { indexed: true,  name: "user",       type: "address" },
-      { indexed: false, name: "burnedA",    type: "uint256" },
-      { indexed: false, name: "burnedB",    type: "uint256" },
-      { indexed: true,  name: "newTokenId", type: "uint256" },
-      { indexed: false, name: "charId",     type: "uint8"   },
-    ],
-  },
-  {
-    type: "event", name: "EvolvedToStage3",
-    inputs: [
-      { indexed: true,  name: "user",          type: "address" },
-      { indexed: false, name: "burnedA",        type: "uint256" },
-      { indexed: false, name: "burnedB",        type: "uint256" },
-      { indexed: true,  name: "newTokenId",     type: "uint256" },
-      { indexed: false, name: "charId",         type: "uint8"   },
-      { indexed: false, name: "skippedStage2",  type: "bool"    },
+      { indexed: true,  name: "user",         type: "address" },
+      { indexed: true,  name: "keepTokenId",  type: "uint256" },
+      { indexed: false, name: "burnTokenId",  type: "uint256" },
+      { indexed: false, name: "newStage",     type: "uint8"   },
+      { indexed: false, name: "charId",       type: "uint8"   },
     ],
   },
 ];

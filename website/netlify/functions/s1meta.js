@@ -1,19 +1,65 @@
-// Netlify Function: metadata
-// GET /.netlify/functions/metadata?id=TOKEN_ID
-// Serves dynamic ERC-721 metadata for EvolvePixelTrip Stage 2 / Stage 3 tokens.
+// Netlify Function: s1meta
+// GET /.netlify/functions/s1meta?id=TOKEN_ID
+//
+// Serves metadata for ALL tokens in the original Stage 1 collection.
+// - If token is unevolved (stage=0): proxies metadata from the original server
+// - If token is Stage 2/3: returns evolved metadata with new art
+//
+// No external dependencies — pure Node.js fetch + raw JSON-RPC.
 
-import { createPublicClient, http } from 'viem';
-import { mainnet } from 'viem/chains';
+const EVOLVE_CONTRACT  = process.env.EVOLVE_CONTRACT  || '';
+const STAGE1_META_BASE = (process.env.STAGE1_META_BASE || 'https://pixeltripnft.website/Test/metadata').replace(/\/$/, '');
+const IMAGE_BASE       = (process.env.IMAGE_BASE_URL   || 'https://pixeltripnft.website/Test/stage2/images').replace(/\/$/, '');
+const RPC_URL          = process.env.MAINNET_RPC_URL   || 'https://ethereum-rpc.publicnode.com';
 
-const EVOLVE_CONTRACT = process.env.EVOLVE_CONTRACT || '0x44dC167e639e238B8fCbd3A0b72D69Bd03F0d1Bc';
-const RPC_URL         = process.env.MAINNET_RPC_URL  || 'https://ethereum-rpc.publicnode.com';
-const IMAGE_BASE      = (process.env.IMAGE_BASE_URL  || 'https://pixeltripnft.website/Test/stage2/images').replace(/\/$/, '');
+// ── Minimal ABI encoder / eth_call ────────────────────────────────────────────
+
+import { createHash } from 'node:crypto';
+
+// Compute keccak256 using OpenSSL (Node 20 + OpenSSL 3 supports it)
+// Falls back to pre-computed values if unavailable
+function keccak256Selector(sig) {
+  for (const algo of ['keccak256', 'keccak-256']) {
+    try {
+      return createHash(algo).update(sig, 'utf8').digest('hex').slice(0, 8);
+    } catch { /* try next */ }
+  }
+  // Fallback: pre-computed selectors (verified from Solidity ABI)
+  const known = {
+    'evolvedStage(uint256)':    '74b7661f',
+    'stage1Character(uint256)': '3d73cef2',
+  };
+  return known[sig] ?? null;
+}
+
+const SEL_EVOLVED_STAGE    = keccak256Selector('evolvedStage(uint256)');
+const SEL_STAGE1_CHARACTER = keccak256Selector('stage1Character(uint256)');
+
+function encodeCall(selector, tokenId) {
+  return '0x' + selector + BigInt(tokenId).toString(16).padStart(64, '0');
+}
+
+function decodeUint8(hex) {
+  if (!hex || hex === '0x') return 0;
+  const data = hex.startsWith('0x') ? hex.slice(2) : hex;
+  return parseInt(data.slice(0, 64), 16);
+}
+
+async function ethCall(to, data) {
+  const res = await fetch(RPC_URL, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify({ jsonrpc: '2.0', method: 'eth_call', params: [{ to, data }, 'latest'], id: 1 }),
+  });
+  const json = await res.json();
+  if (json.error) throw new Error(json.error.message);
+  return json.result;
+}
+
+// ── Inline variant data ───────────────────────────────────────────────────────
 
 const CHAR_ID_TO_NAME = {
-  1:  'Ape_Beard',
-  45: 'Beanie_Cyclops',
-  80: 'Diva',
-  81: 'Alpine_Hunter',
+  1: 'Ape_Beard', 45: 'Beanie_Cyclops', 80: 'Diva', 81: 'Alpine_Hunter',
 };
 
 const STAGE2_VARIANTS = {
@@ -69,12 +115,7 @@ const STAGE2_VARIANTS = {
   ],
 };
 
-const TOKEN_INFO_ABI = [{
-  name: 'tokenInfo', type: 'function',
-  inputs:  [{ type: 'uint256', name: '' }],
-  outputs: [{ type: 'uint8', name: 'charId' }, { type: 'uint8', name: 'stage' }],
-  stateMutability: 'view',
-}];
+// ── Handler ───────────────────────────────────────────────────────────────────
 
 const HEADERS = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
 
@@ -85,17 +126,26 @@ export async function handler(event) {
   }
 
   try {
-    const client = createPublicClient({ chain: mainnet, transport: http(RPC_URL) });
-    const [charId, stage] = await client.readContract({
-      address: EVOLVE_CONTRACT, abi: TOKEN_INFO_ABI,
-      functionName: 'tokenInfo', args: [BigInt(tokenId)],
-    });
+    // Fetch evolvedStage and stage1Character in parallel
+    const [stageHex, charHex] = await Promise.all([
+      EVOLVE_CONTRACT ? ethCall(EVOLVE_CONTRACT, encodeCall(SEL_EVOLVED_STAGE,    tokenId)) : Promise.resolve('0x'),
+      EVOLVE_CONTRACT ? ethCall(EVOLVE_CONTRACT, encodeCall(SEL_STAGE1_CHARACTER, tokenId)) : Promise.resolve('0x'),
+    ]);
 
+    const stage  = decodeUint8(stageHex);
+    const charId = decodeUint8(charHex);
+
+    // Stage 0 → proxy original metadata from the user's server
     if (stage === 0) {
-      return { statusCode: 404, headers: HEADERS, body: JSON.stringify({ error: 'Token not found' }) };
+      const upstream = await fetch(`${STAGE1_META_BASE}/${tokenId}`);
+      if (!upstream.ok) {
+        return { statusCode: upstream.status, headers: HEADERS, body: JSON.stringify({ error: 'Original metadata not found' }) };
+      }
+      const meta = await upstream.json();
+      return { statusCode: 200, headers: HEADERS, body: JSON.stringify(meta) };
     }
 
-    const charName = CHAR_ID_TO_NAME[Number(charId)];
+    const charName = CHAR_ID_TO_NAME[charId];
 
     if (stage === 2) {
       const variants = charName ? STAGE2_VARIANTS[charName] : null;
@@ -142,8 +192,9 @@ export async function handler(event) {
     }
 
     return { statusCode: 404, headers: HEADERS, body: JSON.stringify({ error: `Unexpected stage ${stage}` }) };
+
   } catch (err) {
-    console.error('[metadata]', err);
+    console.error('[s1meta]', err);
     return { statusCode: 500, headers: HEADERS, body: JSON.stringify({ error: err.message }) };
   }
 }

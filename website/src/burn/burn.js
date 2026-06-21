@@ -27,8 +27,9 @@ const els = {
 let walletClient = null;
 let publicClient = null;
 let account      = null;
-let tokens       = [];   // { tokenId, name, image, character, stage, source }
-let selected     = new Set();
+let tokens       = [];   // { tokenId, name, image, character, stage }
+let keepToken    = null; // first selected — will be upgraded
+let burnToken    = null; // second selected — will be destroyed
 let isApproved   = false;
 
 // ── UI helpers ────────────────────────────────────────────────────────────────
@@ -45,15 +46,14 @@ function shortAddress(addr) {
 
 function updateEvolveButton() {
   if (!els.evolve) return;
-  if (selected.size !== 2) {
-    els.evolve.textContent = "Evolve (burn 2 → mint 1)";
+  if (!keepToken || !burnToken) {
+    els.evolve.textContent = "Evolve (select 2 same-character tokens)";
     els.evolve.disabled = true;
     return;
   }
   els.evolve.disabled = false;
-  els.evolve.textContent = isApproved
-    ? "Evolve (burn 2 → mint 1)"
-    : "Approve + Evolve";
+  const action = isApproved ? "Evolve" : "Approve + Evolve";
+  els.evolve.textContent = `${action}: keep #${keepToken.tokenId}, burn #${burnToken.tokenId}`;
 }
 
 // ── Network ───────────────────────────────────────────────────────────────────
@@ -68,37 +68,22 @@ async function ensureMainnet() {
   }
 }
 
-// ── Load tokens ───────────────────────────────────────────────────────────────
+// ── Token discovery ───────────────────────────────────────────────────────────
 
-async function fetchMetadata(uri) {
-  try {
-    const res = await fetch(uri);
-    if (res.ok) return await res.json();
-  } catch { /* ignore */ }
-  return null;
-}
-
-function extractCharacter(attributes) {
-  return attributes?.find(
-    (a) => typeof a.trait_type === "string" && a.trait_type.toUpperCase() === "CHARACTER"
-  )?.value ?? null;
-}
-
-async function getOwnedStage1Ids() {
-  // multicall3: all 4444 ownerOf calls in ONE eth_call — fast!
-  const MAX_ID = 4443;
+async function getOwnedIds() {
   setMessage("Scanning wallet… (~5 sec)", "info");
 
+  // multicall3: all ownerOf calls in ONE eth_call
+  const MAX_ID  = 4443;
   const contracts = Array.from({ length: MAX_ID + 1 }, (_, i) => ({
     address: STAGE1_ADDRESS,
-    abi: STAGE1_ABI,
+    abi:     STAGE1_ABI,
     functionName: "ownerOf",
-    args: [BigInt(i)],
+    args:    [BigInt(i)],
   }));
 
   const results = await publicClient.multicall({ contracts, allowFailure: true });
-
-  const owned = [];
+  const owned   = [];
   for (let i = 0; i <= MAX_ID; i++) {
     const r = results[i];
     if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
@@ -108,112 +93,72 @@ async function getOwnedStage1Ids() {
   return owned;
 }
 
-async function loadStage1Tokens() {
-  const ownedIds = await getOwnedStage1Ids();
-
-  const BATCH  = 20;
-  const loaded = [];
-
-  for (let b = 0; b < ownedIds.length; b += BATCH) {
-    const slice = ownedIds.slice(b, b + BATCH);
-    const results = await Promise.all(slice.map(async (id) => {
-      try {
-        const charId = await publicClient.readContract({
-          address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
-          functionName: "stage1Character", args: [BigInt(id)],
-        });
-        const character = CHAR_ID_TO_NAME[Number(charId)] || null;
-        if (character && !BURNABLE_CHARS.has(character)) return null;
-        return {
-          tokenId: id,
-          name:    `#${id} ${character || ""}`.trim(),
-          image:   `https://pixeltripnft.website/Test/images/${id}.gif`,
-          character,
-          stage:   1,
-          source:  "stage1",
-        };
-      } catch { return null; }
-    }));
-    for (const r of results) if (r) loaded.push(r);
-  }
-  return loaded;
-}
-
-async function loadStage2Tokens() {
-  if (!EVOLVE_ADDRESS) return [];
-
-  const balance = await publicClient.readContract({
-    address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "balanceOf", args: [account],
-  });
-
-  const loaded = [];
-  for (let i = 0n; i < balance; i++) {
-    let tokenId;
-    try {
-      tokenId = await publicClient.readContract({
-        address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
-        functionName: "tokenOfOwnerByIndex", args: [account, i],
-      });
-    } catch { continue; }
-
-    const info = await publicClient.readContract({
-      address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
-      functionName: "tokenInfo", args: [tokenId],
-    });
-
-    const stage = Number(info[1]);
-    if (stage !== 2) continue; // Stage 3 tokens can't evolve further
-
-    let meta = null;
-    try {
-      const uri = await publicClient.readContract({
-        address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "tokenURI", args: [tokenId],
-      });
-      meta = await fetchMetadata(uri);
-    } catch { /* skip */ }
-
-    loaded.push({
-      tokenId:   Number(tokenId),
-      name:      meta?.name  || `Stage 2 #${tokenId}`,
-      image:     meta?.image || null,
-      character: extractCharacter(meta?.attributes),
-      stage:     2,
-      source:    "stage2",
-    });
-  }
-  return loaded;
-}
-
 async function loadTokens() {
   setMessage("Loading your travelers…", "info");
 
-  const [stage1, stage2] = await Promise.all([loadStage1Tokens(), loadStage2Tokens()]);
-  tokens = [...stage1, ...stage2];
-  selected.clear();
+  const ownedIds = await getOwnedIds();
 
+  // Batch-read charId and evolvedStage for each owned token
+  const BATCH = 20;
+  tokens = [];
+
+  for (let b = 0; b < ownedIds.length; b += BATCH) {
+    const slice = ownedIds.slice(b, b + BATCH);
+
+    const results = await Promise.all(slice.map(async (id) => {
+      try {
+        const [charId, stage] = await Promise.all([
+          publicClient.readContract({
+            address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
+            functionName: "stage1Character", args: [BigInt(id)],
+          }),
+          EVOLVE_ADDRESS ? publicClient.readContract({
+            address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
+            functionName: "evolvedStage", args: [BigInt(id)],
+          }) : Promise.resolve(0),
+        ]);
+
+        const character = CHAR_ID_TO_NAME[Number(charId)] || null;
+
+        // Only show tokens that are burnable (have Stage 2 art) OR already evolved
+        const currentStage = Number(stage);
+        if (currentStage === 0 && character && !BURNABLE_CHARS.has(character)) return null;
+
+        return {
+          tokenId:   id,
+          character,
+          stage:     currentStage,
+          name:      `#${id}${character ? ` ${character}` : ""}`,
+          image:     `https://pixeltripnft.website/Test/images/${id}.gif`,
+        };
+      } catch { return null; }
+    }));
+
+    for (const r of results) if (r) tokens.push(r);
+  }
+
+  keepToken  = null;
+  burnToken  = null;
   isApproved = await publicClient.readContract({
     address: STAGE1_ADDRESS, abi: STAGE1_ABI,
     functionName: "isApprovedForAll", args: [account, EVOLVE_ADDRESS],
-  });
+  }).catch(() => false);
 
   renderGrid();
   updateStats();
   updateEvolveButton();
 
   if (!tokens.length) {
-    setMessage("No travelers found in this wallet.");
+    setMessage("No evolvable travelers found.");
   } else {
-    const s2count = stage2.length;
-    setMessage(
-      `${stage1.length} Stage 1 traveler(s)${s2count ? `, ${s2count} Stage 2 traveler(s)` : ""}. Select 2 of the same character + same stage to evolve.`
-    );
+    setMessage(`${tokens.length} traveler(s) found. Select 2 of the same character — first selected will be upgraded.`);
   }
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
 
-const STAGE_LABEL = { 1: "Stage 1", 2: "Stage 2" };
-const STAGE_COLOR = { 1: "#00e5ff", 2: "#ff2bd6" };
+const STAGE_LABEL = { 0: "Stage 1", 2: "Stage 2", 3: "Stage 3 ✓" };
+const STAGE_COLOR = { 0: "#00e5ff", 2: "#ff2bd6", 3: "#ffd700" };
 
 function renderGrid() {
   if (!els.grid) return;
@@ -225,11 +170,17 @@ function renderGrid() {
   els.grid.innerHTML = "";
   for (const token of tokens) {
     const card = document.createElement("button");
-    card.type = "button";
+    card.type  = "button";
     card.className = "burn-token";
-    if (selected.has(`${token.source}:${token.tokenId}`)) card.classList.add("is-selected");
 
-    const stageColor = STAGE_COLOR[token.stage] || "#fff";
+    const isKeep = keepToken?.tokenId === token.tokenId;
+    const isBurn = burnToken?.tokenId === token.tokenId;
+    if (isKeep) card.classList.add("is-keep");
+    if (isBurn) card.classList.add("is-burn");
+
+    const stageColor = STAGE_COLOR[token.stage] ?? "#fff";
+    const roleLabel  = isKeep ? "⬆ KEEP" : isBurn ? "🔥 BURN" : "";
+
     card.innerHTML = `
       ${token.image
         ? `<img src="${token.image}" alt="${token.name}" width="72" height="72" />`
@@ -237,7 +188,8 @@ function renderGrid() {
       }
       <span class="burn-token-id">#${token.tokenId}</span>
       <span class="burn-token-meta">${token.character || token.name}</span>
-      <span class="burn-token-level" style="color:${stageColor}">${STAGE_LABEL[token.stage]}</span>
+      <span class="burn-token-level" style="color:${stageColor}">${STAGE_LABEL[token.stage] ?? `Stage ${token.stage}`}</span>
+      ${roleLabel ? `<span class="burn-token-role">${roleLabel}</span>` : ""}
     `;
 
     card.addEventListener("click", () => toggleSelect(token));
@@ -246,68 +198,71 @@ function renderGrid() {
 }
 
 function toggleSelect(token) {
-  const key = `${token.source}:${token.tokenId}`;
-  if (selected.has(key)) {
-    selected.delete(key);
+  // Stage 3 tokens can't evolve
+  if (token.stage === 3) {
+    setMessage("Stage 3 tokens are fully evolved — nothing more to do!", "info");
+    return;
+  }
+
+  if (keepToken?.tokenId === token.tokenId) {
+    // Deselect keep → also clear burn
+    keepToken = null;
+    burnToken = null;
+  } else if (burnToken?.tokenId === token.tokenId) {
+    // Deselect burn
+    burnToken = null;
+  } else if (!keepToken) {
+    keepToken = token;
+  } else if (!burnToken) {
+    burnToken = token;
   } else {
-    if (selected.size >= 2) selected.clear();
-    selected.add(key);
+    // Both slots full — replace burn with new pick
+    burnToken = token;
   }
 
   renderGrid();
   updateStats();
 
-  if (selected.size === 2) {
+  if (keepToken && burnToken) {
     const err = validateSelection();
     if (err) {
       setMessage(err, "error");
       els.evolve.disabled = true;
-    } else {
-      const [a] = getSelectedTokens();
-      const nextStage = a.stage === 1
-        ? (/* DirectToS3 check done on-chain */ "Stage 2 or 3")
-        : "Stage 3";
-      setMessage(
-        isApproved
-          ? `Ready! Evolve → ${nextStage}`
-          : `Ready! Approve + Evolve → ${nextStage}`
-      );
-      updateEvolveButton();
+      return;
     }
-  } else {
+    const nextStage = keepToken.stage === 0 ? "Stage 2" : "Stage 3";
+    setMessage(
+      `Ready! #${keepToken.tokenId} → ${nextStage}. #${burnToken.tokenId} will be destroyed.` +
+      (isApproved ? "" : " (approval required first)")
+    );
     updateEvolveButton();
-    if (selected.size === 1) setMessage("Select one more traveler with the same character and stage.");
+  } else if (keepToken) {
+    setMessage(`#${keepToken.tokenId} selected as KEEP. Now pick the token to BURN.`, "info");
+    updateEvolveButton();
+  } else {
+    setMessage("Select the token you want to UPGRADE first.", "info");
+    updateEvolveButton();
   }
 }
 
-function getSelectedTokens() {
-  return [...selected].map((key) => {
-    const [source, idStr] = key.split(":");
-    return tokens.find((t) => t.source === source && t.tokenId === Number(idStr));
-  });
-}
-
 function validateSelection() {
-  const [a, b] = getSelectedTokens();
-  if (!a || !b) return "Select 2 travelers.";
-
-  if (a.stage !== b.stage)
-    return `Stage mismatch: Stage ${a.stage} vs Stage ${b.stage}. Both must be the same stage.`;
-
-  if (a.character && b.character && a.character !== b.character)
-    return `Character mismatch: "${a.character}" vs "${b.character}". Both must be the same character.`;
-
+  if (!keepToken || !burnToken) return "Select 2 travelers.";
+  if (keepToken.stage !== burnToken.stage)
+    return `Stage mismatch: keep is Stage ${keepToken.stage === 0 ? 1 : keepToken.stage}, burn is Stage ${burnToken.stage === 0 ? 1 : burnToken.stage}.`;
+  if (keepToken.character && burnToken.character && keepToken.character !== burnToken.character)
+    return `Character mismatch: "${keepToken.character}" vs "${burnToken.character}". Both must be the same character.`;
   return null;
 }
 
 function updateStats() {
   if (!els.stats) return;
-  const s1 = tokens.filter((t) => t.stage === 1).length;
-  const s2 = tokens.filter((t) => t.stage === 2).length;
+  const s1 = tokens.filter(t => t.stage === 0).length;
+  const s2 = tokens.filter(t => t.stage === 2).length;
   els.stats.textContent = [
     s1 ? `${s1} Stage 1` : null,
     s2 ? `${s2} Stage 2` : null,
-    `${selected.size}/2 selected`,
+    keepToken ? `keep: #${keepToken.tokenId}` : null,
+    burnToken ? `burn: #${burnToken.tokenId}` : null,
     isApproved ? "approved ✓" : null,
   ].filter(Boolean).join(" · ");
 }
@@ -315,8 +270,6 @@ function updateStats() {
 // ── Connect wallet ────────────────────────────────────────────────────────────
 
 function getProvider() {
-  // OKX Wallet, MetaMask, Coinbase, Rainbow — all inject window.ethereum
-  // OKX also exposes window.okxwallet as fallback
   return window.ethereum || window.okxwallet || null;
 }
 
@@ -326,10 +279,12 @@ async function connectWallet() {
     setMessage("No Web3 wallet found. Install OKX Wallet, MetaMask or any EVM wallet.", "error");
     return;
   }
-  if (!EVOLVE_ADDRESS) { setMessage("Deploy EvolvePixelTrip and set VITE_EVOLVE_CONTRACT in .env.", "error"); return; }
+  if (!EVOLVE_ADDRESS) {
+    setMessage("Deploy EvolvePixelTrip v2 via Remix, then update EVOLVE_ADDRESS in config.js.", "error");
+    return;
+  }
 
   try {
-    // Use wallet provider for both read and write — avoids CORS on all public RPCs
     publicClient = createPublicClient({ chain: mainnet, transport: custom(provider) });
     walletClient = createWalletClient({ chain: mainnet, transport: custom(provider) });
 
@@ -362,75 +317,64 @@ async function evolveTokens() {
   const err = validateSelection();
   if (err) { setMessage(err, "error"); return; }
 
-  const [tokenA, tokenB] = getSelectedTokens();
   els.evolve.disabled = true;
 
   try {
-    const funcName = tokenA.stage === 1 ? "evolveFromStage1" : "evolveFromStage2";
+    const funcName = keepToken.stage === 0 ? "evolveFromStage1" : "evolveFromStage2";
 
-    // Step 1: approve Stage 1 collection if needed
-    if (tokenA.stage === 1 && !isApproved) {
+    // Step 1: approve if needed
+    if (!isApproved) {
       setMessage("Step 1/2 — Confirm APPROVE in your wallet…", "pending");
       const approveHash = await walletClient.writeContract({
         account,
         address: STAGE1_ADDRESS,
-        abi: STAGE1_ABI,
+        abi:     STAGE1_ABI,
         functionName: "setApprovalForAll",
-        args: [EVOLVE_ADDRESS, true],
+        args:    [EVOLVE_ADDRESS, true],
       });
-      setMessage(`Approval sent (${approveHash.slice(0,10)}…). Waiting for confirmation…`, "pending");
-      try {
-        await waitWithTimeout(approveHash, "approval");
-      } catch {
-        // If polling times out, assume confirmed and continue
-        setMessage("Approval likely confirmed. Proceeding to evolve…", "pending");
-      }
+      setMessage(`Approval sent (${approveHash.slice(0, 10)}…). Waiting…`, "pending");
+      try { await waitWithTimeout(approveHash, "approval"); }
+      catch { setMessage("Approval likely confirmed. Proceeding…", "pending"); }
       isApproved = true;
       updateStats();
     }
 
     // Step 2: simulate first to catch revert reason early
-    setMessage("Simulating evolve transaction…", "pending");
+    setMessage("Simulating evolve…", "pending");
     try {
       const { request } = await publicClient.simulateContract({
         account,
         address: EVOLVE_ADDRESS,
-        abi: EVOLVE_ABI,
+        abi:     EVOLVE_ABI,
         functionName: funcName,
-        args: [BigInt(tokenA.tokenId), BigInt(tokenB.tokenId)],
+        args:    [BigInt(keepToken.tokenId), BigInt(burnToken.tokenId)],
       });
-      // Simulation passed — send the real tx
-      const stepLabel = tokenA.stage === 1 ? "Step 2/2" : "Step 1/1";
+
+      const stepLabel = keepToken.stage === 0 ? "Step 2/2" : "Step 1/1";
       setMessage(`${stepLabel} — Confirm EVOLVE in your wallet…`, "pending");
       const hash = await walletClient.writeContract(request);
-      setMessage(`Evolve tx sent (${hash.slice(0,10)}…). Waiting for confirmation…`, "pending");
+      setMessage(`Evolve tx sent (${hash.slice(0, 10)}…). Waiting…`, "pending");
 
       let receipt;
-      try {
-        receipt = await waitWithTimeout(hash, "evolve");
-      } catch {
-        setMessage("Tx sent but confirmation timed out. Check your wallet / Etherscan.", "success");
+      try { receipt = await waitWithTimeout(hash, "evolve"); }
+      catch {
+        setMessage("Tx sent — check your wallet / Etherscan for confirmation.", "success");
         await loadTokens();
         return;
       }
 
-      const s2logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "EvolvedToStage2" });
-      const s3logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "EvolvedToStage3" });
-
-      if (s3logs[0]) {
-        const e = s3logs[0].args;
-        const skipped = e.skippedStage2 ? " (skipped Stage 2 — rare!)" : "";
-        setMessage(`Evolved to Stage 3! #${tokenA.tokenId} + #${tokenB.tokenId} → #${e.newTokenId}${skipped}`, "success");
-      } else if (s2logs[0]) {
-        const e = s2logs[0].args;
-        setMessage(`Evolved to Stage 2! #${tokenA.tokenId} + #${tokenB.tokenId} → #${e.newTokenId}`, "success");
+      // Parse Evolved event
+      const logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "Evolved" });
+      if (logs[0]) {
+        const { keepTokenId, newStage } = logs[0].args;
+        const stageLabel = newStage === 2 ? "Stage 2" : "Stage 3";
+        setMessage(`Evolved! Token #${keepTokenId} is now ${stageLabel}. Token #${burnToken.tokenId} was burned.`, "success");
       } else {
         setMessage("Evolution complete!", "success");
       }
 
       await loadTokens();
     } catch (simErr) {
-      // Simulation failed — show the revert reason
       const reason = simErr.shortMessage || simErr.cause?.reason || simErr.message || "Simulation failed";
       setMessage(`❌ ${reason}`, "error");
       console.error("[evolve simulate]", simErr);
@@ -449,7 +393,7 @@ function initBurnDapp() {
   console.log("[burn] initBurnDapp called, root:", els.root, "EVOLVE_ADDRESS:", EVOLVE_ADDRESS);
   if (!els.root) return;
   if (!EVOLVE_ADDRESS) {
-    setMessage("Deploy EvolvePixelTrip, then set VITE_EVOLVE_CONTRACT in website/.env", "error");
+    setMessage("Deploy EvolvePixelTrip v2 via Remix and update EVOLVE_ADDRESS in config.js", "error");
     if (els.connect) els.connect.disabled = true;
     return;
   }

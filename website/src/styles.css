@@ -603,6 +603,30 @@ img {
   transform: translateY(-2px);
 }
 
+/* In-place evolution: green = keep, red = burn */
+.burn-token.is-keep {
+  border-color: #00ff88;
+  box-shadow: 0 0 18px rgba(0, 255, 136, 0.35);
+  transform: translateY(-2px);
+}
+
+.burn-token.is-burn {
+  border-color: #ff4444;
+  box-shadow: 0 0 18px rgba(255, 68, 68, 0.35);
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.burn-token-role {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.burn-token.is-keep .burn-token-role { color: #00ff88; }
+.burn-token.is-burn .burn-token-role { color: #ff4444; }
+
 .burn-token img {
   width: 72px;
   height: 72px;
