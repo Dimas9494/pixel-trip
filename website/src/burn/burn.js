@@ -2,7 +2,6 @@ import {
   createPublicClient,
   createWalletClient,
   custom,
-  http,
   parseEventLogs,
 } from "viem";
 import { mainnet } from "viem/chains";
@@ -85,51 +84,26 @@ function extractCharacter(attributes) {
   )?.value ?? null;
 }
 
-const TRANSFER_EVENT = {
-  type: "event", name: "Transfer",
-  inputs: [
-    { type: "address", name: "from",    indexed: true },
-    { type: "address", name: "to",      indexed: true },
-    { type: "uint256", name: "tokenId", indexed: true },
-  ],
-};
-
 async function getOwnedStage1Ids() {
-  // Try getLogs via wallet provider (fast, no CORS)
-  const DEPLOY_BLOCK = 19000000n;
-  const CHUNK        = 50000n;
-  try {
-    const latest = await publicClient.getBlockNumber();
-    const chunks = [];
-    for (let from = DEPLOY_BLOCK; from <= latest; from += CHUNK + 1n) {
-      const to = from + CHUNK <= latest ? from + CHUNK : latest;
-      chunks.push([from, to]);
-    }
-    // Run all chunks in parallel
-    const results = await Promise.all(
-      chunks.map(([from, to]) =>
-        publicClient.getLogs({
-          address: STAGE1_ADDRESS, event: TRANSFER_EVENT,
-          args: { to: account }, fromBlock: from, toBlock: to,
-        }).catch(() => [])
-      )
-    );
-    const ids = [...new Set(results.flat().map(l => Number(l.args.tokenId)))];
-    if (ids.length > 0) return ids;
-  } catch { /* fall through */ }
+  // multicall3: all 4444 ownerOf calls in ONE eth_call — fast!
+  const MAX_ID = 4443;
+  setMessage("Scanning wallet… (~5 sec)", "info");
 
-  // Fallback: parallel ownerOf scan 0-4444 in large batches
+  const contracts = Array.from({ length: MAX_ID + 1 }, (_, i) => ({
+    address: STAGE1_ADDRESS,
+    abi: STAGE1_ABI,
+    functionName: "ownerOf",
+    args: [BigInt(i)],
+  }));
+
+  const results = await publicClient.multicall({ contracts, allowFailure: true });
+
   const owned = [];
-  const BATCH = 100;
-  for (let start = 0; start <= 4444; start += BATCH) {
-    const batch = Array.from({ length: Math.min(BATCH, 4445 - start) }, (_, j) => start + j);
-    const res = await Promise.all(batch.map(id =>
-      publicClient.readContract({
-        address: STAGE1_ADDRESS, abi: STAGE1_ABI,
-        functionName: "ownerOf", args: [BigInt(id)],
-      }).then(o => o.toLowerCase() === account.toLowerCase() ? id : null).catch(() => null)
-    ));
-    owned.push(...res.filter(Boolean));
+  for (let i = 0; i <= MAX_ID; i++) {
+    const r = results[i];
+    if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
+      owned.push(i);
+    }
   }
   return owned;
 }
