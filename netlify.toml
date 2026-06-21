@@ -1,6 +1,6 @@
 [build]
   base    = "website"
-  command = "npm install && npm run build"
+  command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
 

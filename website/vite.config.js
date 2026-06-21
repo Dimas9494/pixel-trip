@@ -36,7 +36,7 @@ export default defineConfig({
   root: ".",
   publicDir: "public",
   optimizeDeps: {
-    include: ["viem", "viem/chains"],
+    exclude: ["viem", "viem/chains"],
   },
   server: {
     fs: { allow: [__dirname, path.resolve(__dirname, "../collection/build")] },
@@ -64,5 +64,8 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    rollupOptions: {
+      external: ["viem", "viem/chains"],
+    },
   },
 });
