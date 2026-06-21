@@ -94,49 +94,72 @@ const TRANSFER_EVENT = {
   ],
 };
 
+async function getOwnedStage1Ids() {
+  // Try getLogs via wallet provider (fast, no CORS)
+  const DEPLOY_BLOCK = 19000000n;
+  const CHUNK        = 50000n;
+  try {
+    const latest = await publicClient.getBlockNumber();
+    const chunks = [];
+    for (let from = DEPLOY_BLOCK; from <= latest; from += CHUNK + 1n) {
+      const to = from + CHUNK <= latest ? from + CHUNK : latest;
+      chunks.push([from, to]);
+    }
+    // Run all chunks in parallel
+    const results = await Promise.all(
+      chunks.map(([from, to]) =>
+        publicClient.getLogs({
+          address: STAGE1_ADDRESS, event: TRANSFER_EVENT,
+          args: { to: account }, fromBlock: from, toBlock: to,
+        }).catch(() => [])
+      )
+    );
+    const ids = [...new Set(results.flat().map(l => Number(l.args.tokenId)))];
+    if (ids.length > 0) return ids;
+  } catch { /* fall through */ }
+
+  // Fallback: parallel ownerOf scan 0-4444 in large batches
+  const owned = [];
+  const BATCH = 100;
+  for (let start = 0; start <= 4444; start += BATCH) {
+    const batch = Array.from({ length: Math.min(BATCH, 4445 - start) }, (_, j) => start + j);
+    const res = await Promise.all(batch.map(id =>
+      publicClient.readContract({
+        address: STAGE1_ADDRESS, abi: STAGE1_ABI,
+        functionName: "ownerOf", args: [BigInt(id)],
+      }).then(o => o.toLowerCase() === account.toLowerCase() ? id : null).catch(() => null)
+    ));
+    owned.push(...res.filter(Boolean));
+  }
+  return owned;
+}
+
 async function loadStage1Tokens() {
-  // Scan all possible token IDs in parallel batches (covers non-sequential IDs up to 4444)
-  const MAX_ID = 4444;
-  const BATCH  = 50;
+  const ownedIds = await getOwnedStage1Ids();
+
+  const BATCH  = 20;
   const loaded = [];
 
-  for (let start = 0; start <= MAX_ID; start += BATCH) {
-    const ids = Array.from(
-      { length: Math.min(BATCH, MAX_ID - start + 1) },
-      (_, j) => start + j
-    );
-
-    const results = await Promise.all(ids.map(async (id) => {
+  for (let b = 0; b < ownedIds.length; b += BATCH) {
+    const slice = ownedIds.slice(b, b + BATCH);
+    const results = await Promise.all(slice.map(async (id) => {
       try {
-        const owner = await publicClient.readContract({
-          address: STAGE1_ADDRESS, abi: STAGE1_ABI,
-          functionName: "ownerOf", args: [BigInt(id)],
+        const charId = await publicClient.readContract({
+          address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
+          functionName: "stage1Character", args: [BigInt(id)],
         });
-        if (owner.toLowerCase() !== account.toLowerCase()) return null;
-
-        // Read character directly from the contract — no CORS issues
-        let character = null;
-        try {
-          const charId = await publicClient.readContract({
-            address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
-            functionName: "stage1Character", args: [BigInt(id)],
-          });
-          character = CHAR_ID_TO_NAME[Number(charId)] || null;
-        } catch { /* skip */ }
-
+        const character = CHAR_ID_TO_NAME[Number(charId)] || null;
         if (character && !BURNABLE_CHARS.has(character)) return null;
-
         return {
-          tokenId:   id,
-          name:      `#${id} ${character || ""}`.trim(),
-          image:     `https://pixeltripnft.website/Test/images/${id}.gif`,
+          tokenId: id,
+          name:    `#${id} ${character || ""}`.trim(),
+          image:   `https://pixeltripnft.website/Test/images/${id}.gif`,
           character,
-          stage:     1,
-          source:    "stage1",
+          stage:   1,
+          source:  "stage1",
         };
       } catch { return null; }
     }));
-
     for (const r of results) if (r) loaded.push(r);
   }
   return loaded;
