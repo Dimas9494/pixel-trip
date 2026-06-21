@@ -84,43 +84,64 @@ function extractCharacter(attributes) {
   )?.value ?? null;
 }
 
+const TRANSFER_EVENT = {
+  type: "event", name: "Transfer",
+  inputs: [
+    { type: "address", name: "from",    indexed: true },
+    { type: "address", name: "to",      indexed: true },
+    { type: "uint256", name: "tokenId", indexed: true },
+  ],
+};
+
 async function loadStage1Tokens() {
-  const totalSupply = await publicClient.readContract({
-    address: STAGE1_ADDRESS, abi: STAGE1_ABI, functionName: "totalSupply",
+  // Get all Transfer-to-user events to find token IDs (covers arbitrary IDs up to 4444)
+  const logs = await publicClient.getLogs({
+    address:   STAGE1_ADDRESS,
+    event:     TRANSFER_EVENT,
+    args:      { to: account },
+    fromBlock: 0n,
+    toBlock:   "latest",
   });
 
+  // Deduplicate token IDs
+  const candidateIds = [...new Set(logs.map(l => Number(l.args.tokenId)))];
+
+  // Verify current ownership and fetch metadata in parallel batches
+  const BATCH = 20;
   const loaded = [];
-  for (let i = 0n; i < totalSupply; i++) {
-    let owner;
-    try {
-      owner = await publicClient.readContract({
-        address: STAGE1_ADDRESS, abi: STAGE1_ABI, functionName: "ownerOf", args: [i],
-      });
-    } catch { continue; }
 
-    if (owner.toLowerCase() !== account.toLowerCase()) continue;
+  for (let b = 0; b < candidateIds.length; b += BATCH) {
+    const batch = candidateIds.slice(b, b + BATCH);
+    const results = await Promise.all(batch.map(async (id) => {
+      try {
+        const owner = await publicClient.readContract({
+          address: STAGE1_ADDRESS, abi: STAGE1_ABI, functionName: "ownerOf", args: [BigInt(id)],
+        });
+        if (owner.toLowerCase() !== account.toLowerCase()) return null;
 
-    let meta = null;
-    try {
-      const uri = await publicClient.readContract({
-        address: STAGE1_ADDRESS, abi: STAGE1_ABI, functionName: "tokenURI", args: [i],
-      });
-      meta = await fetchMetadata(uri);
-    } catch { /* skip */ }
+        let meta = null;
+        try {
+          const uri = await publicClient.readContract({
+            address: STAGE1_ADDRESS, abi: STAGE1_ABI, functionName: "tokenURI", args: [BigInt(id)],
+          });
+          meta = await fetchMetadata(uri);
+        } catch { /* skip */ }
 
-    const character = extractCharacter(meta?.attributes);
+        const character = extractCharacter(meta?.attributes);
+        if (character && !BURNABLE_CHARS.has(character)) return null;
 
-    // Only show tokens whose character has Stage 2 art ready
-    if (character && !BURNABLE_CHARS.has(character)) continue;
+        return {
+          tokenId:   id,
+          name:      meta?.name  || `Stage 1 #${id}`,
+          image:     meta?.image || `https://pixeltripnft.website/Test/images/${id}.gif`,
+          character,
+          stage:     1,
+          source:    "stage1",
+        };
+      } catch { return null; }
+    }));
 
-    loaded.push({
-      tokenId:   Number(i),
-      name:      meta?.name  || `Stage 1 #${i}`,
-      image:     meta?.image || null,
-      character,
-      stage:     1,
-      source:    "stage1",
-    });
+    for (const r of results) if (r) loaded.push(r);
   }
   return loaded;
 }
