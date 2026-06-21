@@ -309,7 +309,7 @@ async function connectWallet() {
   if (!EVOLVE_ADDRESS) { setMessage("Deploy EvolvePixelTrip and set VITE_EVOLVE_CONTRACT in .env.", "error"); return; }
 
   try {
-    publicClient = createPublicClient({ chain: mainnet, transport: http() });
+    publicClient = createPublicClient({ chain: mainnet, transport: http("https://ethereum-rpc.publicnode.com") });
     walletClient = createWalletClient({ chain: mainnet, transport: custom(provider) });
 
     const [address] = await walletClient.requestAddresses();
