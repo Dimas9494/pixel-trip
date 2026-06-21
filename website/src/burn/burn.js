@@ -94,14 +94,27 @@ const TRANSFER_EVENT = {
 };
 
 async function loadStage1Tokens() {
-  // Get all Transfer-to-user events to find token IDs (covers arbitrary IDs up to 4444)
-  const logs = await publicClient.getLogs({
-    address:   STAGE1_ADDRESS,
-    event:     TRANSFER_EVENT,
-    args:      { to: account },
-    fromBlock: 0n,
-    toBlock:   "latest",
-  });
+  // Paginate getLogs in 50k-block chunks to stay within RPC limits
+  const CHUNK       = 50000n;
+  const START_BLOCK = 19000000n; // SeaDrop collection deploy era
+  const latest      = await publicClient.getBlockNumber();
+  const allLogs     = [];
+
+  for (let from = START_BLOCK; from <= latest; from += CHUNK + 1n) {
+    const to = from + CHUNK <= latest ? from + CHUNK : latest;
+    try {
+      const chunk = await publicClient.getLogs({
+        address:   STAGE1_ADDRESS,
+        event:     TRANSFER_EVENT,
+        args:      { to: account },
+        fromBlock: from,
+        toBlock:   to,
+      });
+      allLogs.push(...chunk);
+    } catch { /* skip chunk on error */ }
+  }
+
+  const logs = allLogs;
 
   // Deduplicate token IDs
   const candidateIds = [...new Set(logs.map(l => Number(l.args.tokenId)))];
