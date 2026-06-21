@@ -12,6 +12,7 @@ import {
   STAGE1_ABI,
   EVOLVE_ABI,
   BURNABLE_CHARS,
+  CHAR_ID_TO_NAME,
 } from "./config.js";
 
 const els = {
@@ -113,22 +114,22 @@ async function loadStage1Tokens() {
         });
         if (owner.toLowerCase() !== account.toLowerCase()) return null;
 
-        let meta = null;
+        // Read character directly from the contract — no CORS issues
+        let character = null;
         try {
-          const uri = await publicClient.readContract({
-            address: STAGE1_ADDRESS, abi: STAGE1_ABI,
-            functionName: "tokenURI", args: [BigInt(id)],
+          const charId = await publicClient.readContract({
+            address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
+            functionName: "stage1Character", args: [BigInt(id)],
           });
-          meta = await fetchMetadata(uri);
+          character = CHAR_ID_TO_NAME[Number(charId)] || null;
         } catch { /* skip */ }
 
-        const character = extractCharacter(meta?.attributes);
         if (character && !BURNABLE_CHARS.has(character)) return null;
 
         return {
           tokenId:   id,
-          name:      meta?.name  || `Stage 1 #${id}`,
-          image:     meta?.image || `https://pixeltripnft.website/Test/images/${id}.gif`,
+          name:      `#${id} ${character || ""}`.trim(),
+          image:     `https://pixeltripnft.website/Test/images/${id}.gif`,
           character,
           stage:     1,
           source:    "stage1",
