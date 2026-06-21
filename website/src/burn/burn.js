@@ -349,6 +349,15 @@ async function connectWallet() {
 
 // ── Evolve ────────────────────────────────────────────────────────────────────
 
+async function waitWithTimeout(hash, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`Timeout waiting for ${label}`)), 120_000);
+    publicClient.waitForTransactionReceipt({ hash })
+      .then(r => { clearTimeout(timer); resolve(r); })
+      .catch(e => { clearTimeout(timer); reject(e); });
+  });
+}
+
 async function evolveTokens() {
   const err = validateSelection();
   if (err) { setMessage(err, "error"); return; }
@@ -357,9 +366,11 @@ async function evolveTokens() {
   els.evolve.disabled = true;
 
   try {
-    // Step 1: approve Stage 1 collection if needed (only for Stage 1 burns)
+    const funcName = tokenA.stage === 1 ? "evolveFromStage1" : "evolveFromStage2";
+
+    // Step 1: approve Stage 1 collection if needed
     if (tokenA.stage === 1 && !isApproved) {
-      setMessage("Step 1/2 — Approve the evolve contract in MetaMask…", "pending");
+      setMessage("Step 1/2 — Confirm APPROVE in your wallet…", "pending");
       const approveHash = await walletClient.writeContract({
         account,
         address: STAGE1_ADDRESS,
@@ -367,46 +378,66 @@ async function evolveTokens() {
         functionName: "setApprovalForAll",
         args: [EVOLVE_ADDRESS, true],
       });
-      setMessage("Waiting for approval confirmation…", "pending");
-      await publicClient.waitForTransactionReceipt({ hash: approveHash });
+      setMessage(`Approval sent (${approveHash.slice(0,10)}…). Waiting for confirmation…`, "pending");
+      try {
+        await waitWithTimeout(approveHash, "approval");
+      } catch {
+        // If polling times out, assume confirmed and continue
+        setMessage("Approval likely confirmed. Proceeding to evolve…", "pending");
+      }
       isApproved = true;
       updateStats();
     }
 
-    // Step 2: call the right evolve function
-    const funcName = tokenA.stage === 1 ? "evolveFromStage1" : "evolveFromStage2";
-    const stepLabel = tokenA.stage === 1 ? "Step 2/2" : "Step 1/1";
-    setMessage(`${stepLabel} — Confirm the Evolve transaction in MetaMask…`, "pending");
+    // Step 2: simulate first to catch revert reason early
+    setMessage("Simulating evolve transaction…", "pending");
+    try {
+      const { request } = await publicClient.simulateContract({
+        account,
+        address: EVOLVE_ADDRESS,
+        abi: EVOLVE_ABI,
+        functionName: funcName,
+        args: [BigInt(tokenA.tokenId), BigInt(tokenB.tokenId)],
+      });
+      // Simulation passed — send the real tx
+      const stepLabel = tokenA.stage === 1 ? "Step 2/2" : "Step 1/1";
+      setMessage(`${stepLabel} — Confirm EVOLVE in your wallet…`, "pending");
+      const hash = await walletClient.writeContract(request);
+      setMessage(`Evolve tx sent (${hash.slice(0,10)}…). Waiting for confirmation…`, "pending");
 
-    const hash = await walletClient.writeContract({
-      account,
-      address: EVOLVE_ADDRESS,
-      abi: EVOLVE_ABI,
-      functionName: funcName,
-      args: [BigInt(tokenA.tokenId), BigInt(tokenB.tokenId)],
-    });
+      let receipt;
+      try {
+        receipt = await waitWithTimeout(hash, "evolve");
+      } catch {
+        setMessage("Tx sent but confirmation timed out. Check your wallet / Etherscan.", "success");
+        await loadTokens();
+        return;
+      }
 
-    setMessage("Transaction sent. Waiting for confirmation…", "pending");
-    const receipt = await publicClient.waitForTransactionReceipt({ hash });
+      const s2logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "EvolvedToStage2" });
+      const s3logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "EvolvedToStage3" });
 
-    // Parse any Evolved event
-    const s2logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "EvolvedToStage2" });
-    const s3logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "EvolvedToStage3" });
+      if (s3logs[0]) {
+        const e = s3logs[0].args;
+        const skipped = e.skippedStage2 ? " (skipped Stage 2 — rare!)" : "";
+        setMessage(`Evolved to Stage 3! #${tokenA.tokenId} + #${tokenB.tokenId} → #${e.newTokenId}${skipped}`, "success");
+      } else if (s2logs[0]) {
+        const e = s2logs[0].args;
+        setMessage(`Evolved to Stage 2! #${tokenA.tokenId} + #${tokenB.tokenId} → #${e.newTokenId}`, "success");
+      } else {
+        setMessage("Evolution complete!", "success");
+      }
 
-    if (s3logs[0]) {
-      const e = s3logs[0].args;
-      const skipped = e.skippedStage2 ? " (skipped Stage 2 — rare character!)" : "";
-      setMessage(`Evolved to Stage 3! Burned #${tokenA.tokenId} + #${tokenB.tokenId} → Stage 3 traveler #${e.newTokenId}${skipped}`, "success");
-    } else if (s2logs[0]) {
-      const e = s2logs[0].args;
-      setMessage(`Evolved to Stage 2! Burned #${tokenA.tokenId} + #${tokenB.tokenId} → Stage 2 traveler #${e.newTokenId}`, "success");
-    } else {
-      setMessage("Evolution complete!", "success");
+      await loadTokens();
+    } catch (simErr) {
+      // Simulation failed — show the revert reason
+      const reason = simErr.shortMessage || simErr.cause?.reason || simErr.message || "Simulation failed";
+      setMessage(`❌ ${reason}`, "error");
+      console.error("[evolve simulate]", simErr);
+      updateEvolveButton();
     }
-
-    await loadTokens();
   } catch (err) {
-    console.error(err);
+    console.error("[evolve]", err);
     setMessage(err.shortMessage || err.message || "Transaction failed.", "error");
     updateEvolveButton();
   }
