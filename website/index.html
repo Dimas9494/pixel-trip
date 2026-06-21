@@ -211,6 +211,30 @@
           <li>Burned tokens are destroyed permanently — only the evolved traveler remains.</li>
           <li>Evolution keeps your layers (background, character, frame) but upgrades the form.</li>
         </ul>
+
+        <div class="burn-dapp" id="burn-dapp">
+          <div class="burn-dapp-head">
+            <div>
+              <span class="burn-dapp-label">Evolution Lab</span>
+              <h3>Burn to Evolve</h3>
+              <p class="burn-dapp-sub">
+                Connect your wallet, select 2 travelers with the same character, and run <code>evolve</code>.
+              </p>
+            </div>
+            <div class="burn-dapp-actions">
+              <span class="burn-network" id="burn-network">Not connected</span>
+              <button class="btn btn-primary btn-sm" id="burn-connect" type="button">Connect Wallet</button>
+            </div>
+          </div>
+          <p class="burn-message" id="burn-message" data-type="info">
+            Connect your OKX Wallet, MetaMask or any EVM wallet to get started.
+          </p>
+          <p class="burn-stats" id="burn-stats"></p>
+          <div class="burn-token-grid" id="burn-token-grid"></div>
+          <button class="btn btn-primary burn-evolve-btn" id="burn-evolve" type="button" disabled>
+            Evolve (burn 2 → mint 1)
+          </button>
+        </div>
       </section>
 
       <section class="section mint" id="mint">
@@ -230,5 +254,7 @@
       <span>PIXEL TRIP © 2026</span>
       <span>4444 animated pixel portraits</span>
     </footer>
+
+    <script type="module" src="/src/burn/burn.js"></script>
   </body>
 </html>

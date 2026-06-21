@@ -486,6 +486,159 @@ img {
   margin-top: 0.5rem;
 }
 
+.burn-dapp {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border: 2px solid var(--magenta);
+  background: rgba(15, 19, 36, 0.9);
+  box-shadow: 0 0 28px rgba(255, 43, 214, 0.12);
+}
+
+.burn-dapp-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.burn-dapp-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--magenta);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.burn-dapp h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  line-height: 1.6;
+}
+
+.burn-dapp-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 34rem;
+}
+
+.burn-dapp-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.burn-network {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.burn-message {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 1rem;
+}
+
+.burn-message[data-type="error"] {
+  border-color: #ff494a;
+  color: #ffb4b4;
+}
+
+.burn-message[data-type="success"] {
+  border-color: var(--cyan);
+  color: #c8ffb8;
+}
+
+.burn-message[data-type="pending"] {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+.burn-stats {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.burn-token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.burn-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.burn-token {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.burn-token:hover {
+  border-color: var(--cyan);
+}
+
+.burn-token.is-selected {
+  border-color: var(--magenta);
+  box-shadow: 0 0 16px rgba(255, 43, 214, 0.25);
+  transform: translateY(-2px);
+}
+
+.burn-token img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.burn-token-id {
+  font-family: var(--pixel);
+  font-size: 0.38rem;
+  color: var(--cyan);
+}
+
+.burn-token-meta,
+.burn-token-level {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.burn-evolve-btn {
+  width: 100%;
+  max-width: 22rem;
+}
+
+.burn-evolve-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.burn-dapp code {
+  color: var(--yellow);
+  font-size: 0.9em;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
