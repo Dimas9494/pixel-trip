@@ -35,6 +35,9 @@ function serveImageMiddleware(req, res, next) {
 export default defineConfig({
   root: ".",
   publicDir: "public",
+  optimizeDeps: {
+    include: ["viem", "viem/chains"],
+  },
   server: {
     fs: { allow: [__dirname, path.resolve(__dirname, "../collection/build")] },
   },
