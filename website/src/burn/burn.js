@@ -12,7 +12,99 @@ import {
   EVOLVE_ABI,
   BURNABLE_CHARS,
   CHAR_ID_TO_NAME,
+  STAGE2_VARIANTS,
 } from "./config.js";
+
+const IMAGE_STAGE2       = "https://pixeltripnft.website/Test/stage2/images";
+const IMAGE_STAGE3       = "https://pixeltripnft.website/Test/stage3/images";
+const UPDATE_METADATA_URL = "https://pixeltripnft.website/Test/update-metadata.php";
+
+function buildEvolvedMetadata(tokenId, charName, newStage) {
+  if (newStage === 2) {
+    const variants = STAGE2_VARIANTS[charName] || [];
+    const variant  = variants[tokenId % variants.length] || { slug: charName, bg: "Unknown", frame: "Unknown" };
+    return {
+      name:          `PIXEL TRIP — ${variant.slug.replace(/_/g, " ")} #${tokenId}`,
+      description:   "PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey.",
+      image:         `${IMAGE_STAGE2}/${variant.slug}.gif`,
+      animation_url: `${IMAGE_STAGE2}/${variant.slug}.gif`,
+      external_url:  "https://pixeltripnft.website",
+      attributes: [
+        { trait_type: "Background", value: variant.bg },
+        { trait_type: "Character",  value: variant.slug },
+        { trait_type: "Frame",      value: variant.frame },
+        { trait_type: "Stage",      value: "2" },
+      ],
+    };
+  }
+  if (newStage === 3) {
+    const display = (charName || "Character").replace(/_/g, " ");
+    return {
+      name:          `PIXEL TRIP — ${display} Stage 3 #${tokenId}`,
+      description:   "PIXEL TRIP — A fully ascended traveler. Reached Stage 3 through the burn-to-evolve journey.",
+      image:         `${IMAGE_STAGE3}/${charName || tokenId}.gif`,
+      animation_url: `${IMAGE_STAGE3}/${charName || tokenId}.gif`,
+      external_url:  "https://pixeltripnft.website",
+      attributes: [
+        { trait_type: "Character", value: charName || `#${tokenId}` },
+        { trait_type: "Stage",     value: "3" },
+      ],
+    };
+  }
+  return null;
+}
+
+async function autoUpdateMetadata(tokenId, charName, newStage, txHash) {
+  try {
+    const res = await fetch(UPDATE_METADATA_URL, {
+      method:  "POST",
+      headers: { "Content-Type": "application/json" },
+      body:    JSON.stringify({ tokenId, charName, newStage, txHash }),
+    });
+    const data = await res.json();
+    if (data.ok) {
+      console.log(`[metadata] Updated metadata/${tokenId} → Stage ${newStage}`);
+      return true;
+    } else {
+      console.warn("[metadata] Server returned error:", data.error);
+      return false;
+    }
+  } catch (err) {
+    console.warn("[metadata] Auto-update failed:", err.message);
+    return false;
+  }
+}
+
+function showMetadataDownload(tokenId, charName, newStage) {
+  const meta = buildEvolvedMetadata(tokenId, charName, newStage);
+  if (!meta) return;
+
+  const json = JSON.stringify(meta, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url  = URL.createObjectURL(blob);
+
+  // Remove old download banner if exists
+  document.getElementById("burn-meta-download")?.remove();
+
+  const banner = document.createElement("div");
+  banner.id = "burn-meta-download";
+  banner.style.cssText = "margin-top:12px;padding:14px;background:#111;border:1px solid #00ff88;border-radius:6px;font-size:0.85rem;line-height:1.6;color:#ccc;";
+  banner.innerHTML = `
+    <strong style="color:#00ff88">Token #${tokenId} evolved to ${newStage === 2 ? "Stage 2" : "Stage 3"}!</strong><br>
+    Скачай JSON и загрузи на сервер через WinSCP:<br>
+    <code style="color:#00e5ff">pixeltripnft.website/Test/metadata/${tokenId}</code>
+    <br><br>
+    <a href="${url}" download="${tokenId}"
+       style="display:inline-block;padding:8px 18px;background:#00ff88;color:#000;font-weight:700;border-radius:4px;text-decoration:none;margin-right:8px;">
+      Скачать metadata/${tokenId}
+    </a>
+    <button onclick="navigator.clipboard.writeText(${JSON.stringify(json)}).then(()=>this.textContent='Скопировано!')"
+      style="padding:8px 18px;background:#222;color:#00e5ff;border:1px solid #00e5ff;border-radius:4px;cursor:pointer;">
+      Копировать JSON
+    </button>
+  `;
+  els.root.appendChild(banner);
+}
 
 const els = {
   root:    document.getElementById("burn-dapp"),
@@ -366,11 +458,25 @@ async function evolveTokens() {
       // Parse Evolved event
       const logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "Evolved" });
       if (logs[0]) {
-        const { keepTokenId, newStage } = logs[0].args;
-        const stageLabel = newStage === 2 ? "Stage 2" : "Stage 3";
-        setMessage(`Evolved! Token #${keepTokenId} is now ${stageLabel}. Token #${burnToken.tokenId} was burned.`, "success");
+        const { keepTokenId, newStage, charId } = logs[0].args;
+        const charName   = CHAR_ID_TO_NAME[Number(charId)] || null;
+        const stageLabel = Number(newStage) === 2 ? "Stage 2" : "Stage 3";
+        setMessage(`Evolved! Token #${keepTokenId} → ${stageLabel}. Updating metadata…`, "success");
+
+        const updated = await autoUpdateMetadata(Number(keepTokenId), charName, Number(newStage), hash);
+        if (updated) {
+          setMessage(`Done! Token #${keepTokenId} is now ${stageLabel}. OpenSea will refresh in a few minutes.`, "success");
+        } else {
+          setMessage(`Evolved! But metadata auto-update failed — download manually below.`, "success");
+          showMetadataDownload(Number(keepTokenId), charName, Number(newStage));
+        }
       } else {
-        setMessage("Evolution complete!", "success");
+        const charName = keepToken.character;
+        const newStage = keepToken.stage === 0 ? 2 : 3;
+        setMessage(`Evolution complete! Token #${keepToken.tokenId} → Stage ${newStage}. Updating metadata…`, "success");
+
+        const updated = await autoUpdateMetadata(keepToken.tokenId, charName, newStage, hash);
+        if (!updated) showMetadataDownload(keepToken.tokenId, charName, newStage);
       }
 
       await loadTokens();
