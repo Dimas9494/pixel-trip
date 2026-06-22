@@ -90,11 +90,56 @@ function getStage2Variant(tokenId, character, stage = 0) {
   return resolveStage2Variant(tokenId, character);
 }
 
+function getStage3ForCharacter(character) {
+  if (STAGE3_MAP.defaultByChar[character]) return STAGE3_MAP.defaultByChar[character];
+  const variants = STAGE2_VARIANTS[character] || [];
+  for (const v of variants) {
+    if (STAGE3_MAP.fromStage2Slug[v.slug]) return STAGE3_MAP.fromStage2Slug[v.slug];
+  }
+  return null;
+}
+
 function getStage3Variant(tokenId, character, stage = 0) {
   const s2 = getStage2Variant(tokenId, character, stage);
   if (s2 && STAGE3_MAP.fromStage2Slug[s2.slug]) return STAGE3_MAP.fromStage2Slug[s2.slug];
   if (character && STAGE3_MAP.defaultByChar[character]) return STAGE3_MAP.defaultByChar[character];
-  return null;
+  return getStage3ForCharacter(character);
+}
+
+function canEvolveToStage3(tokenId, character, stage) {
+  return stage === 2 && BURNABLE_CHARS.has(character) && !!getStage3ForCharacter(character);
+}
+
+function tokenLabFlags(tokenId, character, stage) {
+  const burnable = BURNABLE_CHARS.has(character);
+  if (!burnable) {
+    return { canEvolve: false, viewReason: "not_burnable" };
+  }
+  if (stage === 3) {
+    return { canEvolve: false, viewReason: "maxed" };
+  }
+  if (stage === 0) {
+    return { canEvolve: true, viewReason: null };
+  }
+  if (stage === 2) {
+    if (canEvolveToStage3(tokenId, character, stage)) {
+      return { canEvolve: true, viewReason: null };
+    }
+    return { canEvolve: false, viewReason: "no_s3" };
+  }
+  return { canEvolve: false, viewReason: "unknown_stage" };
+}
+
+const MULTICALL_CHUNK = 64;
+
+async function multicallChunked(contracts) {
+  const out = [];
+  for (let i = 0; i < contracts.length; i += MULTICALL_CHUNK) {
+    const chunk = contracts.slice(i, i + MULTICALL_CHUNK);
+    const res   = await publicClient.multicall({ contracts: chunk, allowFailure: true });
+    out.push(...res);
+  }
+  return out;
 }
 
 function bustUrl(url, slug) {
@@ -360,7 +405,8 @@ let walletClient = null;
 let publicClient = null;
 let receiptClient = null;
 let account      = null;
-let tokens       = [];   // { tokenId, name, image, character, stage }
+let tokens         = [];   // { tokenId, name, image, character, stage, canEvolve, viewReason }
+let lastOwnedCount = 0;
 let keepToken    = null; // first selected — will be upgraded
 let burnToken    = null; // second selected — will be destroyed
 let isApproved   = false;
@@ -429,7 +475,7 @@ async function getOwnedIds() {
 
   const owned = [];
   try {
-    const results = await publicClient.multicall({ contracts, allowFailure: true });
+    const results = await multicallChunked(contracts);
     for (let i = 0; i < results.length; i++) {
       const r = results[i];
       if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
@@ -448,6 +494,7 @@ async function loadTokens() {
   setMessage("Loading your travelers…", "info");
 
   const ownedIds = await getOwnedIds();
+  lastOwnedCount = ownedIds.length;
 
   // One multicall for all evolve contract reads
   const contracts = ownedIds.flatMap((id) => [
@@ -457,7 +504,7 @@ async function loadTokens() {
 
   let mcResults = [];
   try {
-    mcResults = await publicClient.multicall({ contracts, allowFailure: true });
+    mcResults = await multicallChunked(contracts);
   } catch (err) {
     console.warn("[token] evolve multicall failed:", err.message);
   }
@@ -473,15 +520,22 @@ async function loadTokens() {
 
       const character    = CHAR_ID_TO_NAME[charId] || null;
       const currentStage = stage;
+      const flags        = tokenLabFlags(id, character, currentStage);
 
-      if (currentStage === 0 && !BURNABLE_CHARS.has(character)) continue;
-      if (currentStage === 2 && !getStage3Variant(id, character, 2)) continue;
+      if (!character) {
+        console.warn(`[token] #${id} unknown charId=${charId} — shown as view-only`);
+      } else if (flags.viewReason === "not_burnable") {
+        console.log(`[token] #${id} ${character} — not in burn program (view only)`);
+      }
 
       stubs.push({
-        tokenId: id,
-        character,
-        stage:   currentStage,
-        name:    `#${id}${character ? ` ${character}` : ""}`,
+        tokenId:    id,
+        character:  character || `Unknown #${charId}`,
+        charId,
+        stage:      currentStage,
+        canEvolve:  flags.canEvolve,
+        viewReason: flags.viewReason,
+        name:       `#${id}${character ? ` ${character}` : ""}`,
       });
     } catch (e) {
       console.warn(`[token] #${id} read failed:`, e.message);
@@ -493,7 +547,8 @@ async function loadTokens() {
 
   tokens = stubs.map(t => ({
     ...t,
-    image: getTokenImage(t.tokenId, t.character, t.stage),
+    canEvolve: tokenLabFlags(t.tokenId, CHAR_ID_TO_NAME[t.charId] ?? t.character, t.stage).canEvolve,
+    image: getTokenImage(t.tokenId, CHAR_ID_TO_NAME[t.charId] ?? t.character, t.stage),
   }));
 
   keepToken  = null;
@@ -513,14 +568,20 @@ async function loadTokens() {
       setMessage("No tokens found in this wallet on Ethereum Mainnet.", "error");
     } else {
       setMessage(
-        `${ownedIds.length} token(s) found, but none are currently evolvable. ` +
-        `(Only evolvable travelers are shown: Stage 1 burnables, Stage 2 with Stage 3 art, or Stage 3.) ` +
+        `${ownedIds.length} token(s) in wallet, but none are burnable travelers ` +
+        `(Ape_Beard, Beanie_Cyclops, Diva, Alpine_Hunter at Stage 1–3). ` +
         `Check console for details.`,
         "info"
       );
     }
   } else {
-    setMessage(`${tokens.length} traveler(s) found. Select 2 of the same character — first selected will be upgraded.`);
+    const evolvable = tokens.filter(t => t.canEvolve).length;
+    const viewOnly  = tokens.length - evolvable;
+    setMessage(
+      `${lastOwnedCount} in wallet · ${tokens.length} shown` +
+      (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
+      `. Select 2 of the same burnable character — first selected will be upgraded.`
+    );
   }
 }
 
@@ -531,8 +592,10 @@ function applyEvolveResult(keepId, burnId, newStage) {
       if (t.tokenId !== keepId) return t;
       return {
         ...t,
-        stage: newStage,
-        image: getTokenImage(keepId, t.character, newStage),
+        stage:      newStage,
+        canEvolve:  tokenLabFlags(keepId, t.character, newStage).canEvolve,
+        viewReason: tokenLabFlags(keepId, t.character, newStage).viewReason,
+        image:      getTokenImage(keepId, t.character, newStage),
       };
     });
   keepToken = null;
@@ -562,9 +625,16 @@ function renderGrid() {
     const isBurn = burnToken?.tokenId === token.tokenId;
     if (isKeep) card.classList.add("is-keep");
     if (isBurn) card.classList.add("is-burn");
+    if (!token.canEvolve) card.classList.add("is-locked");
 
     const stageColor = STAGE_COLOR[token.stage] ?? "#fff";
     const roleLabel  = isKeep ? "⬆ KEEP" : isBurn ? "🔥 BURN" : "";
+    const lockedNote = !token.canEvolve
+      ? token.viewReason === "not_burnable" ? " · other char"
+        : token.viewReason === "maxed"      ? ""
+        : token.viewReason === "no_s3"      ? " · no S3"
+        : " · locked"
+      : "";
 
     const urls = stageImageUrls(token.tokenId, token.character, token.stage);
     const variantLabel = urls.variant?.slug?.replace(/_/g, " ") ?? "";
@@ -576,7 +646,7 @@ function renderGrid() {
       }
       <span class="burn-token-id">#${token.tokenId}</span>
       <span class="burn-token-meta">${variantLabel || token.character || token.name}</span>
-      <span class="burn-token-level" style="color:${stageColor}">${STAGE_LABEL[token.stage] ?? `Stage ${token.stage}`}</span>
+      <span class="burn-token-level" style="color:${stageColor}">${STAGE_LABEL[token.stage] ?? `Stage ${token.stage}`}${lockedNote}</span>
       ${roleLabel ? `<span class="burn-token-role">${roleLabel}</span>` : ""}
     `;
 
@@ -594,9 +664,14 @@ function renderGrid() {
 }
 
 function toggleSelect(token) {
-  // Stage 3 tokens can't evolve
-  if (token.stage === 3) {
-    setMessage("Stage 3 tokens are fully evolved — nothing more to do!", "info");
+  if (!token.canEvolve) {
+    const msg = {
+      not_burnable: `#${token.tokenId} (${token.character}) — not in the burn program (Ape_Beard, Beanie_Cyclops, Diva, Alpine_Hunter).`,
+      no_s3:        `#${token.tokenId} — Stage 3 art not uploaded yet for ${token.character}.`,
+      maxed:        `#${token.tokenId} is fully evolved (Stage 3).`,
+      unknown_stage:`#${token.tokenId} — cannot evolve from current stage.`,
+    };
+    setMessage(msg[token.viewReason] || `#${token.tokenId} — view only.`, "info");
     return;
   }
 
@@ -629,7 +704,7 @@ function toggleSelect(token) {
     const nextStage = keepToken.stage === 0 ? "Stage 2" : "Stage 3";
     const preview   = keepToken.stage === 0
       ? resolveStage2Variant(keepToken.tokenId, keepToken.character, keepToken.tokenId)
-      : null;
+      : getStage3Variant(keepToken.tokenId, keepToken.character, 2);
     setMessage(
       `Ready! #${keepToken.tokenId} → ${nextStage}` +
       (preview ? ` (${preview.slug.replace(/_/g, " ")})` : "") +
@@ -652,8 +727,8 @@ function validateSelection() {
     return `Stage mismatch: keep is Stage ${keepToken.stage === 0 ? 1 : keepToken.stage}, burn is Stage ${burnToken.stage === 0 ? 1 : burnToken.stage}.`;
   if (keepToken.character && burnToken.character && keepToken.character !== burnToken.character)
     return `Character mismatch: "${keepToken.character}" vs "${burnToken.character}". Both must be the same character.`;
-  if (keepToken.stage === 2 && !getStage3Variant(keepToken.tokenId, keepToken.character, 2))
-    return `No Stage 3 art yet for #${keepToken.tokenId} (${keepToken.character}).`;
+  if (keepToken.stage === 2 && !canEvolveToStage3(keepToken.tokenId, keepToken.character, 2))
+    return `No Stage 3 art yet for ${keepToken.character}. Upload one Full_* GIF for this character line.`;
   return null;
 }
 

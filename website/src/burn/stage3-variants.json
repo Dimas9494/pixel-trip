@@ -10,6 +10,9 @@
     "Rusty_Diva":     { "slug": "Full_Rusty_Diva",     "bg": "Gem_Perimeter",    "frame": "Jet_Rim" }
   },
   "defaultByChar": {
-    "Antler_Skull": { "slug": "Full_Antler_Skull", "bg": "Chromatic_Swell", "frame": "Hue_Rim" }
+    "Alpine_Hunter":  { "slug": "Full_Golden_Hunter",  "bg": "Band_Scroll",      "frame": "Axis_Rim" },
+    "Ape_Beard":      { "slug": "Full_Green_Neon_Ape", "bg": "Brick_Mosaic",     "frame": "Neon_Bolt" },
+    "Diva":           { "slug": "Full_Glitch_Diva",    "bg": "Lattice_Lines",    "frame": "Pulse_Ring" },
+    "Antler_Skull":   { "slug": "Full_Antler_Skull",   "bg": "Chromatic_Swell",  "frame": "Hue_Rim" }
   }
 }

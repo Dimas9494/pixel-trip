@@ -617,6 +617,17 @@ img {
   opacity: 0.85;
 }
 
+.burn-token.is-locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.burn-token.is-locked:hover {
+  transform: none;
+  border-color: var(--border, rgba(255, 255, 255, 0.12));
+  box-shadow: none;
+}
+
 .burn-token-role {
   font-size: 0.72rem;
   font-weight: 700;
