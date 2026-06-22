@@ -650,12 +650,42 @@ img {
 .burn-evolve-btn {
   width: 100%;
   max-width: 22rem;
+  margin-top: 0.75rem;
+  background: var(--magenta);
+  color: #fff;
+  border: 2px solid #ff6de8;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.burn-evolve-btn:not(:disabled):hover {
+  background: #ff49cf;
+  color: #fff;
 }
 
 .burn-evolve-btn:disabled {
-  opacity: 0.45;
+  opacity: 1;
+  background: #1e1638;
+  color: #a8b0d8;
+  border-color: var(--border);
   cursor: not-allowed;
   transform: none;
+}
+
+.burn-sync-btn {
+  width: 100%;
+  max-width: 22rem;
+  margin-top: 0.65rem;
+  background: rgba(15, 19, 36, 0.9);
+  color: var(--text);
+  border: 2px solid var(--cyan);
+  font-size: 0.46rem;
+  line-height: 1.6;
+}
+
+.burn-sync-btn:hover {
+  background: rgba(57, 255, 20, 0.12);
+  color: #fff;
+  border-color: #6dff4a;
 }
 
 .burn-dapp code {
