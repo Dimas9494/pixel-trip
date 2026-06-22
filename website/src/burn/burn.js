@@ -14,10 +14,23 @@ import {
   CHAR_ID_TO_NAME,
   STAGE2_VARIANTS,
 } from "./config.js";
+import IMAGE_MAP from "./image-map.json";
 
 const IMAGE_STAGE2       = "https://pixeltripnft.website/Test/stage2/images";
 const IMAGE_STAGE3       = "https://pixeltripnft.website/Test/stage3/images";
 const UPDATE_METADATA_URL = "https://pixeltripnft.website/Test/update-metadata.php";
+
+function getTokenImage(tokenId, character, stage) {
+  if (stage === 2 && character) {
+    const variants = STAGE2_VARIANTS[character] || [];
+    const variant  = variants[tokenId % variants.length];
+    if (variant) return `${IMAGE_STAGE2}/${variant.slug}.gif`;
+  }
+  if (stage === 3 && character) {
+    return `${IMAGE_STAGE3}/${character}.gif`;
+  }
+  return IMAGE_MAP[String(tokenId)] || `https://pixeltripnft.website/Test/images/${tokenId}.gif`;
+}
 
 function buildEvolvedMetadata(tokenId, charName, newStage) {
   if (newStage === 2) {
@@ -235,7 +248,7 @@ async function loadTokens() {
           character,
           stage:     currentStage,
           name:      `#${id}${character ? ` ${character}` : ""}`,
-          image:     `https://pixeltripnft.website/Test/images/${id}.gif`,
+          image:     getTokenImage(id, character, currentStage),
         };
       } catch (e) {
         console.warn(`[token] #${id} read failed:`, e.message);
