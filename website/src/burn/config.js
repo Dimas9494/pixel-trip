@@ -42,6 +42,12 @@ export const STAGE2_VARIANTS = STAGE2_VARIANTS_JSON;
 // Update this after deploying the new contract via Remix
 export const EVOLVE_ADDRESS = import.meta.env.VITE_EVOLVE_CONTRACT || "0x8D0b7Eb6A057ed921a1d6E245b899Beca1B1Bf77";
 
+// Max token ID to scan (test mint ~136). Increase when full collection is live.
+export const SCAN_MAX_ID = 200;
+
+// Fast public RPC for waiting tx receipts (wallet RPC is often slow)
+export const RECEIPT_RPC_URL = "https://ethereum-rpc.publicnode.com";
+
 export const STAGE1_ABI = [
   {
     type: "function", name: "balanceOf",

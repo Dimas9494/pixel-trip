@@ -2,7 +2,7 @@ import {
   createPublicClient,
   createWalletClient,
   custom,
-  parseEventLogs,
+  http,
 } from "viem";
 import { mainnet } from "viem/chains";
 import {
@@ -13,6 +13,8 @@ import {
   BURNABLE_CHARS,
   CHAR_ID_TO_NAME,
   STAGE2_VARIANTS,
+  SCAN_MAX_ID,
+  RECEIPT_RPC_URL,
 } from "./config.js";
 import IMAGE_MAP from "./image-map.json";
 import VARIANT_MAP from "./variant-map.json";
@@ -179,6 +181,7 @@ const els = {
 
 let walletClient = null;
 let publicClient = null;
+let receiptClient = null;
 let account      = null;
 let tokens       = [];   // { tokenId, name, image, character, stage }
 let keepToken    = null; // first selected — will be upgraded
@@ -223,38 +226,44 @@ async function ensureMainnet() {
 
 // ── Token discovery ───────────────────────────────────────────────────────────
 
-async function getOwnedIds() {
-  setMessage("Scanning wallet… (~10 sec)", "info");
-
-  const MAX_ID = 4443;
-  const CHUNK  = 800; // split into batches to avoid wallet provider limits
-  const owned  = [];
-
-  for (let start = 0; start <= MAX_ID; start += CHUNK) {
-    const end       = Math.min(start + CHUNK - 1, MAX_ID);
-    const contracts = Array.from({ length: end - start + 1 }, (_, i) => ({
+async function getScanMaxId() {
+  try {
+    const supply = await publicClient.readContract({
       address: STAGE1_ADDRESS,
       abi:     STAGE1_ABI,
-      functionName: "ownerOf",
-      args:    [BigInt(start + i)],
-    }));
+      functionName: "totalSupply",
+    });
+    return Math.min(Math.max(Number(supply) + 10, SCAN_MAX_ID), 4444);
+  } catch {
+    return SCAN_MAX_ID;
+  }
+}
 
-    try {
-      const results = await publicClient.multicall({ contracts, allowFailure: true });
-      for (let i = 0; i < results.length; i++) {
-        const r = results[i];
-        if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
-          owned.push(start + i);
-        }
+async function getOwnedIds() {
+  setMessage("Scanning wallet…", "info");
+
+  const MAX_ID = await getScanMaxId();
+  const contracts = Array.from({ length: MAX_ID }, (_, i) => ({
+    address: STAGE1_ADDRESS,
+    abi:     STAGE1_ABI,
+    functionName: "ownerOf",
+    args:    [BigInt(i + 1)],
+  }));
+
+  const owned = [];
+  try {
+    const results = await publicClient.multicall({ contracts, allowFailure: true });
+    for (let i = 0; i < results.length; i++) {
+      const r = results[i];
+      if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
+        owned.push(i + 1);
       }
-    } catch (err) {
-      console.warn(`[scan] batch ${start}-${end} failed:`, err.message);
     }
-
-    setMessage(`Scanning wallet… (${Math.min(end + 1, MAX_ID + 1)}/${MAX_ID + 1})`, "info");
+  } catch (err) {
+    console.warn("[scan] multicall failed:", err.message);
   }
 
-  console.log(`[scan] Owned token IDs (${owned.length}):`, owned);
+  console.log(`[scan] Owned token IDs (${owned.length}), scanned 1..${MAX_ID}`);
   return owned;
 }
 
@@ -263,48 +272,43 @@ async function loadTokens() {
 
   const ownedIds = await getOwnedIds();
 
-  // Batch-read charId and evolvedStage for each owned token
-  const BATCH = 20;
+  // One multicall for all evolve contract reads
+  const contracts = ownedIds.flatMap((id) => [
+    { address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "stage1Character", args: [BigInt(id)] },
+    { address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "evolvedStage",   args: [BigInt(id)] },
+  ]);
+
+  let mcResults = [];
+  try {
+    mcResults = await publicClient.multicall({ contracts, allowFailure: true });
+  } catch (err) {
+    console.warn("[token] evolve multicall failed:", err.message);
+  }
+
   tokens = [];
+  for (let i = 0; i < ownedIds.length; i++) {
+    const id = ownedIds[i];
+    try {
+      const charR  = mcResults[i * 2];
+      const stageR = mcResults[i * 2 + 1];
+      const charId = charR?.status === "success" ? Number(charR.result) : 0;
+      const stage  = stageR?.status === "success" ? Number(stageR.result) : 0;
 
-  for (let b = 0; b < ownedIds.length; b += BATCH) {
-    const slice = ownedIds.slice(b, b + BATCH);
+      const character    = CHAR_ID_TO_NAME[charId] || null;
+      const currentStage = stage;
 
-    const results = await Promise.all(slice.map(async (id) => {
-      try {
-        const [charId, stage] = await Promise.all([
-          publicClient.readContract({
-            address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
-            functionName: "stage1Character", args: [BigInt(id)],
-          }),
-          EVOLVE_ADDRESS ? publicClient.readContract({
-            address: EVOLVE_ADDRESS, abi: EVOLVE_ABI,
-            functionName: "evolvedStage", args: [BigInt(id)],
-          }) : Promise.resolve(0),
-        ]);
+      if (currentStage === 0 && !BURNABLE_CHARS.has(character)) continue;
 
-        const character    = CHAR_ID_TO_NAME[Number(charId)] || null;
-        const currentStage = Number(stage);
-
-        console.log(`[token] #${id} charId=${charId} char=${character || "unknown"} stage=${currentStage} burnable=${BURNABLE_CHARS.has(character)}`);
-
-        // Only show tokens that are burnable (have Stage 2 art) OR already evolved
-        if (currentStage === 0 && !BURNABLE_CHARS.has(character)) return null;
-
-        return {
-          tokenId:   id,
-          character,
-          stage:     currentStage,
-          name:      `#${id}${character ? ` ${character}` : ""}`,
-          image:     getTokenImage(id, character, currentStage),
-        };
-      } catch (e) {
-        console.warn(`[token] #${id} read failed:`, e.message);
-        return null;
-      }
-    }));
-
-    for (const r of results) if (r) tokens.push(r);
+      tokens.push({
+        tokenId:   id,
+        character,
+        stage:     currentStage,
+        name:      `#${id}${character ? ` ${character}` : ""}`,
+        image:     getTokenImage(id, character, currentStage),
+      });
+    } catch (e) {
+      console.warn(`[token] #${id} read failed:`, e.message);
+    }
   }
 
   keepToken  = null;
@@ -332,15 +336,25 @@ async function loadTokens() {
   } else {
     setMessage(`${tokens.length} traveler(s) found. Select 2 of the same character — first selected will be upgraded.`);
   }
-
-  // Auto-sync metadata for already-evolved tokens (fixes OpenSea lag)
-  const evolved = tokens.filter(t => t.stage >= 2);
-  if (evolved.length) {
-    syncAllEvolvedTokens();
-  }
 }
 
-// ── Render ────────────────────────────────────────────────────────────────────
+function applyEvolveResult(keepId, burnId, newStage) {
+  tokens = tokens
+    .filter(t => t.tokenId !== burnId)
+    .map(t => {
+      if (t.tokenId !== keepId) return t;
+      return {
+        ...t,
+        stage: newStage,
+        image: getTokenImage(keepId, t.character, newStage),
+      };
+    });
+  keepToken = null;
+  burnToken = null;
+  renderGrid();
+  updateStats();
+  updateEvolveButton();
+}
 
 const STAGE_LABEL = { 0: "Stage 1", 2: "Stage 2", 3: "Stage 3 ✓" };
 const STAGE_COLOR = { 0: "#00e5ff", 2: "#ff2bd6", 3: "#ffd700" };
@@ -470,8 +484,9 @@ async function connectWallet() {
   }
 
   try {
-    publicClient = createPublicClient({ chain: mainnet, transport: custom(provider) });
-    walletClient = createWalletClient({ chain: mainnet, transport: custom(provider) });
+    publicClient  = createPublicClient({ chain: mainnet, transport: custom(provider) });
+    walletClient  = createWalletClient({ chain: mainnet, transport: custom(provider) });
+    receiptClient = createPublicClient({ chain: mainnet, transport: http(RECEIPT_RPC_URL) });
 
     const [address] = await walletClient.requestAddresses();
     account = address;
@@ -489,12 +504,11 @@ async function connectWallet() {
 
 // ── Evolve ────────────────────────────────────────────────────────────────────
 
-async function waitWithTimeout(hash, label) {
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error(`Timeout waiting for ${label}`)), 120_000);
-    publicClient.waitForTransactionReceipt({ hash })
-      .then(r => { clearTimeout(timer); resolve(r); })
-      .catch(e => { clearTimeout(timer); reject(e); });
+async function waitForReceipt(hash) {
+  return receiptClient.waitForTransactionReceipt({
+    hash,
+    pollingInterval: 2_000,
+    timeout:         90_000,
   });
 }
 
@@ -517,82 +531,54 @@ async function evolveTokens() {
         functionName: "setApprovalForAll",
         args:    [EVOLVE_ADDRESS, true],
       });
-      setMessage(`Approval sent (${approveHash.slice(0, 10)}…). Waiting…`, "pending");
-      try { await waitWithTimeout(approveHash, "approval"); }
-      catch { setMessage("Approval likely confirmed. Proceeding…", "pending"); }
+      setMessage(`Approval sent. Waiting for confirmation…`, "pending");
+      await waitForReceipt(approveHash);
       isApproved = true;
       updateStats();
     }
 
-    // Step 2: simulate first to catch revert reason early
-    setMessage("Simulating evolve…", "pending");
+    setMessage("Confirm EVOLVE in your wallet…", "pending");
+    const hash = await walletClient.writeContract({
+      account,
+      address: EVOLVE_ADDRESS,
+      abi:     EVOLVE_ABI,
+      functionName: funcName,
+      args:    [BigInt(keepToken.tokenId), BigInt(burnToken.tokenId)],
+    });
+    setMessage(`Evolve tx sent. Waiting for confirmation…`, "pending");
+
     try {
-      const { request } = await publicClient.simulateContract({
-        account,
-        address: EVOLVE_ADDRESS,
-        abi:     EVOLVE_ABI,
-        functionName: funcName,
-        args:    [BigInt(keepToken.tokenId), BigInt(burnToken.tokenId)],
-      });
-
-      const stepLabel = keepToken.stage === 0 ? "Step 2/2" : "Step 1/1";
-      setMessage(`${stepLabel} — Confirm EVOLVE in your wallet…`, "pending");
-      const hash = await walletClient.writeContract(request);
-      setMessage(`Evolve tx sent (${hash.slice(0, 10)}…). Waiting…`, "pending");
-
-      let receipt;
-      try { receipt = await waitWithTimeout(hash, "evolve"); }
-      catch {
-        setMessage("Tx sent — check your wallet / Etherscan for confirmation.", "success");
-        await loadTokens();
-        return;
-      }
-
-      // Parse Evolved event
-      const logs = parseEventLogs({ abi: EVOLVE_ABI, logs: receipt.logs, eventName: "Evolved" });
-      if (logs[0]) {
-        const { keepTokenId, newStage, charId } = logs[0].args;
-        const charName   = CHAR_ID_TO_NAME[Number(charId)] || null;
-        const stageLabel = Number(newStage) === 2 ? "Stage 2" : "Stage 3";
-        setMessage(`Evolved! Token #${keepTokenId} → ${stageLabel}. Syncing metadata…`, "success");
-
-        let updated = await syncMetadataToServer(Number(keepTokenId));
-        if (!updated.ok) {
-          updated = await autoUpdateMetadata(Number(keepTokenId), charName, Number(newStage), hash);
-        }
-        if (updated.ok) {
-          setMessage(`Done! Token #${keepTokenId} → ${stageLabel}. Metadata on server updated — refresh OpenSea.`, "success");
-        } else {
-          setMessage(`Evolved on-chain! Metadata sync failed: ${updated.error}`, "error");
-          showMetadataDownload(Number(keepTokenId), charName, Number(newStage));
-        }
-      } else {
-        const charName = keepToken.character;
-        const newStage = keepToken.stage === 0 ? 2 : 3;
-        setMessage(`Evolution complete! Token #${keepToken.tokenId} → Stage ${newStage}. Syncing metadata…`, "success");
-
-        let updated = await syncMetadataToServer(keepToken.tokenId);
-        if (!updated.ok) {
-          updated = await autoUpdateMetadata(keepToken.tokenId, charName, newStage, hash);
-        }
-        if (!updated.ok) {
-          setMessage(`Evolved on-chain! Metadata sync failed: ${updated.error}`, "error");
-          showMetadataDownload(keepToken.tokenId, charName, newStage);
-        } else {
-          setMessage(`Done! Token #${keepToken.tokenId} → Stage ${newStage}. Refresh OpenSea.`, "success");
-        }
-      }
-
-      await loadTokens();
-    } catch (simErr) {
-      const reason = simErr.shortMessage || simErr.cause?.reason || simErr.message || "Simulation failed";
-      setMessage(`❌ ${reason}`, "error");
-      console.error("[evolve simulate]", simErr);
+      await waitForReceipt(hash);
+    } catch {
+      setMessage("Tx sent — check Etherscan for confirmation.", "success");
+      els.evolve.disabled = false;
       updateEvolveButton();
+      return;
     }
+
+    const keepId   = keepToken.tokenId;
+    const burnId   = burnToken.tokenId;
+    const charName = keepToken.character;
+    const newStage = keepToken.stage === 0 ? 2 : 3;
+    const stageLabel = newStage === 2 ? "Stage 2" : "Stage 3";
+
+    applyEvolveResult(keepId, burnId, newStage);
+    setMessage(`Evolved! #${keepId} → ${stageLabel}. Updating metadata…`, "success");
+
+    const updated = await syncMetadataToServer(keepId);
+    if (updated.ok) {
+      setMessage(`Done! #${keepId} → ${stageLabel}. Refresh OpenSea in a few minutes.`, "success");
+    } else {
+      setMessage(`Evolved on-chain! Metadata sync failed: ${updated.error}`, "error");
+      showMetadataDownload(keepId, charName, newStage);
+    }
+
+    els.evolve.disabled = false;
+    updateEvolveButton();
   } catch (err) {
     console.error("[evolve]", err);
     setMessage(err.shortMessage || err.message || "Transaction failed.", "error");
+    els.evolve.disabled = false;
     updateEvolveButton();
   }
 }
