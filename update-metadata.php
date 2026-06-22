@@ -22,15 +22,22 @@ define('METADATA_DIR',    __DIR__ . '/metadata/');
 define('IMAGE_STAGE2',    'https://pixeltripnft.website/Test/stage2/images');
 define('IMAGE_STAGE3',    'https://pixeltripnft.website/Test/stage3/images');
 define('VARIANT_MAP_FILE', __DIR__ . '/variant-map.json');
+define('CHAR_MAP_FILE',    __DIR__ . '/char-map.json');
+
+// Contract call selectors (keccak256 first 4 bytes)
+define('SEL_EVOLVED_STAGE',    '74b7661f');
+define('SEL_STAGE1_CHARACTER', '3d73cef2');
 
 // Health check: GET /update-metadata.php?health=1
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['health'])) {
     $dirOk = is_dir(METADATA_DIR) && is_writable(METADATA_DIR);
     echo json_encode([
-        'ok'          => $dirOk,
-        'metadataDir' => METADATA_DIR,
-        'writable'    => $dirOk,
-        'contract'    => EVOLVE_CONTRACT,
+        'ok'           => $dirOk,
+        'metadataDir'  => METADATA_DIR,
+        'writable'     => $dirOk,
+        'contract'     => EVOLVE_CONTRACT,
+        'charMap'      => file_exists(CHAR_MAP_FILE),
+        'variantMap'   => file_exists(VARIANT_MAP_FILE),
     ]);
     exit;
 }
@@ -43,19 +50,20 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // ── Parse input ───────────────────────────────────────────────────────────────
 
-$body    = json_decode(file_get_contents('php://input'), true) ?: [];
-$tokenId = intval($body['tokenId'] ?? 0);
-$txHash  = preg_replace('/[^0-9a-fA-Fx]/', '', $body['txHash'] ?? '');
-$charName= preg_replace('/[^A-Za-z_]/', '', $body['charName'] ?? '');
-$newStage= intval($body['newStage'] ?? 0);
+$body     = json_decode(file_get_contents('php://input'), true) ?: [];
+$tokenId  = intval($body['tokenId'] ?? 0);
+$syncMode = !empty($body['sync']);
+$txHash   = preg_replace('/[^0-9a-fA-Fx]/', '', $body['txHash'] ?? '');
+$charName = preg_replace('/[^A-Za-z_]/', '', $body['charName'] ?? '');
+$newStage = intval($body['newStage'] ?? 0);
 
-if (!$tokenId || !$txHash || !$charName || !in_array($newStage, [2, 3])) {
+if (!$tokenId) {
     http_response_code(400);
-    echo json_encode(['error' => 'Missing required fields']);
+    echo json_encode(['error' => 'tokenId required']);
     exit;
 }
 
-// ── Verify transaction on-chain ───────────────────────────────────────────────
+// ── RPC helpers ─────────────────────────────────────────────────────────────
 
 function rpcCall(string $method, array $params): ?array {
     for ($attempt = 0; $attempt < 3; $attempt++) {
@@ -72,11 +80,76 @@ function rpcCall(string $method, array $params): ?array {
         curl_close($ch);
         if ($res && $code === 200) {
             $json = json_decode($res, true);
-            if (isset($json['result'])) return $json['result'];
+            if (array_key_exists('result', $json)) return $json['result'];
         }
-        usleep(500000); // 0.5s between retries
+        usleep(500000);
     }
     return null;
+}
+
+function encodeUint256Call(string $selector, int $tokenId): string {
+    return '0x' . $selector . str_pad(dechex($tokenId), 64, '0', STR_PAD_LEFT);
+}
+
+function ethCall(string $contract, string $data): ?string {
+    return rpcCall('eth_call', [['to' => $contract, 'data' => $data], 'latest']);
+}
+
+function decodeUint8(?string $hex): int {
+    if (!$hex || $hex === '0x') return 0;
+    $hex = ltrim(substr($hex, 2), '0') ?: '0';
+    return (int) hexdec($hex);
+}
+
+function loadCharIdToName(): array {
+    if (!file_exists(CHAR_MAP_FILE)) return [];
+    $nameToId = json_decode(file_get_contents(CHAR_MAP_FILE), true) ?: [];
+    $idToName = [];
+    foreach ($nameToId as $name => $id) {
+        $idToName[(int)$id] = $name;
+    }
+    return $idToName;
+}
+
+function readOnChainState(int $tokenId): array {
+    $contract = EVOLVE_CONTRACT;
+    $stageHex = ethCall($contract, encodeUint256Call(SEL_EVOLVED_STAGE, $tokenId));
+    $charHex  = ethCall($contract, encodeUint256Call(SEL_STAGE1_CHARACTER, $tokenId));
+    $stage    = decodeUint8($stageHex);
+    $charId   = decodeUint8($charHex);
+    $charMap  = loadCharIdToName();
+    $charName = $charMap[$charId] ?? '';
+    return ['stage' => $stage, 'charId' => $charId, 'charName' => $charName];
+}
+
+// ── Sync mode: read stage from contract, no txHash needed ───────────────────
+
+if ($syncMode) {
+    $onChain = readOnChainState($tokenId);
+    $newStage = $onChain['stage'];
+    $charName = $onChain['charName'];
+    if ($newStage < 2) {
+        http_response_code(400);
+        echo json_encode([
+            'error'   => "Token #$tokenId is not evolved on-chain (stage=$newStage)",
+            'onChain' => $onChain,
+        ]);
+        exit;
+    }
+    if (!$charName) {
+        http_response_code(400);
+        echo json_encode(['error' => "Unknown charId {$onChain['charId']} — upload char-map.json to /Test/"]);
+        exit;
+    }
+    goto build_metadata;
+}
+
+// ── Legacy mode: verify evolve tx ───────────────────────────────────────────
+
+if (!$txHash || !$charName || !in_array($newStage, [2, 3])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing required fields (or use sync:true)']);
+    exit;
 }
 
 $receipt = rpcCall('eth_getTransactionReceipt', [$txHash]);
@@ -100,6 +173,7 @@ if (strtolower($receipt['to'] ?? '') !== EVOLVE_CONTRACT) {
     exit;
 }
 
+build_metadata:
 // ── Build metadata ────────────────────────────────────────────────────────────
 
 $STAGE2_VARIANTS = [

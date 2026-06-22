@@ -178,6 +178,9 @@ writeFileSync(IMAGE_MAP_FILE, JSON.stringify(imageMap, null, 2));
 writeFileSync(VARIANT_MAP_FILE, JSON.stringify(variantMap, null, 2));
 writeFileSync(VARIANT_DEPLOY, JSON.stringify(variantMap, null, 2));
 
+const CHAR_MAP_DEPLOY = join(__dirname, "collection", "build", "deploy", "char-map.json");
+writeFileSync(CHAR_MAP_DEPLOY, JSON.stringify(charMapObj, null, 2));
+
 console.log("=".repeat(60));
 console.log("REMIX — paste these into EvolvePixelTrip functions");
 console.log("=".repeat(60));

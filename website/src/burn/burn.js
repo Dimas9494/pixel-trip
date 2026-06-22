@@ -73,6 +73,24 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
   return null;
 }
 
+async function syncMetadataToServer(tokenId) {
+  try {
+    const res = await fetch(UPDATE_METADATA_URL, {
+      method:  "POST",
+      headers: { "Content-Type": "application/json" },
+      body:    JSON.stringify({ tokenId, sync: true }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (data.ok) {
+      console.log(`[metadata] Synced metadata/${tokenId} → Stage ${data.stage}`);
+      return { ok: true, data };
+    }
+    return { ok: false, error: data.error || `HTTP ${res.status}` };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
 async function autoUpdateMetadata(tokenId, charName, newStage, txHash) {
   if (!charName) {
     console.warn("[metadata] charName is empty — cannot update");
@@ -95,6 +113,25 @@ async function autoUpdateMetadata(tokenId, charName, newStage, txHash) {
   } catch (err) {
     console.warn("[metadata] Auto-update failed:", err.message);
     return { ok: false, error: err.message };
+  }
+}
+
+async function syncAllEvolvedTokens() {
+  const evolved = tokens.filter(t => t.stage >= 2);
+  if (!evolved.length) return;
+
+  setMessage(`Syncing ${evolved.length} evolved token(s) to server…`, "pending");
+  const failed = [];
+
+  for (const t of evolved) {
+    const r = await syncMetadataToServer(t.tokenId);
+    if (!r.ok) failed.push(`#${t.tokenId}: ${r.error}`);
+  }
+
+  if (!failed.length) {
+    setMessage(`Metadata synced for ${evolved.length} token(s). Refresh OpenSea in a few minutes.`, "success");
+  } else {
+    setMessage(`Some tokens failed to sync: ${failed.join("; ")}`, "error");
   }
 }
 
@@ -136,6 +173,7 @@ const els = {
   stats:   document.getElementById("burn-stats"),
   grid:    document.getElementById("burn-token-grid"),
   evolve:  document.getElementById("burn-evolve"),
+  sync:    document.getElementById("burn-sync"),
   message: document.getElementById("burn-message"),
 };
 
@@ -293,6 +331,12 @@ async function loadTokens() {
     }
   } else {
     setMessage(`${tokens.length} traveler(s) found. Select 2 of the same character — first selected will be upgraded.`);
+  }
+
+  // Auto-sync metadata for already-evolved tokens (fixes OpenSea lag)
+  const evolved = tokens.filter(t => t.stage >= 2);
+  if (evolved.length) {
+    syncAllEvolvedTokens();
   }
 }
 
@@ -510,24 +554,32 @@ async function evolveTokens() {
         const { keepTokenId, newStage, charId } = logs[0].args;
         const charName   = CHAR_ID_TO_NAME[Number(charId)] || null;
         const stageLabel = Number(newStage) === 2 ? "Stage 2" : "Stage 3";
-        setMessage(`Evolved! Token #${keepTokenId} → ${stageLabel}. Updating metadata…`, "success");
+        setMessage(`Evolved! Token #${keepTokenId} → ${stageLabel}. Syncing metadata…`, "success");
 
-        const updated = await autoUpdateMetadata(Number(keepTokenId), charName, Number(newStage), hash);
+        let updated = await syncMetadataToServer(Number(keepTokenId));
+        if (!updated.ok) {
+          updated = await autoUpdateMetadata(Number(keepTokenId), charName, Number(newStage), hash);
+        }
         if (updated.ok) {
-          setMessage(`Done! Token #${keepTokenId} is now ${stageLabel}. OpenSea обновится через несколько минут.`, "success");
+          setMessage(`Done! Token #${keepTokenId} → ${stageLabel}. Metadata on server updated — refresh OpenSea.`, "success");
         } else {
-          setMessage(`Evolved on-chain! Но metadata не обновилась: ${updated.error}. Скачай JSON ниже и загрузи через WinSCP.`, "error");
+          setMessage(`Evolved on-chain! Metadata sync failed: ${updated.error}`, "error");
           showMetadataDownload(Number(keepTokenId), charName, Number(newStage));
         }
       } else {
         const charName = keepToken.character;
         const newStage = keepToken.stage === 0 ? 2 : 3;
-        setMessage(`Evolution complete! Token #${keepToken.tokenId} → Stage ${newStage}. Updating metadata…`, "success");
+        setMessage(`Evolution complete! Token #${keepToken.tokenId} → Stage ${newStage}. Syncing metadata…`, "success");
 
-        const updated = await autoUpdateMetadata(keepToken.tokenId, charName, newStage, hash);
+        let updated = await syncMetadataToServer(keepToken.tokenId);
         if (!updated.ok) {
-          setMessage(`Evolved on-chain! Metadata error: ${updated.error}. Скачай JSON ниже.`, "error");
+          updated = await autoUpdateMetadata(keepToken.tokenId, charName, newStage, hash);
+        }
+        if (!updated.ok) {
+          setMessage(`Evolved on-chain! Metadata sync failed: ${updated.error}`, "error");
           showMetadataDownload(keepToken.tokenId, charName, newStage);
+        } else {
+          setMessage(`Done! Token #${keepToken.tokenId} → Stage ${newStage}. Refresh OpenSea.`, "success");
         }
       }
 
@@ -557,6 +609,7 @@ function initBurnDapp() {
   }
   els.connect.addEventListener("click", connectWallet);
   els.evolve.addEventListener("click", evolveTokens);
+  els.sync?.addEventListener("click", syncAllEvolvedTokens);
 }
 
 initBurnDapp();
