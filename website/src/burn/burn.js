@@ -68,23 +68,27 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
 }
 
 async function autoUpdateMetadata(tokenId, charName, newStage, txHash) {
+  if (!charName) {
+    console.warn("[metadata] charName is empty — cannot update");
+    return { ok: false, error: "Character name missing" };
+  }
   try {
     const res = await fetch(UPDATE_METADATA_URL, {
       method:  "POST",
       headers: { "Content-Type": "application/json" },
       body:    JSON.stringify({ tokenId, charName, newStage, txHash }),
     });
-    const data = await res.json();
+    const data = await res.json().catch(() => ({}));
     if (data.ok) {
       console.log(`[metadata] Updated metadata/${tokenId} → Stage ${newStage}`);
-      return true;
-    } else {
-      console.warn("[metadata] Server returned error:", data.error);
-      return false;
+      return { ok: true, data };
     }
+    const errMsg = data.error || `HTTP ${res.status}`;
+    console.warn("[metadata] Server returned error:", errMsg);
+    return { ok: false, error: errMsg };
   } catch (err) {
     console.warn("[metadata] Auto-update failed:", err.message);
-    return false;
+    return { ok: false, error: err.message };
   }
 }
 
@@ -503,10 +507,10 @@ async function evolveTokens() {
         setMessage(`Evolved! Token #${keepTokenId} → ${stageLabel}. Updating metadata…`, "success");
 
         const updated = await autoUpdateMetadata(Number(keepTokenId), charName, Number(newStage), hash);
-        if (updated) {
-          setMessage(`Done! Token #${keepTokenId} is now ${stageLabel}. OpenSea will refresh in a few minutes.`, "success");
+        if (updated.ok) {
+          setMessage(`Done! Token #${keepTokenId} is now ${stageLabel}. OpenSea обновится через несколько минут.`, "success");
         } else {
-          setMessage(`Evolved! But metadata auto-update failed — download manually below.`, "success");
+          setMessage(`Evolved on-chain! Но metadata не обновилась: ${updated.error}. Скачай JSON ниже и загрузи через WinSCP.`, "error");
           showMetadataDownload(Number(keepTokenId), charName, Number(newStage));
         }
       } else {
@@ -515,7 +519,10 @@ async function evolveTokens() {
         setMessage(`Evolution complete! Token #${keepToken.tokenId} → Stage ${newStage}. Updating metadata…`, "success");
 
         const updated = await autoUpdateMetadata(keepToken.tokenId, charName, newStage, hash);
-        if (!updated) showMetadataDownload(keepToken.tokenId, charName, newStage);
+        if (!updated.ok) {
+          setMessage(`Evolved on-chain! Metadata error: ${updated.error}. Скачай JSON ниже.`, "error");
+          showMetadataDownload(keepToken.tokenId, charName, newStage);
+        }
       }
 
       await loadTokens();
