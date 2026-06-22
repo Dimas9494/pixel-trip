@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Full Antler Skull (Stage 3 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage3/test/images/Full_Antler_Skull.gif",
+  "animation_url": "https://your-domain.com/stage3/test/images/Full_Antler_Skull.gif",
+  "dna": "f037e95e7a7c4bd5b7f3f870ba1f1a3d1c626b64",
+  "edition": 0,
+  "date": 1782041240648,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Chromatic_Swell"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Full_Antler_Skull"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Hue_Rim"
+    },
+    {
+      "trait_type": "Stage_3",
+      "value": "3"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

@@ -1,0 +1,52 @@
+{
+  "Ape_Beard": [
+    { "slug": "Frog_Hat_Ape",   "bg": "Kaleidoscope",  "frame": "Rain_Window" },
+    { "slug": "Green_Neon_Ape", "bg": "Infinity_Loop",  "frame": "Pi_Digits" },
+    { "slug": "Hippie_Ape",     "bg": "Facets",         "frame": "Phantom_Trace" },
+    { "slug": "Kiss_Ape",       "bg": "Eddy_Field",     "frame": "Blizzard_Wall" },
+    { "slug": "Red_Cap_Ape",    "bg": "Kaleidoscope",   "frame": "Hourglass_Turn" },
+    { "slug": "Zombie_Ape",     "bg": "Data_Stream",    "frame": "Pink_Glass" },
+    { "slug": "Neon_Beard",     "bg": "Kaleidoscope",   "frame": "Rain_Window" },
+    { "slug": "Winter_Beard",   "bg": "Plasma_Flow",    "frame": "Morse_Sos" },
+    { "slug": "Cyborg_Beard",   "bg": "Viscous",        "frame": "Hex_Grid_Edge" },
+    { "slug": "Crown_Beard",    "bg": "Hologram",       "frame": "Vine_Creep" },
+    { "slug": "Frost_Beard",    "bg": "Water_Gleam",    "frame": "Isometric_Grid" },
+    { "slug": "Golden_Beard",   "bg": "Event_Horizon",  "frame": "Color_Wheel_Border" }
+  ],
+  "Beanie_Cyclops": [
+    { "slug": "Astro_Cyclops",      "bg": "Facets",         "frame": "Deep_Space" },
+    { "slug": "Crown_Cyclops",      "bg": "Grid_Tunnel",    "frame": "Checker_Scroll" },
+    { "slug": "Golden_Cyclops",     "bg": "Wave_Moire",     "frame": "Isometric_Grid" },
+    { "slug": "Mohawk_Cyclops",     "bg": "Hologram",       "frame": "Dust_Orbit" },
+    { "slug": "Respirator_Cyclops", "bg": "Mandala_Spiral", "frame": "Fractal_Edge" },
+    { "slug": "Tribe_Cyclops",      "bg": "Waves",          "frame": "Time_Loop_Scar" },
+    { "slug": "Viking_Cyclops",     "bg": "Network",        "frame": "Nexus_Pulse" },
+    { "slug": "Shadow_Cyclops",     "bg": "Grid_Tunnel",    "frame": "Checker_Scroll" },
+    { "slug": "Neon_Cyclops",       "bg": "Facets",         "frame": "Deep_Space" },
+    { "slug": "Winter_Cyclops",     "bg": "Data_Stream",    "frame": "Pink_Glass" },
+    { "slug": "Cyborg_Cyclops",     "bg": "Kaleidoscope",   "frame": "Hourglass_Turn" },
+    { "slug": "Frost_Cyclops",      "bg": "Facets",         "frame": "Phantom_Trace" }
+  ],
+  "Diva": [
+    { "slug": "Shadow_Diva", "bg": "Axis_Spin",           "frame": "Snow_Static" },
+    { "slug": "Cyborg_Diva", "bg": "Fusion_Meta_Caustic", "frame": "Pink_Glass" },
+    { "slug": "Demon_Diva",  "bg": "Waves",               "frame": "Chromosome_Paint" },
+    { "slug": "Glitch_Diva", "bg": "Crystal",             "frame": "Light_Veil" },
+    { "slug": "Golden_Diva", "bg": "Glitter",             "frame": "Mandala_Spin" },
+    { "slug": "Rusty_Diva",  "bg": "Blob_Capsule",        "frame": "Mandala_Reveal" },
+    { "slug": "Zombie_Diva", "bg": "Finale_Cosmos_Waves", "frame": "Sandfall_Cascade" },
+    { "slug": "Neon_Diva",   "bg": "Axis_Spin",           "frame": "Snow_Static" },
+    { "slug": "Winter_Diva", "bg": "Network",             "frame": "Nexus_Pulse" },
+    { "slug": "Crown_Diva",  "bg": "Mandala_Spiral",      "frame": "Fractal_Edge" },
+    { "slug": "Frost_Diva",  "bg": "Hologram",            "frame": "Dust_Orbit" }
+  ],
+  "Alpine_Hunter": [
+    { "slug": "Cyborg_Hunter", "bg": "Event_Horizon", "frame": "Color_Wheel_Border" },
+    { "slug": "Ghost_Hunter",  "bg": "Water_Gleam",   "frame": "Isometric_Grid" },
+    { "slug": "Golden_Hunter", "bg": "Hologram",      "frame": "Vine_Creep" },
+    { "slug": "Graph_Hunter",  "bg": "Viscous",       "frame": "Hex_Grid_Edge" },
+    { "slug": "Winter_Hunter", "bg": "Plasma_Flow",   "frame": "Morse_Sos" },
+    { "slug": "Crown_Hunter",  "bg": "Hologram",      "frame": "Vine_Creep" },
+    { "slug": "Frost_Hunter",  "bg": "Water_Gleam",   "frame": "Isometric_Grid" }
+  ]
+}

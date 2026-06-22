@@ -1,0 +1,19 @@
+PIXEL TRIP — Stage 2 TEST catalog (25 NFT)
+
+Это тестовый набор для проверки заливки на сервер.
+ID сожжённых токенов НЕ нужны — файлы названы по персонажу (Golden_Hunter, Frost_Hunter…).
+
+ЗАЛИВКА
+  images/*.gif   →  https://your-domain.com/stage2/test/images/
+  metadata/*     →  https://your-domain.com/stage2/test/metadata/
+
+ПРОВЕРКА В БРАУЗЕРЕ
+  https://your-domain.com/stage2/test/metadata/Golden_Hunter
+  https://your-domain.com/stage2/test/images/Golden_Hunter.gif
+
+Настрой URL в config.json → deploy.testImageBaseUrl / testMetadataBaseUrl
+
+ПОСЛЕ ТЕСТА (реальный burn)
+  Когда холдер сжигает токен #3770, на сервере запускаете:
+  python generate_stage_deploy.py --edition 3770 --seed 3770
+  и заливаете images/3770.gif + metadata/3770 (имя = номер токена).

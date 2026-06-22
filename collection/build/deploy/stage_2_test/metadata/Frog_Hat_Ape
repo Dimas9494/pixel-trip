@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Frog Hat Ape (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Frog_Hat_Ape.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Frog_Hat_Ape.gif",
+  "dna": "e4ee8bed7d4460f25a438ae80535854a2bbd041a",
+  "edition": 0,
+  "date": 1782031075720,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Kaleidoscope"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Frog_Hat_Ape"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Rain_Window"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

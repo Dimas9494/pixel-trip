@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Shadow Cyclops (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Shadow_Cyclops.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Shadow_Cyclops.gif",
+  "dna": "f1705ffe3424534382ceab296dc3a67fcdd521a1",
+  "edition": 0,
+  "date": 1782030520789,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Grid_Tunnel"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Shadow_Cyclops"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Checker_Scroll"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

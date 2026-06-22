@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Full Green Neon Ape (Stage 3 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage3/test/images/Full_Green_Neon_Ape.gif",
+  "animation_url": "https://your-domain.com/stage3/test/images/Full_Green_Neon_Ape.gif",
+  "dna": "d10b4ca0bfbda10602b36454101924d9cba22fad",
+  "edition": 0,
+  "date": 1782041241829,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Brick_Mosaic"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Full_Green_Neon_Ape"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Neon_Bolt"
+    },
+    {
+      "trait_type": "Stage_3",
+      "value": "3"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Demon Diva (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Demon_Diva.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Demon_Diva.gif",
+  "dna": "8217dc3fd1ccaaa4872f808144cf6678e78ec098",
+  "edition": 0,
+  "date": 1782031108806,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Waves"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Demon_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Chromosome_Paint"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

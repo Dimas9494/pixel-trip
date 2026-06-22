@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Winter Hunter (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Winter_Hunter.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Winter_Hunter.gif",
+  "dna": "7b18ab81f0c5379c9305a34018401144d08b1ec4",
+  "edition": 0,
+  "date": 1782031073092,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Plasma_Flow"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Winter_Hunter"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Morse_Sos"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

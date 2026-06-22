@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Zombie Diva (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Zombie_Diva.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Zombie_Diva.gif",
+  "dna": "1cac103bdce73485441efc1712c1226aca4c69fb",
+  "edition": 0,
+  "date": 1782031120061,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Finale_Cosmos_Waves"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Zombie_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Sandfall_Cascade"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

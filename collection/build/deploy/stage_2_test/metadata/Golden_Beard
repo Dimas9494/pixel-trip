@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Golden Beard (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Golden_Beard.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Golden_Beard.gif",
+  "dna": "db6da5992c6d66ec1ebb136aeaa133e74b16a91a",
+  "edition": 0,
+  "date": 1782030493230,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Event_Horizon"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Golden_Beard"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Color_Wheel_Border"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

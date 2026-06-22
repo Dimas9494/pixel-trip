@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Red Cap Ape (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Red_Cap_Ape.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Red_Cap_Ape.gif",
+  "dna": "8a3595182319ffb0444a27181bc7d6a2248bc354",
+  "edition": 0,
+  "date": 1782031086178,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Kaleidoscope"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Red_Cap_Ape"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Hourglass_Turn"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

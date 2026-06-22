@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Winter Diva (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Winter_Diva.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Winter_Diva.gif",
+  "dna": "b159c62b8dedcdcdb1a18d5aaa5e1d2d667d6f45",
+  "edition": 0,
+  "date": 1782030531185,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Network"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Winter_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Nexus_Pulse"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

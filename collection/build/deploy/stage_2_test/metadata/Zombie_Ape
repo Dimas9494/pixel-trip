@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Zombie Ape (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Zombie_Ape.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Zombie_Ape.gif",
+  "dna": "d731c56dbdb817a42f65260644be1257b03eb19c",
+  "edition": 0,
+  "date": 1782031088329,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Data_Stream"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Zombie_Ape"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Pink_Glass"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

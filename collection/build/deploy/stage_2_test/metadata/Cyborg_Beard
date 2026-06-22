@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Cyborg Beard (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Cyborg_Beard.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Cyborg_Beard.gif",
+  "dna": "47f936ce2f1b8fb48ea6ca84f96daf28690c645d",
+  "edition": 0,
+  "date": 1782030499583,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Viscous"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cyborg_Beard"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Hex_Grid_Edge"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

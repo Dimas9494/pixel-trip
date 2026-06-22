@@ -15,15 +15,22 @@ import {
   STAGE2_VARIANTS,
 } from "./config.js";
 import IMAGE_MAP from "./image-map.json";
+import VARIANT_MAP from "./variant-map.json";
 
 const IMAGE_STAGE2       = "https://pixeltripnft.website/Test/stage2/images";
 const IMAGE_STAGE3       = "https://pixeltripnft.website/Test/stage3/images";
 const UPDATE_METADATA_URL = "https://pixeltripnft.website/Test/update-metadata.php";
 
+function getStage2Variant(tokenId, character) {
+  const mapped = VARIANT_MAP[String(tokenId)];
+  if (mapped) return mapped;
+  const variants = STAGE2_VARIANTS[character] || [];
+  return variants[tokenId % variants.length] || null;
+}
+
 function getTokenImage(tokenId, character, stage) {
   if (stage === 2 && character) {
-    const variants = STAGE2_VARIANTS[character] || [];
-    const variant  = variants[tokenId % variants.length];
+    const variant = getStage2Variant(tokenId, character);
     if (variant) return `${IMAGE_STAGE2}/${variant.slug}.gif`;
   }
   if (stage === 3 && character) {
@@ -34,8 +41,7 @@ function getTokenImage(tokenId, character, stage) {
 
 function buildEvolvedMetadata(tokenId, charName, newStage) {
   if (newStage === 2) {
-    const variants = STAGE2_VARIANTS[charName] || [];
-    const variant  = variants[tokenId % variants.length] || { slug: charName, bg: "Unknown", frame: "Unknown" };
+    const variant  = getStage2Variant(tokenId, charName) || { slug: charName, bg: "Unknown", frame: "Unknown" };
     return {
       name:          `PIXEL TRIP — ${variant.slug.replace(/_/g, " ")} #${tokenId}`,
       description:   "PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey.",

@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Shadow Diva (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Shadow_Diva.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Shadow_Diva.gif",
+  "dna": "bf8c44adee6ce3cab09d09bfbad637c116eac52d",
+  "edition": 0,
+  "date": 1782031104343,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Axis_Spin"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Shadow_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Snow_Static"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

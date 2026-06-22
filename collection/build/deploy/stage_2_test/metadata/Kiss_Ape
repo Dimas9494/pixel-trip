@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Kiss Ape (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Kiss_Ape.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Kiss_Ape.gif",
+  "dna": "841b576a94735cdec963f04f2aa154dab70974e6",
+  "edition": 0,
+  "date": 1782031083672,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Eddy_Field"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Kiss_Ape"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Blizzard_Wall"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

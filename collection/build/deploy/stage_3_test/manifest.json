@@ -1,0 +1,113 @@
+{
+  "type": "stage_test_catalog",
+  "generated_at": "2026-06-21T11:27:29.763186+00:00",
+  "stage": 3,
+  "note": "Test pack — not tied to token IDs. For production burn use upgrade_stage.py --deploy with real edition.",
+  "upload": {
+    "images_folder": "images/",
+    "metadata_folder": "metadata/",
+    "image_base_url": "https://your-domain.com/stage3/test/images",
+    "metadata_base_url": "https://your-domain.com/stage3/test/metadata"
+  },
+  "items": [
+    {
+      "slug": "Full_Cyborg_Hunter",
+      "stage1_character": "Alpine_Hunter",
+      "character": "Full_Cyborg_Hunter",
+      "background": "Frostbite_Mosaic",
+      "frame": "Chrome_Rim",
+      "image_file": "images/Full_Cyborg_Hunter.gif",
+      "metadata_file": "metadata/Full_Cyborg_Hunter",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Cyborg_Hunter.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Cyborg_Hunter"
+    },
+    {
+      "slug": "Full_Golden_Hunter",
+      "stage1_character": "Alpine_Hunter",
+      "character": "Full_Golden_Hunter",
+      "background": "Band_Scroll",
+      "frame": "Axis_Rim",
+      "image_file": "images/Full_Golden_Hunter.gif",
+      "metadata_file": "metadata/Full_Golden_Hunter",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Golden_Hunter.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Golden_Hunter"
+    },
+    {
+      "slug": "Full_Antler_Skull",
+      "stage1_character": "Antler_Skull",
+      "character": "Full_Antler_Skull",
+      "background": "Chromatic_Swell",
+      "frame": "Hue_Rim",
+      "image_file": "images/Full_Antler_Skull.gif",
+      "metadata_file": "metadata/Full_Antler_Skull",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Antler_Skull.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Antler_Skull"
+    },
+    {
+      "slug": "Full_Frog_Hat_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Full_Frog_Hat_Ape",
+      "background": "Vapor_Phase",
+      "frame": "Mint_Bolt",
+      "image_file": "images/Full_Frog_Hat_Ape.gif",
+      "metadata_file": "metadata/Full_Frog_Hat_Ape",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Frog_Hat_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Frog_Hat_Ape"
+    },
+    {
+      "slug": "Full_Green_Neon_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Full_Green_Neon_Ape",
+      "background": "Brick_Mosaic",
+      "frame": "Neon_Bolt",
+      "image_file": "images/Full_Green_Neon_Ape.gif",
+      "metadata_file": "metadata/Full_Green_Neon_Ape",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Green_Neon_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Green_Neon_Ape"
+    },
+    {
+      "slug": "Full_Zombie_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Full_Zombie_Ape",
+      "background": "Grove_Mosaic",
+      "frame": "Band_Rim",
+      "image_file": "images/Full_Zombie_Ape.gif",
+      "metadata_file": "metadata/Full_Zombie_Ape",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Zombie_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Zombie_Ape"
+    },
+    {
+      "slug": "Full_Glitch_Diva",
+      "stage1_character": "Diva",
+      "character": "Full_Glitch_Diva",
+      "background": "Lattice_Lines",
+      "frame": "Pulse_Ring",
+      "image_file": "images/Full_Glitch_Diva.gif",
+      "metadata_file": "metadata/Full_Glitch_Diva",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Glitch_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Glitch_Diva"
+    },
+    {
+      "slug": "Full_Golden_Diva",
+      "stage1_character": "Diva",
+      "character": "Full_Golden_Diva",
+      "background": "Chromatic_Swell",
+      "frame": "Bright_Rim",
+      "image_file": "images/Full_Golden_Diva.gif",
+      "metadata_file": "metadata/Full_Golden_Diva",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Golden_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Golden_Diva"
+    },
+    {
+      "slug": "Full_Rusty_Diva",
+      "stage1_character": "Diva",
+      "character": "Full_Rusty_Diva",
+      "background": "Gem_Perimeter",
+      "frame": "Jet_Rim",
+      "image_file": "images/Full_Rusty_Diva.gif",
+      "metadata_file": "metadata/Full_Rusty_Diva",
+      "image_url": "https://your-domain.com/stage3/test/images/Full_Rusty_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage3/test/metadata/Full_Rusty_Diva"
+    }
+  ]
+}

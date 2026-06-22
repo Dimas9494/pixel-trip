@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Crown Cyclops (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Crown_Cyclops.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Crown_Cyclops.gif",
+  "dna": "079a90194095ecb3a8de2b48c4042fbc0659d7b7",
+  "edition": 0,
+  "date": 1782031092322,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Grid_Tunnel"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Crown_Cyclops"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Checker_Scroll"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

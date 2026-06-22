@@ -1,0 +1,177 @@
+{
+  "52": {
+    "slug": "Astro_Cyclops",
+    "bg": "Facets",
+    "frame": "Deep_Space"
+  },
+  "101": {
+    "slug": "Frog_Hat_Ape",
+    "bg": "Kaleidoscope",
+    "frame": "Rain_Window"
+  },
+  "102": {
+    "slug": "Shadow_Diva",
+    "bg": "Axis_Spin",
+    "frame": "Snow_Static"
+  },
+  "103": {
+    "slug": "Green_Neon_Ape",
+    "bg": "Infinity_Loop",
+    "frame": "Pi_Digits"
+  },
+  "104": {
+    "slug": "Hippie_Ape",
+    "bg": "Facets",
+    "frame": "Phantom_Trace"
+  },
+  "105": {
+    "slug": "Cyborg_Diva",
+    "bg": "Fusion_Meta_Caustic",
+    "frame": "Pink_Glass"
+  },
+  "106": {
+    "slug": "Demon_Diva",
+    "bg": "Waves",
+    "frame": "Chromosome_Paint"
+  },
+  "107": {
+    "slug": "Glitch_Diva",
+    "bg": "Crystal",
+    "frame": "Light_Veil"
+  },
+  "108": {
+    "slug": "Cyborg_Hunter",
+    "bg": "Event_Horizon",
+    "frame": "Color_Wheel_Border"
+  },
+  "109": {
+    "slug": "Ghost_Hunter",
+    "bg": "Water_Gleam",
+    "frame": "Isometric_Grid"
+  },
+  "110": {
+    "slug": "Golden_Hunter",
+    "bg": "Hologram",
+    "frame": "Vine_Creep"
+  },
+  "112": {
+    "slug": "Graph_Hunter",
+    "bg": "Viscous",
+    "frame": "Hex_Grid_Edge"
+  },
+  "113": {
+    "slug": "Kiss_Ape",
+    "bg": "Eddy_Field",
+    "frame": "Blizzard_Wall"
+  },
+  "114": {
+    "slug": "Red_Cap_Ape",
+    "bg": "Kaleidoscope",
+    "frame": "Hourglass_Turn"
+  },
+  "115": {
+    "slug": "Golden_Diva",
+    "bg": "Glitter",
+    "frame": "Mandala_Spin"
+  },
+  "116": {
+    "slug": "Rusty_Diva",
+    "bg": "Blob_Capsule",
+    "frame": "Mandala_Reveal"
+  },
+  "117": {
+    "slug": "Winter_Hunter",
+    "bg": "Plasma_Flow",
+    "frame": "Morse_Sos"
+  },
+  "118": {
+    "slug": "Zombie_Ape",
+    "bg": "Data_Stream",
+    "frame": "Pink_Glass"
+  },
+  "120": {
+    "slug": "Neon_Beard",
+    "bg": "Kaleidoscope",
+    "frame": "Rain_Window"
+  },
+  "121": {
+    "slug": "Crown_Hunter",
+    "bg": "Hologram",
+    "frame": "Vine_Creep"
+  },
+  "122": {
+    "slug": "Zombie_Diva",
+    "bg": "Finale_Cosmos_Waves",
+    "frame": "Sandfall_Cascade"
+  },
+  "123": {
+    "slug": "Neon_Diva",
+    "bg": "Axis_Spin",
+    "frame": "Snow_Static"
+  },
+  "124": {
+    "slug": "Winter_Diva",
+    "bg": "Network",
+    "frame": "Nexus_Pulse"
+  },
+  "125": {
+    "slug": "Crown_Diva",
+    "bg": "Mandala_Spiral",
+    "frame": "Fractal_Edge"
+  },
+  "126": {
+    "slug": "Frost_Hunter",
+    "bg": "Water_Gleam",
+    "frame": "Isometric_Grid"
+  },
+  "127": {
+    "slug": "Winter_Beard",
+    "bg": "Plasma_Flow",
+    "frame": "Morse_Sos"
+  },
+  "128": {
+    "slug": "Frost_Diva",
+    "bg": "Hologram",
+    "frame": "Dust_Orbit"
+  },
+  "129": {
+    "slug": "Cyborg_Beard",
+    "bg": "Viscous",
+    "frame": "Hex_Grid_Edge"
+  },
+  "130": {
+    "slug": "Cyborg_Hunter",
+    "bg": "Event_Horizon",
+    "frame": "Color_Wheel_Border"
+  },
+  "131": {
+    "slug": "Ghost_Hunter",
+    "bg": "Water_Gleam",
+    "frame": "Isometric_Grid"
+  },
+  "132": {
+    "slug": "Shadow_Diva",
+    "bg": "Axis_Spin",
+    "frame": "Snow_Static"
+  },
+  "133": {
+    "slug": "Cyborg_Diva",
+    "bg": "Fusion_Meta_Caustic",
+    "frame": "Pink_Glass"
+  },
+  "134": {
+    "slug": "Demon_Diva",
+    "bg": "Waves",
+    "frame": "Chromosome_Paint"
+  },
+  "135": {
+    "slug": "Glitch_Diva",
+    "bg": "Crystal",
+    "frame": "Light_Veil"
+  },
+  "136": {
+    "slug": "Crown_Beard",
+    "bg": "Hologram",
+    "frame": "Vine_Creep"
+  }
+}

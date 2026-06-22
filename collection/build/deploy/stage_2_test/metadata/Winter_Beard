@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Winter Beard (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Winter_Beard.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Winter_Beard.gif",
+  "dna": "32979f818a17876d245bf5c53ed6a8a2780831a6",
+  "edition": 0,
+  "date": 1782030502078,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Plasma_Flow"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Winter_Beard"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Morse_Sos"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

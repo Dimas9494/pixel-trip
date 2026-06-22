@@ -1,0 +1,13 @@
+{
+  "name": "PIXEL TRIP — Green Neon Ape #103",
+  "description": "PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey.",
+  "image": "https://pixeltripnft.website/Test/stage2/images/Green_Neon_Ape.gif",
+  "animation_url": "https://pixeltripnft.website/Test/stage2/images/Green_Neon_Ape.gif",
+  "external_url": "https://pixeltripnft.website",
+  "attributes": [
+    { "trait_type": "Background", "value": "Infinity_Loop" },
+    { "trait_type": "Character", "value": "Green_Neon_Ape" },
+    { "trait_type": "Frame", "value": "Pi_Digits" },
+    { "trait_type": "Stage", "value": "2" }
+  ]
+}

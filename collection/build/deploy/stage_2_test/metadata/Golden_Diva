@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Golden Diva (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Golden_Diva.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Golden_Diva.gif",
+  "dna": "875cf55dc9402025e40165b907b821112b9a3118",
+  "edition": 0,
+  "date": 1782031113643,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Glitter"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Golden_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Mandala_Spin"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

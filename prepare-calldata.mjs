@@ -26,6 +26,9 @@ const SCAN_TO           = 4444;
 const CONCURRENCY       = 20; // parallel requests
 const SUMMARY_FILE      = join(__dirname, "collection", "build", "collection_summary.json");
 const OUT_FILE          = join(__dirname, "calldata.json");
+const STAGE2_VARIANTS   = JSON.parse(
+  readFileSync(join(__dirname, "website", "src", "burn", "stage2-variants.json"), "utf8")
+);
 
 // ── Load collection summary ───────────────────────────────────────────────────
 
@@ -136,6 +139,28 @@ for (let s = 0; s < charPathIds.length; s += BATCH) {
   });
 }
 
+// ── Stage 2 variant map (copy index per character) ────────────────────────────
+
+const idToCharName = {};
+for (const [name, cid] of Object.entries(charMapObj)) idToCharName[cid] = name;
+
+const tokensByChar = {};
+for (let i = 0; i < tokenIds.length; i++) {
+  const charName = idToCharName[charIds[i]];
+  if (!charName) continue;
+  (tokensByChar[charName] ??= []).push(tokenIds[i]);
+}
+
+const variantMap = {};
+for (const [charName, ids] of Object.entries(tokensByChar)) {
+  const variants = STAGE2_VARIANTS[charName];
+  if (!variants?.length) continue;
+  ids.sort((a, b) => a - b);
+  ids.forEach((id, copyIdx) => {
+    variantMap[id] = variants[copyIdx % variants.length];
+  });
+}
+
 // ── Save + print ──────────────────────────────────────────────────────────────
 
 writeFileSync(OUT_FILE, JSON.stringify({
@@ -146,8 +171,12 @@ writeFileSync(OUT_FILE, JSON.stringify({
 
 writeFileSync(join(__dirname, "char-map.json"), JSON.stringify(charMapObj, null, 2));
 
-const IMAGE_MAP_FILE = join(__dirname, "website", "src", "burn", "image-map.json");
+const IMAGE_MAP_FILE    = join(__dirname, "website", "src", "burn", "image-map.json");
+const VARIANT_MAP_FILE  = join(__dirname, "website", "src", "burn", "variant-map.json");
+const VARIANT_DEPLOY    = join(__dirname, "collection", "build", "deploy", "variant-map.json");
 writeFileSync(IMAGE_MAP_FILE, JSON.stringify(imageMap, null, 2));
+writeFileSync(VARIANT_MAP_FILE, JSON.stringify(variantMap, null, 2));
+writeFileSync(VARIANT_DEPLOY, JSON.stringify(variantMap, null, 2));
 
 console.log("=".repeat(60));
 console.log("REMIX — paste these into EvolvePixelTrip functions");
@@ -169,3 +198,5 @@ pathBatches.forEach((b, i) => {
 
 console.log(`\nSaved: ${OUT_FILE}`);
 console.log(`Saved: ${IMAGE_MAP_FILE} (${Object.keys(imageMap).length} image URLs)`);
+console.log(`Saved: ${VARIANT_MAP_FILE} (${Object.keys(variantMap).length} Stage 2 variants)`);
+console.log(`  #103 → ${variantMap[103]?.slug ?? "?"}`);

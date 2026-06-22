@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Full Glitch Diva (Stage 3 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage3/test/images/Full_Glitch_Diva.gif",
+  "animation_url": "https://your-domain.com/stage3/test/images/Full_Glitch_Diva.gif",
+  "dna": "c97984238dd45c9a0c3cfa5532c3f74e4615709b",
+  "edition": 0,
+  "date": 1782041245460,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Lattice_Lines"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Full_Glitch_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Pulse_Ring"
+    },
+    {
+      "trait_type": "Stage_3",
+      "value": "3"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

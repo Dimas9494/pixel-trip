@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Hippie Ape (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Hippie_Ape.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Hippie_Ape.gif",
+  "dna": "7980b8907948de1a931caf2b151fc75f21f21096",
+  "edition": 0,
+  "date": 1782031081118,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Facets"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Hippie_Ape"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Phantom_Trace"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

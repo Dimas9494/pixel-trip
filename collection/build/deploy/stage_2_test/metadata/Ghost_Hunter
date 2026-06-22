@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Ghost Hunter (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Ghost_Hunter.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Ghost_Hunter.gif",
+  "dna": "4142a15a6c4cbb06b92f5ff9cbc91cec32a59ceb",
+  "edition": 0,
+  "date": 1782031066317,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Water_Gleam"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Ghost_Hunter"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Isometric_Grid"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

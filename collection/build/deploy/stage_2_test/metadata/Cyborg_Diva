@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Cyborg Diva (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Cyborg_Diva.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Cyborg_Diva.gif",
+  "dna": "12a089d257a44e93bbde4c16ce723a41c11e70c0",
+  "edition": 0,
+  "date": 1782031106269,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Fusion_Meta_Caustic"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cyborg_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Pink_Glass"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

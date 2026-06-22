@@ -21,6 +21,7 @@ define('RPC_URL',         'https://ethereum-rpc.publicnode.com');
 define('METADATA_DIR',    __DIR__ . '/metadata/');
 define('IMAGE_STAGE2',    'https://pixeltripnft.website/Test/stage2/images');
 define('IMAGE_STAGE3',    'https://pixeltripnft.website/Test/stage3/images');
+define('VARIANT_MAP_FILE', __DIR__ . '/variant-map.json');
 
 // Health check: GET /update-metadata.php?health=1
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['health'])) {
@@ -161,7 +162,12 @@ if ($newStage === 2) {
         echo json_encode(['error' => "No variants for character: $charName"]);
         exit;
     }
-    $variant     = $variants[$tokenId % count($variants)];
+
+    $variantMap = [];
+    if (file_exists(VARIANT_MAP_FILE)) {
+        $variantMap = json_decode(file_get_contents(VARIANT_MAP_FILE), true) ?: [];
+    }
+    $variant = $variantMap[(string)$tokenId] ?? $variants[$tokenId % count($variants)];
     $displayName = str_replace('_', ' ', $variant['slug']);
     $metadata    = [
         'name'          => "PIXEL TRIP — $displayName #$tokenId",

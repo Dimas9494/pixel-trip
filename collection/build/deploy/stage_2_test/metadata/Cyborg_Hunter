@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Cyborg Hunter (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Cyborg_Hunter.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Cyborg_Hunter.gif",
+  "dna": "86d9a5cac77c6be03af81a9ce99556f810d5b737",
+  "edition": 0,
+  "date": 1782031064400,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Event_Horizon"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cyborg_Hunter"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Color_Wheel_Border"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

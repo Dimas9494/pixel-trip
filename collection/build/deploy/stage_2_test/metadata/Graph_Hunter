@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Graph Hunter (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Graph_Hunter.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Graph_Hunter.gif",
+  "dna": "09565447f142284f4886f36d250fb29365c65f39",
+  "edition": 0,
+  "date": 1782031070634,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Viscous"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Graph_Hunter"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Hex_Grid_Edge"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

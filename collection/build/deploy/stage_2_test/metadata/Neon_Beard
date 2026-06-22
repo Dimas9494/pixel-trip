@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Neon Beard (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Neon_Beard.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Neon_Beard.gif",
+  "dna": "00c3b8299b43966dd51a1bfb7e23d57ea75826ba",
+  "edition": 0,
+  "date": 1782030504613,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Kaleidoscope"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Neon_Beard"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Rain_Window"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

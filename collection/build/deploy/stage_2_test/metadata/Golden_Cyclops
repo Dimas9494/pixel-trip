@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Golden Cyclops (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Golden_Cyclops.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Golden_Cyclops.gif",
+  "dna": "a41ab4520a5074829ba342163c594269d77aafb6",
+  "edition": 0,
+  "date": 1782031094269,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Wave_Moire"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Golden_Cyclops"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Isometric_Grid"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

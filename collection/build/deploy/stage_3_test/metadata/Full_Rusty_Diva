@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Full Rusty Diva (Stage 3 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage3/test/images/Full_Rusty_Diva.gif",
+  "animation_url": "https://your-domain.com/stage3/test/images/Full_Rusty_Diva.gif",
+  "dna": "1fabc9159aafe84ecc317065a0f26b566c52b063",
+  "edition": 0,
+  "date": 1782041249754,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Gem_Perimeter"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Full_Rusty_Diva"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Jet_Rim"
+    },
+    {
+      "trait_type": "Stage_3",
+      "value": "3"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

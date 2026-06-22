@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Winter Cyclops (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Winter_Cyclops.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Winter_Cyclops.gif",
+  "dna": "07caca2a2690f45ea96ac748666e4ba868008fc9",
+  "edition": 0,
+  "date": 1782030516528,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Data_Stream"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Winter_Cyclops"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Pink_Glass"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

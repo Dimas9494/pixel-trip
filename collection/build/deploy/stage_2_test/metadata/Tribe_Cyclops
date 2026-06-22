@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Tribe Cyclops (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Tribe_Cyclops.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Tribe_Cyclops.gif",
+  "dna": "4e9b461111e272da658e0230c35dce618757a9e7",
+  "edition": 0,
+  "date": 1782031100496,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Waves"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Tribe_Cyclops"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Time_Loop_Scar"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

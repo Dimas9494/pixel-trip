@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Full Golden Hunter (Stage 3 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage3/test/images/Full_Golden_Hunter.gif",
+  "animation_url": "https://your-domain.com/stage3/test/images/Full_Golden_Hunter.gif",
+  "dna": "af36da74dd7086a332e544d30a763c0f5daf69fe",
+  "edition": 0,
+  "date": 1782041238777,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Band_Scroll"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Full_Golden_Hunter"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Axis_Rim"
+    },
+    {
+      "trait_type": "Stage_3",
+      "value": "3"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

@@ -1,0 +1,289 @@
+{
+  "type": "stage_test_catalog",
+  "generated_at": "2026-06-21T08:38:40.082175+00:00",
+  "stage": 2,
+  "note": "Test pack — not tied to token IDs. For production burn use upgrade_stage.py --deploy with real edition.",
+  "upload": {
+    "images_folder": "images/",
+    "metadata_folder": "metadata/",
+    "image_base_url": "https://your-domain.com/stage2/test/images",
+    "metadata_base_url": "https://your-domain.com/stage2/test/metadata"
+  },
+  "items": [
+    {
+      "slug": "Cyborg_Hunter",
+      "stage1_character": "Alpine_Hunter",
+      "character": "Cyborg_Hunter",
+      "background": "Event_Horizon",
+      "frame": "Color_Wheel_Border",
+      "image_file": "images/Cyborg_Hunter.gif",
+      "metadata_file": "metadata/Cyborg_Hunter",
+      "image_url": "https://your-domain.com/stage2/test/images/Cyborg_Hunter.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Cyborg_Hunter"
+    },
+    {
+      "slug": "Ghost_Hunter",
+      "stage1_character": "Alpine_Hunter",
+      "character": "Ghost_Hunter",
+      "background": "Water_Gleam",
+      "frame": "Isometric_Grid",
+      "image_file": "images/Ghost_Hunter.gif",
+      "metadata_file": "metadata/Ghost_Hunter",
+      "image_url": "https://your-domain.com/stage2/test/images/Ghost_Hunter.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Ghost_Hunter"
+    },
+    {
+      "slug": "Golden_Hunter",
+      "stage1_character": "Alpine_Hunter",
+      "character": "Golden_Hunter",
+      "background": "Hologram",
+      "frame": "Vine_Creep",
+      "image_file": "images/Golden_Hunter.gif",
+      "metadata_file": "metadata/Golden_Hunter",
+      "image_url": "https://your-domain.com/stage2/test/images/Golden_Hunter.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Golden_Hunter"
+    },
+    {
+      "slug": "Graph_Hunter",
+      "stage1_character": "Alpine_Hunter",
+      "character": "Graph_Hunter",
+      "background": "Viscous",
+      "frame": "Hex_Grid_Edge",
+      "image_file": "images/Graph_Hunter.gif",
+      "metadata_file": "metadata/Graph_Hunter",
+      "image_url": "https://your-domain.com/stage2/test/images/Graph_Hunter.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Graph_Hunter"
+    },
+    {
+      "slug": "Winter_Hunter",
+      "stage1_character": "Alpine_Hunter",
+      "character": "Winter_Hunter",
+      "background": "Plasma_Flow",
+      "frame": "Morse_Sos",
+      "image_file": "images/Winter_Hunter.gif",
+      "metadata_file": "metadata/Winter_Hunter",
+      "image_url": "https://your-domain.com/stage2/test/images/Winter_Hunter.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Winter_Hunter"
+    },
+    {
+      "slug": "Frog_Hat_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Frog_Hat_Ape",
+      "background": "Kaleidoscope",
+      "frame": "Rain_Window",
+      "image_file": "images/Frog_Hat_Ape.gif",
+      "metadata_file": "metadata/Frog_Hat_Ape",
+      "image_url": "https://your-domain.com/stage2/test/images/Frog_Hat_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Frog_Hat_Ape"
+    },
+    {
+      "slug": "Green_Neon_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Green_Neon_Ape",
+      "background": "Infinity_Loop",
+      "frame": "Pi_Digits",
+      "image_file": "images/Green_Neon_Ape.gif",
+      "metadata_file": "metadata/Green_Neon_Ape",
+      "image_url": "https://your-domain.com/stage2/test/images/Green_Neon_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Green_Neon_Ape"
+    },
+    {
+      "slug": "Hippie_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Hippie_Ape",
+      "background": "Facets",
+      "frame": "Phantom_Trace",
+      "image_file": "images/Hippie_Ape.gif",
+      "metadata_file": "metadata/Hippie_Ape",
+      "image_url": "https://your-domain.com/stage2/test/images/Hippie_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Hippie_Ape"
+    },
+    {
+      "slug": "Kiss_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Kiss_Ape",
+      "background": "Eddy_Field",
+      "frame": "Blizzard_Wall",
+      "image_file": "images/Kiss_Ape.gif",
+      "metadata_file": "metadata/Kiss_Ape",
+      "image_url": "https://your-domain.com/stage2/test/images/Kiss_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Kiss_Ape"
+    },
+    {
+      "slug": "Red_Cap_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Red_Cap_Ape",
+      "background": "Kaleidoscope",
+      "frame": "Hourglass_Turn",
+      "image_file": "images/Red_Cap_Ape.gif",
+      "metadata_file": "metadata/Red_Cap_Ape",
+      "image_url": "https://your-domain.com/stage2/test/images/Red_Cap_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Red_Cap_Ape"
+    },
+    {
+      "slug": "Zombie_Ape",
+      "stage1_character": "Ape_Beard",
+      "character": "Zombie_Ape",
+      "background": "Data_Stream",
+      "frame": "Pink_Glass",
+      "image_file": "images/Zombie_Ape.gif",
+      "metadata_file": "metadata/Zombie_Ape",
+      "image_url": "https://your-domain.com/stage2/test/images/Zombie_Ape.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Zombie_Ape"
+    },
+    {
+      "slug": "Astro_Cyclops",
+      "stage1_character": "Beanie_Cyclops",
+      "character": "Astro_Cyclops",
+      "background": "Facets",
+      "frame": "Deep_Space",
+      "image_file": "images/Astro_Cyclops.gif",
+      "metadata_file": "metadata/Astro_Cyclops",
+      "image_url": "https://your-domain.com/stage2/test/images/Astro_Cyclops.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Astro_Cyclops"
+    },
+    {
+      "slug": "Crown_Cyclops",
+      "stage1_character": "Beanie_Cyclops",
+      "character": "Crown_Cyclops",
+      "background": "Grid_Tunnel",
+      "frame": "Checker_Scroll",
+      "image_file": "images/Crown_Cyclops.gif",
+      "metadata_file": "metadata/Crown_Cyclops",
+      "image_url": "https://your-domain.com/stage2/test/images/Crown_Cyclops.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Crown_Cyclops"
+    },
+    {
+      "slug": "Golden_Cyclops",
+      "stage1_character": "Beanie_Cyclops",
+      "character": "Golden_Cyclops",
+      "background": "Wave_Moire",
+      "frame": "Isometric_Grid",
+      "image_file": "images/Golden_Cyclops.gif",
+      "metadata_file": "metadata/Golden_Cyclops",
+      "image_url": "https://your-domain.com/stage2/test/images/Golden_Cyclops.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Golden_Cyclops"
+    },
+    {
+      "slug": "Mohawk_Cyclops",
+      "stage1_character": "Beanie_Cyclops",
+      "character": "Mohawk_Cyclops",
+      "background": "Hologram",
+      "frame": "Dust_Orbit",
+      "image_file": "images/Mohawk_Cyclops.gif",
+      "metadata_file": "metadata/Mohawk_Cyclops",
+      "image_url": "https://your-domain.com/stage2/test/images/Mohawk_Cyclops.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Mohawk_Cyclops"
+    },
+    {
+      "slug": "Respirator_Cyclops",
+      "stage1_character": "Beanie_Cyclops",
+      "character": "Respirator_Cyclops",
+      "background": "Mandala_Spiral",
+      "frame": "Fractal_Edge",
+      "image_file": "images/Respirator_Cyclops.gif",
+      "metadata_file": "metadata/Respirator_Cyclops",
+      "image_url": "https://your-domain.com/stage2/test/images/Respirator_Cyclops.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Respirator_Cyclops"
+    },
+    {
+      "slug": "Tribe_Cyclops",
+      "stage1_character": "Beanie_Cyclops",
+      "character": "Tribe_Cyclops",
+      "background": "Waves",
+      "frame": "Time_Loop_Scar",
+      "image_file": "images/Tribe_Cyclops.gif",
+      "metadata_file": "metadata/Tribe_Cyclops",
+      "image_url": "https://your-domain.com/stage2/test/images/Tribe_Cyclops.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Tribe_Cyclops"
+    },
+    {
+      "slug": "Viking_Cyclops",
+      "stage1_character": "Beanie_Cyclops",
+      "character": "Viking_Cyclops",
+      "background": "Network",
+      "frame": "Nexus_Pulse",
+      "image_file": "images/Viking_Cyclops.gif",
+      "metadata_file": "metadata/Viking_Cyclops",
+      "image_url": "https://your-domain.com/stage2/test/images/Viking_Cyclops.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Viking_Cyclops"
+    },
+    {
+      "slug": "Shadow_Diva",
+      "stage1_character": "Diva",
+      "character": "Shadow_Diva",
+      "background": "Axis_Spin",
+      "frame": "Snow_Static",
+      "image_file": "images/Shadow_Diva.gif",
+      "metadata_file": "metadata/Shadow_Diva",
+      "image_url": "https://your-domain.com/stage2/test/images/Shadow_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Shadow_Diva"
+    },
+    {
+      "slug": "Cyborg_Diva",
+      "stage1_character": "Diva",
+      "character": "Cyborg_Diva",
+      "background": "Fusion_Meta_Caustic",
+      "frame": "Pink_Glass",
+      "image_file": "images/Cyborg_Diva.gif",
+      "metadata_file": "metadata/Cyborg_Diva",
+      "image_url": "https://your-domain.com/stage2/test/images/Cyborg_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Cyborg_Diva"
+    },
+    {
+      "slug": "Demon_Diva",
+      "stage1_character": "Diva",
+      "character": "Demon_Diva",
+      "background": "Waves",
+      "frame": "Chromosome_Paint",
+      "image_file": "images/Demon_Diva.gif",
+      "metadata_file": "metadata/Demon_Diva",
+      "image_url": "https://your-domain.com/stage2/test/images/Demon_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Demon_Diva"
+    },
+    {
+      "slug": "Glitch_Diva",
+      "stage1_character": "Diva",
+      "character": "Glitch_Diva",
+      "background": "Crystal",
+      "frame": "Light_Veil",
+      "image_file": "images/Glitch_Diva.gif",
+      "metadata_file": "metadata/Glitch_Diva",
+      "image_url": "https://your-domain.com/stage2/test/images/Glitch_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Glitch_Diva"
+    },
+    {
+      "slug": "Golden_Diva",
+      "stage1_character": "Diva",
+      "character": "Golden_Diva",
+      "background": "Glitter",
+      "frame": "Mandala_Spin",
+      "image_file": "images/Golden_Diva.gif",
+      "metadata_file": "metadata/Golden_Diva",
+      "image_url": "https://your-domain.com/stage2/test/images/Golden_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Golden_Diva"
+    },
+    {
+      "slug": "Rusty_Diva",
+      "stage1_character": "Diva",
+      "character": "Rusty_Diva",
+      "background": "Blob_Capsule",
+      "frame": "Mandala_Reveal",
+      "image_file": "images/Rusty_Diva.gif",
+      "metadata_file": "metadata/Rusty_Diva",
+      "image_url": "https://your-domain.com/stage2/test/images/Rusty_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Rusty_Diva"
+    },
+    {
+      "slug": "Zombie_Diva",
+      "stage1_character": "Diva",
+      "character": "Zombie_Diva",
+      "background": "Finale_Cosmos_Waves",
+      "frame": "Sandfall_Cascade",
+      "image_file": "images/Zombie_Diva.gif",
+      "metadata_file": "metadata/Zombie_Diva",
+      "image_url": "https://your-domain.com/stage2/test/images/Zombie_Diva.gif",
+      "metadata_url": "https://your-domain.com/stage2/test/metadata/Zombie_Diva"
+    }
+  ]
+}

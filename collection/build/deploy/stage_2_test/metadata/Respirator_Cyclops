@@ -1,0 +1,28 @@
+{
+  "name": "PIXEL TRIP — Respirator Cyclops (Stage 2 Test)",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
+  "image": "https://your-domain.com/stage2/test/images/Respirator_Cyclops.gif",
+  "animation_url": "https://your-domain.com/stage2/test/images/Respirator_Cyclops.gif",
+  "dna": "300d5dff99f01f80b5a380e594d104371b7741bf",
+  "edition": 0,
+  "date": 1782031098072,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Mandala_Spiral"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Respirator_Cyclops"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Fractal_Edge"
+    },
+    {
+      "trait_type": "Stage_2",
+      "value": "2"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}
