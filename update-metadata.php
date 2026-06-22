@@ -281,6 +281,11 @@ function resolveStage3Variant(
     $maps     = loadStage3Maps();
     $variants = $STAGE2_VARIANTS[$charName] ?? [];
 
+    // DirectToS3 characters (e.g. Antler_Skull): no Stage 2 line — one Full_* per character
+    if (empty($variants) && isset($maps['defaultByChar'][$charName])) {
+        return $maps['defaultByChar'][$charName];
+    }
+
     $s2 = resolveStage2Variant($tokenId, $charName, $STAGE2_VARIANTS, $assignments, false, $excludeTokenId);
     if ($s2) {
         $s3 = getStage3VariantFromS2($s2, $charName);

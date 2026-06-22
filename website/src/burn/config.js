@@ -32,6 +32,12 @@ export const BURNABLE_CHARS = new Set([
   "Beanie_Cyclops",
   "Diva",
   "Alpine_Hunter",
+  "Antler_Skull",
+]);
+
+/** 2× Stage 1 → Stage 3 directly (no Stage 2). Matches EvolvePixelTrip EvoPath.DirectToS3 */
+export const DIRECT_TO_S3_CHARS = new Set([
+  "Antler_Skull",
 ]);
 
 import STAGE2_VARIANTS_JSON from "./stage2-variants.json";

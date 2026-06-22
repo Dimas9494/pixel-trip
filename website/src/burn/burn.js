@@ -11,6 +11,7 @@ import {
   STAGE1_ABI,
   EVOLVE_ABI,
   BURNABLE_CHARS,
+  DIRECT_TO_S3_CHARS,
   CHAR_ID_TO_NAME,
   STAGE2_VARIANTS,
   SCAN_MAX_ID,
@@ -106,6 +107,26 @@ function getStage3Variant(tokenId, character, stage = 0) {
   return getStage3ForCharacter(character);
 }
 
+function isDirectToS3Char(character) {
+  return DIRECT_TO_S3_CHARS.has(character);
+}
+
+function targetStageLabel(character, currentStage) {
+  if (currentStage === 2) return "Stage 3";
+  if (currentStage === 0 && isDirectToS3Char(character)) return "Stage 3";
+  return "Stage 2";
+}
+
+function evolvePreviewVariant(tokenId, character, stage) {
+  if (stage === 0 && isDirectToS3Char(character)) {
+    return getStage3ForCharacter(character);
+  }
+  if (stage === 0) {
+    return resolveStage2Variant(tokenId, character, tokenId);
+  }
+  return getStage3Variant(tokenId, character, stage);
+}
+
 function canEvolveToStage3(tokenId, character, stage) {
   return stage === 2 && BURNABLE_CHARS.has(character) && !!getStage3ForCharacter(character);
 }
@@ -119,6 +140,9 @@ function tokenLabFlags(tokenId, character, stage) {
     return { canEvolve: false, viewReason: "maxed" };
   }
   if (stage === 0) {
+    if (isDirectToS3Char(character) && !getStage3ForCharacter(character)) {
+      return { canEvolve: false, viewReason: "no_s3" };
+    }
     return { canEvolve: true, viewReason: null };
   }
   if (stage === 2) {
@@ -215,8 +239,13 @@ function parseMetaVariant(meta) {
     if (a.trait_type === "Frame") frame = a.value;
     if (a.trait_type === "Stage") stage = Number(a.value);
   }
-  if (stage >= 2 && slug && isValidCatalogSlug(slug)) {
-    return { slug, bg: bg || "Unknown", frame: frame || "Unknown", stage };
+  if (stage >= 2 && slug) {
+    if (stage >= 3) {
+      return { slug, bg: bg || "Unknown", frame: frame || "Unknown", stage };
+    }
+    if (isValidCatalogSlug(slug)) {
+      return { slug, bg: bg || "Unknown", frame: frame || "Unknown", stage };
+    }
   }
   return null;
 }
@@ -629,6 +658,7 @@ function renderGrid() {
 
     const stageColor = STAGE_COLOR[token.stage] ?? "#fff";
     const roleLabel  = isKeep ? "⬆ KEEP" : isBurn ? "🔥 BURN" : "";
+    const directNote = token.stage === 0 && isDirectToS3Char(token.character) ? " · S1→S3" : "";
     const lockedNote = !token.canEvolve
       ? token.viewReason === "not_burnable" ? " · other char"
         : token.viewReason === "maxed"      ? ""
@@ -646,7 +676,7 @@ function renderGrid() {
       }
       <span class="burn-token-id">#${token.tokenId}</span>
       <span class="burn-token-meta">${variantLabel || token.character || token.name}</span>
-      <span class="burn-token-level" style="color:${stageColor}">${STAGE_LABEL[token.stage] ?? `Stage ${token.stage}`}${lockedNote}</span>
+      <span class="burn-token-level" style="color:${stageColor}">${STAGE_LABEL[token.stage] ?? `Stage ${token.stage}`}${directNote}${lockedNote}</span>
       ${roleLabel ? `<span class="burn-token-role">${roleLabel}</span>` : ""}
     `;
 
@@ -666,7 +696,7 @@ function renderGrid() {
 function toggleSelect(token) {
   if (!token.canEvolve) {
     const msg = {
-      not_burnable: `#${token.tokenId} (${token.character}) — not in the burn program (Ape_Beard, Beanie_Cyclops, Diva, Alpine_Hunter).`,
+      not_burnable: `#${token.tokenId} (${token.character}) — not in the burn program.`,
       no_s3:        `#${token.tokenId} — Stage 3 art not uploaded yet for ${token.character}.`,
       maxed:        `#${token.tokenId} is fully evolved (Stage 3).`,
       unknown_stage:`#${token.tokenId} — cannot evolve from current stage.`,
@@ -701,10 +731,8 @@ function toggleSelect(token) {
       els.evolve.disabled = true;
       return;
     }
-    const nextStage = keepToken.stage === 0 ? "Stage 2" : "Stage 3";
-    const preview   = keepToken.stage === 0
-      ? resolveStage2Variant(keepToken.tokenId, keepToken.character, keepToken.tokenId)
-      : getStage3Variant(keepToken.tokenId, keepToken.character, 2);
+    const nextStage = targetStageLabel(keepToken.character, keepToken.stage);
+    const preview   = evolvePreviewVariant(keepToken.tokenId, keepToken.character, keepToken.stage);
     setMessage(
       `Ready! #${keepToken.tokenId} → ${nextStage}` +
       (preview ? ` (${preview.slug.replace(/_/g, " ")})` : "") +
@@ -727,6 +755,9 @@ function validateSelection() {
     return `Stage mismatch: keep is Stage ${keepToken.stage === 0 ? 1 : keepToken.stage}, burn is Stage ${burnToken.stage === 0 ? 1 : burnToken.stage}.`;
   if (keepToken.character && burnToken.character && keepToken.character !== burnToken.character)
     return `Character mismatch: "${keepToken.character}" vs "${burnToken.character}". Both must be the same character.`;
+  if (keepToken.stage === 0 && isDirectToS3Char(keepToken.character) && !getStage3ForCharacter(keepToken.character)) {
+    return `No Stage 3 art uploaded for ${keepToken.character}.`;
+  }
   if (keepToken.stage === 2 && !canEvolveToStage3(keepToken.tokenId, keepToken.character, 2))
     return `No Stage 3 art yet for ${keepToken.character}. Upload one Full_* GIF for this character line.`;
   return null;
