@@ -1,0 +1,15 @@
+{
+  "fromStage2Slug": {
+    "Cyborg_Hunter":  { "slug": "Full_Cyborg_Hunter",  "bg": "Frostbite_Mosaic", "frame": "Chrome_Rim" },
+    "Golden_Hunter":  { "slug": "Full_Golden_Hunter",  "bg": "Band_Scroll",      "frame": "Axis_Rim" },
+    "Golden_Diva":    { "slug": "Full_Golden_Diva",    "bg": "Chromatic_Swell",  "frame": "Bright_Rim" },
+    "Green_Neon_Ape": { "slug": "Full_Green_Neon_Ape", "bg": "Brick_Mosaic",     "frame": "Neon_Bolt" },
+    "Frog_Hat_Ape":   { "slug": "Full_Frog_Hat_Ape",   "bg": "Vapor_Phase",      "frame": "Mint_Bolt" },
+    "Zombie_Ape":     { "slug": "Full_Zombie_Ape",     "bg": "Grove_Mosaic",     "frame": "Band_Rim" },
+    "Glitch_Diva":    { "slug": "Full_Glitch_Diva",    "bg": "Lattice_Lines",    "frame": "Pulse_Ring" },
+    "Rusty_Diva":     { "slug": "Full_Rusty_Diva",     "bg": "Gem_Perimeter",    "frame": "Jet_Rim" }
+  },
+  "defaultByChar": {
+    "Antler_Skull": { "slug": "Full_Antler_Skull", "bg": "Chromatic_Swell", "frame": "Hue_Rim" }
+  }
+}
