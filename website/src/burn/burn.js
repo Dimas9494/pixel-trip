@@ -163,25 +163,37 @@ async function ensureMainnet() {
 // ── Token discovery ───────────────────────────────────────────────────────────
 
 async function getOwnedIds() {
-  setMessage("Scanning wallet… (~5 sec)", "info");
+  setMessage("Scanning wallet… (~10 sec)", "info");
 
-  // multicall3: all ownerOf calls in ONE eth_call
-  const MAX_ID  = 4443;
-  const contracts = Array.from({ length: MAX_ID + 1 }, (_, i) => ({
-    address: STAGE1_ADDRESS,
-    abi:     STAGE1_ABI,
-    functionName: "ownerOf",
-    args:    [BigInt(i)],
-  }));
+  const MAX_ID = 4443;
+  const CHUNK  = 800; // split into batches to avoid wallet provider limits
+  const owned  = [];
 
-  const results = await publicClient.multicall({ contracts, allowFailure: true });
-  const owned   = [];
-  for (let i = 0; i <= MAX_ID; i++) {
-    const r = results[i];
-    if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
-      owned.push(i);
+  for (let start = 0; start <= MAX_ID; start += CHUNK) {
+    const end       = Math.min(start + CHUNK - 1, MAX_ID);
+    const contracts = Array.from({ length: end - start + 1 }, (_, i) => ({
+      address: STAGE1_ADDRESS,
+      abi:     STAGE1_ABI,
+      functionName: "ownerOf",
+      args:    [BigInt(start + i)],
+    }));
+
+    try {
+      const results = await publicClient.multicall({ contracts, allowFailure: true });
+      for (let i = 0; i < results.length; i++) {
+        const r = results[i];
+        if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
+          owned.push(start + i);
+        }
+      }
+    } catch (err) {
+      console.warn(`[scan] batch ${start}-${end} failed:`, err.message);
     }
+
+    setMessage(`Scanning wallet… (${Math.min(end + 1, MAX_ID + 1)}/${MAX_ID + 1})`, "info");
   }
+
+  console.log(`[scan] Owned token IDs (${owned.length}):`, owned);
   return owned;
 }
 
@@ -210,11 +222,13 @@ async function loadTokens() {
           }) : Promise.resolve(0),
         ]);
 
-        const character = CHAR_ID_TO_NAME[Number(charId)] || null;
+        const character    = CHAR_ID_TO_NAME[Number(charId)] || null;
+        const currentStage = Number(stage);
+
+        console.log(`[token] #${id} charId=${charId} char=${character || "unknown"} stage=${currentStage} burnable=${BURNABLE_CHARS.has(character)}`);
 
         // Only show tokens that are burnable (have Stage 2 art) OR already evolved
-        const currentStage = Number(stage);
-        if (currentStage === 0 && character && !BURNABLE_CHARS.has(character)) return null;
+        if (currentStage === 0 && !BURNABLE_CHARS.has(character)) return null;
 
         return {
           tokenId:   id,
@@ -223,7 +237,10 @@ async function loadTokens() {
           name:      `#${id}${character ? ` ${character}` : ""}`,
           image:     `https://pixeltripnft.website/Test/images/${id}.gif`,
         };
-      } catch { return null; }
+      } catch (e) {
+        console.warn(`[token] #${id} read failed:`, e.message);
+        return null;
+      }
     }));
 
     for (const r of results) if (r) tokens.push(r);
@@ -241,7 +258,16 @@ async function loadTokens() {
   updateEvolveButton();
 
   if (!tokens.length) {
-    setMessage("No evolvable travelers found.");
+    if (!ownedIds.length) {
+      setMessage("No tokens found in this wallet on Ethereum Mainnet.", "error");
+    } else {
+      setMessage(
+        `${ownedIds.length} token(s) found, but none are currently evolvable. ` +
+        `(Only characters with Stage 2 art are shown: Ape_Beard, Beanie_Cyclops, Diva, Alpine_Hunter.) ` +
+        `Check console for details.`,
+        "info"
+      );
+    }
   } else {
     setMessage(`${tokens.length} traveler(s) found. Select 2 of the same character — first selected will be upgraded.`);
   }
