@@ -321,6 +321,137 @@ img {
   margin-right: 0.35rem;
 }
 
+.preview-teaser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.preview-teaser-cards {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.preview-teaser-q {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 2px dashed var(--border);
+  background: var(--panel);
+  font-family: var(--pixel);
+  font-size: 1.25rem;
+  color: var(--yellow);
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+}
+
+.preview-page {
+  padding-top: 2rem;
+}
+
+.preview-counter {
+  margin: 0.5rem 0 0;
+  font-family: var(--pixel);
+  font-size: 0.45rem;
+  color: var(--cyan);
+  letter-spacing: 0.04em;
+}
+
+.preview-mystery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.preview-mystery {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.preview-mystery:hover {
+  border-color: var(--cyan);
+  transform: translateY(-3px);
+}
+
+.preview-mystery.is-revealed {
+  border-color: var(--magenta);
+  box-shadow: 0 0 20px rgba(255, 43, 214, 0.2);
+  cursor: default;
+}
+
+.preview-mystery-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(145deg, #12182a 0%, #0a0e18 100%);
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.preview-mystery.is-revealed .preview-mystery-cover {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preview-mystery-q {
+  font-family: var(--pixel);
+  font-size: 2rem;
+  color: var(--yellow);
+  text-shadow: 0 0 16px rgba(255, 215, 0, 0.45);
+}
+
+.preview-mystery-hint {
+  font-size: 0.95rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.preview-mystery-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.preview-mystery-label {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.preview-mystery.is-revealed .preview-mystery-label {
+  color: var(--text);
+}
+
+.preview-footnote {
+  margin: 1.5rem auto 0;
+  max-width: 36rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
 .burn-lead {
   max-width: 42rem;
   font-size: 1.15rem;
@@ -809,6 +940,7 @@ img {
 
   .layers,
   .preview-grid,
+  .preview-mystery-grid,
   .burn-mechanics {
     grid-template-columns: 1fr;
   }
@@ -827,7 +959,8 @@ img {
 }
 
 @media (max-width: 520px) {
-  .preview-grid {
+  .preview-grid,
+  .preview-mystery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview — PIXEL TRIP</title>
+    <meta
+      name="description"
+      content="Reveal hidden PIXEL TRIP trippers — click the mystery cards to preview animated portraits."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="logo" href="/">PIXEL TRIP</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/#about">About</a>
+        <a href="/preview.html" aria-current="page">Preview</a>
+        <a href="/burn.html">Evolution Lab</a>
+        <a href="/#mint">Mint</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href="/#mint">Soon</a>
+    </header>
+
+    <main id="top">
+      <section class="section preview-page">
+        <div class="section-head">
+          <span class="kicker">Preview</span>
+          <h2>Reveal the trippers</h2>
+          <p class="sub">
+            Click a mystery card to unveil a portrait. Full collection goes live on OpenSea after mint.
+          </p>
+          <p class="preview-counter" id="preview-revealed-count">0 / 0 revealed</p>
+        </div>
+
+        <div class="preview-mystery-grid" id="preview-mystery-grid"></div>
+
+        <p class="preview-footnote">
+          Reveals reset when you close the browser tab. More trippers unlock after mint.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>PIXEL TRIP © 2026</span>
+      <a href="/">Back to home</a>
+    </footer>
+
+    <script type="module" src="/src/preview/preview.js"></script>
+  </body>
+</html>

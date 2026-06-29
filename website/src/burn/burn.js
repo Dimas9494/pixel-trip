@@ -306,7 +306,7 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
     const variant = getStage3Variant(tokenId, charName, 3) || { slug: charName, bg: "Unknown", frame: "Unknown" };
     return {
       name:          `PIXEL TRIP — ${variant.slug.replace(/_/g, " ")} #${tokenId}`,
-      description:   "PIXEL TRIP — A fully ascended traveler. Reached Stage 3 through the burn-to-evolve journey.",
+      description:   "PIXEL TRIP — A fully ascended tripper. Reached Stage 3 through the burn-to-evolve journey.",
       image:         `${IMAGE_STAGE3}/${variant.slug}.gif`,
       animation_url: `${IMAGE_STAGE3}/${variant.slug}.gif`,
       external_url:  "https://pixeltripnft.website",
@@ -520,7 +520,7 @@ async function getOwnedIds() {
 }
 
 async function loadTokens() {
-  setMessage("Loading your travelers…", "info");
+  setMessage("Loading your trippers…", "info");
 
   const ownedIds = await getOwnedIds();
   lastOwnedCount = ownedIds.length;
@@ -597,7 +597,7 @@ async function loadTokens() {
       setMessage("No tokens found in this wallet on Ethereum Mainnet.", "error");
     } else {
       setMessage(
-        `${ownedIds.length} token(s) in wallet, but none are burnable travelers ` +
+        `${ownedIds.length} token(s) in wallet, but none are burnable trippers ` +
         `(Ape_Beard, Beanie_Cyclops, Diva, Alpine_Hunter at Stage 1–3). ` +
         `Check console for details.`,
         "info"
@@ -640,7 +640,7 @@ const STAGE_COLOR = { 0: "#00e5ff", 2: "#ff2bd6", 3: "#ffd700" };
 function renderGrid() {
   if (!els.grid) return;
   if (!tokens.length) {
-    els.grid.innerHTML = `<p class="burn-empty">No evolveable travelers in this wallet.</p>`;
+    els.grid.innerHTML = `<p class="burn-empty">No evolveable trippers in this wallet.</p>`;
     return;
   }
 
@@ -750,7 +750,7 @@ function toggleSelect(token) {
 }
 
 function validateSelection() {
-  if (!keepToken || !burnToken) return "Select 2 travelers.";
+  if (!keepToken || !burnToken) return "Select 2 trippers.";
   if (keepToken.stage !== burnToken.stage)
     return `Stage mismatch: keep is Stage ${keepToken.stage === 0 ? 1 : keepToken.stage}, burn is Stage ${burnToken.stage === 0 ? 1 : burnToken.stage}.`;
   if (keepToken.character && burnToken.character && keepToken.character !== burnToken.character)

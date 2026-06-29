@@ -68,6 +68,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, "index.html"),
         burn: path.resolve(__dirname, "burn.html"),
+        preview: path.resolve(__dirname, "preview.html"),
       },
       external: ["viem", "viem/chains"],
     },

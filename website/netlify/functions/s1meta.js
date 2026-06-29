@@ -26,8 +26,8 @@ function keccak256Selector(sig) {
   }
   // Fallback: pre-computed selectors (verified from Solidity ABI)
   const known = {
-    'evolvedStage(uint256)':    '74b7661f',
-    'stage1Character(uint256)': '3d73cef2',
+    'evolvedStage(uint256)':    'ab6dd60d',
+    'stage1Character(uint256)': '237885d8',
   };
   return known[sig] ?? null;
 }
@@ -179,7 +179,7 @@ export async function handler(event) {
         statusCode: 200, headers: HEADERS,
         body: JSON.stringify({
           name:          `PIXEL TRIP — ${displayCharName} Stage 3 #${tokenId}`,
-          description:   'PIXEL TRIP — A fully ascended traveler. Reached Stage 3 through the burn-to-evolve journey.',
+          description:   'PIXEL TRIP — A fully ascended tripper. Reached Stage 3 through the burn-to-evolve journey.',
           image:         `${stage3Base}/${charName || charId}.gif`,
           animation_url: `${stage3Base}/${charName || charId}.gif`,
           external_url:  'https://pixeltripnft.website',
