@@ -352,6 +352,37 @@ img {
 .evo-card img {
   aspect-ratio: 1;
   object-fit: cover;
+  image-rendering: pixelated;
+  width: 100%;
+}
+
+.evolution-path-compact .evo-card {
+  width: min(100%, 160px);
+}
+
+.burn-teaser-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.burn-teaser-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.burn-page {
+  padding-top: 2rem;
+}
+
+.burn-formula img,
+.burn-pair img,
+.burn-result img {
+  image-rendering: pixelated;
 }
 
 .evo-card figcaption {

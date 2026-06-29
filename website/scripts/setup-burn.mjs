@@ -5,10 +5,12 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const websiteRoot = path.resolve(__dirname, "..");
 const burnDir = path.join(websiteRoot, "public/images/burn");
+
+/** Level 1 / 2 / 3 demo GIFs for burn page */
 const files = [
-  { name: "1.png", label: "Level 1 — Genesis" },
-  { name: "2.png", label: "Level 2 — Awakened" },
-  { name: "3.png", label: "Level 3 — Ascended" },
+  { name: "1.gif", label: "Level 1 — Genesis" },
+  { name: "2.gif", label: "Level 2 — Awakened" },
+  { name: "3.gif", label: "Level 3 — Ascended" },
 ];
 
 const args = process.argv.slice(2);
@@ -25,11 +27,13 @@ if (args.length >= 3) {
     copyFileSync(source, target);
     console.log(`OK ${files[index].name} ← ${source}`);
   });
-  console.log("Burn evolution images ready.");
+  console.log("Burn evolution GIFs ready.");
   process.exit(0);
 }
 
-console.log("Burn evolution images — expected files:");
+console.log("Burn evolution GIFs — put files here:");
+console.log(`  ${burnDir}`);
+console.log("");
 for (const file of files) {
   const target = path.join(burnDir, file.name);
   const status = existsSync(target) ? "OK" : "MISSING";
@@ -39,8 +43,9 @@ for (const file of files) {
 const missing = files.filter((file) => !existsSync(path.join(burnDir, file.name)));
 if (missing.length > 0) {
   console.log("");
-  console.log("Copy 3 PNG files into public/images/burn/ as 1.png, 2.png, 3.png");
+  console.log("Or copy via:");
+  console.log("  npm run setup-burn -- path/to/genesis.gif path/to/awakened.gif path/to/ascended.gif");
   process.exit(missing.length === files.length ? 1 : 0);
 }
 
-console.log("All burn images present.");
+console.log("All burn GIFs present.");

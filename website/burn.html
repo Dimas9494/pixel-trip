@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evolution Lab — PIXEL TRIP</title>
+    <meta
+      name="description"
+      content="Burn 2 identical PIXEL TRIP travelers to evolve — Stage 1 to 2, Stage 2 to 3, or direct ascension for Antler_Skull."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="importmap">
+    {
+      "imports": {
+        "viem": "https://esm.sh/viem@2.31.0",
+        "viem/chains": "https://esm.sh/viem@2.31.0/chains"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="logo" href="/">PIXEL TRIP</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/#about">About</a>
+        <a href="/#preview">Preview</a>
+        <a href="/burn.html" aria-current="page">Evolution Lab</a>
+        <a href="/#mint">Mint</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href="/#mint">Soon</a>
+    </header>
+
+    <main id="top">
+      <section class="section section-alt burn-page">
+        <div class="section-head">
+          <span class="kicker">Burn to Evolve</span>
+          <h2>Level up your travelers</h2>
+          <p class="sub burn-lead">
+            Burn 2 identical characters to ascend to the next level. Each evolution
+            unlocks a new form — the originals leave the chain forever.
+          </p>
+        </div>
+
+        <div class="evolution-path">
+          <figure class="evo-card">
+            <img src="/images/burn/1.gif" alt="Evolution Level 1 — Genesis" width="256" height="256" loading="lazy" />
+            <figcaption>
+              <span class="evo-tier">Level 1</span>
+              <span class="evo-name">Genesis</span>
+            </figcaption>
+          </figure>
+          <span class="evo-arrow" aria-hidden="true">→</span>
+          <figure class="evo-card">
+            <img src="/images/burn/2.gif" alt="Evolution Level 2 — Awakened" width="256" height="256" loading="lazy" />
+            <figcaption>
+              <span class="evo-tier">Level 2</span>
+              <span class="evo-name">Awakened</span>
+            </figcaption>
+          </figure>
+          <span class="evo-arrow" aria-hidden="true">→</span>
+          <figure class="evo-card evo-card-final">
+            <img src="/images/burn/3.gif" alt="Evolution Level 3 — Ascended" width="256" height="256" loading="lazy" />
+            <figcaption>
+              <span class="evo-tier">Level 3</span>
+              <span class="evo-name">Ascended</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="burn-mechanics">
+          <article class="burn-formula">
+            <h3>Step 1 — Genesis → Awakened</h3>
+            <div class="burn-flow">
+              <div class="burn-pair">
+                <img src="/images/burn/1.gif" alt="" width="64" height="64" />
+                <span class="burn-op">+</span>
+                <img src="/images/burn/1.gif" alt="" width="64" height="64" />
+              </div>
+              <span class="burn-fire">BURN</span>
+              <span class="burn-arrow" aria-hidden="true">→</span>
+              <figure class="burn-result">
+                <img src="/images/burn/2.gif" alt="" width="76" height="76" />
+                <figcaption>Level 2</figcaption>
+              </figure>
+            </div>
+            <p>Send 2 identical Level 1 characters to the burn address. Receive 1 Level 2 traveler.</p>
+          </article>
+
+          <article class="burn-formula">
+            <h3>Step 2 — Awakened → Ascended</h3>
+            <div class="burn-flow">
+              <div class="burn-pair">
+                <img src="/images/burn/2.gif" alt="" width="64" height="64" />
+                <span class="burn-op">+</span>
+                <img src="/images/burn/2.gif" alt="" width="64" height="64" />
+              </div>
+              <span class="burn-fire">BURN</span>
+              <span class="burn-arrow" aria-hidden="true">→</span>
+              <figure class="burn-result">
+                <img src="/images/burn/3.gif" alt="" width="76" height="76" />
+                <figcaption>Level 3</figcaption>
+              </figure>
+            </div>
+            <p>Send 2 identical Level 2 characters to the burn address. Receive 1 Level 3 traveler.</p>
+          </article>
+        </div>
+
+        <ul class="burn-rules">
+          <li>Both burned NFTs must share the same character and the same evolution level.</li>
+          <li>Antler_Skull is special: only 2 exist — burn both Stage 1 copies to ascend directly to Stage 3 (skip Stage 2).</li>
+          <li>Stage 2 variants differ visually, but Stage 3 uses one ascended form per character line — any two matching travelers can burn together.</li>
+          <li>Pair burns: 14 → 7 Stage 2, then 6 → 3 Stage 3 (even counts leave no remainder).</li>
+          <li>Burned tokens are destroyed permanently — only the evolved traveler remains.</li>
+        </ul>
+
+        <div class="burn-dapp" id="burn-dapp">
+          <div class="burn-dapp-head">
+            <div>
+              <span class="burn-dapp-label">Evolution Lab</span>
+              <h3>Burn to Evolve</h3>
+              <p class="burn-dapp-sub">
+                Connect your wallet, select 2 travelers with the same character, and run <code>evolve</code>.
+              </p>
+            </div>
+            <div class="burn-dapp-actions">
+              <span class="burn-network" id="burn-network">Not connected</span>
+              <button class="btn btn-primary btn-sm" id="burn-connect" type="button">Connect Wallet</button>
+            </div>
+          </div>
+          <p class="burn-message" id="burn-message" data-type="info">
+            Connect your OKX Wallet, MetaMask or any EVM wallet to get started.
+          </p>
+          <p class="burn-stats" id="burn-stats"></p>
+          <div class="burn-token-grid" id="burn-token-grid"></div>
+          <button class="btn burn-evolve-btn" id="burn-evolve" type="button" disabled>
+            Evolve (burn 2 → mint 1)
+          </button>
+          <button class="btn burn-sync-btn" id="burn-sync" type="button">
+            Sync metadata to server (OpenSea)
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>PIXEL TRIP © 2026</span>
+      <a href="/">Back to home</a>
+    </footer>
+
+    <script type="module" src="/src/burn/burn.js"></script>
+  </body>
+</html>
