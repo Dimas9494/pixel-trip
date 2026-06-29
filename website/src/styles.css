@@ -328,24 +328,13 @@ img {
   gap: 1.25rem;
 }
 
-#preview {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 2rem 3rem;
-}
-
 #preview .section-head {
   text-align: left;
-  margin-bottom: 0;
+  margin-bottom: 2rem;
 }
 
 #preview .section-head .sub {
-  max-width: 22rem;
-}
-
-#preview .preview-teaser {
-  justify-self: end;
+  max-width: 42rem;
 }
 
 .preview-teaser-cards {
@@ -971,19 +960,6 @@ img {
   .preview-mystery-grid,
   .burn-mechanics {
     grid-template-columns: 1fr;
-  }
-
-  #preview {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  #preview .section-head {
-    margin-bottom: 0;
-  }
-
-  #preview .preview-teaser {
-    justify-self: center;
   }
 
   .evolution-path {
