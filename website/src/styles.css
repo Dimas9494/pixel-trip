@@ -931,6 +931,98 @@ img {
   background: var(--panel);
 }
 
+.roadmap-track {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.roadmap-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 7.5rem;
+  padding: 1rem 0.85rem;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  text-align: center;
+}
+
+.roadmap-step.is-done {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+}
+
+.roadmap-step.is-current {
+  border-color: var(--magenta);
+  box-shadow: 0 0 24px rgba(255, 43, 214, 0.22);
+}
+
+.roadmap-step.is-upcoming {
+  opacity: 0.72;
+}
+
+.roadmap-marker {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid currentColor;
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  line-height: 1;
+}
+
+.roadmap-step.is-done .roadmap-marker {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.roadmap-step.is-current .roadmap-marker {
+  color: var(--magenta);
+  border-color: var(--magenta);
+}
+
+.roadmap-step.is-upcoming .roadmap-marker {
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.roadmap-label {
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.roadmap-status {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.roadmap-step.is-done .roadmap-status {
+  color: var(--cyan);
+}
+
+.roadmap-step.is-current .roadmap-status {
+  color: var(--magenta);
+}
+
+.roadmap-arrow {
+  display: flex;
+  align-items: center;
+  font-family: var(--pixel);
+  font-size: 1rem;
+  color: var(--purple);
+  text-shadow: 0 0 10px rgba(123, 92, 255, 0.45);
+}
+
 .mint-box h2 {
   margin: 0.5rem 0 1rem;
   font-family: var(--pixel);
@@ -986,6 +1078,15 @@ img {
 
   .evolution-path {
     flex-direction: column;
+  }
+
+  .roadmap-track {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .roadmap-arrow {
+    transform: rotate(90deg);
   }
 
   .evo-arrow {
