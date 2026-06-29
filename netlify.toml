@@ -11,6 +11,11 @@
   IMAGE_BASE_URL  = "https://pixeltripnft.website/Test/stage2/images"
 
 [[headers]]
+  for = "/images/burn/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
