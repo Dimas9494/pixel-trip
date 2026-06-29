@@ -716,6 +716,28 @@ img {
   font-size: 0.95rem;
 }
 
+.burn-wallet-soon {
+  margin: 0;
+  max-width: 11rem;
+  text-align: right;
+  color: var(--yellow);
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.burn-dapp.is-preview .burn-stats,
+.burn-dapp.is-preview .burn-token-grid,
+.burn-dapp.is-preview .burn-evolve-btn,
+.burn-dapp.is-preview .burn-sync-btn {
+  display: none;
+}
+
+.burn-dapp.is-preview #burn-connect:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .burn-message {
   margin: 0 0 0.75rem;
   padding: 0.65rem 0.75rem;

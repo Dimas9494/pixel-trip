@@ -51,6 +51,9 @@ export const EVOLVE_ADDRESS = import.meta.env.VITE_EVOLVE_CONTRACT || "0x8D0b7Eb
 // Max token ID to scan (test mint ~136). Increase when full collection is live.
 export const SCAN_MAX_ID = 200;
 
+/** Set true after public mint to enable Connect Wallet on Evolution Lab */
+export const WALLET_DAPP_ENABLED = false;
+
 // Fast public RPC for waiting tx receipts (wallet RPC is often slow)
 export const RECEIPT_RPC_URL = "https://ethereum-rpc.publicnode.com";
 

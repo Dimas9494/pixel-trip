@@ -16,6 +16,7 @@ import {
   STAGE2_VARIANTS,
   SCAN_MAX_ID,
   RECEIPT_RPC_URL,
+  WALLET_DAPP_ENABLED,
 } from "./config.js";
 import IMAGE_MAP from "./image-map.json";
 import VARIANT_MAP from "./variant-map.json";
@@ -912,6 +913,15 @@ async function evolveTokens() {
 function initBurnDapp() {
   console.log("[burn] initBurnDapp called, root:", els.root, "EVOLVE_ADDRESS:", EVOLVE_ADDRESS);
   if (!els.root) return;
+
+  if (!WALLET_DAPP_ENABLED) {
+    els.root.classList.add("is-preview");
+    if (els.connect) els.connect.disabled = true;
+    if (els.evolve) els.evolve.disabled = true;
+    if (els.sync) els.sync.disabled = true;
+    return;
+  }
+
   if (!EVOLVE_ADDRESS) {
     setMessage("Deploy EvolvePixelTrip v2 via Remix and update EVOLVE_ADDRESS in config.js", "error");
     if (els.connect) els.connect.disabled = true;
