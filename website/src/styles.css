@@ -328,6 +328,26 @@ img {
   gap: 1.25rem;
 }
 
+#preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem 3rem;
+}
+
+#preview .section-head {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+#preview .section-head .sub {
+  max-width: 22rem;
+}
+
+#preview .preview-teaser {
+  justify-self: end;
+}
+
 .preview-teaser-cards {
   display: flex;
   gap: 0.75rem;
@@ -348,6 +368,14 @@ img {
 
 .preview-page {
   padding-top: 2rem;
+}
+
+.preview-page .section-head {
+  text-align: left;
+}
+
+.preview-page .section-head .sub {
+  max-width: 36rem;
 }
 
 .preview-counter {
@@ -943,6 +971,19 @@ img {
   .preview-mystery-grid,
   .burn-mechanics {
     grid-template-columns: 1fr;
+  }
+
+  #preview {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  #preview .section-head {
+    margin-bottom: 0;
+  }
+
+  #preview .preview-teaser {
+    justify-self: center;
   }
 
   .evolution-path {
