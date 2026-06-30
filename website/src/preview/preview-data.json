@@ -1,8 +1,8 @@
 [
-  { "id": 1, "name": "Mantis" },
-  { "id": 25, "name": "Cursed Elmo" },
-  { "id": 42, "name": "Gold Tooth" },
-  { "id": 56, "name": "Crybaby Rocker" },
-  { "id": 100, "name": "Bolt Block" },
-  { "id": 133, "name": "Dapper Ghoul" }
+  { "id": 1 },
+  { "id": 25 },
+  { "id": 42 },
+  { "id": 11 },
+  { "id": 100 },
+  { "id": 133 }
 ]

@@ -1,12 +1,13 @@
 import PREVIEW_ITEMS from "./preview-data.json";
 
+const META_BASE = "https://pixeltripnft.website/Test/metadata";
 const CDN_BASE = "https://pixeltripnft.website/Test/images";
 
 const grid = document.getElementById("preview-mystery-grid");
 const counter = document.getElementById("preview-revealed-count");
 
-function imageSrc(id) {
-  return `/images/${id}.gif`;
+function formatCharacter(value) {
+  return value.replace(/_/g, " ");
 }
 
 function revealedKey(id) {
@@ -51,11 +52,23 @@ function revealCard(card, item) {
   updateCounter();
 }
 
-function wireImageFallback(img, id) {
-  img.addEventListener("error", () => {
-    const cdn = `${CDN_BASE}/${id}.gif`;
-    if (img.src !== cdn) img.src = cdn;
-  }, { once: true });
+async function loadPreviewItem(raw) {
+  try {
+    const res = await fetch(`${META_BASE}/${raw.id}`);
+    if (!res.ok) throw new Error(`metadata ${raw.id} not found`);
+    const meta = await res.json();
+    const character = meta.attributes?.find((a) => a.trait_type === "Character")?.value;
+    const image = meta.image || meta.animation_url;
+    if (!image) throw new Error(`no image for ${raw.id}`);
+    return {
+      id: raw.id,
+      name: character ? formatCharacter(character) : `Tripper #${raw.id}`,
+      image,
+    };
+  } catch (err) {
+    console.warn("[preview]", err);
+    return null;
+  }
 }
 
 function buildCard(item) {
@@ -71,12 +84,9 @@ function buildCard(item) {
       <span class="preview-mystery-q">?</span>
       <span class="preview-mystery-hint">tap to reveal</span>
     </span>
-    <img class="preview-mystery-art" src="${imageSrc(item.id)}" alt="" width="256" height="256" loading="lazy" />
+    <img class="preview-mystery-art" src="${item.image}" alt="" width="256" height="256" loading="lazy" />
     <span class="preview-mystery-label">???</span>
   `;
-
-  const img = card.querySelector(".preview-mystery-art");
-  wireImageFallback(img, item.id);
 
   card.addEventListener("click", () => revealCard(card, item));
 
@@ -85,10 +95,19 @@ function buildCard(item) {
   return card;
 }
 
-function initPreview() {
+async function initPreview() {
   if (!grid) return;
+  grid.innerHTML = `<p class="preview-footnote">Loading trippers…</p>`;
+
+  const items = (await Promise.all(PREVIEW_ITEMS.map(loadPreviewItem))).filter(Boolean);
+
   grid.innerHTML = "";
-  for (const item of PREVIEW_ITEMS) {
+  if (!items.length) {
+    grid.innerHTML = `<p class="preview-footnote">Preview unavailable — metadata server not reachable.</p>`;
+    return;
+  }
+
+  for (const item of items) {
     grid.appendChild(buildCard(item));
   }
   updateCounter();
