@@ -1,8 +1,8 @@
 [
-  { "id": 1 },
-  { "id": 25 },
-  { "id": 42 },
-  { "id": 11 },
-  { "id": 100 },
-  { "id": 133 }
+  { "id": 1, "name": "Mantis", "image": "https://pixeltripnft.website/Test/images/1.gif" },
+  { "id": 25, "name": "Cursed Elmo", "image": "https://pixeltripnft.website/Test/images/25.gif" },
+  { "id": 42, "name": "Gold Tooth", "image": "https://pixeltripnft.website/Test/images/42.gif" },
+  { "id": 11, "name": "Neon Mohawk", "image": "https://pixeltripnft.website/Test/images/11.gif" },
+  { "id": 100, "name": "Bolt Block", "image": "https://pixeltripnft.website/Test/images/100.gif" },
+  { "id": 133, "name": "Diva", "image": "https://pixeltripnft.website/Test/images/4161.gif" }
 ]

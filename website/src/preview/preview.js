@@ -1,7 +1,6 @@
 import PREVIEW_ITEMS from "./preview-data.json";
 
-const META_BASE = "https://pixeltripnft.website/Test/metadata";
-const CDN_BASE = "https://pixeltripnft.website/Test/images";
+const META_PROXY = "https://pixeltripnft.website/Test/update-metadata.php";
 
 const grid = document.getElementById("preview-mystery-grid");
 const counter = document.getElementById("preview-revealed-count");
@@ -54,7 +53,7 @@ function revealCard(card, item) {
 
 async function loadPreviewItem(raw) {
   try {
-    const res = await fetch(`${META_BASE}/${raw.id}`);
+    const res = await fetch(`${META_PROXY}?metadata=${raw.id}&t=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error(`metadata ${raw.id} not found`);
     const meta = await res.json();
     const character = meta.attributes?.find((a) => a.trait_type === "Character")?.value;
@@ -62,11 +61,14 @@ async function loadPreviewItem(raw) {
     if (!image) throw new Error(`no image for ${raw.id}`);
     return {
       id: raw.id,
-      name: character ? formatCharacter(character) : `Tripper #${raw.id}`,
+      name: character ? formatCharacter(character) : raw.name || `Tripper #${raw.id}`,
       image,
     };
   } catch (err) {
     console.warn("[preview]", err);
+    if (raw.image && raw.name) {
+      return { id: raw.id, name: raw.name, image: raw.image };
+    }
     return null;
   }
 }
