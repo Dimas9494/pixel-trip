@@ -8,8 +8,8 @@
 // No external dependencies — pure Node.js fetch + raw JSON-RPC.
 
 const EVOLVE_CONTRACT  = process.env.EVOLVE_CONTRACT  || '';
-const STAGE1_META_BASE = (process.env.STAGE1_META_BASE || 'https://pixeltripnft.website/Test/metadata').replace(/\/$/, '');
-const IMAGE_BASE       = (process.env.IMAGE_BASE_URL   || 'https://pixeltripnft.website/Test/stage2/images').replace(/\/$/, '');
+const STAGE1_META_BASE = (process.env.STAGE1_META_BASE || 'https://pixeltripnft.website/metadata').replace(/\/$/, '');
+const IMAGE_BASE       = (process.env.IMAGE_BASE_URL   || 'https://pixeltripnft.website/stage2/images').replace(/\/$/, '');
 const RPC_URL          = process.env.MAINNET_RPC_URL   || 'https://ethereum-rpc.publicnode.com';
 
 // ── Minimal ABI encoder / eth_call ────────────────────────────────────────────
@@ -42,7 +42,13 @@ function encodeCall(selector, tokenId) {
 function decodeUint8(hex) {
   if (!hex || hex === '0x') return 0;
   const data = hex.startsWith('0x') ? hex.slice(2) : hex;
-  return parseInt(data.slice(0, 64), 16);
+  return parseInt(data.slice(-2), 16);
+}
+
+function decodeUint16(hex) {
+  if (!hex || hex === '0x') return 0;
+  const data = hex.startsWith('0x') ? hex.slice(2) : hex;
+  return parseInt(data.slice(-4), 16);
 }
 
 async function ethCall(to, data) {
@@ -133,7 +139,7 @@ export async function handler(event) {
     ]);
 
     const stage  = decodeUint8(stageHex);
-    const charId = decodeUint8(charHex);
+    const charId = decodeUint16(charHex);
 
     // Stage 0 → proxy original metadata from the user's server
     if (stage === 0) {

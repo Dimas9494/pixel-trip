@@ -1,6 +1,6 @@
 import PREVIEW_ITEMS from "./preview-data.json";
 
-const META_PROXY = "https://pixeltripnft.website/Test/update-metadata.php";
+const META_PROXY = "https://pixeltripnft.website/update-metadata.php";
 
 const grid = document.getElementById("preview-mystery-grid");
 const counter = document.getElementById("preview-revealed-count");

@@ -36,7 +36,7 @@ export default defineConfig({
   root: ".",
   publicDir: "public",
   optimizeDeps: {
-    exclude: ["viem", "viem/chains"],
+    include: ["viem", "viem/chains"],
   },
   server: {
     fs: { allow: [__dirname, path.resolve(__dirname, "../collection/build")] },
@@ -69,8 +69,8 @@ export default defineConfig({
         main: path.resolve(__dirname, "index.html"),
         burn: path.resolve(__dirname, "burn.html"),
         preview: path.resolve(__dirname, "preview.html"),
+        setup: path.resolve(__dirname, "setup.html"),
       },
-      external: ["viem", "viem/chains"],
     },
   },
 });

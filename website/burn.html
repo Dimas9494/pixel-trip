@@ -15,28 +15,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/styles.css" />
-    <script type="importmap">
-    {
-      "imports": {
-        "viem": "https://esm.sh/viem@2.31.0",
-        "viem/chains": "https://esm.sh/viem@2.31.0/chains"
-      }
-    }
-    </script>
   </head>
   <body>
     <div class="scanlines" aria-hidden="true"></div>
 
     <header class="header">
-      <a class="logo" href="/">PIXEL TRIP</a>
+      <a class="logo" href="/index.html">PIXEL TRIP</a>
       <nav class="nav">
-        <a href="/">Home</a>
+        <a href="/index.html">Home</a>
         <a href="/#about">About</a>
         <a href="/preview.html">Preview</a>
         <a href="/burn.html" aria-current="page">Evolution Lab</a>
         <a href="/#mint">Mint</a>
       </nav>
-      <a class="btn btn-primary btn-sm" href="/#mint">Soon</a>
+      <a class="btn btn-primary btn-sm" href="https://opensea.io/collection/pixeltripnft" target="_blank" rel="noopener">Mint</a>
     </header>
 
     <main id="top">
@@ -131,15 +123,14 @@
               </p>
             </div>
             <div class="burn-dapp-actions">
-              <span class="burn-network" id="burn-network">After mint</span>
-              <button class="btn btn-primary btn-sm" id="burn-connect" type="button" disabled>
+              <span class="burn-network" id="burn-network">Ethereum Mainnet</span>
+              <button class="btn btn-primary btn-sm" id="burn-connect" type="button">
                 Connect Wallet
               </button>
-              <p class="burn-wallet-soon">Wallet connect activates after mint.</p>
             </div>
           </div>
           <p class="burn-message" id="burn-message" data-type="info">
-            Evolution Lab is preview-only until the public mint. Burn mechanics are shown above.
+            Connect your wallet to load PIXEL TRIP tokens from the main collection.
           </p>
           <p class="burn-stats" id="burn-stats"></p>
           <div class="burn-token-grid" id="burn-token-grid"></div>
@@ -155,7 +146,7 @@
 
     <footer class="footer">
       <span>PIXEL TRIP © 2026</span>
-      <a href="/">Back to home</a>
+      <a href="/index.html">Back to home</a>
     </footer>
 
     <script type="module" src="/src/burn/burn.js"></script>

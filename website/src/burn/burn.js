@@ -2,6 +2,7 @@ import {
   createPublicClient,
   createWalletClient,
   custom,
+  getAddress,
   http,
 } from "viem";
 import { mainnet } from "viem/chains";
@@ -17,16 +18,15 @@ import {
   SCAN_MAX_ID,
   RECEIPT_RPC_URL,
   WALLET_DAPP_ENABLED,
+  IMAGE_STAGE1,
+  IMAGE_STAGE2,
+  IMAGE_STAGE3,
+  UPDATE_METADATA_URL,
+  ASSIGNMENTS_URL,
 } from "./config.js";
-import IMAGE_MAP from "./image-map.json";
 import VARIANT_MAP from "./variant-map.json";
 import STAGE3_MAP from "./stage3-variants.json";
 import LOCAL_ASSIGNMENTS from "./token-assignments.json";
-
-const IMAGE_STAGE2       = "https://pixeltripnft.website/Test/stage2/images";
-const IMAGE_STAGE3       = "https://pixeltripnft.website/Test/stage3/images";
-const UPDATE_METADATA_URL = "https://pixeltripnft.website/Test/update-metadata.php";
-const ASSIGNMENTS_URL     = "https://pixeltripnft.website/Test/update-metadata.php?assignments=1";
 
 /** tokenId → { slug, bg, frame } — actual assigned variants (server is source of truth) */
 let TOKEN_ASSIGNMENTS = {};
@@ -173,10 +173,26 @@ function bustUrl(url, slug) {
   return `${url}${sep}v=${encodeURIComponent(slug)}`;
 }
 
-function stageImageUrls(tokenId, character, stage) {
-  const s1 = IMAGE_MAP[String(tokenId)] || `https://pixeltripnft.website/Test/images/${tokenId}.gif`;
+/** Never use legacy Test/ paths — old test mint GIFs do not match main metadata. */
+function normalizeStage1Image(url, tokenId) {
+  const fallback = `${IMAGE_STAGE1}/${tokenId}.gif`;
+  if (!url) return fallback;
+  const normalized = url.replace("/Test/images/", "/images/");
+  return normalized.includes("/images/") ? normalized : fallback;
+}
+
+function stage1ImageUrl(tokenId) {
   const key = String(tokenId);
   const cached = METADATA_CACHE[key];
+  const base = normalizeStage1Image(cached?.image, tokenId);
+  const bust = cached?.dna || cached?.edition || "main";
+  return bustUrl(base, bust);
+}
+
+function stageImageUrls(tokenId, character, stage) {
+  const key = String(tokenId);
+  const cached = METADATA_CACHE[key];
+  const s1 = stage1ImageUrl(tokenId);
 
   if (stage >= 2 && cached?.image && cached?.slug) {
     const metaImg = bustUrl(cached.image, cached.slug);
@@ -259,11 +275,13 @@ async function fetchTokenMetadata(tokenId) {
     const meta = await res.json();
     const variant = parseMetaVariant(meta);
     const entry = {
-      image: meta.image || meta.animation_url || null,
-      slug:  variant?.slug || null,
-      bg:    variant?.bg,
-      frame: variant?.frame,
-      stage: variant?.stage ?? 0,
+      image:   normalizeStage1Image(meta.image || meta.animation_url || null, tokenId),
+      dna:     meta.dna || null,
+      edition: meta.edition ?? null,
+      slug:    variant?.slug || null,
+      bg:      variant?.bg,
+      frame:   variant?.frame,
+      stage:   variant?.stage ?? 0,
     };
     if (variant) applyAssignment(tokenId, variant);
     METADATA_CACHE[key] = entry;
@@ -406,7 +424,7 @@ function showMetadataDownload(tokenId, charName, newStage) {
   banner.innerHTML = `
     <strong style="color:#00ff88">Token #${tokenId} evolved to ${newStage === 2 ? "Stage 2" : "Stage 3"}!</strong><br>
     Скачай JSON и загрузи на сервер через WinSCP:<br>
-    <code style="color:#00e5ff">pixeltripnft.website/Test/metadata/${tokenId}</code>
+    <code style="color:#00e5ff">pixeltripnft.website/metadata/${tokenId}</code>
     <br><br>
     <a href="${url}" download="${tokenId}"
        style="display:inline-block;padding:8px 18px;background:#00ff88;color:#000;font-weight:700;border-radius:4px;text-decoration:none;margin-right:8px;">
@@ -573,6 +591,8 @@ async function loadTokens() {
   }
 
   const evolvedIds = stubs.filter(t => t.stage >= 2).map(t => t.tokenId);
+  const stage1Ids  = stubs.filter(t => t.stage === 0).map(t => t.tokenId);
+  if (stage1Ids.length) await loadMetadataForTokens(stage1Ids);
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
   tokens = stubs.map(t => ({
@@ -797,12 +817,17 @@ async function connectWallet() {
   }
 
   try {
-    publicClient  = createPublicClient({ chain: mainnet, transport: custom(provider) });
-    walletClient  = createWalletClient({ chain: mainnet, transport: custom(provider) });
-    receiptClient = createPublicClient({ chain: mainnet, transport: http(RECEIPT_RPC_URL) });
+    const probeClient = createWalletClient({ chain: mainnet, transport: custom(provider) });
+    const [address] = await probeClient.requestAddresses();
+    account = getAddress(address);
 
-    const [address] = await walletClient.requestAddresses();
-    account = address;
+    publicClient  = createPublicClient({ chain: mainnet, transport: custom(provider) });
+    walletClient  = createWalletClient({
+      account,
+      chain: mainnet,
+      transport: custom(provider),
+    });
+    receiptClient = createPublicClient({ chain: mainnet, transport: http(RECEIPT_RPC_URL) });
     await ensureMainnet();
 
     els.connect.textContent = shortAddress(account);
@@ -840,10 +865,11 @@ async function evolveTokens() {
       setMessage("Step 1/2 — Confirm APPROVE in your wallet…", "pending");
       const approveHash = await walletClient.writeContract({
         account,
-        address: STAGE1_ADDRESS,
+        chain: mainnet,
+        address: getAddress(STAGE1_ADDRESS),
         abi:     STAGE1_ABI,
         functionName: "setApprovalForAll",
-        args:    [EVOLVE_ADDRESS, true],
+        args:    [getAddress(EVOLVE_ADDRESS), true],
       });
       setMessage(`Approval sent. Waiting for confirmation…`, "pending");
       await waitForReceipt(approveHash);
@@ -854,7 +880,8 @@ async function evolveTokens() {
     setMessage("Confirm EVOLVE in your wallet…", "pending");
     const hash = await walletClient.writeContract({
       account,
-      address: EVOLVE_ADDRESS,
+      chain: mainnet,
+      address: getAddress(EVOLVE_ADDRESS),
       abi:     EVOLVE_ABI,
       functionName: funcName,
       args:    [BigInt(keepToken.tokenId), BigInt(burnToken.tokenId)],

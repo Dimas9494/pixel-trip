@@ -905,6 +905,58 @@ img {
   font-size: 0.9em;
 }
 
+.setup-dapp .setup-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.setup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 8rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.setup-field input {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--magenta);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text);
+  font-family: var(--mono, monospace);
+  font-size: 1.1rem;
+}
+
+.setup-progress {
+  margin: 0.75rem 0;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 43, 214, 0.35);
+}
+
+.setup-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--magenta), var(--cyan));
+  transition: width 0.25s ease;
+}
+
+.setup-log {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  max-height: 12rem;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
