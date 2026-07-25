@@ -9,7 +9,7 @@ export const UPDATE_METADATA_URL = `${SITE_BASE}/update-metadata.php`;
 export const ASSIGNMENTS_URL = `${UPDATE_METADATA_URL}?assignments=1`;
 
 // charId → character name (from char-map.json — matches on-chain stage1Character)
-import CHAR_MAP_JSON from "../../../char-map.json";
+import CHAR_MAP_JSON from "../../char-map.json";
 
 export const CHAR_ID_TO_NAME = Object.fromEntries(
   Object.entries(CHAR_MAP_JSON).map(([name, id]) => [Number(id), name]),
