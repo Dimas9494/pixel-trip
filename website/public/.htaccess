@@ -1,0 +1,8 @@
+# Evolution Lab — avoid stale burn.html / JS after deploy (Apache + mod_headers)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html?)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>

@@ -7,6 +7,7 @@ export const IMAGE_STAGE2 = `${SITE_BASE}/stage2/images`;
 export const IMAGE_STAGE3 = `${SITE_BASE}/stage3/images`;
 export const UPDATE_METADATA_URL = `${SITE_BASE}/update-metadata.php`;
 export const ASSIGNMENTS_URL = `${UPDATE_METADATA_URL}?assignments=1`;
+export const STAGE3_ASSIGNMENTS_URL = `${UPDATE_METADATA_URL}?stage3assignments=1`;
 
 // charId → character name (from char-map.json — matches on-chain stage1Character)
 import CHAR_MAP_JSON from "../../char-map.json";
@@ -25,9 +26,15 @@ export const STAGE2_VARIANTS = STAGE2_VARIANTS_JSON;
 /** Characters with Stage 2 art deployed (from stage2-variants.json). */
 export const BURNABLE_CHARS = new Set(Object.keys(STAGE2_VARIANTS));
 
-/** 2× Stage 1 → Stage 3 directly (no Stage 2). Matches EvolvePixelTrip EvoPath.DirectToS3 */
+/** 2× Stage 1 → Stage 3 directly (no Stage 2). Must match on-chain characterPath = DirectToS3 (2). */
 export const DIRECT_TO_S3_CHARS = new Set([
-  "Antler_Skull",
+  // count=3 legendaries — Normal path dead-ends (1×S2 + 1×S1 left)
+  "Brain_Zombie",
+  "Crimson_Samurai",
+  "Cyber_Bear",
+  "Flame_Skull",
+  "Gold_Warrior",
+  "Winged_Demon",
 ]);
 
 // EvolvePixelTrip v2 — in-place evolution (separate contract, NOT the SeaDrop collection)

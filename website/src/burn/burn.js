@@ -14,6 +14,7 @@ import {
   BURNABLE_CHARS,
   DIRECT_TO_S3_CHARS,
   CHAR_ID_TO_NAME,
+  CHAR_NAME_TO_ID,
   STAGE2_VARIANTS,
   SCAN_MAX_ID,
   RECEIPT_RPC_URL,
@@ -23,16 +24,23 @@ import {
   IMAGE_STAGE3,
   UPDATE_METADATA_URL,
   ASSIGNMENTS_URL,
+  STAGE3_ASSIGNMENTS_URL,
 } from "./config.js";
 import VARIANT_MAP from "./variant-map.json";
 import STAGE3_MAP from "./stage3-variants.json";
 import LOCAL_ASSIGNMENTS from "./token-assignments.json";
+import LOCAL_STAGE3_ASSIGNMENTS from "./stage3-assignments.json";
 
-/** tokenId → { slug, bg, frame } — actual assigned variants (server is source of truth) */
+/** tokenId → { slug, bg, frame } — Stage 2 assignments */
 let TOKEN_ASSIGNMENTS = {};
+/** tokenId → { slug, bg, frame } — Stage 3 assignments (independent of S2 name) */
+let STAGE3_ASSIGNMENTS = {};
 
 /** tokenId → { image, slug, bg, frame, stage } — from server metadata (matches OpenSea) */
 const METADATA_CACHE = {};
+
+/** Bump when deploying — shown in UI so stale browser cache is obvious. */
+const LAB_BUILD = "2026-07-27-rpc-fix";
 
 function collectUsedSlugs(character, excludeTokenId = null) {
   const variants = STAGE2_VARIANTS[character] || [];
@@ -92,20 +100,60 @@ function getStage2Variant(tokenId, character, stage = 0) {
   return resolveStage2Variant(tokenId, character);
 }
 
-function getStage3ForCharacter(character) {
-  if (STAGE3_MAP.defaultByChar[character]) return STAGE3_MAP.defaultByChar[character];
-  const variants = STAGE2_VARIANTS[character] || [];
-  for (const v of variants) {
-    if (STAGE3_MAP.fromStage2Slug[v.slug]) return STAGE3_MAP.fromStage2Slug[v.slug];
+function getStage3Pool(character) {
+  return STAGE3_MAP.poolByChar?.[character] ?? [];
+}
+
+function collectUsedStage3Slugs(character, excludeTokenId = null) {
+  const pool = getStage3Pool(character);
+  const slugSet = new Set(pool.map(e => e.slug));
+  const used = new Set();
+  for (const [tid, v] of Object.entries(STAGE3_ASSIGNMENTS)) {
+    if (excludeTokenId != null && Number(tid) === excludeTokenId) continue;
+    if (slugSet.has(v.slug)) used.add(v.slug);
+  }
+  return used;
+}
+
+function resolveStage3Variant(tokenId, character, excludeTokenId = null) {
+  const pool = getStage3Pool(character);
+  if (!pool.length) {
+    return STAGE3_MAP.defaultByChar?.[character] ?? null;
+  }
+
+  const key = String(tokenId);
+  if (STAGE3_ASSIGNMENTS[key]) {
+    const hit = pool.find(e => e.slug === STAGE3_ASSIGNMENTS[key].slug);
+    if (hit) return hit;
+    delete STAGE3_ASSIGNMENTS[key];
+  }
+
+  const used = collectUsedStage3Slugs(character, excludeTokenId ?? tokenId);
+  const preferred = pool[Number(tokenId) % pool.length];
+  if (!used.has(preferred.slug)) return preferred;
+
+  for (const entry of pool) {
+    if (!used.has(entry.slug)) return entry;
   }
   return null;
 }
 
+function getStage3ForCharacter(character) {
+  if (isDirectToS3Char(character)) {
+    return STAGE3_MAP.defaultByChar?.[character] ?? getStage3Pool(character)[0] ?? null;
+  }
+  const pool = getStage3Pool(character);
+  return pool.length ? pool[0] : null;
+}
+
 function getStage3Variant(tokenId, character, stage = 0) {
-  const s2 = getStage2Variant(tokenId, character, stage);
-  if (s2 && STAGE3_MAP.fromStage2Slug[s2.slug]) return STAGE3_MAP.fromStage2Slug[s2.slug];
-  if (character && STAGE3_MAP.defaultByChar[character]) return STAGE3_MAP.defaultByChar[character];
-  return getStage3ForCharacter(character);
+  if (stage === 0 && isDirectToS3Char(character)) {
+    return resolveStage3Variant(tokenId, character, tokenId);
+  }
+  if (stage >= 2) {
+    return resolveStage3Variant(tokenId, character, tokenId);
+  }
+  return null;
 }
 
 function isDirectToS3Char(character) {
@@ -129,11 +177,39 @@ function evolvePreviewVariant(tokenId, character, stage) {
 }
 
 function canEvolveToStage3(tokenId, character, stage) {
-  return stage === 2 && BURNABLE_CHARS.has(character) && !!getStage3ForCharacter(character);
+  if (stage !== 2) return false;
+  if (!BURNABLE_CHARS.has(character) && !isDirectToS3Char(character)) return false;
+  return !!resolveStage3Variant(tokenId, character, tokenId);
+}
+
+function characterFromMetadata(tokenId) {
+  const cached = METADATA_CACHE[String(tokenId)];
+  if (cached?.characterName && CHAR_NAME_TO_ID[cached.characterName] != null) {
+    return cached.characterName;
+  }
+  return null;
+}
+
+function resolveCharacterName(tokenId, charId, fallback = null) {
+  if (charId && CHAR_ID_TO_NAME[charId]) return CHAR_ID_TO_NAME[charId];
+  return characterFromMetadata(tokenId) || fallback;
+}
+
+function finalizeToken(stub) {
+  const character = resolveCharacterName(stub.tokenId, stub.charId, stub.character);
+  const flags = tokenLabFlags(stub.tokenId, character, stub.stage);
+  return {
+    ...stub,
+    character,
+    canEvolve: flags.canEvolve,
+    viewReason: flags.viewReason,
+    name: `#${stub.tokenId}${character ? ` ${character}` : ""}`,
+    image: getTokenImage(stub.tokenId, character, stub.stage),
+  };
 }
 
 function tokenLabFlags(tokenId, character, stage) {
-  const burnable = BURNABLE_CHARS.has(character);
+  const burnable = BURNABLE_CHARS.has(character) || isDirectToS3Char(character);
   if (!burnable) {
     return { canEvolve: false, viewReason: "not_burnable" };
   }
@@ -141,7 +217,7 @@ function tokenLabFlags(tokenId, character, stage) {
     return { canEvolve: false, viewReason: "maxed" };
   }
   if (stage === 0) {
-    if (isDirectToS3Char(character) && !getStage3ForCharacter(character)) {
+    if (isDirectToS3Char(character) && !resolveStage3Variant(tokenId, character, tokenId)) {
       return { canEvolve: false, viewReason: "no_s3" };
     }
     return { canEvolve: true, viewReason: null };
@@ -158,10 +234,11 @@ function tokenLabFlags(tokenId, character, stage) {
 const MULTICALL_CHUNK = 64;
 
 async function multicallChunked(contracts) {
+  const client = readClient || publicClient;
   const out = [];
   for (let i = 0; i < contracts.length; i += MULTICALL_CHUNK) {
     const chunk = contracts.slice(i, i + MULTICALL_CHUNK);
-    const res   = await publicClient.multicall({ contracts: chunk, allowFailure: true });
+    const res   = await client.multicall({ contracts: chunk, allowFailure: true });
     out.push(...res);
   }
   return out;
@@ -227,6 +304,7 @@ function getTokenImage(tokenId, character, stage) {
 
 async function loadAssignments() {
   TOKEN_ASSIGNMENTS = { ...LOCAL_ASSIGNMENTS };
+  STAGE3_ASSIGNMENTS = { ...LOCAL_STAGE3_ASSIGNMENTS };
   try {
     const res = await fetch(`${ASSIGNMENTS_URL}&t=${Date.now()}`);
     if (res.ok) {
@@ -239,6 +317,16 @@ async function loadAssignments() {
   } catch (err) {
     console.warn("[assignments] load failed:", err.message);
   }
+  try {
+    const res = await fetch(`${STAGE3_ASSIGNMENTS_URL}&t=${Date.now()}`);
+    if (res.ok) {
+      const remote = await res.json();
+      STAGE3_ASSIGNMENTS = { ...STAGE3_ASSIGNMENTS, ...remote };
+      console.log(`[stage3] loaded ${Object.keys(STAGE3_ASSIGNMENTS).length} entries`);
+    }
+  } catch (err) {
+    console.warn("[stage3 assignments] load failed:", err.message);
+  }
 }
 
 function applyAssignment(tokenId, assignment) {
@@ -247,24 +335,33 @@ function applyAssignment(tokenId, assignment) {
   }
 }
 
-function parseMetaVariant(meta) {
+function applyStage3Assignment(tokenId, assignment) {
+  if (assignment?.slug) {
+    STAGE3_ASSIGNMENTS[String(tokenId)] = assignment;
+  }
+}
+
+function parseMetaVariant(meta, tokenId) {
   if (!meta?.attributes) return null;
-  let slug = null, bg = null, frame = null, stage = 0;
+  let slug = null, bg = null, frame = null, stage = 0, characterName = null;
   for (const a of meta.attributes) {
-    if (a.trait_type === "Character") slug = a.value;
+    if (a.trait_type === "Character") {
+      slug = a.value;
+      characterName = a.value;
+    }
     if (a.trait_type === "Background") bg = a.value;
     if (a.trait_type === "Frame") frame = a.value;
     if (a.trait_type === "Stage") stage = Number(a.value);
   }
   if (stage >= 2 && slug) {
     if (stage >= 3) {
-      return { slug, bg: bg || "Unknown", frame: frame || "Unknown", stage };
+      return { slug, bg: bg || "Unknown", frame: frame || "Unknown", stage, characterName };
     }
     if (isValidCatalogSlug(slug)) {
-      return { slug, bg: bg || "Unknown", frame: frame || "Unknown", stage };
+      return { slug, bg: bg || "Unknown", frame: frame || "Unknown", stage, characterName };
     }
   }
-  return null;
+  return characterName ? { slug: null, bg: null, frame: null, stage: 0, characterName } : null;
 }
 
 async function fetchTokenMetadata(tokenId) {
@@ -273,7 +370,7 @@ async function fetchTokenMetadata(tokenId) {
     const res = await fetch(`${UPDATE_METADATA_URL}?metadata=${tokenId}&t=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) return null;
     const meta = await res.json();
-    const variant = parseMetaVariant(meta);
+    const variant = parseMetaVariant(meta, tokenId);
     const entry = {
       image:   normalizeStage1Image(meta.image || meta.animation_url || null, tokenId),
       dna:     meta.dna || null,
@@ -282,8 +379,12 @@ async function fetchTokenMetadata(tokenId) {
       bg:      variant?.bg,
       frame:   variant?.frame,
       stage:   variant?.stage ?? 0,
+      characterName: variant?.characterName || null,
     };
-    if (variant) applyAssignment(tokenId, variant);
+    if (variant) {
+      if (variant.stage >= 3) applyStage3Assignment(tokenId, variant);
+      else applyAssignment(tokenId, variant);
+    }
     METADATA_CACHE[key] = entry;
     return entry;
   } catch (err) {
@@ -298,10 +399,7 @@ async function loadMetadataForTokens(tokenIds) {
 }
 
 function refreshTokenImages() {
-  tokens = tokens.map(t => ({
-    ...t,
-    image: getTokenImage(t.tokenId, t.character, t.stage),
-  }));
+  tokens = tokens.map(finalizeToken);
 }
 
 function buildEvolvedMetadata(tokenId, charName, newStage) {
@@ -451,6 +549,7 @@ const els = {
 
 let walletClient = null;
 let publicClient = null;
+let readClient   = null;
 let receiptClient = null;
 let account      = null;
 let tokens         = [];   // { tokenId, name, image, character, stage, canEvolve, viewReason }
@@ -499,7 +598,7 @@ async function ensureMainnet() {
 
 async function getScanMaxId() {
   try {
-    const supply = await publicClient.readContract({
+    const supply = await (readClient || publicClient).readContract({
       address: STAGE1_ADDRESS,
       abi:     STAGE1_ABI,
       functionName: "totalSupply",
@@ -595,16 +694,12 @@ async function loadTokens() {
   if (stage1Ids.length) await loadMetadataForTokens(stage1Ids);
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
-  tokens = stubs.map(t => ({
-    ...t,
-    canEvolve: tokenLabFlags(t.tokenId, CHAR_ID_TO_NAME[t.charId] ?? t.character, t.stage).canEvolve,
-    image: getTokenImage(t.tokenId, CHAR_ID_TO_NAME[t.charId] ?? t.character, t.stage),
-  }));
+  tokens = stubs.map(finalizeToken);
 
   keepToken  = null;
   burnToken  = null;
 
-  isApproved = await publicClient.readContract({
+  isApproved = await (readClient || publicClient).readContract({
     address: STAGE1_ADDRESS, abi: STAGE1_ABI,
     functionName: "isApprovedForAll", args: [account, EVOLVE_ADDRESS],
   }).catch(() => false);
@@ -627,11 +722,12 @@ async function loadTokens() {
   } else {
     const evolvable = tokens.filter(t => t.canEvolve).length;
     const viewOnly  = tokens.length - evolvable;
-    setMessage(
-      `${lastOwnedCount} in wallet · ${tokens.length} shown` +
-      (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
-      `. Select 2 of the same burnable character — first selected will be upgraded.`
-    );
+      setMessage(
+        `${lastOwnedCount} in wallet · ${tokens.length} shown` +
+        (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
+        `. Select 2 of the same burnable character — first selected will be upgraded.`,
+        "info"
+      );
   }
 }
 
@@ -640,13 +736,7 @@ function applyEvolveResult(keepId, burnId, newStage) {
     .filter(t => t.tokenId !== burnId)
     .map(t => {
       if (t.tokenId !== keepId) return t;
-      return {
-        ...t,
-        stage:      newStage,
-        canEvolve:  tokenLabFlags(keepId, t.character, newStage).canEvolve,
-        viewReason: tokenLabFlags(keepId, t.character, newStage).viewReason,
-        image:      getTokenImage(keepId, t.character, newStage),
-      };
+      return finalizeToken({ ...t, stage: newStage });
     });
   keepToken = null;
   burnToken = null;
@@ -681,9 +771,9 @@ function renderGrid() {
     const roleLabel  = isKeep ? "⬆ KEEP" : isBurn ? "🔥 BURN" : "";
     const directNote = token.stage === 0 && isDirectToS3Char(token.character) ? " · S1→S3" : "";
     const lockedNote = !token.canEvolve
-      ? token.viewReason === "not_burnable" ? " · other char"
+      ? token.viewReason === "not_burnable" ? " · not in program"
         : token.viewReason === "maxed"      ? ""
-        : token.viewReason === "no_s3"      ? " · no S3"
+        : token.viewReason === "no_s3"      ? " · no S3 art"
         : " · locked"
       : "";
 
@@ -776,11 +866,12 @@ function validateSelection() {
     return `Stage mismatch: keep is Stage ${keepToken.stage === 0 ? 1 : keepToken.stage}, burn is Stage ${burnToken.stage === 0 ? 1 : burnToken.stage}.`;
   if (keepToken.character && burnToken.character && keepToken.character !== burnToken.character)
     return `Character mismatch: "${keepToken.character}" vs "${burnToken.character}". Both must be the same character.`;
-  if (keepToken.stage === 0 && isDirectToS3Char(keepToken.character) && !getStage3ForCharacter(keepToken.character)) {
+  if (keepToken.stage === 0 && isDirectToS3Char(keepToken.character) && !resolveStage3Variant(keepToken.tokenId, keepToken.character, keepToken.tokenId)) {
     return `No Stage 3 art uploaded for ${keepToken.character}.`;
   }
-  if (keepToken.stage === 2 && !canEvolveToStage3(keepToken.tokenId, keepToken.character, 2))
-    return `No Stage 3 art yet for ${keepToken.character}. Upload one Full_* GIF for this character line.`;
+  if (keepToken.stage === 2 && !canEvolveToStage3(keepToken.tokenId, keepToken.character, 2)) {
+    return `All Stage 3 variants for ${keepToken.character} are already taken, or no art in pool.`;
+  }
   return null;
 }
 
@@ -789,13 +880,18 @@ function updateStats() {
   const s1 = tokens.filter(t => t.stage === 0).length;
   const s2 = tokens.filter(t => t.stage === 2).length;
   const s3 = tokens.filter(t => t.stage === 3).length;
+  const evolvable = tokens.filter(t => t.canEvolve).length;
+  const viewOnly  = tokens.length - evolvable;
   els.stats.textContent = [
+    tokens.length ? `${tokens.length} in wallet` : null,
+    tokens.length ? `${evolvable} evolvable${viewOnly ? `, ${viewOnly} view-only` : ""}` : null,
     s1 ? `${s1} Stage 1` : null,
     s2 ? `${s2} Stage 2` : null,
     s3 ? `${s3} Stage 3` : null,
     keepToken ? `keep: #${keepToken.tokenId}` : null,
     burnToken ? `burn: #${burnToken.tokenId}` : null,
     isApproved ? "approved ✓" : null,
+    `build ${LAB_BUILD}`,
   ].filter(Boolean).join(" · ");
 }
 
@@ -822,6 +918,7 @@ async function connectWallet() {
     account = getAddress(address);
 
     publicClient  = createPublicClient({ chain: mainnet, transport: custom(provider) });
+    readClient    = createPublicClient({ chain: mainnet, transport: http(RECEIPT_RPC_URL) });
     walletClient  = createWalletClient({
       account,
       chain: mainnet,
@@ -900,7 +997,7 @@ async function evolveTokens() {
     const keepId   = keepToken.tokenId;
     const burnId   = burnToken.tokenId;
     const charName = keepToken.character;
-    const newStage = Number(await publicClient.readContract({
+    const newStage = Number(await (readClient || publicClient).readContract({
       address: EVOLVE_ADDRESS,
       abi:     EVOLVE_ABI,
       functionName: "evolvedStage",
@@ -915,6 +1012,10 @@ async function evolveTokens() {
     if (updated.ok) {
       await loadMetadataForTokens([keepId]);
       if (burnId) delete TOKEN_ASSIGNMENTS[String(burnId)];
+      if (newStage === 3) {
+        const s3 = resolveStage3Variant(keepId, charName, keepId);
+        if (s3) applyStage3Assignment(keepId, s3);
+      }
       applyEvolveResult(keepId, burnId, newStage);
       setMessage(
         `Done! #${keepId} → ${stageLabel} (${updated.data?.variant || "?"}). Refresh OpenSea in a few minutes.`,
@@ -957,6 +1058,7 @@ function initBurnDapp() {
   els.connect.addEventListener("click", connectWallet);
   els.evolve.addEventListener("click", evolveTokens);
   els.sync?.addEventListener("click", syncAllEvolvedTokens);
+  if (els.stats) els.stats.textContent = `build ${LAB_BUILD}`;
 }
 
 initBurnDapp();
