@@ -12,6 +12,7 @@ import {
   STAGE1_ABI,
   EVOLVE_ABI,
   BURNABLE_CHARS,
+  BURN_PROGRAM_VERSION,
   DIRECT_TO_S3_CHARS,
   CHAR_ID_TO_NAME,
   CHAR_NAME_TO_ID,
@@ -39,8 +40,8 @@ let STAGE3_ASSIGNMENTS = {};
 /** tokenId → { image, slug, bg, frame, stage } — from server metadata (matches OpenSea) */
 const METADATA_CACHE = {};
 
-/** Bump when deploying — shown in UI so stale browser cache is obvious. */
-const LAB_BUILD = "2026-07-27-rpc-fix";
+/** @deprecated use BURN_PROGRAM_VERSION from config.js */
+const LAB_BUILD = BURN_PROGRAM_VERSION;
 
 function collectUsedSlugs(character, excludeTokenId = null) {
   const variants = STAGE2_VARIANTS[character] || [];
