@@ -2538,5 +2538,229 @@
       "bg": "Voronoi",
       "frame": "Portal_Ring"
     }
+  ],
+  "Bubble_Bear": [
+    {
+      "slug": "Bubble_Bear_General",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Bubble_Bear_Neon",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Bubble_Bear_Nouns_Glasses",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Bubble_Bear_Sherlock",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    }
+  ],
+  "Cursed_Elmo": [
+    {
+      "slug": "Cursed_Elmo_Dark",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Cursed_Elmo_Ghost",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Cursed_Elmo_Icy",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Cursed_Elmo_Scarface",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Cursed_Elmo_Zombie",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    }
+  ],
+  "Happy_Slime": [
+    {
+      "slug": "Happy_Slime_Beard",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Happy_Slime_Bow",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Happy_Slime_Crystal",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Happy_Slime_Demon",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Happy_Slime_Golden",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Happy_Slime_Pinky_Puff",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Happy_Slime_Punk",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Happy_Slime_Wizard",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    }
+  ],
+  "Mossy_Gargoyle": [
+    {
+      "slug": "Mossy_Gargoyle_Cold",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Dark_Neon",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Emerald",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Fire",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Golden",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Hooded",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Monocle",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Punk_Cap",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Mossy_Gargoyle_Underwater",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Mossy_Gargoyle__Night",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    }
+  ],
+  "Purple_Cyclops": [
+    {
+      "slug": "Purple_Cyclops_Bald",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Purple_Cyclops_Golden",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Purple_Cyclops_Monocle",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Purple_Cyclops_Wizard",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Purple_Cyclops_Zombie",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    }
+  ],
+  "Two_Faced_Green": [
+    {
+      "slug": "Two_Faced_Green_Big_Hat",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Two_Faced_Green_Glamour",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Two_Faced_Green_Glitch",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Two_Faced_Green_Zombie",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    }
+  ],
+  "Winged_Lion": [
+    {
+      "slug": "Winged_Lion_Forest",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Winged_Lion_Golden",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Winged_Lion_Holo",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    },
+    {
+      "slug": "Winged_Lion_Rainbow_King",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    },
+    {
+      "slug": "Winged_Lion_Tribal",
+      "bg": "Bee_Grid",
+      "frame": "Magnetic_Field"
+    },
+    {
+      "slug": "Winged_Lion_Violet",
+      "bg": "Prism",
+      "frame": "Gradient_Pulse"
+    }
   ]
 }
