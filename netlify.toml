@@ -12,6 +12,9 @@
   IMAGE_BASE_URL          = "https://pixeltripnft.website/stage2/images"
   STAGE1_META_BASE        = "https://pixeltripnft.website/metadata"
 
+[functions]
+  node_bundler = "esbuild"
+
 [[headers]]
   for = "/*.html"
   [headers.values]

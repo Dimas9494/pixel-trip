@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.7.11",
     "viem": "^2.31.0"
   },
   "devDependencies": {
