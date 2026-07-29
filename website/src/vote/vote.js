@@ -282,7 +282,7 @@ async function loadMyVote() {
 function updateStats() {
   if (!els.stats) return;
   els.stats.textContent = [
-    `${VOTE_ELIGIBLE.length} with Stage 2`,
+    `${VOTE_ELIGIBLE.length} awaiting Stage 2`,
     leaderboard.length ? `${leaderboard.length} on leaderboard` : null,
     useLocalStore ? "local test store" : null,
     `weekly · build ${VOTE_BUILD}`,

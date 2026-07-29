@@ -189,12 +189,21 @@ function buildLeaderboard(array $votes): array {
     return ['leaderboard' => $leaderboard, 'voterCount' => $voters];
 }
 
+function loadDirectToS3Chars(): array {
+    return [
+        'Brain_Zombie', 'Crimson_Samurai', 'Cyber_Bear',
+        'Flame_Skull', 'Gold_Warrior', 'Winged_Demon',
+    ];
+}
+
 function eligibleCharacters(): array {
-    $burnable = loadBurnableChars();
+    $all = loadAllChars();
+    $burnable = array_flip(loadBurnableChars());
     $oneOfOne = array_flip(loadOneOfOne());
+    $directS3 = array_flip(loadDirectToS3Chars());
     $out = [];
-    foreach ($burnable as $name) {
-        if (isset($oneOfOne[$name])) {
+    foreach ($all as $name) {
+        if (isset($burnable[$name]) || isset($oneOfOne[$name]) || isset($directS3[$name])) {
             continue;
         }
         $out[] = $name;
@@ -263,7 +272,7 @@ if (!$address || !$character) {
 $eligible = eligibleCharacters();
 if (!in_array($character, $eligible, true)) {
     http_response_code(400);
-    echo json_encode(['error' => 'Character is not eligible (needs Stage 2 art, not 1/1)']);
+    echo json_encode(['error' => 'Character is not eligible (Stage 2 live, Direct S3, 1/1, or unknown)']);
     exit;
 }
 
