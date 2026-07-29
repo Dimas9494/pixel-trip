@@ -217,6 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['action'] ?? '') === 'health'
         'ok'          => true,
         'votesFile'   => file_exists(VOTES_FILE),
         'writable'    => is_writable(dirname(VOTES_FILE)),
+        'storage'     => (file_exists(VOTES_FILE) || is_writable(dirname(VOTES_FILE))) ? 'file' : 'none',
         'eligible'    => count(eligibleCharacters()),
         'weightTiers' => ['1-10' => 1, '11-15' => 2, '16+' => 3],
         'cooldownDays'=> 7,

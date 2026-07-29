@@ -136,3 +136,13 @@ export function mergeLeaderboard(current, character, weight, serverBoard) {
   next.sort((a, b) => b.points - a.points);
   return next;
 }
+
+/** Apply POST response or merge a single vote into the current board. */
+export function leaderboardFromVoteResponse(current, data) {
+  const character = data?.character || data?.vote?.character;
+  const weight = data?.weight ?? data?.vote?.weight;
+  if (Array.isArray(data?.leaderboard)) {
+    return mergeLeaderboard(current, character, weight, data.leaderboard);
+  }
+  return mergeLeaderboard(current, character, weight, null);
+}

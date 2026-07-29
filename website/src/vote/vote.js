@@ -21,7 +21,7 @@ import {
   isVoteLocked,
   formatNextVote,
 } from "./config.js";
-import { localVoteGet, localVotePost, mergeLeaderboard } from "./vote-store.js";
+import { localVoteGet, localVotePost, leaderboardFromVoteResponse } from "./vote-store.js";
 
 const els = {
   connect:     document.getElementById("vote-connect"),
@@ -129,13 +129,24 @@ async function apiPost(body) {
 
 async function probeApi() {
   try {
-    await remoteGet({ action: "health" });
-    useLocalStore = false;
-    showLocalBanner(false);
+    const data = await remoteGet({ action: "health" });
+    if (data.storage === "none" || data.mode === "local") {
+      useLocalStore = true;
+      showLocalBanner(true);
+    } else {
+      useLocalStore = false;
+      showLocalBanner(false);
+    }
   } catch {
     useLocalStore = true;
     showLocalBanner(true);
   }
+}
+
+function applyLeaderboard(data) {
+  leaderboard = leaderboardFromVoteResponse(leaderboard, data);
+  renderLeaderboard();
+  updateStats();
 }
 
 async function readHolderBalance() {
@@ -250,14 +261,36 @@ function renderGrid(filter = "") {
   if (els.search) els.search.disabled = locked;
 }
 
-async function loadLeaderboard() {
+async function loadLeaderboard({ replaceEmpty = true } = {}) {
   try {
     const data = await apiGet({ action: "leaderboard" });
-    leaderboard = data.leaderboard || [];
+    const remote = data.leaderboard || [];
+    if (remote.length) {
+      leaderboard = remote;
+    } else if (replaceEmpty && !leaderboard.length) {
+      leaderboard = remote;
+    } else if (useLocalStore) {
+      const local = localVoteGet({ action: "leaderboard" });
+      if (local.leaderboard?.length) {
+        leaderboard = local.leaderboard;
+      }
+    }
     renderLeaderboard();
     updateStats();
   } catch (err) {
     console.warn("[vote] leaderboard:", err.message);
+    if (useLocalStore) {
+      try {
+        const local = localVoteGet({ action: "leaderboard" });
+        if (local.leaderboard?.length) {
+          leaderboard = local.leaderboard;
+          renderLeaderboard();
+          updateStats();
+        }
+      } catch {
+        /* ignore */
+      }
+    }
   }
 }
 
@@ -356,15 +389,13 @@ async function submitVote() {
       canVote: false,
       nextVoteAt: data.nextVoteAt,
     });
-    leaderboard = mergeLeaderboard(leaderboard, data.character, data.weight, data.leaderboard);
-    await loadLeaderboard();
+    applyLeaderboard(data);
     updateHolderPanel();
     renderGrid(els.search?.value || "");
-    renderLeaderboard();
     updateSubmitButton();
-    updateStats();
     const modeNote = useLocalStore ? " (saved locally for testing)" : "";
     setMessage(`Vote locked — ${formatCharacter(selectedCharacter)} (+${data.weight} points)${modeNote}.`, "success");
+    void loadLeaderboard({ replaceEmpty: false });
   } catch (err) {
     setMessage(err.message || "Vote failed.", "error");
     updateSubmitButton();

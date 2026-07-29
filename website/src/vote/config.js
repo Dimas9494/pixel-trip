@@ -17,7 +17,8 @@ function defaultVoteApiUrl() {
   if (import.meta.env.VITE_VOTE_API_URL) {
     return import.meta.env.VITE_VOTE_API_URL;
   }
-  if (typeof location !== "undefined" && location.hostname.includes("netlify.app")) {
+  // Production Netlify build — same-origin function (works on custom domains too).
+  if (import.meta.env.PROD) {
     return "/.netlify/functions/votes";
   }
   return "https://pixeltripnft.website/vote-api.php";
@@ -25,7 +26,7 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-07-29-vote-v5";
+export const VOTE_BUILD = "2026-07-29-vote-v6";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;

@@ -151,7 +151,12 @@ export default async (req) => {
 
   if (req.method === "GET") {
     if (action === "health") {
-      return json(200, { ok: true, storage: store ? "blobs" : "none", weightTiers: { "1-10": 1, "11-15": 2, "16+": 3 } });
+      return json(200, {
+        ok: true,
+        storage: store ? "blobs" : "none",
+        weightTiers: { "1-10": 1, "11-15": 2, "16+": 3 },
+        cooldownDays: 7,
+      });
     }
     if (action === "eligible") {
       return json(200, { characters: NETLIFY_ELIGIBLE_FALLBACK, note: "Set VOTE_API_URL or upload vote-api.php for full list" });
