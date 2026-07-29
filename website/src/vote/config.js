@@ -76,7 +76,7 @@ export function nextVoteDate(vote) {
 export function formatNextVote(vote) {
   const d = nextVoteDate(vote);
   if (!d) return "";
-  return d.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+  return d.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" });
 }
 
 export { STAGE1_ADDRESS, STAGE1_ABI, RECEIPT_RPC_URL, IMAGE_STAGE1 };
