@@ -70,6 +70,8 @@ export default defineConfig({
         burn: path.resolve(__dirname, "burn.html"),
         preview: path.resolve(__dirname, "preview.html"),
         setup: path.resolve(__dirname, "setup.html"),
+        vote:  path.resolve(__dirname, "vote.html"),
+        catalog: path.resolve(__dirname, "catalog.html"),
       },
     },
   },

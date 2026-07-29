@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Vote — PIXEL TRIP (Preview)</title>
+    <meta
+      name="description"
+      content="PIXEL TRIP holder vote — pick which character gets Stage 2 art next."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="logo" href="/index.html">PIXEL TRIP</a>
+      <nav class="nav">
+        <a href="/index.html">Home</a>
+        <a href="/burn.html">Evolution Lab</a>
+        <a href="https://opensea.io/collection/pixeltripnft" target="_blank" rel="noopener">OpenSea</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href="https://opensea.io/collection/pixeltripnft" target="_blank" rel="noopener">OpenSea</a>
+    </header>
+
+    <main id="top">
+      <section class="section section-alt vote-page">
+        <div class="section-head">
+          <span class="kicker">Preview · Holders only</span>
+          <h2>Vote for the next character</h2>
+          <p class="sub vote-lead">
+            Not every character has Stage 2 or Stage 3 art yet — I draw them live.
+            Holders vote for who should be prioritized next.
+            <strong>One vote per wallet per week</strong> — final, no changes or cancel.
+            Legendary 1/1 characters are excluded.
+          </p>
+        </div>
+
+        <div class="vote-preview-banner" id="vote-local-banner" hidden role="note">
+          <strong>Test mode:</strong> vote server not reachable — votes are saved in this browser only (localStorage).
+          Upload <code>vote-api.php</code> to the server for real shared voting.
+        </div>
+
+        <div class="vote-preview-banner" role="note">
+          This page is <strong>not published</strong> in the main menu yet — test via
+          <code>/vote.html</code> before going public.
+        </div>
+
+        <div class="vote-tiers" id="vote-tiers">
+          <h3>Vote weight by holdings</h3>
+          <ul>
+            <li><strong>1–10</strong> NFTs → <strong>1</strong> point</li>
+            <li><strong>11–15</strong> NFTs → <strong>2</strong> points</li>
+            <li><strong>16+</strong> NFTs → <strong>3</strong> points</li>
+            <li><strong>1 vote / week</strong> — cannot be changed or cancelled</li>
+            <li><strong>1/1</strong> characters are not listed</li>
+          </ul>
+        </div>
+
+        <div class="vote-dapp" id="vote-dapp">
+          <div class="vote-dapp-head">
+            <div>
+              <span class="vote-dapp-label">Character Vote</span>
+              <h3>Pick your priority</h3>
+              <p class="vote-dapp-sub">Characters without Stage 2 art — each card shows a sample NFT.</p>
+            </div>
+            <div class="vote-dapp-actions">
+              <span class="vote-network" id="vote-network">Ethereum Mainnet</span>
+              <button class="btn btn-primary btn-sm" id="vote-connect" type="button">Connect Wallet</button>
+            </div>
+          </div>
+
+          <p class="vote-message" id="vote-message" data-type="info">Connect wallet to vote.</p>
+          <p class="vote-stats" id="vote-stats"></p>
+
+          <aside class="vote-holder" id="vote-holder" hidden></aside>
+
+          <div class="vote-layout">
+            <div class="vote-main">
+              <div class="vote-toolbar">
+                <label class="vote-search-wrap">
+                  <span class="sr-only">Search characters</span>
+                  <input type="search" id="vote-search" placeholder="Search character…" autocomplete="off" />
+                </label>
+                <p class="vote-selected-label">Selected: <strong id="vote-selected">—</strong></p>
+              </div>
+              <div class="vote-grid" id="vote-grid"></div>
+              <button class="btn btn-primary vote-submit-btn" id="vote-submit" type="button" disabled>
+                Submit vote (final)
+              </button>
+            </div>
+
+            <aside class="vote-sidebar">
+              <h3>Leaderboard</h3>
+              <ol class="vote-leaderboard" id="vote-leaderboard"></ol>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>PIXEL TRIP · Holder vote preview</p>
+    </footer>
+
+    <script type="module" src="/src/vote/vote.js"></script>
+  </body>
+</html>

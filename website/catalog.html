@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burnable Characters — PIXEL TRIP</title>
+    <meta
+      name="description"
+      content="PIXEL TRIP characters that already have Stage 2 evolution art — burn 2 matching NFTs in the Evolution Lab."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="logo" href="/index.html">PIXEL TRIP</a>
+      <nav class="nav">
+        <a href="/index.html">Home</a>
+        <a href="/#about">About</a>
+        <a href="/preview.html">Preview</a>
+        <a href="/catalog.html" aria-current="page">Burnable</a>
+        <a href="/burn.html">Evolution Lab</a>
+        <a href="https://opensea.io/collection/pixeltripnft" target="_blank" rel="noopener">OpenSea</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href="https://opensea.io/collection/pixeltripnft" target="_blank" rel="noopener">OpenSea</a>
+    </header>
+
+    <main id="top">
+      <section class="section section-alt catalog-page">
+        <div class="section-head">
+          <span class="kicker">Evolution Lab</span>
+          <h2>Characters ready to evolve</h2>
+          <p class="sub catalog-lead">
+            These Stage 1 characters already have Stage 2 evolution art. Hold 2 matching NFTs and burn them in the
+            <a href="/burn.html">Evolution Lab</a>. Where Stage 3 is listed, you can evolve further after reaching Stage 2.
+          </p>
+          <p class="catalog-count" id="catalog-count"></p>
+        </div>
+
+        <label class="catalog-search-wrap catalog-search-single">
+          <span class="sr-only">Search characters</span>
+          <input type="search" id="catalog-search" placeholder="Search character…" autocomplete="off" />
+        </label>
+
+        <p class="catalog-empty" id="catalog-empty" hidden>No characters match your search.</p>
+        <div class="catalog-grid" id="catalog-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>PIXEL TRIP · Burnable characters</p>
+    </footer>
+
+    <script type="module" src="/src/catalog/catalog.js"></script>
+  </body>
+</html>
