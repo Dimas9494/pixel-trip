@@ -190,12 +190,11 @@ function buildLeaderboard(array $votes): array {
 }
 
 function eligibleCharacters(): array {
-    $all = loadAllChars();
-    $burnable = array_flip(loadBurnableChars());
+    $burnable = loadBurnableChars();
     $oneOfOne = array_flip(loadOneOfOne());
     $out = [];
-    foreach ($all as $name) {
-        if (isset($burnable[$name]) || isset($oneOfOne[$name])) {
+    foreach ($burnable as $name) {
+        if (isset($oneOfOne[$name])) {
             continue;
         }
         $out[] = $name;
@@ -264,7 +263,7 @@ if (!$address || !$character) {
 $eligible = eligibleCharacters();
 if (!in_array($character, $eligible, true)) {
     http_response_code(400);
-    echo json_encode(['error' => 'Character is not eligible (Stage 2 live, 1/1, or unknown)']);
+    echo json_encode(['error' => 'Character is not eligible (needs Stage 2 art, not 1/1)']);
     exit;
 }
 

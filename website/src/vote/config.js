@@ -2,14 +2,13 @@ import {
   STAGE1_ADDRESS,
   STAGE1_ABI,
   BURNABLE_CHARS,
-  CHAR_NAME_TO_ID,
   RECEIPT_RPC_URL,
   IMAGE_STAGE1,
 } from "../burn/config.js";
 import ONE_OF_ONE from "./one-of-one.json";
 import CHARACTER_SAMPLES from "./character-samples.json";
 
-/** Preview / hidden page — not linked from main nav yet. */
+/** Holder vote page — burnable characters only (Stage 2 live). */
 export const VOTE_PAGE_ENABLED = true;
 
 function defaultVoteApiUrl() {
@@ -24,16 +23,15 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-07-29-vote-v3";
+export const VOTE_BUILD = "2026-07-29-vote-v4";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 
 const ONE_OF_ONE_SET = new Set(ONE_OF_ONE);
 
-/** Characters without Stage 2 art, not 1/1, with a sample NFT image. */
-export const VOTE_ELIGIBLE = Object.keys(CHAR_NAME_TO_ID)
-  .filter((name) => !BURNABLE_CHARS.has(name))
+/** Burnable characters (Stage 2 art live), not 1/1, with a sample NFT image. */
+export const VOTE_ELIGIBLE = [...BURNABLE_CHARS]
   .filter((name) => !ONE_OF_ONE_SET.has(name))
   .filter((name) => CHARACTER_SAMPLES[name])
   .sort((a, b) => a.localeCompare(b));
