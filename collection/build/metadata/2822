@@ -1,24 +1,32 @@
 {
   "name": "PIXEL TRIP #2822",
   "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
-  "image": "https://your-domain.com/images/2822.gif",
-  "dna": "a34bff9332d13006b28ee4650a7b5f10d5982f91",
+  "image": "https://pixeltripnft.website/images/2822.gif",
+  "dna": "d9d7d499d309afd519b88da03dda5686ca648c19",
   "edition": 2822,
-  "date": 1781773641515,
+  "date": 1782550308342,
   "attributes": [
     {
       "trait_type": "Background",
-      "value": "Grid_Moire"
+      "value": "Water_Gleam"
     },
     {
       "trait_type": "Character",
-      "value": "Derpy_Slug"
+      "value": "Wale_Moca"
     },
     {
       "trait_type": "Frame",
-      "value": "Hex_Grid_Edge"
+      "value": "Bullion_Stack"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "1_of_1"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Legendary"
     }
   ],
   "compiler": "Pixel Collection Engine",
-  "animation_url": "https://your-domain.com/images/2822.gif"
+  "animation_url": "https://pixeltripnft.website/images/2822.gif"
 }

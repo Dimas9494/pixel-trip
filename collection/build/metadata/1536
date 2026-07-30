@@ -1,24 +1,32 @@
 {
   "name": "PIXEL TRIP #1536",
   "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
-  "image": "https://your-domain.com/images/1536.gif",
-  "dna": "279652d5a32b98814b60867e7a258f971e8315f1",
+  "image": "https://pixeltripnft.website/images/1536.gif",
+  "dna": "f54b802002c154b6d6c06461f81a82330023f02d",
   "edition": 1536,
-  "date": 1781773641207,
+  "date": 1782550308146,
   "attributes": [
     {
       "trait_type": "Background",
-      "value": "Rosette"
+      "value": "Print_Dot"
     },
     {
       "trait_type": "Character",
-      "value": "Gummy_Shock"
+      "value": "Medici"
     },
     {
       "trait_type": "Frame",
-      "value": "DNA_Helix"
+      "value": "Rotating_Binary"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "1_of_1"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Legendary"
     }
   ],
   "compiler": "Pixel Collection Engine",
-  "animation_url": "https://your-domain.com/images/1536.gif"
+  "animation_url": "https://pixeltripnft.website/images/1536.gif"
 }

@@ -1,0 +1,18 @@
+Upload these 13 metadata files to public_html/metadata/ (overwrite):
+
+685   Tic_Punk
+765   Gary
+873   You_Know
+1163  Adam_Beam
+1536  Medici
+1619  Costa
+1783  Tinoch_Punk
+2771  Bryan
+2822  Wale_Moca
+2983  TMA_Bag
+3594  Norm
+3664  Vitalik
+4130  Brey_Skull
+
+New traits on each: Edition=1_of_1, Tier=Legendary
+After upload: Refresh metadata on OpenSea for each (or wait for re-index).

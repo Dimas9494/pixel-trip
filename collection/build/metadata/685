@@ -1,24 +1,32 @@
 {
   "name": "PIXEL TRIP #685",
   "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
-  "image": "https://your-domain.com/images/685.gif",
-  "dna": "3cea48978dc5b8693d562cd52aa9b35ab9d427b6",
+  "image": "https://pixeltripnft.website/images/685.gif",
+  "dna": "6d0ccdf1c32d06c54247c8c69b3052a0cc6e1704",
   "edition": 685,
-  "date": 1781773641005,
+  "date": 1782550308017,
   "attributes": [
     {
       "trait_type": "Background",
-      "value": "Grid_Moire"
+      "value": "Goo_Bubbles"
     },
     {
       "trait_type": "Character",
-      "value": "Fin_Merman"
+      "value": "Tic_Punk"
     },
     {
       "trait_type": "Frame",
-      "value": "Stardust"
+      "value": "Edge_Glow_Pulse"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "1_of_1"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Legendary"
     }
   ],
   "compiler": "Pixel Collection Engine",
-  "animation_url": "https://your-domain.com/images/685.gif"
+  "animation_url": "https://pixeltripnft.website/images/685.gif"
 }

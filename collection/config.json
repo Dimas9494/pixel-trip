@@ -2,10 +2,23 @@
   "namePrefix": "PIXEL TRIP",
   "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind.",
   "editionSize": 4444,
-  "imageBaseUrl": "https://your-domain.com/images",
+  "imageBaseUrl": "https://pixeltripnft.website/images",
   "imageFormat": "gif",
   "animationUseSameAsImage": true,
-  "animationBaseUrl": "https://your-domain.com/images",
+  "animationBaseUrl": "https://pixeltripnft.website/images",
+  "stageTrait": {
+    "trait_type": "Stage_1",
+    "value": "1"
+  },
+  "stagePaths": {
+    "2": "../Stage_2",
+    "3": "../Stage_3"
+  },
+  "stageTraits": {
+    "1": { "trait_type": "Stage_1", "value": "1" },
+    "2": { "trait_type": "Stage_2", "value": "2" },
+    "3": { "trait_type": "Stage_3", "value": "3" }
+  },
   "compiler": "Pixel Collection Engine",
   "canvasSize": 1024,
   "paths": {
@@ -31,20 +44,53 @@
     "Tinoch_Punk",
     "TMA_Bag"
   ],
+  "oneOfOneTraits": [
+    { "trait_type": "Edition", "value": "1_of_1" },
+    { "trait_type": "Tier", "value": "Legendary" }
+  ],
   "rarityTiers": {
-    "Common": { "weight": 100 },
-    "Uncommon": { "weight": 45 },
-    "Rare": { "weight": 18 },
-    "Epic": { "weight": 6 }
+    "Mythic": { "weight": 1 },
+    "Legendary": { "weight": 3 },
+    "Epic": { "weight": 10 },
+    "Rare": { "weight": 25 },
+    "Uncommon": { "weight": 60 },
+    "Common": { "weight": 120 }
   },
   "tierQuotas": {
-    "Epic": 0.05,
+    "Mythic": 0.01,
+    "Legendary": 0.02,
+    "Epic": 0.06,
     "Rare": 0.12,
-    "Uncommon": 0.28,
-    "Common": 0.55
+    "Uncommon": 0.25,
+    "Common": 0.54
+  },
+  "minCharacterCount": 2,
+  "characterCountRanges": {
+    "Mythic": [2, 5],
+    "Legendary": [3, 9],
+    "Epic": [5, 14],
+    "Rare": [8, 22],
+    "Uncommon": [12, 32],
+    "Common": [10, 36]
   },
   "animationMaster": "frame",
   "animationMaxFrames": 256,
   "animationDurationMs": 3000,
-  "webpMethod": 4
+  "webpMethod": 4,
+  "deploy": {
+    "root": "./build/deploy",
+    "imageBaseUrl": "https://pixeltripnft.website/images",
+    "metadataBaseUrl": "https://pixeltripnft.website/metadata",
+    "testImageBaseUrl": "https://your-domain.com/stage2/test/images",
+    "testMetadataBaseUrl": "https://your-domain.com/stage2/test/metadata",
+    "testStage3ImageBaseUrl": "https://your-domain.com/stage3/test/images",
+    "testStage3MetadataBaseUrl": "https://your-domain.com/stage3/test/metadata",
+    "stage2ImageBaseUrl": "https://pixeltripnft.website/stage2/images",
+    "stage2MetadataBaseUrl": "https://pixeltripnft.website/stage2/metadata"
+  },
+  "stageAssetPaths": {
+    "1": { "backgrounds": "../Background", "frames": "../Frames", "pixelGrid": 32, "blockSize": 32 },
+    "2": { "backgrounds": "../Background", "frames": "../Frames", "pixelGrid": 32, "blockSize": 32 },
+    "3": { "backgrounds": "../Background_Stage3", "frames": "../Frames_Stage3", "pixelGrid": 64, "blockSize": 16 }
+  }
 }

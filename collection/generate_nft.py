@@ -4,10 +4,10 @@
 
 Слои (снизу вверх): Background (GIF) → Character (PNG) → Frame (GIF)
 
-  python generate_nft.py --metadata --all          # полная коллекция (editionSize из config)
-  python generate_nft.py --all                     # метаданные + картинки + анимации
-  python generate_nft.py --metadata --size 10      # превью 10 токенов
-  python generate_nft.py --images --from 1 --to 50 # только картинки для #1-50
+  python generate_nft.py --metadata --all          # только JSON (без картинок)
+  python generate_nft.py --metadata --all --gif    # JSON + GIF
+  python generate_nft.py --recompose --gif --all # только GIF по готовым metadata
+  python generate_nft.py --recompose --gif --all --skip-existing --workers 4  # resume + parallel
 
 Зависимости:
   pip install Pillow
@@ -19,11 +19,13 @@ import argparse
 import hashlib
 import json
 import math
+import os
 import shutil
 import subprocess
 import sys
 import tempfile
 import time
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 try:
@@ -99,6 +101,96 @@ def regular_character_pool(char_traits: dict, cfg: dict) -> dict[str, dict]:
     }
 
 
+def allocate_character_counts(
+    char_pool: dict[str, dict],
+    total_editions: int,
+    min_count: int,
+    rng,
+    cfg: dict,
+) -> dict[str, int]:
+    """Tier-based allocation with per-character score + jitter for natural spread."""
+    if not char_pool:
+        raise SystemExit("Empty regular character pool")
+    if total_editions < len(char_pool) * min_count:
+        raise SystemExit(
+            f"Not enough editions ({total_editions}) for min {min_count} "
+            f"x {len(char_pool)} characters"
+        )
+
+    tier_ranges: dict[str, list[int]] = cfg.get("characterCountRanges", {
+        "Mythic": [2, 5],
+        "Legendary": [3, 9],
+        "Epic": [5, 14],
+        "Rare": [8, 22],
+        "Uncommon": [12, 32],
+        "Common": [10, 36],
+    })
+
+    by_tier: dict[str, list[str]] = {}
+    for name, data in char_pool.items():
+        tier = data.get("tier", "Common")
+        by_tier.setdefault(tier, []).append(name)
+
+    raw: dict[str, float] = {}
+    for tier, names in by_tier.items():
+        lo, hi = tier_ranges.get(tier, [min_count, min_count + 8])
+        lo = max(min_count, lo)
+        hi = max(lo, hi)
+        scores = [int(char_pool[n].get("score", 1)) for n in names]
+        min_s, max_s = min(scores), max(scores)
+        span = max_s - min_s
+
+        for name in names:
+            score = int(char_pool[name].get("score", 1))
+            if span > 0:
+                rank = (score - min_s) / span
+            else:
+                rank = 0.5
+            rank = max(0.0, min(1.0, rank + rng.uniform(-0.22, 0.22)))
+            raw[name] = lo + (hi - lo) * rank
+
+    scale = total_editions / sum(raw.values())
+    counts = {name: max(min_count, int(value * scale)) for name, value in raw.items()}
+
+    assigned = sum(counts.values())
+    fracs = sorted(
+        ((name, value * scale - int(value * scale)) for name, value in raw.items()),
+        key=lambda item: item[1],
+        reverse=True,
+    )
+
+    idx = 0
+    while assigned < total_editions:
+        name = fracs[idx % len(fracs)][0]
+        counts[name] += 1
+        assigned += 1
+        idx += 1
+
+    idx = 0
+    trim_order = sorted(
+        counts.keys(),
+        key=lambda n: (raw[n], n),
+    )
+    while assigned > total_editions:
+        name = trim_order[idx % len(trim_order)]
+        if counts[name] > min_count:
+            counts[name] -= 1
+            assigned -= 1
+        idx += 1
+        if idx > len(trim_order) * (max(counts.values()) + 5):
+            raise SystemExit("Could not balance character counts to edition total")
+
+    return counts
+
+
+def build_character_deck(counts: dict[str, int], rng) -> list[str]:
+    deck: list[str] = []
+    for name in sorted(counts.keys()):
+        deck.extend([name] * counts[name])
+    rng.shuffle(deck)
+    return deck
+
+
 def make_dna(trait_values: dict[str, str]) -> str:
     raw = "-".join(f"{k}:{v}" for k, v in sorted(trait_values.items()))
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()
@@ -153,6 +245,19 @@ def log(msg: str, verbose: bool = True) -> None:
         print(msg, flush=True)
 
 
+def atomic_replace(tmp: Path, final: Path) -> None:
+    """Windows-safe: finished file only appears when write is complete."""
+    final.parent.mkdir(parents=True, exist_ok=True)
+    os.replace(tmp, final)
+
+
+def output_ready(path: Path, min_bytes: int = 512) -> bool:
+    try:
+        return path.is_file() and path.stat().st_size >= min_bytes
+    except OSError:
+        return False
+
+
 # ---------------------------------------------------------------------------
 # metadata
 # ---------------------------------------------------------------------------
@@ -161,12 +266,27 @@ def build_attributes(
     bg: str,
     character: str,
     frame: str,
+    cfg: dict,
+    is_one_of_one: bool = False,
 ) -> list[dict]:
-    return [
+    attrs = [
         {"trait_type": "Background", "value": bg},
         {"trait_type": "Character", "value": character},
         {"trait_type": "Frame", "value": frame},
     ]
+    if not is_one_of_one:
+        stage = cfg.get("stageTrait", {"trait_type": "Stage_1", "value": "1"})
+        attrs.append({
+            "trait_type": stage.get("trait_type", "Stage_1"),
+            "value": str(stage.get("value", "1")),
+        })
+    else:
+        for trait in cfg.get("oneOfOneTraits", [
+            {"trait_type": "Edition", "value": "1_of_1"},
+            {"trait_type": "Tier", "value": "Legendary"},
+        ]):
+            attrs.append(dict(trait))
+    return attrs
 
 
 def generate_metadata_pool(
@@ -189,25 +309,38 @@ def generate_metadata_pool(
     if missing_oo:
         raise SystemExit(f"1/1 characters missing in traits: {', '.join(missing_oo)}")
 
+    min_count = max(2, int(cfg.get("minCharacterCount", 2)))
+    regular_slots = edition_size - len(oo_map)
+    char_counts = allocate_character_counts(char_pool, regular_slots, min_count, rng, cfg)
+    char_deck = build_character_deck(char_counts, rng)
+    deck_idx = 0
+
+    count_values = list(char_counts.values())
     print(f"1/1 characters: {len(oo_map)} (editions assigned at random)")
-    print(f"Regular character pool: {len(char_pool)}")
+    print(
+        f"Regular character pool: {len(char_pool)} "
+        f"(min {min_count}, total {regular_slots}, "
+        f"counts {min(count_values)}–{max(count_values)}, "
+        f"avg {sum(count_values)/len(count_values):.1f})"
+    )
 
     for edition in range(1, edition_size + 1):
-        character = oo_map.get(edition) or None
+        if edition in oo_map:
+            character = oo_map[edition]
+        else:
+            if deck_idx >= len(char_deck):
+                raise SystemExit("Character deck exhausted — allocation mismatch")
+            character = char_deck[deck_idx]
+            deck_idx += 1
+
         for attempt in range(3000):
             bg = weighted_pick(bg_traits, rng)
             frame = weighted_pick(frame_traits, rng)
-            if character is None:
-                character = weighted_pick(char_pool, rng)
             traits = {"Background": bg, "Character": character, "Frame": frame}
             dna = make_dna(traits)
             if dna not in dna_set:
                 dna_set.add(dna)
                 break
-            if edition in oo_map:
-                character = oo_map[edition]
-            else:
-                character = None
         else:
             raise SystemExit(f"Unique DNA not found for edition {edition}")
 
@@ -218,14 +351,16 @@ def generate_metadata_pool(
             "dna": dna,
             "edition": edition,
             "date": int(time.time() * 1000),
-            "attributes": build_attributes(bg, character, frame),
+            "attributes": build_attributes(
+                bg, character, frame, cfg, is_one_of_one=edition in oo_map
+            ),
             "compiler": cfg.get("compiler", "Pixel Collection Engine"),
             "animation_url": animation_url(cfg, edition),
             "_traits": traits,
             "_one_of_one": edition in oo_map,
         }
         pool.append(meta)
-    return pool
+    return pool, char_counts
 
 
 def write_metadata_files(pool: list[dict], meta_dir: Path) -> None:
@@ -238,12 +373,18 @@ def write_metadata_files(pool: list[dict], meta_dir: Path) -> None:
         )
 
 
-def write_summary(pool: list[dict], build_dir: Path, cfg: dict) -> None:
+def write_summary(
+    pool: list[dict],
+    build_dir: Path,
+    cfg: dict,
+    char_allocation: dict[str, int] | None = None,
+) -> None:
     summary = {
         "editionSize": len(pool),
         "layers": cfg["layersOrder"],
         "oneOfOneCharacters": cfg.get("oneOfOneCharacters", []),
         "oneOfOneEditions": {},
+        "characterAllocation": char_allocation or {},
         "backgroundCounts": {},
         "characterCounts": {},
         "frameCounts": {},
@@ -466,8 +607,9 @@ def compose_static_frame(
 
 
 def save_webp_static(img: Image.Image, path: Path, method: int = 4) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    img.save(path, "WEBP", quality=90, method=method)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    img.save(tmp, "WEBP", quality=90, method=method)
+    atomic_replace(tmp, path)
 
 
 def save_webp_animated(
@@ -478,11 +620,10 @@ def save_webp_animated(
 ) -> None:
     if not frames:
         return
-    path.parent.mkdir(parents=True, exist_ok=True)
-    # RGBA → RGB на белом не нужен; WebP поддерживает альфа
+    tmp = path.with_suffix(path.suffix + ".tmp")
     out_frames = [f.convert("RGBA") for f in frames]
     out_frames[0].save(
-        path,
+        tmp,
         save_all=True,
         append_images=out_frames[1:],
         duration=durations,
@@ -492,22 +633,25 @@ def save_webp_animated(
         quality=85,
         method=method,
     )
+    atomic_replace(tmp, path)
 
 
 def save_gif_animated(frames: list[Image.Image], durations: list[int], path: Path) -> None:
     if not frames:
         return
-    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
     out_frames = [f.convert("RGBA") for f in frames]
     out_frames[0].save(
-        path,
+        tmp,
         save_all=True,
         append_images=out_frames[1:],
         duration=durations,
         loop=0,
         disposal=2,
+        format="GIF",
         optimize=False,
     )
+    atomic_replace(tmp, path)
 
 
 def frames_to_mp4(frames: list[Image.Image], durations: list[int], mp4_path: Path) -> bool:
@@ -565,6 +709,125 @@ def load_metadata_traits(meta_dir: Path, from_edition: int, to_edition: int) -> 
     return pool
 
 
+def _render_cfg_snapshot(cfg: dict) -> dict:
+    return {
+        "canvasSize": int(cfg.get("canvasSize", 1024)),
+        "animationMaster": cfg.get("animationMaster", "frame"),
+        "animationMaxFrames": int(cfg.get("animationMaxFrames", 256)),
+        "animationDurationMs": cfg.get("animationDurationMs"),
+        "webpMethod": int(cfg.get("webpMethod", 4)),
+    }
+
+
+def render_one_edition(
+    meta: dict,
+    cfg_snap: dict,
+    char_dir: Path,
+    bg_dir: Path,
+    frame_dir: Path,
+    build_dir: Path,
+    static: bool,
+    animated: bool,
+    mp4: bool,
+    gif_out: bool,
+    skip_existing: bool,
+    verbose: bool,
+) -> tuple[int, str | None]:
+    """Render a single edition. Returns (edition, error_message)."""
+    if Image is None:
+        return meta["edition"], "Pillow not installed"
+
+    edition = meta["edition"]
+    traits = meta["_traits"]
+    bg_name = traits["Background"]
+    char_name = traits["Character"]
+    frame_name = traits["Frame"]
+
+    size = cfg_snap["canvasSize"]
+    anim_master = cfg_snap["animationMaster"]
+    max_frames = cfg_snap["animationMaxFrames"]
+    target_duration_ms = cfg_snap.get("animationDurationMs")
+    if target_duration_ms is not None:
+        target_duration_ms = int(target_duration_ms)
+        if target_duration_ms <= 0:
+            target_duration_ms = None
+    webp_method = cfg_snap["webpMethod"]
+
+    opensea_gif_dir = build_dir / "images"
+    img_webp_dir = build_dir / "images_webp"
+    anim_webp_dir = build_dir / "animations_webp"
+    anim_mp4_dir = build_dir / "animations"
+
+    gif_path = opensea_gif_dir / f"{edition}.gif"
+    if skip_existing and gif_out and output_ready(gif_path):
+        log(f"    skip #{edition} (gif exists)", verbose)
+        return edition, None
+    if skip_existing and static and output_ready(img_webp_dir / f"{edition}.webp"):
+        if not (animated or mp4 or gif_out):
+            return edition, None
+
+    bg_asset = find_asset(bg_dir, bg_name, (".gif", ".png", ".webp"))
+    char_asset = find_asset(char_dir, char_name, (".png",))
+    frame_asset = find_asset(frame_dir, frame_name, (".gif", ".png", ".webp"))
+
+    if not bg_asset or not char_asset or not frame_asset:
+        return edition, f"missing asset bg={bg_name} char={char_name} frame={frame_name}"
+
+    log(f"  #{edition}  bg={bg_name}  char={char_name}  frame={frame_name}", verbose)
+
+    anim_frames: list[Image.Image] | None = None
+    anim_durs: list[int] | None = None
+
+    if static:
+        log("    static webp...", verbose)
+        img = compose_static_frame(bg_asset, char_asset, frame_asset, size)
+        save_webp_static(img, img_webp_dir / f"{edition}.webp", method=webp_method)
+
+    if animated or mp4 or gif_out:
+        anim_frames, anim_durs = compose_animated(
+            bg_asset, char_asset, frame_asset, size,
+            master=anim_master,
+            max_frames=max_frames,
+            target_duration_ms=target_duration_ms,
+            verbose=verbose,
+        )
+        if animated:
+            log(f"    webp anim ({len(anim_frames)} frames)...", verbose)
+            save_webp_animated(
+                anim_frames, anim_durs,
+                anim_webp_dir / f"{edition}.webp",
+                method=webp_method,
+            )
+        if gif_out:
+            log("    gif...", verbose)
+            save_gif_animated(anim_frames, anim_durs, gif_path)
+        if mp4:
+            log("    mp4...", verbose)
+            ok = frames_to_mp4(anim_frames, anim_durs, anim_mp4_dir / f"{edition}.mp4")
+            if not ok:
+                return edition, "MP4 encode failed"
+
+    log(f"    done #{edition}", verbose)
+    return edition, None
+
+
+def _render_edition_job(job: dict) -> tuple[int, str | None]:
+    return render_one_edition(
+        meta=job["meta"],
+        cfg_snap=job["cfg_snap"],
+        char_dir=Path(job["char_dir"]),
+        bg_dir=Path(job["bg_dir"]),
+        frame_dir=Path(job["frame_dir"]),
+        build_dir=Path(job["build_dir"]),
+        static=job["static"],
+        animated=job["animated"],
+        mp4=job["mp4"],
+        gif_out=job["gif_out"],
+        skip_existing=job["skip_existing"],
+        verbose=job["verbose"],
+    )
+
+
 def render_assets(
     pool: list[dict],
     cfg: dict,
@@ -579,78 +842,64 @@ def render_assets(
     from_edition: int,
     to_edition: int,
     verbose: bool = True,
+    skip_existing: bool = False,
+    workers: int = 1,
 ) -> None:
     if Image is None:
         raise SystemExit("Install Pillow: pip install Pillow")
 
-    size = int(cfg.get("canvasSize", 1024))
-    anim_master = cfg.get("animationMaster", "frame")
-    max_frames = int(cfg.get("animationMaxFrames", 256))
-    target_duration_ms = cfg.get("animationDurationMs")
-    if target_duration_ms is not None:
-        target_duration_ms = int(target_duration_ms)
-        if target_duration_ms <= 0:
-            target_duration_ms = None
-    webp_method = int(cfg.get("webpMethod", 4))
-    opensea_gif_dir = build_dir / "images"
-    img_webp_dir = build_dir / "images_webp"
-    anim_webp_dir = build_dir / "animations_webp"
-    anim_gif_dir = build_dir / "animations_gif"
-    anim_mp4_dir = build_dir / "animations"
-
     subset = [m for m in pool if from_edition <= m["edition"] <= to_edition]
     total = len(subset)
+    cfg_snap = _render_cfg_snapshot(cfg)
+    workers = max(1, int(workers))
+
+    if workers > 1 and total > 1:
+        log(f"Parallel render: {total} editions, {workers} workers", verbose)
+        jobs = [
+            {
+                "meta": meta,
+                "cfg_snap": cfg_snap,
+                "char_dir": str(char_dir),
+                "bg_dir": str(bg_dir),
+                "frame_dir": str(frame_dir),
+                "build_dir": str(build_dir),
+                "static": static,
+                "animated": animated,
+                "mp4": mp4,
+                "gif_out": gif_out,
+                "skip_existing": skip_existing,
+                "verbose": False,
+            }
+            for meta in subset
+        ]
+        done = 0
+        failed: list[str] = []
+        t0 = time.time()
+        with ProcessPoolExecutor(max_workers=workers) as ex:
+            futures = {ex.submit(_render_edition_job, j): j["meta"]["edition"] for j in jobs}
+            for fut in as_completed(futures):
+                edition, err = fut.result()
+                done += 1
+                if err:
+                    failed.append(f"#{edition}: {err}")
+                    print(f"[WARN] #{edition} {err}", flush=True)
+                elif done % 25 == 0 or done == total:
+                    elapsed = time.time() - t0
+                    rate = done / elapsed if elapsed > 0 else 0
+                    print(f"[progress] {done}/{total} ({rate:.1f}/s)", flush=True)
+        if failed:
+            print(f"[WARN] {len(failed)} edition(s) failed", flush=True)
+        return
 
     for idx, meta in enumerate(subset, start=1):
         edition = meta["edition"]
-        traits = meta["_traits"]
-        bg_name = traits["Background"]
-        char_name = traits["Character"]
-        frame_name = traits["Frame"]
-
-        log(f"[{idx}/{total}] #{edition}  bg={bg_name}  char={char_name}  frame={frame_name}", verbose)
-
-        bg_asset = find_asset(bg_dir, bg_name, (".gif", ".png", ".webp"))
-        char_asset = find_asset(char_dir, char_name, (".png",))
-        frame_asset = find_asset(frame_dir, frame_name, (".gif", ".png", ".webp"))
-
-        if not bg_asset or not char_asset or not frame_asset:
-            print(f"[WARN] #{edition} missing asset", flush=True)
-            continue
-
-        anim_frames: list[Image.Image] | None = None
-        anim_durs: list[int] | None = None
-
-        if static:
-            log("    static webp...", verbose)
-            img = compose_static_frame(bg_asset, char_asset, frame_asset, size)
-            save_webp_static(img, img_webp_dir / f"{edition}.webp", method=webp_method)
-
-        if animated or mp4 or gif_out:
-            anim_frames, anim_durs = compose_animated(
-                bg_asset, char_asset, frame_asset, size,
-                master=anim_master,
-                max_frames=max_frames,
-                target_duration_ms=target_duration_ms,
-                verbose=verbose,
-            )
-            if animated:
-                log(f"    webp anim ({len(anim_frames)} frames)...", verbose)
-                save_webp_animated(
-                    anim_frames, anim_durs,
-                    anim_webp_dir / f"{edition}.webp",
-                    method=webp_method,
-                )
-            if gif_out:
-                log("    gif (OpenSea image)...", verbose)
-                save_gif_animated(anim_frames, anim_durs, opensea_gif_dir / f"{edition}.gif")
-            if mp4:
-                log("    mp4...", verbose)
-                ok = frames_to_mp4(anim_frames, anim_durs, anim_mp4_dir / f"{edition}.mp4")
-                if not ok:
-                    print(f"[WARN] MP4 failed for #{edition}", flush=True)
-
-        log(f"    done #{edition}", verbose)
+        log(f"[{idx}/{total}] #{edition}", verbose)
+        _, err = render_one_edition(
+            meta, cfg_snap, char_dir, bg_dir, frame_dir, build_dir,
+            static, animated, mp4, gif_out, skip_existing, verbose,
+        )
+        if err:
+            print(f"[WARN] #{edition} {err}", flush=True)
 
 
 # ---------------------------------------------------------------------------
@@ -671,6 +920,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--from", dest="from_edition", type=int, default=1, metavar="N")
     p.add_argument("--to", dest="to_edition", type=int, default=0, metavar="N")
     p.add_argument("--quiet", action="store_true", help="Less console output")
+    p.add_argument("--skip-existing", action="store_true", help="Skip editions with valid output GIF already on disk")
+    p.add_argument("--workers", type=int, default=1, metavar="N", help="Parallel workers (default 1, try 4 on multi-core PC)")
     return p.parse_args()
 
 
@@ -682,10 +933,6 @@ def main() -> int:
         args.metadata = True
 
     cfg = load_json(CONFIG_PATH)
-    # OpenSea hover: image field = animated GIF → render GIF with metadata
-    if cfg.get("imageFormat", "gif").lower() == "gif":
-        if args.metadata or args.recompose:
-            args.gif = True
     traits_dir = ensure_traits(cfg)
     build_dir = (ROOT / cfg["paths"]["build"]).resolve()
     build_dir.mkdir(parents=True, exist_ok=True)
@@ -717,16 +964,23 @@ def main() -> int:
         print(f"Animation master: {cfg.get('animationMaster', 'frame')}")
         print()
 
-        pool = generate_metadata_pool(
+        pool, char_counts = generate_metadata_pool(
             edition_size, cfg, char_traits, bg_traits, frame_traits, args.seed
         )
 
     if args.metadata and not args.recompose:
         meta_dir = build_dir / "metadata"
         write_metadata_files(pool, meta_dir)
-        write_summary(pool, build_dir, cfg)
+        write_summary(
+            pool,
+            build_dir,
+            cfg,
+            char_allocation=char_counts if not args.recompose else None,
+        )
         print(f"[OK] Metadata: {meta_dir} ({edition_size} files, no extension)")
         print(f"[OK] Summary:  {build_dir / 'collection_summary.json'}")
+        if not (args.images or args.animated or args.mp4 or args.gif):
+            print("(Images skipped — add --gif to render GIF)")
 
     if args.images or args.animated or args.mp4 or args.gif:
         render_assets(
@@ -738,6 +992,8 @@ def main() -> int:
             from_edition=args.from_edition,
             to_edition=to_edition,
             verbose=not args.quiet,
+            skip_existing=args.skip_existing,
+            workers=args.workers,
         )
         if args.gif:
             print(f"[OK] OpenSea GIF: {build_dir / 'images'}  (*.gif → image in metadata)")
