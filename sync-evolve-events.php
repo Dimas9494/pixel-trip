@@ -9,8 +9,8 @@
  * Cron (every 2 minutes):
  *   php /home/hippie/web/pixeltripnft.website/public_html/sync-evolve-events.php
  *
- * HTTP (optional, set CRON_SECRET env on host):
- *   GET /sync-evolve-events.php?key=YOUR_SECRET
+ * HTTP reconcile only (fast, no log scan):
+ *   GET /sync-evolve-events.php?reconcile=1
  */
 
 define('EVOLVE_CONTRACT', strtolower(getenv('EVOLVE_CONTRACT') ?: '0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC'));
@@ -22,10 +22,18 @@ define('STAGE3_ASSIGNMENTS_FILE', __DIR__ . '/stage3-assignments.json');
 define('UPDATE_METADATA_URL', getenv('UPDATE_METADATA_URL') ?: 'https://pixeltripnft.website/update-metadata.php');
 define('EVOLVED_TOPIC', '0xb88806e586caa1c8544d9a44dab35f37182d4ec617d3d3f1c839b37df45a01b8');
 define('CRON_SECRET', getenv('CRON_SECRET') ?: '');
-define('FIRST_RUN_LOOKBACK', (int)(getenv('EVOLVE_SYNC_LOOKBACK') ?: 120000)); // ~2 weeks of blocks
+define('FIRST_RUN_LOOKBACK', (int)(getenv('EVOLVE_SYNC_LOOKBACK') ?: 120000)); // CLI ~2 weeks
+define('HTTP_LOOKBACK', (int)(getenv('EVOLVE_SYNC_HTTP_LOOKBACK') ?: 8000));   // HTTP ~1 day
 define('LOG_CHUNK', 2000);
 
 $isCli = (php_sapi_name() === 'cli');
+$reconcileOnly = $isCli
+    ? in_array('--reconcile', $argv ?? [], true)
+    : !empty($_GET['reconcile']);
+
+if ($isCli) {
+    @set_time_limit(0);
+}
 
 if (!$isCli) {
     header('Content-Type: application/json');
@@ -171,7 +179,7 @@ function findStaleTokens(array $extraIds = []): array {
     return $stale;
 }
 
-function fetchEvolvedEvents(int $fromBlock, int $toBlock): array {
+function fetchEvolvedEvents(int $fromBlock, int $toBlock, bool $saveProgress = false): array {
     $events = [];
     $cursor = $fromBlock;
     while ($cursor <= $toBlock) {
@@ -199,6 +207,9 @@ function fetchEvolvedEvents(int $fromBlock, int $toBlock): array {
                 }
             }
         }
+        if ($saveProgress) {
+            saveState($chunkTo);
+        }
         $cursor = $chunkTo + 1;
         usleep(100000);
     }
@@ -216,36 +227,42 @@ if ($latest <= 0) {
     exit($isCli ? 1 : 500);
 }
 
-$fromBlock = ($state['lastBlock'] ?? 0) > 0
-    ? ($state['lastBlock'] + 1)
-    : max(0, $latest - FIRST_RUN_LOOKBACK);
-
 $report = [
-    'ok'         => true,
-    'fromBlock'  => $fromBlock,
-    'toBlock'    => $latest,
-    'events'     => 0,
-    'synced'     => [],
-    'reconciled' => [],
-    'failed'     => [],
+    'ok'            => true,
+    'mode'          => $reconcileOnly ? 'reconcile' : 'events+reconcile',
+    'fromBlock'     => null,
+    'toBlock'       => $latest,
+    'events'        => 0,
+    'synced'        => [],
+    'reconciled'    => [],
+    'failed'        => [],
 ];
 
-if ($fromBlock <= $latest) {
-    $events = fetchEvolvedEvents($fromBlock, $latest);
-    $report['events'] = count($events);
+if (!$reconcileOnly) {
+    $lookback = $isCli ? FIRST_RUN_LOOKBACK : HTTP_LOOKBACK;
+    $fromBlock = ($state['lastBlock'] ?? 0) > 0
+        ? ($state['lastBlock'] + 1)
+        : max(0, $latest - $lookback);
+    $report['fromBlock'] = $fromBlock;
 
-    $keepFromEvents = [];
-    foreach ($events as $ev) {
-        $keepFromEvents[$ev['keepId']] = $ev['burnId'] ?: null;
-    }
-    foreach ($keepFromEvents as $keepId => $burnId) {
-        $r = syncToken((int)$keepId, $burnId ? (int)$burnId : null);
-        if ($r['ok']) {
-            $report['synced'][] = ['tokenId' => (int)$keepId, 'source' => 'event', 'stage' => $r['data']['stage'] ?? null];
-        } else {
-            $report['failed'][] = ['tokenId' => (int)$keepId, 'source' => 'event', 'error' => $r['error'] ?? 'sync failed'];
+    if ($fromBlock <= $latest) {
+        $events = fetchEvolvedEvents($fromBlock, $latest, true);
+        $report['events'] = count($events);
+
+        $keepFromEvents = [];
+        foreach ($events as $ev) {
+            $keepFromEvents[$ev['keepId']] = $ev['burnId'] ?: null;
+        }
+        foreach ($keepFromEvents as $keepId => $burnId) {
+            $r = syncToken((int)$keepId, $burnId ? (int)$burnId : null);
+            if ($r['ok']) {
+                $report['synced'][] = ['tokenId' => (int)$keepId, 'source' => 'event', 'stage' => $r['data']['stage'] ?? null];
+            } else {
+                $report['failed'][] = ['tokenId' => (int)$keepId, 'source' => 'event', 'error' => $r['error'] ?? 'sync failed'];
+            }
         }
     }
+    saveState($latest);
 }
 
 $eventKeepIds = array_column($report['synced'], 'tokenId');
@@ -257,7 +274,5 @@ foreach (findStaleTokens($eventKeepIds) as $tokenId) {
         $report['failed'][] = ['tokenId' => $tokenId, 'source' => 'reconcile', 'error' => $r['error'] ?? 'sync failed'];
     }
 }
-
-saveState($latest);
 
 echo json_encode($report, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
