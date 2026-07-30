@@ -439,23 +439,34 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
   return null;
 }
 
-async function syncMetadataToServer(tokenId, burnTokenId = null) {
-  try {
-    const res = await fetch(UPDATE_METADATA_URL, {
-      method:  "POST",
-      headers: { "Content-Type": "application/json" },
-      body:    JSON.stringify({ tokenId, sync: true, burnTokenId: burnTokenId || undefined }),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (data.ok) {
-      applyAssignment(tokenId, data.assignment);
-      console.log(`[metadata] Synced metadata/${tokenId} → Stage ${data.stage} (${data.variant})`);
-      return { ok: true, data };
+async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 } = {}) {
+  let lastError = "Sync failed";
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(UPDATE_METADATA_URL, {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ tokenId, sync: true, burnTokenId: burnTokenId || undefined }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data.ok) {
+        applyAssignment(tokenId, data.assignment);
+        if (data.stage >= 3 && data.assignment?.slug) {
+          applyStage3Assignment(tokenId, data.assignment);
+        }
+        console.log(`[metadata] Synced metadata/${tokenId} → Stage ${data.stage} (${data.variant})`);
+        return { ok: true, data };
+      }
+      lastError = data.error || `HTTP ${res.status}`;
+    } catch (err) {
+      lastError = err.message;
     }
-    return { ok: false, error: data.error || `HTTP ${res.status}` };
-  } catch (err) {
-    return { ok: false, error: err.message };
+    if (attempt < retries) {
+      console.warn(`[metadata] #${tokenId} sync attempt ${attempt} failed, retrying…`, lastError);
+      await new Promise((r) => setTimeout(r, 1500 * attempt));
+    }
   }
+  return { ok: false, error: lastError };
 }
 
 async function autoUpdateMetadata(tokenId, charName, newStage, txHash) {
@@ -492,7 +503,7 @@ async function syncAllEvolvedTokens() {
   const failed = [];
 
   for (const t of evolved) {
-    const r = await syncMetadataToServer(t.tokenId);
+    const r = await syncMetadataToServer(t.tokenId, null, { retries: 3 });
     if (!r.ok) failed.push(`#${t.tokenId}: ${r.error}`);
   }
 
@@ -504,6 +515,33 @@ async function syncAllEvolvedTokens() {
   } else {
     setMessage(`Some tokens failed to sync: ${failed.join("; ")}`, "error");
   }
+}
+
+function serverMetaStage(tokenId) {
+  return METADATA_CACHE[String(tokenId)]?.stage ?? 0;
+}
+
+function needsMetadataSync(stub) {
+  if (stub.stage < 2) return false;
+  return serverMetaStage(stub.tokenId) < stub.stage;
+}
+
+/** After wallet connect — fix tokens evolved on-chain but still Stage 1 on server. */
+async function autoSyncStaleMetadata(stubs) {
+  const stale = stubs.filter(needsMetadataSync);
+  if (!stale.length) return { synced: 0, failed: [] };
+
+  console.log(`[metadata] auto-sync ${stale.length} stale token(s):`, stale.map(t => t.tokenId));
+  const failed = [];
+  for (const t of stale) {
+    const r = await syncMetadataToServer(t.tokenId, null, { retries: 3 });
+    if (!r.ok) failed.push(`#${t.tokenId}: ${r.error}`);
+  }
+  const synced = stale.length - failed.length;
+  if (synced) {
+    await loadMetadataForTokens(stale.map(t => t.tokenId));
+  }
+  return { synced, failed };
 }
 
 function showMetadataDownload(tokenId, charName, newStage) {
@@ -695,6 +733,8 @@ async function loadTokens() {
   if (stage1Ids.length) await loadMetadataForTokens(stage1Ids);
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
+  const autoSync = await autoSyncStaleMetadata(stubs);
+
   tokens = stubs.map(finalizeToken);
 
   keepToken  = null;
@@ -723,12 +763,16 @@ async function loadTokens() {
   } else {
     const evolvable = tokens.filter(t => t.canEvolve).length;
     const viewOnly  = tokens.length - evolvable;
-      setMessage(
-        `${lastOwnedCount} in wallet · ${tokens.length} shown` +
-        (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
-        `. Select 2 of the same burnable character — first selected will be upgraded.`,
-        "info"
-      );
+    let msg =
+      `${lastOwnedCount} in wallet · ${tokens.length} shown` +
+      (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
+      `. Select 2 of the same burnable character — first selected will be upgraded.`;
+    if (autoSync.synced) {
+      msg = `Auto-synced metadata for ${autoSync.synced} evolved token(s). Refresh OpenSea in a few minutes. · ${msg}`;
+    } else if (autoSync.failed.length) {
+      msg = `Could not auto-sync: ${autoSync.failed.join("; ")} · ${msg}`;
+    }
+    setMessage(msg, autoSync.failed.length ? "error" : autoSync.synced ? "success" : "info");
   }
 }
 
@@ -1009,7 +1053,7 @@ async function evolveTokens() {
     applyEvolveResult(keepId, burnId, newStage);
     setMessage(`Evolved! #${keepId} → ${stageLabel}. Updating metadata…`, "success");
 
-    const updated = await syncMetadataToServer(keepId, burnId);
+    const updated = await syncMetadataToServer(keepId, burnId, { retries: 5 });
     if (updated.ok) {
       await loadMetadataForTokens([keepId]);
       if (burnId) delete TOKEN_ASSIGNMENTS[String(burnId)];
