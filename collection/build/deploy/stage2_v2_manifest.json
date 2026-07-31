@@ -1,0 +1,24 @@
+{
+  "generated": "2026-07-31T14:52:22.696542+00:00",
+  "characters": [
+    "Bubble_Girl",
+    "Cat_Headphones",
+    "Dollar_Hood",
+    "Gummy_Shock",
+    "Hooded_Doom",
+    "Mint_Disco_Dancer",
+    "Stoned_Jason",
+    "Tricorn_Skull"
+  ],
+  "counts": {
+    "Bubble_Girl": 13,
+    "Cat_Headphones": 3,
+    "Dollar_Hood": 10,
+    "Gummy_Shock": 14,
+    "Hooded_Doom": 11,
+    "Mint_Disco_Dancer": 6,
+    "Stoned_Jason": 12,
+    "Tricorn_Skull": 8
+  },
+  "total_variants": 77
+}

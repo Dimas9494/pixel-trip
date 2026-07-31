@@ -1,0 +1,31 @@
+PIXEL TRIP — Stage 2 V2 batch upload
+Generated: 2026-07-31T14:52:22.693578+00:00
+
+LOCAL PACK:
+  D:\Promt\Пиксель\collection\build\deploy\stage2\images
+  D:\Promt\Пиксель\collection\build\deploy\stage2\metadata
+  D:\Promt\Пиксель\collection\build\deploy\stage2-variants.json
+
+SERVER (production):
+  public_html/stage2/images/{Slug}.gif
+  public_html/stage2/metadata/{Slug}
+  public_html/stage2-variants.json
+
+WEBSITE (rebuild after variants JSON):
+  cd website && npm run build
+  upload burn.html + assets/*
+
+CHARACTERS:
+  Bubble_Girl: 13 variants
+  Cat_Headphones: 3 variants
+  Dollar_Hood: 10 variants
+  Gummy_Shock: 14 variants
+  Hooded_Doom: 11 variants
+  Mint_Disco_Dancer: 6 variants
+  Stoned_Jason: 12 variants
+  Tricorn_Skull: 8 variants
+
+Total new GIFs: 77
+
+BURN: after upload, holders can burn 2x same Stage 1 character -> Stage 2.
+OpenSea: Refresh metadata on evolved tokens after sync.
