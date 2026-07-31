@@ -26,12 +26,17 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-07-29-vote-v7";
+export const VOTE_BUILD = "2026-07-31-s2v2-batch3";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 
 const ONE_OF_ONE_SET = new Set(ONE_OF_ONE);
+
+/** Vote for a character that now has Stage 2 art — cooldown waived, re-vote allowed. */
+export function isStaleVote(vote) {
+  return Boolean(vote?.character && BURNABLE_CHARS.has(vote.character));
+}
 
 /** No Stage 2 yet — not Direct S3, not 1/1, with a sample NFT image. */
 export const VOTE_ELIGIBLE = Object.keys(CHAR_NAME_TO_ID)
@@ -65,7 +70,14 @@ export function formatCharacter(name) {
 
 export function isVoteLocked(vote) {
   if (!vote?.updated) return false;
+  if (isStaleVote(vote)) return false;
   return Date.now() - new Date(vote.updated).getTime() < VOTE_COOLDOWN_MS;
+}
+
+/** Drop leaderboard rows for characters that already have Stage 2 art. */
+export function filterLeaderboard(rows) {
+  if (!Array.isArray(rows)) return [];
+  return rows.filter((row) => row?.character && !BURNABLE_CHARS.has(row.character));
 }
 
 export function nextVoteDate(vote) {
@@ -79,4 +91,4 @@ export function formatNextVote(vote) {
   return d.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" });
 }
 
-export { STAGE1_ADDRESS, STAGE1_ABI, RECEIPT_RPC_URL, IMAGE_STAGE1 };
+export { STAGE1_ADDRESS, STAGE1_ABI, RECEIPT_RPC_URL, IMAGE_STAGE1, BURNABLE_CHARS };

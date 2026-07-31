@@ -149,7 +149,19 @@ function voteTimestamp(array $row): int {
     return $ts ?: 0;
 }
 
+function isVoteStale(array $row): bool {
+    static $burnable = null;
+    if ($burnable === null) {
+        $burnable = array_flip(loadBurnableChars());
+    }
+    $char = $row['character'] ?? '';
+    return $char !== '' && isset($burnable[$char]);
+}
+
 function isVoteActive(array $row): bool {
+    if (isVoteStale($row)) {
+        return false;
+    }
     $ts = voteTimestamp($row);
     return $ts > 0 && (time() - $ts) < VOTE_COOLDOWN_SEC;
 }
@@ -167,6 +179,7 @@ function voteStatus(?array $row): array {
 }
 
 function buildLeaderboard(array $votes): array {
+    $burnable = array_flip(loadBurnableChars());
     $totals = [];
     $voters = 0;
     foreach ($votes as $row) {
@@ -175,7 +188,7 @@ function buildLeaderboard(array $votes): array {
         }
         $char = $row['character'] ?? '';
         $weight = (int) ($row['weight'] ?? 0);
-        if (!$char || $weight <= 0) {
+        if (!$char || $weight <= 0 || isset($burnable[$char])) {
             continue;
         }
         $voters++;
@@ -246,7 +259,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['action'] ?? '') === 'mine') 
     }
     $votes = loadVotes();
     $mine = $votes[$address] ?? null;
-    if ($mine && !isVoteActive($mine)) {
+    if ($mine && (isVoteStale($mine) || !isVoteActive($mine))) {
         $mine = null;
     }
     $status = voteStatus($mine);

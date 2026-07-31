@@ -19,6 +19,8 @@ import {
   voteWeightLabel,
   formatCharacter,
   isVoteLocked,
+  isStaleVote,
+  filterLeaderboard,
   formatNextVote,
 } from "./config.js";
 import { localVoteGet, localVotePost, leaderboardFromVoteResponse } from "./vote-store.js";
@@ -144,7 +146,7 @@ async function probeApi() {
 }
 
 function applyLeaderboard(data) {
-  leaderboard = leaderboardFromVoteResponse(leaderboard, data);
+  leaderboard = filterLeaderboard(leaderboardFromVoteResponse(leaderboard, data));
   renderLeaderboard();
   updateStats();
 }
@@ -160,6 +162,9 @@ async function readHolderBalance() {
 
 function syncVoteStateFromApi(data) {
   myVote = data.vote || null;
+  if (myVote && isStaleVote(myVote)) {
+    myVote = null;
+  }
   canVote = data.canVote !== false;
   nextVoteAt = data.nextVoteAt || null;
   voteLocked = myVote ? isVoteLocked(myVote) : false;
@@ -264,7 +269,7 @@ function renderGrid(filter = "") {
 async function loadLeaderboard({ replaceEmpty = true } = {}) {
   try {
     const data = await apiGet({ action: "leaderboard" });
-    const remote = data.leaderboard || [];
+    const remote = filterLeaderboard(data.leaderboard || []);
     if (remote.length) {
       leaderboard = remote;
     } else if (replaceEmpty && !leaderboard.length) {
@@ -272,7 +277,7 @@ async function loadLeaderboard({ replaceEmpty = true } = {}) {
     } else if (useLocalStore) {
       const local = localVoteGet({ action: "leaderboard" });
       if (local.leaderboard?.length) {
-        leaderboard = local.leaderboard;
+        leaderboard = filterLeaderboard(local.leaderboard);
       }
     }
     renderLeaderboard();
@@ -283,7 +288,7 @@ async function loadLeaderboard({ replaceEmpty = true } = {}) {
       try {
         const local = localVoteGet({ action: "leaderboard" });
         if (local.leaderboard?.length) {
-          leaderboard = local.leaderboard;
+          leaderboard = filterLeaderboard(local.leaderboard);
           renderLeaderboard();
           updateStats();
         }
@@ -299,16 +304,19 @@ async function loadMyVote() {
     myVote = null;
     canVote = true;
     voteLocked = false;
-    return;
+    return false;
   }
   try {
     const data = await apiGet({ action: "mine", address: account });
+    const stale = Boolean(data.vote && isStaleVote(data.vote));
     syncVoteStateFromApi(data);
+    return stale;
   } catch (err) {
     console.warn("[vote] mine:", err.message);
     myVote = null;
     canVote = true;
     voteLocked = false;
+    return false;
   }
 }
 
@@ -343,7 +351,7 @@ async function connectWallet() {
     els.network.textContent = "Ethereum Mainnet";
 
     balance = Number(await readHolderBalance());
-    await loadMyVote();
+    const hadStaleVote = await loadMyVote();
     updateHolderPanel();
     updateSelectedLabel();
     updateSubmitButton();
@@ -354,6 +362,8 @@ async function connectWallet() {
       setMessage("This wallet holds no PIXEL TRIP NFTs — voting requires at least 1.", "error");
     } else if (voteLocked) {
       setMessage(`You already voted this week for ${formatCharacter(myVote.character)}. Next vote after ${formatNextVote(myVote) || "7 days"}.`, "info");
+    } else if (hadStaleVote) {
+      setMessage("Your previous vote was for a character that now has Stage 2 art — you can vote again for another character.", "success");
     } else {
       setMessage(`Connected. Your vote counts as ${voteWeightLabel(balance)}. One vote per week — final, no cancel.`, "success");
     }

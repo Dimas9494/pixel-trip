@@ -6,6 +6,10 @@
  * Proxies to vote-api.php when VOTE_API_URL is set, else uses Netlify Blobs.
  */
 
+import STAGE2_VARIANTS from "../../src/burn/stage2-variants.json" with { type: "json" };
+
+const BURNABLE_CHARS = new Set(Object.keys(STAGE2_VARIANTS));
+
 const VOTE_API_URL = (process.env.VOTE_API_URL || "").replace(/\/$/, "");
 const STAGE1 = "0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9";
 const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -85,7 +89,12 @@ function voteTimestamp(row) {
   return Number.isFinite(ts) ? ts : 0;
 }
 
+function isVoteStale(row) {
+  return Boolean(row?.character && BURNABLE_CHARS.has(row.character));
+}
+
 function isVoteActive(row) {
+  if (isVoteStale(row)) return false;
   const ts = voteTimestamp(row);
   return ts > 0 && Date.now() - ts < VOTE_COOLDOWN_MS;
 }
@@ -110,6 +119,7 @@ function buildLeaderboard(votes) {
     const char = row.character;
     const weight = Number(row.weight) || 0;
     if (!char || weight <= 0) continue;
+    if (BURNABLE_CHARS.has(char)) continue;
     voterCount++;
     totals[char] = (totals[char] || 0) + weight;
   }
@@ -169,7 +179,7 @@ export default async (req) => {
       const address = normalizeAddress(url.searchParams.get("address"));
       if (!address) return json(400, { error: "Invalid address" });
       let mine = votes[address] || null;
-      if (mine && !isVoteActive(mine)) mine = null;
+      if (mine && (isVoteStale(mine) || !isVoteActive(mine))) mine = null;
       return json(200, { ok: true, vote: mine, ...voteStatus(mine) });
     }
     return json(400, { error: "Unknown action" });

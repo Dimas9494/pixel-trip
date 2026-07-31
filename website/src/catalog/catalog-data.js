@@ -3,7 +3,7 @@ import STAGE3_MAP from "../burn/stage3-variants.json";
 import CHARACTER_SAMPLES from "../vote/character-samples.json";
 import { IMAGE_STAGE1 } from "../burn/config.js";
 
-export const CATALOG_BUILD = "2026-07-29-burnable-list";
+export const CATALOG_BUILD = "2026-07-31-s2v2-batch3";
 
 const S3_POOL = STAGE3_MAP.poolByChar ?? {};
 const S3_DEFAULT = STAGE3_MAP.defaultByChar ?? {};

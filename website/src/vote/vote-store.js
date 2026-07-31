@@ -2,7 +2,7 @@
  * Local vote store for dev / when vote-api.php is not deployed yet.
  * Same shape as vote-api.php responses.
  */
-import { VOTE_COOLDOWN_MS, voteWeight } from "./config.js";
+import { VOTE_COOLDOWN_MS, voteWeight, BURNABLE_CHARS } from "./config.js";
 
 const STORAGE_KEY = "pixel-trip-votes-v1";
 
@@ -25,7 +25,12 @@ function voteTimestamp(row) {
   return Number.isFinite(ts) ? ts : 0;
 }
 
+function isVoteStale(row) {
+  return Boolean(row?.character && BURNABLE_CHARS.has(row.character));
+}
+
 function isVoteActive(row) {
+  if (isVoteStale(row)) return false;
   const ts = voteTimestamp(row);
   return ts > 0 && Date.now() - ts < VOTE_COOLDOWN_MS;
 }
@@ -50,6 +55,7 @@ function buildLeaderboard(votes) {
     const char = row.character;
     const weight = Number(row.weight) || 0;
     if (!char || weight <= 0) continue;
+    if (BURNABLE_CHARS.has(char)) continue;
     voterCount++;
     totals[char] = (totals[char] || 0) + weight;
   }
@@ -121,7 +127,7 @@ export function localVotePost(body, balance) {
 
 export function mergeLeaderboard(current, character, weight, serverBoard) {
   if (Array.isArray(serverBoard) && serverBoard.length) {
-    return serverBoard;
+    return serverBoard.filter((row) => row?.character && !BURNABLE_CHARS.has(row.character));
   }
   if (!character || !weight) {
     return current;
