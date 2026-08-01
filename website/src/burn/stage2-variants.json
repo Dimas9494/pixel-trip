@@ -2763,73 +2763,6 @@
       "frame": "Gradient_Pulse"
     }
   ],
-  "Derpy_Slime": [
-    {
-      "slug": "Derpy_Slime_Berry",
-      "bg": "Metaball",
-      "frame": "Quad_Split"
-    },
-    {
-      "slug": "Derpy_Slime_Big_Lips",
-      "bg": "Morphogenesis",
-      "frame": "Slow_Pulse"
-    },
-    {
-      "slug": "Derpy_Slime_Cap",
-      "bg": "Quartz",
-      "frame": "Fusion_Scan_Rotate"
-    },
-    {
-      "slug": "Derpy_Slime_Do_Rag",
-      "bg": "Trails",
-      "frame": "Ring_Scanner"
-    },
-    {
-      "slug": "Derpy_Slime_Ghost",
-      "bg": "Parquet",
-      "frame": "Asteroid_Belt"
-    },
-    {
-      "slug": "Derpy_Slime_Golden_King",
-      "bg": "Interference",
-      "frame": "Game_Over"
-    },
-    {
-      "slug": "Derpy_Slime_Heart_Eyes",
-      "bg": "Decoder",
-      "frame": "Ionosphere"
-    },
-    {
-      "slug": "Derpy_Slime_Red_Hair",
-      "bg": "Infinity_Loop",
-      "frame": "Pixel_Sparkle"
-    },
-    {
-      "slug": "Derpy_Slime_Robot",
-      "bg": "Penrose",
-      "frame": "Spinning_Segments"
-    },
-    {
-      "slug": "Derpy_Slime_Straw_Hat",
-      "bg": "Interference",
-      "frame": "Ion_Flash"
-    },
-    {
-      "slug": "Derpy_Slime_Winter_Headphones",
-      "bg": "Eddy",
-      "frame": "Icon_Triptych"
-    },
-    {
-      "slug": "Derpy_Slime_Wizard",
-      "bg": "Infinity_Loop",
-      "frame": "Ice_Mirror"
-    },
-    {
-      "slug": "Derpy_Slime_Zombie",
-      "bg": "Goo_Bubbles",
-      "frame": "Bullion_Stack"
-    }
-  ],
   "Gladiator": [
     {
       "slug": "Gladiator_Angel",
@@ -2969,6 +2902,73 @@
       "slug": "Red_Blob_Sticker_Eyes",
       "bg": "Zebra_Turing",
       "frame": "Auction_Hammer"
+    }
+  ],
+  "Derpy_Slug": [
+    {
+      "slug": "Derpy_Slug_Berry",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Derpy_Slug_Big_Lips",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Derpy_Slug_Cap",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Derpy_Slug_Do_Rag",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Derpy_Slug_Ghost",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Derpy_Slug_Golden_King",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Derpy_Slug_Heart_Eyes",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Derpy_Slug_Red_Hair",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Derpy_Slug_Robot",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Derpy_Slug_Straw_Hat",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Derpy_Slug_Winter_Headphones",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Derpy_Slug_Wizard",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Derpy_Slug_Zombie",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
     }
   ]
 }

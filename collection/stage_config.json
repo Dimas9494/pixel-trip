@@ -908,6 +908,18 @@
             "Skeleton_Hood": "Skeleton_Hood"
           }
         },
+        "Gladiator": {
+          "folder": "Gladiator",
+          "variants": {
+            "Gladiator_Angel": "Gladiator_Angel",
+            "Gladiator_Beard": "Gladiator_Beard",
+            "Gladiator_Bloody": "Gladiator_Bloody",
+            "Gladiator_Devil": "Gladiator_Devil",
+            "Gladiator_Dreadlocks": "Gladiator_Dreadlocks",
+            "Gladiator_Round_Glasses": "Gladiator_Round_Glasses",
+            "Gladiator_Skull": "Gladiator_Skull"
+          }
+        },
         "Gummy_Shock": {
           "folder": "Gummy_Shock",
           "variants": {
@@ -954,6 +966,22 @@
             "Mint_Disco_Dancer_White_King": "Mint_Disco_Dancer_White_King"
           }
         },
+        "Shadow_Mage": {
+          "folder": "Shadow_Mage",
+          "variants": {
+            "Shadow_Mage_Afro": "Shadow_Mage_Afro",
+            "Shadow_Mage_Bones": "Shadow_Mage_Bones",
+            "Shadow_Mage_Door_Lock": "Shadow_Mage_Door_Lock",
+            "Shadow_Mage_Fire": "Shadow_Mage_Fire",
+            "Shadow_Mage_Gas_Mask": "Shadow_Mage_Gas_Mask",
+            "Shadow_Mage_Golden": "Shadow_Mage_Golden",
+            "Shadow_Mage_Hooded": "Shadow_Mage_Hooded",
+            "Shadow_Mage_Octopus": "Shadow_Mage_Octopus",
+            "Shadow_Mage_Rainbow": "Shadow_Mage_Rainbow",
+            "Shadow_Mage_Snake": "Shadow_Mage_Snake",
+            "Shadow_Mage_Three_Horned": "Shadow_Mage_Three_Horned"
+          }
+        },
         "Stoned_Jason": {
           "folder": "Stoned_Jason",
           "variants": {
@@ -982,6 +1010,38 @@
             "Tricorn_Skull_Long_Hair": "Tricorn_Skull_Long_Hair",
             "Tricorn_Skull_Parrot": "Tricorn_Skull_Parrot",
             "Tricorn_Skull_Round_Glasses": "Tricorn_Skull_Round_Glasses"
+          }
+        },
+        "Violet_Blob": {
+          "folder": "Violet_Blob",
+          "variants": {
+            "Acid_Blob": "Acid_Blob",
+            "Blob_Ghost": "Blob_Ghost",
+            "Blue_Blob_Devil": "Blue_Blob_Devil",
+            "Golden_Blob_King": "Golden_Blob_King",
+            "Green_Blob_Mushroom": "Green_Blob_Mushroom",
+            "Orange_Blob_Turban": "Orange_Blob_Turban",
+            "Peach_Blob_Pirate": "Peach_Blob_Pirate",
+            "Pinky_Blob_Earring": "Pinky_Blob_Earring",
+            "Red_Blob_Sticker_Eyes": "Red_Blob_Sticker_Eyes"
+          }
+        },
+        "Derpy_Slug": {
+          "folder": "Derpy_Slug",
+          "variants": {
+            "Derpy_Slug_Berry": "Derpy_Slug_Berry",
+            "Derpy_Slug_Big_Lips": "Derpy_Slug_Big_Lips",
+            "Derpy_Slug_Cap": "Derpy_Slug_Cap",
+            "Derpy_Slug_Do_Rag": "Derpy_Slug_Do_Rag",
+            "Derpy_Slug_Ghost": "Derpy_Slug_Ghost",
+            "Derpy_Slug_Golden_King": "Derpy_Slug_Golden_King",
+            "Derpy_Slug_Heart_Eyes": "Derpy_Slug_Heart_Eyes",
+            "Derpy_Slug_Red_Hair": "Derpy_Slug_Red_Hair",
+            "Derpy_Slug_Robot": "Derpy_Slug_Robot",
+            "Derpy_Slug_Straw_Hat": "Derpy_Slug_Straw_Hat",
+            "Derpy_Slug_Winter_Headphones": "Derpy_Slug_Winter_Headphones",
+            "Derpy_Slug_Wizard": "Derpy_Slug_Wizard",
+            "Derpy_Slug_Zombie": "Derpy_Slug_Zombie"
           }
         }
       }
