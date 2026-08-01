@@ -26,23 +26,31 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-07-31-s2v2-batch3";
+export const VOTE_BUILD = "2026-08-01-s2-batch4";
+
+/** Wrong leaderboard name → burnable Stage 1 (Derpy_Slime votes → Derpy_Slug art). */
+export const VOTE_RELEASE_ALIASES = {
+  Derpy_Slime: "Derpy_Slug",
+};
+
+/** Stage 2 live — remove from vote grid/leaderboard; unlock prior voters. */
+export function isVoteReleasedCharacter(name) {
+  if (BURNABLE_CHARS.has(name)) return true;
+  const target = VOTE_RELEASE_ALIASES[name];
+  return !!(target && BURNABLE_CHARS.has(target));
+}
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 
 const ONE_OF_ONE_SET = new Set(ONE_OF_ONE);
 
-/** Vote for a character that now has Stage 2 art — cooldown waived, re-vote allowed. */
-export function isStaleVote(vote) {
-  return Boolean(vote?.character && BURNABLE_CHARS.has(vote.character));
-}
-
 /** No Stage 2 yet — not Direct S3, not 1/1, with a sample NFT image. */
 export const VOTE_ELIGIBLE = Object.keys(CHAR_NAME_TO_ID)
   .filter((name) => !BURNABLE_CHARS.has(name))
   .filter((name) => !DIRECT_TO_S3_CHARS.has(name))
   .filter((name) => !ONE_OF_ONE_SET.has(name))
+  .filter((name) => !isVoteReleasedCharacter(name))
   .filter((name) => CHARACTER_SAMPLES[name])
   .sort((a, b) => a.localeCompare(b));
 
@@ -70,14 +78,7 @@ export function formatCharacter(name) {
 
 export function isVoteLocked(vote) {
   if (!vote?.updated) return false;
-  if (isStaleVote(vote)) return false;
   return Date.now() - new Date(vote.updated).getTime() < VOTE_COOLDOWN_MS;
-}
-
-/** Drop leaderboard rows for characters that already have Stage 2 art. */
-export function filterLeaderboard(rows) {
-  if (!Array.isArray(rows)) return [];
-  return rows.filter((row) => row?.character && !BURNABLE_CHARS.has(row.character));
 }
 
 export function nextVoteDate(vote) {
@@ -91,4 +92,4 @@ export function formatNextVote(vote) {
   return d.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" });
 }
 
-export { STAGE1_ADDRESS, STAGE1_ABI, RECEIPT_RPC_URL, IMAGE_STAGE1, BURNABLE_CHARS };
+export { STAGE1_ADDRESS, STAGE1_ABI, RECEIPT_RPC_URL, IMAGE_STAGE1 };

@@ -2,7 +2,11 @@
  * Local vote store for dev / when vote-api.php is not deployed yet.
  * Same shape as vote-api.php responses.
  */
-import { VOTE_COOLDOWN_MS, voteWeight, BURNABLE_CHARS } from "./config.js";
+import {
+  VOTE_COOLDOWN_MS,
+  voteWeight,
+  isVoteReleasedCharacter,
+} from "./config.js";
 
 const STORAGE_KEY = "pixel-trip-votes-v1";
 
@@ -25,12 +29,7 @@ function voteTimestamp(row) {
   return Number.isFinite(ts) ? ts : 0;
 }
 
-function isVoteStale(row) {
-  return Boolean(row?.character && BURNABLE_CHARS.has(row.character));
-}
-
 function isVoteActive(row) {
-  if (isVoteStale(row)) return false;
   const ts = voteTimestamp(row);
   return ts > 0 && Date.now() - ts < VOTE_COOLDOWN_MS;
 }
@@ -38,6 +37,9 @@ function isVoteActive(row) {
 function voteStatus(row) {
   if (!row || !isVoteActive(row)) {
     return { active: false, canVote: true, nextVoteAt: null };
+  }
+  if (isVoteReleasedCharacter(row.character)) {
+    return { active: false, canVote: true, nextVoteAt: null, released: true };
   }
   const ts = voteTimestamp(row);
   return {
@@ -53,9 +55,9 @@ function buildLeaderboard(votes) {
   for (const row of Object.values(votes)) {
     if (!isVoteActive(row)) continue;
     const char = row.character;
+    if (isVoteReleasedCharacter(char)) continue;
     const weight = Number(row.weight) || 0;
     if (!char || weight <= 0) continue;
-    if (BURNABLE_CHARS.has(char)) continue;
     voterCount++;
     totals[char] = (totals[char] || 0) + weight;
   }
@@ -79,7 +81,8 @@ export function localVoteGet(params) {
     const address = (params.address || "").toLowerCase();
     let mine = votes[address] || null;
     if (mine && !isVoteActive(mine)) mine = null;
-    return { ok: true, vote: mine, ...voteStatus(mine) };
+    if (mine && isVoteReleasedCharacter(mine.character)) mine = null;
+    return { ok: true, vote: mine, ...voteStatus(votes[address] || null) };
   }
   throw new Error(`Unknown action: ${action}`);
 }
@@ -127,7 +130,7 @@ export function localVotePost(body, balance) {
 
 export function mergeLeaderboard(current, character, weight, serverBoard) {
   if (Array.isArray(serverBoard) && serverBoard.length) {
-    return serverBoard.filter((row) => row?.character && !BURNABLE_CHARS.has(row.character));
+    return serverBoard;
   }
   if (!character || !weight) {
     return current;

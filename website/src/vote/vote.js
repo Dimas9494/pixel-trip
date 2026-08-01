@@ -18,10 +18,8 @@ import {
   voteWeight,
   voteWeightLabel,
   formatCharacter,
-  isVoteLocked,
-  isStaleVote,
-  filterLeaderboard,
   formatNextVote,
+  isVoteReleasedCharacter,
 } from "./config.js";
 import { localVoteGet, localVotePost, leaderboardFromVoteResponse } from "./vote-store.js";
 
@@ -48,6 +46,7 @@ let myVote = null;
 let canVote = true;
 let nextVoteAt = null;
 let voteLocked = false;
+let voteReleased = false;
 let leaderboard = [];
 /** Remote vote-api unavailable — persist in localStorage for testing. */
 let useLocalStore = false;
@@ -145,8 +144,14 @@ async function probeApi() {
   }
 }
 
+function filterLeaderboard(rows) {
+  return (rows || []).filter((row) => !isVoteReleasedCharacter(row.character));
+}
+
 function applyLeaderboard(data) {
-  leaderboard = filterLeaderboard(leaderboardFromVoteResponse(leaderboard, data));
+  leaderboard = filterLeaderboard(
+    leaderboardFromVoteResponse(leaderboard, data),
+  );
   renderLeaderboard();
   updateStats();
 }
@@ -161,13 +166,20 @@ async function readHolderBalance() {
 }
 
 function syncVoteStateFromApi(data) {
+  voteReleased = !!data.released;
   myVote = data.vote || null;
-  if (myVote && isStaleVote(myVote)) {
+  if (myVote && isVoteReleasedCharacter(myVote.character)) {
+    voteReleased = true;
     myVote = null;
+    canVote = true;
+    nextVoteAt = null;
+    voteLocked = false;
+    selectedCharacter = null;
+    return;
   }
   canVote = data.canVote !== false;
   nextVoteAt = data.nextVoteAt || null;
-  voteLocked = myVote ? isVoteLocked(myVote) : false;
+  voteLocked = !canVote && !!myVote;
   if (voteLocked && myVote?.character) {
     selectedCharacter = myVote.character;
   }
@@ -185,7 +197,9 @@ function updateHolderPanel() {
   if (voteLocked && myVote) {
     lockLine = `<p class="vote-note">You voted for <strong>${formatCharacter(myVote.character)}</strong> this week (${myVote.weight} pt). Votes are final until ${formatNextVote(myVote) || nextVoteAt || "next week"}.</p>`;
   } else if (canVote && weight > 0) {
-    lockLine = `<p class="vote-note vote-note-ok">You can cast one vote this week. It cannot be changed or cancelled.</p>`;
+    lockLine = voteReleased
+      ? `<p class="vote-note vote-note-ok">Your prior vote was for a character that now has Stage 2 art — you can vote again this week.</p>`
+      : `<p class="vote-note vote-note-ok">You can cast one vote this week. It cannot be changed or cancelled.</p>`;
   }
   els.holder.innerHTML = `
     <p><strong>${shortAddress(account)}</strong></p>
@@ -304,19 +318,16 @@ async function loadMyVote() {
     myVote = null;
     canVote = true;
     voteLocked = false;
-    return false;
+    return;
   }
   try {
     const data = await apiGet({ action: "mine", address: account });
-    const stale = Boolean(data.vote && isStaleVote(data.vote));
     syncVoteStateFromApi(data);
-    return stale;
   } catch (err) {
     console.warn("[vote] mine:", err.message);
     myVote = null;
     canVote = true;
     voteLocked = false;
-    return false;
   }
 }
 
@@ -351,7 +362,7 @@ async function connectWallet() {
     els.network.textContent = "Ethereum Mainnet";
 
     balance = Number(await readHolderBalance());
-    const hadStaleVote = await loadMyVote();
+    await loadMyVote();
     updateHolderPanel();
     updateSelectedLabel();
     updateSubmitButton();
@@ -360,10 +371,10 @@ async function connectWallet() {
 
     if (balance <= 0) {
       setMessage("This wallet holds no PIXEL TRIP NFTs — voting requires at least 1.", "error");
+    } else if (voteReleased) {
+      setMessage(`Your previous vote was for a character with Stage 2 art now live — you can vote again (${voteWeightLabel(balance)}).`, "success");
     } else if (voteLocked) {
       setMessage(`You already voted this week for ${formatCharacter(myVote.character)}. Next vote after ${formatNextVote(myVote) || "7 days"}.`, "info");
-    } else if (hadStaleVote) {
-      setMessage("Your previous vote was for a character that now has Stage 2 art — you can vote again for another character.", "success");
     } else {
       setMessage(`Connected. Your vote counts as ${voteWeightLabel(balance)}. One vote per week — final, no cancel.`, "success");
     }

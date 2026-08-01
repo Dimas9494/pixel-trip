@@ -6,14 +6,22 @@
  * Proxies to vote-api.php when VOTE_API_URL is set, else uses Netlify Blobs.
  */
 
-import STAGE2_VARIANTS from "../../src/burn/stage2-variants.json" with { type: "json" };
-
-const BURNABLE_CHARS = new Set(Object.keys(STAGE2_VARIANTS));
+import STAGE2_VARIANTS from "../../src/burn/stage2-variants.json";
 
 const VOTE_API_URL = (process.env.VOTE_API_URL || "").replace(/\/$/, "");
 const STAGE1 = "0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9";
 const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const RPC_URL = process.env.MAINNET_RPC_URL || "https://ethereum-rpc.publicnode.com";
+
+const BURNABLE_CHARS = new Set(Object.keys(STAGE2_VARIANTS));
+const VOTE_RELEASE_ALIASES = { Derpy_Slime: "Derpy_Slug" };
+
+function isVoteReleasedCharacter(name) {
+  if (!name) return false;
+  if (BURNABLE_CHARS.has(name)) return true;
+  const target = VOTE_RELEASE_ALIASES[name];
+  return !!(target && BURNABLE_CHARS.has(target));
+}
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -89,12 +97,7 @@ function voteTimestamp(row) {
   return Number.isFinite(ts) ? ts : 0;
 }
 
-function isVoteStale(row) {
-  return Boolean(row?.character && BURNABLE_CHARS.has(row.character));
-}
-
 function isVoteActive(row) {
-  if (isVoteStale(row)) return false;
   const ts = voteTimestamp(row);
   return ts > 0 && Date.now() - ts < VOTE_COOLDOWN_MS;
 }
@@ -102,6 +105,9 @@ function isVoteActive(row) {
 function voteStatus(row) {
   if (!row || !isVoteActive(row)) {
     return { active: false, canVote: true, nextVoteAt: null };
+  }
+  if (isVoteReleasedCharacter(row.character)) {
+    return { active: false, canVote: true, nextVoteAt: null, released: true };
   }
   const ts = voteTimestamp(row);
   return {
@@ -117,9 +123,9 @@ function buildLeaderboard(votes) {
   for (const row of Object.values(votes)) {
     if (!isVoteActive(row)) continue;
     const char = row.character;
+    if (isVoteReleasedCharacter(char)) continue;
     const weight = Number(row.weight) || 0;
     if (!char || weight <= 0) continue;
-    if (BURNABLE_CHARS.has(char)) continue;
     voterCount++;
     totals[char] = (totals[char] || 0) + weight;
   }
@@ -179,8 +185,10 @@ export default async (req) => {
       const address = normalizeAddress(url.searchParams.get("address"));
       if (!address) return json(400, { error: "Invalid address" });
       let mine = votes[address] || null;
-      if (mine && (isVoteStale(mine) || !isVoteActive(mine))) mine = null;
-      return json(200, { ok: true, vote: mine, ...voteStatus(mine) });
+      const row = votes[address] || null;
+      if (mine && !isVoteActive(mine)) mine = null;
+      if (mine && isVoteReleasedCharacter(mine.character)) mine = null;
+      return json(200, { ok: true, vote: mine, ...voteStatus(row) });
     }
     return json(400, { error: "Unknown action" });
   }
