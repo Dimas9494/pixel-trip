@@ -26,7 +26,7 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-08-01-s2-batch4";
+export const VOTE_BUILD = "2026-08-01-s2-batch3-4";
 
 /** Wrong leaderboard name → burnable Stage 1 (Derpy_Slime votes → Derpy_Slug art). */
 export const VOTE_RELEASE_ALIASES = {
