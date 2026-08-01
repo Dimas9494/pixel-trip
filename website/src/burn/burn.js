@@ -12,11 +12,13 @@ import {
   STAGE1_ABI,
   EVOLVE_ABI,
   BURNABLE_CHARS,
-  BURN_PROGRAM_VERSION,
+  burnProgramVersion,
   DIRECT_TO_S3_CHARS,
   CHAR_ID_TO_NAME,
   CHAR_NAME_TO_ID,
+  replaceStage2Catalog,
   STAGE2_VARIANTS,
+  STAGE2_VARIANTS_URL,
   SCAN_MAX_ID,
   RECEIPT_RPC_URL,
   WALLET_DAPP_ENABLED,
@@ -40,8 +42,26 @@ let STAGE3_ASSIGNMENTS = {};
 /** tokenId → { image, slug, bg, frame, stage } — from server metadata (matches OpenSea) */
 const METADATA_CACHE = {};
 
-/** @deprecated use BURN_PROGRAM_VERSION from config.js */
-const LAB_BUILD = BURN_PROGRAM_VERSION;
+let labBuild = burnProgramVersion("bundle");
+
+async function loadRemoteBurnCatalog() {
+  try {
+    const res = await fetch(`${STAGE2_VARIANTS_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) {
+      console.warn("[burn] stage2-variants.json HTTP", res.status);
+      return false;
+    }
+    const remote = await res.json();
+    if (replaceStage2Catalog(remote)) {
+      labBuild = burnProgramVersion("server");
+      console.log(`[burn] catalog from server: ${BURNABLE_CHARS.size} burnable characters`);
+      return true;
+    }
+  } catch (err) {
+    console.warn("[burn] remote catalog failed:", err.message);
+  }
+  return false;
+}
 
 function collectUsedSlugs(character, excludeTokenId = null) {
   const variants = STAGE2_VARIANTS[character] || [];
@@ -936,7 +956,7 @@ function updateStats() {
     keepToken ? `keep: #${keepToken.tokenId}` : null,
     burnToken ? `burn: #${burnToken.tokenId}` : null,
     isApproved ? "approved ✓" : null,
-    `build ${LAB_BUILD}`,
+    `build ${labBuild}`,
   ].filter(Boolean).join(" · ");
 }
 
@@ -975,6 +995,7 @@ async function connectWallet() {
     els.connect.textContent = shortAddress(account);
     els.network.textContent = "Ethereum Mainnet";
 
+    await loadRemoteBurnCatalog();
     await loadAssignments();
     await loadTokens();
   } catch (err) {
@@ -1103,7 +1124,9 @@ function initBurnDapp() {
   els.connect.addEventListener("click", connectWallet);
   els.evolve.addEventListener("click", evolveTokens);
   els.sync?.addEventListener("click", syncAllEvolvedTokens);
-  if (els.stats) els.stats.textContent = `build ${LAB_BUILD}`;
+  loadRemoteBurnCatalog().then((ok) => {
+    if (els.stats) els.stats.textContent = `build ${labBuild}${ok ? "" : " (offline bundle)"}`;
+  });
 }
 
 initBurnDapp();

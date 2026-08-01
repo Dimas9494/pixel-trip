@@ -21,13 +21,36 @@ export const CHAR_NAME_TO_ID = CHAR_MAP_JSON;
 
 import STAGE2_VARIANTS_JSON from "./stage2-variants.json";
 
-export const STAGE2_VARIANTS = STAGE2_VARIANTS_JSON;
+/** Bundled fallback; merged/replaced from server at runtime (see burn.js). */
+export const STAGE2_VARIANTS = { ...STAGE2_VARIANTS_JSON };
 
-/** Characters with Stage 2 art deployed (from stage2-variants.json). */
+/** Characters with Stage 2 art deployed. Mutated when server catalog loads. */
 export const BURNABLE_CHARS = new Set(Object.keys(STAGE2_VARIANTS));
 
-/** Bump when stage2-variants.json changes — shown in Evolution Lab footer. */
-export const BURN_PROGRAM_VERSION = `2026-07-31-s2v2-batch3-${BURNABLE_CHARS.size}c`;
+export const STAGE2_VARIANTS_URL = `${SITE_BASE}/stage2-variants.json`;
+
+export function burnProgramVersion(source = "bundle") {
+  return `2026-08-01-${source}-${BURNABLE_CHARS.size}c`;
+}
+
+/** @deprecated use burnProgramVersion() — footer label after catalog load */
+export const BURN_PROGRAM_VERSION = burnProgramVersion("bundle");
+
+/** Replace burn catalog from public_html/stage2-variants.json (source of truth). */
+export function replaceStage2Catalog(remote) {
+  if (!remote || typeof remote !== "object") return false;
+  for (const key of Object.keys(STAGE2_VARIANTS)) {
+    if (!(key in remote)) delete STAGE2_VARIANTS[key];
+  }
+  for (const [character, variants] of Object.entries(remote)) {
+    if (Array.isArray(variants) && variants.length > 0) {
+      STAGE2_VARIANTS[character] = variants;
+    }
+  }
+  BURNABLE_CHARS.clear();
+  for (const name of Object.keys(STAGE2_VARIANTS)) BURNABLE_CHARS.add(name);
+  return true;
+}
 
 /** 2× Stage 1 → Stage 3 directly (no Stage 2). Must match on-chain characterPath = DirectToS3 (2). */
 export const DIRECT_TO_S3_CHARS = new Set([
