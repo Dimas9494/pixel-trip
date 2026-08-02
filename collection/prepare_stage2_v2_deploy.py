@@ -50,16 +50,14 @@ OUT_META = DEPLOY_ROOT / "stage2" / "metadata"
 VARIANTS_WEB = REPO / "website" / "src" / "burn" / "stage2-variants.json"
 VARIANTS_DEPLOY = DEPLOY_ROOT / "stage2-variants.json"
 
-DEFAULT_CHARS = [
-    "Bubble_Girl",
-    "Cat_Headphones",
-    "Dollar_Hood",
-    "Gummy_Shock",
-    "Hooded_Doom",
-    "Mint_Disco_Dancer",
-    "Stoned_Jason",
-    "Tricorn_Skull",
-]
+def discover_v2_characters() -> list[str]:
+    if not V2_DIR.is_dir():
+        raise SystemExit(f"Missing folder: {V2_DIR}")
+    return sorted(
+        d.name
+        for d in V2_DIR.iterdir()
+        if d.is_dir() and any(d.glob("*.png"))
+    )
 
 
 def copy_v2_to_stage2(chars: list[str], dry_run: bool) -> None:
@@ -158,6 +156,18 @@ def merge_variants(new_entries: dict[str, list[dict]], dry_run: bool) -> dict:
     return merged
 
 
+def write_file_list(slugs: list[str]) -> Path:
+    """Flat list for FTP upload (gif + metadata slug per line, then variants JSON)."""
+    path = DEPLOY_ROOT / "STAGE2_V2_BATCH_FILES.txt"
+    lines: list[str] = []
+    for slug in sorted(slugs):
+        lines.append(f"{slug}.gif")
+        lines.append(slug)
+    lines.append("stage2-variants.json")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return path
+
+
 def write_upload_readme(chars: list[str], counts: dict[str, int], total: int) -> None:
     lines = [
         "PIXEL TRIP — Stage 2 V2 batch upload",
@@ -193,7 +203,12 @@ def write_upload_readme(chars: list[str], counts: dict[str, int], total: int) ->
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Deploy Stage 2 V2 character batch")
-    p.add_argument("--character", action="append", dest="characters", help="Repeatable; default: all 6")
+    p.add_argument(
+        "--character",
+        action="append",
+        dest="characters",
+        help="Repeatable; default: all folders in Stage 2 V2 with PNGs",
+    )
     p.add_argument("--seed", type=int, default=4242)
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--skip-copy", action="store_true", help="Stage_2 folders already copied")
@@ -203,7 +218,9 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    chars = args.characters or DEFAULT_CHARS
+    chars = args.characters or discover_v2_characters()
+    if not chars:
+        raise SystemExit(f"No character folders with PNGs in {V2_DIR}")
 
     print("Stage 2 V2 deploy batch")
     print("Characters:", ", ".join(chars))
@@ -230,6 +247,7 @@ def main() -> int:
 
     new_catalog: dict[str, list[dict]] = {}
     counts: dict[str, int] = {}
+    all_slugs: list[str] = []
     total = 0
 
     for char in chars:
@@ -242,6 +260,7 @@ def main() -> int:
         for row in catalog:
             entry = render_variant(row, cfg, bg_traits, frame_traits, bg_dir, frame_dir, rng, args.dry_run)
             entries.append({"slug": entry["slug"], "bg": entry["bg"], "frame": entry["frame"]})
+            all_slugs.append(entry["slug"])
         new_catalog[char] = entries
         counts[char] = len(entries)
         total += len(entries)
@@ -249,6 +268,7 @@ def main() -> int:
     merged = merge_variants(new_catalog, args.dry_run)
     if not args.dry_run:
         write_upload_readme(chars, counts, total)
+        file_list = write_file_list(all_slugs)
         manifest = {
             "generated": datetime.now(timezone.utc).isoformat(),
             "characters": chars,
@@ -261,6 +281,7 @@ def main() -> int:
     if not args.dry_run:
         print(f"Deploy pack: {DEPLOY_ROOT / 'stage2'}")
         print(f"Upload guide: {DEPLOY_ROOT / 'STAGE2_V2_UPLOAD.txt'}")
+        print(f"FTP file list: {file_list}")
         print(f"stage2-variants.json: {len(merged)} characters total")
     return 0
 

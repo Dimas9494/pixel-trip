@@ -12,15 +12,16 @@ import {
   RECEIPT_RPC_URL,
   VOTE_API_URL,
   VOTE_BUILD,
-  VOTE_ELIGIBLE,
   VOTE_PAGE_ENABLED,
   CHARACTER_IMAGES,
+  computeVoteEligible,
   voteWeight,
   voteWeightLabel,
   formatCharacter,
+  isVoteLocked,
   formatNextVote,
-  isVoteReleasedCharacter,
 } from "./config.js";
+import { loadBurnProgram, getBurnableChars } from "../burn/burn-program.js";
 import { localVoteGet, localVotePost, leaderboardFromVoteResponse } from "./vote-store.js";
 
 const els = {
@@ -46,10 +47,18 @@ let myVote = null;
 let canVote = true;
 let nextVoteAt = null;
 let voteLocked = false;
-let voteReleased = false;
 let leaderboard = [];
+/** Characters still awaiting Stage 2 (recomputed after live catalog load). */
+let voteEligible = computeVoteEligible(getBurnableChars());
+const voteEligibleSet = () => new Set(voteEligible);
+
 /** Remote vote-api unavailable — persist in localStorage for testing. */
 let useLocalStore = false;
+
+function filterLeaderboard(rows) {
+  const ok = voteEligibleSet();
+  return rows.filter((row) => ok.has(row.character));
+}
 
 function setMessage(text, type = "info") {
   if (!els.message) return;
@@ -144,14 +153,8 @@ async function probeApi() {
   }
 }
 
-function filterLeaderboard(rows) {
-  return (rows || []).filter((row) => !isVoteReleasedCharacter(row.character));
-}
-
 function applyLeaderboard(data) {
-  leaderboard = filterLeaderboard(
-    leaderboardFromVoteResponse(leaderboard, data),
-  );
+  leaderboard = filterLeaderboard(leaderboardFromVoteResponse(leaderboard, data));
   renderLeaderboard();
   updateStats();
 }
@@ -166,20 +169,10 @@ async function readHolderBalance() {
 }
 
 function syncVoteStateFromApi(data) {
-  voteReleased = !!data.released;
   myVote = data.vote || null;
-  if (myVote && isVoteReleasedCharacter(myVote.character)) {
-    voteReleased = true;
-    myVote = null;
-    canVote = true;
-    nextVoteAt = null;
-    voteLocked = false;
-    selectedCharacter = null;
-    return;
-  }
   canVote = data.canVote !== false;
   nextVoteAt = data.nextVoteAt || null;
-  voteLocked = !canVote && !!myVote;
+  voteLocked = myVote ? isVoteLocked(myVote) : false;
   if (voteLocked && myVote?.character) {
     selectedCharacter = myVote.character;
   }
@@ -197,9 +190,7 @@ function updateHolderPanel() {
   if (voteLocked && myVote) {
     lockLine = `<p class="vote-note">You voted for <strong>${formatCharacter(myVote.character)}</strong> this week (${myVote.weight} pt). Votes are final until ${formatNextVote(myVote) || nextVoteAt || "next week"}.</p>`;
   } else if (canVote && weight > 0) {
-    lockLine = voteReleased
-      ? `<p class="vote-note vote-note-ok">Your prior vote was for a character that now has Stage 2 art — you can vote again this week.</p>`
-      : `<p class="vote-note vote-note-ok">You can cast one vote this week. It cannot be changed or cancelled.</p>`;
+    lockLine = `<p class="vote-note vote-note-ok">You can cast one vote this week. It cannot be changed or cancelled.</p>`;
   }
   els.holder.innerHTML = `
     <p><strong>${shortAddress(account)}</strong></p>
@@ -234,11 +225,12 @@ function updateSubmitButton() {
 
 function renderLeaderboard() {
   if (!els.leaderboard) return;
-  if (!leaderboard.length) {
+  const rows = filterLeaderboard(leaderboard);
+  if (!rows.length) {
     els.leaderboard.innerHTML = `<li class="vote-leader-empty">No votes this week yet.</li>`;
     return;
   }
-  els.leaderboard.innerHTML = leaderboard.slice(0, 20).map((row, i) => {
+  els.leaderboard.innerHTML = rows.slice(0, 20).map((row, i) => {
     const img = CHARACTER_IMAGES[row.character];
     return `
     <li class="vote-leader-row${selectedCharacter === row.character ? " is-selected" : ""}">
@@ -253,7 +245,7 @@ function renderLeaderboard() {
 function renderGrid(filter = "") {
   if (!els.grid) return;
   const q = filter.trim().toLowerCase();
-  const list = VOTE_ELIGIBLE.filter((name) => {
+  const list = voteEligible.filter((name) => {
     if (!q) return true;
     return name.toLowerCase().includes(q) || formatCharacter(name).toLowerCase().includes(q);
   });
@@ -334,8 +326,8 @@ async function loadMyVote() {
 function updateStats() {
   if (!els.stats) return;
   els.stats.textContent = [
-    `${VOTE_ELIGIBLE.length} awaiting Stage 2`,
-    leaderboard.length ? `${leaderboard.length} on leaderboard` : null,
+    `${voteEligible.length} awaiting Stage 2`,
+    filterLeaderboard(leaderboard).length ? `${filterLeaderboard(leaderboard).length} on leaderboard` : null,
     useLocalStore ? "local test store" : null,
     `weekly · build ${VOTE_BUILD}`,
   ].filter(Boolean).join(" · ");
@@ -371,8 +363,6 @@ async function connectWallet() {
 
     if (balance <= 0) {
       setMessage("This wallet holds no PIXEL TRIP NFTs — voting requires at least 1.", "error");
-    } else if (voteReleased) {
-      setMessage(`Your previous vote was for a character with Stage 2 art now live — you can vote again (${voteWeightLabel(balance)}).`, "success");
     } else if (voteLocked) {
       setMessage(`You already voted this week for ${formatCharacter(myVote.character)}. Next vote after ${formatNextVote(myVote) || "7 days"}.`, "info");
     } else {
@@ -444,6 +434,9 @@ async function init() {
     setMessage("Voting is temporarily disabled.", "error");
     return;
   }
+
+  await loadBurnProgram();
+  voteEligible = computeVoteEligible(getBurnableChars());
 
   bindEvents();
   await probeApi();

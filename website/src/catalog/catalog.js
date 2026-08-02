@@ -1,4 +1,5 @@
-import { BURNABLE_LIST, BURNABLE_COUNT, STAGE3_COUNT, formatName } from "./catalog-data.js";
+import { buildBurnableList, burnableStats, formatName } from "./catalog-data.js";
+import { loadBurnProgram, getStage2Variants } from "../burn/burn-program.js";
 
 const els = {
   count:  document.getElementById("catalog-count"),
@@ -7,10 +8,12 @@ const els = {
   empty:  document.getElementById("catalog-empty"),
 };
 
+let burnableList = buildBurnableList();
+
 function renderGrid() {
   if (!els.grid) return;
   const q = (els.search?.value || "").trim().toLowerCase();
-  const list = BURNABLE_LIST.filter((entry) => {
+  const list = burnableList.filter((entry) => {
     if (!q) return true;
     return entry.name.toLowerCase().includes(q) || entry.label.toLowerCase().includes(q);
   });
@@ -34,11 +37,18 @@ function renderGrid() {
 }
 
 function init() {
+  const stats = burnableStats(burnableList);
   if (els.count) {
-    els.count.textContent = `${BURNABLE_COUNT} characters · Stage 2 live · ${STAGE3_COUNT} with Stage 3`;
+    els.count.textContent = `${stats.count} characters · Stage 2 live · ${stats.stage3} with Stage 3`;
   }
   els.search?.addEventListener("input", renderGrid);
   renderGrid();
 }
 
-init();
+async function boot() {
+  await loadBurnProgram();
+  burnableList = buildBurnableList(getStage2Variants());
+  init();
+}
+
+boot();

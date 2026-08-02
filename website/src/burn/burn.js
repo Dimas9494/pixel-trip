@@ -11,14 +11,10 @@ import {
   EVOLVE_ADDRESS,
   STAGE1_ABI,
   EVOLVE_ABI,
-  BURNABLE_CHARS,
-  burnProgramVersion,
+  BURN_PROGRAM_VERSION,
   DIRECT_TO_S3_CHARS,
   CHAR_ID_TO_NAME,
   CHAR_NAME_TO_ID,
-  replaceStage2Catalog,
-  STAGE2_VARIANTS,
-  STAGE2_VARIANTS_URL,
   SCAN_MAX_ID,
   RECEIPT_RPC_URL,
   WALLET_DAPP_ENABLED,
@@ -29,6 +25,7 @@ import {
   ASSIGNMENTS_URL,
   STAGE3_ASSIGNMENTS_URL,
 } from "./config.js";
+import { loadBurnProgram, getStage2Variants, getBurnableChars } from "./burn-program.js";
 import VARIANT_MAP from "./variant-map.json";
 import STAGE3_MAP from "./stage3-variants.json";
 import LOCAL_ASSIGNMENTS from "./token-assignments.json";
@@ -42,29 +39,11 @@ let STAGE3_ASSIGNMENTS = {};
 /** tokenId → { image, slug, bg, frame, stage } — from server metadata (matches OpenSea) */
 const METADATA_CACHE = {};
 
-let labBuild = burnProgramVersion("bundle");
-
-async function loadRemoteBurnCatalog() {
-  try {
-    const res = await fetch(`${STAGE2_VARIANTS_URL}?t=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) {
-      console.warn("[burn] stage2-variants.json HTTP", res.status);
-      return false;
-    }
-    const remote = await res.json();
-    if (replaceStage2Catalog(remote)) {
-      labBuild = burnProgramVersion("server");
-      console.log(`[burn] catalog from server: ${BURNABLE_CHARS.size} burnable characters`);
-      return true;
-    }
-  } catch (err) {
-    console.warn("[burn] remote catalog failed:", err.message);
-  }
-  return false;
-}
+/** @deprecated use BURN_PROGRAM_VERSION from config.js */
+const LAB_BUILD = BURN_PROGRAM_VERSION;
 
 function collectUsedSlugs(character, excludeTokenId = null) {
-  const variants = STAGE2_VARIANTS[character] || [];
+  const variants = getStage2Variants()[character] || [];
   const slugSet  = new Set(variants.map(v => v.slug));
   const used     = new Set();
   for (const [tid, v] of Object.entries(TOKEN_ASSIGNMENTS)) {
@@ -78,7 +57,7 @@ function resolveStage2Variant(tokenId, character, excludeTokenId = null) {
   const key = String(tokenId);
   if (TOKEN_ASSIGNMENTS[key]) return TOKEN_ASSIGNMENTS[key];
 
-  const variants = STAGE2_VARIANTS[character] || [];
+  const variants = getStage2Variants()[character] || [];
   if (!variants.length) return null;
 
   const used      = collectUsedSlugs(character, excludeTokenId);
@@ -90,7 +69,7 @@ function resolveStage2Variant(tokenId, character, excludeTokenId = null) {
 
 function isValidCatalogSlug(slug) {
   if (!slug) return false;
-  for (const list of Object.values(STAGE2_VARIANTS)) {
+  for (const list of Object.values(getStage2Variants())) {
     if (list.some(v => v.slug === slug)) return true;
   }
   return false;
@@ -114,7 +93,7 @@ function getStage2Variant(tokenId, character, stage = 0) {
     if (VARIANT_MAP[key]?.slug && isValidCatalogSlug(VARIANT_MAP[key].slug)) {
       return VARIANT_MAP[key];
     }
-    const variants = STAGE2_VARIANTS[character] || [];
+    const variants = getStage2Variants()[character] || [];
     return variants[Number(tokenId) % variants.length] || null;
   }
 
@@ -199,7 +178,7 @@ function evolvePreviewVariant(tokenId, character, stage) {
 
 function canEvolveToStage3(tokenId, character, stage) {
   if (stage !== 2) return false;
-  if (!BURNABLE_CHARS.has(character) && !isDirectToS3Char(character)) return false;
+  if (!getBurnableChars().has(character) && !isDirectToS3Char(character)) return false;
   return !!resolveStage3Variant(tokenId, character, tokenId);
 }
 
@@ -230,7 +209,7 @@ function finalizeToken(stub) {
 }
 
 function tokenLabFlags(tokenId, character, stage) {
-  const burnable = BURNABLE_CHARS.has(character) || isDirectToS3Char(character);
+  const burnable = getBurnableChars().has(character) || isDirectToS3Char(character);
   if (!burnable) {
     return { canEvolve: false, viewReason: "not_burnable" };
   }
@@ -956,7 +935,7 @@ function updateStats() {
     keepToken ? `keep: #${keepToken.tokenId}` : null,
     burnToken ? `burn: #${burnToken.tokenId}` : null,
     isApproved ? "approved ✓" : null,
-    `build ${labBuild}`,
+    `build ${LAB_BUILD}`,
   ].filter(Boolean).join(" · ");
 }
 
@@ -995,7 +974,7 @@ async function connectWallet() {
     els.connect.textContent = shortAddress(account);
     els.network.textContent = "Ethereum Mainnet";
 
-    await loadRemoteBurnCatalog();
+    await loadBurnProgram();
     await loadAssignments();
     await loadTokens();
   } catch (err) {
@@ -1124,9 +1103,8 @@ function initBurnDapp() {
   els.connect.addEventListener("click", connectWallet);
   els.evolve.addEventListener("click", evolveTokens);
   els.sync?.addEventListener("click", syncAllEvolvedTokens);
-  loadRemoteBurnCatalog().then((ok) => {
-    if (els.stats) els.stats.textContent = `build ${labBuild}${ok ? "" : " (offline bundle)"}`;
-  });
+  if (els.stats) els.stats.textContent = `build ${LAB_BUILD}`;
+  void loadBurnProgram();
 }
 
 initBurnDapp();

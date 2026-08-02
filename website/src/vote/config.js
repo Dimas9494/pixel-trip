@@ -26,19 +26,7 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-08-01-s2-batch3-4";
-
-/** Wrong leaderboard name → burnable Stage 1 (Derpy_Slime votes → Derpy_Slug art). */
-export const VOTE_RELEASE_ALIASES = {
-  Derpy_Slime: "Derpy_Slug",
-};
-
-/** Stage 2 live — remove from vote grid/leaderboard; unlock prior voters. */
-export function isVoteReleasedCharacter(name) {
-  if (BURNABLE_CHARS.has(name)) return true;
-  const target = VOTE_RELEASE_ALIASES[name];
-  return !!(target && BURNABLE_CHARS.has(target));
-}
+export const VOTE_BUILD = "2026-08-02-vote-v8";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -46,13 +34,16 @@ export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const ONE_OF_ONE_SET = new Set(ONE_OF_ONE);
 
 /** No Stage 2 yet — not Direct S3, not 1/1, with a sample NFT image. */
-export const VOTE_ELIGIBLE = Object.keys(CHAR_NAME_TO_ID)
-  .filter((name) => !BURNABLE_CHARS.has(name))
-  .filter((name) => !DIRECT_TO_S3_CHARS.has(name))
-  .filter((name) => !ONE_OF_ONE_SET.has(name))
-  .filter((name) => !isVoteReleasedCharacter(name))
-  .filter((name) => CHARACTER_SAMPLES[name])
-  .sort((a, b) => a.localeCompare(b));
+export function computeVoteEligible(burnableSet = BURNABLE_CHARS) {
+  return Object.keys(CHAR_NAME_TO_ID)
+    .filter((name) => !burnableSet.has(name))
+    .filter((name) => !DIRECT_TO_S3_CHARS.has(name))
+    .filter((name) => !ONE_OF_ONE_SET.has(name))
+    .filter((name) => CHARACTER_SAMPLES[name])
+    .sort((a, b) => a.localeCompare(b));
+}
+
+export const VOTE_ELIGIBLE = computeVoteEligible(BURNABLE_CHARS);
 
 export const CHARACTER_IMAGES = Object.fromEntries(
   VOTE_ELIGIBLE.map((name) => [name, `${IMAGE_STAGE1}/${CHARACTER_SAMPLES[name]}.gif`]),

@@ -867,6 +867,16 @@
             "Winged_Lion_Violet": "Winged_Lion_Violet"
           }
         },
+        "Bubble_Astronaut": {
+          "folder": "Bubble_Astronaut",
+          "variants": {
+            "Bubble_Astronaut_Cowboy": "Bubble_Astronaut_Cowboy",
+            "Bubble_Astronaut_Cracked_Helmet": "Bubble_Astronaut_Cracked_Helmet",
+            "Bubble_Astronaut_Golden": "Bubble_Astronaut_Golden",
+            "Bubble_Astronaut_Golden_Tooth": "Bubble_Astronaut_Golden_Tooth",
+            "Bubble_Astronaut_Scorpio_Mask": "Bubble_Astronaut_Scorpio_Mask"
+          }
+        },
         "Bubble_Girl": {
           "folder": "Bubble_Girl",
           "variants": {
@@ -891,6 +901,42 @@
             "Cat_Headphones_Devil": "Cat_Headphones_Devil",
             "Cat_Headphones_Ghost": "Cat_Headphones_Ghost",
             "Cat_Headphones_Zombie": "Cat_Headphones_Zombie"
+          }
+        },
+        "Cat_Woman": {
+          "folder": "Cat_Woman",
+          "variants": {
+            "Cat_Woman_Big_Lips": "Cat_Woman_Big_Lips",
+            "Cat_Woman_Choker": "Cat_Woman_Choker",
+            "Cat_Woman_Frog_Eyes": "Cat_Woman_Frog_Eyes",
+            "Cat_Woman_Leather_Collar": "Cat_Woman_Leather_Collar",
+            "Cat_Woman_Leo": "Cat_Woman_Leo",
+            "Cat_Woman_Long_Hair": "Cat_Woman_Long_Hair",
+            "Cat_Woman_Navy_Queen": "Cat_Woman_Navy_Queen",
+            "Cat_Woman_Neon": "Cat_Woman_Neon",
+            "Cat_Woman_P": "Cat_Woman_P",
+            "Cat_Woman_Pink_Hair": "Cat_Woman_Pink_Hair",
+            "Cat_Woman_Sewn_Up": "Cat_Woman_Sewn_Up",
+            "Cat_Woman_Tech": "Cat_Woman_Tech",
+            "Cat_Woman_Zebra": "Cat_Woman_Zebra"
+          }
+        },
+        "Derpy_Slug": {
+          "folder": "Derpy_Slug",
+          "variants": {
+            "Derpy_Slug_Berry": "Derpy_Slug_Berry",
+            "Derpy_Slug_Big_Lips": "Derpy_Slug_Big_Lips",
+            "Derpy_Slug_Cap": "Derpy_Slug_Cap",
+            "Derpy_Slug_Do_Rag": "Derpy_Slug_Do_Rag",
+            "Derpy_Slug_Ghost": "Derpy_Slug_Ghost",
+            "Derpy_Slug_Golden_King": "Derpy_Slug_Golden_King",
+            "Derpy_Slug_Heart_Eyes": "Derpy_Slug_Heart_Eyes",
+            "Derpy_Slug_Red_Hair": "Derpy_Slug_Red_Hair",
+            "Derpy_Slug_Robot": "Derpy_Slug_Robot",
+            "Derpy_Slug_Straw_Hat": "Derpy_Slug_Straw_Hat",
+            "Derpy_Slug_Winter_Headphones": "Derpy_Slug_Winter_Headphones",
+            "Derpy_Slug_Wizard": "Derpy_Slug_Wizard",
+            "Derpy_Slug_Zombie": "Derpy_Slug_Zombie"
           }
         },
         "Dollar_Hood": {
@@ -966,6 +1012,27 @@
             "Mint_Disco_Dancer_White_King": "Mint_Disco_Dancer_White_King"
           }
         },
+        "Pale_Vampire": {
+          "folder": "Pale_Vampire",
+          "variants": {
+            "Pale_Vampire_Bloody": "Pale_Vampire_Bloody",
+            "Pale_Vampire_Clown": "Pale_Vampire_Clown",
+            "Pale_Vampire_Hooded": "Pale_Vampire_Hooded",
+            "Pale_Vampire_Psycho": "Pale_Vampire_Psycho",
+            "Pale_Vampire_Rainbow": "Pale_Vampire_Rainbow",
+            "Pale_Vampire_Stylish": "Pale_Vampire_Stylish"
+          }
+        },
+        "Purple_Crystal": {
+          "folder": "Purple_Crystal",
+          "variants": {
+            "Crystal_Backet_Hat": "Crystal_Backet_Hat",
+            "Crystal_Blue_King": "Crystal_Blue_King",
+            "Crystal_Golden": "Crystal_Golden",
+            "Crystal_Rasta": "Crystal_Rasta",
+            "Crystal_Wu_Cap": "Crystal_Wu_Cap"
+          }
+        },
         "Shadow_Mage": {
           "folder": "Shadow_Mage",
           "variants": {
@@ -980,6 +1047,33 @@
             "Shadow_Mage_Rainbow": "Shadow_Mage_Rainbow",
             "Shadow_Mage_Snake": "Shadow_Mage_Snake",
             "Shadow_Mage_Three_Horned": "Shadow_Mage_Three_Horned"
+          }
+        },
+        "Space_Chimp": {
+          "folder": "Space_Chimp",
+          "variants": {
+            "Space_Chimp_Big_Lips": "Space_Chimp_Big_Lips",
+            "Space_Chimp_Cowboy": "Space_Chimp_Cowboy",
+            "Space_Chimp_Frank": "Space_Chimp_Frank",
+            "Space_Chimp_Golden_Demon": "Space_Chimp_Golden_Demon",
+            "Space_Chimp_Lasers": "Space_Chimp_Lasers"
+          }
+        },
+        "Stoned_Cat": {
+          "folder": "Stoned_Cat",
+          "variants": {
+            "Stoned_Cat_Alien": "Stoned_Cat_Alien",
+            "Stoned_Cat_Artist": "Stoned_Cat_Artist",
+            "Stoned_Cat_Big_Lips": "Stoned_Cat_Big_Lips",
+            "Stoned_Cat_Earring": "Stoned_Cat_Earring",
+            "Stoned_Cat_Gamer": "Stoned_Cat_Gamer",
+            "Stoned_Cat_King": "Stoned_Cat_King",
+            "Stoned_Cat_Long_Hair": "Stoned_Cat_Long_Hair",
+            "Stoned_Cat_OG": "Stoned_Cat_OG",
+            "Stoned_Cat_Punk": "Stoned_Cat_Punk",
+            "Stoned_Cat_Short_Hair": "Stoned_Cat_Short_Hair",
+            "Stoned_Cat_Vamp": "Stoned_Cat_Vamp",
+            "Stoned_Cat_Zombie": "Stoned_Cat_Zombie"
           }
         },
         "Stoned_Jason": {
@@ -997,6 +1091,14 @@
             "Stoned_Jason_Swamp": "Stoned_Jason_Swamp",
             "Stoned_Jason_Winter_Hat": "Stoned_Jason_Winter_Hat",
             "Stoned_Jason_Winter_Jacket": "Stoned_Jason_Winter_Jacket"
+          }
+        },
+        "Street_Duck": {
+          "folder": "Street_Duck",
+          "variants": {
+            "General_Duck": "General_Duck",
+            "Rasta_Duck": "Rasta_Duck",
+            "Zombie_Duck": "Zombie_Duck"
           }
         },
         "Tricorn_Skull": {
@@ -1024,24 +1126,6 @@
             "Peach_Blob_Pirate": "Peach_Blob_Pirate",
             "Pinky_Blob_Earring": "Pinky_Blob_Earring",
             "Red_Blob_Sticker_Eyes": "Red_Blob_Sticker_Eyes"
-          }
-        },
-        "Derpy_Slug": {
-          "folder": "Derpy_Slug",
-          "variants": {
-            "Derpy_Slug_Berry": "Derpy_Slug_Berry",
-            "Derpy_Slug_Big_Lips": "Derpy_Slug_Big_Lips",
-            "Derpy_Slug_Cap": "Derpy_Slug_Cap",
-            "Derpy_Slug_Do_Rag": "Derpy_Slug_Do_Rag",
-            "Derpy_Slug_Ghost": "Derpy_Slug_Ghost",
-            "Derpy_Slug_Golden_King": "Derpy_Slug_Golden_King",
-            "Derpy_Slug_Heart_Eyes": "Derpy_Slug_Heart_Eyes",
-            "Derpy_Slug_Red_Hair": "Derpy_Slug_Red_Hair",
-            "Derpy_Slug_Robot": "Derpy_Slug_Robot",
-            "Derpy_Slug_Straw_Hat": "Derpy_Slug_Straw_Hat",
-            "Derpy_Slug_Winter_Headphones": "Derpy_Slug_Winter_Headphones",
-            "Derpy_Slug_Wizard": "Derpy_Slug_Wizard",
-            "Derpy_Slug_Zombie": "Derpy_Slug_Zombie"
           }
         }
       }

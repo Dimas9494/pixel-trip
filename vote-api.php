@@ -140,25 +140,6 @@ function loadOneOfOne(): array {
     ];
 }
 
-function voteReleaseAliases(): array {
-    return ['Derpy_Slime' => 'Derpy_Slug'];
-}
-
-function isVoteReleasedCharacter(string $character): bool {
-    if ($character === '') {
-        return false;
-    }
-    $burnable = array_flip(loadBurnableChars());
-    if (isset($burnable[$character])) {
-        return true;
-    }
-    $aliases = voteReleaseAliases();
-    if (isset($aliases[$character])) {
-        return isset($burnable[$aliases[$character]]);
-    }
-    return false;
-}
-
 function voteTimestamp(array $row): int {
     $updated = $row['updated'] ?? '';
     if (!$updated) {
@@ -177,9 +158,6 @@ function voteStatus(?array $row): array {
     if (!$row || !isVoteActive($row)) {
         return ['active' => false, 'canVote' => true, 'nextVoteAt' => null];
     }
-    if (isVoteReleasedCharacter($row['character'] ?? '')) {
-        return ['active' => false, 'canVote' => true, 'nextVoteAt' => null, 'released' => true];
-    }
     $ts = voteTimestamp($row);
     return [
         'active'     => true,
@@ -189,6 +167,7 @@ function voteStatus(?array $row): array {
 }
 
 function buildLeaderboard(array $votes): array {
+    $eligible = array_flip(eligibleCharacters());
     $totals = [];
     $voters = 0;
     foreach ($votes as $row) {
@@ -196,11 +175,8 @@ function buildLeaderboard(array $votes): array {
             continue;
         }
         $char = $row['character'] ?? '';
-        if (isVoteReleasedCharacter($char)) {
-            continue;
-        }
         $weight = (int) ($row['weight'] ?? 0);
-        if (!$char || $weight <= 0) {
+        if (!$char || $weight <= 0 || !isset($eligible[$char])) {
             continue;
         }
         $voters++;
@@ -270,15 +246,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['action'] ?? '') === 'mine') 
         exit;
     }
     $votes = loadVotes();
-    $row = $votes[$address] ?? null;
-    $mine = $row;
+    $mine = $votes[$address] ?? null;
     if ($mine && !isVoteActive($mine)) {
         $mine = null;
     }
-    if ($mine && isVoteReleasedCharacter($mine['character'] ?? '')) {
-        $mine = null;
-    }
-    $status = voteStatus($row);
+    $status = voteStatus($mine);
     echo json_encode(['ok' => true, 'vote' => $mine, ...$status]);
     exit;
 }
