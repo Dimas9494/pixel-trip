@@ -366,8 +366,7 @@ function parseMetaVariant(meta, tokenId) {
 
 async function fetchTokenMetadata(tokenId) {
   const key = String(tokenId);
-  try {
-    const res = await fetch(`${UPDATE_METADATA_URL}?metadata=${tokenId}&t=${Date.now()}`, { cache: "no-store" });
+  const parseResponse = async (res) => {
     if (!res.ok) return null;
     const meta = await res.json();
     const variant = parseMetaVariant(meta, tokenId);
@@ -387,8 +386,23 @@ async function fetchTokenMetadata(tokenId) {
     }
     METADATA_CACHE[key] = entry;
     return entry;
+  };
+
+  try {
+    const res = await fetch(`${UPDATE_METADATA_URL}?metadata=${tokenId}&t=${Date.now()}`, { cache: "no-store" });
+    const hit = await parseResponse(res);
+    if (hit) return hit;
   } catch (err) {
-    console.warn(`[metadata] #${tokenId} load failed:`, err.message);
+    console.warn(`[metadata] #${tokenId} proxy load failed:`, err.message);
+  }
+
+  try {
+    const res = await fetch(`${IMAGE_STAGE1.replace("/images", "/metadata")}/${tokenId}?t=${Date.now()}`, {
+      cache: "no-store",
+    });
+    return await parseResponse(res);
+  } catch (err) {
+    console.warn(`[metadata] #${tokenId} direct load failed:`, err.message);
     return null;
   }
 }
@@ -447,7 +461,18 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 }
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify({ tokenId, sync: true, burnTokenId: burnTokenId || undefined }),
       });
-      const data = await res.json().catch(() => ({}));
+      const text = await res.text();
+      let data = {};
+      try {
+        data = JSON.parse(text);
+      } catch {
+        if (text.includes("Internal Server Error")) {
+          lastError = "HTTP 500 — fix public_html/.htaccess (remove LocationMatch)";
+        } else {
+          lastError = `HTTP ${res.status}`;
+        }
+        continue;
+      }
       if (data.ok) {
         applyAssignment(tokenId, data.assignment);
         if (data.stage >= 3 && data.assignment?.slug) {
@@ -769,9 +794,19 @@ async function loadTokens() {
     if (autoSync.synced) {
       msg = `Auto-synced metadata for ${autoSync.synced} evolved token(s). Refresh OpenSea in a few minutes. · ${msg}`;
     } else if (autoSync.failed.length) {
-      msg = `Could not auto-sync: ${autoSync.failed.join("; ")} · ${msg}`;
+      const serverDown = autoSync.failed.every((line) =>
+        /failed to fetch|HTTP 5\d\d|Internal Server Error/i.test(line),
+      );
+      if (serverDown) {
+        msg = `Metadata server temporarily unavailable (check .htaccess on FTP). Burn works — use Sync later. · ${msg}`;
+      } else {
+        msg = `Could not auto-sync: ${autoSync.failed.slice(0, 3).join("; ")}${autoSync.failed.length > 3 ? ` (+${autoSync.failed.length - 3} more)` : ""} · ${msg}`;
+      }
     }
-    setMessage(msg, autoSync.failed.length ? "error" : autoSync.synced ? "success" : "info");
+    const syncTone = autoSync.synced ? "success" : autoSync.failed.length && !autoSync.failed.every((line) =>
+      /failed to fetch|HTTP 5\d\d|Internal Server Error/i.test(line),
+    ) ? "error" : "info";
+    setMessage(msg, syncTone);
   }
 }
 

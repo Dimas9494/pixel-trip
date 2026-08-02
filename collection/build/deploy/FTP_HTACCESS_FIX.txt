@@ -1,0 +1,26 @@
+URGENT — pixeltripnft.website PHP 500 fix
+======================================
+
+Symptom: update-metadata.php, vote-api.php, metadata/* all return HTTP 500.
+Evolution Lab shows "Failed to fetch" on auto-sync.
+
+Cause: public_html/.htaccess contained <LocationMatch> — NOT allowed in .htaccess on Apache.
+
+FIX (FTP):
+1. Replace public_html/.htaccess with:
+   website/public/.htaccess   (fixed — no LocationMatch)
+
+2. Ensure public_html/metadata/.htaccess contains ONLY:
+   collection/build/deploy/metadata/.htaccess
+
+3. Re-upload if needed:
+   update-metadata.php
+   vote-api.php
+   stage2-variants.json (86 characters)
+
+Verify after upload:
+  https://pixeltripnft.website/update-metadata.php?health=1
+  → should return JSON, not HTML 500
+
+  https://pixeltripnft.website/metadata/878
+  → should return token JSON
