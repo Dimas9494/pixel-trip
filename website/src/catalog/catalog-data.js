@@ -3,10 +3,18 @@ import STAGE3_MAP from "../burn/stage3-variants.json";
 import CHARACTER_SAMPLES from "../vote/character-samples.json";
 import { IMAGE_STAGE1 } from "../burn/config.js";
 
-export const CATALOG_BUILD = "2026-08-01-s2-batch3-4";
+export const CATALOG_BUILD = "2026-08-02-release-order";
 
 const S3_POOL = STAGE3_MAP.poolByChar ?? {};
 const S3_DEFAULT = STAGE3_MAP.defaultByChar ?? {};
+
+/** Append order in stage2-variants.json ≈ release order (newer batches at the end). */
+const RELEASE_ORDER = Object.keys(STAGE2_VARIANTS);
+const RELEASE_RANK = new Map(RELEASE_ORDER.map((name, index) => [name, index]));
+
+function releaseRank(name) {
+  return RELEASE_RANK.get(name) ?? -1;
+}
 
 function formatName(name) {
   return name.replace(/_/g, " ");
@@ -26,7 +34,6 @@ function stage3Info(name) {
 /** Stage 1 characters with Stage 2 art — burn 2× same → Stage 2. */
 function buildEntries() {
   return Object.keys(STAGE2_VARIANTS)
-    .sort((a, b) => a.localeCompare(b))
     .map((name) => {
       const sampleId = CHARACTER_SAMPLES[name];
       const s2Variants = STAGE2_VARIANTS[name] ?? [];
@@ -38,9 +45,11 @@ function buildEntries() {
         hasS3: s3.hasS3,
         s3Count: s3.s3Count,
         imageUrl: sampleId ? `${IMAGE_STAGE1}/${sampleId}.gif` : null,
+        releaseRank: releaseRank(name),
       };
     })
-    .filter((e) => e.imageUrl);
+    .filter((e) => e.imageUrl)
+    .sort((a, b) => b.releaseRank - a.releaseRank);
 }
 
 export const BURNABLE_LIST = buildEntries();
