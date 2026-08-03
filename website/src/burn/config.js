@@ -6,6 +6,7 @@ export const IMAGE_STAGE1 = `${SITE_BASE}/images`;
 export const IMAGE_STAGE2 = `${SITE_BASE}/stage2/images`;
 export const IMAGE_STAGE3 = `${SITE_BASE}/stage3/images`;
 export const UPDATE_METADATA_URL = `${SITE_BASE}/update-metadata.php`;
+export const SYNC_EVOLVE_URL = `${SITE_BASE}/sync-evolve-events.php`;
 export const ASSIGNMENTS_URL = `${UPDATE_METADATA_URL}?assignments=1`;
 export const STAGE3_ASSIGNMENTS_URL = `${UPDATE_METADATA_URL}?stage3assignments=1`;
 
@@ -27,7 +28,7 @@ export const STAGE2_VARIANTS = STAGE2_VARIANTS_JSON;
 export const BURNABLE_CHARS = new Set(Object.keys(STAGE2_VARIANTS));
 
 /** Bump when stage2-variants.json changes — shown in Evolution Lab footer. */
-export const BURN_PROGRAM_VERSION = `2026-08-02-htaccess-${BURNABLE_CHARS.size}c`;
+export const BURN_PROGRAM_VERSION = `2026-08-03-90c-${BURNABLE_CHARS.size}c`;
 
 /** 2× Stage 1 → Stage 3 directly (no Stage 2). Must match on-chain characterPath = DirectToS3 (2). */
 export const DIRECT_TO_S3_CHARS = new Set([
@@ -104,6 +105,12 @@ export const EVOLVE_ABI = [
     stateMutability: "view",
     inputs:  [{ name: "tokenId", type: "uint256" }],
     outputs: [{ type: "uint16" }],
+  },
+  {
+    type: "function", name: "characterPath",
+    stateMutability: "view",
+    inputs:  [{ name: "charId", type: "uint16" }],
+    outputs: [{ type: "uint8" }],
   },
   {
     type: "function", name: "setStage1Characters",

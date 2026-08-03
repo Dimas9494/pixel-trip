@@ -5,6 +5,12 @@
     Header set Pragma "no-cache"
     Header set Expires "0"
   </FilesMatch>
+  # Burn page (Netlify) fetches catalog + PHP APIs cross-origin
+  <FilesMatch "^(stage2-variants\.json|update-metadata\.php|vote-api\.php)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+  </FilesMatch>
 </IfModule>
 
 # Token metadata cache busting: upload collection/build/deploy/metadata/.htaccess
