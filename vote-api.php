@@ -154,9 +154,17 @@ function isVoteActive(array $row): bool {
     return $ts > 0 && (time() - $ts) < VOTE_COOLDOWN_SEC;
 }
 
+function isCharacterReleased(string $char): bool {
+    $burnable = array_flip(loadBurnableChars());
+    return isset($burnable[$char]);
+}
+
 function voteStatus(?array $row): array {
     if (!$row || !isVoteActive($row)) {
         return ['active' => false, 'canVote' => true, 'nextVoteAt' => null];
+    }
+    if (isCharacterReleased($row['character'] ?? '')) {
+        return ['active' => false, 'canVote' => true, 'nextVoteAt' => null, 'released' => true];
     }
     $ts = voteTimestamp($row);
     return [
@@ -176,7 +184,10 @@ function buildLeaderboard(array $votes): array {
         }
         $char = $row['character'] ?? '';
         $weight = (int) ($row['weight'] ?? 0);
-        if (!$char || $weight <= 0 || !isset($eligible[$char])) {
+        if (!$char || $weight <= 0 || isCharacterReleased($char)) {
+            continue;
+        }
+        if (!isset($eligible[$char])) {
             continue;
         }
         $voters++;
@@ -250,7 +261,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['action'] ?? '') === 'mine') 
     if ($mine && !isVoteActive($mine)) {
         $mine = null;
     }
-    $status = voteStatus($mine);
+    if ($mine && isCharacterReleased($mine['character'] ?? '')) {
+        $mine = null;
+    }
+    $status = voteStatus($votes[$address] ?? null);
     echo json_encode(['ok' => true, 'vote' => $mine, ...$status]);
     exit;
 }

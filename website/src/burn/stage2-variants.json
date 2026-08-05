@@ -3973,5 +3973,250 @@
       "bg": "Cells",
       "frame": "Pulse_Wave"
     }
+  ],
+  "Gear_Owl": [
+    {
+      "slug": "Gear_Owl_Aviator",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Gear_Owl_Bandaged",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Gear_Owl_Cyborg_Skull",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Gear_Owl_Earring",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Gear_Owl_Forester",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Gear_Owl_Golden",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Gear_Owl_Golden_Age",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Gear_Owl_Headphones",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Gear_Owl_Lasers",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Gear_Owl_UFO",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Gear_Owl_White",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Gear_Owl_Wizard",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    }
+  ],
+  "Grinning_Donkey": [
+    {
+      "slug": "Grinning_Donkey_Alien",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Grinning_Donkey_Blonde",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Grinning_Donkey_Doc",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Grinning_Donkey_Frog_Hat",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Grinning_Donkey_King",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Grinning_Donkey_Long_Hair",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Grinning_Donkey_Mohawk",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Grinning_Donkey_Party_Hat",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Grinning_Donkey_Street",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Grinning_Donkey_Tuxedo",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Grinning_Donkey_VR",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Grinning_Donkey_Zombie",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    }
+  ],
+  "Motley_Jester": [
+    {
+      "slug": "Motley_Jester_Alien",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Motley_Jester_Camo",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Motley_Jester_MOG",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Motley_Jester_Pirate",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Motley_Jester_Skull",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Old_Gas_Mask": [
+    {
+      "slug": "Old_Gas_Mask_Devil",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Old_Gas_Mask_Golden",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Old_Gas_Mask_Icy_Camo",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Old_Gas_Mask_Lizard",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Old_Gas_Mask_Tech",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Old_Gas_Mask_Zombie",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    }
+  ],
+  "Triple_Eye_Freak": [
+    {
+      "slug": "Triple_Eye_Freak_Big_Eyebrows",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Fire",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Frog_Hat",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Golden_Tooth",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Kitty",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Knitted_Hat",
+      "bg": "Bee_Grid",
+      "frame": "Magnetic_Field"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Pearl",
+      "bg": "Prism",
+      "frame": "Gradient_Pulse"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Smirk",
+      "bg": "Asteroid_Belt",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Smoking",
+      "bg": "Crystal",
+      "frame": "Ink_Bleed"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Vamp",
+      "bg": "Plasma",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Triple_Eye_Freak_White_King",
+      "bg": "Network",
+      "frame": "Marble_Vein"
+    },
+    {
+      "slug": "Triple_Eye_Freak_Winter",
+      "bg": "Chimera",
+      "frame": "Triangle_March"
+    }
   ]
 }

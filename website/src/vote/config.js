@@ -26,7 +26,7 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-08-02-vote-v9";
+export const VOTE_BUILD = "2026-08-05-vote-100c-v11";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -34,8 +34,8 @@ export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const ONE_OF_ONE_SET = new Set(ONE_OF_ONE);
 
 /** Stage 2 art shipped — exclude from vote ballot and leaderboard. */
-export function isVoteReleasedCharacter(name) {
-  return BURNABLE_CHARS.has(name);
+export function isVoteReleasedCharacter(name, burnableSet = BURNABLE_CHARS) {
+  return burnableSet.has(name);
 }
 
 /** No Stage 2 yet — not Direct S3, not 1/1, with a sample NFT image. */

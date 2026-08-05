@@ -2,11 +2,12 @@
  * Local vote store for dev / when vote-api.php is not deployed yet.
  * Same shape as vote-api.php responses.
  */
-import {
-  VOTE_COOLDOWN_MS,
-  voteWeight,
-  isVoteReleasedCharacter,
-} from "./config.js";
+import { getBurnableChars } from "../burn/burn-program.js";
+import { VOTE_COOLDOWN_MS, voteWeight } from "./config.js";
+
+function isReleased(char) {
+  return getBurnableChars().has(char);
+}
 
 const STORAGE_KEY = "pixel-trip-votes-v1";
 
@@ -38,7 +39,7 @@ function voteStatus(row) {
   if (!row || !isVoteActive(row)) {
     return { active: false, canVote: true, nextVoteAt: null };
   }
-  if (isVoteReleasedCharacter(row.character)) {
+  if (isReleased(row.character)) {
     return { active: false, canVote: true, nextVoteAt: null, released: true };
   }
   const ts = voteTimestamp(row);
@@ -55,7 +56,7 @@ function buildLeaderboard(votes) {
   for (const row of Object.values(votes)) {
     if (!isVoteActive(row)) continue;
     const char = row.character;
-    if (isVoteReleasedCharacter(char)) continue;
+    if (isReleased(char)) continue;
     const weight = Number(row.weight) || 0;
     if (!char || weight <= 0) continue;
     voterCount++;
@@ -81,7 +82,7 @@ export function localVoteGet(params) {
     const address = (params.address || "").toLowerCase();
     let mine = votes[address] || null;
     if (mine && !isVoteActive(mine)) mine = null;
-    if (mine && isVoteReleasedCharacter(mine.character)) mine = null;
+    if (mine && isReleased(mine.character)) mine = null;
     return { ok: true, vote: mine, ...voteStatus(votes[address] || null) };
   }
   throw new Error(`Unknown action: ${action}`);

@@ -56,8 +56,8 @@ const voteEligibleSet = () => new Set(voteEligible);
 let useLocalStore = false;
 
 function filterLeaderboard(rows) {
-  const ok = voteEligibleSet();
-  return rows.filter((row) => ok.has(row.character));
+  const burnable = getBurnableChars();
+  return rows.filter((row) => row.character && !burnable.has(row.character));
 }
 
 function setMessage(text, type = "info") {
@@ -169,6 +169,13 @@ async function readHolderBalance() {
 }
 
 function syncVoteStateFromApi(data) {
+  if (data.released || (data.vote?.character && getBurnableChars().has(data.vote.character))) {
+    myVote = null;
+    canVote = true;
+    nextVoteAt = null;
+    voteLocked = false;
+    return;
+  }
   myVote = data.vote || null;
   canVote = data.canVote !== false;
   nextVoteAt = data.nextVoteAt || null;
@@ -437,6 +444,7 @@ async function init() {
 
   await loadBurnProgram();
   voteEligible = computeVoteEligible(getBurnableChars());
+  leaderboard = filterLeaderboard(leaderboard);
 
   bindEvents();
   await probeApi();
