@@ -1,7 +1,7 @@
 <?php
 /**
  * PIXEL TRIP — Auto Metadata Updater
- * Upload to: pixeltripnft.website/Test/update-metadata.php
+ * Upload to: pixeltripnft.website/update-metadata.php
  *
  * Called by the dApp after a successful evolve transaction.
  * Verifies the tx on-chain, then writes the new metadata JSON.
@@ -16,16 +16,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { exit; }
 
 // ── Config ────────────────────────────────────────────────────────────────────
 
-define('EVOLVE_CONTRACT', strtolower('0x8D0b7Eb6A057ed921a1d6E245b899Beca1B1Bf77'));
+define('EVOLVE_CONTRACT', strtolower(getenv('EVOLVE_CONTRACT') ?: '0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC'));
+define('STAGE1_ADDRESS',  strtolower('0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9'));
 define('RPC_URL',         'https://ethereum-rpc.publicnode.com');
 define('METADATA_DIR',    __DIR__ . '/metadata/');
-define('IMAGE_STAGE2',    'https://pixeltripnft.website/Test/stage2/images');
-define('IMAGE_STAGE3',    'https://pixeltripnft.website/Test/stage3/images');
+define('IMAGE_STAGE2',    'https://pixeltripnft.website/stage2/images');
+define('IMAGE_STAGE3',    'https://pixeltripnft.website/stage3/images');
 define('VARIANT_MAP_FILE', __DIR__ . '/variant-map.json');
 define('CHAR_MAP_FILE',    __DIR__ . '/char-map.json');
 define('STAGE3_MAP_FILE',  __DIR__ . '/stage3-variants.json');
 define('ASSIGNMENTS_FILE', __DIR__ . '/token-assignments.json');
+define('STAGE3_ASSIGNMENTS_FILE', __DIR__ . '/stage3-assignments.json');
 define('STAGE2_VARIANTS_FILE', __DIR__ . '/stage2-variants.json');
+
+function assetGifUrl(string $base, string $slug, int $stage, int $tokenId): string {
+    return $base . '/' . $slug . '.gif?v=' . $stage . '-' . $tokenId;
+}
 
 // Contract call selectors (keccak256 first 4 bytes of function sig)
 define('SEL_EVOLVED_STAGE',    'ab6dd60d'); // evolvedStage(uint256)
@@ -69,6 +75,12 @@ function decodeUint8($hex): int {
     return (int) hexdec(substr($raw, -2));
 }
 
+function decodeUint16($hex): int {
+    if (!$hex || $hex === '0x') return 0;
+    $raw = str_pad(substr($hex, 2), 64, '0', STR_PAD_LEFT);
+    return (int) hexdec(substr($raw, -4));
+}
+
 function loadCharIdToName(): array {
     if (!file_exists(CHAR_MAP_FILE)) return [];
     $nameToId = json_decode(file_get_contents(CHAR_MAP_FILE), true) ?: [];
@@ -80,11 +92,14 @@ function loadCharIdToName(): array {
 }
 
 function readOnChainState(int $tokenId): array {
+    if (!EVOLVE_CONTRACT) {
+        return ['stage' => 0, 'charId' => 0, 'charName' => ''];
+    }
     $contract = EVOLVE_CONTRACT;
     $stageHex = ethCall($contract, encodeUint256Call(SEL_EVOLVED_STAGE, $tokenId));
     $charHex  = ethCall($contract, encodeUint256Call(SEL_STAGE1_CHARACTER, $tokenId));
     $stage    = decodeUint8($stageHex);
-    $charId   = decodeUint8($charHex);
+    $charId   = decodeUint16($charHex);
     $charMap  = loadCharIdToName();
     $charName = $charMap[$charId] ?? '';
     return ['stage' => $stage, 'charId' => $charId, 'charName' => $charName];
@@ -99,12 +114,13 @@ function loadStage2VariantsCatalog(): array {
 
 function loadStage3Maps(): array {
     if (!file_exists(STAGE3_MAP_FILE)) {
-        return ['fromStage2Slug' => [], 'defaultByChar' => []];
+        return ['fromStage2Slug' => [], 'defaultByChar' => [], 'poolByChar' => []];
     }
     $data = json_decode(file_get_contents(STAGE3_MAP_FILE), true) ?: [];
     return [
         'fromStage2Slug' => $data['fromStage2Slug'] ?? [],
         'defaultByChar'  => $data['defaultByChar'] ?? [],
+        'poolByChar'     => $data['poolByChar'] ?? [],
     ];
 }
 
@@ -118,6 +134,92 @@ function saveAssignments(array $assignments): void {
         ASSIGNMENTS_FILE,
         json_encode($assignments, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
     );
+}
+
+function saveStage3Assignments(array $assignments): void {
+    file_put_contents(
+        STAGE3_ASSIGNMENTS_FILE,
+        json_encode($assignments, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
+    );
+}
+
+function stage3PoolForChar(string $charName): array {
+    $maps = loadStage3Maps();
+    return $maps['poolByChar'][$charName] ?? [];
+}
+
+function stage3PoolSlugSet(string $charName): array {
+    return array_column(stage3PoolForChar($charName), 'slug');
+}
+
+function scanMetadataForStage3Assignments(): array {
+    $out = [];
+    if (!is_dir(METADATA_DIR)) return $out;
+
+    $slugToEntry = [];
+    foreach (loadStage3Maps()['poolByChar'] as $entries) {
+        foreach ($entries as $entry) {
+            $slugToEntry[$entry['slug']] = $entry;
+        }
+    }
+
+    foreach (glob(METADATA_DIR . '*') as $path) {
+        if (!is_file($path)) continue;
+        $tokenId = basename($path);
+        if (!ctype_digit($tokenId)) continue;
+
+        $meta = json_decode(file_get_contents($path), true);
+        if (!$meta) continue;
+
+        $charSlug = null;
+        $stage    = 0;
+        foreach ($meta['attributes'] ?? [] as $attr) {
+            if ($attr['trait_type'] === 'Character') $charSlug = $attr['value'];
+            if ($attr['trait_type'] === 'Stage') $stage = (int)$attr['value'];
+        }
+        if ($stage !== 3 || !$charSlug || !isset($slugToEntry[$charSlug])) continue;
+        $out[$tokenId] = $slugToEntry[$charSlug];
+    }
+    return $out;
+}
+
+function loadStage3Assignments(): array {
+    $assignments = [];
+    if (file_exists(STAGE3_ASSIGNMENTS_FILE)) {
+        $assignments = json_decode(file_get_contents(STAGE3_ASSIGNMENTS_FILE), true) ?: [];
+    }
+    $slugToEntry = [];
+    foreach (loadStage3Maps()['poolByChar'] as $entries) {
+        foreach ($entries as $entry) {
+            $slugToEntry[$entry['slug']] = $entry;
+        }
+    }
+    $out = [];
+    foreach ($assignments as $tid => $v) {
+        $slug = $v['slug'] ?? '';
+        if (isset($slugToEntry[$slug])) {
+            $out[$tid] = $slugToEntry[$slug];
+        }
+    }
+    foreach (scanMetadataForStage3Assignments() as $tid => $v) {
+        if (!isset($out[$tid])) {
+            $out[$tid] = $v;
+        }
+    }
+    return $out;
+}
+
+function collectUsedStage3Slugs(string $charName, array $s3Assignments, ?int $excludeTokenId = null): array {
+    $slugSet = stage3PoolSlugSet($charName);
+    $used    = [];
+    foreach ($s3Assignments as $tid => $v) {
+        if ((int)$tid === $excludeTokenId) continue;
+        $slug = $v['slug'] ?? '';
+        if (in_array($slug, $slugSet, true)) {
+            $used[] = $slug;
+        }
+    }
+    return array_values(array_unique($used));
 }
 
 function catalogSlugMap(array $STAGE2_VARIANTS): array {
@@ -262,12 +364,8 @@ function resolveStage2Variant(
 }
 
 function getStage3VariantFromS2(?array $s2, string $charName): ?array {
-    if (!$s2) return null;
-    $maps = loadStage3Maps();
-    if (isset($maps['fromStage2Slug'][$s2['slug']])) {
-        return $maps['fromStage2Slug'][$s2['slug']];
-    }
-    return $maps['defaultByChar'][$charName] ?? null;
+    // Legacy helper — Stage 3 is no longer tied to Stage 2 slug names.
+    return null;
 }
 
 function resolveStage3Variant(
@@ -278,45 +376,44 @@ function resolveStage3Variant(
     bool $persist,
     ?int $excludeTokenId = null
 ): ?array {
-    $maps     = loadStage3Maps();
-    $variants = $STAGE2_VARIANTS[$charName] ?? [];
+    $pool = stage3PoolForChar($charName);
 
-    // DirectToS3 characters (e.g. Antler_Skull): no Stage 2 line — one Full_* per character
-    if (empty($variants) && isset($maps['defaultByChar'][$charName])) {
-        return $maps['defaultByChar'][$charName];
+    if (empty($pool)) {
+        $maps = loadStage3Maps();
+        return $maps['defaultByChar'][$charName] ?? null;
     }
 
-    $s2 = resolveStage2Variant($tokenId, $charName, $STAGE2_VARIANTS, $assignments, false, $excludeTokenId);
-    if ($s2) {
-        $s3 = getStage3VariantFromS2($s2, $charName);
-        if ($s3) {
-            if ($persist && !isset($assignments[(string)$tokenId])) {
-                $assignments[(string)$tokenId] = $s2;
-                saveAssignments($assignments);
+    $key            = (string)$tokenId;
+    $s3Assignments  = loadStage3Assignments();
+
+    if (isset($s3Assignments[$key])) {
+        return $s3Assignments[$key];
+    }
+
+    $used = collectUsedStage3Slugs($charName, $s3Assignments, $excludeTokenId ?? $tokenId);
+    $preferred = $pool[$tokenId % count($pool)];
+
+    if (!in_array($preferred['slug'], $used, true)) {
+        $chosen = $preferred;
+    } else {
+        $chosen = null;
+        foreach ($pool as $entry) {
+            if (!in_array($entry['slug'], $used, true)) {
+                $chosen = $entry;
+                break;
             }
-            return $s3;
         }
     }
 
-    // DirectToS3: pick unused S2 slug that has Stage 3 art
-    $used = collectUsedSlugs($charName, $assignments, $STAGE2_VARIANTS, $excludeTokenId);
-    $chosenS2 = null;
-    foreach ($variants as $v) {
-        if (!in_array($v['slug'], $used, true) && isset($maps['fromStage2Slug'][$v['slug']])) {
-            $chosenS2 = $v;
-            break;
-        }
+    if (!$chosen) {
+        return null;
     }
-    if (!$chosenS2 && isset($maps['defaultByChar'][$charName])) {
-        return $maps['defaultByChar'][$charName];
-    }
-    if (!$chosenS2) return null;
 
     if ($persist) {
-        $assignments[(string)$tokenId] = $chosenS2;
-        saveAssignments($assignments);
+        $s3Assignments[$key] = $chosen;
+        saveStage3Assignments($s3Assignments);
     }
-    return getStage3VariantFromS2($chosenS2, $charName);
+    return $chosen;
 }
 
 function loadAndPersistAssignments(array $STAGE2_VARIANTS): array {
@@ -356,6 +453,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['assignments'])) {
     header('Content-Type: application/json');
     echo file_exists(ASSIGNMENTS_FILE)
         ? file_get_contents(ASSIGNMENTS_FILE)
+        : '{}';
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['stage3assignments'])) {
+    header('Content-Type: application/json');
+    echo file_exists(STAGE3_ASSIGNMENTS_FILE)
+        ? file_get_contents(STAGE3_ASSIGNMENTS_FILE)
         : '{}';
     exit;
 }
@@ -458,9 +563,11 @@ build_metadata:
 $STAGE2_VARIANTS = loadStage2VariantsCatalog();
 if (empty($STAGE2_VARIANTS)) {
     http_response_code(500);
-    echo json_encode(['error' => 'stage2-variants.json not found on server — upload to /Test/']);
+    echo json_encode(['error' => 'stage2-variants.json not found on server — upload to public_html/']);
     exit;
 }
+
+$responseAssignment = null;
 
 if ($newStage === 2) {
     $variants = $STAGE2_VARIANTS[$charName] ?? [];
@@ -487,8 +594,8 @@ if ($newStage === 2) {
     $metadata    = [
         'name'          => "PIXEL TRIP — $displayName #$tokenId",
         'description'   => 'PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey.',
-        'image'         => IMAGE_STAGE2 . "/{$variant['slug']}.gif",
-        'animation_url' => IMAGE_STAGE2 . "/{$variant['slug']}.gif",
+        'image'         => assetGifUrl(IMAGE_STAGE2, $variant['slug'], 2, $tokenId),
+        'animation_url' => assetGifUrl(IMAGE_STAGE2, $variant['slug'], 2, $tokenId),
         'external_url'  => 'https://pixeltripnft.website',
         'attributes'    => [
             ['trait_type' => 'Background', 'value' => $variant['bg']],
@@ -497,6 +604,7 @@ if ($newStage === 2) {
             ['trait_type' => 'Stage',      'value' => '2'],
         ],
     ];
+    $responseAssignment = $assignments[(string)$tokenId] ?? $variant;
 } else {
     $assignments = loadAndPersistAssignments($STAGE2_VARIANTS);
     if ($burnTokenId && isset($assignments[(string)$burnTokenId])) {
@@ -504,6 +612,9 @@ if ($newStage === 2) {
     }
     if ($repair) {
         unset($assignments[(string)$tokenId]);
+        $s3a = loadStage3Assignments();
+        unset($s3a[(string)$tokenId]);
+        saveStage3Assignments($s3a);
     }
     $variant = resolveStage3Variant($tokenId, $charName, $STAGE2_VARIANTS, $assignments, true);
     if (!$variant) {
@@ -511,19 +622,29 @@ if ($newStage === 2) {
         echo json_encode(['error' => "No Stage 3 variant for token #$tokenId ($charName)"]);
         exit;
     }
-    $displayName = str_replace('_', ' ', $variant['slug']);
+    $slug = $variant['slug'];
+    if (!str_starts_with($slug, 'Full_')) {
+        $slug = 'Full_' . $slug;
+    }
+    $displayName = str_replace('_', ' ', $slug);
     $metadata    = [
         'name'          => "PIXEL TRIP — $displayName #$tokenId",
         'description'   => 'PIXEL TRIP — A fully ascended traveler. Reached Stage 3 through the burn-to-evolve journey.',
-        'image'         => IMAGE_STAGE3 . "/{$variant['slug']}.gif",
-        'animation_url' => IMAGE_STAGE3 . "/{$variant['slug']}.gif",
+        'image'         => assetGifUrl(IMAGE_STAGE3, $slug, 3, $tokenId),
+        'animation_url' => assetGifUrl(IMAGE_STAGE3, $slug, 3, $tokenId),
         'external_url'  => 'https://pixeltripnft.website',
         'attributes'    => [
             ['trait_type' => 'Background', 'value' => $variant['bg']],
-            ['trait_type' => 'Character',  'value' => $variant['slug']],
+            ['trait_type' => 'Character',  'value' => $slug],
             ['trait_type' => 'Frame',      'value' => $variant['frame']],
             ['trait_type' => 'Stage',      'value' => '3'],
         ],
+    ];
+    $s3Saved = loadStage3Assignments();
+    $responseAssignment = $s3Saved[(string)$tokenId] ?? [
+        'slug'  => $slug,
+        'bg'    => $variant['bg'],
+        'frame' => $variant['frame'],
     ];
 }
 
@@ -557,5 +678,5 @@ echo json_encode([
     'file'       => "metadata/$tokenId",
     'variant'    => $metadata['attributes'][1]['value'] ?? $charName,
     'image'      => $metadata['image'],
-    'assignment' => $assignments[(string)$tokenId] ?? null,
+    'assignment' => $responseAssignment,
 ]);

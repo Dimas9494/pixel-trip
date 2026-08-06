@@ -22,6 +22,7 @@ import {
   IMAGE_STAGE2,
   IMAGE_STAGE3,
   UPDATE_METADATA_URL,
+  SYNC_EVOLVE_URL,
   ASSIGNMENTS_URL,
   STAGE3_ASSIGNMENTS_URL,
 } from "./config.js";
@@ -195,9 +196,45 @@ function resolveCharacterName(tokenId, charId, fallback = null) {
   return characterFromMetadata(tokenId) || fallback;
 }
 
+/** charId → 0 Blocked, 1 Normal, 2 DirectToS3 (from EvolvePixelTrip.characterPath) */
+const CHAR_PATH_CACHE = new Map();
+
+async function loadCharacterPaths(charIds) {
+  const unique = [...new Set(charIds.filter((id) => id > 0))];
+  const missing = unique.filter((id) => !CHAR_PATH_CACHE.has(id));
+  if (!missing.length) return;
+
+  const contracts = missing.map((charId) => ({
+    address: EVOLVE_ADDRESS,
+    abi:     EVOLVE_ABI,
+    functionName: "characterPath",
+    args:    [charId],
+  }));
+
+  const results = await multicallChunked(contracts);
+  missing.forEach((charId, i) => {
+    const r = results[i];
+    CHAR_PATH_CACHE.set(charId, r?.status === "success" ? Number(r.result) : 0);
+  });
+}
+
+function charPathBlocked(charId) {
+  if (!charId) return true;
+  const path = CHAR_PATH_CACHE.get(charId);
+  return path === 0;
+}
+
+function charPathLabel(charId) {
+  const path = CHAR_PATH_CACHE.get(charId);
+  if (path === 1) return "Normal";
+  if (path === 2) return "DirectToS3";
+  if (path === 0) return "Blocked";
+  return "unknown";
+}
+
 function finalizeToken(stub) {
   const character = resolveCharacterName(stub.tokenId, stub.charId, stub.character);
-  const flags = tokenLabFlags(stub.tokenId, character, stub.stage);
+  const flags = tokenLabFlags(stub.tokenId, character, stub.stage, stub.charId);
   return {
     ...stub,
     character,
@@ -208,7 +245,7 @@ function finalizeToken(stub) {
   };
 }
 
-function tokenLabFlags(tokenId, character, stage) {
+function tokenLabFlags(tokenId, character, stage, charId = 0) {
   const burnable = getBurnableChars().has(character) || isDirectToS3Char(character);
   if (!burnable) {
     return { canEvolve: false, viewReason: "not_burnable" };
@@ -217,6 +254,9 @@ function tokenLabFlags(tokenId, character, stage) {
     return { canEvolve: false, viewReason: "maxed" };
   }
   if (stage === 0) {
+    if (charId && charPathBlocked(charId)) {
+      return { canEvolve: false, viewReason: "contract_blocked" };
+    }
     if (isDirectToS3Char(character) && !resolveStage3Variant(tokenId, character, tokenId)) {
       return { canEvolve: false, viewReason: "no_s3" };
     }
@@ -271,20 +311,22 @@ function stageImageUrls(tokenId, character, stage) {
   const cached = METADATA_CACHE[key];
   const s1 = stage1ImageUrl(tokenId);
 
-  if (stage >= 2 && cached?.image && cached?.slug) {
-    const metaImg = bustUrl(cached.image, cached.slug);
-    const variant = { slug: cached.slug, bg: cached.bg, frame: cached.frame };
-    if (stage === 3) {
-      const s3v = character ? getStage3Variant(tokenId, character, stage) : null;
-      if (s3v) {
-        return {
-          primary:   `${IMAGE_STAGE3}/${s3v.slug}.gif?v=${encodeURIComponent(s3v.slug)}`,
-          fallback:  metaImg,
-          variant:   s3v,
-        };
-      }
+  // Prefer server metadata (OpenSea source of truth) over formula guesses.
+  if (stage >= 2 && cached?.slug) {
+    const variant = {
+      slug:  cached.slug,
+      bg:    cached.bg || "Unknown",
+      frame: cached.frame || "Unknown",
+    };
+    const metaImg = cached.image ? bustUrl(cached.image, cached.slug) : null;
+
+    if (stage === 3 && cached.stage >= 3) {
+      const primary = metaImg || `${IMAGE_STAGE3}/${cached.slug}.gif?v=${encodeURIComponent(cached.slug)}`;
+      return { primary, fallback: s1, variant };
     }
-    if (stage === 2) return { primary: metaImg, fallback: s1, variant };
+    if (stage === 2 && cached.stage === 2 && metaImg) {
+      return { primary: metaImg, fallback: s1, variant };
+    }
   }
 
   const s2v = character ? getStage2Variant(tokenId, character, stage) : null;
@@ -338,6 +380,53 @@ function applyAssignment(tokenId, assignment) {
 function applyStage3Assignment(tokenId, assignment) {
   if (assignment?.slug) {
     STAGE3_ASSIGNMENTS[String(tokenId)] = assignment;
+  }
+}
+
+function formatSyncError(message) {
+  if (/^load failed$/i.test(message) || /failed to fetch/i.test(message)) {
+    return "Network error — try desktop Chrome (not Telegram browser)";
+  }
+  return message;
+}
+
+function applySyncResponse(tokenId, data) {
+  const key = String(tokenId);
+  const stage = data.stage ?? 0;
+  const slug = data.variant || data.assignment?.slug;
+  if (!slug) return;
+
+  const bg = data.assignment?.bg || "Unknown";
+  const frame = data.assignment?.frame || "Unknown";
+  const image = data.image || (stage >= 3
+    ? `${IMAGE_STAGE3}/${slug}.gif`
+    : `${IMAGE_STAGE2}/${slug}.gif`);
+
+  if (stage >= 3) {
+    applyStage3Assignment(tokenId, { slug, bg, frame });
+    METADATA_CACHE[key] = {
+      ...(METADATA_CACHE[key] || {}),
+      slug,
+      bg,
+      frame,
+      stage: 3,
+      image,
+      characterName: slug,
+    };
+    return;
+  }
+
+  if (stage === 2 && isValidCatalogSlug(slug)) {
+    applyAssignment(tokenId, { slug, bg, frame });
+    METADATA_CACHE[key] = {
+      ...(METADATA_CACHE[key] || {}),
+      slug,
+      bg,
+      frame,
+      stage: 2,
+      image,
+      characterName: slug,
+    };
   }
 }
 
@@ -452,6 +541,22 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
   return null;
 }
 
+async function triggerServerReconcile() {
+  try {
+    const res = await fetch(`${SYNC_EVOLVE_URL}?reconcile=1`, {
+      signal: AbortSignal.timeout(20_000),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (data.reconciled?.length) {
+      console.log(`[metadata] server reconciled ${data.reconciled.length} token(s)`, data.reconciled);
+    }
+    return data;
+  } catch (err) {
+    console.warn("[metadata] server reconcile skipped:", err.message);
+    return null;
+  }
+}
+
 async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 } = {}) {
   let lastError = "Sync failed";
   for (let attempt = 1; attempt <= retries; attempt++) {
@@ -474,16 +579,13 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 }
         continue;
       }
       if (data.ok) {
-        applyAssignment(tokenId, data.assignment);
-        if (data.stage >= 3 && data.assignment?.slug) {
-          applyStage3Assignment(tokenId, data.assignment);
-        }
+        applySyncResponse(tokenId, data);
         console.log(`[metadata] Synced metadata/${tokenId} → Stage ${data.stage} (${data.variant})`);
         return { ok: true, data };
       }
       lastError = data.error || `HTTP ${res.status}`;
     } catch (err) {
-      lastError = err.message;
+      lastError = formatSyncError(err.message);
     }
     if (attempt < retries) {
       console.warn(`[metadata] #${tokenId} sync attempt ${attempt} failed, retrying…`, lastError);
@@ -506,7 +608,7 @@ async function autoUpdateMetadata(tokenId, charName, newStage, txHash) {
     });
     const data = await res.json().catch(() => ({}));
     if (data.ok) {
-      applyAssignment(tokenId, data.assignment);
+      applySyncResponse(tokenId, data);
       console.log(`[metadata] Updated metadata/${tokenId} → Stage ${newStage}`);
       return { ok: true, data };
     }
@@ -523,21 +625,35 @@ async function syncAllEvolvedTokens() {
   const evolved = tokens.filter(t => t.stage >= 2);
   if (!evolved.length) return;
 
-  setMessage(`Syncing ${evolved.length} evolved token(s) to server…`, "pending");
+  setMessage(`Syncing ${evolved.length} evolved token(s)…`, "pending");
   const failed = [];
+  const syncedIds = [];
 
-  for (const t of evolved) {
+  for (let i = 0; i < evolved.length; i++) {
+    const t = evolved[i];
+    if (i > 0) await new Promise((r) => setTimeout(r, 400));
+    setMessage(`Syncing ${i + 1}/${evolved.length} (#${t.tokenId})…`, "pending");
     const r = await syncMetadataToServer(t.tokenId, null, { retries: 3 });
-    if (!r.ok) failed.push(`#${t.tokenId}: ${r.error}`);
+    if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
+    else syncedIds.push(t.tokenId);
+  }
+
+  if (syncedIds.length) {
+    await loadMetadataForTokens(syncedIds);
+    refreshTokenImages();
+    renderGrid();
   }
 
   if (!failed.length) {
-    await loadMetadataForTokens(evolved.map(t => t.tokenId));
-    refreshTokenImages();
-    renderGrid();
     setMessage(`Metadata synced for ${evolved.length} token(s). Refresh OpenSea in a few minutes.`, "success");
+  } else if (syncedIds.length) {
+    setMessage(
+      `Synced ${syncedIds.length}/${evolved.length}. Failed: ${failed.slice(0, 5).join("; ")}` +
+      `${failed.length > 5 ? ` (+${failed.length - 5} more)` : ""}`,
+      "error",
+    );
   } else {
-    setMessage(`Some tokens failed to sync: ${failed.join("; ")}`, "error");
+    setMessage(`Sync failed: ${failed.slice(0, 5).join("; ")}. Try desktop Chrome.`, "error");
   }
 }
 
@@ -559,7 +675,7 @@ async function autoSyncStaleMetadata(stubs) {
   const failed = [];
   for (const t of stale) {
     const r = await syncMetadataToServer(t.tokenId, null, { retries: 3 });
-    if (!r.ok) failed.push(`#${t.tokenId}: ${r.error}`);
+    if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
   }
   const synced = stale.length - failed.length;
   if (synced) {
@@ -730,25 +846,40 @@ async function loadTokens() {
 
       const character    = CHAR_ID_TO_NAME[charId] || null;
       const currentStage = stage;
-      const flags        = tokenLabFlags(id, character, currentStage);
-
-      if (!character) {
-        console.warn(`[token] #${id} unknown charId=${charId} — shown as view-only`);
-      } else if (flags.viewReason === "not_burnable") {
-        console.log(`[token] #${id} ${character} — not in burn program (view only)`);
-      }
-
       stubs.push({
         tokenId:    id,
         character:  character || `Unknown #${charId}`,
         charId,
         stage:      currentStage,
-        canEvolve:  flags.canEvolve,
-        viewReason: flags.viewReason,
+        canEvolve:  false,
+        viewReason: null,
         name:       `#${id}${character ? ` ${character}` : ""}`,
       });
     } catch (e) {
       console.warn(`[token] #${id} read failed:`, e.message);
+    }
+  }
+
+  const stage1CharIds = stubs.filter((t) => t.stage === 0 && t.charId).map((t) => t.charId);
+  try {
+    await loadCharacterPaths(stage1CharIds);
+  } catch (err) {
+    console.warn("[token] characterPath multicall failed:", err.message);
+  }
+
+  for (const stub of stubs) {
+    const character = CHAR_ID_TO_NAME[stub.charId] || stub.character;
+    const flags = tokenLabFlags(stub.tokenId, character, stub.stage, stub.charId);
+    stub.character = character;
+    stub.canEvolve = flags.canEvolve;
+    stub.viewReason = flags.viewReason;
+
+    if (!CHAR_ID_TO_NAME[stub.charId]) {
+      console.warn(`[token] #${stub.tokenId} unknown charId=${stub.charId} — shown as view-only`);
+    } else if (flags.viewReason === "not_burnable") {
+      console.log(`[token] #${stub.tokenId} ${character} — not in burn program (view only)`);
+    } else if (flags.viewReason === "contract_blocked") {
+      console.warn(`[token] #${stub.tokenId} ${character} — characterPath=Blocked on evolve contract`);
     }
   }
 
@@ -758,6 +889,7 @@ async function loadTokens() {
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
   const autoSync = await autoSyncStaleMetadata(stubs);
+  void triggerServerReconcile();
 
   tokens = stubs.map(finalizeToken);
 
@@ -851,6 +983,7 @@ function renderGrid() {
     const directNote = token.stage === 0 && isDirectToS3Char(token.character) ? " · S1→S3" : "";
     const lockedNote = !token.canEvolve
       ? token.viewReason === "not_burnable" ? " · not in program"
+        : token.viewReason === "contract_blocked" ? " · pending on-chain enable"
         : token.viewReason === "maxed"      ? ""
         : token.viewReason === "no_s3"      ? " · no S3 art"
         : " · locked"
@@ -887,6 +1020,7 @@ function toggleSelect(token) {
   if (!token.canEvolve) {
     const msg = {
       not_burnable: `#${token.tokenId} (${token.character}) — not in the burn program.`,
+      contract_blocked: `#${token.tokenId} (${token.character}) — evolve contract has characterPath=Blocked. Owner must run setCharacterPaths in Remix.`,
       no_s3:        `#${token.tokenId} — Stage 3 art not uploaded yet for ${token.character}.`,
       maxed:        `#${token.tokenId} is fully evolved (Stage 3).`,
       unknown_stage:`#${token.tokenId} — cannot evolve from current stage.`,
@@ -945,6 +1079,10 @@ function validateSelection() {
     return `Stage mismatch: keep is Stage ${keepToken.stage === 0 ? 1 : keepToken.stage}, burn is Stage ${burnToken.stage === 0 ? 1 : burnToken.stage}.`;
   if (keepToken.character && burnToken.character && keepToken.character !== burnToken.character)
     return `Character mismatch: "${keepToken.character}" vs "${burnToken.character}". Both must be the same character.`;
+  if (keepToken.stage === 0 && keepToken.charId && charPathBlocked(keepToken.charId)) {
+    return `${keepToken.character} is not enabled on the evolve contract yet (characterPath=Blocked). ` +
+      `The contract owner must call setCharacterPaths for charId ${keepToken.charId} via Remix.`;
+  }
   if (keepToken.stage === 0 && isDirectToS3Char(keepToken.character) && !resolveStage3Variant(keepToken.tokenId, keepToken.character, keepToken.tokenId)) {
     return `No Stage 3 art uploaded for ${keepToken.character}.`;
   }
@@ -1021,11 +1159,59 @@ async function connectWallet() {
 // ── Evolve ────────────────────────────────────────────────────────────────────
 
 async function waitForReceipt(hash) {
-  return receiptClient.waitForTransactionReceipt({
+  const receipt = await receiptClient.waitForTransactionReceipt({
     hash,
     pollingInterval: 2_000,
     timeout:         90_000,
   });
+  if (receipt.status === "reverted") {
+    throw new Error("Transaction reverted on-chain. Open Etherscan for the revert reason.");
+  }
+  return receipt;
+}
+
+function formatEvolveRevert(err) {
+  const msg = err?.shortMessage || err?.message || String(err);
+  if (/cannot evolve \(1-of-1\)/i.test(msg)) {
+    return `${keepToken.character} is blocked on-chain (characterPath=0). ` +
+      `Owner must call setCharacterPaths for charId ${keepToken.charId} — see calldata-character-paths-burnable.json.`;
+  }
+  if (/already evolved/i.test(msg)) {
+    return "One of these tokens is already evolved on-chain. Reload the page to refresh wallet state.";
+  }
+  if (/character mismatch/i.test(msg)) {
+    return "Character mismatch on-chain — reload the page and re-select two tokens of the same character.";
+  }
+  if (/approve this contract/i.test(msg)) {
+    return "Approve the evolve contract on the Stage 1 collection first, then try again.";
+  }
+  return msg;
+}
+
+async function preflightEvolve() {
+  const funcName = keepToken.stage === 0 ? "evolveFromStage1" : "evolveFromStage2";
+  const client = readClient || publicClient;
+
+  if (keepToken.stage === 0) {
+    await loadCharacterPaths([keepToken.charId, burnToken.charId]);
+    if (charPathBlocked(keepToken.charId)) {
+      return `${keepToken.character} cannot evolve — on-chain path is ${charPathLabel(keepToken.charId)}. ` +
+        `Owner must run setCharacterPaths (charId ${keepToken.charId}) in Remix.`;
+    }
+  }
+
+  try {
+    await client.simulateContract({
+      account,
+      address: getAddress(EVOLVE_ADDRESS),
+      abi:     EVOLVE_ABI,
+      functionName: funcName,
+      args:    [BigInt(keepToken.tokenId), BigInt(burnToken.tokenId)],
+    });
+  } catch (err) {
+    return formatEvolveRevert(err);
+  }
+  return null;
 }
 
 async function evolveTokens() {
@@ -1035,6 +1221,14 @@ async function evolveTokens() {
   els.evolve.disabled = true;
 
   try {
+    const preflightErr = await preflightEvolve();
+    if (preflightErr) {
+      setMessage(preflightErr, "error");
+      els.evolve.disabled = false;
+      updateEvolveButton();
+      return;
+    }
+
     const funcName = keepToken.stage === 0 ? "evolveFromStage1" : "evolveFromStage2";
 
     // Step 1: approve if needed
@@ -1067,8 +1261,8 @@ async function evolveTokens() {
 
     try {
       await waitForReceipt(hash);
-    } catch {
-      setMessage("Tx sent — check Etherscan for confirmation.", "success");
+    } catch (receiptErr) {
+      setMessage(receiptErr.message || "Transaction failed on-chain.", "error");
       els.evolve.disabled = false;
       updateEvolveButton();
       return;
@@ -1090,19 +1284,14 @@ async function evolveTokens() {
 
     const updated = await syncMetadataToServer(keepId, burnId, { retries: 5 });
     if (updated.ok) {
-      await loadMetadataForTokens([keepId]);
       if (burnId) delete TOKEN_ASSIGNMENTS[String(burnId)];
-      if (newStage === 3) {
-        const s3 = resolveStage3Variant(keepId, charName, keepId);
-        if (s3) applyStage3Assignment(keepId, s3);
-      }
       applyEvolveResult(keepId, burnId, newStage);
       setMessage(
         `Done! #${keepId} → ${stageLabel} (${updated.data?.variant || "?"}). Refresh OpenSea in a few minutes.`,
         "success"
       );
     } else {
-      setMessage(`Evolved on-chain! Metadata sync failed: ${updated.error}`, "error");
+      setMessage(`Evolved on-chain! Metadata sync failed: ${formatSyncError(updated.error)}`, "error");
       showMetadataDownload(keepId, charName, newStage);
     }
 
@@ -1110,7 +1299,7 @@ async function evolveTokens() {
     updateEvolveButton();
   } catch (err) {
     console.error("[evolve]", err);
-    setMessage(err.shortMessage || err.message || "Transaction failed.", "error");
+    setMessage(formatEvolveRevert(err), "error");
     els.evolve.disabled = false;
     updateEvolveButton();
   }
