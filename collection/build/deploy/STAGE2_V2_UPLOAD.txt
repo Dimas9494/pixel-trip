@@ -1,5 +1,5 @@
 PIXEL TRIP — Stage 2 V2 batch upload
-Generated: 2026-08-02T18:18:21.501589+00:00
+Generated: 2026-08-06T18:10:18.887107+00:00
 
 LOCAL PACK:
   D:\Promt\Пиксель\collection\build\deploy\stage2\images
@@ -16,15 +16,13 @@ WEBSITE (rebuild after variants JSON):
   upload burn.html + assets/*
 
 CHARACTERS:
-  Bubble_Astronaut: 5 variants
-  Cat_Woman: 13 variants
-  Pale_Vampire: 6 variants
-  Purple_Crystal: 5 variants
-  Space_Chimp: 5 variants
-  Stoned_Cat: 12 variants
-  Street_Duck: 3 variants
+  Cool_Banana: 5 variants
+  Crying_Demon: 3 variants
+  Prism_Statue: 13 variants
+  Tri_Cross_Bot: 14 variants
+  Unicorn_Girl: 12 variants
 
-Total new GIFs: 49
+Total new GIFs: 47
 
 BURN: after upload, holders can burn 2x same Stage 1 character -> Stage 2.
 OpenSea: Refresh metadata on evolved tokens after sync.

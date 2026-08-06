@@ -1,0 +1,39 @@
+PIXEL TRIP — Batch 9 deploy checklist (105 burnable chars)
+============================================================
+
+NEW CHARS: Cool_Banana, Crying_Demon, Prism_Statue, Tri_Cross_Bot, Unicorn_Girl
+
+FTP → pixeltripnft.website public_html:
+  [ ] stage2/images/*.gif        (47 new — STAGE2_V2_BATCH_FILES.txt)
+  [ ] stage2/metadata/{Slug}
+  [ ] stage2-variants.json       (105 characters — CRITICAL)
+  [ ] update-metadata.php        (Stage 3 sync fix — if not uploaded yet)
+  [ ] vote-api.php
+  [ ] .htaccess                  (CORS)
+
+NETLIFY:
+  [ ] cd website && npm run build
+  [ ] git push origin main
+
+VERIFY:
+  [ ] https://pixeltripnft.website/stage2-variants.json → 105 keys, includes Cool_Banana
+  [ ] Burn footer: build 2026-08-06-105c-105c
+  [ ] Vote footer: build 2026-08-06-vote-105c-v12
+  [ ] Cool_Banana NOT on vote leaderboard
+  [ ] Cool_Banana ON catalog.html (Burnable)
+
+REMIX setCharacterPaths (all charId >= 79):
+  charIds: [120, 129, 219, 271, 277]
+  paths:   [1, 1, 1, 1, 1]
+  (Cool_Banana, Crying_Demon, Prism_Statue, Tri_Cross_Bot, Unicorn_Girl)
+
+Contract: 0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC
+See: REMIX_SET_CHARACTER_PATHS.txt
+
+VARIANT COUNTS:
+  Cool_Banana    — 5
+  Crying_Demon   — 3
+  Prism_Statue   — 13
+  Tri_Cross_Bot  — 14
+  Unicorn_Girl   — 12
+  Total new GIFs — 47

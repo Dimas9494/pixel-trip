@@ -1,22 +1,18 @@
 {
-  "generated": "2026-08-02T18:18:21.503809+00:00",
+  "generated": "2026-08-06T18:10:18.888823+00:00",
   "characters": [
-    "Bubble_Astronaut",
-    "Cat_Woman",
-    "Pale_Vampire",
-    "Purple_Crystal",
-    "Space_Chimp",
-    "Stoned_Cat",
-    "Street_Duck"
+    "Cool_Banana",
+    "Crying_Demon",
+    "Prism_Statue",
+    "Tri_Cross_Bot",
+    "Unicorn_Girl"
   ],
   "counts": {
-    "Bubble_Astronaut": 5,
-    "Cat_Woman": 13,
-    "Pale_Vampire": 6,
-    "Purple_Crystal": 5,
-    "Space_Chimp": 5,
-    "Stoned_Cat": 12,
-    "Street_Duck": 3
+    "Cool_Banana": 5,
+    "Crying_Demon": 3,
+    "Prism_Statue": 13,
+    "Tri_Cross_Bot": 14,
+    "Unicorn_Girl": 12
   },
-  "total_variants": 49
+  "total_variants": 47
 }

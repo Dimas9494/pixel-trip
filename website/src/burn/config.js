@@ -28,7 +28,7 @@ export const STAGE2_VARIANTS = STAGE2_VARIANTS_JSON;
 export const BURNABLE_CHARS = new Set(Object.keys(STAGE2_VARIANTS));
 
 /** Bump when stage2-variants.json changes — shown in Evolution Lab footer. */
-export const BURN_PROGRAM_VERSION = `2026-08-06-sync-${BURNABLE_CHARS.size}c`;
+export const BURN_PROGRAM_VERSION = `2026-08-06-105c-${BURNABLE_CHARS.size}c`;
 
 /** 2× Stage 1 → Stage 3 directly (no Stage 2). Must match on-chain characterPath = DirectToS3 (2). */
 export const DIRECT_TO_S3_CHARS = new Set([

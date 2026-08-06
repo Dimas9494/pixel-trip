@@ -26,7 +26,7 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-08-05-vote-100c-v11";
+export const VOTE_BUILD = "2026-08-06-vote-105c-v12";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
