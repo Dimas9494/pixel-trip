@@ -896,10 +896,7 @@ async function loadTokens() {
   keepToken  = null;
   burnToken  = null;
 
-  isApproved = await (readClient || publicClient).readContract({
-    address: STAGE1_ADDRESS, abi: STAGE1_ABI,
-    functionName: "isApprovedForAll", args: [account, EVOLVE_ADDRESS],
-  }).catch(() => false);
+  isApproved = await refreshApprovalStatus();
 
   renderGrid();
   updateStats();
@@ -1061,7 +1058,7 @@ function toggleSelect(token) {
       `Ready! #${keepToken.tokenId} → ${nextStage}` +
       (preview ? ` (${preview.slug.replace(/_/g, " ")})` : "") +
       `. #${burnToken.tokenId} will be destroyed.` +
-      (isApproved ? "" : " (approval required first)")
+      (isApproved ? "" : " — wallet will ask for one-time approve, then evolve")
     );
     updateEvolveButton();
   } else if (keepToken) {
@@ -1158,6 +1155,43 @@ async function connectWallet() {
 
 // ── Evolve ────────────────────────────────────────────────────────────────────
 
+async function refreshApprovalStatus() {
+  if (!account || !(readClient || publicClient)) return false;
+  try {
+    isApproved = await (readClient || publicClient).readContract({
+      address: STAGE1_ADDRESS,
+      abi:     STAGE1_ABI,
+      functionName: "isApprovedForAll",
+      args:    [account, EVOLVE_ADDRESS],
+    });
+  } catch (err) {
+    console.warn("[approve] status check failed:", err.message);
+  }
+  return isApproved;
+}
+
+async function ensureEvolveApproval() {
+  await refreshApprovalStatus();
+  if (isApproved) return;
+
+  setMessage("Step 1/2 — Confirm APPROVE in your wallet…", "pending");
+  const approveHash = await walletClient.writeContract({
+    account,
+    chain: mainnet,
+    address: getAddress(STAGE1_ADDRESS),
+    abi:     STAGE1_ABI,
+    functionName: "setApprovalForAll",
+    args:    [getAddress(EVOLVE_ADDRESS), true],
+  });
+  setMessage("Approval sent. Waiting for confirmation…", "pending");
+  await waitForReceipt(approveHash);
+  await refreshApprovalStatus();
+  if (!isApproved) {
+    throw new Error("Approval transaction confirmed but evolve contract is still not approved. Reload and try again.");
+  }
+  updateStats();
+}
+
 async function waitForReceipt(hash) {
   const receipt = await receiptClient.waitForTransactionReceipt({
     hash,
@@ -1183,9 +1217,14 @@ function formatEvolveRevert(err) {
     return "Character mismatch on-chain — reload the page and re-select two tokens of the same character.";
   }
   if (/approve this contract/i.test(msg)) {
-    return "Approve the evolve contract on the Stage 1 collection first, then try again.";
+    return null;
   }
   return msg;
+}
+
+function isApprovalSimError(err) {
+  const msg = err?.shortMessage || err?.message || String(err);
+  return /approve this contract/i.test(msg);
 }
 
 async function preflightEvolve() {
@@ -1200,6 +1239,8 @@ async function preflightEvolve() {
     }
   }
 
+  if (!isApproved) return null;
+
   try {
     await client.simulateContract({
       account,
@@ -1209,6 +1250,7 @@ async function preflightEvolve() {
       args:    [BigInt(keepToken.tokenId), BigInt(burnToken.tokenId)],
     });
   } catch (err) {
+    if (isApprovalSimError(err)) return null;
     return formatEvolveRevert(err);
   }
   return null;
@@ -1221,6 +1263,8 @@ async function evolveTokens() {
   els.evolve.disabled = true;
 
   try {
+    await ensureEvolveApproval();
+
     const preflightErr = await preflightEvolve();
     if (preflightErr) {
       setMessage(preflightErr, "error");
@@ -1230,23 +1274,6 @@ async function evolveTokens() {
     }
 
     const funcName = keepToken.stage === 0 ? "evolveFromStage1" : "evolveFromStage2";
-
-    // Step 1: approve if needed
-    if (!isApproved) {
-      setMessage("Step 1/2 — Confirm APPROVE in your wallet…", "pending");
-      const approveHash = await walletClient.writeContract({
-        account,
-        chain: mainnet,
-        address: getAddress(STAGE1_ADDRESS),
-        abi:     STAGE1_ABI,
-        functionName: "setApprovalForAll",
-        args:    [getAddress(EVOLVE_ADDRESS), true],
-      });
-      setMessage(`Approval sent. Waiting for confirmation…`, "pending");
-      await waitForReceipt(approveHash);
-      isApproved = true;
-      updateStats();
-    }
 
     setMessage("Confirm EVOLVE in your wallet…", "pending");
     const hash = await walletClient.writeContract({
