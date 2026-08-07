@@ -4463,5 +4463,225 @@
       "bg": "Chimera",
       "frame": "Triangle_March"
     }
+  ],
+  "Cosmic_Matter": [
+    {
+      "slug": "Cosmic_Matter_Brain",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Cosmic_Matter_Electro",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Cosmic_Matter_Fire",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Cosmic_Matter_Horns",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Cosmic_Matter_Octopus",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    }
+  ],
+  "Neko_Hood": [
+    {
+      "slug": "Neko_Hood_Bear",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Neko_Hood_Bunny",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Neko_Hood_Golden_Smile",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Neko_Hood_Horns",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Neko_Hood_Knitted_Hat",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Neko_Hood_Leo",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Neko_Hood_Mummy",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Neko_Hood_Neon",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Neko_Hood_Rainbow",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Neko_Hood_Zombie",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Pirate_Cat": [
+    {
+      "slug": "Pirate_Cat_Cap_Hat",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Pirate_Cat_Neon",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Pirate_Cat_Pipe",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Pirate_Cat_Silver_Chain",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Pirate_Cat_Zombie",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    }
+  ],
+  "Redeye_Cyclops": [
+    {
+      "slug": "Redeye_Cyclops_BackCap",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Redeye_Cyclops_Bandana",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Redeye_Cyclops_Cowboy_Hat",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Redeye_Cyclops_Dead",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Redeye_Cyclops_Franky",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Redeye_Cyclops_Golden_Helmet",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Redeye_Cyclops_King",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Redeye_Cyclops_Miner",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Redeye_Cyclops_Red_General_Hat",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Street_Ape": [
+    {
+      "slug": "Street_Ape_Bachelor",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Street_Ape_Big_Lips",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Street_Ape_Bucket_Hat",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Street_Ape_Cap",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Street_Ape_Frog_Hat",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Street_Ape_King",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Street_Ape_Long_Hair",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Street_Ape_Pharaoh",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Street_Ape_Punk",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Street_Ape_Rainbow_Bandana",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    },
+    {
+      "slug": "Street_Ape_Sailor",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    },
+    {
+      "slug": "Street_Ape_Smirk",
+      "bg": "Bee_Grid",
+      "frame": "Magnetic_Field"
+    },
+    {
+      "slug": "Street_Ape_Zombie",
+      "bg": "Prism",
+      "frame": "Gradient_Pulse"
+    }
   ]
 }

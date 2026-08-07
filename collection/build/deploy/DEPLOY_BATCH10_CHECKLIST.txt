@@ -1,0 +1,37 @@
+PIXEL TRIP — Batch 10 deploy checklist (110 burnable chars)
+============================================================
+
+NEW CHARS: Cosmic_Matter, Neko_Hood, Pirate_Cat, Redeye_Cyclops, Street_Ape
+
+FTP → pixeltripnft.website public_html:
+  [ ] stage2/images/*.gif        (42 new — STAGE2_V2_BATCH_FILES.txt)
+  [ ] stage2/metadata/{Slug}
+  [ ] stage2-variants.json       (110 characters — CRITICAL)
+  [ ] update-metadata.php
+  [ ] vote-api.php
+  [ ] .htaccess                  (CORS)
+
+NETLIFY:
+  [ ] cd website && npm run build
+  [ ] git push origin main
+
+VERIFY:
+  [ ] stage2-variants.json → 110 keys, includes Cosmic_Matter
+  [ ] Burn footer: build 2026-08-07-110c-110c
+  [ ] Cosmic_Matter NOT on vote leaderboard
+  [ ] Cosmic_Matter ON catalog.html (Burnable)
+
+REMIX setCharacterPaths (all charId >= 79):
+  charIds: [122, 197, 218, 228, 259]
+  paths:   [1, 1, 1, 1, 1]
+  (Cosmic_Matter, Neko_Hood, Pirate_Cat, Redeye_Cyclops, Street_Ape)
+
+Contract: 0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC
+
+VARIANT COUNTS:
+  Cosmic_Matter   — 5
+  Neko_Hood       — 10
+  Pirate_Cat      — 5
+  Redeye_Cyclops  — 9
+  Street_Ape      — 13
+  Total new GIFs  — 42

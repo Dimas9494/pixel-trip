@@ -1,18 +1,18 @@
 {
-  "generated": "2026-08-06T18:10:18.888823+00:00",
+  "generated": "2026-08-07T16:57:48.991824+00:00",
   "characters": [
-    "Cool_Banana",
-    "Crying_Demon",
-    "Prism_Statue",
-    "Tri_Cross_Bot",
-    "Unicorn_Girl"
+    "Cosmic_Matter",
+    "Neko_Hood",
+    "Pirate_Cat",
+    "Redeye_Cyclops",
+    "Street_Ape"
   ],
   "counts": {
-    "Cool_Banana": 5,
-    "Crying_Demon": 3,
-    "Prism_Statue": 13,
-    "Tri_Cross_Bot": 14,
-    "Unicorn_Girl": 12
+    "Cosmic_Matter": 5,
+    "Neko_Hood": 10,
+    "Pirate_Cat": 5,
+    "Redeye_Cyclops": 9,
+    "Street_Ape": 13
   },
-  "total_variants": 47
+  "total_variants": 42
 }

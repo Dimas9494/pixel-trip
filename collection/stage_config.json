@@ -1381,6 +1381,73 @@
             "Unicorn_Girl_White_Queen": "Unicorn_Girl_White_Queen",
             "Unicorn_Girl_Zombie": "Unicorn_Girl_Zombie"
           }
+        },
+        "Cosmic_Matter": {
+          "folder": "Cosmic_Matter",
+          "variants": {
+            "Cosmic_Matter_Brain": "Cosmic_Matter_Brain",
+            "Cosmic_Matter_Electro": "Cosmic_Matter_Electro",
+            "Cosmic_Matter_Fire": "Cosmic_Matter_Fire",
+            "Cosmic_Matter_Horns": "Cosmic_Matter_Horns",
+            "Cosmic_Matter_Octopus": "Cosmic_Matter_Octopus"
+          }
+        },
+        "Neko_Hood": {
+          "folder": "Neko_Hood",
+          "variants": {
+            "Neko_Hood_Bear": "Neko_Hood_Bear",
+            "Neko_Hood_Bunny": "Neko_Hood_Bunny",
+            "Neko_Hood_Golden_Smile": "Neko_Hood_Golden_Smile",
+            "Neko_Hood_Horns": "Neko_Hood_Horns",
+            "Neko_Hood_Knitted_Hat": "Neko_Hood_Knitted_Hat",
+            "Neko_Hood_Leo": "Neko_Hood_Leo",
+            "Neko_Hood_Mummy": "Neko_Hood_Mummy",
+            "Neko_Hood_Neon": "Neko_Hood_Neon",
+            "Neko_Hood_Rainbow": "Neko_Hood_Rainbow",
+            "Neko_Hood_Zombie": "Neko_Hood_Zombie"
+          }
+        },
+        "Pirate_Cat": {
+          "folder": "Pirate_Cat",
+          "variants": {
+            "Pirate_Cat_Cap_Hat": "Pirate_Cat_Cap_Hat",
+            "Pirate_Cat_Neon": "Pirate_Cat_Neon",
+            "Pirate_Cat_Pipe": "Pirate_Cat_Pipe",
+            "Pirate_Cat_Silver_Chain": "Pirate_Cat_Silver_Chain",
+            "Pirate_Cat_Zombie": "Pirate_Cat_Zombie"
+          }
+        },
+        "Redeye_Cyclops": {
+          "folder": "Redeye_Cyclops",
+          "variants": {
+            "Redeye_Cyclops_BackCap": "Redeye_Cyclops_BackCap",
+            "Redeye_Cyclops_Bandana": "Redeye_Cyclops_Bandana",
+            "Redeye_Cyclops_Cowboy_Hat": "Redeye_Cyclops_Cowboy_Hat",
+            "Redeye_Cyclops_Dead": "Redeye_Cyclops_Dead",
+            "Redeye_Cyclops_Franky": "Redeye_Cyclops_Franky",
+            "Redeye_Cyclops_Golden_Helmet": "Redeye_Cyclops_Golden_Helmet",
+            "Redeye_Cyclops_King": "Redeye_Cyclops_King",
+            "Redeye_Cyclops_Miner": "Redeye_Cyclops_Miner",
+            "Redeye_Cyclops_Red_General_Hat": "Redeye_Cyclops_Red_General_Hat"
+          }
+        },
+        "Street_Ape": {
+          "folder": "Street_Ape",
+          "variants": {
+            "Street_Ape_Bachelor": "Street_Ape_Bachelor",
+            "Street_Ape_Big_Lips": "Street_Ape_Big_Lips",
+            "Street_Ape_Bucket_Hat": "Street_Ape_Bucket_Hat",
+            "Street_Ape_Cap": "Street_Ape_Cap",
+            "Street_Ape_Frog_Hat": "Street_Ape_Frog_Hat",
+            "Street_Ape_King": "Street_Ape_King",
+            "Street_Ape_Long_Hair": "Street_Ape_Long_Hair",
+            "Street_Ape_Pharaoh": "Street_Ape_Pharaoh",
+            "Street_Ape_Punk": "Street_Ape_Punk",
+            "Street_Ape_Rainbow_Bandana": "Street_Ape_Rainbow_Bandana",
+            "Street_Ape_Sailor": "Street_Ape_Sailor",
+            "Street_Ape_Smirk": "Street_Ape_Smirk",
+            "Street_Ape_Zombie": "Street_Ape_Zombie"
+          }
         }
       }
     },
