@@ -31,6 +31,7 @@ import VARIANT_MAP from "./variant-map.json";
 import STAGE3_MAP from "./stage3-variants.json";
 import LOCAL_ASSIGNMENTS from "./token-assignments.json";
 import LOCAL_STAGE3_ASSIGNMENTS from "./stage3-assignments.json";
+import { fetchEvolutionHistory, openEvolutionModal } from "./evolution.js";
 
 /** tokenId → { slug, bg, frame } — Stage 2 assignments */
 let TOKEN_ASSIGNMENTS = {};
@@ -214,14 +215,16 @@ async function loadCharacterPaths(charIds) {
   const results = await multicallChunked(contracts);
   missing.forEach((charId, i) => {
     const r = results[i];
-    CHAR_PATH_CACHE.set(charId, r?.status === "success" ? Number(r.result) : 0);
+    if (r?.status === "success") {
+      CHAR_PATH_CACHE.set(charId, Number(r.result));
+    }
   });
 }
 
 function charPathBlocked(charId) {
   if (!charId) return true;
-  const path = CHAR_PATH_CACHE.get(charId);
-  return path === 0;
+  if (!CHAR_PATH_CACHE.has(charId)) return false;
+  return CHAR_PATH_CACHE.get(charId) === 0;
 }
 
 function charPathLabel(charId) {
@@ -956,6 +959,24 @@ function applyEvolveResult(keepId, burnId, newStage) {
 const STAGE_LABEL = { 0: "Stage 1", 2: "Stage 2", 3: "Stage 3 ✓" };
 const STAGE_COLOR = { 0: "#00e5ff", 2: "#ff2bd6", 3: "#ffd700" };
 
+async function showTokenEvolution(token) {
+  const urls = stageImageUrls(token.tokenId, token.character, token.stage);
+  setMessage(`Loading evolution history for #${token.tokenId}…`, "info");
+  const history = await fetchEvolutionHistory(token.tokenId);
+  openEvolutionModal({
+    tokenId: token.tokenId,
+    currentStage: token.stage || 3,
+    currentImage: urls.primary,
+    history,
+  });
+  const stages = history?.self?.length ?? 0;
+  if (stages) {
+    setMessage(`#${token.tokenId} — ${stages + 1} evolution stage(s). Click thumbnails to switch.`, "success");
+  } else {
+    setMessage(`#${token.tokenId} — no evolution history on server yet. History is recorded on the next evolve sync.`, "info");
+  }
+}
+
 function renderGrid() {
   if (!els.grid) return;
   if (!tokens.length) {
@@ -980,9 +1001,10 @@ function renderGrid() {
     const directNote = token.stage === 0 && isDirectToS3Char(token.character) ? " · S1→S3" : "";
     const lockedNote = !token.canEvolve
       ? token.viewReason === "not_burnable" ? " · not in program"
-        : token.viewReason === "contract_blocked" ? " · pending on-chain enable"
+        : token.viewReason === "contract_blocked" ? " · enable on-chain"
         : token.viewReason === "maxed"      ? ""
         : token.viewReason === "no_s3"      ? " · no S3 art"
+        : token.viewReason === "unknown_stage" ? " · wrong stage"
         : " · locked"
       : "";
 
@@ -1015,6 +1037,10 @@ function renderGrid() {
 
 function toggleSelect(token) {
   if (!token.canEvolve) {
+    if (token.stage >= 2 || token.viewReason === "maxed") {
+      void showTokenEvolution(token);
+      return;
+    }
     const msg = {
       not_burnable: `#${token.tokenId} (${token.character}) — not in the burn program.`,
       contract_blocked: `#${token.tokenId} (${token.character}) — evolve contract has characterPath=Blocked. Owner must run setCharacterPaths in Remix.`,

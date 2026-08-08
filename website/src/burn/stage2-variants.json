@@ -4683,5 +4683,210 @@
       "bg": "Prism",
       "frame": "Gradient_Pulse"
     }
+  ],
+  "Camo_Soldier": [
+    {
+      "slug": "Camo_Soldier_Cigar",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Camo_Soldier_Dead",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Camo_Soldier_Desert",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Camo_Soldier_Gas_Mask",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Camo_Soldier_Golden",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Camo_Soldier_Neon",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Camo_Soldier_Scar",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Camo_Soldier_Smile",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Camo_Soldier_Special",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Camo_Soldier_Zombie",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    }
+  ],
+  "Cyber_Duck": [
+    {
+      "slug": "Cyber_Duck_Angel",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Cyber_Duck_Aviator",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Cyber_Duck_Bubble",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Cyber_Duck_Crying",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Cyber_Duck_Golden",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Cyber_Duck_Horns",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Cyber_Duck_King",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Cyber_Duck_Punk",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Cyber_Duck_VR_Glasses",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    }
+  ],
+  "Grim_Reaper": [
+    {
+      "slug": "Grim_Reaper_King",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Grim_Reaper_Red_Baron",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    }
+  ],
+  "Mushroom_Dude": [
+    {
+      "slug": "Mushroom_Dude_3D_Glasses",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Mushroom_Dude_Acid",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Mushroom_Dude_Dark",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Mushroom_Dude_Driver_Cap",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Mushroom_Dude_Gas_Mask",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Mushroom_Dude_Golden",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Mushroom_Dude_Orange",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Mushroom_Dude_Pipe",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Mushroom_Dude_Red_Beard",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Mushroom_Dude_Zomb",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    }
+  ],
+  "Oracle": [
+    {
+      "slug": "Oracle_Big_Glasses",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Oracle_Devil",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Oracle_Golem",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Oracle_Growing",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Oracle_Neon",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Oracle_Skull",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Oracle_Third_Eye",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Oracle_Underwater",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    }
   ]
 }
