@@ -4888,5 +4888,208 @@
       "bg": "Distortion",
       "frame": "Steampunk_Brass"
     }
+  ],
+  "Copper_Aviator": [
+    {
+      "slug": "Copper_Aviator_Alien",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Copper_Aviator_Angry",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Copper_Aviator_Blue",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Copper_Aviator_Cap",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Copper_Aviator_Cigar",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Copper_Aviator_Crown",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Copper_Aviator_Devil",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Copper_Aviator_Hat",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Copper_Aviator_Icy",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Copper_Aviator_Kitty",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Copper_Aviator_Mask",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Copper_Aviator_Neon",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Copper_Aviator_Skeleton",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Copper_Aviator_Tribal",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Copper_Aviator_Winter",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Flower_Zombie": [
+    {
+      "slug": "Flower_Zombie_Bald",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Flower_Zombie_Bandana",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Flower_Zombie_Black_White",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Flower_Zombie_Golden",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Flower_Zombie_Hearts_Glasses",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Flower_Zombie_Mushroom",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Flower_Zombie_Sleepy",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    }
+  ],
+  "Monitor_Head": [
+    {
+      "slug": "Monitor_Head_Captain",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Monitor_Head_Frog",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    }
+  ],
+  "Rainbow_Elf": [
+    {
+      "slug": "Rainbow_Elf_Bat_Crown",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Rainbow_Elf_Big_Lips",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Rainbow_Elf_Black_Hat",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Rainbow_Elf_Cap",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Rainbow_Elf_Colorfull_Cap",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Rainbow_Elf_Cyber",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Rainbow_Elf_Fire",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Rainbow_Elf_Golden",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Rainbow_Elf_Japanese_Mask",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Rainbow_Elf_Mask",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Rainbow_Elf_Natural",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Rainbow_Elf_Round_Glasses",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Rainbow_Elf_Sea",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Rainbow_Elf_Smile",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Rainbow_Elf_Turban",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    }
   ]
 }
