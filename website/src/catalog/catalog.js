@@ -1,24 +1,34 @@
 import { buildBurnableList, burnableStats, formatName } from "./catalog-data.js";
 import { loadBurnProgram, getStage2Variants } from "../burn/burn-program.js";
+import {
+  mountCatalogGridFilters,
+  matchesCatalogFilters,
+  formatFilterCount,
+} from "../shared/token-grid-filters.js";
 
 const els = {
-  count:  document.getElementById("catalog-count"),
-  search: document.getElementById("catalog-search"),
-  grid:   document.getElementById("catalog-grid"),
-  empty:  document.getElementById("catalog-empty"),
+  count: document.getElementById("catalog-count"),
+  countLine: document.getElementById("catalog-count-line"),
+  filters: document.getElementById("catalog-filters"),
+  grid: document.getElementById("catalog-grid"),
+  empty: document.getElementById("catalog-empty"),
 };
 
 let burnableList = buildBurnableList();
+let catalogFilters = { getState: () => ({ s3Filter: "all", search: "" }) };
 
 function renderGrid() {
   if (!els.grid) return;
-  const q = (els.search?.value || "").trim().toLowerCase();
-  const list = burnableList.filter((entry) => {
-    if (!q) return true;
-    return entry.name.toLowerCase().includes(q) || entry.label.toLowerCase().includes(q);
-  });
+  const state = catalogFilters.getState();
+  const list = burnableList.filter((entry) => matchesCatalogFilters(entry, state));
 
-  els.grid.innerHTML = list.map((entry) => `
+  if (els.countLine) {
+    els.countLine.textContent = formatFilterCount(list.length, burnableList.length, "characters");
+  }
+
+  els.grid.innerHTML = list
+    .map(
+      (entry) => `
     <article class="catalog-card is-burnable${entry.hasS3 ? " has-s3" : ""}">
       <div class="catalog-card-media">
         <img src="${entry.imageUrl}" alt="${entry.label}" width="96" height="96" loading="lazy" />
@@ -31,7 +41,9 @@ function renderGrid() {
           : "Stage 3 · not yet"}</p>
       </div>
     </article>
-  `).join("");
+  `,
+    )
+    .join("");
 
   if (els.empty) els.empty.hidden = list.length > 0;
 }
@@ -41,7 +53,7 @@ function init() {
   if (els.count) {
     els.count.textContent = `${stats.count} characters · Stage 2 live · ${stats.stage3} with Stage 3`;
   }
-  els.search?.addEventListener("input", renderGrid);
+  catalogFilters = mountCatalogGridFilters(els.filters, { onChange: renderGrid });
   renderGrid();
 }
 
@@ -52,3 +64,5 @@ async function boot() {
 }
 
 boot();
+
+export { formatName };

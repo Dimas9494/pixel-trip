@@ -27,6 +27,12 @@ import {
   STAGE3_ASSIGNMENTS_URL,
 } from "./config.js";
 import { loadBurnProgram, getStage2Variants, getBurnableChars } from "./burn-program.js";
+import { enrichTripToken } from "../shared/token-images.js";
+import {
+  matchesTokenGridFilters,
+  mountTokenGridFilters,
+  formatFilterCount,
+} from "../shared/token-grid-filters.js";
 import VARIANT_MAP from "./variant-map.json";
 import STAGE3_MAP from "./stage3-variants.json";
 import LOCAL_ASSIGNMENTS from "./token-assignments.json";
@@ -723,11 +729,15 @@ const els = {
   network: document.getElementById("burn-network"),
   connect: document.getElementById("burn-connect"),
   stats:   document.getElementById("burn-stats"),
+  filters: document.getElementById("burn-token-filters"),
+  count:   document.getElementById("burn-token-count"),
   grid:    document.getElementById("burn-token-grid"),
   evolve:  document.getElementById("burn-evolve"),
   sync:    document.getElementById("burn-sync"),
   message: document.getElementById("burn-message"),
 };
+
+let gridFilters = { getState: () => ({ stageFilter: "all", burnFilter: "all", search: "" }) };
 
 let walletClient = null;
 let publicClient = null;
@@ -980,12 +990,28 @@ async function showTokenEvolution(token) {
 function renderGrid() {
   if (!els.grid) return;
   if (!tokens.length) {
+    if (els.count) els.count.hidden = true;
     els.grid.innerHTML = `<p class="burn-empty">No evolveable trippers in this wallet.</p>`;
     return;
   }
 
+  const filterState = gridFilters.getState();
+  const visible = tokens.filter((token) =>
+    matchesTokenGridFilters(enrichTripToken(token), filterState),
+  );
+
+  if (els.count) {
+    els.count.hidden = false;
+    els.count.textContent = formatFilterCount(visible.length, tokens.length);
+  }
+
+  if (!visible.length) {
+    els.grid.innerHTML = `<p class="burn-empty">No trippers match filters.</p>`;
+    return;
+  }
+
   els.grid.innerHTML = "";
-  for (const token of tokens) {
+  for (const token of visible) {
     const card = document.createElement("button");
     card.type  = "button";
     card.className = "burn-token";
@@ -1380,6 +1406,7 @@ function initBurnDapp() {
   els.connect.addEventListener("click", connectWallet);
   els.evolve.addEventListener("click", evolveTokens);
   els.sync?.addEventListener("click", syncAllEvolvedTokens);
+  gridFilters = mountTokenGridFilters(els.filters, { onChange: renderGrid });
   if (els.stats) els.stats.textContent = `build ${LAB_BUILD}`;
   void loadBurnProgram();
 }

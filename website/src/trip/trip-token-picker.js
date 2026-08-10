@@ -4,15 +4,17 @@ import {
   STAGE_LABELS,
   burnStatusLabel,
 } from "../shared/token-images.js";
+import {
+  matchesTokenGridFilters,
+  mountTokenGridFilters,
+  formatFilterCount,
+} from "../shared/token-grid-filters.js";
 
 const STAGE_COLOR = { 0: "#00e5ff", 2: "#ff2bd6", 3: "#ffd700" };
 
 export function createTripTokenPicker(root, { onSelect }) {
   let enrichedTokens = [];
   let selectedId = null;
-  let stageFilter = "all";
-  let burnFilter = "all";
-  let search = "";
 
   root.innerHTML = `
     <div class="trip-picker">
@@ -20,57 +22,18 @@ export function createTripTokenPicker(root, { onSelect }) {
         <span class="trip-picker-label">Featured tripper</span>
         <p class="trip-picker-selected" id="trip-picker-selected">None selected</p>
       </div>
-      <div class="trip-picker-toolbar">
-        <label class="trip-picker-search">
-          <span class="sr-only">Search trippers</span>
-          <input type="search" id="trip-picker-search" placeholder="Search #ID, name, variant…" autocomplete="off" />
-        </label>
-        <div class="trip-picker-filters" role="group" aria-label="Stage filter">
-          <span class="trip-picker-filter-label">Stage</span>
-          <button type="button" class="trip-filter-btn is-active" data-stage="all">All</button>
-          <button type="button" class="trip-filter-btn" data-stage="0">Genesis</button>
-          <button type="button" class="trip-filter-btn" data-stage="2">Awakened</button>
-          <button type="button" class="trip-filter-btn" data-stage="3">Ascended</button>
-        </div>
-        <div class="trip-picker-filters" role="group" aria-label="Burn filter">
-          <span class="trip-picker-filter-label">Burn</span>
-          <button type="button" class="trip-filter-btn is-active" data-burn="all">All</button>
-          <button type="button" class="trip-filter-btn" data-burn="ready">Available</button>
-          <button type="button" class="trip-filter-btn" data-burn="locked">Unavailable</button>
-        </div>
-      </div>
+      <div id="trip-picker-filters"></div>
       <p class="trip-picker-count" id="trip-picker-count"></p>
       <div class="trip-picker-grid burn-token-grid" id="trip-picker-grid"></div>
     </div>
   `;
 
   const selectedEl = root.querySelector("#trip-picker-selected");
-  const searchInput = root.querySelector("#trip-picker-search");
   const countEl = root.querySelector("#trip-picker-count");
   const gridEl = root.querySelector("#trip-picker-grid");
-  const stageButtons = root.querySelectorAll("[data-stage]");
-  const burnButtons = root.querySelectorAll("[data-burn]");
+  const filtersHost = root.querySelector("#trip-picker-filters");
 
-  function matchesFilters(token) {
-    if (stageFilter !== "all" && token.stage !== Number(stageFilter)) return false;
-    if (burnFilter === "ready" && !token.canEvolve) return false;
-    if (burnFilter === "locked" && token.canEvolve) return false;
-    if (search) {
-      const hay = [
-        String(token.tokenId),
-        token.character,
-        token.displayName,
-        token.variantSlug,
-        variantLabel(token),
-        STAGE_LABELS[token.stage],
-        burnStatusLabel(token),
-      ]
-        .join(" ")
-        .toLowerCase();
-      if (!hay.includes(search)) return false;
-    }
-    return true;
-  }
+  const filterControls = mountTokenGridFilters(filtersHost, { onChange: renderGrid });
 
   function updateSelectedLine() {
     const token = enrichedTokens.find((t) => t.tokenId === selectedId);
@@ -82,8 +45,9 @@ export function createTripTokenPicker(root, { onSelect }) {
   }
 
   function renderGrid() {
-    const list = enrichedTokens.filter(matchesFilters);
-    countEl.textContent = `${list.length} of ${enrichedTokens.length} trippers`;
+    const state = filterControls.getState();
+    const list = enrichedTokens.filter((t) => matchesTokenGridFilters(t, state));
+    countEl.textContent = formatFilterCount(list.length, enrichedTokens.length);
 
     if (!list.length) {
       gridEl.innerHTML = `<p class="burn-empty">No trippers match filters.</p>`;
@@ -134,27 +98,6 @@ export function createTripTokenPicker(root, { onSelect }) {
       gridEl.appendChild(card);
     }
   }
-
-  searchInput.addEventListener("input", () => {
-    search = searchInput.value.trim().toLowerCase();
-    renderGrid();
-  });
-
-  stageButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      stageFilter = btn.dataset.stage;
-      stageButtons.forEach((b) => b.classList.toggle("is-active", b === btn));
-      renderGrid();
-    });
-  });
-
-  burnButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      burnFilter = btn.dataset.burn;
-      burnButtons.forEach((b) => b.classList.toggle("is-active", b === btn));
-      renderGrid();
-    });
-  });
 
   return {
     setTokens(tokens) {

@@ -2168,6 +2168,22 @@ img {
   grid-column: 1 / -1;
 }
 
+.burn-dapp .token-grid-toolbar,
+.catalog-page .token-grid-toolbar {
+  margin-bottom: 0.65rem;
+}
+
+.catalog-page .token-grid-toolbar {
+  margin-top: 1rem;
+}
+
+.burn-dapp .trip-picker-count,
+.catalog-page .trip-picker-count {
+  margin: 0 0 0.65rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 .trip-picker {
   border: 1px solid var(--border);
   background: rgba(7, 8, 15, 0.65);
