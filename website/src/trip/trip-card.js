@@ -2,12 +2,13 @@ import {
   holderLabel,
   sanitizeName,
   shortAddress,
-  stageImageUrl,
   renderCardCanvas,
   downloadCanvasPng,
 } from "./trip-card-render.js";
 import { renderAnimatedCardGif, downloadGifBytes } from "./trip-card-gif.js";
 import { loadProfile, saveProfile, resolveHolderName } from "./trip-profile.js";
+import { initTokenImageCatalog, loadMetadataForTokens, stageImageUrls } from "../shared/token-images.js";
+import { createTripTokenPicker } from "./trip-token-picker.js";
 
 /** Minimum rank id to unlock Trip Card claim */
 export const CLAIMABLE_RANKS = new Set(["ascended", "legend"]);
@@ -83,7 +84,13 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
-function buildPrismPreviewHtml(data, label, img, stage, locked) {
+function previewImgTag(data) {
+  const urls = stageImageUrls(data.tokenId, data.character, data.stage);
+  const fb = urls.fallback ? ` data-fallback="${urls.fallback}"` : "";
+  return `<img src="${urls.primary}"${fb} alt="#${data.tokenId}" loading="lazy" />`;
+}
+
+function buildPrismPreviewHtml(data, label, stage, locked) {
   const char = escapeHtml(data.character.replace(/_/g, " "));
   const st = data.stats || {};
   const progress =
@@ -97,7 +104,7 @@ function buildPrismPreviewHtml(data, label, img, stage, locked) {
         <span class="trip-tcg-char">${char}</span>
         <span class="trip-tcg-id">#${data.tokenId}</span>
       </div>
-      <div class="trip-tcg-art"><img src="${img}" alt="#${data.tokenId}" loading="lazy" /></div>
+      <div class="trip-tcg-art">${previewImgTag(data)}</div>
       <div class="trip-tcg-mid">
         <span class="trip-tcg-mid-label">Trip ID</span>
       </div>
@@ -120,7 +127,7 @@ function buildPrismPreviewHtml(data, label, img, stage, locked) {
   </div>`;
 }
 
-function buildSovereignPreviewHtml(data, label, img, stage, locked) {
+function buildSovereignPreviewHtml(data, label, stage, locked) {
   const char = escapeHtml(data.character.replace(/_/g, " "));
   const st = data.stats || {};
   return `<div class="trip-card-preview trip-tcg trip-tcg-legend trip-tcg-sovereign${locked}" data-theme="legend">
@@ -129,7 +136,7 @@ function buildSovereignPreviewHtml(data, label, img, stage, locked) {
       <div class="trip-sovereign-name">${char}</div>
       <div class="trip-sovereign-art">
         <span class="trip-sovereign-id">#${data.tokenId}</span>
-        <img src="${img}" alt="#${data.tokenId}" loading="lazy" />
+        ${previewImgTag(data)}
       </div>
       <div class="trip-tcg-mid trip-sovereign-mid">
         <span class="trip-tcg-mid-label">Trip ID</span>
@@ -151,13 +158,12 @@ function buildSovereignPreviewHtml(data, label, img, stage, locked) {
   </div>`;
 }
 
-function buildTcgPreviewHtml(themeId, data, label, img, stage, locked) {
-  if (themeId === "legend") return buildSovereignPreviewHtml(data, label, img, stage, locked);
-  return buildPrismPreviewHtml(data, label, img, stage, locked);
+function buildTcgPreviewHtml(themeId, data, label, stage, locked) {
+  if (themeId === "legend") return buildSovereignPreviewHtml(data, label, stage, locked);
+  return buildPrismPreviewHtml(data, label, stage, locked);
 }
 
 function buildPreviewHtml(themeId, data, eligible) {
-  const img = stageImageUrl(data.tokenId, data.character, data.stage);
   const locked = !eligible ? " is-locked" : "";
   const stage = STAGE_LABEL[data.stage] || `S${data.stage}`;
   const label = escapeHtml(holderLabel(data));
@@ -165,7 +171,7 @@ function buildPreviewHtml(themeId, data, eligible) {
   if (themeId === "neon") {
     return `<div class="trip-card-preview trip-preview-neon trip-preview-trippy${locked}" data-theme="${themeId}">
       <div class="trip-preview-head"><span>PIXEL TRIP</span><small>▶ ACID CABINET ◀</small></div>
-      <div class="trip-preview-art"><img src="${img}" alt="#${data.tokenId}" loading="lazy" /></div>
+      <div class="trip-preview-art">${previewImgTag(data)}</div>
       <div class="trip-preview-foot trip-preview-foot-split trip-preview-foot-neon">
         <div class="trip-preview-foot-left">
           <span class="trip-preview-name">${label}</span>
@@ -188,7 +194,7 @@ function buildPreviewHtml(themeId, data, eligible) {
         <span class="trip-preview-tag-head-id">#${data.tokenId}</span>
       </div>
       <div class="trip-preview-tag-body">
-        <div class="trip-preview-art sm"><img src="${img}" alt="#${data.tokenId}" loading="lazy" /></div>
+        <div class="trip-preview-art sm">${previewImgTag(data)}</div>
         <div class="trip-preview-tag-info">
           <span>#${data.tokenId}</span>
           <span>${escapeHtml(data.character.replace(/_/g, " "))}</span>
@@ -210,9 +216,9 @@ function buildPreviewHtml(themeId, data, eligible) {
     </div>`;
   }
   if (themeId === "holo" || themeId === "legend") {
-    return buildTcgPreviewHtml(themeId, data, label, img, stage, locked);
+    return buildTcgPreviewHtml(themeId, data, label, stage, locked);
   }
-  return buildTcgPreviewHtml("legend", data, label, img, stage, locked);
+  return buildTcgPreviewHtml("legend", data, label, stage, locked);
 }
 
 function setExportButtons({ claimBtn, downloadPngBtn, downloadGifBtn, isDemo, sameClaim, hasExisting }) {
@@ -258,10 +264,6 @@ export function initTripCard(root, getState) {
             </label>
             <p class="trip-identity-hint">Leave blank to show wallet address instead.</p>
           </fieldset>
-          <label class="trip-field">
-            <span>Featured tripper</span>
-            <select id="trip-card-token"></select>
-          </label>
           <div class="trip-theme-picker" id="trip-theme-picker"></div>
         </div>
         <div class="trip-card-stage">
@@ -273,6 +275,9 @@ export function initTripCard(root, getState) {
             <a class="btn btn-ghost" id="trip-card-opensea" href="#" target="_blank" rel="noopener">View on OpenSea</a>
           </div>
           <p class="trip-card-status" id="trip-card-status"></p>
+        </div>
+        <div class="trip-picker-row">
+          <div class="trip-token-picker-host" id="trip-token-picker"></div>
         </div>
       </div>
       <details class="trip-design-notes">
@@ -290,7 +295,32 @@ export function initTripCard(root, getState) {
   const gate = root.querySelector("#trip-card-gate");
   const panel = root.querySelector("#trip-card-panel");
   const nameInput = root.querySelector("#trip-card-name");
-  const tokenSelect = root.querySelector("#trip-card-token");
+  const pickerHost = root.querySelector("#trip-token-picker");
+  const tokenPicker = createTripTokenPicker(pickerHost, {
+    onSelect: (tokenId) => {
+      selectedTokenId = tokenId;
+      const { tokens, result, wallet, isDemo } = getState();
+      const token = tokens.find((t) => t.tokenId === tokenId);
+      if (!token) return;
+      const data = cardData(token, result, wallet);
+      renderLive(data);
+      openseaBtn.href = `https://opensea.io/assets/ethereum/0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC/${token.tokenId}`;
+      const existing = !isDemo ? loadClaim(wallet) : null;
+      const sameClaim =
+        existing &&
+        existing.tokenId === token.tokenId &&
+        existing.theme === selectedTheme &&
+        sanitizeName(existing.holderName) === holderName;
+      setExportButtons({
+        claimBtn,
+        downloadPngBtn,
+        downloadGifBtn,
+        isDemo,
+        sameClaim,
+        hasExisting: !!existing,
+      });
+    },
+  });
   const themePicker = root.querySelector("#trip-theme-picker");
   const live = root.querySelector("#trip-card-live");
   const claimBtn = root.querySelector("#trip-card-claim");
@@ -354,6 +384,16 @@ export function initTripCard(root, getState) {
 
   function renderLive(data) {
     live.innerHTML = buildPreviewHtml(selectedTheme, data, true);
+    live.querySelectorAll("img[data-fallback]").forEach((img) => {
+      img.addEventListener(
+        "error",
+        () => {
+          const fb = img.dataset.fallback;
+          if (fb && img.src !== fb) img.src = fb;
+        },
+        { once: true },
+      );
+    });
   }
 
   function updatePreviewOnly() {
@@ -361,7 +401,12 @@ export function initTripCard(root, getState) {
     if (data) renderLive(data);
   }
 
-  function refresh() {
+  function refreshPreview() {
+    const data = currentData();
+    if (data) renderLive(data);
+  }
+
+  async function refresh() {
     const { tokens, result, wallet, isDemo } = getState();
     const eligible = CLAIMABLE_RANKS.has(result.rank.id);
 
@@ -406,12 +451,13 @@ export function initTripCard(root, getState) {
       selectedTokenId = existing?.tokenId || best.tokenId;
     }
 
-    tokenSelect.innerHTML = tokens
-      .map((t) => {
-        const lbl = `#${t.tokenId} · ${t.character.replace(/_/g, " ")} · ${STAGE_LABEL[t.stage] || "S" + t.stage}`;
-        return `<option value="${t.tokenId}"${t.tokenId === selectedTokenId ? " selected" : ""}>${lbl}</option>`;
-      })
-      .join("");
+    statusEl.textContent = "Loading tripper art…";
+    await initTokenImageCatalog();
+    if (!isDemo) {
+      await loadMetadataForTokens(tokens.map((t) => t.tokenId));
+    }
+    tokenPicker.setTokens(tokens);
+    tokenPicker.setSelected(selectedTokenId);
 
     const token = tokens.find((t) => t.tokenId === selectedTokenId) || tokens[0];
     const data = cardData(token, result, wallet);
@@ -457,11 +503,6 @@ export function initTripCard(root, getState) {
     saveProfile({ wallet, holderName: name });
     clearTimeout(nameSaveTimer);
     nameSaveTimer = setTimeout(() => onProfileChange?.(name), 350);
-  });
-
-  tokenSelect.addEventListener("change", () => {
-    selectedTokenId = Number(tokenSelect.value);
-    refresh();
   });
 
   claimBtn.addEventListener("click", () => {

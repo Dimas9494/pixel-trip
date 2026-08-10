@@ -2164,6 +2164,121 @@ img {
   align-items: start;
 }
 
+.trip-picker-row {
+  grid-column: 1 / -1;
+}
+
+.trip-picker {
+  border: 1px solid var(--border);
+  background: rgba(7, 8, 15, 0.65);
+  padding: 1rem 1.1rem;
+}
+
+.trip-picker-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.trip-picker-label {
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  color: var(--magenta);
+  letter-spacing: 0.06em;
+}
+
+.trip-picker-selected {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--cyan);
+}
+
+.trip-picker-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.trip-picker-search input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--body);
+  font-size: 1.05rem;
+  padding: 0.5rem 0.65rem;
+  background: #07080f;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.trip-picker-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.trip-picker-filter-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-right: 0.25rem;
+}
+
+.trip-filter-btn {
+  font-family: var(--body);
+  font-size: 0.88rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--border);
+  background: rgba(15, 19, 36, 0.85);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.trip-filter-btn:hover {
+  color: #fff;
+  border-color: rgba(184, 164, 255, 0.45);
+}
+
+.trip-filter-btn.is-active {
+  color: var(--cyan);
+  border-color: rgba(57, 255, 20, 0.45);
+  background: rgba(57, 255, 20, 0.08);
+}
+
+.trip-picker-count {
+  margin: 0 0 0.65rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.trip-picker-grid {
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.trip-picker-token.is-selected {
+  border-color: var(--magenta);
+  box-shadow: 0 0 16px rgba(255, 43, 214, 0.25);
+}
+
+.burn-token-burn {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.trip-picker-token.is-locked .burn-token-burn {
+  color: #8b93b8;
+}
+
+.trip-picker-token:not(.is-locked) .burn-token-burn {
+  color: #00ff88;
+}
+
 @media (max-width: 820px) {
   .trip-card-panel { grid-template-columns: 1fr; }
 }

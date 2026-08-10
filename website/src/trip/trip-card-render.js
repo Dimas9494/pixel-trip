@@ -1,8 +1,7 @@
-import {
-  IMAGE_STAGE1,
-  IMAGE_STAGE2,
-  IMAGE_STAGE3,
-} from "../burn/config.js";
+import { IMAGE_STAGE1 } from "../burn/config.js";
+import { stageImageUrl, stageImageUrls } from "../shared/token-images.js";
+
+export { stageImageUrl };
 
 export const CARD_W = 900;
 export const CARD_H = 1200;
@@ -10,12 +9,6 @@ export const GIF_W = 450;
 export const GIF_H = 600;
 
 const STAGE_LABEL = { 0: "Genesis", 2: "Awakened", 3: "Ascended" };
-
-export function stageImageUrl(tokenId, character, stage) {
-  if (stage === 3) return `${IMAGE_STAGE3}/Full_${character}.gif`;
-  if (stage === 2) return `${IMAGE_STAGE2}/${character}.gif`;
-  return `${IMAGE_STAGE1}/${tokenId}.gif`;
-}
 
 export function shortAddress(addr) {
   if (!addr || addr.startsWith("Demo")) return addr || "—";
@@ -953,12 +946,12 @@ export function drawCardScene(ctx, W, H, themeId, data, art) {
 }
 
 export async function loadArtImage(data) {
-  const primary = stageImageUrl(data.tokenId, data.character, data.stage);
+  const urls = stageImageUrls(data.tokenId, data.character, data.stage);
   try {
-    return await loadImage(primary);
+    return await loadImage(urls.primary);
   } catch {
     try {
-      return await loadImage(`${IMAGE_STAGE1}/${data.tokenId}.gif`);
+      return await loadImage(urls.fallback || `${IMAGE_STAGE1}/${data.tokenId}.gif`);
     } catch {
       return null;
     }
