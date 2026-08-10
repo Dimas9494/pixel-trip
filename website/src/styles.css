@@ -100,11 +100,18 @@ img {
   line-height: 1.5;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
   transform: translateY(-2px);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  transform: none;
 }
 
 .btn-sm {
@@ -117,9 +124,28 @@ img {
   color: #041004;
 }
 
+.btn-primary:disabled {
+  background: rgba(57, 255, 20, 0.28);
+  color: rgba(4, 16, 4, 0.55);
+  border-color: rgba(57, 255, 20, 0.2);
+}
+
 .btn-ghost {
+  background: rgba(15, 19, 36, 0.95);
   border-color: var(--border);
   color: var(--text);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(57, 255, 20, 0.07);
+}
+
+.btn-ghost:disabled {
+  background: rgba(15, 19, 36, 0.55);
+  border-color: rgba(123, 92, 255, 0.18);
+  color: rgba(139, 147, 184, 0.55);
 }
 
 .hero {
@@ -1639,3 +1665,1600 @@ img {
 .catalog-dot.s2 { background: #00e5ff; }
 .catalog-dot.s3 { background: #ffd700; }
 .catalog-dot.direct { background: #00ff88; }
+
+/* ── Evolution timeline (token page + Evolution Lab modal) ── */
+
+.token-page { max-width: 960px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+.token-loading, .token-error { text-align: center; color: var(--muted); padding: 3rem 1rem; }
+.token-root { display: grid; gap: 2rem; }
+.token-hero { display: grid; gap: 1.5rem; align-items: start; }
+@media (min-width: 720px) {
+  .token-hero { grid-template-columns: min(360px, 100%) 1fr; }
+}
+.token-hero img {
+  width: 100%; max-width: 360px; image-rendering: pixelated; border: 2px solid var(--border);
+  background: rgba(0,0,0,0.35);
+}
+.token-id { font-family: var(--pixel); font-size: 0.45rem; color: var(--cyan); }
+.token-stage { color: var(--magenta); margin: 0.5rem 0 1rem; }
+
+.evo-history-heading { font-family: var(--pixel); font-size: 0.55rem; margin-bottom: 0.5rem; }
+.evo-history-lead { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+.evo-history-main {
+  display: grid; gap: 1rem; justify-items: center; margin-bottom: 1rem;
+  padding: 1rem; border: 1px solid var(--border); background: rgba(0,0,0,0.25);
+}
+.evo-history-main img { width: min(320px, 100%); image-rendering: pixelated; }
+.evo-history-main-meta { text-align: center; display: grid; gap: 0.35rem; }
+.evo-history-title { font-weight: 700; }
+.evo-history-label { color: var(--muted); font-size: 0.9rem; }
+.evo-history-opensea { color: var(--cyan); font-size: 0.85rem; }
+.evo-history-strip {
+  display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: center;
+}
+.evo-history-thumb {
+  display: grid; gap: 0.2rem; padding: 0.35rem; width: 88px;
+  border: 2px solid var(--border); background: rgba(0,0,0,0.35); cursor: pointer;
+  font-size: 0.65rem; color: var(--muted); text-align: center;
+}
+.evo-history-thumb.is-active { border-color: var(--cyan); box-shadow: 0 0 12px rgba(0,229,255,0.35); }
+.evo-history-thumb.is-burned { border-color: rgba(255,68,68,0.55); }
+.evo-history-thumb img { width: 72px; height: 72px; object-fit: contain; image-rendering: pixelated; margin: 0 auto; }
+.evo-history-thumb-stage { color: var(--magenta); }
+
+.evo-history-modal {
+  position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.82);
+  display: flex; align-items: center; justify-content: center; padding: 1rem;
+}
+.evo-history-modal[hidden] { display: none; }
+.evo-history-modal-inner {
+  position: relative; max-width: 560px; width: 100%; max-height: 90vh; overflow: auto;
+  background: var(--bg-alt, #0d0d14); border: 2px solid var(--border); padding: 1.25rem;
+}
+.evo-history-close {
+  position: absolute; top: 0.5rem; right: 0.75rem; border: none; background: none;
+  color: #fff; font-size: 1.75rem; cursor: pointer; line-height: 1;
+}
+
+/* ── Trip Score (holder dashboard preview) ─────────────────────────────────── */
+
+.trip-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.trip-head { margin-bottom: 1rem; }
+
+.trip-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.trip-tab {
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--border);
+  background: rgba(15, 19, 36, 0.85);
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+
+.trip-tab:hover {
+  color: #fff;
+  border-color: rgba(184, 164, 255, 0.45);
+}
+
+.trip-tab.is-active {
+  color: #fff;
+  border-color: var(--purple);
+  background: rgba(123, 92, 255, 0.18);
+  box-shadow: 0 0 18px rgba(123, 92, 255, 0.2);
+}
+
+.trip-leaderboard-panel {
+  margin-top: 0.5rem;
+}
+
+.trip-leaderboard-head {
+  margin-bottom: 1rem;
+}
+
+.trip-leaderboard-sub {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.trip-leaderboard-sort {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.trip-sort-btn {
+  font-family: var(--body);
+  font-size: 0.95rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  background: rgba(15, 19, 36, 0.85);
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+
+.trip-sort-btn:hover {
+  color: #fff;
+  border-color: rgba(184, 164, 255, 0.45);
+}
+
+.trip-sort-btn.is-active {
+  color: var(--cyan);
+  border-color: rgba(57, 255, 20, 0.45);
+  background: rgba(57, 255, 20, 0.08);
+}
+
+.trip-leaderboard-status {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.trip-leaderboard {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.trip-leader-row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trip-leader-row:last-child {
+  border-bottom: none;
+}
+
+.trip-leader-row.is-mine {
+  background: rgba(123, 92, 255, 0.12);
+  border-left: 3px solid var(--purple);
+}
+
+.trip-leader-rank {
+  font-family: var(--pixel);
+  font-size: 0.38rem;
+  color: var(--muted);
+}
+
+.trip-leader-meta {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.trip-leader-name {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trip-leader-rank-title {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.trip-leader-metric {
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  color: var(--yellow);
+  white-space: nowrap;
+}
+
+.trip-leader-empty {
+  padding: 1.25rem 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.trip-msg {
+  margin: 0 0 1.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border);
+  background: rgba(15, 19, 36, 0.85);
+  font-size: 1.15rem;
+}
+
+.trip-msg[data-kind="success"] { border-color: rgba(57, 255, 20, 0.45); color: var(--cyan); }
+.trip-msg[data-kind="error"] { border-color: rgba(255, 43, 90, 0.45); color: #ff6b8a; }
+
+.trip-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 820px) {
+  .trip-layout { grid-template-columns: 1fr; }
+}
+
+.trip-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 0 40px rgba(123, 92, 255, 0.08);
+}
+
+.trip-card-title {
+  margin: 0 0 1rem;
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  color: var(--magenta);
+  letter-spacing: 0.06em;
+}
+
+.trip-rank-card {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.trip-rank-badge {
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--pixel);
+  font-size: 1.25rem;
+  border: 3px solid var(--cyan);
+  color: var(--cyan);
+  text-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+  margin-bottom: 0.75rem;
+}
+
+.trip-rank-badge[data-rank="traveler"] { border-color: var(--purple); color: #b8a4ff; }
+.trip-rank-badge[data-rank="ascended"] { border-color: var(--yellow); color: var(--yellow); }
+.trip-rank-badge[data-rank="legend"] {
+  border-color: var(--magenta);
+  color: var(--magenta);
+  box-shadow: 0 0 24px rgba(255, 43, 214, 0.35);
+}
+
+.trip-rank-title {
+  margin: 0;
+  font-family: var(--pixel);
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.trip-rank-tagline {
+  margin: 0.5rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 22rem;
+}
+
+.trip-score-ring {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0.5rem 0 1rem;
+}
+
+.trip-ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.trip-ring-bg {
+  fill: none;
+  stroke: rgba(123, 92, 255, 0.2);
+  stroke-width: 8;
+}
+
+.trip-ring-fill {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.trip-score-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.trip-score-value {
+  font-family: var(--pixel);
+  font-size: 1.1rem;
+  color: var(--cyan);
+}
+
+.trip-score-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.trip-wallet {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.trip-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1rem;
+  margin: 0;
+}
+
+.trip-stat-grid dt {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.trip-stat-grid dd {
+  margin: 0.15rem 0 0;
+  font-family: var(--pixel);
+  font-size: 0.7rem;
+  color: var(--text);
+}
+
+.trip-breakdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trip-breakdown li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(123, 92, 255, 0.15);
+}
+
+.trip-breakdown li:last-child { border-bottom: none; }
+
+.trip-bd-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  color: var(--text);
+}
+
+.trip-bd-label small {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.trip-bd-pts {
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+.trip-ladder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trip-ladder-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.65rem;
+  margin-bottom: 0.35rem;
+  border: 1px solid transparent;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.trip-ladder-item.is-active {
+  border-color: var(--cyan);
+  background: rgba(57, 255, 20, 0.06);
+}
+
+.trip-ladder-rank {
+  font-family: var(--pixel);
+  font-size: 0.5rem;
+}
+
+.trip-ladder-min {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.trip-footnote {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* ── Trip Card (holder claim) ─────────────────────────────────────────────── */
+
+.trip-card-section {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+  padding: 1.35rem 1.5rem 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 48px rgba(255, 43, 214, 0.06);
+}
+
+.trip-card-section-head {
+  margin-bottom: 1.25rem;
+}
+
+.trip-card-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--pixel);
+  font-size: 0.65rem;
+  color: var(--magenta);
+}
+
+.trip-card-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.trip-card-gate .trip-card-locked {
+  padding: 1rem;
+  border: 1px dashed rgba(123, 92, 255, 0.35);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.trip-card-locked p {
+  margin: 0 0 0.5rem;
+}
+
+.trip-card-locked-hint {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.trip-highlight {
+  color: var(--yellow);
+}
+
+.trip-card-locked-previews {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  opacity: 0.55;
+  filter: grayscale(0.35);
+}
+
+.trip-card-panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 820px) {
+  .trip-card-panel { grid-template-columns: 1fr; }
+}
+
+.trip-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.trip-field select {
+  font-family: var(--body);
+  font-size: 1.1rem;
+  padding: 0.5rem 0.65rem;
+  background: #07080f;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.trip-theme-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.trip-theme-btn {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--body);
+}
+
+.trip-theme-btn:hover {
+  border-color: rgba(123, 92, 255, 0.4);
+}
+
+.trip-theme-btn.is-active {
+  border-color: var(--cyan);
+  background: rgba(57, 255, 20, 0.06);
+}
+
+.trip-theme-btn[data-theme="holo"].is-active {
+  border-color: rgba(184, 164, 255, 0.75);
+  background: linear-gradient(135deg, rgba(61, 24, 120, 0.35), rgba(7, 8, 15, 0.92));
+  box-shadow: 0 0 18px rgba(123, 92, 255, 0.18);
+}
+
+.trip-theme-btn[data-theme="holo"] .trip-theme-btn-title {
+  color: #b8a4ff;
+}
+
+.trip-theme-btn[data-theme="legend"].is-active {
+  border-color: rgba(255, 225, 74, 0.7);
+  background: linear-gradient(135deg, rgba(61, 46, 10, 0.38), rgba(7, 8, 15, 0.95));
+  box-shadow: 0 0 18px rgba(255, 225, 74, 0.12);
+}
+
+.trip-theme-btn[data-theme="legend"] .trip-theme-btn-title {
+  color: var(--yellow);
+}
+
+.trip-theme-btn-title {
+  display: block;
+  font-family: var(--pixel);
+  font-size: 0.45rem;
+  margin-bottom: 0.25rem;
+  color: var(--cyan);
+}
+
+.trip-theme-btn-blurb {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.25;
+}
+
+.trip-card-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trip-card-live {
+  width: min(100%, 320px);
+}
+
+.trip-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.trip-card-actions .btn-trip-png {
+  background: rgba(123, 92, 255, 0.15);
+  border-color: var(--purple);
+  color: #c8b8ff;
+}
+
+.trip-card-actions .btn-trip-png:hover:not(:disabled) {
+  background: rgba(123, 92, 255, 0.28);
+  border-color: #a088ff;
+  color: #e8e0ff;
+}
+
+.trip-card-actions .btn-trip-gif {
+  background: rgba(255, 43, 214, 0.12);
+  border-color: var(--magenta);
+  color: #ff9eeb;
+}
+
+.trip-card-actions .btn-trip-gif:hover:not(:disabled) {
+  background: rgba(255, 43, 214, 0.22);
+  border-color: #ff5ce0;
+  color: #ffd0f5;
+}
+
+.trip-card-actions .btn-trip-png:disabled,
+.trip-card-actions .btn-trip-gif:disabled {
+  background: rgba(15, 19, 36, 0.7);
+  border-color: rgba(123, 92, 255, 0.15);
+  color: rgba(139, 147, 184, 0.45);
+}
+
+.trip-card-actions .btn-primary:disabled {
+  background: rgba(57, 255, 20, 0.22);
+  color: rgba(4, 16, 4, 0.5);
+}
+
+.trip-card-status {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 28rem;
+}
+
+.trip-design-notes {
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.trip-design-notes summary {
+  cursor: pointer;
+  color: var(--text);
+}
+
+.trip-design-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.trip-design-list li {
+  margin-bottom: 0.45rem;
+}
+
+/* Card preview mockups (DOM) */
+
+.trip-card-preview {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  font-size: 0.75rem;
+}
+
+.trip-card-preview.is-locked::after {
+  content: "LOCKED";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 8, 15, 0.72);
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.trip-card-locked-previews .trip-card-preview {
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.trip-preview-head {
+  padding: 0.65rem 0.75rem 0.35rem;
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  color: var(--cyan);
+  line-height: 1.5;
+}
+
+.trip-preview-head small {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.trip-preview-art {
+  margin: 0 0.75rem;
+  aspect-ratio: 1;
+  background: #07080f;
+  border: 2px solid var(--purple);
+}
+
+.trip-preview-art.sm {
+  width: 45%;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.trip-preview-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trip-preview-foot {
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.trip-preview-foot-split {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.5rem;
+  background: rgba(7, 8, 15, 0.85);
+  border-top: 1px solid rgba(123, 92, 255, 0.25);
+}
+
+.trip-preview-foot-left,
+.trip-preview-foot-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.trip-preview-foot-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.trip-preview-name {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trip-preview-foot-left small {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.trip-preview-foot-right strong {
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  color: var(--cyan);
+}
+
+.trip-preview-foot-right small {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.trip-preview-foot strong {
+  font-family: var(--pixel);
+  font-size: 0.45rem;
+  color: var(--cyan);
+}
+
+.trip-preview-foot span {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.trip-preview-foot em {
+  font-style: normal;
+  color: var(--yellow);
+  font-size: 0.85rem;
+}
+
+.trip-preview-foot.gold em {
+  font-family: var(--pixel);
+  font-size: 0.7rem;
+  color: var(--yellow);
+}
+
+.trip-preview-neon {
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 30px rgba(57, 255, 20, 0.08);
+  background: radial-gradient(ellipse at 50% 20%, #2a1050 0%, #07080f 70%);
+}
+
+.trip-preview-neon .trip-preview-head {
+  flex-shrink: 0;
+}
+
+.trip-preview-neon .trip-preview-art {
+  flex: 1 1 auto;
+  min-height: 0;
+  aspect-ratio: unset;
+  margin-bottom: 0.4rem;
+  overflow: hidden;
+}
+
+.trip-preview-foot-neon {
+  flex-shrink: 0;
+  align-items: stretch;
+  padding: 0.55rem 0.75rem 0.65rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(123, 92, 255, 0.35);
+}
+
+.trip-preview-foot-neon .trip-preview-foot-left {
+  gap: 0.18rem;
+  justify-content: center;
+}
+
+.trip-preview-foot-neon .trip-preview-name {
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.trip-preview-meta {
+  font-family: var(--body);
+  font-size: 0.82rem;
+  color: #c8cce8;
+}
+
+.trip-preview-stage {
+  font-family: var(--body);
+  font-size: 0.78rem;
+  color: var(--cyan);
+}
+
+.trip-preview-foot-neon .trip-preview-foot-right {
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.trip-preview-foot-neon .trip-preview-rank {
+  font-family: var(--pixel);
+  font-size: 0.38rem;
+  color: var(--magenta);
+}
+
+.trip-preview-foot-neon .trip-preview-foot-right strong {
+  font-size: 0.62rem;
+  color: var(--magenta);
+  text-shadow: 0 0 12px rgba(255, 43, 214, 0.45);
+}
+
+.trip-preview-trippy {
+  position: relative;
+  overflow: hidden;
+}
+
+.trip-preview-trippy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  z-index: 2;
+}
+
+.trip-preview-trippy .trip-preview-art,
+.trip-preview-trippy .trip-preview-art.sm {
+  border: 2px solid var(--magenta);
+  box-shadow:
+    -2px 0 0 rgba(255, 43, 214, 0.5),
+    2px 0 0 rgba(57, 255, 20, 0.45),
+    0 0 16px rgba(123, 92, 255, 0.35);
+}
+
+.trip-preview-tag {
+  background: radial-gradient(ellipse at 50% 0%, #2a1050 0%, #07080f 65%);
+  border-color: var(--purple);
+}
+
+.trip-preview-tag-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12rem;
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(90deg, var(--magenta), var(--purple), var(--cyan), var(--yellow));
+  text-align: center;
+}
+
+.trip-preview-tag-head-name {
+  font-family: var(--body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 0 2px 0 rgba(7, 8, 15, 0.55);
+  letter-spacing: 0.06em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.trip-preview-tag-head-id {
+  font-family: var(--body);
+  font-size: 0.95rem;
+  color: #ffe14a;
+  text-shadow: 0 2px 0 rgba(7, 8, 15, 0.55);
+  letter-spacing: 0.08em;
+}
+
+.trip-preview-tag-name {
+  display: none;
+}
+
+.trip-preview-tag-body {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  align-items: flex-start;
+}
+
+.trip-preview-tag-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.78rem;
+  color: var(--text);
+  min-width: 0;
+}
+
+.trip-preview-tag-info em {
+  font-style: normal;
+  color: var(--yellow);
+  font-size: 0.72rem;
+}
+
+.trip-preview-tag-wallet {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(123, 92, 255, 0.2);
+}
+
+.trip-preview-tag-deck {
+  margin: 0.35rem 0.75rem 0.65rem;
+  padding: 0.55rem 0.55rem 0.5rem;
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--magenta), var(--purple), var(--cyan), var(--yellow)) 1;
+  background: rgba(7, 8, 15, 0.9);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.trip-preview-deck-title {
+  display: block;
+  font-family: var(--pixel);
+  font-size: 0.38rem;
+  color: var(--cyan);
+  margin-bottom: 0.45rem;
+}
+
+.trip-preview-stat-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.trip-stat-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.2rem;
+  background: rgba(7, 8, 15, 0.85);
+  border: 2px solid var(--purple);
+  min-height: 2.6rem;
+}
+
+.trip-stat-box.magenta { border-color: var(--magenta); }
+.trip-stat-box.purple { border-color: var(--purple); }
+.trip-stat-box.green { border-color: var(--cyan); }
+.trip-stat-box.gold { border-color: var(--yellow); }
+
+.trip-stat-box small {
+  position: absolute;
+  top: 0.28rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--body);
+  font-size: 0.72rem;
+  color: #e8ecff;
+  letter-spacing: 0.04em;
+}
+
+.trip-stat-box strong {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  margin-top: 0.35rem;
+}
+
+.trip-stat-box.magenta strong { color: var(--magenta); }
+.trip-stat-box.purple strong { color: var(--purple); }
+.trip-stat-box.green strong { color: var(--cyan); }
+.trip-stat-box.gold strong { color: var(--yellow); }
+
+.trip-preview-rank-strip {
+  margin-top: 0.4rem;
+  padding: 0.35rem;
+  text-align: center;
+  font-family: var(--pixel);
+  font-size: 0.32rem;
+  color: var(--yellow);
+  border: 1px solid rgba(255, 225, 74, 0.35);
+  background: rgba(7, 8, 15, 0.7);
+}
+
+.trip-preview-tag {
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-preview-legend-name {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trip-identity {
+  border: 1px solid rgba(123, 92, 255, 0.25);
+  padding: 0.75rem 0.85rem 0.85rem;
+  margin: 0 0 1rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.trip-identity legend {
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  color: var(--magenta);
+  padding: 0 0.35rem;
+}
+
+.trip-field input[type="text"] {
+  font-family: var(--body);
+  font-size: 1.1rem;
+  padding: 0.5rem 0.65rem;
+  background: #07080f;
+  color: var(--text);
+  border: 1px solid var(--border);
+  width: 100%;
+}
+
+.trip-twitter-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.trip-at {
+  display: grid;
+  place-items: center;
+  padding: 0 0.55rem;
+  background: rgba(123, 92, 255, 0.2);
+  border: 1px solid var(--border);
+  border-right: none;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.trip-twitter-row input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.trip-identity-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.trip-twitter-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--cyan);
+}
+
+.trip-preview-pass-head {
+  padding: 0.65rem 0.75rem;
+  background: #2a2040;
+  font-family: var(--pixel);
+  font-size: 0.4rem;
+  color: var(--yellow);
+}
+
+.trip-preview-pass-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+}
+
+.trip-preview-stamp {
+  flex: 1;
+  border: 2px dashed var(--magenta);
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.trip-preview-pass-meta {
+  padding: 0 0.75rem 0.65rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* TCG — Prism Pass & Sovereign Seal */
+
+.trip-prism-kicker {
+  text-align: center;
+  padding: 0.32rem 0.45rem;
+  font-family: var(--body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #ffffff;
+  background: linear-gradient(90deg, #7b5cff, #ff2bd6, #5eead4);
+  letter-spacing: 0.18em;
+  text-shadow: 0 1px 2px rgba(7, 8, 15, 0.65);
+  text-transform: uppercase;
+}
+
+.trip-tcg-sovereign .trip-tcg-shell {
+  background: radial-gradient(ellipse at 50% 0%, #1f0a30 0%, #0a0612 55%, #07080f 100%);
+  border: 3px solid transparent;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, #1f0a30 0%, #0a0612 55%, #07080f 100%),
+    linear-gradient(145deg, #8a6914, #ffe14a, #fff8dc, #ffe14a, #4a3810);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55), 0 0 28px rgba(255, 225, 74, 0.1);
+  gap: 0.22rem;
+}
+
+.trip-sovereign-banner {
+  text-align: center;
+  padding: 0.34rem 0.45rem;
+  font-family: var(--body);
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: #2a1020;
+  background: linear-gradient(180deg, #ffe14a, #fff8dc, #b8922a);
+  border: 1px solid #4a3810;
+  letter-spacing: 0.14em;
+  text-shadow: 0 1px 0 rgba(255, 248, 220, 0.65);
+  text-transform: uppercase;
+}
+
+.trip-sovereign-name {
+  text-align: center;
+  font-family: var(--body);
+  font-size: 0.92rem;
+  color: var(--yellow);
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 4px rgba(42, 16, 32, 0.75);
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 0.2rem;
+}
+
+.trip-sovereign-art {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  padding: 0.35rem;
+  background: #140a18;
+  border: 3px solid transparent;
+  background-image:
+    linear-gradient(#140a18, #140a18),
+    linear-gradient(145deg, #6b5212, #ffe14a, #fff8dc, #ffe14a, #4a3810);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: inset 0 0 18px rgba(255, 225, 74, 0.08);
+}
+
+.trip-sovereign-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.trip-sovereign-id {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  font-family: var(--body);
+  font-size: 0.58rem;
+  line-height: 1;
+  color: #fff;
+  background: radial-gradient(circle, #6b5212, #2a1a08);
+  border: 2px solid var(--yellow);
+}
+
+.trip-sovereign-mid {
+  background: #2a1020 !important;
+  border-color: rgba(255, 225, 74, 0.35) !important;
+}
+
+.trip-sovereign-deck {
+  background: #1a0a12 !important;
+  border-color: rgba(255, 225, 74, 0.25) !important;
+}
+
+.trip-sovereign-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.4rem 0.45rem;
+  min-height: 2.75rem;
+  background: #120818;
+  border: 1px solid rgba(255, 225, 74, 0.4);
+}
+
+.trip-sovereign-hex {
+  flex-shrink: 0;
+  width: 2.35rem;
+  height: 2.7rem;
+  display: grid;
+  place-items: center;
+  clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  background: radial-gradient(circle at 35% 30%, #fff8dc, #ffe14a 55%, #6b5212);
+  border: none;
+  box-shadow: 0 0 12px rgba(255, 225, 74, 0.25);
+}
+
+.trip-sovereign-hex b {
+  font-family: var(--pixel);
+  font-size: 0.36rem;
+  color: #1a1020;
+  line-height: 1;
+}
+
+.trip-tcg {
+  padding: 0.35rem;
+  background: #07080f;
+  overflow: hidden;
+}
+
+.trip-tcg-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.35rem 0.4rem 0.45rem;
+  gap: 0.28rem;
+  position: relative;
+  border-radius: 2px;
+}
+
+.trip-tcg-holo .trip-tcg-shell {
+  background: #12121e;
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(#12121e, #12121e),
+    linear-gradient(135deg, #e8ecff, #7b5cff, #ff2bd6, #5eead4, #ffe14a);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.trip-tcg-legend .trip-tcg-shell {
+  background: #0a0812;
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(#0a0812, #0a0812),
+    linear-gradient(135deg, #6b5212, #ffe14a, #fff8dc, #ffe14a, #4a3810);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 225, 74, 0.08);
+}
+
+.trip-tcg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  padding: 0.38rem 0.45rem;
+  min-height: 1.65rem;
+}
+
+.trip-tcg-holo .trip-tcg-header {
+  background: #1a1238;
+  border: 1px solid rgba(184, 164, 255, 0.4);
+}
+
+.trip-tcg-legend .trip-tcg-header {
+  background: #1a1408;
+  border: 1px solid rgba(255, 225, 74, 0.4);
+}
+
+.trip-tcg-char {
+  font-family: var(--body);
+  font-size: 0.82rem;
+  color: #e8ecff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 3px rgba(7, 8, 15, 0.55);
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.trip-tcg-legend .trip-tcg-char {
+  color: var(--yellow);
+}
+
+.trip-tcg-id {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  font-family: var(--body);
+  font-size: 0.62rem;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  padding: 0;
+}
+
+.trip-tcg-holo .trip-tcg-id {
+  background: radial-gradient(circle, #4a3588, #1a1238);
+  border: 2px solid #b8a4ff;
+}
+
+.trip-tcg-legend .trip-tcg-id {
+  background: radial-gradient(circle, #6b5212, #2a1a08);
+  border: 2px solid var(--yellow);
+}
+
+.trip-tcg-art {
+  flex: 1;
+  min-height: 0;
+  border: 2px solid rgba(123, 92, 255, 0.45);
+  background: #07080f;
+  overflow: hidden;
+  position: relative;
+  padding: 0.3rem;
+  box-sizing: border-box;
+}
+
+.trip-tcg-legend .trip-tcg-art {
+  border-color: rgba(255, 225, 74, 0.45);
+}
+
+.trip-tcg-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.trip-tcg-mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.45rem;
+  font-family: var(--body);
+  font-size: 0.82rem;
+}
+
+.trip-tcg-mid-label {
+  font-family: var(--body);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(7, 8, 15, 0.45);
+}
+
+.trip-tcg-holo .trip-tcg-mid-label {
+  color: #b8a4ff;
+}
+
+.trip-tcg-legend .trip-tcg-mid-label,
+.trip-sovereign-mid .trip-tcg-mid-label {
+  color: var(--yellow);
+}
+
+.trip-tcg-holo .trip-tcg-mid {
+  background: #151528;
+  border: 1px solid rgba(184, 164, 255, 0.25);
+}
+
+.trip-tcg-legend .trip-tcg-mid {
+  background: #141008;
+  border: 1px solid rgba(255, 225, 74, 0.25);
+}
+
+.trip-tcg-deck {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(184, 164, 255, 0.25);
+  background: #0e0e1a;
+}
+
+.trip-tcg-legend .trip-tcg-deck {
+  border-color: rgba(255, 225, 74, 0.25);
+  background: #0a0806;
+}
+
+.trip-tcg-deck-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  padding: 0.34rem 0.12rem 0.38rem;
+  min-height: 2.45rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.trip-tcg-deck-stat + .trip-tcg-deck-stat {
+  border-left: 1px solid rgba(184, 164, 255, 0.15);
+}
+
+.trip-tcg-legend .trip-tcg-deck-stat + .trip-tcg-deck-stat {
+  border-left-color: rgba(255, 225, 74, 0.15);
+}
+
+.trip-tcg-deck-stat b {
+  font-family: var(--pixel);
+  font-size: 0.36rem;
+  line-height: 1;
+}
+
+.trip-tcg-deck-stat.magenta b { color: var(--magenta); }
+.trip-tcg-deck-stat.green b { color: var(--cyan); }
+.trip-tcg-deck-stat.gold b { color: var(--yellow); }
+
+.trip-tcg-deck-stat small {
+  font-family: var(--body);
+  font-size: 0.56rem;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.trip-tcg-deck-stat.magenta small { color: var(--magenta); }
+.trip-tcg-deck-stat.green small { color: var(--cyan); }
+.trip-tcg-deck-stat.gold small { color: var(--yellow); }
+
+.trip-tcg-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.4rem 0.45rem;
+  min-height: 2.85rem;
+}
+
+.trip-tcg-holo .trip-tcg-footer {
+  background: #10101c;
+  border: 1px solid rgba(184, 164, 255, 0.35);
+}
+
+.trip-tcg-legend .trip-tcg-footer {
+  background: #0c0a08;
+  border: 1px solid rgba(255, 225, 74, 0.35);
+}
+
+.trip-tcg-footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.trip-tcg-footer-left > small {
+  font-family: var(--body);
+  font-size: 0.58rem;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.trip-tcg-holder-name {
+  font-family: var(--body);
+  font-size: 0.82rem;
+  color: #e8ecff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 3px rgba(7, 8, 15, 0.55);
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trip-tcg-legend .trip-tcg-holder-name {
+  color: #fff8dc;
+}
+
+.trip-tcg-progress {
+  font-family: var(--body);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #b8a4ff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trip-tcg-legend .trip-tcg-progress {
+  color: var(--yellow);
+}
+
+.trip-tcg-score-orb {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.02rem;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.trip-tcg-holo .trip-tcg-score-orb {
+  background: radial-gradient(circle at 35% 30%, #fff, var(--magenta) 55%, #07080f);
+}
+
+.trip-tcg-legend .trip-tcg-score-orb {
+  background: radial-gradient(circle at 35% 30%, #fff, var(--yellow) 55%, #07080f);
+}
+
+.trip-tcg-score-orb b {
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  color: #07080f;
+  line-height: 1;
+}

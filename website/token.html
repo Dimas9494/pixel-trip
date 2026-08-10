@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Token — PIXEL TRIP</title>
+    <meta name="description" content="PIXEL TRIP token page with full burn-to-evolve history." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="logo" href="/index.html">PIXEL TRIP</a>
+      <nav class="nav">
+        <a href="/index.html">Home</a>
+        <a href="/burn.html">Evolution Lab</a>
+        <a href="/catalog.html">Burnable</a>
+        <a href="https://opensea.io/collection/pixeltripnft" target="_blank" rel="noopener">OpenSea</a>
+      </nav>
+    </header>
+
+    <main class="section token-page">
+      <div id="token-loading" class="token-loading">Loading token…</div>
+      <div id="token-error" class="token-error" hidden></div>
+      <article id="token-root" class="token-root" hidden>
+        <div class="token-hero">
+          <img id="token-image" src="" alt="" width="360" height="360" />
+          <div class="token-hero-meta">
+            <h1 id="token-name">PIXEL TRIP</h1>
+            <p id="token-id" class="token-id"></p>
+            <p id="token-stage" class="token-stage"></p>
+            <a id="token-opensea" class="btn btn-primary btn-sm" href="#" target="_blank" rel="noopener">View on OpenSea</a>
+          </div>
+        </div>
+        <div id="token-evolution" class="token-evolution"></div>
+      </article>
+    </main>
+
+    <script type="module" src="/src/token/token.js"></script>
+  </body>
+</html>

@@ -7,6 +7,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicImages = path.join(__dirname, "public/images");
 const collectionImages = path.resolve(__dirname, "../collection/build/images");
 
+const GIF_PROXY_ALLOWED =
+  /^https:\/\/pixeltripnft\.website\/(images|stage2\/images|stage3\/images)\/[A-Za-z0-9_.-]+\.gif(\?.*)?$/i;
+
 function serveImageMiddleware(req, res, next) {
   const rel = decodeURIComponent((req.url || "/").split("?")[0].replace(/^\//, ""));
   const candidates = [
@@ -32,6 +35,34 @@ function serveImageMiddleware(req, res, next) {
   next();
 }
 
+function gifProxyMiddleware(req, res) {
+  const reqUrl = req.url || "";
+  const q = reqUrl.includes("?") ? reqUrl.slice(reqUrl.indexOf("?")) : "";
+  const target = new URLSearchParams(q).get("url") || "";
+  if (!GIF_PROXY_ALLOWED.test(target)) {
+    res.statusCode = 403;
+    res.end("URL not allowed");
+    return;
+  }
+  fetch(target)
+    .then(async (upstream) => {
+      if (!upstream.ok) {
+        res.statusCode = upstream.status;
+        res.end("Upstream error");
+        return;
+      }
+      const buf = Buffer.from(await upstream.arrayBuffer());
+      res.setHeader("Content-Type", "image/gif");
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Cache-Control", "public, max-age=300");
+      res.end(buf);
+    })
+    .catch((err) => {
+      res.statusCode = 502;
+      res.end(err.message || "Proxy failed");
+    });
+}
+
 export default defineConfig({
   root: ".",
   publicDir: "public",
@@ -46,6 +77,7 @@ export default defineConfig({
       name: "pixel-trip-images-dev",
       configureServer(server) {
         server.middlewares.use("/images", serveImageMiddleware);
+        server.middlewares.use("/api/gif-proxy", gifProxyMiddleware);
       },
     },
     {
@@ -70,8 +102,10 @@ export default defineConfig({
         burn: path.resolve(__dirname, "burn.html"),
         preview: path.resolve(__dirname, "preview.html"),
         setup: path.resolve(__dirname, "setup.html"),
-        vote:  path.resolve(__dirname, "vote.html"),
+        vote: path.resolve(__dirname, "vote.html"),
         catalog: path.resolve(__dirname, "catalog.html"),
+        token: path.resolve(__dirname, "token.html"),
+        trip: path.resolve(__dirname, "trip.html"),
       },
     },
   },

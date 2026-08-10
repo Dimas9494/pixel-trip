@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Score — PIXEL TRIP</title>
+    <meta name="description" content="Holder rank and Trip Score for PIXEL TRIP collectors." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="logo" href="/index.html">PIXEL TRIP</a>
+      <nav class="nav">
+        <a href="/index.html">Home</a>
+        <a href="/burn.html">Evolution Lab</a>
+        <a href="/trip.html" aria-current="page">Trip Score</a>
+        <a href="https://opensea.io/collection/pixeltripnft" target="_blank" rel="noopener">OpenSea</a>
+      </nav>
+      <button type="button" class="btn btn-primary btn-sm" id="connect">Connect wallet</button>
+    </header>
+
+    <main class="trip-page">
+      <div class="section-head trip-head">
+        <span class="kicker">Holder dashboard · preview</span>
+        <h2>Trip Score</h2>
+        <p class="sub">Your rank reflects collection depth, evolution progress, and burn readiness — not floor price.</p>
+      </div>
+
+      <div class="trip-tabs" role="tablist" aria-label="Trip Score views">
+        <button type="button" class="trip-tab is-active" role="tab" aria-selected="true" id="trip-tab-score" data-tab="score">My Score</button>
+        <button type="button" class="trip-tab" role="tab" aria-selected="false" id="trip-tab-leaderboard" data-tab="leaderboard">Leaderboard</button>
+      </div>
+
+      <p class="trip-msg" id="msg" role="status">Connect wallet or view demo profile.</p>
+
+      <div id="trip-score-panel">
+      <div class="trip-layout">
+        <section class="trip-card trip-rank-card" aria-labelledby="rank-title">
+          <div class="trip-rank-badge" id="rank-badge">?</div>
+          <h3 id="rank-title" class="trip-rank-title">—</h3>
+          <p class="trip-rank-tagline" id="rank-tagline">Connect to calculate</p>
+          <div class="trip-score-ring" aria-hidden="true">
+            <svg viewBox="0 0 120 120" class="trip-ring-svg">
+              <circle cx="60" cy="60" r="52" class="trip-ring-bg" />
+              <circle cx="60" cy="60" r="52" class="trip-ring-fill" id="ring-fill" />
+            </svg>
+            <div class="trip-score-center">
+              <span class="trip-score-value" id="score-total">—</span>
+              <span class="trip-score-label">Trip Score</span>
+            </div>
+          </div>
+          <p class="trip-wallet" id="wallet-label">Demo mode</p>
+        </section>
+
+        <section class="trip-card trip-stats-card">
+          <h3 class="trip-card-title">Collection</h3>
+          <dl class="trip-stat-grid" id="stat-grid">
+            <div><dt>Trippers</dt><dd id="stat-owned">—</dd></div>
+            <div><dt>Stage 1</dt><dd id="stat-s1">—</dd></div>
+            <div><dt>Stage 2</dt><dd id="stat-s2">—</dd></div>
+            <div><dt>Stage 3</dt><dd id="stat-s3">—</dd></div>
+            <div><dt>Characters</dt><dd id="stat-chars">—</dd></div>
+            <div><dt>Evolve pairs</dt><dd id="stat-pairs">—</dd></div>
+          </dl>
+        </section>
+
+        <section class="trip-card trip-breakdown-card">
+          <h3 class="trip-card-title">Score breakdown</h3>
+          <ul class="trip-breakdown" id="breakdown"></ul>
+        </section>
+
+        <section class="trip-card trip-ranks-card">
+          <h3 class="trip-card-title">Rank ladder</h3>
+          <ol class="trip-ladder" id="ladder"></ol>
+        </section>
+      </div>
+
+      <div id="trip-card-root"></div>
+      </div>
+
+      <section class="trip-leaderboard-panel" id="trip-leaderboard-panel" hidden aria-labelledby="trip-leaderboard-title">
+        <div class="trip-leaderboard-head">
+          <h3 id="trip-leaderboard-title" class="trip-card-title">Holder leaderboard</h3>
+          <p class="trip-leaderboard-sub">Top collectors by Trip Score, trippers held, or evolution burns.</p>
+        </div>
+        <div class="trip-leaderboard-sort" role="group" aria-label="Sort leaderboard">
+          <button type="button" class="trip-sort-btn is-active" data-sort="score">Trip Score</button>
+          <button type="button" class="trip-sort-btn" data-sort="owned">Trippers</button>
+          <button type="button" class="trip-sort-btn" data-sort="burned">Burns</button>
+        </div>
+        <p class="trip-leaderboard-status" id="trip-leaderboard-status">Loading…</p>
+        <ol class="trip-leaderboard" id="trip-leaderboard"></ol>
+      </section>
+
+      <p class="trip-footnote">Preview build — Trip Score is client-side. Leaderboard updates when holders connect. Export PNG (static) or GIF (animated NFT in frame).</p>
+    </main>
+
+    <script type="module" src="/src/trip/trip-score.js"></script>
+  </body>
+</html>
