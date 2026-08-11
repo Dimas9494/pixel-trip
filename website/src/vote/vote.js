@@ -168,6 +168,20 @@ async function readHolderBalance() {
   });
 }
 
+function isReleasedVote(vote) {
+  return !!(vote?.character && getBurnableChars().has(vote.character));
+}
+
+function reconcileReleasedVote() {
+  if (!myVote?.character || !isReleasedVote(myVote)) return false;
+  myVote = null;
+  canVote = true;
+  nextVoteAt = null;
+  voteLocked = false;
+  selectedCharacter = null;
+  return true;
+}
+
 function syncVoteStateFromApi(data) {
   if (data.released || (data.vote?.character && getBurnableChars().has(data.vote.character))) {
     myVote = null;
@@ -179,7 +193,8 @@ function syncVoteStateFromApi(data) {
   myVote = data.vote || null;
   canVote = data.canVote !== false;
   nextVoteAt = data.nextVoteAt || null;
-  voteLocked = myVote ? isVoteLocked(myVote) : false;
+  voteLocked = myVote ? isVoteLocked(myVote, getBurnableChars()) : false;
+  if (reconcileReleasedVote()) return;
   if (voteLocked && myVote?.character) {
     selectedCharacter = myVote.character;
   }
@@ -362,6 +377,7 @@ async function connectWallet() {
 
     balance = Number(await readHolderBalance());
     await loadMyVote();
+    reconcileReleasedVote();
     updateHolderPanel();
     updateSelectedLabel();
     updateSubmitButton();

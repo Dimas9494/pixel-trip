@@ -26,7 +26,7 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-08-07-vote-110c-v13";
+export const VOTE_BUILD = "2026-08-11-vote-release-reset-v14";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -72,8 +72,9 @@ export function formatCharacter(name) {
   return name.replace(/_/g, " ");
 }
 
-export function isVoteLocked(vote) {
+export function isVoteLocked(vote, burnableSet = null) {
   if (!vote?.updated) return false;
+  if (burnableSet?.has(vote.character)) return false;
   return Date.now() - new Date(vote.updated).getTime() < VOTE_COOLDOWN_MS;
 }
 

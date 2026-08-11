@@ -6,8 +6,11 @@
  * Proxies to vote-api.php when VOTE_API_URL is set, else uses Netlify Blobs.
  */
 
+import STAGE2_VARIANTS from "../../src/burn/stage2-variants.json" with { type: "json" };
+
 const VOTE_API_URL = (process.env.VOTE_API_URL || "").replace(/\/$/, "");
 const STAGE1 = "0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9";
+const STAGE2_VARIANTS_URL = "https://pixeltripnft.website/stage2-variants.json";
 const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 const RPC_URL = process.env.MAINNET_RPC_URL || "https://ethereum-rpc.publicnode.com";
 
@@ -90,9 +93,31 @@ function isVoteActive(row) {
   return ts > 0 && Date.now() - ts < VOTE_COOLDOWN_MS;
 }
 
-function voteStatus(row) {
+async function getBurnableSet() {
+  try {
+    const res = await fetch(`${STAGE2_VARIANTS_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && typeof data === "object") {
+        return new Set(Object.keys(data));
+      }
+    }
+  } catch {
+    /* use bundled catalog */
+  }
+  return new Set(Object.keys(STAGE2_VARIANTS));
+}
+
+function isCharacterReleased(char, burnableSet) {
+  return !!char && burnableSet.has(char);
+}
+
+function voteStatus(row, burnableSet) {
   if (!row || !isVoteActive(row)) {
     return { active: false, canVote: true, nextVoteAt: null };
+  }
+  if (isCharacterReleased(row.character, burnableSet)) {
+    return { active: false, canVote: true, nextVoteAt: null, released: true };
   }
   const ts = voteTimestamp(row);
   return {
@@ -102,14 +127,14 @@ function voteStatus(row) {
   };
 }
 
-function buildLeaderboard(votes) {
+function buildLeaderboard(votes, burnableSet) {
   const totals = {};
   let voterCount = 0;
   for (const row of Object.values(votes)) {
     if (!isVoteActive(row)) continue;
     const char = row.character;
     const weight = Number(row.weight) || 0;
-    if (!char || weight <= 0) continue;
+    if (!char || weight <= 0 || isCharacterReleased(char, burnableSet)) continue;
     voterCount++;
     totals[char] = (totals[char] || 0) + weight;
   }
@@ -162,15 +187,17 @@ export default async (req) => {
       return json(200, { characters: NETLIFY_ELIGIBLE_FALLBACK, note: "Set VOTE_API_URL or upload vote-api.php for full list" });
     }
     const votes = await loadVotes(store);
+    const burnableSet = await getBurnableSet();
     if (action === "leaderboard") {
-      return json(200, { ok: true, ...buildLeaderboard(votes) });
+      return json(200, { ok: true, ...buildLeaderboard(votes, burnableSet) });
     }
     if (action === "mine") {
       const address = normalizeAddress(url.searchParams.get("address"));
       if (!address) return json(400, { error: "Invalid address" });
       let mine = votes[address] || null;
       if (mine && !isVoteActive(mine)) mine = null;
-      return json(200, { ok: true, vote: mine, ...voteStatus(mine) });
+      if (mine && isCharacterReleased(mine.character, burnableSet)) mine = null;
+      return json(200, { ok: true, vote: mine, ...voteStatus(votes[address] || null, burnableSet) });
     }
     return json(400, { error: "Unknown action" });
   }
@@ -203,8 +230,9 @@ export default async (req) => {
   }
 
   const votes = await loadVotes(store);
+  const burnableSet = await getBurnableSet();
   const existing = votes[address];
-  const status = voteStatus(existing);
+  const status = voteStatus(existing, burnableSet);
   if (!status.canVote) {
     return json(429, {
       error: "You already voted this week. Votes cannot be changed or cancelled.",
@@ -227,6 +255,6 @@ export default async (req) => {
     vote,
     canVote: false,
     nextVoteAt: new Date(voteTimestamp(vote) + VOTE_COOLDOWN_MS).toISOString(),
-    leaderboard: buildLeaderboard(votes).leaderboard,
+    leaderboard: buildLeaderboard(votes, burnableSet).leaderboard,
   });
 };
