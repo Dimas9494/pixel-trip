@@ -550,20 +550,52 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
   return null;
 }
 
-async function triggerServerReconcile() {
+async function triggerServerReconcile(tokenId = null, burnTokenId = null) {
   try {
-    const res = await fetch(`${SYNC_EVOLVE_URL}?reconcile=1`, {
-      signal: AbortSignal.timeout(20_000),
+    const params = new URLSearchParams({ reconcile: "1" });
+    if (tokenId) params.set("tokenId", String(tokenId));
+    if (burnTokenId) params.set("burnTokenId", String(burnTokenId));
+    const res = await fetch(`${SYNC_EVOLVE_URL}?${params}`, {
+      signal: AbortSignal.timeout(30_000),
     });
     const data = await res.json().catch(() => ({}));
-    if (data.reconciled?.length) {
-      console.log(`[metadata] server reconciled ${data.reconciled.length} token(s)`, data.reconciled);
+    const fixed = [...(data.reconciled ?? []), ...(data.synced ?? [])];
+    if (fixed.length) {
+      console.log(`[metadata] server reconciled ${fixed.length} token(s)`, fixed);
+      const ids = fixed.map((row) => Number(row.tokenId)).filter(Boolean);
+      if (ids.length) {
+        await loadMetadataForTokens(ids);
+        refreshTokenImages();
+        renderGrid();
+      }
     }
     return data;
   } catch (err) {
     console.warn("[metadata] server reconcile skipped:", err.message);
     return null;
   }
+}
+
+function scheduleMetadataRetry(tokenId, burnTokenId = null, { attempts = 4 } = {}) {
+  const delays = [3000, 8000, 20000, 45000];
+  delays.slice(0, attempts).forEach((delay, index) => {
+    setTimeout(async () => {
+      const r = await syncMetadataToServer(tokenId, burnTokenId, { retries: 2 });
+      if (r.ok) {
+        applyEvolveResult(tokenId, burnTokenId, Number(r.data?.stage ?? 2));
+        refreshTokenImages();
+        renderGrid();
+        setMessage(
+          `Metadata synced for #${tokenId} (${r.data?.variant || "?"}). Refresh OpenSea in a few minutes.`,
+          "success",
+        );
+        return;
+      }
+      if (index === attempts - 1) {
+        void triggerServerReconcile(tokenId, burnTokenId);
+      }
+    }, delay);
+  });
 }
 
 async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 } = {}) {
@@ -902,7 +934,7 @@ async function loadTokens() {
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
   const autoSync = await autoSyncStaleMetadata(stubs);
-  void triggerServerReconcile();
+  await triggerServerReconcile();
 
   tokens = stubs.map(finalizeToken);
 
@@ -1372,6 +1404,8 @@ async function evolveTokens() {
     } else {
       setMessage(`Evolved on-chain! Metadata sync failed: ${formatSyncError(updated.error)}`, "error");
       showMetadataDownload(keepId, charName, newStage);
+      void triggerServerReconcile(keepId, burnId);
+      scheduleMetadataRetry(keepId, burnId);
     }
 
     els.evolve.disabled = false;
