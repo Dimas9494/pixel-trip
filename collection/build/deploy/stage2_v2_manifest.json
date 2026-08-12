@@ -1,18 +1,22 @@
 {
-  "generated": "2026-08-07T16:57:48.991824+00:00",
+  "generated": "2026-08-12T17:50:28.473875+00:00",
+  "batch": "batch15",
   "characters": [
-    "Cosmic_Matter",
-    "Neko_Hood",
-    "Pirate_Cat",
-    "Redeye_Cyclops",
-    "Street_Ape"
+    "Funky_Geek",
+    "Glow_Pilot",
+    "Gnome",
+    "Green_Assassin",
+    "Mantis",
+    "Steampunk"
   ],
   "counts": {
-    "Cosmic_Matter": 5,
-    "Neko_Hood": 10,
-    "Pirate_Cat": 5,
-    "Redeye_Cyclops": 9,
-    "Street_Ape": 13
+    "Funky_Geek": 6,
+    "Glow_Pilot": 5,
+    "Gnome": 5,
+    "Green_Assassin": 5,
+    "Mantis": 11,
+    "Steampunk": 8
   },
-  "total_variants": 42
+  "total_variants": 40,
+  "catalog_characters": 133
 }
