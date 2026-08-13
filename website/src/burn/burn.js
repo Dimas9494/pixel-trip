@@ -198,8 +198,12 @@ function characterFromMetadata(tokenId) {
   return null;
 }
 
+function isValidCharId(charId) {
+  return Number.isInteger(charId) && charId >= 0;
+}
+
 function resolveCharacterName(tokenId, charId, fallback = null) {
-  if (charId && CHAR_ID_TO_NAME[charId]) return CHAR_ID_TO_NAME[charId];
+  if (isValidCharId(charId) && CHAR_ID_TO_NAME[charId]) return CHAR_ID_TO_NAME[charId];
   return characterFromMetadata(tokenId) || fallback;
 }
 
@@ -207,7 +211,7 @@ function resolveCharacterName(tokenId, charId, fallback = null) {
 const CHAR_PATH_CACHE = new Map();
 
 async function loadCharacterPaths(charIds) {
-  const unique = [...new Set(charIds.filter((id) => id > 0))];
+  const unique = [...new Set(charIds.filter(isValidCharId))];
   const missing = unique.filter((id) => !CHAR_PATH_CACHE.has(id));
   if (!missing.length) return;
 
@@ -228,7 +232,7 @@ async function loadCharacterPaths(charIds) {
 }
 
 function charPathBlocked(charId) {
-  if (!charId) return true;
+  if (!isValidCharId(charId)) return true;
   if (!CHAR_PATH_CACHE.has(charId)) return false;
   return CHAR_PATH_CACHE.get(charId) === 0;
 }
@@ -263,7 +267,7 @@ function tokenLabFlags(tokenId, character, stage, charId = 0) {
     return { canEvolve: false, viewReason: "maxed" };
   }
   if (stage === 0) {
-    if (charId && charPathBlocked(charId)) {
+    if (isValidCharId(charId) && charPathBlocked(charId)) {
       return { canEvolve: false, viewReason: "contract_blocked" };
     }
     if (isDirectToS3Char(character) && !resolveStage3Variant(tokenId, character, tokenId)) {
@@ -905,7 +909,7 @@ async function loadTokens() {
     }
   }
 
-  const stage1CharIds = stubs.filter((t) => t.stage === 0 && t.charId).map((t) => t.charId);
+  const stage1CharIds = stubs.filter((t) => t.stage === 0 && isValidCharId(t.charId)).map((t) => t.charId);
   try {
     await loadCharacterPaths(stage1CharIds);
   } catch (err) {
@@ -1160,7 +1164,7 @@ function validateSelection() {
     return `Stage mismatch: keep is Stage ${keepToken.stage === 0 ? 1 : keepToken.stage}, burn is Stage ${burnToken.stage === 0 ? 1 : burnToken.stage}.`;
   if (keepToken.character && burnToken.character && keepToken.character !== burnToken.character)
     return `Character mismatch: "${keepToken.character}" vs "${burnToken.character}". Both must be the same character.`;
-  if (keepToken.stage === 0 && keepToken.charId && charPathBlocked(keepToken.charId)) {
+  if (keepToken.stage === 0 && isValidCharId(keepToken.charId) && charPathBlocked(keepToken.charId)) {
     return `${keepToken.character} is not enabled on the evolve contract yet (characterPath=Blocked). ` +
       `The contract owner must call setCharacterPaths for charId ${keepToken.charId} via Remix.`;
   }
