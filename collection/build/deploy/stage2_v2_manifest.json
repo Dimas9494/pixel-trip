@@ -1,22 +1,18 @@
 {
-  "generated": "2026-08-12T17:50:28.473875+00:00",
-  "batch": "batch15",
+  "generated": "2026-08-13T18:48:56.895322+00:00",
+  "batch": "batch16",
   "characters": [
-    "Funky_Geek",
-    "Glow_Pilot",
-    "Gnome",
-    "Green_Assassin",
-    "Mantis",
-    "Steampunk"
+    "Cyan_Imp",
+    "Dapper_Ghoul",
+    "Fedora_Detective",
+    "War_Bonnet"
   ],
   "counts": {
-    "Funky_Geek": 6,
-    "Glow_Pilot": 5,
-    "Gnome": 5,
-    "Green_Assassin": 5,
-    "Mantis": 11,
-    "Steampunk": 8
+    "Cyan_Imp": 5,
+    "Dapper_Ghoul": 14,
+    "Fedora_Detective": 4,
+    "War_Bonnet": 9
   },
-  "total_variants": 40,
-  "catalog_characters": 133
+  "total_variants": 32,
+  "catalog_characters": 137
 }

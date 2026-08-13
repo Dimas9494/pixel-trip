@@ -1759,6 +1759,58 @@
             "Steampunk_Short_Hair": "Steampunk_Short_Hair",
             "Steampunk_Skull": "Steampunk_Skull"
           }
+        },
+        "Cyan_Imp": {
+          "folder": "Cyan_Imp",
+          "variants": {
+            "Cyan_Imp_Dark": "Cyan_Imp_Dark",
+            "Cyan_Imp_Dead": "Cyan_Imp_Dead",
+            "Cyan_Imp_Hooded": "Cyan_Imp_Hooded",
+            "Cyan_Imp_Mustache": "Cyan_Imp_Mustache",
+            "Cyan_Imp_VR_Glasses": "Cyan_Imp_VR_Glasses"
+          }
+        },
+        "Dapper_Ghoul": {
+          "folder": "Dapper_Ghoul",
+          "variants": {
+            "Dapper_Ghoul_Bald": "Dapper_Ghoul_Bald",
+            "Dapper_Ghoul_Bone_Crown": "Dapper_Ghoul_Bone_Crown",
+            "Dapper_Ghoul_Cap": "Dapper_Ghoul_Cap",
+            "Dapper_Ghoul_Crown": "Dapper_Ghoul_Crown",
+            "Dapper_Ghoul_Gas_Mask": "Dapper_Ghoul_Gas_Mask",
+            "Dapper_Ghoul_Golden": "Dapper_Ghoul_Golden",
+            "Dapper_Ghoul_Knife": "Dapper_Ghoul_Knife",
+            "Dapper_Ghoul_Mushroom_Hat": "Dapper_Ghoul_Mushroom_Hat",
+            "Dapper_Ghoul_Pipe": "Dapper_Ghoul_Pipe",
+            "Dapper_Ghoul_Sailor": "Dapper_Ghoul_Sailor",
+            "Dapper_Ghoul_Skulls_Hat": "Dapper_Ghoul_Skulls_Hat",
+            "Dapper_Ghoul_Smile": "Dapper_Ghoul_Smile",
+            "Dapper_Ghoul_Two_Heads": "Dapper_Ghoul_Two_Heads",
+            "Dapper_Ghoul_Vamp": "Dapper_Ghoul_Vamp"
+          }
+        },
+        "Fedora_Detective": {
+          "folder": "Fedora_Detective",
+          "variants": {
+            "Fedora_Detective_Backet_Hat": "Fedora_Detective_Backet_Hat",
+            "Fedora_Detective_Bald": "Fedora_Detective_Bald",
+            "Fedora_Detective_PIMP": "Fedora_Detective_PIMP",
+            "Fedora_Detective_Skull": "Fedora_Detective_Skull"
+          }
+        },
+        "War_Bonnet": {
+          "folder": "War_Bonnet",
+          "variants": {
+            "War_Bonnet_Golden_Eye": "War_Bonnet_Golden_Eye",
+            "War_Bonnet_Horns": "War_Bonnet_Horns",
+            "War_Bonnet_Rainbow": "War_Bonnet_Rainbow",
+            "War_Bonnet_Round_Glasses": "War_Bonnet_Round_Glasses",
+            "War_Bonnet_Skull": "War_Bonnet_Skull",
+            "War_Bonnet_Underwater": "War_Bonnet_Underwater",
+            "War_Bonnet_Vamp": "War_Bonnet_Vamp",
+            "War_Bonnet_Wolf_Hat": "War_Bonnet_Wolf_Hat",
+            "War_Bonnet_Zomb": "War_Bonnet_Zomb"
+          }
         }
       }
     },

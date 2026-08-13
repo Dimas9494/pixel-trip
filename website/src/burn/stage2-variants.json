@@ -5709,5 +5709,173 @@
       "bg": "Zebra_Turing",
       "frame": "Auction_Hammer"
     }
+  ],
+  "Cyan_Imp": [
+    {
+      "slug": "Cyan_Imp_Dark",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Cyan_Imp_Dead",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Cyan_Imp_Hooded",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Cyan_Imp_Mustache",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Cyan_Imp_VR_Glasses",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    }
+  ],
+  "Dapper_Ghoul": [
+    {
+      "slug": "Dapper_Ghoul_Bald",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Dapper_Ghoul_Bone_Crown",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Dapper_Ghoul_Cap",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Dapper_Ghoul_Crown",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Dapper_Ghoul_Gas_Mask",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Dapper_Ghoul_Golden",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Dapper_Ghoul_Knife",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Dapper_Ghoul_Mushroom_Hat",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Dapper_Ghoul_Pipe",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Dapper_Ghoul_Sailor",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Dapper_Ghoul_Skulls_Hat",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Dapper_Ghoul_Smile",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Dapper_Ghoul_Two_Heads",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Dapper_Ghoul_Vamp",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    }
+  ],
+  "Fedora_Detective": [
+    {
+      "slug": "Fedora_Detective_Backet_Hat",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Fedora_Detective_Bald",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Fedora_Detective_PIMP",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Fedora_Detective_Skull",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    }
+  ],
+  "War_Bonnet": [
+    {
+      "slug": "War_Bonnet_Golden_Eye",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "War_Bonnet_Horns",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "War_Bonnet_Rainbow",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "War_Bonnet_Round_Glasses",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "War_Bonnet_Skull",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "War_Bonnet_Underwater",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "War_Bonnet_Vamp",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "War_Bonnet_Wolf_Hat",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "War_Bonnet_Zomb",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    }
   ]
 }
