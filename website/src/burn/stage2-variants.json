@@ -5877,5 +5877,213 @@
       "bg": "Snowflake",
       "frame": "Dust_Orbit"
     }
+  ],
+  "Cave_Man": [
+    {
+      "slug": "Cave_Man_Angry",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Cave_Man_Animal_Skull_Hat",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Cave_Man_Bald",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Cave_Man_Cap",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Cave_Man_Cup",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Cave_Man_Dreadlocks",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Cave_Man_Golden",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Cave_Man_Horns",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Cave_Man_Mask",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Cave_Man_Mohawk",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Cave_Man_Mushroom_Hat",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Cave_Man_Neon_Glasses",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Cave_Man_Pirate",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Cave_Man_Skull",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Cave_Man_Top_Hat",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Glow_Skull": [
+    {
+      "slug": "Glow_Skull_Cyborg",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Glow_Skull_Horns",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Glow_Skull_Pirate",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Glow_Skull_Punk",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Glow_Skull_Top_Hat",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Glow_Skull_VR_Glasses",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    }
+  ],
+  "Moss_Golem": [
+    {
+      "slug": "Moss_Golem_Coral",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Moss_Golem_Firy",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Moss_Golem_Horns",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Moss_Golem_Icy_King",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Moss_Golem_Mohawk",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Moss_Golem_Viking",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    }
+  ],
+  "Red_Nose_Clown": [
+    {
+      "slug": "Red_Nose_Clown_Afro",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Red_Nose_Clown_Alien",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Red_Nose_Clown_Crazy_Hair",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Red_Nose_Clown_Franky",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Red_Nose_Clown_Golden",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Red_Nose_Clown_King",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Red_Nose_Clown_Long_Hair",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Red_Nose_Clown_Mushrooms",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Red_Nose_Clown_Party_Hat",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Red_Nose_Clown_Rainbow_Mohawk",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Red_Nose_Clown_Robo",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Red_Nose_Clown_Short_Hair",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    },
+    {
+      "slug": "Red_Nose_Clown_Top_Hat",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    }
   ]
 }

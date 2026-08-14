@@ -1,18 +1,18 @@
 {
-  "generated": "2026-08-13T18:48:56.895322+00:00",
-  "batch": "batch16",
+  "generated": "2026-08-14T19:41:32.589967+00:00",
+  "batch": "batch17",
   "characters": [
-    "Cyan_Imp",
-    "Dapper_Ghoul",
-    "Fedora_Detective",
-    "War_Bonnet"
+    "Cave_Man",
+    "Glow_Skull",
+    "Moss_Golem",
+    "Red_Nose_Clown"
   ],
   "counts": {
-    "Cyan_Imp": 5,
-    "Dapper_Ghoul": 14,
-    "Fedora_Detective": 4,
-    "War_Bonnet": 9
+    "Cave_Man": 15,
+    "Glow_Skull": 6,
+    "Moss_Golem": 6,
+    "Red_Nose_Clown": 13
   },
-  "total_variants": 32,
-  "catalog_characters": 137
+  "total_variants": 40,
+  "catalog_characters": 141
 }

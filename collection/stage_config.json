@@ -1811,6 +1811,66 @@
             "War_Bonnet_Wolf_Hat": "War_Bonnet_Wolf_Hat",
             "War_Bonnet_Zomb": "War_Bonnet_Zomb"
           }
+        },
+        "Cave_Man": {
+          "folder": "Cave_Man",
+          "variants": {
+            "Cave_Man_Angry": "Cave_Man_Angry",
+            "Cave_Man_Animal_Skull_Hat": "Cave_Man_Animal_Skull_Hat",
+            "Cave_Man_Bald": "Cave_Man_Bald",
+            "Cave_Man_Cap": "Cave_Man_Cap",
+            "Cave_Man_Cup": "Cave_Man_Cup",
+            "Cave_Man_Dreadlocks": "Cave_Man_Dreadlocks",
+            "Cave_Man_Golden": "Cave_Man_Golden",
+            "Cave_Man_Horns": "Cave_Man_Horns",
+            "Cave_Man_Mask": "Cave_Man_Mask",
+            "Cave_Man_Mohawk": "Cave_Man_Mohawk",
+            "Cave_Man_Mushroom_Hat": "Cave_Man_Mushroom_Hat",
+            "Cave_Man_Neon_Glasses": "Cave_Man_Neon_Glasses",
+            "Cave_Man_Pirate": "Cave_Man_Pirate",
+            "Cave_Man_Skull": "Cave_Man_Skull",
+            "Cave_Man_Top_Hat": "Cave_Man_Top_Hat"
+          }
+        },
+        "Glow_Skull": {
+          "folder": "Glow_Skull",
+          "variants": {
+            "Glow_Skull_Cyborg": "Glow_Skull_Cyborg",
+            "Glow_Skull_Horns": "Glow_Skull_Horns",
+            "Glow_Skull_Pirate": "Glow_Skull_Pirate",
+            "Glow_Skull_Punk": "Glow_Skull_Punk",
+            "Glow_Skull_Top_Hat": "Glow_Skull_Top_Hat",
+            "Glow_Skull_VR_Glasses": "Glow_Skull_VR_Glasses"
+          }
+        },
+        "Moss_Golem": {
+          "folder": "Moss_Golem",
+          "variants": {
+            "Moss_Golem_Coral": "Moss_Golem_Coral",
+            "Moss_Golem_Firy": "Moss_Golem_Firy",
+            "Moss_Golem_Horns": "Moss_Golem_Horns",
+            "Moss_Golem_Icy_King": "Moss_Golem_Icy_King",
+            "Moss_Golem_Mohawk": "Moss_Golem_Mohawk",
+            "Moss_Golem_Viking": "Moss_Golem_Viking"
+          }
+        },
+        "Red_Nose_Clown": {
+          "folder": "Red_Nose_Clown",
+          "variants": {
+            "Red_Nose_Clown_Afro": "Red_Nose_Clown_Afro",
+            "Red_Nose_Clown_Alien": "Red_Nose_Clown_Alien",
+            "Red_Nose_Clown_Crazy_Hair": "Red_Nose_Clown_Crazy_Hair",
+            "Red_Nose_Clown_Franky": "Red_Nose_Clown_Franky",
+            "Red_Nose_Clown_Golden": "Red_Nose_Clown_Golden",
+            "Red_Nose_Clown_King": "Red_Nose_Clown_King",
+            "Red_Nose_Clown_Long_Hair": "Red_Nose_Clown_Long_Hair",
+            "Red_Nose_Clown_Mushrooms": "Red_Nose_Clown_Mushrooms",
+            "Red_Nose_Clown_Party_Hat": "Red_Nose_Clown_Party_Hat",
+            "Red_Nose_Clown_Rainbow_Mohawk": "Red_Nose_Clown_Rainbow_Mohawk",
+            "Red_Nose_Clown_Robo": "Red_Nose_Clown_Robo",
+            "Red_Nose_Clown_Short_Hair": "Red_Nose_Clown_Short_Hair",
+            "Red_Nose_Clown_Top_Hat": "Red_Nose_Clown_Top_Hat"
+          }
         }
       }
     },
