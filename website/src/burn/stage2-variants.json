@@ -6085,5 +6085,193 @@
       "bg": "Zebra_Turing",
       "frame": "Auction_Hammer"
     }
+  ],
+  "Goggle_Monkey": [
+    {
+      "slug": "Goggle_Monkey_Bandana",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Goggle_Monkey_Cheef",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Goggle_Monkey_Clown",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Goggle_Monkey_Crazy",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Goggle_Monkey_Frog_Hat",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Goggle_Monkey_Gorilla",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Goggle_Monkey_King",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Goggle_Monkey_Lasers",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Goggle_Monkey_Pirate",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Goggle_Monkey_Rasta",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Goggle_Monkey_Red_Nose",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Goggle_Monkey_Tribal",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Goggle_Monkey_Zomb",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    }
+  ],
+  "Manic_Goblin": [
+    {
+      "slug": "Manic_Goblin_Cap",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Manic_Goblin_Fortune_Teller",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Manic_Goblin_Gas_Mask",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Manic_Goblin_King",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Manic_Goblin_Mohawk",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Manic_Goblin_Ninja",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Manic_Goblin_No_Tooth",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Manic_Goblin_Pharaoh",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Manic_Goblin_Sailor",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Manic_Goblin_Skull",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Manic_Goblin_Third_Eye",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Manic_Goblin_VR_Glasses",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    }
+  ],
+  "Straw_Hick": [
+    {
+      "slug": "Straw_Hick_Alien",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Straw_Hick_Candy",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Straw_Hick_Clown",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Straw_Hick_Homeless",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Straw_Hick_Zombie",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    }
+  ],
+  "Teal_Luchador": [
+    {
+      "slug": "Teal_Luchador_Blonde",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Teal_Luchador_Cap",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Teal_Luchador_Mic",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Teal_Luchador_Sambrero",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Teal_Luchador_Shiner",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Teal_Luchador_Tiger_Cowboy",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    }
   ]
 }

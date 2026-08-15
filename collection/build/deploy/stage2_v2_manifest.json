@@ -1,18 +1,18 @@
 {
-  "generated": "2026-08-14T19:41:32.589967+00:00",
-  "batch": "batch17",
+  "generated": "2026-08-15T18:12:50.777733+00:00",
+  "batch": "batch18",
   "characters": [
-    "Cave_Man",
-    "Glow_Skull",
-    "Moss_Golem",
-    "Red_Nose_Clown"
+    "Goggle_Monkey",
+    "Manic_Goblin",
+    "Straw_Hick",
+    "Teal_Luchador"
   ],
   "counts": {
-    "Cave_Man": 15,
-    "Glow_Skull": 6,
-    "Moss_Golem": 6,
-    "Red_Nose_Clown": 13
+    "Goggle_Monkey": 13,
+    "Manic_Goblin": 12,
+    "Straw_Hick": 5,
+    "Teal_Luchador": 6
   },
-  "total_variants": 40,
-  "catalog_characters": 141
+  "total_variants": 36,
+  "catalog_characters": 145
 }

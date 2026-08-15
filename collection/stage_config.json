@@ -1871,6 +1871,62 @@
             "Red_Nose_Clown_Short_Hair": "Red_Nose_Clown_Short_Hair",
             "Red_Nose_Clown_Top_Hat": "Red_Nose_Clown_Top_Hat"
           }
+        },
+        "Goggle_Monkey": {
+          "folder": "Goggle_Monkey",
+          "variants": {
+            "Goggle_Monkey_Bandana": "Goggle_Monkey_Bandana",
+            "Goggle_Monkey_Cheef": "Goggle_Monkey_Cheef",
+            "Goggle_Monkey_Clown": "Goggle_Monkey_Clown",
+            "Goggle_Monkey_Crazy": "Goggle_Monkey_Crazy",
+            "Goggle_Monkey_Frog_Hat": "Goggle_Monkey_Frog_Hat",
+            "Goggle_Monkey_Gorilla": "Goggle_Monkey_Gorilla",
+            "Goggle_Monkey_King": "Goggle_Monkey_King",
+            "Goggle_Monkey_Lasers": "Goggle_Monkey_Lasers",
+            "Goggle_Monkey_Pirate": "Goggle_Monkey_Pirate",
+            "Goggle_Monkey_Rasta": "Goggle_Monkey_Rasta",
+            "Goggle_Monkey_Red_Nose": "Goggle_Monkey_Red_Nose",
+            "Goggle_Monkey_Tribal": "Goggle_Monkey_Tribal",
+            "Goggle_Monkey_Zomb": "Goggle_Monkey_Zomb"
+          }
+        },
+        "Manic_Goblin": {
+          "folder": "Manic_Goblin",
+          "variants": {
+            "Manic_Goblin_Cap": "Manic_Goblin_Cap",
+            "Manic_Goblin_Fortune_Teller": "Manic_Goblin_Fortune_Teller",
+            "Manic_Goblin_Gas_Mask": "Manic_Goblin_Gas_Mask",
+            "Manic_Goblin_King": "Manic_Goblin_King",
+            "Manic_Goblin_Mohawk": "Manic_Goblin_Mohawk",
+            "Manic_Goblin_Ninja": "Manic_Goblin_Ninja",
+            "Manic_Goblin_No_Tooth": "Manic_Goblin_No_Tooth",
+            "Manic_Goblin_Pharaoh": "Manic_Goblin_Pharaoh",
+            "Manic_Goblin_Sailor": "Manic_Goblin_Sailor",
+            "Manic_Goblin_Skull": "Manic_Goblin_Skull",
+            "Manic_Goblin_Third_Eye": "Manic_Goblin_Third_Eye",
+            "Manic_Goblin_VR_Glasses": "Manic_Goblin_VR_Glasses"
+          }
+        },
+        "Straw_Hick": {
+          "folder": "Straw_Hick",
+          "variants": {
+            "Straw_Hick_Alien": "Straw_Hick_Alien",
+            "Straw_Hick_Candy": "Straw_Hick_Candy",
+            "Straw_Hick_Clown": "Straw_Hick_Clown",
+            "Straw_Hick_Homeless": "Straw_Hick_Homeless",
+            "Straw_Hick_Zombie": "Straw_Hick_Zombie"
+          }
+        },
+        "Teal_Luchador": {
+          "folder": "Teal_Luchador",
+          "variants": {
+            "Teal_Luchador_Blonde": "Teal_Luchador_Blonde",
+            "Teal_Luchador_Cap": "Teal_Luchador_Cap",
+            "Teal_Luchador_Mic": "Teal_Luchador_Mic",
+            "Teal_Luchador_Sambrero": "Teal_Luchador_Sambrero",
+            "Teal_Luchador_Shiner": "Teal_Luchador_Shiner",
+            "Teal_Luchador_Tiger_Cowboy": "Teal_Luchador_Tiger_Cowboy"
+          }
         }
       }
     },
