@@ -6273,5 +6273,235 @@
       "bg": "Amoeba",
       "frame": "Pink_Glass"
     }
+  ],
+  "Crybaby_Rocker": [
+    {
+      "slug": "Crybaby_Rocker_Afro_Hair",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Crybaby_Rocker_Angel_Ghost",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Crybaby_Rocker_Bloody_Eyes",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Crybaby_Rocker_Cowboy_Hat",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Crybaby_Rocker_Dark",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Crybaby_Rocker_Devil",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Crybaby_Rocker_Gas_Mask",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Crybaby_Rocker_HeadBand",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Crybaby_Rocker_Hooded",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Crybaby_Rocker_Long_Hair",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Crybaby_Rocker_Rainbow",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Crybaby_Rocker_Skull",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Crybaby_Rocker_Zombie",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    }
+  ],
+  "Pink_Goggles_Lady": [
+    {
+      "slug": "Pink_Goggles_Lady_Angel",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Pink_Goggles_Lady_Backcap",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Pink_Goggles_Lady_Neon",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Pink_Goggles_Lady_Skeleton",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Pink_Goggles_Lady_Zomb",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    }
+  ],
+  "Scarred_Cyborg": [
+    {
+      "slug": "Scarred_Cyborg_Bandito",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Scarred_Cyborg_Beard",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Scarred_Cyborg_Brain",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Scarred_Cyborg_Dreadlocks",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Scarred_Cyborg_Gas_Mask",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Scarred_Cyborg_HeadBand",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Scarred_Cyborg_Iron",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Scarred_Cyborg_Neon",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Scarred_Cyborg_Skull",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    }
+  ],
+  "Trippy_Alien": [
+    {
+      "slug": "Trippy_Alien_Backcap",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Trippy_Alien_Beard",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Trippy_Alien_Brain",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Trippy_Alien_Crown",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Trippy_Alien_Golden",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Trippy_Alien_Long_Tongue",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Trippy_Alien_Mushrooms",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Trippy_Alien_Red_Hair",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Trippy_Alien_Smoking",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    }
+  ],
+  "Zombie_Pirate": [
+    {
+      "slug": "Zombie_Pirate_Cap",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Zombie_Pirate_Coral",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Zombie_Pirate_Crown",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    },
+    {
+      "slug": "Zombie_Pirate_Fire",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    },
+    {
+      "slug": "Zombie_Pirate_Ghost",
+      "bg": "Bee_Grid",
+      "frame": "Magnetic_Field"
+    },
+    {
+      "slug": "Zombie_Pirate_Kiss_Lips",
+      "bg": "Prism",
+      "frame": "Gradient_Pulse"
+    },
+    {
+      "slug": "Zombie_Pirate_Octo",
+      "bg": "Asteroid_Belt",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Zombie_Pirate_Skull",
+      "bg": "Crystal",
+      "frame": "Ink_Bleed"
+    }
   ]
 }

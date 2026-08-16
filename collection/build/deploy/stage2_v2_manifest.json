@@ -1,18 +1,20 @@
 {
-  "generated": "2026-08-15T18:12:50.777733+00:00",
-  "batch": "batch18",
+  "generated": "2026-08-16T16:13:50.126853+00:00",
+  "batch": "batch19",
   "characters": [
-    "Goggle_Monkey",
-    "Manic_Goblin",
-    "Straw_Hick",
-    "Teal_Luchador"
+    "Crybaby_Rocker",
+    "Pink_Goggles_Lady",
+    "Scarred_Cyborg",
+    "Trippy_Alien",
+    "Zombie_Pirate"
   ],
   "counts": {
-    "Goggle_Monkey": 13,
-    "Manic_Goblin": 12,
-    "Straw_Hick": 5,
-    "Teal_Luchador": 6
+    "Crybaby_Rocker": 13,
+    "Pink_Goggles_Lady": 5,
+    "Scarred_Cyborg": 9,
+    "Trippy_Alien": 9,
+    "Zombie_Pirate": 8
   },
-  "total_variants": 36,
-  "catalog_characters": 145
+  "total_variants": 44,
+  "catalog_characters": 150
 }

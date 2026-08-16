@@ -1927,6 +1927,75 @@
             "Teal_Luchador_Shiner": "Teal_Luchador_Shiner",
             "Teal_Luchador_Tiger_Cowboy": "Teal_Luchador_Tiger_Cowboy"
           }
+        },
+        "Crybaby_Rocker": {
+          "folder": "Crybaby_Rocker",
+          "variants": {
+            "Crybaby_Rocker_Afro_Hair": "Crybaby_Rocker_Afro_Hair",
+            "Crybaby_Rocker_Angel_Ghost": "Crybaby_Rocker_Angel_Ghost",
+            "Crybaby_Rocker_Bloody_Eyes": "Crybaby_Rocker_Bloody_Eyes",
+            "Crybaby_Rocker_Cowboy_Hat": "Crybaby_Rocker_Cowboy_Hat",
+            "Crybaby_Rocker_Dark": "Crybaby_Rocker_Dark",
+            "Crybaby_Rocker_Devil": "Crybaby_Rocker_Devil",
+            "Crybaby_Rocker_Gas_Mask": "Crybaby_Rocker_Gas_Mask",
+            "Crybaby_Rocker_HeadBand": "Crybaby_Rocker_HeadBand",
+            "Crybaby_Rocker_Hooded": "Crybaby_Rocker_Hooded",
+            "Crybaby_Rocker_Long_Hair": "Crybaby_Rocker_Long_Hair",
+            "Crybaby_Rocker_Rainbow": "Crybaby_Rocker_Rainbow",
+            "Crybaby_Rocker_Skull": "Crybaby_Rocker_Skull",
+            "Crybaby_Rocker_Zombie": "Crybaby_Rocker_Zombie"
+          }
+        },
+        "Pink_Goggles_Lady": {
+          "folder": "Pink_Goggles_Lady",
+          "variants": {
+            "Pink_Goggles_Lady_Angel": "Pink_Goggles_Lady_Angel",
+            "Pink_Goggles_Lady_Backcap": "Pink_Goggles_Lady_Backcap",
+            "Pink_Goggles_Lady_Neon": "Pink_Goggles_Lady_Neon",
+            "Pink_Goggles_Lady_Skeleton": "Pink_Goggles_Lady_Skeleton",
+            "Pink_Goggles_Lady_Zomb": "Pink_Goggles_Lady_Zomb"
+          }
+        },
+        "Scarred_Cyborg": {
+          "folder": "Scarred_Cyborg",
+          "variants": {
+            "Scarred_Cyborg_Bandito": "Scarred_Cyborg_Bandito",
+            "Scarred_Cyborg_Beard": "Scarred_Cyborg_Beard",
+            "Scarred_Cyborg_Brain": "Scarred_Cyborg_Brain",
+            "Scarred_Cyborg_Dreadlocks": "Scarred_Cyborg_Dreadlocks",
+            "Scarred_Cyborg_Gas_Mask": "Scarred_Cyborg_Gas_Mask",
+            "Scarred_Cyborg_HeadBand": "Scarred_Cyborg_HeadBand",
+            "Scarred_Cyborg_Iron": "Scarred_Cyborg_Iron",
+            "Scarred_Cyborg_Neon": "Scarred_Cyborg_Neon",
+            "Scarred_Cyborg_Skull": "Scarred_Cyborg_Skull"
+          }
+        },
+        "Trippy_Alien": {
+          "folder": "Trippy_Alien",
+          "variants": {
+            "Trippy_Alien_Backcap": "Trippy_Alien_Backcap",
+            "Trippy_Alien_Beard": "Trippy_Alien_Beard",
+            "Trippy_Alien_Brain": "Trippy_Alien_Brain",
+            "Trippy_Alien_Crown": "Trippy_Alien_Crown",
+            "Trippy_Alien_Golden": "Trippy_Alien_Golden",
+            "Trippy_Alien_Long_Tongue": "Trippy_Alien_Long_Tongue",
+            "Trippy_Alien_Mushrooms": "Trippy_Alien_Mushrooms",
+            "Trippy_Alien_Red_Hair": "Trippy_Alien_Red_Hair",
+            "Trippy_Alien_Smoking": "Trippy_Alien_Smoking"
+          }
+        },
+        "Zombie_Pirate": {
+          "folder": "Zombie_Pirate",
+          "variants": {
+            "Zombie_Pirate_Cap": "Zombie_Pirate_Cap",
+            "Zombie_Pirate_Coral": "Zombie_Pirate_Coral",
+            "Zombie_Pirate_Crown": "Zombie_Pirate_Crown",
+            "Zombie_Pirate_Fire": "Zombie_Pirate_Fire",
+            "Zombie_Pirate_Ghost": "Zombie_Pirate_Ghost",
+            "Zombie_Pirate_Kiss_Lips": "Zombie_Pirate_Kiss_Lips",
+            "Zombie_Pirate_Octo": "Zombie_Pirate_Octo",
+            "Zombie_Pirate_Skull": "Zombie_Pirate_Skull"
+          }
         }
       }
     },
