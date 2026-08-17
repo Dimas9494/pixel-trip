@@ -1,20 +1,20 @@
 {
-  "generated": "2026-08-16T16:13:50.126853+00:00",
-  "batch": "batch19",
+  "generated": "2026-08-17T18:16:02.879521+00:00",
+  "batch": "batch20",
   "characters": [
-    "Crybaby_Rocker",
-    "Pink_Goggles_Lady",
-    "Scarred_Cyborg",
-    "Trippy_Alien",
-    "Zombie_Pirate"
+    "Gob",
+    "Noir_Cat",
+    "Satyr",
+    "Spiky_Flame",
+    "Triple_Eye"
   ],
   "counts": {
-    "Crybaby_Rocker": 13,
-    "Pink_Goggles_Lady": 5,
-    "Scarred_Cyborg": 9,
-    "Trippy_Alien": 9,
-    "Zombie_Pirate": 8
+    "Gob": 15,
+    "Noir_Cat": 3,
+    "Satyr": 13,
+    "Spiky_Flame": 6,
+    "Triple_Eye": 11
   },
-  "total_variants": 44,
-  "catalog_characters": 150
+  "total_variants": 48,
+  "catalog_characters": 155
 }

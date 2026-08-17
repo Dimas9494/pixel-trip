@@ -1996,6 +1996,79 @@
             "Zombie_Pirate_Octo": "Zombie_Pirate_Octo",
             "Zombie_Pirate_Skull": "Zombie_Pirate_Skull"
           }
+        },
+        "Gob": {
+          "folder": "Gob",
+          "variants": {
+            "Gob_Beard": "Gob_Beard",
+            "Gob_Bones": "Gob_Bones",
+            "Gob_Cap": "Gob_Cap",
+            "Gob_Cyborg": "Gob_Cyborg",
+            "Gob_Dark": "Gob_Dark",
+            "Gob_Gladiator": "Gob_Gladiator",
+            "Gob_Golden": "Gob_Golden",
+            "Gob_Horns": "Gob_Horns",
+            "Gob_King": "Gob_King",
+            "Gob_Mohawk": "Gob_Mohawk",
+            "Gob_OG": "Gob_OG",
+            "Gob_Pipe": "Gob_Pipe",
+            "Gob_Rad_Lips": "Gob_Rad_Lips",
+            "Gob_Surprised": "Gob_Surprised",
+            "Gob_Viking": "Gob_Viking"
+          }
+        },
+        "Noir_Cat": {
+          "folder": "Noir_Cat",
+          "variants": {
+            "Noir_Cat_Cyborg": "Noir_Cat_Cyborg",
+            "Noir_Cat_Pimp": "Noir_Cat_Pimp",
+            "Noir_Cat_Zomb": "Noir_Cat_Zomb"
+          }
+        },
+        "Satyr": {
+          "folder": "Satyr",
+          "variants": {
+            "Satyr_Arabic": "Satyr_Arabic",
+            "Satyr_Beauty": "Satyr_Beauty",
+            "Satyr_Devil": "Satyr_Devil",
+            "Satyr_Fire": "Satyr_Fire",
+            "Satyr_Ghost": "Satyr_Ghost",
+            "Satyr_Golden": "Satyr_Golden",
+            "Satyr_King": "Satyr_King",
+            "Satyr_Mime": "Satyr_Mime",
+            "Satyr_Monk": "Satyr_Monk",
+            "Satyr_Monocle": "Satyr_Monocle",
+            "Satyr_Rainbow": "Satyr_Rainbow",
+            "Satyr_Underwater": "Satyr_Underwater",
+            "Satyr_Wizard": "Satyr_Wizard"
+          }
+        },
+        "Spiky_Flame": {
+          "folder": "Spiky_Flame",
+          "variants": {
+            "Spiky_Flame_Big_Glasses": "Spiky_Flame_Big_Glasses",
+            "Spiky_Flame_Crying": "Spiky_Flame_Crying",
+            "Spiky_Flame_Darkness": "Spiky_Flame_Darkness",
+            "Spiky_Flame_Frog_Hat": "Spiky_Flame_Frog_Hat",
+            "Spiky_Flame_Icy": "Spiky_Flame_Icy",
+            "Spiky_Flame_Mask": "Spiky_Flame_Mask"
+          }
+        },
+        "Triple_Eye": {
+          "folder": "Triple_Eye",
+          "variants": {
+            "Triple_Eye_Bandaged": "Triple_Eye_Bandaged",
+            "Triple_Eye_Big_Glasses": "Triple_Eye_Big_Glasses",
+            "Triple_Eye_Cap": "Triple_Eye_Cap",
+            "Triple_Eye_Dark_VR": "Triple_Eye_Dark_VR",
+            "Triple_Eye_Hooded": "Triple_Eye_Hooded",
+            "Triple_Eye_King": "Triple_Eye_King",
+            "Triple_Eye_Mohawk": "Triple_Eye_Mohawk",
+            "Triple_Eye_Mushrooms": "Triple_Eye_Mushrooms",
+            "Triple_Eye_Pipes": "Triple_Eye_Pipes",
+            "Triple_Eye_Top_Hat": "Triple_Eye_Top_Hat",
+            "Triple_Eye_Wires": "Triple_Eye_Wires"
+          }
         }
       }
     },
