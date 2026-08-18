@@ -6753,5 +6753,166 @@
       "bg": "Milky_Way",
       "frame": "Depth_Grid"
     }
+  ],
+  "Pink_Elvis": [
+    {
+      "slug": "Pink_Elvis_Chill",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Pink_Elvis_Clown",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Pink_Elvis_Cowboy",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Pink_Elvis_Devil",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Pink_Elvis_Kimono",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Pink_Elvis_King",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Pink_Elvis_Love_Glasses",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Pink_Elvis_Skull",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Pink_Elvis_Smoking",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Pink_Elvis_Vamp",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Pink_Elvis_Zomb",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    }
+  ],
+  "Red_Fez_Ape": [
+    {
+      "slug": "Red_Fez_Ape_Asian_Hat",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Red_Fez_Ape_Beard",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Red_Fez_Ape_Blonde",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Red_Fez_Ape_Cap",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Red_Fez_Ape_Golden",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Red_Fez_Ape_King",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Red_Fez_Ape_Mask",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Red_Fez_Ape_Mustache",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Red_Fez_Ape_OG",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Red_Fez_Ape_Rainbow",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Red_Fez_Ape_Skull",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Red_Fez_Ape_Smoking",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Red_Fez_Ape_Turban",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    }
+  ],
+  "Wire_Skull": [
+    {
+      "slug": "Wire_Skull_Aviator",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Wire_Skull_Cap",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Wire_Skull_Devil",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Wire_Skull_Horns",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Wire_Skull_Mohawk",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Wire_Skull_Rasta",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Wire_Skull_Winter_Hat",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    }
   ]
 }

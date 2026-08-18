@@ -2069,6 +2069,52 @@
             "Triple_Eye_Top_Hat": "Triple_Eye_Top_Hat",
             "Triple_Eye_Wires": "Triple_Eye_Wires"
           }
+        },
+        "Pink_Elvis": {
+          "folder": "Pink_Elvis",
+          "variants": {
+            "Pink_Elvis_Chill": "Pink_Elvis_Chill",
+            "Pink_Elvis_Clown": "Pink_Elvis_Clown",
+            "Pink_Elvis_Cowboy": "Pink_Elvis_Cowboy",
+            "Pink_Elvis_Devil": "Pink_Elvis_Devil",
+            "Pink_Elvis_Kimono": "Pink_Elvis_Kimono",
+            "Pink_Elvis_King": "Pink_Elvis_King",
+            "Pink_Elvis_Love_Glasses": "Pink_Elvis_Love_Glasses",
+            "Pink_Elvis_Skull": "Pink_Elvis_Skull",
+            "Pink_Elvis_Smoking": "Pink_Elvis_Smoking",
+            "Pink_Elvis_Vamp": "Pink_Elvis_Vamp",
+            "Pink_Elvis_Zomb": "Pink_Elvis_Zomb"
+          }
+        },
+        "Red_Fez_Ape": {
+          "folder": "Red_Fez_Ape",
+          "variants": {
+            "Red_Fez_Ape_Asian_Hat": "Red_Fez_Ape_Asian_Hat",
+            "Red_Fez_Ape_Beard": "Red_Fez_Ape_Beard",
+            "Red_Fez_Ape_Blonde": "Red_Fez_Ape_Blonde",
+            "Red_Fez_Ape_Cap": "Red_Fez_Ape_Cap",
+            "Red_Fez_Ape_Golden": "Red_Fez_Ape_Golden",
+            "Red_Fez_Ape_King": "Red_Fez_Ape_King",
+            "Red_Fez_Ape_Mask": "Red_Fez_Ape_Mask",
+            "Red_Fez_Ape_Mustache": "Red_Fez_Ape_Mustache",
+            "Red_Fez_Ape_OG": "Red_Fez_Ape_OG",
+            "Red_Fez_Ape_Rainbow": "Red_Fez_Ape_Rainbow",
+            "Red_Fez_Ape_Skull": "Red_Fez_Ape_Skull",
+            "Red_Fez_Ape_Smoking": "Red_Fez_Ape_Smoking",
+            "Red_Fez_Ape_Turban": "Red_Fez_Ape_Turban"
+          }
+        },
+        "Wire_Skull": {
+          "folder": "Wire_Skull",
+          "variants": {
+            "Wire_Skull_Aviator": "Wire_Skull_Aviator",
+            "Wire_Skull_Cap": "Wire_Skull_Cap",
+            "Wire_Skull_Devil": "Wire_Skull_Devil",
+            "Wire_Skull_Horns": "Wire_Skull_Horns",
+            "Wire_Skull_Mohawk": "Wire_Skull_Mohawk",
+            "Wire_Skull_Rasta": "Wire_Skull_Rasta",
+            "Wire_Skull_Winter_Hat": "Wire_Skull_Winter_Hat"
+          }
         }
       }
     },

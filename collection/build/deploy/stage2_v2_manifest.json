@@ -1,20 +1,16 @@
 {
-  "generated": "2026-08-17T18:16:02.879521+00:00",
-  "batch": "batch20",
+  "generated": "2026-08-18T18:53:06.034371+00:00",
+  "batch": "batch21",
   "characters": [
-    "Gob",
-    "Noir_Cat",
-    "Satyr",
-    "Spiky_Flame",
-    "Triple_Eye"
+    "Pink_Elvis",
+    "Red_Fez_Ape",
+    "Wire_Skull"
   ],
   "counts": {
-    "Gob": 15,
-    "Noir_Cat": 3,
-    "Satyr": 13,
-    "Spiky_Flame": 6,
-    "Triple_Eye": 11
+    "Pink_Elvis": 11,
+    "Red_Fez_Ape": 13,
+    "Wire_Skull": 7
   },
-  "total_variants": 48,
-  "catalog_characters": 155
+  "total_variants": 31,
+  "catalog_characters": 158
 }
