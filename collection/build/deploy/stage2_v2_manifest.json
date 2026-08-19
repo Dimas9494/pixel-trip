@@ -1,16 +1,20 @@
 {
-  "generated": "2026-08-18T18:53:06.034371+00:00",
-  "batch": "batch21",
+  "generated": "2026-08-19T18:19:57.377649+00:00",
+  "batch": "batch22",
   "characters": [
-    "Pink_Elvis",
-    "Red_Fez_Ape",
-    "Wire_Skull"
+    "Cactus",
+    "Horned_Demon",
+    "Office_Sloth",
+    "Pink_Trilobe",
+    "Stoned_Rapper"
   ],
   "counts": {
-    "Pink_Elvis": 11,
-    "Red_Fez_Ape": 13,
-    "Wire_Skull": 7
+    "Cactus": 6,
+    "Horned_Demon": 2,
+    "Office_Sloth": 4,
+    "Pink_Trilobe": 12,
+    "Stoned_Rapper": 14
   },
-  "total_variants": 31,
-  "catalog_characters": 158
+  "total_variants": 38,
+  "catalog_characters": 163
 }

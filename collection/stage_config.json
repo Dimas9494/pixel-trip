@@ -2115,6 +2115,69 @@
             "Wire_Skull_Rasta": "Wire_Skull_Rasta",
             "Wire_Skull_Winter_Hat": "Wire_Skull_Winter_Hat"
           }
+        },
+        "Cactus": {
+          "folder": "Cactus",
+          "variants": {
+            "Cactus_Big_Flower": "Cactus_Big_Flower",
+            "Cactus_Fire": "Cactus_Fire",
+            "Cactus_Kitty": "Cactus_Kitty",
+            "Cactus_Mexican": "Cactus_Mexican",
+            "Cactus_Vamp": "Cactus_Vamp",
+            "Cactus_Viking": "Cactus_Viking"
+          }
+        },
+        "Horned_Demon": {
+          "folder": "Horned_Demon",
+          "variants": {
+            "Horned_Demon_Golden": "Horned_Demon_Golden",
+            "Horned_Demon_White_Mask": "Horned_Demon_White_Mask"
+          }
+        },
+        "Office_Sloth": {
+          "folder": "Office_Sloth",
+          "variants": {
+            "Office_Sloth_Colorfull": "Office_Sloth_Colorfull",
+            "Office_Sloth_Fairy": "Office_Sloth_Fairy",
+            "Office_Sloth_King": "Office_Sloth_King",
+            "Office_Sloth_Rasta": "Office_Sloth_Rasta"
+          }
+        },
+        "Pink_Trilobe": {
+          "folder": "Pink_Trilobe",
+          "variants": {
+            "Pink_Trilobe_Cap": "Pink_Trilobe_Cap",
+            "Pink_Trilobe_Elvis_Hair": "Pink_Trilobe_Elvis_Hair",
+            "Pink_Trilobe_Glasses": "Pink_Trilobe_Glasses",
+            "Pink_Trilobe_Hooded": "Pink_Trilobe_Hooded",
+            "Pink_Trilobe_King": "Pink_Trilobe_King",
+            "Pink_Trilobe_Mustache": "Pink_Trilobe_Mustache",
+            "Pink_Trilobe_Robo": "Pink_Trilobe_Robo",
+            "Pink_Trilobe_Sailor": "Pink_Trilobe_Sailor",
+            "Pink_Trilobe_Scar": "Pink_Trilobe_Scar",
+            "Pink_Trilobe_Skeleton": "Pink_Trilobe_Skeleton",
+            "Pink_Trilobe_White_Hair": "Pink_Trilobe_White_Hair",
+            "Pink_Trilobe_Wires": "Pink_Trilobe_Wires"
+          }
+        },
+        "Stoned_Rapper": {
+          "folder": "Stoned_Rapper",
+          "variants": {
+            "Stoned_Rapper_Backet_Hat": "Stoned_Rapper_Backet_Hat",
+            "Stoned_Rapper_Bald": "Stoned_Rapper_Bald",
+            "Stoned_Rapper_Big_Beard": "Stoned_Rapper_Big_Beard",
+            "Stoned_Rapper_Boss": "Stoned_Rapper_Boss",
+            "Stoned_Rapper_Chad": "Stoned_Rapper_Chad",
+            "Stoned_Rapper_Clown": "Stoned_Rapper_Clown",
+            "Stoned_Rapper_Kitty_Cap": "Stoned_Rapper_Kitty_Cap",
+            "Stoned_Rapper_Mask": "Stoned_Rapper_Mask",
+            "Stoned_Rapper_Skater": "Stoned_Rapper_Skater",
+            "Stoned_Rapper_Skeleton": "Stoned_Rapper_Skeleton",
+            "Stoned_Rapper_Skull_Mask": "Stoned_Rapper_Skull_Mask",
+            "Stoned_Rapper_Surprised": "Stoned_Rapper_Surprised",
+            "Stoned_Rapper_Trainer": "Stoned_Rapper_Trainer",
+            "Stoned_Rapper_Zomb": "Stoned_Rapper_Zomb"
+          }
         }
       }
     },

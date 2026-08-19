@@ -6914,5 +6914,205 @@
       "bg": "Fusion_Node_Spiro",
       "frame": "Glitch_Rgb"
     }
+  ],
+  "Cactus": [
+    {
+      "slug": "Cactus_Big_Flower",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Cactus_Fire",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Cactus_Kitty",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Cactus_Mexican",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Cactus_Vamp",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Cactus_Viking",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    }
+  ],
+  "Horned_Demon": [
+    {
+      "slug": "Horned_Demon_Golden",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Horned_Demon_White_Mask",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    }
+  ],
+  "Office_Sloth": [
+    {
+      "slug": "Office_Sloth_Colorfull",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Office_Sloth_Fairy",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Office_Sloth_King",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Office_Sloth_Rasta",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    }
+  ],
+  "Pink_Trilobe": [
+    {
+      "slug": "Pink_Trilobe_Cap",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Pink_Trilobe_Elvis_Hair",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Pink_Trilobe_Glasses",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Pink_Trilobe_Hooded",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Pink_Trilobe_King",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Pink_Trilobe_Mustache",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Pink_Trilobe_Robo",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Pink_Trilobe_Sailor",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Pink_Trilobe_Scar",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Pink_Trilobe_Skeleton",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Pink_Trilobe_White_Hair",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Pink_Trilobe_Wires",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    }
+  ],
+  "Stoned_Rapper": [
+    {
+      "slug": "Stoned_Rapper_Backet_Hat",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Stoned_Rapper_Bald",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Stoned_Rapper_Big_Beard",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Stoned_Rapper_Boss",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Stoned_Rapper_Chad",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Stoned_Rapper_Clown",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Stoned_Rapper_Kitty_Cap",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Stoned_Rapper_Mask",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Stoned_Rapper_Skater",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Stoned_Rapper_Skeleton",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Stoned_Rapper_Skull_Mask",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Stoned_Rapper_Surprised",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Stoned_Rapper_Trainer",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Stoned_Rapper_Zomb",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    }
   ]
 }
