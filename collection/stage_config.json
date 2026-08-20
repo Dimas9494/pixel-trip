@@ -2178,6 +2178,47 @@
             "Stoned_Rapper_Trainer": "Stoned_Rapper_Trainer",
             "Stoned_Rapper_Zomb": "Stoned_Rapper_Zomb"
           }
+        },
+        "Bucktooth_Nerd": {
+          "folder": "Bucktooth_Nerd",
+          "variants": {
+            "Bucktooth_Nerd_Ape": "Bucktooth_Nerd_Ape",
+            "Bucktooth_Nerd_Bald": "Bucktooth_Nerd_Bald",
+            "Bucktooth_Nerd_Brain": "Bucktooth_Nerd_Brain",
+            "Bucktooth_Nerd_Bubble": "Bucktooth_Nerd_Bubble",
+            "Bucktooth_Nerd_Cyber": "Bucktooth_Nerd_Cyber",
+            "Bucktooth_Nerd_Mushrooms": "Bucktooth_Nerd_Mushrooms",
+            "Bucktooth_Nerd_Pinky": "Bucktooth_Nerd_Pinky",
+            "Bucktooth_Nerd_Propeller_Hat": "Bucktooth_Nerd_Propeller_Hat",
+            "Bucktooth_Nerd_Skull": "Bucktooth_Nerd_Skull",
+            "Bucktooth_Nerd_Viking": "Bucktooth_Nerd_Viking",
+            "Bucktooth_Nerd_Zomb": "Bucktooth_Nerd_Zomb"
+          }
+        },
+        "Moss_Titan": {
+          "folder": "Moss_Titan",
+          "variants": {
+            "Moss_Titan_Cap": "Moss_Titan_Cap",
+            "Moss_Titan_Emerald": "Moss_Titan_Emerald",
+            "Moss_Titan_Golden": "Moss_Titan_Golden",
+            "Moss_Titan_Horn": "Moss_Titan_Horn",
+            "Moss_Titan_Knitted_Hat": "Moss_Titan_Knitted_Hat",
+            "Moss_Titan_Ocean": "Moss_Titan_Ocean",
+            "Moss_Titan_Showman": "Moss_Titan_Showman",
+            "Moss_Titan_Skull_Mask": "Moss_Titan_Skull_Mask",
+            "Moss_Titan_Strow_Hat": "Moss_Titan_Strow_Hat",
+            "Moss_Titan_Viking": "Moss_Titan_Viking"
+          }
+        },
+        "Teal_Cowboy": {
+          "folder": "Teal_Cowboy",
+          "variants": {
+            "Teal_Cowboy_ACID": "Teal_Cowboy_ACID",
+            "Teal_Cowboy_Alien": "Teal_Cowboy_Alien",
+            "Teal_Cowboy_Golden": "Teal_Cowboy_Golden",
+            "Teal_Cowboy_Nighty": "Teal_Cowboy_Nighty",
+            "Teal_Cowboy_Zomb": "Teal_Cowboy_Zomb"
+          }
         }
       }
     },
