@@ -1,11 +1,11 @@
-import { fetchWithTimeout } from "./fetch-timeout.js";
+import { lookupOwnedFromMap } from "./token-owners.js";
 
-/** Tunables for wallet ownerOf scans (4444 tokens) — fallback only. */
+/**
+ * Multicall helper — used for evolve reads, not wallet scan.
+ */
 export const MULTICALL_CHUNK = 256;
 export const MULTICALL_PARALLEL = 4;
-const MULTICALL_TIMEOUT_MS = 45_000;
-const INDEXER_URL = "/.netlify/functions/wallet-tokens";
-const INDEXER_TIMEOUT_MS = 15_000;
+const MULTICALL_TIMEOUT_MS = 30_000;
 
 function withTimeout(promise, ms, label) {
   return Promise.race([
@@ -16,12 +16,6 @@ function withTimeout(promise, ms, label) {
   ]);
 }
 
-/**
- * Multicall in ordered chunks; runs up to `parallel` chunks concurrently.
- * Falls back to smaller sequential batches if the RPC rejects parallel load.
- * @param {import('viem').PublicClient} client
- * @param {import('viem').MulticallContracts} contracts
- */
 export async function multicallChunked(
   client,
   contracts,
@@ -55,77 +49,17 @@ export async function multicallChunked(
   try {
     return await run(parallel);
   } catch (err) {
-    console.warn("[multicall] fast path failed, retrying sequential:", err.message);
+    console.warn("[multicall] retry sequential:", err.message);
     return run(1);
   }
 }
 
 /**
- * Find owned token IDs — indexer first (Transfer logs), full ownerOf scan as fallback.
+ * Wallet token IDs — instant lookup from token-owners.json (no 4444 RPC in browser).
  */
-export async function scanOwnedTokenIds(
-  client,
-  { owner, maxId, collectionAddress, collectionAbi, indexerUrl = INDEXER_URL },
-) {
-  let balance = null;
-  try {
-    balance = await withTimeout(
-      client.readContract({
-        address: collectionAddress,
-        abi: collectionAbi,
-        functionName: "balanceOf",
-        args: [owner],
-      }),
-      10_000,
-      "balanceOf",
-    );
-  } catch (err) {
-    console.warn("[scan] balanceOf failed:", err.message);
-  }
-
-  if (balance === 0n) return [];
-
-  try {
-    const res = await fetchWithTimeout(
-      `${indexerUrl}?address=${encodeURIComponent(owner)}`,
-      { cache: "no-store" },
-      INDEXER_TIMEOUT_MS,
-    );
-    if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data.tokenIds)) {
-        const ids = data.tokenIds
-          .map((id) => Number(id))
-          .filter((id) => Number.isInteger(id) && id >= 1 && id <= maxId);
-        const emptyMismatch = ids.length === 0 && balance != null && balance > 0n && data.source !== "balance";
-        if (!emptyMismatch) {
-          console.log(`[scan] indexer (${data.source}): ${ids.length} token(s)`);
-          return ids;
-        }
-        console.warn("[scan] indexer returned 0 but balanceOf > 0 — slow scan");
-      }
-    }
-  } catch (err) {
-    console.warn("[scan] indexer failed, falling back to ownerOf scan:", err.message);
-  }
-
-  console.warn("[scan] using slow ownerOf scan (4444 tokens)…");
-
-  const contracts = Array.from({ length: maxId }, (_, i) => ({
-    address: collectionAddress,
-    abi: collectionAbi,
-    functionName: "ownerOf",
-    args: [BigInt(i + 1)],
-  }));
-
-  const results = await multicallChunked(client, contracts);
-  const addr = owner.toLowerCase();
-  const owned = [];
-  for (let i = 0; i < results.length; i++) {
-    const r = results[i];
-    if (r?.status === "success" && r.result?.toLowerCase() === addr) {
-      owned.push(i + 1);
-    }
-  }
-  return owned;
+export async function scanOwnedTokenIds(_client, { owner, maxId }) {
+  const ids = await lookupOwnedFromMap(owner);
+  const filtered = ids.filter((id) => id >= 1 && id <= maxId);
+  console.log(`[scan] owner map: ${filtered.length} token(s)`);
+  return filtered;
 }
