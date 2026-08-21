@@ -2219,6 +2219,71 @@
             "Teal_Cowboy_Nighty": "Teal_Cowboy_Nighty",
             "Teal_Cowboy_Zomb": "Teal_Cowboy_Zomb"
           }
+        },
+        "Chill_Goat": {
+          "folder": "Chill_Goat",
+          "variants": {
+            "Chill_Goat_Big_Beard": "Chill_Goat_Big_Beard",
+            "Chill_Goat_Big_Lips": "Chill_Goat_Big_Lips",
+            "Chill_Goat_Biker": "Chill_Goat_Biker",
+            "Chill_Goat_Cap": "Chill_Goat_Cap",
+            "Chill_Goat_Curvy_Beard": "Chill_Goat_Curvy_Beard",
+            "Chill_Goat_Fire": "Chill_Goat_Fire",
+            "Chill_Goat_Ghost": "Chill_Goat_Ghost",
+            "Chill_Goat_Golden": "Chill_Goat_Golden",
+            "Chill_Goat_Long_Hair": "Chill_Goat_Long_Hair",
+            "Chill_Goat_Open_Mouth": "Chill_Goat_Open_Mouth",
+            "Chill_Goat_Pirate": "Chill_Goat_Pirate",
+            "Chill_Goat_Skull": "Chill_Goat_Skull",
+            "Chill_Goat_Third_Eye": "Chill_Goat_Third_Eye",
+            "Chill_Goat_Wizard": "Chill_Goat_Wizard",
+            "Chill_Goat_Zombie": "Chill_Goat_Zombie"
+          }
+        },
+        "Kabuki_Face": {
+          "folder": "Kabuki_Face",
+          "variants": {
+            "Kabuki_Face_Backet_Hat": "Kabuki_Face_Backet_Hat",
+            "Kabuki_Face_Candles": "Kabuki_Face_Candles",
+            "Kabuki_Face_Crown": "Kabuki_Face_Crown",
+            "Kabuki_Face_Crying": "Kabuki_Face_Crying",
+            "Kabuki_Face_Duotone": "Kabuki_Face_Duotone",
+            "Kabuki_Face_Frog_Hat": "Kabuki_Face_Frog_Hat",
+            "Kabuki_Face_Half_Mask": "Kabuki_Face_Half_Mask",
+            "Kabuki_Face_Horns": "Kabuki_Face_Horns",
+            "Kabuki_Face_Kitty": "Kabuki_Face_Kitty",
+            "Kabuki_Face_Knitted_Hat": "Kabuki_Face_Knitted_Hat",
+            "Kabuki_Face_Mask": "Kabuki_Face_Mask",
+            "Kabuki_Face_Samurai": "Kabuki_Face_Samurai",
+            "Kabuki_Face_Surprised": "Kabuki_Face_Surprised",
+            "Kabuki_Face_VR_Glasses": "Kabuki_Face_VR_Glasses",
+            "Kabuki_Face_White": "Kabuki_Face_White"
+          }
+        },
+        "Mad_Aviator": {
+          "folder": "Mad_Aviator",
+          "variants": {
+            "Mad_Aviator_Clown": "Mad_Aviator_Clown",
+            "Mad_Aviator_Cyborg": "Mad_Aviator_Cyborg",
+            "Mad_Aviator_Ghost": "Mad_Aviator_Ghost",
+            "Mad_Aviator_Golden": "Mad_Aviator_Golden",
+            "Mad_Aviator_Punk": "Mad_Aviator_Punk",
+            "Mad_Aviator_Rainbow": "Mad_Aviator_Rainbow",
+            "Mad_Aviator_Underwater": "Mad_Aviator_Underwater",
+            "Mad_Aviator_Zombie": "Mad_Aviator_Zombie"
+          }
+        },
+        "Purple_Balaclava": {
+          "folder": "Purple_Balaclava",
+          "variants": {
+            "Purple_Balaclava_Big_Eyes": "Purple_Balaclava_Big_Eyes",
+            "Purple_Balaclava_Demon": "Purple_Balaclava_Demon",
+            "Purple_Balaclava_Golden": "Purple_Balaclava_Golden",
+            "Purple_Balaclava_King": "Purple_Balaclava_King",
+            "Purple_Balaclava_Skull": "Purple_Balaclava_Skull",
+            "Purple_Balaclava_Smoking": "Purple_Balaclava_Smoking",
+            "Purple_Balaclava_Tiger": "Purple_Balaclava_Tiger"
+          }
         }
       }
     },

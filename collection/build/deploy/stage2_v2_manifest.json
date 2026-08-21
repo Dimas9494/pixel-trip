@@ -1,16 +1,18 @@
 {
-  "generated": "2026-08-20T19:09:06.124532+00:00",
-  "batch": "batch23",
+  "generated": "2026-08-21T18:32:51.529803+00:00",
+  "batch": "batch24",
   "characters": [
-    "Bucktooth_Nerd",
-    "Moss_Titan",
-    "Teal_Cowboy"
+    "Chill_Goat",
+    "Kabuki_Face",
+    "Mad_Aviator",
+    "Purple_Balaclava"
   ],
   "counts": {
-    "Bucktooth_Nerd": 11,
-    "Moss_Titan": 10,
-    "Teal_Cowboy": 5
+    "Chill_Goat": 15,
+    "Kabuki_Face": 15,
+    "Mad_Aviator": 8,
+    "Purple_Balaclava": 7
   },
-  "total_variants": 26,
-  "catalog_characters": 166
+  "total_variants": 45,
+  "catalog_characters": 170
 }
