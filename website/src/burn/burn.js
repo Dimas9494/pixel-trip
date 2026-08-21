@@ -1185,21 +1185,28 @@ function getProvider() {
   return window.ethereum || window.okxwallet || null;
 }
 
-async function connectWallet() {
+async function connectWallet({ silent = false } = {}) {
   const provider = getProvider();
   if (!provider) {
-    setMessage("No Web3 wallet found. Install OKX Wallet, MetaMask or any EVM wallet.", "error");
+    if (!silent) setMessage("No Web3 wallet found. Install OKX Wallet, MetaMask or any EVM wallet.", "error");
     return;
   }
   if (!EVOLVE_ADDRESS) {
-    setMessage("Deploy EvolvePixelTrip v2 via Remix, then update EVOLVE_ADDRESS in config.js.", "error");
+    if (!silent) setMessage("Deploy EvolvePixelTrip v2 via Remix, then update EVOLVE_ADDRESS in config.js.", "error");
     return;
   }
 
   try {
+    if (!silent) setMessage("Connecting wallet…", "info");
     const probeClient = createWalletClient({ chain: mainnet, transport: custom(provider) });
-    const [address] = await probeClient.requestAddresses();
-    account = getAddress(address);
+    if (silent) {
+      const accounts = await provider.request({ method: "eth_accounts" });
+      if (!accounts?.length) return;
+      account = getAddress(accounts[0]);
+    } else {
+      const [address] = await probeClient.requestAddresses();
+      account = getAddress(address);
+    }
 
     publicClient  = createPublicClient({ chain: mainnet, transport: custom(provider) });
     readClient    = createPublicClient({ chain: mainnet, transport: http(RECEIPT_RPC_URL) });
@@ -1214,8 +1221,11 @@ async function connectWallet() {
     els.connect.textContent = shortAddress(account);
     els.network.textContent = "Ethereum Mainnet";
 
-    await loadBurnProgram();
-    await loadAssignments();
+    setMessage("Loading burn catalog…", "info");
+    await Promise.all([
+      loadBurnProgram(),
+      loadAssignments(),
+    ]);
     await loadTokens();
   } catch (err) {
     console.error(err);
@@ -1429,6 +1439,7 @@ function initBurnDapp() {
   gridFilters = mountTokenGridFilters(els.filters, { onChange: renderGrid });
   if (els.stats) els.stats.textContent = `build ${LAB_BUILD}`;
   void loadBurnProgram();
+  void connectWallet({ silent: true });
 }
 
 initBurnDapp();
