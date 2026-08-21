@@ -36,6 +36,11 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[redirects]]
+  from = "/api/wallet-tokens"
+  to = "/.netlify/functions/wallet-tokens"
+  status = 200
+
+[[redirects]]
   from = "/api/gif-proxy"
   to = "/.netlify/functions/gif-proxy"
   status = 200

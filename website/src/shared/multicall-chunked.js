@@ -1,7 +1,11 @@
-/** Tunables for wallet ownerOf scans (4444 tokens). */
+import { fetchWithTimeout } from "./fetch-timeout.js";
+
+/** Tunables for wallet ownerOf scans (4444 tokens) — fallback only. */
 export const MULTICALL_CHUNK = 256;
 export const MULTICALL_PARALLEL = 4;
 const MULTICALL_TIMEOUT_MS = 45_000;
+const INDEXER_URL = "/.netlify/functions/wallet-tokens";
+const INDEXER_TIMEOUT_MS = 15_000;
 
 function withTimeout(promise, ms, label) {
   return Promise.race([
@@ -57,12 +61,11 @@ export async function multicallChunked(
 }
 
 /**
- * Find owned token IDs by scanning ownerOf(1..maxId).
- * Skips the full scan when balanceOf succeeds and returns zero.
+ * Find owned token IDs — indexer first (Transfer logs), full ownerOf scan as fallback.
  */
 export async function scanOwnedTokenIds(
   client,
-  { owner, maxId, collectionAddress, collectionAbi },
+  { owner, maxId, collectionAddress, collectionAbi, indexerUrl = INDEXER_URL },
 ) {
   let balance = null;
   try {
@@ -77,10 +80,36 @@ export async function scanOwnedTokenIds(
       "balanceOf",
     );
   } catch (err) {
-    console.warn("[scan] balanceOf failed, falling back to full scan:", err.message);
+    console.warn("[scan] balanceOf failed:", err.message);
   }
 
   if (balance === 0n) return [];
+
+  try {
+    const res = await fetchWithTimeout(
+      `${indexerUrl}?address=${encodeURIComponent(owner)}`,
+      { cache: "no-store" },
+      INDEXER_TIMEOUT_MS,
+    );
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data.tokenIds)) {
+        const ids = data.tokenIds
+          .map((id) => Number(id))
+          .filter((id) => Number.isInteger(id) && id >= 1 && id <= maxId);
+        const emptyMismatch = ids.length === 0 && balance != null && balance > 0n && data.source !== "balance";
+        if (!emptyMismatch) {
+          console.log(`[scan] indexer (${data.source}): ${ids.length} token(s)`);
+          return ids;
+        }
+        console.warn("[scan] indexer returned 0 but balanceOf > 0 — slow scan");
+      }
+    }
+  } catch (err) {
+    console.warn("[scan] indexer failed, falling back to ownerOf scan:", err.message);
+  }
+
+  console.warn("[scan] using slow ownerOf scan (4444 tokens)…");
 
   const contracts = Array.from({ length: maxId }, (_, i) => ({
     address: collectionAddress,

@@ -841,7 +841,7 @@ async function getOwnedIds() {
       collectionAbi: STAGE1_ABI,
     });
   } catch (err) {
-    console.warn("[scan] multicall failed:", err.message);
+    console.warn("[scan] failed:", err.message);
   }
 
   console.log(`[scan] Owned token IDs (${owned.length}), scanned 1..${MAX_ID}`);
