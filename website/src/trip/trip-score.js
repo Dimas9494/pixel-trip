@@ -24,6 +24,7 @@ import {
   formatWalletLabel,
 } from "./trip-profile.js";
 import { initTripLeaderboard, submitTripScore } from "./trip-leaderboard.js";
+import { multicallChunked, scanOwnedTokenIds } from "../shared/multicall-chunked.js";
 
 const RANKS = [
   { id: "wanderer",  title: "Wanderer",  min: 0,   tagline: "First steps on the pixel road." },
@@ -228,41 +229,17 @@ async function applyWalletSession(address) {
   );
 }
 
-async function multicallChunked(client, contracts, chunk = 64) {
-  const out = [];
-  for (let i = 0; i < contracts.length; i += chunk) {
-    const res = await client.multicall({
-      contracts: contracts.slice(i, i + chunk),
-      allowFailure: true,
-    });
-    out.push(...res);
-  }
-  return out;
-}
-
 async function fetchWalletTokens(address) {
   const client = readClient || publicClient;
   const maxId = SCAN_MAX_ID;
-  const contracts = [];
-  for (let id = 1; id <= maxId; id++) {
-    contracts.push({
-      address: STAGE1_ADDRESS,
-      abi: STAGE1_ABI,
-      functionName: "ownerOf",
-      args: [BigInt(id)],
-    });
-  }
 
   setMessage(`Scanning 1…${maxId} for your trippers…`);
-  const owners = await multicallChunked(client, contracts);
-  const owned = [];
-  const addr = address.toLowerCase();
-  for (let i = 0; i < owners.length; i++) {
-    const r = owners[i];
-    if (r?.status === "success" && r.result?.toLowerCase() === addr) {
-      owned.push(i + 1);
-    }
-  }
+  const owned = await scanOwnedTokenIds(client, {
+    owner: address,
+    maxId,
+    collectionAddress: STAGE1_ADDRESS,
+    collectionAbi: STAGE1_ABI,
+  });
 
   if (!owned.length) return [];
 

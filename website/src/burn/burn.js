@@ -28,6 +28,7 @@ import {
 } from "./config.js";
 import { loadBurnProgram, getStage2Variants, getBurnableChars } from "./burn-program.js";
 import { enrichTripToken } from "../shared/token-images.js";
+import { multicallChunked, scanOwnedTokenIds } from "../shared/multicall-chunked.js";
 import {
   matchesTokenGridFilters,
   mountTokenGridFilters,
@@ -222,7 +223,7 @@ async function loadCharacterPaths(charIds) {
     args:    [charId],
   }));
 
-  const results = await multicallChunked(contracts);
+  const results = await multicallChunked(readClient || publicClient, contracts);
   missing.forEach((charId, i) => {
     const r = results[i];
     if (r?.status === "success") {
@@ -282,19 +283,6 @@ function tokenLabFlags(tokenId, character, stage, charId = 0) {
     return { canEvolve: false, viewReason: "no_s3" };
   }
   return { canEvolve: false, viewReason: "unknown_stage" };
-}
-
-const MULTICALL_CHUNK = 64;
-
-async function multicallChunked(contracts) {
-  const client = readClient || publicClient;
-  const out = [];
-  for (let i = 0; i < contracts.length; i += MULTICALL_CHUNK) {
-    const chunk = contracts.slice(i, i + MULTICALL_CHUNK);
-    const res   = await client.multicall({ contracts: chunk, allowFailure: true });
-    out.push(...res);
-  }
-  return out;
 }
 
 function bustUrl(url, slug) {
@@ -841,22 +829,16 @@ async function getOwnedIds() {
   setMessage("Scanning wallet…", "info");
 
   const MAX_ID = await getScanMaxId();
-  const contracts = Array.from({ length: MAX_ID }, (_, i) => ({
-    address: STAGE1_ADDRESS,
-    abi:     STAGE1_ABI,
-    functionName: "ownerOf",
-    args:    [BigInt(i + 1)],
-  }));
+  const client = readClient || publicClient;
+  let owned = [];
 
-  const owned = [];
   try {
-    const results = await multicallChunked(contracts);
-    for (let i = 0; i < results.length; i++) {
-      const r = results[i];
-      if (r?.status === "success" && r.result?.toLowerCase() === account.toLowerCase()) {
-        owned.push(i + 1);
-      }
-    }
+    owned = await scanOwnedTokenIds(client, {
+      owner: account,
+      maxId: MAX_ID,
+      collectionAddress: STAGE1_ADDRESS,
+      collectionAbi: STAGE1_ABI,
+    });
   } catch (err) {
     console.warn("[scan] multicall failed:", err.message);
   }
@@ -879,7 +861,7 @@ async function loadTokens() {
 
   let mcResults = [];
   try {
-    mcResults = await multicallChunked(contracts);
+    mcResults = await multicallChunked(readClient || publicClient, contracts);
   } catch (err) {
     console.warn("[token] evolve multicall failed:", err.message);
   }
