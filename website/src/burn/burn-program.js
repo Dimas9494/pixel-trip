@@ -4,6 +4,7 @@
  */
 import STAGE2_FALLBACK from "./stage2-variants.json";
 import { SITE_BASE } from "./config.js";
+import { fetchWithTimeout } from "../shared/fetch-timeout.js";
 
 let variants = STAGE2_FALLBACK;
 let burnable = new Set(Object.keys(STAGE2_FALLBACK));
@@ -25,7 +26,7 @@ export function loadBurnProgram() {
   if (loadPromise) return loadPromise;
   loadPromise = (async () => {
     try {
-      const res = await fetch(`${SITE_BASE}/stage2-variants.json?t=${Date.now()}`, {
+      const res = await fetchWithTimeout(`${SITE_BASE}/stage2-variants.json?t=${Date.now()}`, {
         cache: "no-store",
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);

@@ -29,6 +29,7 @@ import {
 import { loadBurnProgram, getStage2Variants, getBurnableChars } from "./burn-program.js";
 import { enrichTripToken } from "../shared/token-images.js";
 import { multicallChunked, scanOwnedTokenIds } from "../shared/multicall-chunked.js";
+import { fetchWithTimeout } from "../shared/fetch-timeout.js";
 import {
   matchesTokenGridFilters,
   mountTokenGridFilters,
@@ -349,7 +350,7 @@ async function loadAssignments() {
   TOKEN_ASSIGNMENTS = { ...LOCAL_ASSIGNMENTS };
   STAGE3_ASSIGNMENTS = { ...LOCAL_STAGE3_ASSIGNMENTS };
   try {
-    const res = await fetch(`${ASSIGNMENTS_URL}&t=${Date.now()}`);
+    const res = await fetchWithTimeout(`${ASSIGNMENTS_URL}&t=${Date.now()}`);
     if (res.ok) {
       const remote = await res.json();
       TOKEN_ASSIGNMENTS = { ...TOKEN_ASSIGNMENTS, ...remote };
@@ -361,7 +362,7 @@ async function loadAssignments() {
     console.warn("[assignments] load failed:", err.message);
   }
   try {
-    const res = await fetch(`${STAGE3_ASSIGNMENTS_URL}&t=${Date.now()}`);
+    const res = await fetchWithTimeout(`${STAGE3_ASSIGNMENTS_URL}&t=${Date.now()}`);
     if (res.ok) {
       const remote = await res.json();
       STAGE3_ASSIGNMENTS = { ...STAGE3_ASSIGNMENTS, ...remote };
@@ -1185,7 +1186,18 @@ function getProvider() {
   return window.ethereum || window.okxwallet || null;
 }
 
+let connectInFlight = null;
+
 async function connectWallet({ silent = false } = {}) {
+  if (connectInFlight) return connectInFlight;
+
+  connectInFlight = connectWalletInner({ silent }).finally(() => {
+    connectInFlight = null;
+  });
+  return connectInFlight;
+}
+
+async function connectWalletInner({ silent = false } = {}) {
   const provider = getProvider();
   if (!provider) {
     if (!silent) setMessage("No Web3 wallet found. Install OKX Wallet, MetaMask or any EVM wallet.", "error");
@@ -1222,7 +1234,7 @@ async function connectWallet({ silent = false } = {}) {
     els.network.textContent = "Ethereum Mainnet";
 
     setMessage("Loading burn catalog…", "info");
-    await Promise.all([
+    await Promise.allSettled([
       loadBurnProgram(),
       loadAssignments(),
     ]);
