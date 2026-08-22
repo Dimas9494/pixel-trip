@@ -390,6 +390,9 @@ function formatSyncError(message) {
   if (/^load failed$/i.test(message) || /failed to fetch/i.test(message)) {
     return "Network error — try desktop Chrome (not Telegram browser)";
   }
+  if (/timed out|timeout|504|gateway/i.test(message)) {
+    return "Metadata server slow — wait 30s and click Sync again (or use desktop Chrome)";
+  }
   return message;
 }
 
@@ -596,11 +599,15 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 }
   let lastError = "Sync failed";
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      const res = await fetch(UPDATE_METADATA_URL, {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ tokenId, sync: true, burnTokenId: burnTokenId || undefined }),
-      });
+      const res = await fetchWithTimeout(
+        UPDATE_METADATA_URL,
+        {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body:    JSON.stringify({ tokenId, sync: true, burnTokenId: burnTokenId || undefined }),
+        },
+        90_000,
+      );
       const text = await res.text();
       let data = {};
       try {
@@ -657,20 +664,28 @@ async function autoUpdateMetadata(tokenId, charName, newStage, txHash) {
 }
 
 async function syncAllEvolvedTokens() {
-  const evolved = tokens.filter(t => t.stage >= 2);
-  if (!evolved.length) return;
+  const stale = tokens.filter(needsMetadataSync);
+  if (!stale.length) {
+    setMessage("All evolved tokens are already synced on the metadata server.", "success");
+    return;
+  }
 
-  setMessage(`Syncing ${evolved.length} evolved token(s)…`, "pending");
+  if (els.sync) els.sync.disabled = true;
+  setMessage(`Syncing ${stale.length} token(s) with outdated metadata…`, "pending");
   const failed = [];
   const syncedIds = [];
 
-  for (let i = 0; i < evolved.length; i++) {
-    const t = evolved[i];
-    if (i > 0) await new Promise((r) => setTimeout(r, 400));
-    setMessage(`Syncing ${i + 1}/${evolved.length} (#${t.tokenId})…`, "pending");
-    const r = await syncMetadataToServer(t.tokenId, null, { retries: 3 });
-    if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
-    else syncedIds.push(t.tokenId);
+  try {
+    for (let i = 0; i < stale.length; i++) {
+      const t = stale[i];
+      if (i > 0) await new Promise((r) => setTimeout(r, 300));
+      setMessage(`Syncing ${i + 1}/${stale.length} (#${t.tokenId})…`, "pending");
+      const r = await syncMetadataToServer(t.tokenId, null, { retries: 2 });
+      if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
+      else syncedIds.push(t.tokenId);
+    }
+  } finally {
+    if (els.sync) els.sync.disabled = false;
   }
 
   if (syncedIds.length) {
@@ -680,10 +695,10 @@ async function syncAllEvolvedTokens() {
   }
 
   if (!failed.length) {
-    setMessage(`Metadata synced for ${evolved.length} token(s). Refresh OpenSea in a few minutes.`, "success");
+    setMessage(`Metadata synced for ${stale.length} token(s). Refresh OpenSea in a few minutes.`, "success");
   } else if (syncedIds.length) {
     setMessage(
-      `Synced ${syncedIds.length}/${evolved.length}. Failed: ${failed.slice(0, 5).join("; ")}` +
+      `Synced ${syncedIds.length}/${stale.length}. Failed: ${failed.slice(0, 5).join("; ")}` +
       `${failed.length > 5 ? ` (+${failed.length - 5} more)` : ""}`,
       "error",
     );
