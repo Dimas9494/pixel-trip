@@ -721,15 +721,15 @@ async function autoSyncStaleMetadata(stubs) {
   const stale = stubs.filter(needsMetadataSync);
   if (!stale.length) return { synced: 0, failed: [] };
 
-  console.log(`[metadata] auto-sync ${stale.length} stale token(s):`, stale.map(t => t.tokenId));
+  console.log(`[metadata] background sync ${stale.length} stale token(s):`, stale.map(t => t.tokenId));
   const failed = [];
-  for (const t of stale) {
-    const r = await syncMetadataToServer(t.tokenId, null, { retries: 3 });
+  for (const t of stale.slice(0, 3)) {
+    const r = await syncMetadataToServer(t.tokenId, null, { retries: 1 });
     if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
   }
-  const synced = stale.length - failed.length;
+  const synced = stale.slice(0, 3).length - failed.length;
   if (synced) {
-    await loadMetadataForTokens(stale.map(t => t.tokenId));
+    await loadMetadataForTokens(stale.slice(0, 3).map(t => t.tokenId));
   }
   return { synced, failed };
 }
@@ -962,28 +962,32 @@ async function loadTokens({ forceRefresh = false, ownedIdsOverride = null } = {}
   if (stage1Ids.length) await loadMetadataForTokens(stage1Ids);
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
-  const autoSync = await autoSyncStaleMetadata(stubs);
-  if (gen !== loadGeneration) {
-    console.log("[token] stale wallet load ignored (after sync)");
-    return;
-  }
-  await triggerServerReconcile();
-
-  if (gen !== loadGeneration) {
-    console.log("[token] stale wallet load ignored (after reconcile)");
-    return;
-  }
-
   tokens = stubs.map(finalizeToken);
-
   keepToken  = null;
   burnToken  = null;
-
   isApproved = await refreshApprovalStatus();
-
   renderGrid();
   updateStats();
   updateEvolveButton();
+
+  void autoSyncStaleMetadata(stubs).then((autoSync) => {
+    if (gen !== loadGeneration) return;
+    if (!autoSync.synced && !autoSync.failed.length) return;
+    refreshTokenImages();
+    renderGrid();
+    if (autoSync.synced) {
+      setMessage(
+        `Background: synced metadata for ${autoSync.synced} token(s). Use Sync button for OpenSea.`,
+        "success",
+      );
+    }
+  });
+  void triggerServerReconcile();
+
+  if (gen !== loadGeneration) {
+    console.log("[token] stale wallet load ignored (after render)");
+    return;
+  }
 
   if (!tokens.length) {
     if (!ownedIds.length) {
@@ -1008,24 +1012,9 @@ async function loadTokens({ forceRefresh = false, ownedIdsOverride = null } = {}
       (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
       `. Select 2 of the same burnable character — first selected will be upgraded.` +
       (lastWalletBalance != null && lastOwnedCount < lastWalletBalance
-        ? ` Found ${lastOwnedCount}/${lastWalletBalance} — click Connect Wallet to rescan.`
+        ? ` Found ${lastOwnedCount}/${lastWalletBalance} — new purchases may appear in a few seconds.`
         : "");
-    if (autoSync.synced) {
-      msg = `Auto-synced metadata for ${autoSync.synced} evolved token(s). Refresh OpenSea in a few minutes. · ${msg}`;
-    } else if (autoSync.failed.length) {
-      const serverDown = autoSync.failed.every((line) =>
-        /failed to fetch|HTTP 5\d\d|Internal Server Error/i.test(line),
-      );
-      if (serverDown) {
-        msg = `Metadata server temporarily unavailable (check .htaccess on FTP). Burn works — use Sync later. · ${msg}`;
-      } else {
-        msg = `Could not auto-sync: ${autoSync.failed.slice(0, 3).join("; ")}${autoSync.failed.length > 3 ? ` (+${autoSync.failed.length - 3} more)` : ""} · ${msg}`;
-      }
-    }
-    const syncTone = autoSync.synced ? "success" : autoSync.failed.length && !autoSync.failed.every((line) =>
-      /failed to fetch|HTTP 5\d\d|Internal Server Error/i.test(line),
-    ) ? "error" : "info";
-    setMessage(msg, syncTone);
+    setMessage(msg, "info");
   }
 }
 
