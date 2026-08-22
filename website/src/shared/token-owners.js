@@ -46,3 +46,11 @@ export async function lookupOwnedFromMap(wallet) {
 export function invalidateOwnerMapCache() {
   cache = null;
 }
+
+/** Drop stale map entry after burn / transfer. */
+export function patchOwnerInCache(tokenId, owner) {
+  if (!cache?.owners) return;
+  const key = String(tokenId);
+  if (owner) cache.owners[key] = owner.toLowerCase();
+  else delete cache.owners[key];
+}

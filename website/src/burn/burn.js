@@ -29,6 +29,7 @@ import {
 import { loadBurnProgram, getStage2Variants, getBurnableChars } from "./burn-program.js";
 import { enrichTripToken } from "../shared/token-images.js";
 import { multicallChunked, scanOwnedTokenIds } from "../shared/multicall-chunked.js";
+import { patchOwnerInCache } from "../shared/token-owners.js";
 import { fetchWithTimeout } from "../shared/fetch-timeout.js";
 import {
   matchesTokenGridFilters,
@@ -826,7 +827,7 @@ async function getScanMaxId() {
   }
 }
 
-async function getOwnedIds() {
+async function getOwnedIds({ forceRefresh = false } = {}) {
   setMessage("Scanning wallet…", "info");
 
   const MAX_ID = await getScanMaxId();
@@ -839,6 +840,7 @@ async function getOwnedIds() {
       maxId: MAX_ID,
       collectionAddress: STAGE1_ADDRESS,
       collectionAbi: STAGE1_ABI,
+      forceRefresh,
     });
   } catch (err) {
     console.warn("[scan] failed:", err.message);
@@ -848,10 +850,10 @@ async function getOwnedIds() {
   return owned;
 }
 
-async function loadTokens() {
+async function loadTokens({ forceRefresh = false } = {}) {
   setMessage("Loading your trippers…", "info");
 
-  const ownedIds = await getOwnedIds();
+  const ownedIds = await getOwnedIds({ forceRefresh });
   lastOwnedCount = ownedIds.length;
 
   // One multicall for all evolve contract reads
@@ -1238,7 +1240,7 @@ async function connectWalletInner({ silent = false } = {}) {
       loadBurnProgram(),
       loadAssignments(),
     ]);
-    await loadTokens();
+    await loadTokens({ forceRefresh: !silent });
   } catch (err) {
     console.error(err);
     setMessage(err.shortMessage || err.message || "Connection failed.", "error");
@@ -1399,16 +1401,20 @@ async function evolveTokens() {
     const stageLabel = newStage === 3 ? "Stage 3" : "Stage 2";
 
     applyEvolveResult(keepId, burnId, newStage);
+    patchOwnerInCache(burnId, null);
+    if (account) patchOwnerInCache(keepId, account.toLowerCase());
     setMessage(`Evolved! #${keepId} → ${stageLabel}. Updating metadata…`, "success");
 
     const updated = await syncMetadataToServer(keepId, burnId, { retries: 5 });
     if (updated.ok) {
       if (burnId) delete TOKEN_ASSIGNMENTS[String(burnId)];
       applyEvolveResult(keepId, burnId, newStage);
+      patchOwnerInCache(burnId, null);
       setMessage(
         `Done! #${keepId} → ${stageLabel} (${updated.data?.variant || "?"}). Refresh OpenSea in a few minutes.`,
         "success"
       );
+      void loadTokens({ forceRefresh: true });
     } else {
       setMessage(`Evolved on-chain! Metadata sync failed: ${formatSyncError(updated.error)}`, "error");
       showMetadataDownload(keepId, charName, newStage);

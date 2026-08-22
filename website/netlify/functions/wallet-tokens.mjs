@@ -118,16 +118,20 @@ async function verifyOwners(address, tokenIds) {
   return owned;
 }
 
-async function findOwnedTokenIds(address) {
+async function findOwnedTokenIds(address, { recentOnly = false } = {}) {
   const balance = await readBalance(address);
   if (balance <= 0) return { tokenIds: [], source: "balance" };
 
   const latest = parseInt(await rpcCall("eth_blockNumber"), 16);
+  const fromBlock = recentOnly
+    ? Math.max(FROM_BLOCK, latest - 600_000)
+    : FROM_BLOCK;
+
   const pad = padTopicAddress(address);
 
   const [toLogs, fromLogs] = await Promise.all([
-    getLogsChunked(FROM_BLOCK, latest, [TRANSFER_TOPIC, null, pad]),
-    getLogsChunked(FROM_BLOCK, latest, [TRANSFER_TOPIC, pad, null]),
+    getLogsChunked(fromBlock, latest, [TRANSFER_TOPIC, null, pad]),
+    getLogsChunked(fromBlock, latest, [TRANSFER_TOPIC, pad, null]),
   ]);
 
   const candidates = new Set();
@@ -137,11 +141,16 @@ async function findOwnedTokenIds(address) {
   }
 
   if (!candidates.size) {
-    return { tokenIds: [], source: "logs-empty" };
+    return { tokenIds: [], source: recentOnly ? "recent-empty" : "logs-empty", balance };
   }
 
   const tokenIds = await verifyOwners(address, [...candidates]);
-  return { tokenIds, source: "logs", balance, candidates: candidates.size };
+  return {
+    tokenIds,
+    source: recentOnly ? "recent" : "logs",
+    balance,
+    candidates: candidates.size,
+  };
 }
 
 export default async (req) => {
@@ -159,13 +168,15 @@ export default async (req) => {
   }
 
   try {
-    const result = await findOwnedTokenIds(address);
+    const recentOnly = url.searchParams.get("recent") === "1";
+    const result = await findOwnedTokenIds(address, { recentOnly });
     return json(200, {
       ok: true,
       address,
       tokenIds: result.tokenIds,
       count: result.tokenIds.length,
       source: result.source,
+      recent: recentOnly,
     });
   } catch (err) {
     console.error("[wallet-tokens]", err);
