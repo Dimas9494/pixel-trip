@@ -9,6 +9,7 @@ const LOG_CHUNK = 80_000n;
 const RECENT_BLOCKS = 800_000n;
 const LOG_PARALLEL = 6;
 const LOG_SCAN_TIMEOUT_MS = 45_000;
+const WALLET_API_TIMEOUT_MS = 8_000;
 const TRANSFER_EVENT = parseAbiItem(
   "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
 );
@@ -183,11 +184,11 @@ function mergeUniqueIds(...lists) {
   return [...new Set(lists.flat())].sort((a, b) => a - b);
 }
 
-async function discoverViaWalletApi(owner, { recentOnly = true } = {}) {
+async function discoverViaWalletApi(owner, { recentOnly = true, timeoutMs = WALLET_API_TIMEOUT_MS } = {}) {
   try {
     const url =
       `/api/wallet-tokens?address=${encodeURIComponent(owner)}&recent=${recentOnly ? "1" : "0"}`;
-    const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(20_000) });
+    const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(timeoutMs) });
     if (!res.ok) return [];
     const data = await res.json();
     const ids = data?.tokenIds;
@@ -198,6 +199,24 @@ async function discoverViaWalletApi(owner, { recentOnly = true } = {}) {
   }
 }
 
+async function supplementViaWalletApi(
+  client,
+  owner,
+  collectionAddress,
+  collectionAbi,
+  verified,
+  target,
+  { recentOnly = true, timeoutMs = WALLET_API_TIMEOUT_MS } = {},
+) {
+  const apiIds = await discoverViaWalletApi(owner, { recentOnly, timeoutMs });
+  if (!apiIds.length) return verified;
+
+  const merged = mergeUniqueIds(verified, apiIds);
+  const result = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
+  console.log(`[scan] wallet API + verify: ${result.length}/${target ?? "?"} token(s)`);
+  return result;
+}
+
 async function supplementOwnedIds(
   client,
   owner,
@@ -205,27 +224,29 @@ async function supplementOwnedIds(
   collectionAbi,
   verified,
   target,
-  forceRefresh,
+  { allowBrowserLogs = false, recentOnly = true } = {},
 ) {
-  let merged = [...verified];
+  let merged = await supplementViaWalletApi(
+    client,
+    owner,
+    collectionAddress,
+    collectionAbi,
+    verified,
+    target,
+    { recentOnly, timeoutMs: allowBrowserLogs ? 15_000 : WALLET_API_TIMEOUT_MS },
+  );
 
-  const apiIds = await discoverViaWalletApi(owner, { recentOnly: !forceRefresh });
-  if (apiIds.length) {
-    merged = mergeUniqueIds(merged, apiIds);
-    merged = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
-    if (target == null || merged.length >= target) {
-      console.log(`[scan] wallet API + verify: ${merged.length} token(s)`);
-      return merged;
-    }
+  if (!allowBrowserLogs || target == null || merged.length >= target) {
+    return merged;
   }
 
   try {
     const fromLogs = await scanViaLogs(client, owner, collectionAddress, collectionAbi, {
-      recentOnly: !forceRefresh,
+      recentOnly,
     });
     merged = mergeUniqueIds(merged, fromLogs);
     merged = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
-    if (target == null || merged.length >= target || !forceRefresh) {
+    if (merged.length >= target || recentOnly) {
       return merged;
     }
   } catch (err) {
@@ -233,28 +254,27 @@ async function supplementOwnedIds(
     if (merged.length) return merged;
   }
 
-  if (forceRefresh && target != null && merged.length < target) {
-    try {
-      const fullLogs = await scanViaLogs(client, owner, collectionAddress, collectionAbi, {
-        recentOnly: false,
-      });
-      merged = mergeUniqueIds(merged, fullLogs);
-      merged = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
-    } catch (err) {
-      console.warn("[scan] full log supplement failed:", err.message);
-    }
+  if (!recentOnly) return merged;
+
+  try {
+    const fullLogs = await scanViaLogs(client, owner, collectionAddress, collectionAbi, {
+      recentOnly: false,
+    });
+    merged = mergeUniqueIds(merged, fullLogs);
+    merged = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
+  } catch (err) {
+    console.warn("[scan] full log supplement failed:", err.message);
   }
 
   return merged;
 }
 
 /**
- * Wallet scan — static owner map first, then transfer logs when balance mismatch
- * (e.g. recent OpenSea purchase not yet in token-owners.json).
+ * Wallet scan — static owner map (fast), wallet API supplement, browser logs only on forceRefresh.
  */
 export async function scanOwnedTokenIds(
   client,
-  { owner, maxId, collectionAddress, collectionAbi, forceRefresh = false },
+  { owner, maxId, collectionAddress, collectionAbi, forceRefresh = false, onSupplement = null },
 ) {
   const balance = await readWalletBalance(client, owner, collectionAddress, collectionAbi);
   if (balance === 0n) return { tokenIds: [], balance: 0 };
@@ -277,17 +297,53 @@ export async function scanOwnedTokenIds(
     collectionAbi,
   );
 
-  const complete =
-    target != null ? verified.length >= target : verified.length > 0;
+  const complete = target != null ? verified.length >= target : verified.length > 0;
 
   if (complete) {
     console.log(`[scan] map verified ${verified.length} token(s)`);
     return { tokenIds: filterMax(verified, maxId), balance: target };
   }
 
-  console.log(
-    `[scan] map ${verified.length}/${target ?? "?"} — supplementing (recent purchases?)…`,
-  );
+  const partial = filterMax(verified, maxId);
+  const supplementOpts = {
+    allowBrowserLogs: forceRefresh,
+    recentOnly: !forceRefresh,
+  };
+
+  if (!forceRefresh) {
+    if (partial.length > 0) {
+      console.log(`[scan] fast ${partial.length}/${target ?? "?"} — background wallet API`);
+      void supplementOwnedIds(
+        client,
+        owner,
+        collectionAddress,
+        collectionAbi,
+        verified,
+        target,
+        supplementOpts,
+      ).then((extra) => {
+        const full = filterMax(extra, maxId);
+        if (full.length > partial.length && onSupplement) {
+          onSupplement(full);
+        }
+      });
+      return { tokenIds: partial, balance: target, partial: true };
+    }
+
+    console.log(`[scan] map empty — wallet API only (${WALLET_API_TIMEOUT_MS}ms max)`);
+    verified = await supplementOwnedIds(
+      client,
+      owner,
+      collectionAddress,
+      collectionAbi,
+      verified,
+      target,
+      supplementOpts,
+    );
+    return { tokenIds: filterMax(verified, maxId), balance: target };
+  }
+
+  console.log(`[scan] full refresh ${partial.length}/${target ?? "?"}…`);
   verified = await supplementOwnedIds(
     client,
     owner,
@@ -295,7 +351,7 @@ export async function scanOwnedTokenIds(
     collectionAbi,
     verified,
     target,
-    forceRefresh,
+    supplementOpts,
   );
   return { tokenIds: filterMax(verified, maxId), balance: target };
 }

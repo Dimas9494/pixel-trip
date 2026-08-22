@@ -30,6 +30,7 @@ import { loadBurnProgram, getStage2Variants, getBurnableChars } from "./burn-pro
 import { enrichTripToken } from "../shared/token-images.js";
 import { multicallChunked, scanOwnedTokenIds } from "../shared/multicall-chunked.js";
 import { patchOwnerInCache } from "../shared/token-owners.js";
+import { queueOpenseaRefresh } from "../shared/opensea-refresh.js";
 import { fetchWithTimeout } from "../shared/fetch-timeout.js";
 import {
   matchesTokenGridFilters,
@@ -544,6 +545,19 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
   return null;
 }
 
+function openseaDoneMessage(tokenId) {
+  return `OpenSea refresh queued for #${tokenId} — usually updates in 2–5 min.`;
+}
+
+async function afterMetadataSynced(tokenId, data) {
+  let osQueued = !!data?.openseaRefresh?.queued;
+  if (!osQueued) {
+    const os = await queueOpenseaRefresh(tokenId);
+    osQueued = os.ok;
+  }
+  return osQueued;
+}
+
 async function triggerServerReconcile(tokenId = null, burnTokenId = null) {
   try {
     const params = new URLSearchParams({ reconcile: "1" });
@@ -580,7 +594,7 @@ function scheduleMetadataRetry(tokenId, burnTokenId = null, { attempts = 4 } = {
         refreshTokenImages();
         renderGrid();
         setMessage(
-          `Metadata synced for #${tokenId} (${r.data?.variant || "?"}). Refresh OpenSea in a few minutes.`,
+          `Metadata synced for #${tokenId} (${r.data?.variant || "?"}). ${openseaDoneMessage(tokenId)}`,
           "success",
         );
         return;
@@ -616,7 +630,8 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 }
       if (data.ok) {
         applySyncResponse(tokenId, data);
         console.log(`[metadata] Synced metadata/${tokenId} → Stage ${data.stage} (${data.variant})`);
-        return { ok: true, data };
+        const osQueued = await afterMetadataSynced(tokenId, data);
+        return { ok: true, data, openseaQueued: osQueued };
       }
       lastError = data.error || `HTTP ${res.status}`;
     } catch (err) {
@@ -680,7 +695,7 @@ async function syncAllEvolvedTokens() {
   }
 
   if (!failed.length) {
-    setMessage(`Metadata synced for ${evolved.length} token(s). Refresh OpenSea in a few minutes.`, "success");
+    setMessage(`Metadata synced for ${evolved.length} token(s). OpenSea refresh queued.`, "success");
   } else if (syncedIds.length) {
     setMessage(
       `Synced ${syncedIds.length}/${evolved.length}. Failed: ${failed.slice(0, 5).join("; ")}` +
@@ -830,7 +845,7 @@ async function getScanMaxId() {
 
 let lastWalletBalance = null;
 
-async function getOwnedIds({ forceRefresh = false } = {}) {
+async function getOwnedIds({ forceRefresh = false, onSupplement = null } = {}) {
   setMessage(forceRefresh ? "Refreshing wallet from chain…" : "Scanning wallet…", "info");
 
   const MAX_ID = await getScanMaxId();
@@ -845,9 +860,13 @@ async function getOwnedIds({ forceRefresh = false } = {}) {
       collectionAddress: STAGE1_ADDRESS,
       collectionAbi: STAGE1_ABI,
       forceRefresh,
+      onSupplement,
     });
     owned = scan.tokenIds;
     lastWalletBalance = scan.balance;
+    if (scan.partial && owned.length) {
+      setMessage(`Found ${owned.length} token(s). Checking for recent purchases…`, "info");
+    }
   } catch (err) {
     console.warn("[scan] failed:", err.message);
   }
@@ -856,14 +875,24 @@ async function getOwnedIds({ forceRefresh = false } = {}) {
   return owned;
 }
 
-async function loadTokens({ forceRefresh = false } = {}) {
+async function loadTokens({ forceRefresh = false, ownedIdsOverride = null } = {}) {
   const gen = ++loadGeneration;
   setMessage("Loading your trippers…", "info");
 
-  const ownedIds = await getOwnedIds({ forceRefresh });
-  if (gen !== loadGeneration) {
-    console.log("[token] stale wallet load ignored");
-    return;
+  let ownedIds = ownedIdsOverride;
+  if (!ownedIds) {
+    ownedIds = await getOwnedIds({
+      forceRefresh,
+      onSupplement: (ids) => {
+        if (gen !== loadGeneration) return;
+        console.log(`[scan] background supplement → ${ids.length} token(s)`);
+        void loadTokens({ ownedIdsOverride: ids });
+      },
+    });
+    if (gen !== loadGeneration) {
+      console.log("[token] stale wallet load ignored");
+      return;
+    }
   }
   lastOwnedCount = ownedIds.length;
 
@@ -982,7 +1011,7 @@ async function loadTokens({ forceRefresh = false } = {}) {
         ? ` Found ${lastOwnedCount}/${lastWalletBalance} — click Connect Wallet to rescan.`
         : "");
     if (autoSync.synced) {
-      msg = `Auto-synced metadata for ${autoSync.synced} evolved token(s). Refresh OpenSea in a few minutes. · ${msg}`;
+      msg = `Auto-synced metadata for ${autoSync.synced} evolved token(s). OpenSea refresh queued. · ${msg}`;
     } else if (autoSync.failed.length) {
       const serverDown = autoSync.failed.every((line) =>
         /failed to fetch|HTTP 5\d\d|Internal Server Error/i.test(line),
@@ -1442,7 +1471,7 @@ async function evolveTokens() {
       applyEvolveResult(keepId, burnId, newStage);
       patchOwnerInCache(burnId, null);
       setMessage(
-        `Done! #${keepId} → ${stageLabel} (${updated.data?.variant || "?"}). Refresh OpenSea in a few minutes.`,
+        `Done! #${keepId} → ${stageLabel} (${updated.data?.variant || "?"}). ${openseaDoneMessage(keepId)}`,
         "success"
       );
       void loadTokens({ forceRefresh: true });
