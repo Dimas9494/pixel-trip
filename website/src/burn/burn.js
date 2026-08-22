@@ -775,6 +775,7 @@ let lastOwnedCount = 0;
 let keepToken    = null; // first selected — will be upgraded
 let burnToken    = null; // second selected — will be destroyed
 let isApproved   = false;
+let loadGeneration = 0;
 
 // ── UI helpers ────────────────────────────────────────────────────────────────
 
@@ -851,9 +852,14 @@ async function getOwnedIds({ forceRefresh = false } = {}) {
 }
 
 async function loadTokens({ forceRefresh = false } = {}) {
+  const gen = ++loadGeneration;
   setMessage("Loading your trippers…", "info");
 
   const ownedIds = await getOwnedIds({ forceRefresh });
+  if (gen !== loadGeneration) {
+    console.log("[token] stale wallet load ignored");
+    return;
+  }
   lastOwnedCount = ownedIds.length;
 
   // One multicall for all evolve contract reads
@@ -923,7 +929,16 @@ async function loadTokens({ forceRefresh = false } = {}) {
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
   const autoSync = await autoSyncStaleMetadata(stubs);
+  if (gen !== loadGeneration) {
+    console.log("[token] stale wallet load ignored (after sync)");
+    return;
+  }
   await triggerServerReconcile();
+
+  if (gen !== loadGeneration) {
+    console.log("[token] stale wallet load ignored (after reconcile)");
+    return;
+  }
 
   tokens = stubs.map(finalizeToken);
 
@@ -1191,7 +1206,11 @@ function getProvider() {
 let connectInFlight = null;
 
 async function connectWallet({ silent = false, force = false } = {}) {
-  if (connectInFlight && !force) return connectInFlight;
+  if (connectInFlight) {
+    if (!force) return connectInFlight;
+    loadGeneration++;
+    await connectInFlight.catch(() => {});
+  }
 
   connectInFlight = connectWalletInner({ silent, force }).finally(() => {
     connectInFlight = null;
@@ -1240,7 +1259,7 @@ async function connectWalletInner({ silent = false, force = false } = {}) {
       loadBurnProgram(),
       loadAssignments(),
     ]);
-    await loadTokens({ forceRefresh: force || !silent });
+    await loadTokens({ forceRefresh: force });
   } catch (err) {
     console.error(err);
     setMessage(err.shortMessage || err.message || "Connection failed.", "error");

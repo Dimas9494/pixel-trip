@@ -1,5 +1,4 @@
 import { parseAbiItem } from "viem";
-import { fetchWithTimeout } from "./fetch-timeout.js";
 import { lookupOwnedFromMap, loadTokenOwners } from "./token-owners.js";
 import { COLLECTION_DEPLOY_BLOCK } from "../burn/config.js";
 
@@ -9,6 +8,7 @@ const MULTICALL_TIMEOUT_MS = 30_000;
 const LOG_CHUNK = 80_000n;
 const RECENT_BLOCKS = 800_000n;
 const LOG_PARALLEL = 6;
+const LOG_SCAN_TIMEOUT_MS = 45_000;
 const TRANSFER_EVENT = parseAbiItem(
   "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
 );
@@ -132,7 +132,6 @@ async function getLogsForRange(client, filter, fromBlock, toBlock) {
   return logs;
 }
 
-/** Live wallet discovery via Transfer logs (accurate after buys/burns). */
 async function discoverViaTransferLogs(client, owner, collectionAddress, { recentOnly = false } = {}) {
   const latest = await client.getBlockNumber();
   const fromBlock = recentOnly
@@ -157,10 +156,14 @@ async function discoverViaTransferLogs(client, owner, collectionAddress, { recen
   return collectTokenIds([...received, ...sent]);
 }
 
-async function scanViaLogs(client, owner, collectionAddress, collectionAbi, target, { recentOnly = false } = {}) {
+async function scanViaLogs(client, owner, collectionAddress, collectionAbi, { recentOnly = false } = {}) {
   const scope = recentOnly ? "recent" : "full";
   console.log(`[scan] transfer logs (${scope})…`);
-  const candidates = await discoverViaTransferLogs(client, owner, collectionAddress, { recentOnly });
+  const candidates = await withTimeout(
+    discoverViaTransferLogs(client, owner, collectionAddress, { recentOnly }),
+    LOG_SCAN_TIMEOUT_MS,
+    `transfer logs ${scope}`,
+  );
   const verified = await verifyOwnersOnChain(
     client,
     owner,
@@ -168,7 +171,7 @@ async function scanViaLogs(client, owner, collectionAddress, collectionAbi, targ
     collectionAddress,
     collectionAbi,
   );
-  console.log(`[scan] logs ${scope}: ${verified.length} verified${target ? ` / balance ${target}` : ""}`);
+  console.log(`[scan] logs ${scope}: ${verified.length} verified`);
   return verified;
 }
 
@@ -177,7 +180,7 @@ function filterMax(verified, maxId) {
 }
 
 /**
- * Accurate wallet tokens — on-chain balance + Transfer logs + ownerOf verify.
+ * Wallet scan — map + on-chain verify (fast). Full log scan only on forceRefresh.
  */
 export async function scanOwnedTokenIds(
   client,
@@ -188,21 +191,9 @@ export async function scanOwnedTokenIds(
 
   const target = balance != null ? Number(balance) : null;
 
-  if (forceRefresh) {
-    let verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, target, {
-      recentOnly: true,
-    });
-    if (target == null || verified.length >= target) {
-      return filterMax(verified, maxId);
-    }
-    verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, target, {
-      recentOnly: false,
-    });
-    return filterMax(verified, maxId);
-  }
-
   let candidates = [];
   try {
+    if (forceRefresh) await loadTokenOwners(true);
     candidates = await lookupOwnedFromMap(owner);
   } catch (err) {
     console.warn("[scan] owner map:", err.message);
@@ -216,24 +207,33 @@ export async function scanOwnedTokenIds(
     collectionAbi,
   );
 
-  if (target != null && verified.length === target) {
-    console.log(`[scan] map verified ${verified.length} token(s)`);
-    return filterMax(verified, maxId);
+  if (!forceRefresh) {
+    if (verified.length > 0 && (target == null || verified.length === target)) {
+      console.log(`[scan] map verified ${verified.length} token(s)`);
+      return filterMax(verified, maxId);
+    }
+    if (verified.length > 0) {
+      console.log(`[scan] map verified ${verified.length} / balance ${target ?? "?"} (skip slow scan)`);
+      return filterMax(verified, maxId);
+    }
+    return [];
   }
 
-  console.warn(
-    `[scan] map ${verified.length}${target != null ? ` vs balance ${target}` : ""} — live transfer scan…`,
-  );
-
-  verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, target, {
-    recentOnly: true,
-  });
-  if (target == null || verified.length >= target) {
-    return filterMax(verified, maxId);
+  try {
+    verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, { recentOnly: true });
+    if (target == null || verified.length >= target) {
+      return filterMax(verified, maxId);
+    }
+  } catch (err) {
+    console.warn("[scan] recent logs failed:", err.message);
+    if (verified.length > 0) return filterMax(verified, maxId);
   }
 
-  verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, target, {
-    recentOnly: false,
-  });
-  return filterMax(verified, maxId);
+  try {
+    verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, { recentOnly: false });
+    return filterMax(verified, maxId);
+  } catch (err) {
+    console.warn("[scan] full logs failed:", err.message);
+    return filterMax(verified, maxId);
+  }
 }
