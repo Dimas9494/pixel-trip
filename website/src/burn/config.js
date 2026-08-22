@@ -48,6 +48,9 @@ export const EVOLVE_ADDRESS = import.meta.env.VITE_EVOLVE_CONTRACT || "0x1B174b3
 
 export const SCAN_MAX_ID = 4444;
 
+/** First mainnet block with PIXEL TRIP transfers (contract deploy). */
+export const COLLECTION_DEPLOY_BLOCK = 25_613_313n;
+
 /** Enable Connect Wallet on Evolution Lab (main collection is live). */
 export const WALLET_DAPP_ENABLED = true;
 

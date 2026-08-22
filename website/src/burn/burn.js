@@ -828,7 +828,7 @@ async function getScanMaxId() {
 }
 
 async function getOwnedIds({ forceRefresh = false } = {}) {
-  setMessage("Scanning wallet…", "info");
+  setMessage(forceRefresh ? "Refreshing wallet from chain…" : "Scanning wallet…", "info");
 
   const MAX_ID = await getScanMaxId();
   const client = readClient || publicClient;
@@ -1190,16 +1190,16 @@ function getProvider() {
 
 let connectInFlight = null;
 
-async function connectWallet({ silent = false } = {}) {
-  if (connectInFlight) return connectInFlight;
+async function connectWallet({ silent = false, force = false } = {}) {
+  if (connectInFlight && !force) return connectInFlight;
 
-  connectInFlight = connectWalletInner({ silent }).finally(() => {
+  connectInFlight = connectWalletInner({ silent, force }).finally(() => {
     connectInFlight = null;
   });
   return connectInFlight;
 }
 
-async function connectWalletInner({ silent = false } = {}) {
+async function connectWalletInner({ silent = false, force = false } = {}) {
   const provider = getProvider();
   if (!provider) {
     if (!silent) setMessage("No Web3 wallet found. Install OKX Wallet, MetaMask or any EVM wallet.", "error");
@@ -1240,7 +1240,7 @@ async function connectWalletInner({ silent = false } = {}) {
       loadBurnProgram(),
       loadAssignments(),
     ]);
-    await loadTokens({ forceRefresh: !silent });
+    await loadTokens({ forceRefresh: force || !silent });
   } catch (err) {
     console.error(err);
     setMessage(err.shortMessage || err.message || "Connection failed.", "error");
@@ -1451,7 +1451,7 @@ function initBurnDapp() {
     if (els.connect) els.connect.disabled = true;
     return;
   }
-  els.connect.addEventListener("click", connectWallet);
+  els.connect.addEventListener("click", () => connectWallet({ force: true }));
   els.evolve.addEventListener("click", evolveTokens);
   els.sync?.addEventListener("click", syncAllEvolvedTokens);
   gridFilters = mountTokenGridFilters(els.filters, { onChange: renderGrid });
