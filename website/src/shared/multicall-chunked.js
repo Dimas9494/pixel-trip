@@ -2,9 +2,9 @@ import { lookupOwnedFromMap, loadTokenOwners } from "./token-owners.js";
 
 export const MULTICALL_CHUNK = 256;
 export const MULTICALL_PARALLEL = 4;
-const MULTICALL_TIMEOUT_MS = 30_000;
-const WALLET_API_TIMEOUT_MS = 8_000;
-const WALLET_API_REFRESH_TIMEOUT_MS = 25_000;
+const MULTICALL_TIMEOUT_MS = 12_000;
+const SCAN_HARD_TIMEOUT_MS = 12_000;
+const WALLET_API_TIMEOUT_MS = 6_000;
 
 function withTimeout(promise, ms, label) {
   return Promise.race([
@@ -27,10 +27,10 @@ export async function multicallChunked(
     slices.push(contracts.slice(i, i + chunk));
   }
 
-  async function run(parallelism) {
-    const out = [];
-    for (let b = 0; b < slices.length; b += parallelism) {
-      const batch = slices.slice(b, b + parallelism);
+  const out = [];
+  for (let b = 0; b < slices.length; b += parallel) {
+    const batch = slices.slice(b, b + parallel);
+    try {
       const results = await withTimeout(
         Promise.all(
           batch.map((contractsChunk) =>
@@ -41,16 +41,12 @@ export async function multicallChunked(
         "multicall batch",
       );
       for (const res of results) out.push(...res);
+    } catch (err) {
+      console.warn("[multicall] batch failed:", err.message);
+      break;
     }
-    return out;
   }
-
-  try {
-    return await run(parallel);
-  } catch (err) {
-    console.warn("[multicall] retry sequential:", err.message);
-    return run(1);
-  }
+  return out;
 }
 
 async function readWalletBalance(client, owner, collectionAddress, collectionAbi) {
@@ -62,7 +58,7 @@ async function readWalletBalance(client, owner, collectionAddress, collectionAbi
         functionName: "balanceOf",
         args: [owner],
       }),
-      10_000,
+      5_000,
       "balanceOf",
     );
   } catch (err) {
@@ -134,13 +130,9 @@ async function supplementViaWalletApi(
   return verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
 }
 
-/**
- * Fast wallet scan — owner map + Netlify wallet-tokens API only.
- * Never scans transfer logs in the browser (that path took 2+ minutes).
- */
-export async function scanOwnedTokenIds(
+async function scanOwnedTokenIdsInner(
   client,
-  { owner, maxId, collectionAddress, collectionAbi, forceRefresh = false, onSupplement = null },
+  { owner, maxId, collectionAddress, collectionAbi, refreshMap = false, onSupplement = null },
 ) {
   const balance = await readWalletBalance(client, owner, collectionAddress, collectionAbi);
   if (balance === 0n) return { tokenIds: [], balance: 0 };
@@ -149,7 +141,7 @@ export async function scanOwnedTokenIds(
 
   let candidates = [];
   try {
-    if (forceRefresh) await loadTokenOwners(true);
+    if (refreshMap) await loadTokenOwners(true);
     candidates = await lookupOwnedFromMap(owner);
   } catch (err) {
     console.warn("[scan] owner map:", err.message);
@@ -173,23 +165,8 @@ export async function scanOwnedTokenIds(
 
   const partial = filterMax(verified, maxId);
 
-  if (forceRefresh) {
-    console.log(`[scan] refresh ${partial.length}/${target ?? "?"} via wallet API…`);
-    verified = await supplementViaWalletApi(
-      client, owner, collectionAddress, collectionAbi, verified,
-      { recentOnly: true, timeoutMs: WALLET_API_REFRESH_TIMEOUT_MS },
-    );
-    if (target != null && verified.length < target) {
-      verified = await supplementViaWalletApi(
-        client, owner, collectionAddress, collectionAbi, verified,
-        { recentOnly: false, timeoutMs: WALLET_API_REFRESH_TIMEOUT_MS },
-      );
-    }
-    return { tokenIds: filterMax(verified, maxId), balance: target };
-  }
-
   if (partial.length > 0) {
-    console.log(`[scan] fast ${partial.length}/${target ?? "?"} — background wallet API`);
+    console.log(`[scan] map ${partial.length}/${target ?? "?"} — showing now, API in background`);
     void supplementViaWalletApi(
       client, owner, collectionAddress, collectionAbi, verified,
       { recentOnly: true, timeoutMs: WALLET_API_TIMEOUT_MS },
@@ -200,10 +177,42 @@ export async function scanOwnedTokenIds(
     return { tokenIds: partial, balance: target, partial: true };
   }
 
-  console.log(`[scan] map empty — wallet API (${WALLET_API_TIMEOUT_MS}ms)`);
+  console.log(`[scan] map miss — wallet API (${WALLET_API_TIMEOUT_MS}ms)`);
   verified = await supplementViaWalletApi(
     client, owner, collectionAddress, collectionAbi, verified,
     { recentOnly: true, timeoutMs: WALLET_API_TIMEOUT_MS },
   );
   return { tokenIds: filterMax(verified, maxId), balance: target };
+}
+
+/**
+ * Fast wallet scan — owner index + optional wallet API. Hard 12s cap.
+ */
+export async function scanOwnedTokenIds(
+  client,
+  { owner, maxId, collectionAddress, collectionAbi, forceRefresh = false, onSupplement = null },
+) {
+  try {
+    return await withTimeout(
+      scanOwnedTokenIdsInner(client, {
+        owner,
+        maxId,
+        collectionAddress,
+        collectionAbi,
+        refreshMap: forceRefresh,
+        onSupplement,
+      }),
+      SCAN_HARD_TIMEOUT_MS,
+      "wallet scan",
+    );
+  } catch (err) {
+    console.warn("[scan] hard timeout:", err.message);
+    let fallback = [];
+    try {
+      fallback = filterMax(await lookupOwnedFromMap(owner), maxId);
+    } catch {
+      fallback = [];
+    }
+    return { tokenIds: fallback, balance: null, timedOut: true };
+  }
 }
