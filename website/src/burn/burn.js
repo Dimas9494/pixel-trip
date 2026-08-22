@@ -828,21 +828,26 @@ async function getScanMaxId() {
   }
 }
 
+let lastWalletBalance = null;
+
 async function getOwnedIds({ forceRefresh = false } = {}) {
   setMessage(forceRefresh ? "Refreshing wallet from chain…" : "Scanning wallet…", "info");
 
   const MAX_ID = await getScanMaxId();
   const client = readClient || publicClient;
   let owned = [];
+  lastWalletBalance = null;
 
   try {
-    owned = await scanOwnedTokenIds(client, {
+    const scan = await scanOwnedTokenIds(client, {
       owner: account,
       maxId: MAX_ID,
       collectionAddress: STAGE1_ADDRESS,
       collectionAbi: STAGE1_ABI,
       forceRefresh,
     });
+    owned = scan.tokenIds;
+    lastWalletBalance = scan.balance;
   } catch (err) {
     console.warn("[scan] failed:", err.message);
   }
@@ -953,7 +958,11 @@ async function loadTokens({ forceRefresh = false } = {}) {
 
   if (!tokens.length) {
     if (!ownedIds.length) {
-      setMessage("No tokens found in this wallet on Ethereum Mainnet.", "error");
+      setMessage(
+        "No tokens found in this wallet on Ethereum Mainnet. " +
+        "If you just bought on OpenSea, click Connect Wallet again to refresh.",
+        "error",
+      );
     } else {
       setMessage(
         `${ownedIds.length} token(s) in wallet, but none are burnable trippers ` +
@@ -968,7 +977,10 @@ async function loadTokens({ forceRefresh = false } = {}) {
     let msg =
       `${lastOwnedCount} in wallet · ${tokens.length} shown` +
       (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
-      `. Select 2 of the same burnable character — first selected will be upgraded.`;
+      `. Select 2 of the same burnable character — first selected will be upgraded.` +
+      (lastWalletBalance != null && lastOwnedCount < lastWalletBalance
+        ? ` Found ${lastOwnedCount}/${lastWalletBalance} — click Connect Wallet to rescan.`
+        : "");
     if (autoSync.synced) {
       msg = `Auto-synced metadata for ${autoSync.synced} evolved token(s). Refresh OpenSea in a few minutes. · ${msg}`;
     } else if (autoSync.failed.length) {

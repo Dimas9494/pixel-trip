@@ -179,15 +179,85 @@ function filterMax(verified, maxId) {
   return verified.filter((id) => id >= 1 && id <= maxId);
 }
 
+function mergeUniqueIds(...lists) {
+  return [...new Set(lists.flat())].sort((a, b) => a - b);
+}
+
+async function discoverViaWalletApi(owner, { recentOnly = true } = {}) {
+  try {
+    const url =
+      `/api/wallet-tokens?address=${encodeURIComponent(owner)}&recent=${recentOnly ? "1" : "0"}`;
+    const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(20_000) });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const ids = data?.tokenIds;
+    return Array.isArray(ids) ? ids.map(Number).filter((n) => Number.isInteger(n) && n > 0) : [];
+  } catch (err) {
+    console.warn("[scan] wallet API:", err.message);
+    return [];
+  }
+}
+
+async function supplementOwnedIds(
+  client,
+  owner,
+  collectionAddress,
+  collectionAbi,
+  verified,
+  target,
+  forceRefresh,
+) {
+  let merged = [...verified];
+
+  const apiIds = await discoverViaWalletApi(owner, { recentOnly: !forceRefresh });
+  if (apiIds.length) {
+    merged = mergeUniqueIds(merged, apiIds);
+    merged = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
+    if (target == null || merged.length >= target) {
+      console.log(`[scan] wallet API + verify: ${merged.length} token(s)`);
+      return merged;
+    }
+  }
+
+  try {
+    const fromLogs = await scanViaLogs(client, owner, collectionAddress, collectionAbi, {
+      recentOnly: !forceRefresh,
+    });
+    merged = mergeUniqueIds(merged, fromLogs);
+    merged = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
+    if (target == null || merged.length >= target || !forceRefresh) {
+      return merged;
+    }
+  } catch (err) {
+    console.warn("[scan] log supplement failed:", err.message);
+    if (merged.length) return merged;
+  }
+
+  if (forceRefresh && target != null && merged.length < target) {
+    try {
+      const fullLogs = await scanViaLogs(client, owner, collectionAddress, collectionAbi, {
+        recentOnly: false,
+      });
+      merged = mergeUniqueIds(merged, fullLogs);
+      merged = await verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
+    } catch (err) {
+      console.warn("[scan] full log supplement failed:", err.message);
+    }
+  }
+
+  return merged;
+}
+
 /**
- * Wallet scan — map + on-chain verify (fast). Full log scan only on forceRefresh.
+ * Wallet scan — static owner map first, then transfer logs when balance mismatch
+ * (e.g. recent OpenSea purchase not yet in token-owners.json).
  */
 export async function scanOwnedTokenIds(
   client,
   { owner, maxId, collectionAddress, collectionAbi, forceRefresh = false },
 ) {
   const balance = await readWalletBalance(client, owner, collectionAddress, collectionAbi);
-  if (balance === 0n) return [];
+  if (balance === 0n) return { tokenIds: [], balance: 0 };
 
   const target = balance != null ? Number(balance) : null;
 
@@ -207,33 +277,25 @@ export async function scanOwnedTokenIds(
     collectionAbi,
   );
 
-  if (!forceRefresh) {
-    if (verified.length > 0 && (target == null || verified.length === target)) {
-      console.log(`[scan] map verified ${verified.length} token(s)`);
-      return filterMax(verified, maxId);
-    }
-    if (verified.length > 0) {
-      console.log(`[scan] map verified ${verified.length} / balance ${target ?? "?"} (skip slow scan)`);
-      return filterMax(verified, maxId);
-    }
-    return [];
+  const complete =
+    target != null ? verified.length >= target : verified.length > 0;
+
+  if (complete) {
+    console.log(`[scan] map verified ${verified.length} token(s)`);
+    return { tokenIds: filterMax(verified, maxId), balance: target };
   }
 
-  try {
-    verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, { recentOnly: true });
-    if (target == null || verified.length >= target) {
-      return filterMax(verified, maxId);
-    }
-  } catch (err) {
-    console.warn("[scan] recent logs failed:", err.message);
-    if (verified.length > 0) return filterMax(verified, maxId);
-  }
-
-  try {
-    verified = await scanViaLogs(client, owner, collectionAddress, collectionAbi, { recentOnly: false });
-    return filterMax(verified, maxId);
-  } catch (err) {
-    console.warn("[scan] full logs failed:", err.message);
-    return filterMax(verified, maxId);
-  }
+  console.log(
+    `[scan] map ${verified.length}/${target ?? "?"} — supplementing (recent purchases?)…`,
+  );
+  verified = await supplementOwnedIds(
+    client,
+    owner,
+    collectionAddress,
+    collectionAbi,
+    verified,
+    target,
+    forceRefresh,
+  );
+  return { tokenIds: filterMax(verified, maxId), balance: target };
 }

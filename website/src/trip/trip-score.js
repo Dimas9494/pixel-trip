@@ -234,12 +234,13 @@ async function fetchWalletTokens(address) {
   const maxId = SCAN_MAX_ID;
 
   setMessage(`Scanning 1…${maxId} for your trippers…`);
-  const owned = await scanOwnedTokenIds(client, {
+  const scan = await scanOwnedTokenIds(client, {
     owner: address,
     maxId,
     collectionAddress: STAGE1_ADDRESS,
     collectionAbi: STAGE1_ABI,
   });
+  const owned = scan.tokenIds;
 
   if (!owned.length) return [];
 
