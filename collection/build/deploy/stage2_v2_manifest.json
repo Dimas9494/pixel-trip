@@ -1,20 +1,18 @@
 {
-  "generated": "2026-08-22T18:09:21.072551+00:00",
-  "batch": "batch25",
+  "generated": "2026-08-21T18:32:51.529803+00:00",
+  "batch": "batch24",
   "characters": [
-    "Cyan_Cloude",
-    "Laughing_Dark_Boy",
-    "Spiked_Bulldog",
-    "Tiki_Mask",
-    "Viking_Banana"
+    "Chill_Goat",
+    "Kabuki_Face",
+    "Mad_Aviator",
+    "Purple_Balaclava"
   ],
   "counts": {
-    "Cyan_Cloude": 4,
-    "Laughing_Dark_Boy": 8,
-    "Spiked_Bulldog": 12,
-    "Tiki_Mask": 11,
-    "Viking_Banana": 5
+    "Chill_Goat": 15,
+    "Kabuki_Face": 15,
+    "Mad_Aviator": 8,
+    "Purple_Balaclava": 7
   },
-  "total_variants": 40,
-  "catalog_characters": 175
+  "total_variants": 45,
+  "catalog_characters": 170
 }
