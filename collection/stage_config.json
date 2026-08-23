@@ -2349,6 +2349,92 @@
             "Viking_Banana_Pirate": "Viking_Banana_Pirate",
             "Viking_Banana_Zombie": "Viking_Banana_Zombie"
           }
+        },
+        "Glitch_Smirk": {
+          "folder": "Glitch_Smirk",
+          "variants": {
+            "Glitch_Smirk_Bandana": "Glitch_Smirk_Bandana",
+            "Glitch_Smirk_Beard": "Glitch_Smirk_Beard",
+            "Glitch_Smirk_Crown": "Glitch_Smirk_Crown",
+            "Glitch_Smirk_Devil": "Glitch_Smirk_Devil",
+            "Glitch_Smirk_Half_Skull": "Glitch_Smirk_Half_Skull",
+            "Glitch_Smirk_Pharaon": "Glitch_Smirk_Pharaon",
+            "Glitch_Smirk_Rainbow_Hair": "Glitch_Smirk_Rainbow_Hair",
+            "Glitch_Smirk_Scar": "Glitch_Smirk_Scar"
+          }
+        },
+        "Grandma": {
+          "folder": "Grandma",
+          "variants": {
+            "Grandma_Artist": "Grandma_Artist",
+            "Grandma_Astro": "Grandma_Astro",
+            "Grandma_Clown": "Grandma_Clown",
+            "Grandma_Crazy": "Grandma_Crazy",
+            "Grandma_Cyborg": "Grandma_Cyborg",
+            "Grandma_Frog_Hat": "Grandma_Frog_Hat",
+            "Grandma_Goth": "Grandma_Goth",
+            "Grandma_Headband": "Grandma_Headband",
+            "Grandma_Kitty_Hat": "Grandma_Kitty_Hat",
+            "Grandma_Knitted_Hat": "Grandma_Knitted_Hat",
+            "Grandma_OG": "Grandma_OG",
+            "Grandma_Queen": "Grandma_Queen",
+            "Grandma_Rocker": "Grandma_Rocker",
+            "Grandma_Skull": "Grandma_Skull"
+          }
+        },
+        "Grumpy_Cat": {
+          "folder": "Grumpy_Cat",
+          "variants": {
+            "Grumpy_Cat_Alien": "Grumpy_Cat_Alien",
+            "Grumpy_Cat_Astro": "Grumpy_Cat_Astro",
+            "Grumpy_Cat_Bubble": "Grumpy_Cat_Bubble",
+            "Grumpy_Cat_Cyborg": "Grumpy_Cat_Cyborg",
+            "Grumpy_Cat_Devil": "Grumpy_Cat_Devil",
+            "Grumpy_Cat_Frog_Hat": "Grumpy_Cat_Frog_Hat",
+            "Grumpy_Cat_Knitted_Hat": "Grumpy_Cat_Knitted_Hat",
+            "Grumpy_Cat_Pinky": "Grumpy_Cat_Pinky",
+            "Grumpy_Cat_Pirate": "Grumpy_Cat_Pirate",
+            "Grumpy_Cat_Skull": "Grumpy_Cat_Skull",
+            "Grumpy_Cat_Wizard": "Grumpy_Cat_Wizard",
+            "Grumpy_Cat_Zombie": "Grumpy_Cat_Zombie"
+          }
+        },
+        "Masked_Ranger": {
+          "folder": "Masked_Ranger",
+          "variants": {
+            "Masked_Ranger_Cactus_Hat": "Masked_Ranger_Cactus_Hat",
+            "Masked_Ranger_Cloude": "Masked_Ranger_Cloude",
+            "Masked_Ranger_Fire": "Masked_Ranger_Fire",
+            "Masked_Ranger_Ghost": "Masked_Ranger_Ghost",
+            "Masked_Ranger_Skeleton": "Masked_Ranger_Skeleton",
+            "Masked_Ranger_Star_Lord": "Masked_Ranger_Star_Lord"
+          }
+        },
+        "One_Straw_Patch": {
+          "folder": "One_Straw_Patch",
+          "variants": {
+            "One_Straw_Patch_Beard": "One_Straw_Patch_Beard",
+            "One_Straw_Patch_Octo": "One_Straw_Patch_Octo",
+            "One_Straw_Patch_Skull": "One_Straw_Patch_Skull",
+            "One_Straw_Patch_Zomb": "One_Straw_Patch_Zomb"
+          }
+        },
+        "Orange_Hound": {
+          "folder": "Orange_Hound",
+          "variants": {
+            "Orange_Hound_Cowboy_Hat": "Orange_Hound_Cowboy_Hat",
+            "Orange_Hound_Devil": "Orange_Hound_Devil",
+            "Orange_Hound_Zombie": "Orange_Hound_Zombie"
+          }
+        },
+        "Teal_Mindflayer": {
+          "folder": "Teal_Mindflayer",
+          "variants": {
+            "Teal_Mindflayer_Blonde": "Teal_Mindflayer_Blonde",
+            "Teal_Mindflayer_General": "Teal_Mindflayer_General",
+            "Teal_Mindflayer_Smoking": "Teal_Mindflayer_Smoking",
+            "Teal_Mindflayer_VR_Glasses": "Teal_Mindflayer_VR_Glasses"
+          }
         }
       }
     },

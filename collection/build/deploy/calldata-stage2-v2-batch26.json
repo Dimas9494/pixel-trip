@@ -1,0 +1,37 @@
+{
+  "comment": "Remix → EvolvePixelTrip (0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC) → setCharacterPaths",
+  "function": "setCharacterPaths(uint16[] charIds, uint8[] paths)",
+  "pathLegend": {
+    "0": "Blocked",
+    "1": "Normal S1→S2→S3",
+    "2": "DirectToS3"
+  },
+  "batch": "batch26",
+  "charIds": [
+    50,
+    63,
+    69,
+    154,
+    171,
+    206,
+    265
+  ],
+  "paths": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "names": [
+    "Grandma",
+    "Masked_Ranger",
+    "One_Straw_Patch",
+    "Glitch_Smirk",
+    "Grumpy_Cat",
+    "Orange_Hound",
+    "Teal_Mindflayer"
+  ]
+}
