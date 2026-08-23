@@ -7,17 +7,28 @@
 
 const STAGE1 = "0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9";
 const FROM_BLOCK = 25_613_313;
-const LOG_CHUNK = 120_000;
 const TRANSFER_TOPIC = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 const OWNER_OF_SEL = "6352211e";
-const RPC_URL = process.env.MAINNET_RPC_URL || "https://ethereum-rpc.publicnode.com";
+
+/** Free RPCs that still allow recent eth_getLogs (publicnode needs archive token). */
+const RPC_URLS = [
+  process.env.MAINNET_RPC_URL,
+  "https://rpc.mevblocker.io",
+  "https://1rpc.io/eth",
+  "https://eth.drpc.org",
+].filter(Boolean);
+
+/** ~1.4 days on mevblocker free tier; enough for new OpenSea buys. */
+const RECENT_BLOCK_RANGE = 10_000;
+const MEVBLOCKER_MAX_RANGE = 10_000;
+const ONERPC_MAX_RANGE = 50;
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
   "Content-Type": "application/json",
-  "Cache-Control": "public, max-age=30",
+  "Cache-Control": "public, max-age=15",
 };
 
 function json(status, body) {
@@ -32,8 +43,8 @@ function padTopicAddress(address) {
   return `0x${address.slice(2).padStart(64, "0")}`;
 }
 
-async function rpcCall(method, params) {
-  const res = await fetch(RPC_URL, {
+async function rpcCall(rpcUrl, method, params) {
+  const res = await fetch(rpcUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ jsonrpc: "2.0", method, params, id: 1 }),
@@ -43,9 +54,21 @@ async function rpcCall(method, params) {
   return data.result;
 }
 
+async function rpcCallWithFallback(method, params) {
+  let lastErr = "RPC unavailable";
+  for (const url of RPC_URLS) {
+    try {
+      return await rpcCall(url, method, params);
+    } catch (err) {
+      lastErr = err.message || lastErr;
+    }
+  }
+  throw new Error(lastErr);
+}
+
 async function readBalance(address) {
   const data = "0x70a08231" + address.slice(2).padStart(64, "0");
-  const hex = await rpcCall("eth_call", [{ to: STAGE1, data }, "latest"]);
+  const hex = await rpcCallWithFallback("eth_call", [{ to: STAGE1, data }, "latest"]);
   if (!hex || hex === "0x") return 0;
   return Number(BigInt(hex));
 }
@@ -57,36 +80,48 @@ function parseTokenId(log) {
   return Number.isFinite(id) && id > 0 ? id : null;
 }
 
-async function getLogsRange(fromBlock, toBlock, topics) {
+async function getLogsRange(rpcUrl, fromBlock, toBlock, topics) {
   const params = [{
     address: STAGE1,
     fromBlock: `0x${fromBlock.toString(16)}`,
     toBlock: `0x${toBlock.toString(16)}`,
     topics,
   }];
-  const result = await rpcCall("eth_getLogs", params);
+  const result = await rpcCall(rpcUrl, "eth_getLogs", params);
   return Array.isArray(result) ? result : [];
 }
 
-async function getLogsChunked(fromBlock, toBlock, topics) {
-  const ranges = [];
-  for (let start = fromBlock; start <= toBlock; start += LOG_CHUNK) {
-    ranges.push([start, Math.min(start + LOG_CHUNK - 1, toBlock)]);
+async function getLogsWithFallback(fromBlock, toBlock, topics) {
+  const span = toBlock - fromBlock + 1;
+  let lastErr = "getLogs failed";
+
+  for (const rpcUrl of RPC_URLS) {
+    try {
+      if (rpcUrl.includes("1rpc.io") && span > ONERPC_MAX_RANGE) {
+        const logs = [];
+        for (let start = fromBlock; start <= toBlock; start += ONERPC_MAX_RANGE) {
+          const end = Math.min(start + ONERPC_MAX_RANGE - 1, toBlock);
+          logs.push(...await getLogsRange(rpcUrl, start, end, topics));
+        }
+        return logs;
+      }
+
+      if (span > MEVBLOCKER_MAX_RANGE) {
+        const logs = [];
+        for (let start = fromBlock; start <= toBlock; start += MEVBLOCKER_MAX_RANGE) {
+          const end = Math.min(start + MEVBLOCKER_MAX_RANGE - 1, toBlock);
+          logs.push(...await getLogsRange(rpcUrl, start, end, topics));
+        }
+        return logs;
+      }
+
+      return await getLogsRange(rpcUrl, fromBlock, toBlock, topics);
+    } catch (err) {
+      lastErr = err.message || lastErr;
+    }
   }
 
-  const batches = [];
-  for (let i = 0; i < ranges.length; i += 6) {
-    batches.push(ranges.slice(i, i + 6));
-  }
-
-  const logs = [];
-  for (const batch of batches) {
-    const parts = await Promise.all(
-      batch.map(([start, end]) => getLogsRange(start, end, topics)),
-    );
-    for (const part of parts) logs.push(...part);
-  }
-  return logs;
+  throw new Error(lastErr);
 }
 
 function encodeOwnerOf(tokenId) {
@@ -101,7 +136,7 @@ async function verifyOwners(address, tokenIds) {
     const results = await Promise.all(
       batch.map(async (tokenId) => {
         try {
-          const hex = await rpcCall("eth_call", [{ to: STAGE1, data: encodeOwnerOf(tokenId) }, "latest"]);
+          const hex = await rpcCallWithFallback("eth_call", [{ to: STAGE1, data: encodeOwnerOf(tokenId) }, "latest"]);
           if (!hex || hex.length < 42) return null;
           const owner = `0x${hex.slice(-40)}`.toLowerCase();
           return owner === address ? tokenId : null;
@@ -122,16 +157,16 @@ async function findOwnedTokenIds(address, { recentOnly = false } = {}) {
   const balance = await readBalance(address);
   if (balance <= 0) return { tokenIds: [], source: "balance" };
 
-  const latest = parseInt(await rpcCall("eth_blockNumber"), 16);
+  const latest = parseInt(await rpcCallWithFallback("eth_blockNumber", []), 16);
   const fromBlock = recentOnly
-    ? Math.max(FROM_BLOCK, latest - 600_000)
+    ? Math.max(FROM_BLOCK, latest - RECENT_BLOCK_RANGE)
     : FROM_BLOCK;
 
   const pad = padTopicAddress(address);
 
   const [toLogs, fromLogs] = await Promise.all([
-    getLogsChunked(fromBlock, latest, [TRANSFER_TOPIC, null, pad]),
-    getLogsChunked(fromBlock, latest, [TRANSFER_TOPIC, pad, null]),
+    getLogsWithFallback(fromBlock, latest, [TRANSFER_TOPIC, null, pad]),
+    getLogsWithFallback(fromBlock, latest, [TRANSFER_TOPIC, pad, null]),
   ]);
 
   const candidates = new Set();
@@ -168,7 +203,7 @@ export default async (req) => {
   }
 
   try {
-    const recentOnly = url.searchParams.get("recent") === "1";
+    const recentOnly = url.searchParams.get("recent") !== "0";
     const result = await findOwnedTokenIds(address, { recentOnly });
     return json(200, {
       ok: true,

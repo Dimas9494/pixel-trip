@@ -897,6 +897,7 @@ async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
       collectionAddress: STAGE1_ADDRESS,
       collectionAbi: STAGE1_ABI,
       forceRefresh: refreshMap,
+      logClient: publicClient,
       onSupplement,
     });
     owned = scan.tokenIds;
@@ -1539,7 +1540,7 @@ function initBurnDapp() {
   }
   els.connect.addEventListener("click", () => {
     invalidateOwnerMapCache();
-    void connectWallet({ force: false });
+    void connectWallet({ force: true });
   });
   els.evolve.addEventListener("click", evolveTokens);
   els.sync?.addEventListener("click", syncAllEvolvedTokens);

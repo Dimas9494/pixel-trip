@@ -7,7 +7,7 @@
   NODE_VERSION            = "20"
   VITE_EVOLVE_CONTRACT    = "0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC"
   EVOLVE_CONTRACT         = "0x1B174b30A0ABA50bd73aF305caDB01e23bfda0EC"
-  MAINNET_RPC_URL         = "https://ethereum-rpc.publicnode.com"
+  MAINNET_RPC_URL         = "https://rpc.mevblocker.io"
   IMAGE_BASE_URL          = "https://pixeltripnft.website/stage2/images"
   STAGE1_META_BASE        = "https://pixeltripnft.website/metadata"
 
@@ -43,4 +43,9 @@
 [[redirects]]
   from = "/api/gif-proxy"
   to = "/.netlify/functions/gif-proxy"
+  status = 200
+
+[[redirects]]
+  from = "/api/opensea-refresh"
+  to = "/.netlify/functions/opensea-refresh"
   status = 200
