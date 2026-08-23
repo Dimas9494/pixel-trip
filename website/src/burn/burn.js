@@ -547,14 +547,35 @@ function buildEvolvedMetadata(tokenId, charName, newStage) {
   return null;
 }
 
+async function pollServerMetadataStage(tokenId, minStage, { timeoutMs = 60_000, intervalMs = 3_000 } = {}) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    await fetchTokenMetadata(tokenId);
+    const stage = serverMetaStage(tokenId);
+    if (stage >= minStage) {
+      const cached = METADATA_CACHE[String(tokenId)] || {};
+      return {
+        ok: true,
+        data: {
+          stage,
+          variant: cached.slug,
+          image: cached.image,
+          assignment: cached.slug ? { slug: cached.slug, bg: cached.bg, frame: cached.frame } : undefined,
+        },
+      };
+    }
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+  return { ok: false };
+}
+
 async function triggerServerReconcile(tokenId = null, burnTokenId = null) {
+  if (!tokenId) return null;
   try {
     const params = new URLSearchParams({ reconcile: "1" });
-    if (tokenId) params.set("tokenId", String(tokenId));
+    params.set("tokenId", String(tokenId));
     if (burnTokenId) params.set("burnTokenId", String(burnTokenId));
-    const res = await fetch(`${SYNC_EVOLVE_URL}?${params}`, {
-      signal: AbortSignal.timeout(30_000),
-    });
+    const res = await fetchWithTimeout(`${SYNC_EVOLVE_URL}?${params}`, {}, 120_000);
     const data = await res.json().catch(() => ({}));
     const fixed = [...(data.reconciled ?? []), ...(data.synced ?? [])];
     if (fixed.length) {
@@ -577,7 +598,7 @@ function scheduleMetadataRetry(tokenId, burnTokenId = null, { attempts = 4 } = {
   const delays = [3000, 8000, 20000, 45000];
   delays.slice(0, attempts).forEach((delay, index) => {
     setTimeout(async () => {
-      const r = await syncMetadataToServer(tokenId, burnTokenId, { retries: 2 });
+      const r = await syncMetadataToServer(tokenId, burnTokenId, { retries: 2, minStage: 2 });
       if (r.ok) {
         applyEvolveResult(tokenId, burnTokenId, Number(r.data?.stage ?? 2));
         refreshTokenImages();
@@ -595,8 +616,10 @@ function scheduleMetadataRetry(tokenId, burnTokenId = null, { attempts = 4 } = {
   });
 }
 
-async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 } = {}) {
+async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3, minStage = 2 } = {}) {
   let lastError = "Sync failed";
+  const isSlowError = (msg) => /timed out|timeout|504|gateway|load failed/i.test(msg || "");
+
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       const res = await fetchWithTimeout(
@@ -618,6 +641,14 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 }
         } else {
           lastError = `HTTP ${res.status}`;
         }
+        if (res.status === 504 || isSlowError(lastError)) {
+          const polled = await pollServerMetadataStage(tokenId, minStage, { timeoutMs: 20_000, intervalMs: 2_000 });
+          if (polled.ok) {
+            applySyncResponse(tokenId, polled.data);
+            console.log(`[metadata] #${tokenId} updated on server (detected after HTTP ${res.status})`);
+            return polled;
+          }
+        }
         continue;
       }
       if (data.ok) {
@@ -628,12 +659,30 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3 }
       lastError = data.error || `HTTP ${res.status}`;
     } catch (err) {
       lastError = formatSyncError(err.message);
+      if (isSlowError(err.message)) {
+        const polled = await pollServerMetadataStage(tokenId, minStage, { timeoutMs: 20_000, intervalMs: 2_000 });
+        if (polled.ok) {
+          applySyncResponse(tokenId, polled.data);
+          console.log(`[metadata] #${tokenId} updated on server (detected after timeout)`);
+          return polled;
+        }
+      }
     }
     if (attempt < retries) {
       console.warn(`[metadata] #${tokenId} sync attempt ${attempt} failed, retrying…`, lastError);
       await new Promise((r) => setTimeout(r, 1500 * attempt));
     }
   }
+
+  console.warn(`[metadata] #${tokenId} POST failed, trying server reconcile…`);
+  await triggerServerReconcile(tokenId, burnTokenId);
+  const polled = await pollServerMetadataStage(tokenId, minStage, { timeoutMs: 90_000, intervalMs: 4_000 });
+  if (polled.ok) {
+    applySyncResponse(tokenId, polled.data);
+    console.log(`[metadata] #${tokenId} synced via server reconcile`);
+    return polled;
+  }
+
   return { ok: false, error: lastError };
 }
 
@@ -680,7 +729,7 @@ async function syncAllEvolvedTokens() {
       const t = stale[i];
       if (i > 0) await new Promise((r) => setTimeout(r, 300));
       setMessage(`Syncing ${i + 1}/${stale.length} (#${t.tokenId})…`, "pending");
-      const r = await syncMetadataToServer(t.tokenId, null, { retries: 2 });
+      const r = await syncMetadataToServer(t.tokenId, null, { retries: 2, minStage: t.stage });
       if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
       else syncedIds.push(t.tokenId);
     }
@@ -723,13 +772,14 @@ async function autoSyncStaleMetadata(stubs) {
 
   console.log(`[metadata] background sync ${stale.length} stale token(s):`, stale.map(t => t.tokenId));
   const failed = [];
-  for (const t of stale.slice(0, 3)) {
-    const r = await syncMetadataToServer(t.tokenId, null, { retries: 1 });
+  let synced = 0;
+  for (const t of stale.slice(0, 10)) {
+    const r = await syncMetadataToServer(t.tokenId, null, { retries: 2, minStage: t.stage });
     if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
+    else synced++;
   }
-  const synced = stale.slice(0, 3).length - failed.length;
   if (synced) {
-    await loadMetadataForTokens(stale.slice(0, 3).map(t => t.tokenId));
+    await loadMetadataForTokens(stale.slice(0, 10).map(t => t.tokenId));
   }
   return { synced, failed };
 }
@@ -971,8 +1021,6 @@ async function loadTokens({ refreshMap = false, ownedIdsOverride = null } = {}) 
       );
     }
   });
-  void triggerServerReconcile();
-
   if (gen !== loadGeneration) {
     console.log("[token] stale wallet load ignored (after render)");
     return;
@@ -1443,7 +1491,7 @@ async function evolveTokens() {
     if (account) patchOwnerInCache(keepId, account.toLowerCase());
     setMessage(`Evolved! #${keepId} → ${stageLabel}. Updating metadata…`, "success");
 
-    const updated = await syncMetadataToServer(keepId, burnId, { retries: 5 });
+    const updated = await syncMetadataToServer(keepId, burnId, { retries: 5, minStage: newStage });
     if (updated.ok) {
       if (burnId) delete TOKEN_ASSIGNMENTS[String(burnId)];
       applyEvolveResult(keepId, burnId, newStage);

@@ -28,6 +28,14 @@ define('STAGE3_MAP_FILE',  __DIR__ . '/stage3-variants.json');
 define('ASSIGNMENTS_FILE', __DIR__ . '/token-assignments.json');
 define('STAGE3_ASSIGNMENTS_FILE', __DIR__ . '/stage3-assignments.json');
 define('STAGE2_VARIANTS_FILE', __DIR__ . '/stage2-variants.json');
+define('EVOLUTION_LINEAGE_FILE', __DIR__ . '/evolution-lineage.json');
+define('BURN_SNAPSHOTS_DIR', __DIR__ . '/burn-snapshots/');
+define('SELF_SNAPSHOTS_DIR', __DIR__ . '/self-snapshots/');
+define('TOKEN_PAGE_BASE', getenv('TOKEN_PAGE_BASE') ?: 'https://pixeltrip.netlify.app/token.html');
+define('OPENSEA_ITEM_BASE', 'https://opensea.io/assets/ethereum/' . STAGE1_ADDRESS . '/');
+
+require_once __DIR__ . '/evolution-lineage-lib.php';
+require_once __DIR__ . '/opensea-refresh-lib.php';
 
 function assetGifUrl(string $base, string $slug, int $stage, int $tokenId): string {
     return $base . '/' . $slug . '.gif?v=' . $stage . '-' . $tokenId;
@@ -465,6 +473,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['stage3assignments'])) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['lineage'])) {
+    $tid = intval($_GET['lineage']);
+    if ($tid < 1) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid token id']);
+        exit;
+    }
+    $lineage = loadEvolutionLineage();
+    $entry = ['self' => $lineage[lineageKey($tid)]['self'] ?? [], 'burned' => []];
+    $onChain = readOnChainState($tid);
+    $currentStage = $onChain['stage'] ?: metaStageFromArray(readTokenMetadataFile($tid) ?? []);
+    echo json_encode(buildEvolutionHistoryPayload($tid, $currentStage, $entry), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['burnsnapshot'])) {
+    $tid = intval($_GET['burnsnapshot']);
+    $path = BURN_SNAPSHOTS_DIR . $tid . '.json';
+    if (!file_exists($path)) {
+        http_response_code(404);
+        echo json_encode(['error' => 'Burn snapshot not found']);
+        exit;
+    }
+    echo file_get_contents($path);
+    exit;
+}
+
 // CORS-safe metadata read for the burn dApp (Netlify → pixeltripnft.website)
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['metadata'])) {
     $metaId = intval($_GET['metadata']);
@@ -489,6 +524,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+@set_time_limit(120);
+
 // ── Parse input ───────────────────────────────────────────────────────────────
 
 $body     = json_decode(file_get_contents('php://input'), true) ?: [];
@@ -496,6 +533,7 @@ $tokenId  = intval($body['tokenId'] ?? 0);
 $syncMode = !empty($body['sync']);
 $burnTokenId = intval($body['burnTokenId'] ?? 0);
 $repair      = !empty($body['repair']);
+$patchEvolution = !empty($body['patchEvolution']);
 $txHash   = preg_replace('/[^0-9a-fA-Fx]/', '', $body['txHash'] ?? '');
 $charName = preg_replace('/[^A-Za-z_]/', '', $body['charName'] ?? '');
 $newStage = intval($body['newStage'] ?? 0);
@@ -504,6 +542,33 @@ if (!$tokenId) {
     http_response_code(400);
     echo json_encode(['error' => 'tokenId required']);
     exit;
+}
+
+$prefilledLineageEntry = null;
+
+// ── Patch evolution gallery for already-evolved tokens ──────────────────────
+
+if ($patchEvolution) {
+    if (!$burnTokenId) {
+        http_response_code(400);
+        echo json_encode(['error' => 'burnTokenId required for patchEvolution']);
+        exit;
+    }
+    $onChain = readOnChainState($tokenId);
+    $newStage = $onChain['stage'];
+    $charName = $onChain['charName'];
+    if ($newStage < 2) {
+        http_response_code(400);
+        echo json_encode(['error' => "Token #$tokenId is not evolved on-chain (stage=$newStage)"]);
+        exit;
+    }
+    if (!$charName) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Unknown character for token']);
+        exit;
+    }
+    $prefilledLineageEntry = rebuildLineageForPatch($tokenId, $burnTokenId, $newStage, $charName);
+    goto build_metadata;
 }
 
 // ── Sync mode: read stage from contract, no txHash needed ───────────────────
@@ -648,7 +713,14 @@ if ($newStage === 2) {
     ];
 }
 
-// ── Write metadata file ───────────────────────────────────────────────────────
+// Record lineage before overwriting metadata files (snapshots read current JSON on disk).
+$lineageEntry = $prefilledLineageEntry
+    ?? ($burnTokenId
+        ? recordEvolutionLineage($tokenId, $burnTokenId, $newStage)
+        : (loadEvolutionLineage()[lineageKey($tokenId)] ?? ['self' => [], 'burned' => []]));
+enrichMetadataWithEvolution($metadata, $tokenId, $newStage, $lineageEntry, true);
+
+// ── Write metadata file (core fields first — survives gateway timeouts) ─────
 
 if (!is_dir(METADATA_DIR)) {
     http_response_code(500);
@@ -671,6 +743,13 @@ if (file_put_contents($filePath, $json) === false) {
     exit;
 }
 
+// HTML evolution viewer + full OpenSea fields (can be slower; file already has Stage 2/3 JSON)
+writeEvolutionViewerHtml($tokenId, $metadata, $lineageEntry);
+$json = json_encode($metadata, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+file_put_contents($filePath, $json);
+
+$openseaRefresh = queueOpenseaRefresh($tokenId);
+
 echo json_encode([
     'ok'         => true,
     'tokenId'    => $tokenId,
@@ -679,4 +758,6 @@ echo json_encode([
     'variant'    => $metadata['attributes'][1]['value'] ?? $charName,
     'image'      => $metadata['image'],
     'assignment' => $responseAssignment,
+    'evolution'  => buildEvolutionHistoryPayload($tokenId, $newStage, $lineageEntry),
+    'openseaRefresh' => $openseaRefresh,
 ]);

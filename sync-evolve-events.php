@@ -29,6 +29,7 @@ define('EVOLUTION_LINEAGE_FILE', __DIR__ . '/evolution-lineage.json');
 define('BURN_SNAPSHOTS_DIR', __DIR__ . '/burn-snapshots/');
 define('UPDATE_METADATA_URL', getenv('UPDATE_METADATA_URL') ?: 'https://pixeltripnft.website/update-metadata.php');
 define('EVOLVED_TOPIC', '0xb88806e586caa1c8544d9a44dab35f37182d4ec617d3d3f1c839b37df45a01b8');
+require_once __DIR__ . '/opensea-refresh-lib.php';
 define('CRON_SECRET', getenv('CRON_SECRET') ?: '');
 define('FIRST_RUN_LOOKBACK', (int)(getenv('EVOLVE_SYNC_LOOKBACK') ?: 120000)); // CLI ~2 weeks
 define('HTTP_LOOKBACK', (int)(getenv('EVOLVE_SYNC_HTTP_LOOKBACK') ?: 8000));   // HTTP ~1 day
@@ -48,7 +49,19 @@ if ($isCli) {
 
 if (!$isCli) {
     header('Content-Type: application/json');
-    if (CRON_SECRET !== '' && ($_GET['key'] ?? '') !== CRON_SECRET) {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        exit;
+    }
+    @set_time_limit(120);
+
+    $isTargetedReconcile = !empty($_GET['reconcile'])
+        && isset($_GET['tokenId'])
+        && (int)$_GET['tokenId'] > 0;
+
+    if (CRON_SECRET !== '' && ($_GET['key'] ?? '') !== CRON_SECRET && !$isTargetedReconcile) {
         http_response_code(403);
         echo json_encode(['error' => 'Forbidden — set ?key=CRON_SECRET']);
         exit;
