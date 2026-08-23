@@ -4,7 +4,9 @@ import { lookupOwnedFromMap, loadTokenOwners } from "./token-owners.js";
 export const MULTICALL_CHUNK = 256;
 export const MULTICALL_PARALLEL = 4;
 const MULTICALL_TIMEOUT_MS = 12_000;
-const SCAN_HARD_TIMEOUT_MS = 20_000;
+const OWNER_VERIFY_CHUNK = 96;
+const OWNER_VERIFY_TIMEOUT_MS = 25_000;
+const SCAN_HARD_TIMEOUT_MS = 30_000;
 const WALLET_API_TIMEOUT_MS = 18_000;
 const CLIENT_LOG_BLOCK_RANGE = 10_000n;
 
@@ -32,7 +34,12 @@ function sameIdSet(a, b) {
 export async function multicallChunked(
   client,
   contracts,
-  { chunk = MULTICALL_CHUNK, parallel = MULTICALL_PARALLEL } = {},
+  {
+    chunk = MULTICALL_CHUNK,
+    parallel = MULTICALL_PARALLEL,
+    timeoutMs = MULTICALL_TIMEOUT_MS,
+    stopOnFailure = true,
+  } = {},
 ) {
   if (!contracts.length) return [];
 
@@ -51,16 +58,27 @@ export async function multicallChunked(
             client.multicall({ contracts: contractsChunk, allowFailure: true }),
           ),
         ),
-        MULTICALL_TIMEOUT_MS,
+        timeoutMs,
         "multicall batch",
       );
       for (const res of results) out.push(...res);
     } catch (err) {
       console.warn("[multicall] batch failed:", err.message);
-      break;
+      if (stopOnFailure) break;
     }
   }
   return out;
+}
+
+function collectOwnedTokenIds(tokenIds, results, ownerLower) {
+  const owned = [];
+  for (let i = 0; i < results.length; i++) {
+    const r = results[i];
+    if (r?.status === "success" && r.result?.toLowerCase() === ownerLower) {
+      owned.push(tokenIds[i]);
+    }
+  }
+  return owned;
 }
 
 async function readWalletBalance(client, owner, collectionAddress, collectionAbi) {
@@ -84,6 +102,7 @@ async function readWalletBalance(client, owner, collectionAddress, collectionAbi
 async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, collectionAbi) {
   if (!tokenIds.length) return [];
 
+  const addr = owner.toLowerCase();
   const contracts = tokenIds.map((id) => ({
     address: collectionAddress,
     abi: collectionAbi,
@@ -91,14 +110,43 @@ async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, c
     args: [BigInt(id)],
   }));
 
-  const results = await multicallChunked(client, contracts);
-  const addr = owner.toLowerCase();
-  const owned = [];
+  let results = await multicallChunked(client, contracts, {
+    chunk: OWNER_VERIFY_CHUNK,
+    parallel: 2,
+    timeoutMs: OWNER_VERIFY_TIMEOUT_MS,
+    stopOnFailure: false,
+  });
 
-  for (let i = 0; i < results.length; i++) {
+  let owned = collectOwnedTokenIds(tokenIds, results, addr);
+  const ownedSet = new Set(owned);
+
+  const retryIds = tokenIds.filter((id, i) => {
+    if (ownedSet.has(id)) return false;
     const r = results[i];
-    if (r?.status === "success" && r.result?.toLowerCase() === addr) {
-      owned.push(tokenIds[i]);
+    return !r || r.status !== "success";
+  });
+
+  if (retryIds.length) {
+    console.log(`[scan] retry ownerOf for ${retryIds.length} token(s)`);
+    for (let i = 0; i < retryIds.length; i += 12) {
+      const batch = retryIds.slice(i, i + 12);
+      const batchContracts = batch.map((id) => ({
+        address: collectionAddress,
+        abi: collectionAbi,
+        functionName: "ownerOf",
+        args: [BigInt(id)],
+      }));
+      try {
+        const retryResults = await multicallChunked(client, batchContracts, {
+          chunk: 12,
+          parallel: 1,
+          timeoutMs: 12_000,
+          stopOnFailure: false,
+        });
+        owned = mergeUniqueIds(owned, collectOwnedTokenIds(batch, retryResults, addr));
+      } catch (err) {
+        console.warn("[scan] ownerOf retry failed:", err.message);
+      }
     }
   }
 
@@ -252,8 +300,25 @@ async function scanOwnedTokenIdsInner(
     collectionAbi,
   );
 
-  const mapIds = filterMax(verified, maxId);
-  const countMismatch = target != null && mapIds.length !== target;
+  let mapIds = filterMax(verified, maxId);
+  let countMismatch = target != null && mapIds.length !== target;
+
+  if (countMismatch && candidates.length) {
+    const verifiedSet = new Set(mapIds);
+    const mapRetries = candidates.filter((id) => !verifiedSet.has(id) && id <= maxId);
+    if (mapRetries.length) {
+      const extra = await verifyOwnersOnChain(
+        client,
+        owner,
+        mapRetries,
+        collectionAddress,
+        collectionAbi,
+      );
+      verified = mergeUniqueIds(verified, extra);
+      mapIds = filterMax(verified, maxId);
+      countMismatch = target != null && mapIds.length !== target;
+    }
+  }
 
   if (mapIds.length === 0 || countMismatch) {
     console.log(
