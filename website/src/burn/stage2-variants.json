@@ -7962,5 +7962,160 @@
       "bg": "Voronoi",
       "frame": "Portal_Ring"
     }
+  ],
+  "Roaring_Sage": [
+    {
+      "slug": "Roaring_Sage_Alien",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Roaring_Sage_Artist",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Roaring_Sage_Cyborg",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Roaring_Sage_Desert",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Roaring_Sage_Greek",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Roaring_Sage_Hippie",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Roaring_Sage_King",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Roaring_Sage_Street",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Roaring_Sage_Winter_Hat",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Roaring_Sage_Wizard",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    }
+  ],
+  "Smiley_Monitor": [
+    {
+      "slug": "Smiley_Monitor_Broken",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Smiley_Monitor_Skull",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    }
+  ],
+  "Split_Cyborg": [
+    {
+      "slug": "Split_Cyborg_Colorfull",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Split_Cyborg_Vamp",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    }
+  ],
+  "Toxic_Mohawk": [
+    {
+      "slug": "Toxic_Mohawk_Alien",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Toxic_Mohawk_Clown",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Toxic_Mohawk_Cyborg",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Toxic_Mohawk_Fire",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Toxic_Mohawk_Icy",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Toxic_Mohawk_Rainbow",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Toxic_Mohawk_Skeleton",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Toxic_Mohawk_Skull_Bandana",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Toxic_Mohawk_Viking",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Toxic_Mohawk_Zombie",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    }
+  ],
+  "Wooden_Puppet": [
+    {
+      "slug": "Wooden_Puppet_Golden",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Wooden_Puppet_King",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Wooden_Puppet_Mime",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Wooden_Puppet_Pirate",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Wooden_Puppet_Zomb",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    }
   ]
 }

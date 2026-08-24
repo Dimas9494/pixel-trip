@@ -2435,6 +2435,60 @@
             "Teal_Mindflayer_Smoking": "Teal_Mindflayer_Smoking",
             "Teal_Mindflayer_VR_Glasses": "Teal_Mindflayer_VR_Glasses"
           }
+        },
+        "Roaring_Sage": {
+          "folder": "Roaring_Sage",
+          "variants": {
+            "Roaring_Sage_Alien": "Roaring_Sage_Alien",
+            "Roaring_Sage_Artist": "Roaring_Sage_Artist",
+            "Roaring_Sage_Cyborg": "Roaring_Sage_Cyborg",
+            "Roaring_Sage_Desert": "Roaring_Sage_Desert",
+            "Roaring_Sage_Greek": "Roaring_Sage_Greek",
+            "Roaring_Sage_Hippie": "Roaring_Sage_Hippie",
+            "Roaring_Sage_King": "Roaring_Sage_King",
+            "Roaring_Sage_Street": "Roaring_Sage_Street",
+            "Roaring_Sage_Winter_Hat": "Roaring_Sage_Winter_Hat",
+            "Roaring_Sage_Wizard": "Roaring_Sage_Wizard"
+          }
+        },
+        "Smiley_Monitor": {
+          "folder": "Smiley_Monitor",
+          "variants": {
+            "Smiley_Monitor_Broken": "Smiley_Monitor_Broken",
+            "Smiley_Monitor_Skull": "Smiley_Monitor_Skull"
+          }
+        },
+        "Split_Cyborg": {
+          "folder": "Split_Cyborg",
+          "variants": {
+            "Split_Cyborg_Colorfull": "Split_Cyborg_Colorfull",
+            "Split_Cyborg_Vamp": "Split_Cyborg_Vamp"
+          }
+        },
+        "Toxic_Mohawk": {
+          "folder": "Toxic_Mohawk",
+          "variants": {
+            "Toxic_Mohawk_Alien": "Toxic_Mohawk_Alien",
+            "Toxic_Mohawk_Clown": "Toxic_Mohawk_Clown",
+            "Toxic_Mohawk_Cyborg": "Toxic_Mohawk_Cyborg",
+            "Toxic_Mohawk_Fire": "Toxic_Mohawk_Fire",
+            "Toxic_Mohawk_Icy": "Toxic_Mohawk_Icy",
+            "Toxic_Mohawk_Rainbow": "Toxic_Mohawk_Rainbow",
+            "Toxic_Mohawk_Skeleton": "Toxic_Mohawk_Skeleton",
+            "Toxic_Mohawk_Skull_Bandana": "Toxic_Mohawk_Skull_Bandana",
+            "Toxic_Mohawk_Viking": "Toxic_Mohawk_Viking",
+            "Toxic_Mohawk_Zombie": "Toxic_Mohawk_Zombie"
+          }
+        },
+        "Wooden_Puppet": {
+          "folder": "Wooden_Puppet",
+          "variants": {
+            "Wooden_Puppet_Golden": "Wooden_Puppet_Golden",
+            "Wooden_Puppet_King": "Wooden_Puppet_King",
+            "Wooden_Puppet_Mime": "Wooden_Puppet_Mime",
+            "Wooden_Puppet_Pirate": "Wooden_Puppet_Pirate",
+            "Wooden_Puppet_Zomb": "Wooden_Puppet_Zomb"
+          }
         }
       }
     },

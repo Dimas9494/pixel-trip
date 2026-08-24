@@ -1,20 +1,20 @@
 {
-  "generated": "2026-08-22T18:09:21.072551+00:00",
-  "batch": "batch25",
+  "generated": "2026-08-24T18:58:47.242924+00:00",
+  "batch": "batch27",
   "characters": [
-    "Cyan_Cloude",
-    "Laughing_Dark_Boy",
-    "Spiked_Bulldog",
-    "Tiki_Mask",
-    "Viking_Banana"
+    "Roaring_Sage",
+    "Smiley_Monitor",
+    "Split_Cyborg",
+    "Toxic_Mohawk",
+    "Wooden_Puppet"
   ],
   "counts": {
-    "Cyan_Cloude": 4,
-    "Laughing_Dark_Boy": 8,
-    "Spiked_Bulldog": 12,
-    "Tiki_Mask": 11,
-    "Viking_Banana": 5
+    "Roaring_Sage": 10,
+    "Smiley_Monitor": 2,
+    "Split_Cyborg": 2,
+    "Toxic_Mohawk": 10,
+    "Wooden_Puppet": 5
   },
-  "total_variants": 40,
-  "catalog_characters": 175
+  "total_variants": 29,
+  "catalog_characters": 187
 }
