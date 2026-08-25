@@ -1,20 +1,20 @@
 {
-  "generated": "2026-08-24T18:58:47.242924+00:00",
-  "batch": "batch27",
+  "generated": "2026-08-25T18:32:36.137696+00:00",
+  "batch": "batch28",
   "characters": [
-    "Roaring_Sage",
-    "Smiley_Monitor",
-    "Split_Cyborg",
-    "Toxic_Mohawk",
-    "Wooden_Puppet"
+    "Fat_Nerd",
+    "Goblin_Rogue",
+    "Gremlin",
+    "Split_Mask",
+    "Square_Professor"
   ],
   "counts": {
-    "Roaring_Sage": 10,
-    "Smiley_Monitor": 2,
-    "Split_Cyborg": 2,
-    "Toxic_Mohawk": 10,
-    "Wooden_Puppet": 5
+    "Fat_Nerd": 5,
+    "Goblin_Rogue": 12,
+    "Gremlin": 7,
+    "Split_Mask": 5,
+    "Square_Professor": 6
   },
-  "total_variants": 29,
-  "catalog_characters": 187
+  "total_variants": 35,
+  "catalog_characters": 192
 }

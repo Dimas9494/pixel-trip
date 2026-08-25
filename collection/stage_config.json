@@ -2489,6 +2489,66 @@
             "Wooden_Puppet_Pirate": "Wooden_Puppet_Pirate",
             "Wooden_Puppet_Zomb": "Wooden_Puppet_Zomb"
           }
+        },
+        "Fat_Nerd": {
+          "folder": "Fat_Nerd",
+          "variants": {
+            "Fat_Nerd_Angry": "Fat_Nerd_Angry",
+            "Fat_Nerd_Cap": "Fat_Nerd_Cap",
+            "Fat_Nerd_Clown": "Fat_Nerd_Clown",
+            "Fat_Nerd_Rainbow": "Fat_Nerd_Rainbow",
+            "Fat_Nerd_Soldier": "Fat_Nerd_Soldier"
+          }
+        },
+        "Goblin_Rogue": {
+          "folder": "Goblin_Rogue",
+          "variants": {
+            "Goblin_Rogue_Archer": "Goblin_Rogue_Archer",
+            "Goblin_Rogue_Bones": "Goblin_Rogue_Bones",
+            "Goblin_Rogue_Fire": "Goblin_Rogue_Fire",
+            "Goblin_Rogue_Hammer": "Goblin_Rogue_Hammer",
+            "Goblin_Rogue_King": "Goblin_Rogue_King",
+            "Goblin_Rogue_Knight": "Goblin_Rogue_Knight",
+            "Goblin_Rogue_Ninja": "Goblin_Rogue_Ninja",
+            "Goblin_Rogue_Pirate": "Goblin_Rogue_Pirate",
+            "Goblin_Rogue_Scientist": "Goblin_Rogue_Scientist",
+            "Goblin_Rogue_Shield": "Goblin_Rogue_Shield",
+            "Goblin_Rogue_Steampunk": "Goblin_Rogue_Steampunk",
+            "Goblin_Rogue_Wizard": "Goblin_Rogue_Wizard"
+          }
+        },
+        "Gremlin": {
+          "folder": "Gremlin",
+          "variants": {
+            "Gremlin_Bachelor": "Gremlin_Bachelor",
+            "Gremlin_Cigar": "Gremlin_Cigar",
+            "Gremlin_Crown": "Gremlin_Crown",
+            "Gremlin_Devil": "Gremlin_Devil",
+            "Gremlin_Mohawk": "Gremlin_Mohawk",
+            "Gremlin_Pope": "Gremlin_Pope",
+            "Gremlin_Vamp": "Gremlin_Vamp"
+          }
+        },
+        "Split_Mask": {
+          "folder": "Split_Mask",
+          "variants": {
+            "Split_Mask_Fire": "Split_Mask_Fire",
+            "Split_Mask_Hooded": "Split_Mask_Hooded",
+            "Split_Mask_Horns": "Split_Mask_Horns",
+            "Split_Mask_Mohawk": "Split_Mask_Mohawk",
+            "Split_Mask_Smoking": "Split_Mask_Smoking"
+          }
+        },
+        "Square_Professor": {
+          "folder": "Square_Professor",
+          "variants": {
+            "Square_Professor_Archaeologist": "Square_Professor_Archaeologist",
+            "Square_Professor_Biker": "Square_Professor_Biker",
+            "Square_Professor_Clown": "Square_Professor_Clown",
+            "Square_Professor_Noir": "Square_Professor_Noir",
+            "Square_Professor_Windy": "Square_Professor_Windy",
+            "Square_Professor_Zombie": "Square_Professor_Zombie"
+          }
         }
       }
     },
