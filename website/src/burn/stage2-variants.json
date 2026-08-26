@@ -8302,5 +8302,148 @@
       "bg": "Dot_Fabric",
       "frame": "Zoetrope_Slits"
     }
+  ],
+  "Anaglyph_Woman": [
+    {
+      "slug": "Anaglyph_Woman_Alien",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Anaglyph_Woman_Skull",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Anaglyph_Woman_Tech",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Anaglyph_Woman_Zombie",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    }
+  ],
+  "Lucha_Mask": [
+    {
+      "slug": "Lucha_Mask_BackCap",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Lucha_Mask_Bat",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Lucha_Mask_Golden",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Lucha_Mask_Horns",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Lucha_Mask_Lizard",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Lucha_Mask_Mexican",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    }
+  ],
+  "Safari_Turkey": [
+    {
+      "slug": "Safari_Turkey_Big_Beard",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Safari_Turkey_Fez",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Safari_Turkey_Headphones",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Safari_Turkey_Love_Glasses",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Safari_Turkey_Mask",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Safari_Turkey_Rasta",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    }
+  ],
+  "Sleepy_Koala": [
+    {
+      "slug": "Sleepy_Koala_Captain",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Sleepy_Koala_Golden",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Sleepy_Koala_Hippie",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Sleepy_Koala_Horns",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Sleepy_Koala_Mask",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Sleepy_Koala_Monk",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Sleepy_Koala_Panda",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Sleepy_Koala_Punk",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Sleepy_Koala_Teal_Mask",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Sleepy_Koala_VR_Glasses",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Sleepy_Koala_Zombie",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    }
   ]
 }
