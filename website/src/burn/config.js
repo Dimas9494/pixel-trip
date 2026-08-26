@@ -54,8 +54,8 @@ export const COLLECTION_DEPLOY_BLOCK = 25_613_313n;
 /** Enable Connect Wallet on Evolution Lab (main collection is live). */
 export const WALLET_DAPP_ENABLED = true;
 
-// Fast public RPC for waiting tx receipts (wallet RPC is often slow)
-export const RECEIPT_RPC_URL = "https://ethereum-rpc.publicnode.com";
+// Read RPC for wallet scan + receipts (mevblocker: reliable ownerOf/multicall; publicnode often drops calls)
+export const RECEIPT_RPC_URL = "https://rpc.mevblocker.io";
 
 export const STAGE1_ABI = [
   {

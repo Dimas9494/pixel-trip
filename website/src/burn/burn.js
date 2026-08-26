@@ -903,7 +903,9 @@ async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
     owned = scan.tokenIds;
     lastWalletBalance = scan.balance;
     if (scan.timedOut && owned.length) {
-      setMessage(`Loaded ${owned.length} token(s) (scan timed out — list may be incomplete).`, "info");
+      setMessage(`Loaded ${owned.length} token(s) (scan timed out — catching up in background).`, "info");
+    } else if (scan.partial && scan.balance != null && owned.length) {
+      setMessage(`Loaded ${owned.length} of ${scan.balance} token(s) — finding the rest…`, "info");
     } else if (scan.partial && owned.length) {
       setMessage(`Found ${owned.length} token(s). Checking for new purchases…`, "info");
     }

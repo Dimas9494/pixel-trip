@@ -6,8 +6,9 @@ export const MULTICALL_PARALLEL = 4;
 const MULTICALL_TIMEOUT_MS = 12_000;
 const OWNER_VERIFY_CHUNK = 96;
 const OWNER_VERIFY_TIMEOUT_MS = 25_000;
-const SCAN_HARD_TIMEOUT_MS = 30_000;
-const WALLET_API_TIMEOUT_MS = 18_000;
+const SCAN_HARD_TIMEOUT_MS = 60_000;
+const WALLET_API_RECENT_TIMEOUT_MS = 18_000;
+const WALLET_API_FULL_TIMEOUT_MS = 55_000;
 const CLIENT_LOG_BLOCK_RANGE = 10_000n;
 
 const TRANSFER_EVENT = parseAbiItem(
@@ -162,7 +163,7 @@ function mergeUniqueIds(...lists) {
   return [...new Set(lists.flat())].sort((a, b) => a - b);
 }
 
-async function discoverViaWalletApi(owner, { recentOnly = true, timeoutMs = WALLET_API_TIMEOUT_MS } = {}) {
+async function discoverViaWalletApi(owner, { recentOnly = true, timeoutMs = WALLET_API_RECENT_TIMEOUT_MS } = {}) {
   try {
     const url =
       `/api/wallet-tokens?address=${encodeURIComponent(owner)}&recent=${recentOnly ? "1" : "0"}`;
@@ -240,11 +241,14 @@ async function supplementViaWalletApi(
   collectionAbi,
   verified,
   logClient,
-  { recentOnly = true, timeoutMs = WALLET_API_TIMEOUT_MS } = {},
+  { recentOnly = true, timeoutMs = recentOnly ? WALLET_API_RECENT_TIMEOUT_MS : WALLET_API_FULL_TIMEOUT_MS } = {},
 ) {
   let apiIds = await discoverTransferCandidates(client, owner, collectionAddress, logClient, { recentOnly, timeoutMs });
   if (!apiIds.length && recentOnly) {
-    apiIds = await discoverTransferCandidates(client, owner, collectionAddress, logClient, { recentOnly: false, timeoutMs });
+    apiIds = await discoverTransferCandidates(client, owner, collectionAddress, logClient, {
+      recentOnly: false,
+      timeoutMs: WALLET_API_FULL_TIMEOUT_MS,
+    });
   }
   if (!apiIds.length) return verified;
 
@@ -252,27 +256,38 @@ async function supplementViaWalletApi(
   return verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
 }
 
-function scheduleBackgroundSupplement(
+function scheduleBackgroundCatchUp(
   client,
   owner,
   collectionAddress,
   collectionAbi,
   currentIds,
   maxId,
+  targetBalance,
   onSupplement,
   logClient,
 ) {
   if (!onSupplement) return;
 
-  void supplementViaWalletApi(
-    client, owner, collectionAddress, collectionAbi, currentIds, logClient,
-    { recentOnly: true, timeoutMs: WALLET_API_TIMEOUT_MS },
-  ).then((extra) => {
-    const full = filterMax(extra, maxId);
+  void (async () => {
+    let verified = currentIds;
+    verified = await supplementViaWalletApi(
+      client, owner, collectionAddress, collectionAbi, verified, logClient,
+      { recentOnly: true, timeoutMs: WALLET_API_RECENT_TIMEOUT_MS },
+    );
+    let full = filterMax(verified, maxId);
+    if (targetBalance != null && full.length < targetBalance) {
+      console.log(`[scan] background catch-up ${full.length}/${targetBalance} — full wallet API`);
+      verified = await supplementViaWalletApi(
+        client, owner, collectionAddress, collectionAbi, verified, logClient,
+        { recentOnly: false, timeoutMs: WALLET_API_FULL_TIMEOUT_MS },
+      );
+      full = filterMax(verified, maxId);
+    }
     if (full.length > currentIds.length || !sameIdSet(full, currentIds)) {
       onSupplement(full);
     }
-  });
+  })();
 }
 
 async function scanOwnedTokenIdsInner(
@@ -326,21 +341,32 @@ async function scanOwnedTokenIdsInner(
     );
     verified = await supplementViaWalletApi(
       client, owner, collectionAddress, collectionAbi, verified, logClient,
-      { recentOnly: true, timeoutMs: WALLET_API_TIMEOUT_MS },
+      { recentOnly: true, timeoutMs: WALLET_API_RECENT_TIMEOUT_MS },
     );
     const full = filterMax(verified, maxId);
     if (countMismatch && full.length < target) {
       verified = await supplementViaWalletApi(
         client, owner, collectionAddress, collectionAbi, verified, logClient,
-        { recentOnly: false, timeoutMs: WALLET_API_TIMEOUT_MS },
+        { recentOnly: false, timeoutMs: WALLET_API_FULL_TIMEOUT_MS },
       );
     }
-    return { tokenIds: filterMax(verified, maxId), balance: target };
+    const finalIds = filterMax(verified, maxId);
+    if (target != null && finalIds.length < target) {
+      console.warn(`[scan] partial ${finalIds.length}/${target} — scheduling background catch-up`);
+      scheduleBackgroundCatchUp(
+        client, owner, collectionAddress, collectionAbi, finalIds, maxId, target, onSupplement, logClient,
+      );
+    }
+    return {
+      tokenIds: finalIds,
+      balance: target,
+      partial: target != null && finalIds.length < target,
+    };
   }
 
   console.log(`[scan] map verified ${mapIds.length} token(s) — checking recent purchases`);
-  scheduleBackgroundSupplement(
-    client, owner, collectionAddress, collectionAbi, mapIds, maxId, onSupplement, logClient,
+  scheduleBackgroundCatchUp(
+    client, owner, collectionAddress, collectionAbi, mapIds, maxId, target, onSupplement, logClient,
   );
   return { tokenIds: mapIds, balance: target };
 }
@@ -370,19 +396,17 @@ export async function scanOwnedTokenIds(
     console.warn("[scan] hard timeout:", err.message);
     let fallback = [];
     try {
-      fallback = filterMax(await lookupOwnedFromMap(owner), maxId);
+      const candidates = await lookupOwnedFromMap(owner);
+      fallback = filterMax(
+        await verifyOwnersOnChain(client, owner, candidates, collectionAddress, collectionAbi),
+        maxId,
+      );
     } catch {
       fallback = [];
     }
-    void supplementViaWalletApi(
-      client, owner, collectionAddress, collectionAbi, fallback, logClient,
-      { recentOnly: true, timeoutMs: WALLET_API_TIMEOUT_MS },
-    ).then((extra) => {
-      const full = filterMax(extra, maxId);
-      if (onSupplement && (full.length > fallback.length || !sameIdSet(full, fallback))) {
-        onSupplement(full);
-      }
-    });
-    return { tokenIds: fallback, balance: null, timedOut: true };
+    scheduleBackgroundCatchUp(
+      client, owner, collectionAddress, collectionAbi, fallback, maxId, null, onSupplement, logClient,
+    );
+    return { tokenIds: fallback, balance: null, timedOut: true, partial: true };
   }
 }
