@@ -927,6 +927,10 @@ async function loadTokens({ refreshMap = false, ownedIdsOverride = null } = {}) 
       refreshMap,
       onSupplement: (ids) => {
         if (gen !== loadGeneration) return;
+        if (ids.length < lastOwnedCount && lastOwnedCount > 0) {
+          console.warn(`[scan] background supplement ignored (${ids.length} < ${lastOwnedCount})`);
+          return;
+        }
         console.log(`[scan] background supplement → ${ids.length} token(s)`);
         void loadTokens({ ownedIdsOverride: ids });
       },

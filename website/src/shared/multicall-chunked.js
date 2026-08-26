@@ -6,9 +6,9 @@ export const MULTICALL_PARALLEL = 4;
 const MULTICALL_TIMEOUT_MS = 12_000;
 const OWNER_VERIFY_CHUNK = 96;
 const OWNER_VERIFY_TIMEOUT_MS = 25_000;
-const SCAN_HARD_TIMEOUT_MS = 60_000;
+const SCAN_HARD_TIMEOUT_MS = 90_000;
 const WALLET_API_RECENT_TIMEOUT_MS = 18_000;
-const WALLET_API_FULL_TIMEOUT_MS = 55_000;
+const WALLET_API_FULL_TIMEOUT_MS = 65_000;
 const CLIENT_LOG_BLOCK_RANGE = 10_000n;
 
 const TRANSFER_EVENT = parseAbiItem(
@@ -252,8 +252,12 @@ async function supplementViaWalletApi(
   }
   if (!apiIds.length) return verified;
 
-  const merged = mergeUniqueIds(verified, apiIds);
-  return verifyOwnersOnChain(client, owner, merged, collectionAddress, collectionAbi);
+  const known = new Set(verified);
+  const novel = apiIds.filter((id) => !known.has(id));
+  if (!novel.length) return verified;
+
+  const extra = await verifyOwnersOnChain(client, owner, novel, collectionAddress, collectionAbi);
+  return mergeUniqueIds(verified, extra);
 }
 
 function scheduleBackgroundCatchUp(
@@ -268,24 +272,35 @@ function scheduleBackgroundCatchUp(
   logClient,
 ) {
   if (!onSupplement) return;
+  if (targetBalance != null && currentIds.length >= targetBalance) return;
 
   void (async () => {
     let verified = currentIds;
-    verified = await supplementViaWalletApi(
-      client, owner, collectionAddress, collectionAbi, verified, logClient,
-      { recentOnly: true, timeoutMs: WALLET_API_RECENT_TIMEOUT_MS },
-    );
-    let full = filterMax(verified, maxId);
-    if (targetBalance != null && full.length < targetBalance) {
-      console.log(`[scan] background catch-up ${full.length}/${targetBalance} — full wallet API`);
+    const gap = targetBalance != null ? targetBalance - currentIds.length : 0;
+    if (gap > 15) {
       verified = await supplementViaWalletApi(
         client, owner, collectionAddress, collectionAbi, verified, logClient,
         { recentOnly: false, timeoutMs: WALLET_API_FULL_TIMEOUT_MS },
       );
-      full = filterMax(verified, maxId);
+    } else {
+      verified = await supplementViaWalletApi(
+        client, owner, collectionAddress, collectionAbi, verified, logClient,
+        { recentOnly: true, timeoutMs: WALLET_API_RECENT_TIMEOUT_MS },
+      );
+      let full = filterMax(verified, maxId);
+      if (targetBalance != null && full.length < targetBalance) {
+        console.log(`[scan] background catch-up ${full.length}/${targetBalance} — full wallet API`);
+        verified = await supplementViaWalletApi(
+          client, owner, collectionAddress, collectionAbi, verified, logClient,
+          { recentOnly: false, timeoutMs: WALLET_API_FULL_TIMEOUT_MS },
+        );
+      }
     }
-    if (full.length > currentIds.length || !sameIdSet(full, currentIds)) {
+    const full = filterMax(verified, maxId);
+    if (full.length >= currentIds.length && (full.length > currentIds.length || !sameIdSet(full, currentIds))) {
       onSupplement(full);
+    } else if (full.length < currentIds.length) {
+      console.warn(`[scan] background catch-up skipped (${full.length} < ${currentIds.length})`);
     }
   })();
 }
@@ -339,16 +354,23 @@ async function scanOwnedTokenIdsInner(
     console.log(
       `[scan] map ${mapIds.length}/${target ?? "?"} — wallet API + client logs`,
     );
-    verified = await supplementViaWalletApi(
-      client, owner, collectionAddress, collectionAbi, verified, logClient,
-      { recentOnly: true, timeoutMs: WALLET_API_RECENT_TIMEOUT_MS },
-    );
-    const full = filterMax(verified, maxId);
-    if (countMismatch && full.length < target) {
+    const gap = target != null ? target - mapIds.length : 0;
+    if (mapIds.length === 0 || gap > 15) {
       verified = await supplementViaWalletApi(
         client, owner, collectionAddress, collectionAbi, verified, logClient,
         { recentOnly: false, timeoutMs: WALLET_API_FULL_TIMEOUT_MS },
       );
+    } else {
+      verified = await supplementViaWalletApi(
+        client, owner, collectionAddress, collectionAbi, verified, logClient,
+        { recentOnly: true, timeoutMs: WALLET_API_RECENT_TIMEOUT_MS },
+      );
+      if (countMismatch && filterMax(verified, maxId).length < target) {
+        verified = await supplementViaWalletApi(
+          client, owner, collectionAddress, collectionAbi, verified, logClient,
+          { recentOnly: false, timeoutMs: WALLET_API_FULL_TIMEOUT_MS },
+        );
+      }
     }
     const finalIds = filterMax(verified, maxId);
     if (target != null && finalIds.length < target) {
