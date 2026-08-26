@@ -129,28 +129,41 @@ function encodeOwnerOf(tokenId) {
 }
 
 async function verifyOwners(address, tokenIds) {
-  const owned = [];
+  const owned = new Set();
+  const failed = [];
+
+  async function checkOne(tokenId) {
+    try {
+      const hex = await rpcCallWithFallback("eth_call", [{ to: STAGE1, data: encodeOwnerOf(tokenId) }, "latest"]);
+      if (!hex || hex.length < 42) return false;
+      const owner = `0x${hex.slice(-40)}`.toLowerCase();
+      if (owner === address) {
+        owned.add(tokenId);
+        return true;
+      }
+    } catch {
+      // retry pass
+    }
+    return false;
+  }
+
   const batchSize = 24;
   for (let i = 0; i < tokenIds.length; i += batchSize) {
     const batch = tokenIds.slice(i, i + batchSize);
-    const results = await Promise.all(
+    await Promise.all(
       batch.map(async (tokenId) => {
-        try {
-          const hex = await rpcCallWithFallback("eth_call", [{ to: STAGE1, data: encodeOwnerOf(tokenId) }, "latest"]);
-          if (!hex || hex.length < 42) return null;
-          const owner = `0x${hex.slice(-40)}`.toLowerCase();
-          return owner === address ? tokenId : null;
-        } catch {
-          return null;
-        }
+        if (!(await checkOne(tokenId))) failed.push(tokenId);
       }),
     );
-    for (const id of results) {
-      if (id != null) owned.push(id);
+  }
+
+  if (failed.length) {
+    for (const tokenId of failed) {
+      await checkOne(tokenId);
     }
   }
-  owned.sort((a, b) => a - b);
-  return owned;
+
+  return [...owned].sort((a, b) => a - b);
 }
 
 async function findOwnedTokenIds(address, { recentOnly = false } = {}) {
@@ -210,6 +223,7 @@ export default async (req) => {
       address,
       tokenIds: result.tokenIds,
       count: result.tokenIds.length,
+      balance: result.balance ?? result.tokenIds.length,
       source: result.source,
       recent: recentOnly,
     });

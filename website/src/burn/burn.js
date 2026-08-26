@@ -883,7 +883,7 @@ async function ensureMainnet() {
 let lastWalletBalance = null;
 
 async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
-  setMessage("Loading tokens…", "info");
+  setMessage("Scanning wallet on-chain…", "info");
 
   const MAX_ID = SCAN_MAX_ID;
   const client = readClient || publicClient;
@@ -903,17 +903,19 @@ async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
     owned = scan.tokenIds;
     lastWalletBalance = scan.balance;
     if (scan.timedOut && owned.length) {
-      setMessage(`Loaded ${owned.length} token(s) (scan timed out — catching up in background).`, "info");
+      setMessage(`Loaded ${owned.length} token(s) (scan timed out — retrying in background).`, "info");
     } else if (scan.partial && scan.balance != null && owned.length) {
-      setMessage(`Loaded ${owned.length} of ${scan.balance} token(s) — finding the rest…`, "info");
-    } else if (scan.partial && owned.length) {
-      setMessage(`Found ${owned.length} token(s). Checking for new purchases…`, "info");
+      setMessage(
+        `Loaded ${owned.length} of ${scan.balance} token(s). Reconnect wallet to retry.`,
+        "error",
+      );
     }
   } catch (err) {
     console.warn("[scan] failed:", err.message);
+    setMessage("Wallet scan failed — click Connect Wallet to retry.", "error");
   }
 
-  console.log(`[scan] Owned token IDs (${owned.length})`);
+  console.log(`[scan] Owned token IDs (${owned.length}${lastWalletBalance != null ? ` / ${lastWalletBalance}` : ""})`);
   return owned;
 }
 
@@ -1054,10 +1056,7 @@ async function loadTokens({ refreshMap = false, ownedIdsOverride = null } = {}) 
     let msg =
       `${lastOwnedCount} in wallet · ${tokens.length} shown` +
       (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
-      `. Select 2 of the same burnable character — first selected will be upgraded.` +
-      (lastWalletBalance != null && lastOwnedCount < lastWalletBalance
-        ? ` Found ${lastOwnedCount}/${lastWalletBalance} — new purchases may appear in a few seconds.`
-        : "");
+      `. Select 2 of the same burnable character — first selected will be upgraded.`;
     setMessage(msg, "info");
   }
 }
