@@ -206,8 +206,10 @@ function isValidCharId(charId) {
 }
 
 function resolveCharacterName(tokenId, charId, fallback = null) {
-  if (isValidCharId(charId) && CHAR_ID_TO_NAME[charId]) return CHAR_ID_TO_NAME[charId];
-  return characterFromMetadata(tokenId) || fallback;
+  const fromMeta = characterFromMetadata(tokenId);
+  if (charId == null || charId < 0) return fromMeta || fallback;
+  if (CHAR_ID_TO_NAME[charId]) return CHAR_ID_TO_NAME[charId];
+  return fromMeta || fallback;
 }
 
 /** charId → 0 Blocked, 1 Normal, 2 DirectToS3 (from EvolvePixelTrip.characterPath) */
@@ -504,7 +506,101 @@ async function fetchTokenMetadata(tokenId) {
 
 async function loadMetadataForTokens(tokenIds) {
   const unique = [...new Set(tokenIds.map(Number).filter(Boolean))];
-  await Promise.all(unique.map(id => fetchTokenMetadata(id)));
+  const batchSize = 24;
+  for (let i = 0; i < unique.length; i += batchSize) {
+    await Promise.all(unique.slice(i, i + batchSize).map((id) => fetchTokenMetadata(id)));
+  }
+}
+
+async function readEvolveField(client, tokenId, fn) {
+  try {
+    return await client.readContract({
+      address: EVOLVE_ADDRESS,
+      abi: EVOLVE_ABI,
+      functionName: fn,
+      args: [BigInt(tokenId)],
+    });
+  } catch {
+    return null;
+  }
+}
+
+async function retryFailedEvolveMulticall(client, ownedIds, mcResults) {
+  const failed = [];
+  for (let i = 0; i < ownedIds.length; i++) {
+    if (mcResults[i * 2]?.status !== "success") {
+      failed.push({ i, id: ownedIds[i], fn: "stage1Character", idx: i * 2 });
+    }
+    if (mcResults[i * 2 + 1]?.status !== "success") {
+      failed.push({ i, id: ownedIds[i], fn: "evolvedStage", idx: i * 2 + 1 });
+    }
+  }
+  if (!failed.length) return mcResults;
+
+  console.log(`[token] retry evolve reads for ${failed.length} call(s)`);
+  for (let b = 0; b < failed.length; b += 12) {
+    await Promise.all(
+      failed.slice(b, b + 12).map(async ({ id, fn, idx }) => {
+        const v = await readEvolveField(client, id, fn);
+        if (v != null) mcResults[idx] = { status: "success", result: v };
+      }),
+    );
+  }
+  return mcResults;
+}
+
+async function loadEvolveFields(client, ownedIds) {
+  const contracts = ownedIds.flatMap((id) => [
+    { address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "stage1Character", args: [BigInt(id)] },
+    { address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "evolvedStage", args: [BigInt(id)] },
+  ]);
+
+  let mcResults = [];
+  try {
+    mcResults = await multicallChunked(client, contracts, {
+      stopOnFailure: false,
+      timeoutMs: 120_000,
+      chunk: 128,
+      parallel: 3,
+    });
+  } catch (err) {
+    console.warn("[token] evolve multicall failed:", err.message);
+  }
+
+  mcResults = await retryFailedEvolveMulticall(client, ownedIds, mcResults);
+
+  return ownedIds.map((id, i) => {
+    const charR = mcResults[i * 2];
+    const stageR = mcResults[i * 2 + 1];
+    const chainCharOk = charR?.status === "success";
+    const chainStageOk = stageR?.status === "success";
+    const meta = METADATA_CACHE[String(id)];
+
+    let charId = chainCharOk ? Number(charR.result) : null;
+    let stage = chainStageOk ? Number(stageR.result) : null;
+
+    if (charId == null && meta?.characterName && CHAR_NAME_TO_ID[meta.characterName] != null) {
+      charId = Number(CHAR_NAME_TO_ID[meta.characterName]);
+    }
+    if (stage == null && meta?.stage != null) stage = Number(meta.stage);
+    if (stage == null) stage = 0;
+
+    const character = resolveCharacterName(id, charId, meta?.characterName || `Token #${id}`);
+    if (charId == null || charId < 0) {
+      charId = CHAR_NAME_TO_ID[character] ?? 0;
+    }
+
+    return {
+      tokenId: id,
+      character,
+      charId,
+      stage,
+      canEvolve: false,
+      viewReason: null,
+      name: `#${id}${character ? ` ${character}` : ""}`,
+      _chainCharOk: chainCharOk,
+    };
+  });
 }
 
 function refreshTokenImages() {
@@ -957,45 +1053,13 @@ async function loadTokens({ refreshMap = false, ownedIdsOverride = null } = {}) 
   }
   lastOwnedCount = ownedIds.length;
 
-  // One multicall for all evolve contract reads
-  const contracts = ownedIds.flatMap((id) => [
-    { address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "stage1Character", args: [BigInt(id)] },
-    { address: EVOLVE_ADDRESS, abi: EVOLVE_ABI, functionName: "evolvedStage",   args: [BigInt(id)] },
-  ]);
+  setMessage(`Loading ${ownedIds.length} token(s)…`, "info");
+  await loadMetadataForTokens(ownedIds);
 
-  let mcResults = [];
-  try {
-    mcResults = await multicallChunked(readClient || publicClient, contracts);
-  } catch (err) {
-    console.warn("[token] evolve multicall failed:", err.message);
-  }
+  setMessage(`Reading evolution state for ${ownedIds.length} token(s)…`, "info");
+  const stubs = await loadEvolveFields(readClient || publicClient, ownedIds);
 
-  const stubs = [];
-  for (let i = 0; i < ownedIds.length; i++) {
-    const id = ownedIds[i];
-    try {
-      const charR  = mcResults[i * 2];
-      const stageR = mcResults[i * 2 + 1];
-      const charId = charR?.status === "success" ? Number(charR.result) : 0;
-      const stage  = stageR?.status === "success" ? Number(stageR.result) : 0;
-
-      const character    = CHAR_ID_TO_NAME[charId] || null;
-      const currentStage = stage;
-      stubs.push({
-        tokenId:    id,
-        character:  character || `Unknown #${charId}`,
-        charId,
-        stage:      currentStage,
-        canEvolve:  false,
-        viewReason: null,
-        name:       `#${id}${character ? ` ${character}` : ""}`,
-      });
-    } catch (e) {
-      console.warn(`[token] #${id} read failed:`, e.message);
-    }
-  }
-
-  const stage1CharIds = stubs.filter((t) => t.stage === 0 && isValidCharId(t.charId)).map((t) => t.charId);
+  const stage1CharIds = stubs.filter((t) => t.stage === 0 && isValidCharId(t.charId) && t.charId > 0).map((t) => t.charId);
   try {
     await loadCharacterPaths(stage1CharIds);
   } catch (err) {
@@ -1018,9 +1082,7 @@ async function loadTokens({ refreshMap = false, ownedIdsOverride = null } = {}) 
     }
   }
 
-  const evolvedIds = stubs.filter(t => t.stage >= 2).map(t => t.tokenId);
-  const stage1Ids  = stubs.filter(t => t.stage === 0).map(t => t.tokenId);
-  if (stage1Ids.length) await loadMetadataForTokens(stage1Ids);
+  const evolvedIds = stubs.filter((t) => t.stage >= 2).map((t) => t.tokenId);
   if (evolvedIds.length) await loadMetadataForTokens(evolvedIds);
 
   tokens = stubs.map(finalizeToken);
