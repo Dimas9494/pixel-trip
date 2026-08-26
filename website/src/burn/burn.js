@@ -890,6 +890,18 @@ async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
   let owned = [];
   lastWalletBalance = null;
 
+  const onProgress = (p) => {
+    if (p.phase === "logs" && p.target) {
+      setMessage(`Scanning wallet… block ${p.done}/${p.total}`, "info");
+    } else if (p.phase === "logs") {
+      setMessage(`Scanning wallet… ${p.done}/${p.total} (${p.candidates} candidates)`, "info");
+    } else if (p.phase === "verify") {
+      setMessage(`Verifying ownership… ${p.total} candidates`, "info");
+    } else if (p.phase === "start" && p.target) {
+      setMessage(`Scanning wallet… ${p.target} token(s) on-chain`, "info");
+    }
+  };
+
   try {
     const scan = await scanOwnedTokenIds(client, {
       owner: account,
@@ -899,6 +911,7 @@ async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
       forceRefresh: refreshMap,
       logClient: publicClient,
       onSupplement,
+      onProgress,
     });
     owned = scan.tokenIds;
     lastWalletBalance = scan.balance;

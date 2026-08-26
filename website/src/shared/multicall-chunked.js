@@ -5,11 +5,12 @@ export const MULTICALL_CHUNK = 256;
 export const MULTICALL_PARALLEL = 4;
 const MULTICALL_TIMEOUT_MS = 12_000;
 const OWNER_VERIFY_CHUNK = 96;
-const OWNER_VERIFY_TIMEOUT_MS = 30_000;
-const SCAN_HARD_TIMEOUT_MS = 120_000;
-const WALLET_API_FULL_TIMEOUT_MS = 90_000;
-const CLIENT_LOG_BLOCK_RANGE = 10_000n;
-const WALLET_API_ATTEMPTS = 3;
+const OWNER_VERIFY_TIMEOUT_MS = 45_000;
+const SCAN_HARD_TIMEOUT_MS = 180_000;
+const WALLET_API_TIMEOUT_MS = 45_000;
+const LOG_CHUNK_BLOCKS = 10_000n;
+/** PIXEL TRIP deploy block — full Transfer history starts here. */
+const COLLECTION_DEPLOY_BLOCK = 25_613_313n;
 
 const TRANSFER_EVENT = parseAbiItem(
   "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
@@ -26,14 +27,6 @@ function withTimeout(promise, ms, label) {
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function sameIdSet(a, b) {
-  if (a.length !== b.length) return false;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
 }
 
 export async function multicallChunked(
@@ -104,7 +97,7 @@ async function readWalletBalance(client, owner, collectionAddress, collectionAbi
   }
 }
 
-async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, collectionAbi) {
+async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, collectionAbi, onProgress) {
   if (!tokenIds.length) return [];
 
   const addr = owner.toLowerCase();
@@ -133,6 +126,7 @@ async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, c
 
   if (retryIds.length) {
     console.log(`[scan] retry ownerOf for ${retryIds.length} token(s)`);
+    onProgress?.({ phase: "verify-retry", done: owned.length, total: tokenIds.length });
     for (let i = 0; i < retryIds.length; i += 8) {
       const batch = retryIds.slice(i, i + 8);
       for (const id of batch) {
@@ -169,10 +163,8 @@ function mergeUniqueIds(...lists) {
   return [...new Set(lists.flat())].sort((a, b) => a - b);
 }
 
-/** Full wallet scan via Netlify function (Transfer logs + server-side ownerOf verify). */
-async function fetchWalletTokensFromApi(owner, { recentOnly = false, timeoutMs = WALLET_API_FULL_TIMEOUT_MS } = {}) {
-  const url =
-    `/api/wallet-tokens?address=${encodeURIComponent(owner)}&recent=${recentOnly ? "1" : "0"}`;
+async function fetchWalletTokensFromApi(owner, { timeoutMs = WALLET_API_TIMEOUT_MS } = {}) {
+  const url = `/api/wallet-tokens?address=${encodeURIComponent(owner)}&recent=0`;
   const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(timeoutMs) });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
@@ -186,47 +178,53 @@ async function fetchWalletTokensFromApi(owner, { recentOnly = false, timeoutMs =
     tokenIds,
     balance: typeof data.balance === "number" ? data.balance : null,
     count: typeof data.count === "number" ? data.count : tokenIds.length,
-    source: data.source || "api",
   };
 }
 
-/** Transfer logs via the connected wallet RPC (fallback when Netlify API fails). */
-async function discoverViaClientLogs(client, owner, collectionAddress, { maxBlocks = CLIENT_LOG_BLOCK_RANGE } = {}) {
+/** Full Transfer history via RPC (chunked getLogs — reliable, no Netlify timeout). */
+async function discoverViaClientLogsFull(client, owner, collectionAddress, onProgress) {
   if (!client?.getLogs) return [];
-  try {
-    const latest = await withTimeout(client.getBlockNumber(), 8_000, "getBlockNumber");
-    const fromBlock = latest > maxBlocks ? latest - maxBlocks : 0n;
 
-    const [toLogs, fromLogs] = await withTimeout(
-      Promise.all([
-        client.getLogs({
-          address: collectionAddress,
-          event: TRANSFER_EVENT,
-          args: { to: owner },
-          fromBlock,
-          toBlock: latest,
-        }),
-        client.getLogs({
-          address: collectionAddress,
-          event: TRANSFER_EVENT,
-          args: { from: owner },
-          fromBlock,
-          toBlock: latest,
-        }),
-      ]),
-      15_000,
-      "client getLogs",
-    );
+  const latest = await withTimeout(client.getBlockNumber(), 12_000, "getBlockNumber");
+  const fromBlock = COLLECTION_DEPLOY_BLOCK;
+  const ids = new Set();
+  const totalChunks = Math.max(1, Math.ceil(Number(latest - fromBlock + 1n) / Number(LOG_CHUNK_BLOCKS)));
+  let done = 0;
 
-    const ids = new Set();
-    for (const log of [...toLogs, ...fromLogs]) {
-      if (log.args?.tokenId != null) ids.add(Number(log.args.tokenId));
+  for (let start = fromBlock; start <= latest; start += LOG_CHUNK_BLOCKS) {
+    const end = start + LOG_CHUNK_BLOCKS - 1n > latest ? latest : start + LOG_CHUNK_BLOCKS - 1n;
+    try {
+      const [toLogs, fromLogs] = await withTimeout(
+        Promise.all([
+          client.getLogs({
+            address: collectionAddress,
+            event: TRANSFER_EVENT,
+            args: { to: owner },
+            fromBlock: start,
+            toBlock: end,
+          }),
+          client.getLogs({
+            address: collectionAddress,
+            event: TRANSFER_EVENT,
+            args: { from: owner },
+            fromBlock: start,
+            toBlock: end,
+          }),
+        ]),
+        20_000,
+        "getLogs chunk",
+      );
+      for (const log of [...toLogs, ...fromLogs]) {
+        if (log.args?.tokenId != null) ids.add(Number(log.args.tokenId));
+      }
+    } catch (err) {
+      console.warn(`[scan] logs chunk ${start}-${end}:`, err.message);
     }
-    return [...ids];
-  } catch (err) {
-    console.warn("[scan] client logs:", err.message);
-    return [];
+    done += 1;
+    onProgress?.({ phase: "logs", done, total: totalChunks, candidates: ids.size });
   }
+
+  return [...ids];
 }
 
 async function mergeMapFallback(
@@ -237,6 +235,7 @@ async function mergeMapFallback(
   collectionAbi,
   tokenIds,
   refreshMap,
+  onProgress,
 ) {
   try {
     if (refreshMap) await loadTokenOwners(true);
@@ -244,7 +243,10 @@ async function mergeMapFallback(
     const known = new Set(tokenIds);
     const novel = mapCandidates.filter((id) => !known.has(id) && id <= maxId);
     if (!novel.length) return tokenIds;
-    const extra = await verifyOwnersOnChain(client, owner, novel, collectionAddress, collectionAbi);
+    onProgress?.({ phase: "map", count: novel.length });
+    const extra = await verifyOwnersOnChain(
+      client, owner, novel, collectionAddress, collectionAbi, onProgress,
+    );
     return filterMax(mergeUniqueIds(tokenIds, extra), maxId);
   } catch (err) {
     console.warn("[scan] map fallback:", err.message);
@@ -252,105 +254,109 @@ async function mergeMapFallback(
   }
 }
 
-function scheduleBackgroundCatchUp(
-  client,
-  owner,
-  collectionAddress,
-  collectionAbi,
-  currentIds,
-  maxId,
-  targetBalance,
-  onSupplement,
-) {
-  if (!onSupplement) return;
-  if (targetBalance != null && currentIds.length >= targetBalance) return;
-
-  void (async () => {
-    let best = currentIds;
-    for (let attempt = 0; attempt < 2; attempt++) {
-      try {
-        const api = await fetchWalletTokensFromApi(owner, { recentOnly: false });
-        const full = filterMax(api.tokenIds, maxId);
-        if (full.length > best.length) best = full;
-        if (targetBalance != null && best.length >= targetBalance) break;
-      } catch (err) {
-        console.warn("[scan] background catch-up:", err.message);
-      }
-      if (attempt === 0) await sleep(2000);
-    }
-    if (best.length > currentIds.length) {
-      onSupplement(best);
-    }
-  })();
+function mergeApiTokens(tokenIds, apiIds, maxId) {
+  if (!apiIds?.length) return tokenIds;
+  return filterMax(mergeUniqueIds(tokenIds, apiIds), maxId);
 }
 
 async function scanOwnedTokenIdsInner(
   client,
-  { owner, maxId, collectionAddress, collectionAbi, refreshMap = false, onSupplement = null, logClient = null },
+  {
+    owner,
+    maxId,
+    collectionAddress,
+    collectionAbi,
+    refreshMap = false,
+    onSupplement = null,
+    logClient = null,
+    onProgress = null,
+  },
 ) {
   const balanceRaw = await readWalletBalance(client, owner, collectionAddress, collectionAbi);
   const target = balanceRaw != null ? Number(balanceRaw) : null;
   if (target === 0) return { tokenIds: [], balance: 0 };
 
+  onProgress?.({ phase: "start", target });
+
+  const logsClient = client?.getLogs ? client : logClient;
+  const apiPromise = fetchWalletTokensFromApi(owner).catch((err) => {
+    console.warn("[scan] wallet API:", err.message);
+    return null;
+  });
+
   let tokenIds = [];
 
-  // Primary path: full wallet API — blocks until balanceOf match or retries exhausted.
-  for (let attempt = 0; attempt < WALLET_API_ATTEMPTS; attempt++) {
-    try {
-      const api = await fetchWalletTokensFromApi(owner, { recentOnly: false });
-      tokenIds = filterMax(api.tokenIds, maxId);
-      const goal = target ?? api.balance ?? tokenIds.length;
-      console.log(`[scan] wallet API ${tokenIds.length}/${goal} (attempt ${attempt + 1}, ${api.source})`);
-      if (target != null && tokenIds.length >= target) {
-        return { tokenIds, balance: target };
-      }
-      if (target == null && tokenIds.length > 0) {
-        return { tokenIds, balance: tokenIds.length };
-      }
-    } catch (err) {
-      console.warn(`[scan] wallet API attempt ${attempt + 1}:`, err.message);
+  // Primary: full client-side Transfer logs (mevblocker / wallet RPC).
+  if (logsClient) {
+    const candidates = await discoverViaClientLogsFull(
+      logsClient, owner, collectionAddress, onProgress,
+    );
+    onProgress?.({ phase: "verify", done: 0, total: candidates.length });
+    tokenIds = filterMax(
+      await verifyOwnersOnChain(
+        client, owner, candidates, collectionAddress, collectionAbi, onProgress,
+      ),
+      maxId,
+    );
+    console.log(`[scan] client logs verified ${tokenIds.length}/${target ?? "?"}`);
+    if (target != null && tokenIds.length >= target) {
+      return { tokenIds, balance: target };
     }
-    if (attempt < WALLET_API_ATTEMPTS - 1) await sleep(2000);
   }
 
-  // Fallback: owner map (only adds tokens missing from API result).
+  // Merge Netlify API (when it returns extra IDs the log scan missed).
+  const api = await apiPromise;
+  if (api?.tokenIds?.length) {
+    tokenIds = mergeApiTokens(tokenIds, api.tokenIds, maxId);
+    console.log(`[scan] after API merge ${tokenIds.length}/${target ?? "?"}`);
+    if (target != null && tokenIds.length >= target) {
+      return { tokenIds, balance: target };
+    }
+  }
+
+  // Owner map fallback.
   tokenIds = await mergeMapFallback(
-    client, owner, maxId, collectionAddress, collectionAbi, tokenIds, refreshMap,
+    client, owner, maxId, collectionAddress, collectionAbi, tokenIds, refreshMap, onProgress,
   );
   if (target != null && tokenIds.length >= target) {
-    console.log(`[scan] map fallback complete ${tokenIds.length}/${target}`);
     return { tokenIds, balance: target };
-  }
-
-  // Fallback: wallet RPC Transfer logs (recent window).
-  if (target != null && tokenIds.length < target) {
-    const logIds = await discoverViaClientLogs(logClient || client, owner, collectionAddress);
-    const known = new Set(tokenIds);
-    const novel = logIds.filter((id) => !known.has(id) && id <= maxId);
-    if (novel.length) {
-      const extra = await verifyOwnersOnChain(client, owner, novel, collectionAddress, collectionAbi);
-      tokenIds = filterMax(mergeUniqueIds(tokenIds, extra), maxId);
-    }
   }
 
   const partial = target != null && tokenIds.length < target;
   if (partial) {
     console.warn(`[scan] incomplete ${tokenIds.length}/${target}`);
-    scheduleBackgroundCatchUp(
-      client, owner, collectionAddress, collectionAbi, tokenIds, maxId, target, onSupplement,
-    );
+    if (onSupplement) {
+      void (async () => {
+        await sleep(3000);
+        try {
+          const apiRetry = await fetchWalletTokensFromApi(owner, { timeoutMs: 60_000 });
+          const full = mergeApiTokens(tokenIds, apiRetry.tokenIds, maxId);
+          if (full.length > tokenIds.length) onSupplement(full);
+        } catch (err) {
+          console.warn("[scan] background API retry:", err.message);
+        }
+      })();
+    }
   }
 
   return { tokenIds, balance: target, partial };
 }
 
 /**
- * Wallet scan — full Transfer-log lookup via Netlify API, then map/RPC fallbacks.
- * Waits for complete scan before returning when balanceOf is known.
+ * Wallet scan — full Transfer-log lookup in browser via RPC, then API/map fallbacks.
  */
 export async function scanOwnedTokenIds(
   client,
-  { owner, maxId, collectionAddress, collectionAbi, forceRefresh = false, onSupplement = null, logClient = null },
+  {
+    owner,
+    maxId,
+    collectionAddress,
+    collectionAbi,
+    forceRefresh = false,
+    onSupplement = null,
+    logClient = null,
+    onProgress = null,
+  },
 ) {
   try {
     return await withTimeout(
@@ -362,6 +368,7 @@ export async function scanOwnedTokenIds(
         refreshMap: forceRefresh,
         onSupplement,
         logClient,
+        onProgress,
       }),
       SCAN_HARD_TIMEOUT_MS,
       "wallet scan",
@@ -370,21 +377,17 @@ export async function scanOwnedTokenIds(
     console.warn("[scan] hard timeout:", err.message);
     let fallback = [];
     try {
-      const api = await fetchWalletTokensFromApi(owner, { recentOnly: false, timeoutMs: 45_000 });
-      fallback = filterMax(api.tokenIds, maxId);
-    } catch {
-      try {
+      const logsClient = client?.getLogs ? client : logClient;
+      if (logsClient) {
+        const candidates = await discoverViaClientLogsFull(logsClient, owner, collectionAddress, null);
         fallback = filterMax(
-          await mergeMapFallback(client, owner, maxId, collectionAddress, collectionAbi, [], forceRefresh),
+          await verifyOwnersOnChain(client, owner, candidates, collectionAddress, collectionAbi, null),
           maxId,
         );
-      } catch {
-        fallback = [];
       }
+    } catch {
+      fallback = [];
     }
-    scheduleBackgroundCatchUp(
-      client, owner, collectionAddress, collectionAbi, fallback, maxId, null, onSupplement,
-    );
     return { tokenIds: fallback, balance: null, timedOut: true, partial: true };
   }
 }
