@@ -4,11 +4,12 @@ import { lookupOwnedFromMap, loadTokenOwners } from "./token-owners.js";
 export const MULTICALL_CHUNK = 256;
 export const MULTICALL_PARALLEL = 4;
 const MULTICALL_TIMEOUT_MS = 12_000;
-const OWNER_VERIFY_CHUNK = 96;
-const OWNER_VERIFY_TIMEOUT_MS = 45_000;
-const SCAN_HARD_TIMEOUT_MS = 180_000;
-const WALLET_API_TIMEOUT_MS = 45_000;
+const OWNER_VERIFY_CHUNK = 64;
+const OWNER_VERIFY_TIMEOUT_MS = 60_000;
+const SCAN_HARD_TIMEOUT_MS = 240_000;
+const WALLET_API_TIMEOUT_MS = 90_000;
 const LOG_CHUNK_BLOCKS = 10_000n;
+const LOG_CHUNK_RETRIES = 3;
 /** PIXEL TRIP deploy block — full Transfer history starts here. */
 const COLLECTION_DEPLOY_BLOCK = 25_613_313n;
 
@@ -97,11 +98,30 @@ async function readWalletBalance(client, owner, collectionAddress, collectionAbi
   }
 }
 
+async function readOwnerOf(client, collectionAddress, collectionAbi, tokenId, ownerLower) {
+  try {
+    const result = await withTimeout(
+      client.readContract({
+        address: collectionAddress,
+        abi: collectionAbi,
+        functionName: "ownerOf",
+        args: [BigInt(tokenId)],
+      }),
+      10_000,
+      `ownerOf(${tokenId})`,
+    );
+    return result?.toLowerCase() === ownerLower ? tokenId : null;
+  } catch {
+    return null;
+  }
+}
+
 async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, collectionAbi, onProgress) {
   if (!tokenIds.length) return [];
 
   const addr = owner.toLowerCase();
-  const contracts = tokenIds.map((id) => ({
+  const unique = [...new Set(tokenIds)].sort((a, b) => a - b);
+  const contracts = unique.map((id) => ({
     address: collectionAddress,
     abi: collectionAbi,
     functionName: "ownerOf",
@@ -110,15 +130,15 @@ async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, c
 
   let results = await multicallChunked(client, contracts, {
     chunk: OWNER_VERIFY_CHUNK,
-    parallel: 2,
+    parallel: 3,
     timeoutMs: OWNER_VERIFY_TIMEOUT_MS,
     stopOnFailure: false,
   });
 
-  let owned = collectOwnedTokenIds(tokenIds, results, addr);
+  let owned = collectOwnedTokenIds(unique, results, addr);
   const ownedSet = new Set(owned);
 
-  const retryIds = tokenIds.filter((id, i) => {
+  const retryIds = unique.filter((id, i) => {
     if (ownedSet.has(id)) return false;
     const r = results[i];
     return !r || r.status !== "success";
@@ -126,32 +146,19 @@ async function verifyOwnersOnChain(client, owner, tokenIds, collectionAddress, c
 
   if (retryIds.length) {
     console.log(`[scan] retry ownerOf for ${retryIds.length} token(s)`);
-    onProgress?.({ phase: "verify-retry", done: owned.length, total: tokenIds.length });
-    for (let i = 0; i < retryIds.length; i += 8) {
-      const batch = retryIds.slice(i, i + 8);
-      for (const id of batch) {
-        try {
-          const result = await withTimeout(
-            client.readContract({
-              address: collectionAddress,
-              abi: collectionAbi,
-              functionName: "ownerOf",
-              args: [BigInt(id)],
-            }),
-            8_000,
-            `ownerOf(${id})`,
-          );
-          if (result?.toLowerCase() === addr) {
-            owned = mergeUniqueIds(owned, [id]);
-          }
-        } catch (err) {
-          console.warn(`[scan] ownerOf #${id}:`, err.message);
-        }
+    onProgress?.({ phase: "verify-retry", done: owned.length, total: unique.length });
+    for (let i = 0; i < retryIds.length; i += 16) {
+      const batch = retryIds.slice(i, i + 16);
+      const found = await Promise.all(
+        batch.map((id) => readOwnerOf(client, collectionAddress, collectionAbi, id, addr)),
+      );
+      for (const id of found) {
+        if (id != null) ownedSet.add(id);
       }
     }
+    owned = [...ownedSet].sort((a, b) => a - b);
   }
 
-  owned.sort((a, b) => a - b);
   return owned;
 }
 
@@ -178,85 +185,201 @@ async function fetchWalletTokensFromApi(owner, { timeoutMs = WALLET_API_TIMEOUT_
     tokenIds,
     balance: typeof data.balance === "number" ? data.balance : null,
     count: typeof data.count === "number" ? data.count : tokenIds.length,
+    verified: data.verified !== false,
   };
 }
 
-/** Full Transfer history via RPC (chunked getLogs — reliable, no Netlify timeout). */
+async function fetchLogChunk(client, owner, collectionAddress, start, end) {
+  const [toLogs, fromLogs] = await Promise.all([
+    client.getLogs({
+      address: collectionAddress,
+      event: TRANSFER_EVENT,
+      args: { to: owner },
+      fromBlock: start,
+      toBlock: end,
+    }),
+    client.getLogs({
+      address: collectionAddress,
+      event: TRANSFER_EVENT,
+      args: { from: owner },
+      fromBlock: start,
+      toBlock: end,
+    }),
+  ]);
+  const ids = new Set();
+  for (const log of [...toLogs, ...fromLogs]) {
+    if (log.args?.tokenId != null) ids.add(Number(log.args.tokenId));
+  }
+  return ids;
+}
+
+/** Full Transfer history via RPC with chunk retry. */
 async function discoverViaClientLogsFull(client, owner, collectionAddress, onProgress) {
   if (!client?.getLogs) return [];
 
   const latest = await withTimeout(client.getBlockNumber(), 12_000, "getBlockNumber");
   const fromBlock = COLLECTION_DEPLOY_BLOCK;
   const ids = new Set();
-  const totalChunks = Math.max(1, Math.ceil(Number(latest - fromBlock + 1n) / Number(LOG_CHUNK_BLOCKS)));
-  let done = 0;
+  const ranges = [];
 
   for (let start = fromBlock; start <= latest; start += LOG_CHUNK_BLOCKS) {
     const end = start + LOG_CHUNK_BLOCKS - 1n > latest ? latest : start + LOG_CHUNK_BLOCKS - 1n;
-    try {
-      const [toLogs, fromLogs] = await withTimeout(
-        Promise.all([
-          client.getLogs({
-            address: collectionAddress,
-            event: TRANSFER_EVENT,
-            args: { to: owner },
-            fromBlock: start,
-            toBlock: end,
-          }),
-          client.getLogs({
-            address: collectionAddress,
-            event: TRANSFER_EVENT,
-            args: { from: owner },
-            fromBlock: start,
-            toBlock: end,
-          }),
-        ]),
-        20_000,
-        "getLogs chunk",
-      );
-      for (const log of [...toLogs, ...fromLogs]) {
-        if (log.args?.tokenId != null) ids.add(Number(log.args.tokenId));
+    ranges.push({ start, end });
+  }
+
+  const failed = [];
+
+  for (let i = 0; i < ranges.length; i++) {
+    const { start, end } = ranges[i];
+    let ok = false;
+    for (let attempt = 0; attempt < LOG_CHUNK_RETRIES && !ok; attempt++) {
+      try {
+        const chunkIds = await withTimeout(
+          fetchLogChunk(client, owner, collectionAddress, start, end),
+          25_000,
+          "getLogs chunk",
+        );
+        for (const id of chunkIds) ids.add(id);
+        ok = true;
+      } catch (err) {
+        console.warn(`[scan] logs ${start}-${end} attempt ${attempt + 1}:`, err.message);
+        if (attempt < LOG_CHUNK_RETRIES - 1) await sleep(500 * (attempt + 1));
       }
-    } catch (err) {
-      console.warn(`[scan] logs chunk ${start}-${end}:`, err.message);
     }
-    done += 1;
-    onProgress?.({ phase: "logs", done, total: totalChunks, candidates: ids.size });
+    if (!ok) failed.push({ start, end });
+    onProgress?.({ phase: "logs", done: i + 1, total: ranges.length, candidates: ids.size });
+  }
+
+  for (const { start, end } of failed) {
+    try {
+      const chunkIds = await withTimeout(
+        fetchLogChunk(client, owner, collectionAddress, start, end),
+        30_000,
+        "getLogs retry",
+      );
+      for (const id of chunkIds) ids.add(id);
+    } catch (err) {
+      console.warn(`[scan] logs retry failed ${start}-${end}:`, err.message);
+    }
   }
 
   return [...ids];
 }
 
-async function mergeMapFallback(
+async function loadMapCandidates(owner, refreshMap) {
+  try {
+    if (refreshMap) await loadTokenOwners(true);
+    return await lookupOwnedFromMap(owner);
+  } catch (err) {
+    console.warn("[scan] owner map:", err.message);
+    return [];
+  }
+}
+
+/** Union candidates from logs + API + owner map, then verify. API hits are pre-verified on server. */
+async function resolveOwnedTokenIds(
   client,
   owner,
   maxId,
   collectionAddress,
   collectionAbi,
-  tokenIds,
-  refreshMap,
-  onProgress,
+  target,
+  { refreshMap = false, logsClient = null, onProgress = null } = {},
 ) {
-  try {
-    if (refreshMap) await loadTokenOwners(true);
-    const mapCandidates = await lookupOwnedFromMap(owner);
-    const known = new Set(tokenIds);
-    const novel = mapCandidates.filter((id) => !known.has(id) && id <= maxId);
-    if (!novel.length) return tokenIds;
-    onProgress?.({ phase: "map", count: novel.length });
-    const extra = await verifyOwnersOnChain(
-      client, owner, novel, collectionAddress, collectionAbi, onProgress,
-    );
-    return filterMax(mergeUniqueIds(tokenIds, extra), maxId);
-  } catch (err) {
-    console.warn("[scan] map fallback:", err.message);
-    return tokenIds;
-  }
-}
+  onProgress?.({ phase: "start", target });
 
-function mergeApiTokens(tokenIds, apiIds, maxId) {
-  if (!apiIds?.length) return tokenIds;
-  return filterMax(mergeUniqueIds(tokenIds, apiIds), maxId);
+  const apiPromise = fetchWalletTokensFromApi(owner).catch((err) => {
+    console.warn("[scan] wallet API:", err.message);
+    return null;
+  });
+  const mapPromise = loadMapCandidates(owner, refreshMap);
+
+  let logCandidates = [];
+  if (logsClient?.getLogs) {
+    logCandidates = await discoverViaClientLogsFull(
+      logsClient, owner, collectionAddress, onProgress,
+    );
+  }
+
+  const [api, mapCandidates] = await Promise.all([apiPromise, mapPromise]);
+
+  const candidateSet = new Set([
+    ...logCandidates,
+    ...(mapCandidates || []),
+  ]);
+
+  onProgress?.({ phase: "verify", done: 0, total: candidateSet.size });
+  let verified = filterMax(
+    await verifyOwnersOnChain(
+      client, owner, [...candidateSet], collectionAddress, collectionAbi, onProgress,
+    ),
+    maxId,
+  );
+
+  if (api?.tokenIds?.length) {
+    verified = filterMax(mergeUniqueIds(verified, api.tokenIds), maxId);
+    console.log(`[scan] merged API → ${verified.length}/${target ?? "?"}`);
+  }
+
+  if (target != null && verified.length >= target) {
+    return verified;
+  }
+
+  const verifiedSet = new Set(verified);
+  const mapNovel = (mapCandidates || []).filter((id) => !verifiedSet.has(id) && id <= maxId);
+  if (mapNovel.length) {
+    onProgress?.({ phase: "map", count: mapNovel.length });
+    const extra = await verifyOwnersOnChain(
+      client, owner, mapNovel, collectionAddress, collectionAbi, onProgress,
+    );
+    verified = filterMax(mergeUniqueIds(verified, extra), maxId);
+  }
+
+  if (target != null && verified.length >= target) {
+    return verified;
+  }
+
+  if (target != null && verified.length < target) {
+    console.warn(`[scan] gap fill ${verified.length}/${target}`);
+    for (let attempt = 0; attempt < 2 && verified.length < target; attempt++) {
+      try {
+        const apiRetry = await fetchWalletTokensFromApi(owner, { timeoutMs: WALLET_API_TIMEOUT_MS });
+        verified = filterMax(mergeUniqueIds(verified, apiRetry.tokenIds), maxId);
+      } catch (err) {
+        console.warn("[scan] API gap fill:", err.message);
+      }
+
+      if (logsClient?.getLogs && verified.length < target) {
+        const altClient = logsClient !== client && client?.getLogs ? client : null;
+        if (altClient) {
+          const altLogs = await discoverViaClientLogsFull(
+            altClient, owner, collectionAddress, onProgress,
+          );
+          const novel = altLogs.filter((id) => !verified.includes(id));
+          if (novel.length) {
+            const extra = await verifyOwnersOnChain(
+              client, owner, novel, collectionAddress, collectionAbi, onProgress,
+            );
+            verified = filterMax(mergeUniqueIds(verified, extra), maxId);
+          }
+        }
+      }
+
+      await loadTokenOwners(true);
+      const freshMap = await lookupOwnedFromMap(owner);
+      const missing = freshMap.filter((id) => !verified.includes(id) && id <= maxId);
+      if (missing.length) {
+        const extra = await verifyOwnersOnChain(
+          client, owner, missing, collectionAddress, collectionAbi, onProgress,
+        );
+        verified = filterMax(mergeUniqueIds(verified, extra), maxId);
+      }
+
+      if (attempt === 0) await sleep(1500);
+    }
+  }
+
+  return verified;
 }
 
 async function scanOwnedTokenIdsInner(
@@ -276,74 +399,38 @@ async function scanOwnedTokenIdsInner(
   const target = balanceRaw != null ? Number(balanceRaw) : null;
   if (target === 0) return { tokenIds: [], balance: 0 };
 
-  onProgress?.({ phase: "start", target });
-
   const logsClient = client?.getLogs ? client : logClient;
-  const apiPromise = fetchWalletTokensFromApi(owner).catch((err) => {
-    console.warn("[scan] wallet API:", err.message);
-    return null;
-  });
-
-  let tokenIds = [];
-
-  // Primary: full client-side Transfer logs (mevblocker / wallet RPC).
-  if (logsClient) {
-    const candidates = await discoverViaClientLogsFull(
-      logsClient, owner, collectionAddress, onProgress,
-    );
-    onProgress?.({ phase: "verify", done: 0, total: candidates.length });
-    tokenIds = filterMax(
-      await verifyOwnersOnChain(
-        client, owner, candidates, collectionAddress, collectionAbi, onProgress,
-      ),
-      maxId,
-    );
-    console.log(`[scan] client logs verified ${tokenIds.length}/${target ?? "?"}`);
-    if (target != null && tokenIds.length >= target) {
-      return { tokenIds, balance: target };
-    }
-  }
-
-  // Merge Netlify API (when it returns extra IDs the log scan missed).
-  const api = await apiPromise;
-  if (api?.tokenIds?.length) {
-    tokenIds = mergeApiTokens(tokenIds, api.tokenIds, maxId);
-    console.log(`[scan] after API merge ${tokenIds.length}/${target ?? "?"}`);
-    if (target != null && tokenIds.length >= target) {
-      return { tokenIds, balance: target };
-    }
-  }
-
-  // Owner map fallback.
-  tokenIds = await mergeMapFallback(
-    client, owner, maxId, collectionAddress, collectionAbi, tokenIds, refreshMap, onProgress,
+  const tokenIds = await resolveOwnedTokenIds(
+    client,
+    owner,
+    maxId,
+    collectionAddress,
+    collectionAbi,
+    target,
+    { refreshMap, logsClient, onProgress },
   );
-  if (target != null && tokenIds.length >= target) {
-    return { tokenIds, balance: target };
-  }
 
   const partial = target != null && tokenIds.length < target;
   if (partial) {
     console.warn(`[scan] incomplete ${tokenIds.length}/${target}`);
     if (onSupplement) {
       void (async () => {
-        await sleep(3000);
-        try {
-          const apiRetry = await fetchWalletTokensFromApi(owner, { timeoutMs: 60_000 });
-          const full = mergeApiTokens(tokenIds, apiRetry.tokenIds, maxId);
-          if (full.length > tokenIds.length) onSupplement(full);
-        } catch (err) {
-          console.warn("[scan] background API retry:", err.message);
-        }
+        await sleep(2000);
+        const full = await resolveOwnedTokenIds(
+          client, owner, maxId, collectionAddress, collectionAbi, target,
+          { refreshMap: true, logsClient, onProgress: null },
+        );
+        if (full.length > tokenIds.length) onSupplement(full);
       })();
     }
   }
 
+  console.log(`[scan] final ${tokenIds.length}/${target ?? "?"}`);
   return { tokenIds, balance: target, partial };
 }
 
 /**
- * Wallet scan — full Transfer-log lookup in browser via RPC, then API/map fallbacks.
+ * Wallet scan — union of Transfer logs, owner map, and wallet API; verified against balanceOf.
  */
 export async function scanOwnedTokenIds(
   client,
@@ -377,14 +464,13 @@ export async function scanOwnedTokenIds(
     console.warn("[scan] hard timeout:", err.message);
     let fallback = [];
     try {
-      const logsClient = client?.getLogs ? client : logClient;
-      if (logsClient) {
-        const candidates = await discoverViaClientLogsFull(logsClient, owner, collectionAddress, null);
-        fallback = filterMax(
-          await verifyOwnersOnChain(client, owner, candidates, collectionAddress, collectionAbi, null),
-          maxId,
-        );
-      }
+      const target = Number(
+        await readWalletBalance(client, owner, collectionAddress, collectionAbi),
+      );
+      fallback = await resolveOwnedTokenIds(
+        client, owner, maxId, collectionAddress, collectionAbi, target,
+        { refreshMap: true, logsClient: logClient || client, onProgress: null },
+      );
     } catch {
       fallback = [];
     }

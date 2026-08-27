@@ -192,12 +192,21 @@ async function findOwnedTokenIds(address, { recentOnly = false } = {}) {
     return { tokenIds: [], source: recentOnly ? "recent-empty" : "logs-empty", balance };
   }
 
-  const tokenIds = await verifyOwners(address, [...candidates]);
+  let tokenIds = await verifyOwners(address, [...candidates]);
+  if (tokenIds.length < balance) {
+    const have = new Set(tokenIds);
+    const retry = [...candidates].filter((id) => !have.has(id));
+    if (retry.length) {
+      const extra = await verifyOwners(address, retry);
+      tokenIds = [...new Set([...tokenIds, ...extra])].sort((a, b) => a - b);
+    }
+  }
   return {
     tokenIds,
     source: recentOnly ? "recent" : "logs",
     balance,
     candidates: candidates.size,
+    verified: true,
   };
 }
 
@@ -226,6 +235,7 @@ export default async (req) => {
       balance: result.balance ?? result.tokenIds.length,
       source: result.source,
       recent: recentOnly,
+      verified: result.verified !== false,
     });
   } catch (err) {
     console.error("[wallet-tokens]", err);
