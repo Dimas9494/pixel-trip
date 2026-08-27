@@ -2,8 +2,12 @@
  * Netlify Function: wallet-tokens
  * GET /.netlify/functions/wallet-tokens?address=0x...
  *
- * Fast wallet lookup via Transfer logs + ownerOf verify (no 4444-scan).
+ * Fast wallet lookup via owner map + Transfer logs + ownerOf verify.
  */
+
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 
 const STAGE1 = "0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9";
 const FROM_BLOCK = 25_613_313;
@@ -22,6 +26,32 @@ const RPC_URLS = [
 const RECENT_BLOCK_RANGE = 10_000;
 const MEVBLOCKER_MAX_RANGE = 10_000;
 const ONERPC_MAX_RANGE = 50;
+
+let ownerMapCache = null;
+
+function loadOwnerMap() {
+  if (ownerMapCache) return ownerMapCache;
+  try {
+    const here = path.dirname(fileURLToPath(import.meta.url));
+    const mapPath = path.join(here, "../../public/data/token-owners.json");
+    ownerMapCache = JSON.parse(readFileSync(mapPath, "utf8"));
+  } catch (err) {
+    console.warn("[wallet-tokens] owner map:", err.message);
+    ownerMapCache = { owners: {} };
+  }
+  return ownerMapCache;
+}
+
+function lookupMapTokenIds(address) {
+  const map = loadOwnerMap();
+  const owners = map?.owners;
+  if (!owners || typeof owners !== "object") return [];
+  return Object.entries(owners)
+    .filter(([, owner]) => owner === address)
+    .map(([id]) => Number(id))
+    .filter((id) => Number.isInteger(id) && id > 0)
+    .sort((a, b) => a - b);
+}
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -170,6 +200,20 @@ async function findOwnedTokenIds(address, { recentOnly = false } = {}) {
   const balance = await readBalance(address);
   if (balance <= 0) return { tokenIds: [], source: "balance" };
 
+  const mapCandidates = lookupMapTokenIds(address);
+  if (mapCandidates.length) {
+    let mapVerified = await verifyOwners(address, mapCandidates);
+    if (mapVerified.length >= balance) {
+      return {
+        tokenIds: mapVerified,
+        source: "map",
+        balance,
+        candidates: mapCandidates.length,
+        verified: true,
+      };
+    }
+  }
+
   const latest = parseInt(await rpcCallWithFallback("eth_blockNumber", []), 16);
   const fromBlock = recentOnly
     ? Math.max(FROM_BLOCK, latest - RECENT_BLOCK_RANGE)
@@ -182,7 +226,7 @@ async function findOwnedTokenIds(address, { recentOnly = false } = {}) {
     getLogsWithFallback(fromBlock, latest, [TRANSFER_TOPIC, pad, null]),
   ]);
 
-  const candidates = new Set();
+  const candidates = new Set(mapCandidates);
   for (const log of [...toLogs, ...fromLogs]) {
     const id = parseTokenId(log);
     if (id) candidates.add(id);

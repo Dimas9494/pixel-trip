@@ -6,8 +6,9 @@ export const MULTICALL_PARALLEL = 4;
 const MULTICALL_TIMEOUT_MS = 12_000;
 const OWNER_VERIFY_CHUNK = 64;
 const OWNER_VERIFY_TIMEOUT_MS = 60_000;
-const SCAN_HARD_TIMEOUT_MS = 240_000;
-const WALLET_API_TIMEOUT_MS = 90_000;
+const SCAN_HARD_TIMEOUT_MS = 120_000;
+const WALLET_API_TIMEOUT_MS = 45_000;
+const WALLET_API_RECENT_TIMEOUT_MS = 12_000;
 const LOG_CHUNK_BLOCKS = 10_000n;
 const LOG_CHUNK_RETRIES = 3;
 /** PIXEL TRIP deploy block — full Transfer history starts here. */
@@ -170,8 +171,11 @@ function mergeUniqueIds(...lists) {
   return [...new Set(lists.flat())].sort((a, b) => a - b);
 }
 
-async function fetchWalletTokensFromApi(owner, { timeoutMs = WALLET_API_TIMEOUT_MS } = {}) {
-  const url = `/api/wallet-tokens?address=${encodeURIComponent(owner)}&recent=0`;
+async function fetchWalletTokensFromApi(
+  owner,
+  { recent = false, timeoutMs = recent ? WALLET_API_RECENT_TIMEOUT_MS : WALLET_API_TIMEOUT_MS } = {},
+) {
+  const url = `/api/wallet-tokens?address=${encodeURIComponent(owner)}&recent=${recent ? "1" : "0"}`;
   const res = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(timeoutMs) });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
@@ -276,7 +280,17 @@ async function loadMapCandidates(owner, refreshMap) {
   }
 }
 
-/** Union candidates from logs + API + owner map, then verify. API hits are pre-verified on server. */
+function mergeApiTokens(verified, apiResults, maxId) {
+  let out = verified;
+  for (const api of apiResults) {
+    if (api?.tokenIds?.length) {
+      out = filterMax(mergeUniqueIds(out, api.tokenIds), maxId);
+    }
+  }
+  return out;
+}
+
+/** Union candidates from owner map, API, and logs (parallel). No browser 4444-scan. */
 async function resolveOwnedTokenIds(
   client,
   owner,
@@ -288,24 +302,44 @@ async function resolveOwnedTokenIds(
 ) {
   onProgress?.({ phase: "start", target });
 
-  const apiPromise = fetchWalletTokensFromApi(owner).catch((err) => {
-    console.warn("[scan] wallet API:", err.message);
-    return null;
-  });
-  const mapPromise = loadMapCandidates(owner, refreshMap);
-
-  let logCandidates = [];
-  if (logsClient?.getLogs) {
-    logCandidates = await discoverViaClientLogsFull(
-      logsClient, owner, collectionAddress, onProgress,
+  const mapCandidates = await loadMapCandidates(owner, refreshMap);
+  if (mapCandidates.length) {
+    onProgress?.({ phase: "verify", done: 0, total: mapCandidates.length });
+    let mapVerified = filterMax(
+      await verifyOwnersOnChain(
+        client, owner, mapCandidates, collectionAddress, collectionAbi, onProgress,
+      ),
+      maxId,
     );
+    if (target != null && mapVerified.length >= target) {
+      console.log(`[scan] owner map fast path → ${mapVerified.length}/${target}`);
+      return mapVerified;
+    }
   }
 
-  const [api, mapCandidates] = await Promise.all([apiPromise, mapPromise]);
+  const apiRecentPromise = fetchWalletTokensFromApi(owner, { recent: true }).catch((err) => {
+    console.warn("[scan] wallet API recent:", err.message);
+    return null;
+  });
+  const apiFullPromise = fetchWalletTokensFromApi(owner, { recent: false }).catch((err) => {
+    console.warn("[scan] wallet API full:", err.message);
+    return null;
+  });
+  const logsPromise = logsClient?.getLogs
+    ? discoverViaClientLogsFull(logsClient, owner, collectionAddress, onProgress)
+    : Promise.resolve([]);
+
+  const [apiRecent, apiFull, logCandidates] = await Promise.all([
+    apiRecentPromise,
+    apiFullPromise,
+    logsPromise,
+  ]);
 
   const candidateSet = new Set([
     ...logCandidates,
     ...(mapCandidates || []),
+    ...(apiRecent?.tokenIds || []),
+    ...(apiFull?.tokenIds || []),
   ]);
 
   onProgress?.({ phase: "verify", done: 0, total: candidateSet.size });
@@ -315,25 +349,8 @@ async function resolveOwnedTokenIds(
     ),
     maxId,
   );
-
-  if (api?.tokenIds?.length) {
-    verified = filterMax(mergeUniqueIds(verified, api.tokenIds), maxId);
-    console.log(`[scan] merged API → ${verified.length}/${target ?? "?"}`);
-  }
-
-  if (target != null && verified.length >= target) {
-    return verified;
-  }
-
-  const verifiedSet = new Set(verified);
-  const mapNovel = (mapCandidates || []).filter((id) => !verifiedSet.has(id) && id <= maxId);
-  if (mapNovel.length) {
-    onProgress?.({ phase: "map", count: mapNovel.length });
-    const extra = await verifyOwnersOnChain(
-      client, owner, mapNovel, collectionAddress, collectionAbi, onProgress,
-    );
-    verified = filterMax(mergeUniqueIds(verified, extra), maxId);
-  }
+  verified = mergeApiTokens(verified, [apiRecent, apiFull], maxId);
+  console.log(`[scan] parallel sources → ${verified.length}/${target ?? "?"}`);
 
   if (target != null && verified.length >= target) {
     return verified;
@@ -341,60 +358,25 @@ async function resolveOwnedTokenIds(
 
   if (target != null && verified.length < target) {
     console.warn(`[scan] gap fill ${verified.length}/${target}`);
-    for (let attempt = 0; attempt < 2 && verified.length < target; attempt++) {
-      try {
-        const apiRetry = await fetchWalletTokensFromApi(owner, { timeoutMs: WALLET_API_TIMEOUT_MS });
-        verified = filterMax(mergeUniqueIds(verified, apiRetry.tokenIds), maxId);
-      } catch (err) {
-        console.warn("[scan] API gap fill:", err.message);
-      }
-
-      if (logsClient?.getLogs && verified.length < target) {
-        const altClient = logsClient !== client && client?.getLogs ? client : null;
-        if (altClient) {
-          const altLogs = await discoverViaClientLogsFull(
-            altClient, owner, collectionAddress, onProgress,
-          );
-          const novel = altLogs.filter((id) => !verified.includes(id));
-          if (novel.length) {
-            const extra = await verifyOwnersOnChain(
-              client, owner, novel, collectionAddress, collectionAbi, onProgress,
-            );
-            verified = filterMax(mergeUniqueIds(verified, extra), maxId);
-          }
-        }
-      }
-
-      await loadTokenOwners(true);
-      const freshMap = await lookupOwnedFromMap(owner);
-      const missing = freshMap.filter((id) => !verified.includes(id) && id <= maxId);
-      if (missing.length) {
-        const extra = await verifyOwnersOnChain(
-          client, owner, missing, collectionAddress, collectionAbi, onProgress,
-        );
-        verified = filterMax(mergeUniqueIds(verified, extra), maxId);
-      }
-
-      if (attempt === 0) await sleep(1500);
+    try {
+      const apiRetry = await fetchWalletTokensFromApi(owner, {
+        recent: false,
+        timeoutMs: WALLET_API_TIMEOUT_MS,
+      });
+      verified = mergeApiTokens(verified, [apiRetry], maxId);
+    } catch (err) {
+      console.warn("[scan] API gap fill:", err.message);
     }
-  }
 
-  if (target != null && verified.length < target) {
-    console.warn(`[scan] full owner scan ${verified.length}/${target}`);
-    onProgress?.({ phase: "fullscan", done: 0, total: maxId });
-    const fullScanOwned = [];
-    for (let start = 1; start <= maxId; start += OWNER_VERIFY_CHUNK) {
-      const batch = [];
-      for (let id = start; id < start + OWNER_VERIFY_CHUNK && id <= maxId; id++) batch.push(id);
-      const found = await verifyOwnersOnChain(
-        client, owner, batch, collectionAddress, collectionAbi, onProgress,
+    await loadTokenOwners(true);
+    const freshMap = await lookupOwnedFromMap(owner);
+    const missing = freshMap.filter((id) => !verified.includes(id) && id <= maxId);
+    if (missing.length) {
+      const extra = await verifyOwnersOnChain(
+        client, owner, missing, collectionAddress, collectionAbi, onProgress,
       );
-      fullScanOwned.push(...found);
-      onProgress?.({ phase: "fullscan", done: Math.min(start + OWNER_VERIFY_CHUNK - 1, maxId), total: maxId });
-      if (fullScanOwned.length >= target) break;
+      verified = filterMax(mergeUniqueIds(verified, extra), maxId);
     }
-    verified = filterMax(mergeUniqueIds(verified, fullScanOwned), maxId);
-    console.log(`[scan] after full scan → ${verified.length}/${target}`);
   }
 
   return verified;
@@ -433,11 +415,24 @@ async function scanOwnedTokenIdsInner(
     console.warn(`[scan] incomplete ${tokenIds.length}/${target}`);
     if (onSupplement) {
       void (async () => {
-        await sleep(2000);
-        const full = await resolveOwnedTokenIds(
-          client, owner, maxId, collectionAddress, collectionAbi, target,
-          { refreshMap: true, logsClient, onProgress: null },
+        await sleep(1500);
+        await loadTokenOwners(true);
+        const mapIds = await lookupOwnedFromMap(owner);
+        const api = await fetchWalletTokensFromApi(owner, {
+          recent: false,
+          timeoutMs: WALLET_API_TIMEOUT_MS,
+        }).catch(() => null);
+        const merged = filterMax(
+          mergeUniqueIds(tokenIds, mapIds, api?.tokenIds || []),
+          maxId,
         );
+        const novel = merged.filter((id) => !tokenIds.includes(id));
+        const extra = novel.length
+          ? await verifyOwnersOnChain(
+            client, owner, novel, collectionAddress, collectionAbi, null,
+          )
+          : [];
+        const full = filterMax(mergeUniqueIds(tokenIds, extra, api?.tokenIds || []), maxId);
         if (full.length > tokenIds.length) onSupplement(full);
       })();
     }

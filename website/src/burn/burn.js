@@ -995,8 +995,6 @@ async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
       setMessage(`Verifying ownership… ${p.total} candidates`, "info");
     } else if (p.phase === "start" && p.target) {
       setMessage(`Scanning wallet… ${p.target} token(s) on-chain`, "info");
-    } else if (p.phase === "fullscan") {
-      setMessage(`Deep scan… ${p.done}/${p.total} token IDs`, "info");
     }
   };
 
