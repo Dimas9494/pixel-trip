@@ -8445,5 +8445,183 @@
       "bg": "Prism",
       "frame": "Deep_Space"
     }
+  ],
+  "Bubble_DJ": [
+    {
+      "slug": "Bubble_DJ_Bald",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Bubble_DJ_Camo",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Bubble_DJ_Fire",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Bubble_DJ_Glasses",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Bubble_DJ_Hooded",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Bubble_DJ_Horns",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Bubble_DJ_Inverted",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Bubble_DJ_Kitty",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Bubble_DJ_Rainbow",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Bubble_DJ_VR_Glasses",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Bubble_DJ_Zombie",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    }
+  ],
+  "Green_Cyborg_Elf": [
+    {
+      "slug": "Green_Cyborg_Elf_Mask",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Green_Cyborg_Elf_Skeleton",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    }
+  ],
+  "Neon_Mohawk": [
+    {
+      "slug": "Neon_Mohawk_Beard",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Neon_Mohawk_Cyborg",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Neon_Mohawk_Gas_Mask",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Neon_Mohawk_Goth",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Neon_Mohawk_Love_Glasses",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Neon_Mohawk_Rainbow",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Neon_Mohawk_Zombie",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    }
+  ],
+  "Sleepy_Candle": [
+    {
+      "slug": "Sleepy_Candle_Angry",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Sleepy_Candle_Artist",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Sleepy_Candle_BackCap",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Sleepy_Candle_Big_Lips",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Sleepy_Candle_Blindfold",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Sleepy_Candle_Cap",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Sleepy_Candle_Elvis",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Sleepy_Candle_Extinguished",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Sleepy_Candle_Hooded",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Sleepy_Candle_Mohawk",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Sleepy_Candle_Pinky",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Sleepy_Candle_Round_Glasses",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Sleepy_Candle_Wizard",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Sleepy_Candle_Zombie",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    }
   ]
 }
