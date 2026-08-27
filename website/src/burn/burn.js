@@ -995,6 +995,8 @@ async function getOwnedIds({ refreshMap = false, onSupplement = null } = {}) {
       setMessage(`Verifying ownership… ${p.total} candidates`, "info");
     } else if (p.phase === "start" && p.target) {
       setMessage(`Scanning wallet… ${p.target} token(s) on-chain`, "info");
+    } else if (p.phase === "fullscan") {
+      setMessage(`Deep scan… ${p.done}/${p.total} token IDs`, "info");
     }
   };
 
@@ -1128,8 +1130,13 @@ async function loadTokens({ refreshMap = false, ownedIdsOverride = null } = {}) 
   } else {
     const evolvable = tokens.filter(t => t.canEvolve).length;
     const viewOnly  = tokens.length - evolvable;
+    const walletTotal = lastWalletBalance != null ? lastWalletBalance : lastOwnedCount;
+    const partialHint =
+      lastWalletBalance != null && lastOwnedCount < lastWalletBalance
+        ? ` (${lastOwnedCount} of ${lastWalletBalance} loaded — reconnect to retry)`
+        : "";
     let msg =
-      `${lastOwnedCount} in wallet · ${tokens.length} shown` +
+      `${walletTotal} in wallet · ${tokens.length} shown${partialHint}` +
       (viewOnly ? ` · ${evolvable} evolvable, ${viewOnly} view-only` : "") +
       `. Select 2 of the same burnable character — first selected will be upgraded.`;
     setMessage(msg, "info");
@@ -1332,8 +1339,15 @@ function updateStats() {
   const s3 = tokens.filter(t => t.stage === 3).length;
   const evolvable = tokens.filter(t => t.canEvolve).length;
   const viewOnly  = tokens.length - evolvable;
+  const walletTotal = lastWalletBalance != null ? lastWalletBalance : tokens.length;
+  const walletLabel =
+    lastWalletBalance != null && tokens.length < lastWalletBalance
+      ? `${tokens.length} of ${lastWalletBalance} in wallet`
+      : tokens.length
+        ? `${walletTotal} in wallet`
+        : null;
   els.stats.textContent = [
-    tokens.length ? `${tokens.length} in wallet` : null,
+    walletLabel,
     tokens.length ? `${evolvable} evolvable${viewOnly ? `, ${viewOnly} view-only` : ""}` : null,
     s1 ? `${s1} Stage 1` : null,
     s2 ? `${s2} Stage 2` : null,

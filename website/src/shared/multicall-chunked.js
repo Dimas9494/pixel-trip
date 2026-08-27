@@ -379,6 +379,24 @@ async function resolveOwnedTokenIds(
     }
   }
 
+  if (target != null && verified.length < target) {
+    console.warn(`[scan] full owner scan ${verified.length}/${target}`);
+    onProgress?.({ phase: "fullscan", done: 0, total: maxId });
+    const fullScanOwned = [];
+    for (let start = 1; start <= maxId; start += OWNER_VERIFY_CHUNK) {
+      const batch = [];
+      for (let id = start; id < start + OWNER_VERIFY_CHUNK && id <= maxId; id++) batch.push(id);
+      const found = await verifyOwnersOnChain(
+        client, owner, batch, collectionAddress, collectionAbi, onProgress,
+      );
+      fullScanOwned.push(...found);
+      onProgress?.({ phase: "fullscan", done: Math.min(start + OWNER_VERIFY_CHUNK - 1, maxId), total: maxId });
+      if (fullScanOwned.length >= target) break;
+    }
+    verified = filterMax(mergeUniqueIds(verified, fullScanOwned), maxId);
+    console.log(`[scan] after full scan → ${verified.length}/${target}`);
+  }
+
   return verified;
 }
 
