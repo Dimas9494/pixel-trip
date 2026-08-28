@@ -8623,5 +8623,155 @@
       "bg": "Grid_Moire",
       "frame": "Chromosome_Paint"
     }
+  ],
+  "Bucktooth_Cyclops": [
+    {
+      "slug": "Bucktooth_Cyclops_Alien",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Bucktooth_Cyclops_Baby",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Bucktooth_Cyclops_Punk",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Bucktooth_Cyclops_Samurai",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Bucktooth_Cyclops_Zombie",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    }
+  ],
+  "Bug_Eyed_Alien": [
+    {
+      "slug": "Bug_Eyed_Alien_Cyborg",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Bug_Eyed_Alien_Long_Hair",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    }
+  ],
+  "Gilded_Skull": [
+    {
+      "slug": "Gilded_Skull_BackCap",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Gilded_Skull_Frog_Hat",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Gilded_Skull_Hooded",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Gilded_Skull_King",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Gilded_Skull_Smoking",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Gilded_Skull_Snake",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Gilded_Skull_Straw_Hat",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Gilded_Skull_VR_Glasses",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Graffiti_Artist": [
+    {
+      "slug": "Graffiti_Artist_Angry",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Graffiti_Artist_Bucket_Hat",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Graffiti_Artist_Fez",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Graffiti_Artist_Gas_Mask",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Graffiti_Artist_King",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Graffiti_Artist_Knitted_Hat",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Graffiti_Artist_Long_Hair",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Graffiti_Artist_Spaceship_Hat",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    }
+  ],
+  "Tribal_Chief": [
+    {
+      "slug": "Tribal_Chief_Dark_Tech",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Tribal_Chief_Golden",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Tribal_Chief_Mech",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Tribal_Chief_Neon",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Tribal_Chief_Tiger_Mask",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    }
   ]
 }
