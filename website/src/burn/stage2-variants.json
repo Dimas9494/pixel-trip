@@ -8998,5 +8998,185 @@
       "bg": "Asteroid_Belt",
       "frame": "Phantom_Trace"
     }
+  ],
+  "Moss_Goblin": [
+    {
+      "slug": "Moss_Goblin_Dead",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Moss_Goblin_Headband",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Moss_Goblin_Mohawk",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Moss_Goblin_Mushroom_Hat",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Moss_Goblin_Smiled",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    }
+  ],
+  "SWAT": [
+    {
+      "slug": "SWAT_Alien",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "SWAT_Cap",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "SWAT_Golden",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "SWAT_Long_Hair",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "SWAT_Mohawk",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    }
+  ],
+  "Teal_Monster": [
+    {
+      "slug": "Teal_Monster_Diver",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Teal_Monster_Glasses",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Teal_Monster_Horns",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Teal_Monster_Mask",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Teal_Monster_Rainbow_Afro",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Teal_Villain": [
+    {
+      "slug": "Teal_Villain_Biker",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Teal_Villain_Cap",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Teal_Villain_Hooded",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Teal_Villain_Icy",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Teal_Villain_Lady",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Teal_Villain_Long_Hair",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Teal_Villain_Mohawk",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Teal_Villain_Mystique",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Teal_Villain_Rainbow",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Teal_Villain_Skull",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Teal_Villain_VR_Glasses",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    }
+  ],
+  "Weary_Wizard": [
+    {
+      "slug": "Weary_Wizard_Fire",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Weary_Wizard_King",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Weary_Wizard_Mushroom_Hat",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Weary_Wizard_Orb",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Weary_Wizard_Owl",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Weary_Wizard_Skull",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Weary_Wizard_Snake",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Weary_Wizard_Underwater",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    }
   ]
 }
