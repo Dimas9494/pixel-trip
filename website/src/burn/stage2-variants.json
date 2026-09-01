@@ -9178,5 +9178,299 @@
       "bg": "Grid_Moire",
       "frame": "Chromosome_Paint"
     }
+  ],
+  "Crying_Mime": [
+    {
+      "slug": "Crying_Mime_Ape",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Crying_Mime_Blonde",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Crying_Mime_Hooded",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Crying_Mime_Radioactive",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Crying_Mime_V",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Crying_Mime_With_Hands",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    }
+  ],
+  "Gilded_Bot": [
+    {
+      "slug": "Gilded_Bot_Crown",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Gilded_Bot_Horns",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Gilded_Bot_Knitted_Hat",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Gilded_Bot_Mohawk",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    }
+  ],
+  "Neon_Pulse": [
+    {
+      "slug": "Neon_Pulse_Cap",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Neon_Pulse_Earrings",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Neon_Pulse_Headband",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Neon_Pulse_Horns",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Neon_Pulse_Lady",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Neon_Pulse_Mask",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Neon_Pulse_Skull",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Neon_Pulse_Soldier",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Neon_Pulse_Vamp",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Neon_Pulse_Visor",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Neon_Pulse_Zombie",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    }
+  ],
+  "Neon_Visor": [
+    {
+      "slug": "Neon_Visor_Cap",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Neon_Visor_Cowboy_Hat",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Neon_Visor_Kitty",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Neon_Visor_Short_Hair",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Neon_Visor_Zombie",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    }
+  ],
+  "Purple_Bustard": [
+    {
+      "slug": "Purple_Bustard_3D_Glasses",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Purple_Bustard_BackCap",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Purple_Bustard_Bear",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Purple_Bustard_Beard",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Purple_Bustard_Biker",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Purple_Bustard_Cyborg",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Purple_Bustard_Frog_Hat",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Purple_Bustard_Gas_Mask",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Purple_Bustard_Lotus",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Purple_Bustard_Mohawk",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Purple_Bustard_Mushroom_Hat",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Purple_Bustard_Nouns_Glasses",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Purple_Bustard_Zombie",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    }
+  ],
+  "Sleepy_Moon": [
+    {
+      "slug": "Sleepy_Moon_Alien",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    },
+    {
+      "slug": "Sleepy_Moon_Cap",
+      "bg": "Bee_Grid",
+      "frame": "Magnetic_Field"
+    },
+    {
+      "slug": "Sleepy_Moon_Cigar",
+      "bg": "Prism",
+      "frame": "Gradient_Pulse"
+    },
+    {
+      "slug": "Sleepy_Moon_Cowboy",
+      "bg": "Asteroid_Belt",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Sleepy_Moon_Cyborg",
+      "bg": "Crystal",
+      "frame": "Ink_Bleed"
+    },
+    {
+      "slug": "Sleepy_Moon_Hippie",
+      "bg": "Plasma",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Sleepy_Moon_Hooded",
+      "bg": "Network",
+      "frame": "Marble_Vein"
+    },
+    {
+      "slug": "Sleepy_Moon_Ice_Cream",
+      "bg": "Chimera",
+      "frame": "Triangle_March"
+    },
+    {
+      "slug": "Sleepy_Moon_Mushroom_Hat",
+      "bg": "Milky_Way",
+      "frame": "Depth_Grid"
+    },
+    {
+      "slug": "Sleepy_Moon_Punk",
+      "bg": "Quartz",
+      "frame": "Antimatter"
+    },
+    {
+      "slug": "Sleepy_Moon_Rasta",
+      "bg": "Diffusion",
+      "frame": "Quasar_Beam"
+    },
+    {
+      "slug": "Sleepy_Moon_Winter_Hat",
+      "bg": "Voronoi",
+      "frame": "Portal_Ring"
+    },
+    {
+      "slug": "Sleepy_Moon_Zombie",
+      "bg": "Distortion",
+      "frame": "Deep_Space"
+    }
+  ],
+  "Surprised_Gorilla": [
+    {
+      "slug": "Surprised_Gorilla_Frost",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Surprised_Gorilla_Orange",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Surprised_Gorilla_Street",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Surprised_Gorilla_Zombie",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    }
   ]
 }
