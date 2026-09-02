@@ -99,6 +99,23 @@ function loadCharIdToName(): array {
     return $idToName;
 }
 
+/** Map legacy char-map names to stage2-variants.json keys. */
+function normalizeCharacterName(string $name, ?array $catalog = null): string {
+    static $aliases = [
+        'Surprised Gorilla' => 'Surprised_Gorilla',
+    ];
+    if (isset($aliases[$name])) {
+        return $aliases[$name];
+    }
+    if ($catalog !== null && empty($catalog[$name])) {
+        $underscored = str_replace(' ', '_', $name);
+        if ($underscored !== $name && !empty($catalog[$underscored])) {
+            return $underscored;
+        }
+    }
+    return $name;
+}
+
 function readOnChainState(int $tokenId): array {
     if (!EVOLVE_CONTRACT) {
         return ['stage' => 0, 'charId' => 0, 'charName' => ''];
@@ -109,7 +126,7 @@ function readOnChainState(int $tokenId): array {
     $stage    = decodeUint8($stageHex);
     $charId   = decodeUint16($charHex);
     $charMap  = loadCharIdToName();
-    $charName = $charMap[$charId] ?? '';
+    $charName = normalizeCharacterName($charMap[$charId] ?? '');
     return ['stage' => $stage, 'charId' => $charId, 'charName' => $charName];
 }
 
@@ -634,8 +651,10 @@ if (empty($STAGE2_VARIANTS)) {
 
 $responseAssignment = null;
 
+$charName = normalizeCharacterName($charName, $STAGE2_VARIANTS);
+
 if ($newStage === 2) {
-    $variants = $STAGE2_VARIANTS[$charName] ?? [];
+    $variants  = $STAGE2_VARIANTS[$charName] ?? [];
     if (empty($variants)) {
         http_response_code(400);
         echo json_encode(['error' => "No variants for character: $charName"]);

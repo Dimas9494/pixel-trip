@@ -53,8 +53,24 @@ const METADATA_CACHE = {};
 /** @deprecated use BURN_PROGRAM_VERSION from config.js */
 const LAB_BUILD = BURN_PROGRAM_VERSION;
 
+const CHAR_NAME_ALIASES = {
+  "Surprised Gorilla": "Surprised_Gorilla",
+};
+
+function normalizeCharacterName(name) {
+  if (!name) return name;
+  if (CHAR_NAME_ALIASES[name]) return CHAR_NAME_ALIASES[name];
+  const variants = getStage2Variants();
+  if (!variants[name] && name.includes(" ")) {
+    const underscored = name.replace(/ /g, "_");
+    if (variants[underscored]) return underscored;
+  }
+  return name;
+}
+
 function collectUsedSlugs(character, excludeTokenId = null) {
-  const variants = getStage2Variants()[character] || [];
+  const key = normalizeCharacterName(character);
+  const variants = getStage2Variants()[key] || [];
   const slugSet  = new Set(variants.map(v => v.slug));
   const used     = new Set();
   for (const [tid, v] of Object.entries(TOKEN_ASSIGNMENTS)) {
@@ -68,7 +84,8 @@ function resolveStage2Variant(tokenId, character, excludeTokenId = null) {
   const key = String(tokenId);
   if (TOKEN_ASSIGNMENTS[key]) return TOKEN_ASSIGNMENTS[key];
 
-  const variants = getStage2Variants()[character] || [];
+  const charKey = normalizeCharacterName(character);
+  const variants = getStage2Variants()[charKey] || [];
   if (!variants.length) return null;
 
   const used      = collectUsedSlugs(character, excludeTokenId);
@@ -104,7 +121,7 @@ function getStage2Variant(tokenId, character, stage = 0) {
     if (VARIANT_MAP[key]?.slug && isValidCatalogSlug(VARIANT_MAP[key].slug)) {
       return VARIANT_MAP[key];
     }
-    const variants = getStage2Variants()[character] || [];
+    const variants = getStage2Variants()[normalizeCharacterName(character)] || [];
     return variants[Number(tokenId) % variants.length] || null;
   }
 
