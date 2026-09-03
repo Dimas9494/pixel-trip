@@ -2549,6 +2549,455 @@
             "Square_Professor_Windy": "Square_Professor_Windy",
             "Square_Professor_Zombie": "Square_Professor_Zombie"
           }
+        },
+        "Anaglyph_Woman": {
+          "folder": "Anaglyph_Woman",
+          "variants": {
+            "Anaglyph_Woman_Alien": "Anaglyph_Woman_Alien",
+            "Anaglyph_Woman_Skull": "Anaglyph_Woman_Skull",
+            "Anaglyph_Woman_Tech": "Anaglyph_Woman_Tech",
+            "Anaglyph_Woman_Zombie": "Anaglyph_Woman_Zombie"
+          }
+        },
+        "Lucha_Mask": {
+          "folder": "Lucha_Mask",
+          "variants": {
+            "Lucha_Mask_BackCap": "Lucha_Mask_BackCap",
+            "Lucha_Mask_Bat": "Lucha_Mask_Bat",
+            "Lucha_Mask_Golden": "Lucha_Mask_Golden",
+            "Lucha_Mask_Horns": "Lucha_Mask_Horns",
+            "Lucha_Mask_Lizard": "Lucha_Mask_Lizard",
+            "Lucha_Mask_Mexican": "Lucha_Mask_Mexican"
+          }
+        },
+        "Safari_Turkey": {
+          "folder": "Safari_Turkey",
+          "variants": {
+            "Safari_Turkey_Big_Beard": "Safari_Turkey_Big_Beard",
+            "Safari_Turkey_Fez": "Safari_Turkey_Fez",
+            "Safari_Turkey_Headphones": "Safari_Turkey_Headphones",
+            "Safari_Turkey_Love_Glasses": "Safari_Turkey_Love_Glasses",
+            "Safari_Turkey_Mask": "Safari_Turkey_Mask",
+            "Safari_Turkey_Rasta": "Safari_Turkey_Rasta"
+          }
+        },
+        "Sleepy_Koala": {
+          "folder": "Sleepy_Koala",
+          "variants": {
+            "Sleepy_Koala_Captain": "Sleepy_Koala_Captain",
+            "Sleepy_Koala_Golden": "Sleepy_Koala_Golden",
+            "Sleepy_Koala_Hippie": "Sleepy_Koala_Hippie",
+            "Sleepy_Koala_Horns": "Sleepy_Koala_Horns",
+            "Sleepy_Koala_Mask": "Sleepy_Koala_Mask",
+            "Sleepy_Koala_Monk": "Sleepy_Koala_Monk",
+            "Sleepy_Koala_Panda": "Sleepy_Koala_Panda",
+            "Sleepy_Koala_Punk": "Sleepy_Koala_Punk",
+            "Sleepy_Koala_Teal_Mask": "Sleepy_Koala_Teal_Mask",
+            "Sleepy_Koala_VR_Glasses": "Sleepy_Koala_VR_Glasses",
+            "Sleepy_Koala_Zombie": "Sleepy_Koala_Zombie"
+          }
+        },
+        "Bubble_DJ": {
+          "folder": "Bubble_DJ",
+          "variants": {
+            "Bubble_DJ_Bald": "Bubble_DJ_Bald",
+            "Bubble_DJ_Camo": "Bubble_DJ_Camo",
+            "Bubble_DJ_Fire": "Bubble_DJ_Fire",
+            "Bubble_DJ_Glasses": "Bubble_DJ_Glasses",
+            "Bubble_DJ_Hooded": "Bubble_DJ_Hooded",
+            "Bubble_DJ_Horns": "Bubble_DJ_Horns",
+            "Bubble_DJ_Inverted": "Bubble_DJ_Inverted",
+            "Bubble_DJ_Kitty": "Bubble_DJ_Kitty",
+            "Bubble_DJ_Rainbow": "Bubble_DJ_Rainbow",
+            "Bubble_DJ_VR_Glasses": "Bubble_DJ_VR_Glasses",
+            "Bubble_DJ_Zombie": "Bubble_DJ_Zombie"
+          }
+        },
+        "Green_Cyborg_Elf": {
+          "folder": "Green_Cyborg_Elf",
+          "variants": {
+            "Green_Cyborg_Elf_Mask": "Green_Cyborg_Elf_Mask",
+            "Green_Cyborg_Elf_Skeleton": "Green_Cyborg_Elf_Skeleton"
+          }
+        },
+        "Neon_Mohawk": {
+          "folder": "Neon_Mohawk",
+          "variants": {
+            "Neon_Mohawk_Beard": "Neon_Mohawk_Beard",
+            "Neon_Mohawk_Cyborg": "Neon_Mohawk_Cyborg",
+            "Neon_Mohawk_Gas_Mask": "Neon_Mohawk_Gas_Mask",
+            "Neon_Mohawk_Goth": "Neon_Mohawk_Goth",
+            "Neon_Mohawk_Love_Glasses": "Neon_Mohawk_Love_Glasses",
+            "Neon_Mohawk_Rainbow": "Neon_Mohawk_Rainbow",
+            "Neon_Mohawk_Zombie": "Neon_Mohawk_Zombie"
+          }
+        },
+        "Sleepy_Candle": {
+          "folder": "Sleepy_Candle",
+          "variants": {
+            "Sleepy_Candle_Angry": "Sleepy_Candle_Angry",
+            "Sleepy_Candle_Artist": "Sleepy_Candle_Artist",
+            "Sleepy_Candle_BackCap": "Sleepy_Candle_BackCap",
+            "Sleepy_Candle_Big_Lips": "Sleepy_Candle_Big_Lips",
+            "Sleepy_Candle_Blindfold": "Sleepy_Candle_Blindfold",
+            "Sleepy_Candle_Cap": "Sleepy_Candle_Cap",
+            "Sleepy_Candle_Elvis": "Sleepy_Candle_Elvis",
+            "Sleepy_Candle_Extinguished": "Sleepy_Candle_Extinguished",
+            "Sleepy_Candle_Hooded": "Sleepy_Candle_Hooded",
+            "Sleepy_Candle_Mohawk": "Sleepy_Candle_Mohawk",
+            "Sleepy_Candle_Pinky": "Sleepy_Candle_Pinky",
+            "Sleepy_Candle_Round_Glasses": "Sleepy_Candle_Round_Glasses",
+            "Sleepy_Candle_Wizard": "Sleepy_Candle_Wizard",
+            "Sleepy_Candle_Zombie": "Sleepy_Candle_Zombie"
+          }
+        },
+        "Bucktooth_Cyclops": {
+          "folder": "Bucktooth_Cyclops",
+          "variants": {
+            "Bucktooth_Cyclops_Alien": "Bucktooth_Cyclops_Alien",
+            "Bucktooth_Cyclops_Baby": "Bucktooth_Cyclops_Baby",
+            "Bucktooth_Cyclops_Punk": "Bucktooth_Cyclops_Punk",
+            "Bucktooth_Cyclops_Samurai": "Bucktooth_Cyclops_Samurai",
+            "Bucktooth_Cyclops_Zombie": "Bucktooth_Cyclops_Zombie"
+          }
+        },
+        "Bug_Eyed_Alien": {
+          "folder": "Bug_Eyed_Alien",
+          "variants": {
+            "Bug_Eyed_Alien_Cyborg": "Bug_Eyed_Alien_Cyborg",
+            "Bug_Eyed_Alien_Long_Hair": "Bug_Eyed_Alien_Long_Hair"
+          }
+        },
+        "Gilded_Skull": {
+          "folder": "Gilded_Skull",
+          "variants": {
+            "Gilded_Skull_BackCap": "Gilded_Skull_BackCap",
+            "Gilded_Skull_Frog_Hat": "Gilded_Skull_Frog_Hat",
+            "Gilded_Skull_Hooded": "Gilded_Skull_Hooded",
+            "Gilded_Skull_King": "Gilded_Skull_King",
+            "Gilded_Skull_Smoking": "Gilded_Skull_Smoking",
+            "Gilded_Skull_Snake": "Gilded_Skull_Snake",
+            "Gilded_Skull_Straw_Hat": "Gilded_Skull_Straw_Hat",
+            "Gilded_Skull_VR_Glasses": "Gilded_Skull_VR_Glasses"
+          }
+        },
+        "Graffiti_Artist": {
+          "folder": "Graffiti_Artist",
+          "variants": {
+            "Graffiti_Artist_Angry": "Graffiti_Artist_Angry",
+            "Graffiti_Artist_Bucket_Hat": "Graffiti_Artist_Bucket_Hat",
+            "Graffiti_Artist_Fez": "Graffiti_Artist_Fez",
+            "Graffiti_Artist_Gas_Mask": "Graffiti_Artist_Gas_Mask",
+            "Graffiti_Artist_King": "Graffiti_Artist_King",
+            "Graffiti_Artist_Knitted_Hat": "Graffiti_Artist_Knitted_Hat",
+            "Graffiti_Artist_Long_Hair": "Graffiti_Artist_Long_Hair",
+            "Graffiti_Artist_Spaceship_Hat": "Graffiti_Artist_Spaceship_Hat"
+          }
+        },
+        "Tribal_Chief": {
+          "folder": "Tribal_Chief",
+          "variants": {
+            "Tribal_Chief_Dark_Tech": "Tribal_Chief_Dark_Tech",
+            "Tribal_Chief_Golden": "Tribal_Chief_Golden",
+            "Tribal_Chief_Mech": "Tribal_Chief_Mech",
+            "Tribal_Chief_Neon": "Tribal_Chief_Neon",
+            "Tribal_Chief_Tiger_Mask": "Tribal_Chief_Tiger_Mask"
+          }
+        },
+        "Bushy_Brow": {
+          "folder": "Bushy_Brow",
+          "variants": {
+            "Bushy_Brow_Alien": "Bushy_Brow_Alien",
+            "Bushy_Brow_Cyborg": "Bushy_Brow_Cyborg",
+            "Bushy_Brow_Skull": "Bushy_Brow_Skull",
+            "Bushy_Brow_Zombie": "Bushy_Brow_Zombie"
+          }
+        },
+        "Long_Eared_Aristocrat": {
+          "folder": "Long_Eared_Aristocrat",
+          "variants": {
+            "Long_Eared_Aristocrat_Arabic": "Long_Eared_Aristocrat_Arabic",
+            "Long_Eared_Aristocrat_Artist": "Long_Eared_Aristocrat_Artist",
+            "Long_Eared_Aristocrat_Beard": "Long_Eared_Aristocrat_Beard",
+            "Long_Eared_Aristocrat_Cigar": "Long_Eared_Aristocrat_Cigar",
+            "Long_Eared_Aristocrat_Fez": "Long_Eared_Aristocrat_Fez",
+            "Long_Eared_Aristocrat_Fire": "Long_Eared_Aristocrat_Fire",
+            "Long_Eared_Aristocrat_Green_Hair": "Long_Eared_Aristocrat_Green_Hair",
+            "Long_Eared_Aristocrat_Icy": "Long_Eared_Aristocrat_Icy",
+            "Long_Eared_Aristocrat_Pirate": "Long_Eared_Aristocrat_Pirate",
+            "Long_Eared_Aristocrat_Skull": "Long_Eared_Aristocrat_Skull",
+            "Long_Eared_Aristocrat_Top_Hat": "Long_Eared_Aristocrat_Top_Hat",
+            "Long_Eared_Aristocrat_Unicorn": "Long_Eared_Aristocrat_Unicorn",
+            "Long_Eared_Aristocrat_Zombie": "Long_Eared_Aristocrat_Zombie"
+          }
+        },
+        "Sad_Scoop": {
+          "folder": "Sad_Scoop",
+          "variants": {
+            "Sad_Scoop_Alien": "Sad_Scoop_Alien",
+            "Sad_Scoop_Blueberry": "Sad_Scoop_Blueberry",
+            "Sad_Scoop_Samurai": "Sad_Scoop_Samurai",
+            "Sad_Scoop_Skull": "Sad_Scoop_Skull",
+            "Sad_Scoop_Zombie": "Sad_Scoop_Zombie"
+          }
+        },
+        "Spiky_Artist": {
+          "folder": "Spiky_Artist",
+          "variants": {
+            "Spiky_Artist_Asian_Mask": "Spiky_Artist_Asian_Mask",
+            "Spiky_Artist_Cowboy": "Spiky_Artist_Cowboy",
+            "Spiky_Artist_Crown": "Spiky_Artist_Crown",
+            "Spiky_Artist_Devil": "Spiky_Artist_Devil",
+            "Spiky_Artist_Golden_Mask": "Spiky_Artist_Golden_Mask",
+            "Spiky_Artist_Golden_Tooth": "Spiky_Artist_Golden_Tooth",
+            "Spiky_Artist_Headband": "Spiky_Artist_Headband",
+            "Spiky_Artist_Knitted_Hat": "Spiky_Artist_Knitted_Hat",
+            "Spiky_Artist_Pirate": "Spiky_Artist_Pirate",
+            "Spiky_Artist_Rainbow": "Spiky_Artist_Rainbow",
+            "Spiky_Artist_Skull": "Spiky_Artist_Skull",
+            "Spiky_Artist_Tech": "Spiky_Artist_Tech",
+            "Spiky_Artist_Zombie": "Spiky_Artist_Zombie"
+          }
+        },
+        "Stone_Gargoyle": {
+          "folder": "Stone_Gargoyle",
+          "variants": {
+            "Stone_Gargoyle_Beard": "Stone_Gargoyle_Beard",
+            "Stone_Gargoyle_Cigar": "Stone_Gargoyle_Cigar",
+            "Stone_Gargoyle_Cowboy": "Stone_Gargoyle_Cowboy",
+            "Stone_Gargoyle_Golden_Chain": "Stone_Gargoyle_Golden_Chain",
+            "Stone_Gargoyle_King": "Stone_Gargoyle_King",
+            "Stone_Gargoyle_Mohawk": "Stone_Gargoyle_Mohawk",
+            "Stone_Gargoyle_Scared": "Stone_Gargoyle_Scared",
+            "Stone_Gargoyle_Straw_Hat": "Stone_Gargoyle_Straw_Hat"
+          }
+        },
+        "Moss_Goblin": {
+          "folder": "Moss_Goblin",
+          "variants": {
+            "Moss_Goblin_Dead": "Moss_Goblin_Dead",
+            "Moss_Goblin_Headband": "Moss_Goblin_Headband",
+            "Moss_Goblin_Mohawk": "Moss_Goblin_Mohawk",
+            "Moss_Goblin_Mushroom_Hat": "Moss_Goblin_Mushroom_Hat",
+            "Moss_Goblin_Smiled": "Moss_Goblin_Smiled"
+          }
+        },
+        "SWAT": {
+          "folder": "SWAT",
+          "variants": {
+            "SWAT_Alien": "SWAT_Alien",
+            "SWAT_Cap": "SWAT_Cap",
+            "SWAT_Golden": "SWAT_Golden",
+            "SWAT_Long_Hair": "SWAT_Long_Hair",
+            "SWAT_Mohawk": "SWAT_Mohawk"
+          }
+        },
+        "Teal_Monster": {
+          "folder": "Teal_Monster",
+          "variants": {
+            "Teal_Monster_Diver": "Teal_Monster_Diver",
+            "Teal_Monster_Glasses": "Teal_Monster_Glasses",
+            "Teal_Monster_Horns": "Teal_Monster_Horns",
+            "Teal_Monster_Mask": "Teal_Monster_Mask",
+            "Teal_Monster_Rainbow_Afro": "Teal_Monster_Rainbow_Afro"
+          }
+        },
+        "Teal_Villain": {
+          "folder": "Teal_Villain",
+          "variants": {
+            "Teal_Villain_Biker": "Teal_Villain_Biker",
+            "Teal_Villain_Cap": "Teal_Villain_Cap",
+            "Teal_Villain_Hooded": "Teal_Villain_Hooded",
+            "Teal_Villain_Icy": "Teal_Villain_Icy",
+            "Teal_Villain_Lady": "Teal_Villain_Lady",
+            "Teal_Villain_Long_Hair": "Teal_Villain_Long_Hair",
+            "Teal_Villain_Mohawk": "Teal_Villain_Mohawk",
+            "Teal_Villain_Mystique": "Teal_Villain_Mystique",
+            "Teal_Villain_Rainbow": "Teal_Villain_Rainbow",
+            "Teal_Villain_Skull": "Teal_Villain_Skull",
+            "Teal_Villain_VR_Glasses": "Teal_Villain_VR_Glasses"
+          }
+        },
+        "Weary_Wizard": {
+          "folder": "Weary_Wizard",
+          "variants": {
+            "Weary_Wizard_Fire": "Weary_Wizard_Fire",
+            "Weary_Wizard_King": "Weary_Wizard_King",
+            "Weary_Wizard_Mushroom_Hat": "Weary_Wizard_Mushroom_Hat",
+            "Weary_Wizard_Orb": "Weary_Wizard_Orb",
+            "Weary_Wizard_Owl": "Weary_Wizard_Owl",
+            "Weary_Wizard_Skull": "Weary_Wizard_Skull",
+            "Weary_Wizard_Snake": "Weary_Wizard_Snake",
+            "Weary_Wizard_Underwater": "Weary_Wizard_Underwater"
+          }
+        },
+        "Crying_Mime": {
+          "folder": "Crying_Mime",
+          "variants": {
+            "Crying_Mime_Ape": "Crying_Mime_Ape",
+            "Crying_Mime_Blonde": "Crying_Mime_Blonde",
+            "Crying_Mime_Hooded": "Crying_Mime_Hooded",
+            "Crying_Mime_Radioactive": "Crying_Mime_Radioactive",
+            "Crying_Mime_V": "Crying_Mime_V",
+            "Crying_Mime_With_Hands": "Crying_Mime_With_Hands"
+          }
+        },
+        "Gilded_Bot": {
+          "folder": "Gilded_Bot",
+          "variants": {
+            "Gilded_Bot_Crown": "Gilded_Bot_Crown",
+            "Gilded_Bot_Horns": "Gilded_Bot_Horns",
+            "Gilded_Bot_Knitted_Hat": "Gilded_Bot_Knitted_Hat",
+            "Gilded_Bot_Mohawk": "Gilded_Bot_Mohawk"
+          }
+        },
+        "Neon_Pulse": {
+          "folder": "Neon_Pulse",
+          "variants": {
+            "Neon_Pulse_Cap": "Neon_Pulse_Cap",
+            "Neon_Pulse_Earrings": "Neon_Pulse_Earrings",
+            "Neon_Pulse_Headband": "Neon_Pulse_Headband",
+            "Neon_Pulse_Horns": "Neon_Pulse_Horns",
+            "Neon_Pulse_Lady": "Neon_Pulse_Lady",
+            "Neon_Pulse_Mask": "Neon_Pulse_Mask",
+            "Neon_Pulse_Skull": "Neon_Pulse_Skull",
+            "Neon_Pulse_Soldier": "Neon_Pulse_Soldier",
+            "Neon_Pulse_Vamp": "Neon_Pulse_Vamp",
+            "Neon_Pulse_Visor": "Neon_Pulse_Visor",
+            "Neon_Pulse_Zombie": "Neon_Pulse_Zombie"
+          }
+        },
+        "Neon_Visor": {
+          "folder": "Neon_Visor",
+          "variants": {
+            "Neon_Visor_Cap": "Neon_Visor_Cap",
+            "Neon_Visor_Cowboy_Hat": "Neon_Visor_Cowboy_Hat",
+            "Neon_Visor_Kitty": "Neon_Visor_Kitty",
+            "Neon_Visor_Short_Hair": "Neon_Visor_Short_Hair",
+            "Neon_Visor_Zombie": "Neon_Visor_Zombie"
+          }
+        },
+        "Purple_Bustard": {
+          "folder": "Purple_Bustard",
+          "variants": {
+            "Purple_Bustard_3D_Glasses": "Purple_Bustard_3D_Glasses",
+            "Purple_Bustard_BackCap": "Purple_Bustard_BackCap",
+            "Purple_Bustard_Bear": "Purple_Bustard_Bear",
+            "Purple_Bustard_Beard": "Purple_Bustard_Beard",
+            "Purple_Bustard_Biker": "Purple_Bustard_Biker",
+            "Purple_Bustard_Cyborg": "Purple_Bustard_Cyborg",
+            "Purple_Bustard_Frog_Hat": "Purple_Bustard_Frog_Hat",
+            "Purple_Bustard_Gas_Mask": "Purple_Bustard_Gas_Mask",
+            "Purple_Bustard_Lotus": "Purple_Bustard_Lotus",
+            "Purple_Bustard_Mohawk": "Purple_Bustard_Mohawk",
+            "Purple_Bustard_Mushroom_Hat": "Purple_Bustard_Mushroom_Hat",
+            "Purple_Bustard_Nouns_Glasses": "Purple_Bustard_Nouns_Glasses",
+            "Purple_Bustard_Zombie": "Purple_Bustard_Zombie"
+          }
+        },
+        "Sleepy_Moon": {
+          "folder": "Sleepy_Moon",
+          "variants": {
+            "Sleepy_Moon_Alien": "Sleepy_Moon_Alien",
+            "Sleepy_Moon_Cap": "Sleepy_Moon_Cap",
+            "Sleepy_Moon_Cigar": "Sleepy_Moon_Cigar",
+            "Sleepy_Moon_Cowboy": "Sleepy_Moon_Cowboy",
+            "Sleepy_Moon_Cyborg": "Sleepy_Moon_Cyborg",
+            "Sleepy_Moon_Hippie": "Sleepy_Moon_Hippie",
+            "Sleepy_Moon_Hooded": "Sleepy_Moon_Hooded",
+            "Sleepy_Moon_Ice_Cream": "Sleepy_Moon_Ice_Cream",
+            "Sleepy_Moon_Mushroom_Hat": "Sleepy_Moon_Mushroom_Hat",
+            "Sleepy_Moon_Punk": "Sleepy_Moon_Punk",
+            "Sleepy_Moon_Rasta": "Sleepy_Moon_Rasta",
+            "Sleepy_Moon_Winter_Hat": "Sleepy_Moon_Winter_Hat",
+            "Sleepy_Moon_Zombie": "Sleepy_Moon_Zombie"
+          }
+        },
+        "Surprised_Gorilla": {
+          "folder": "Surprised_Gorilla",
+          "variants": {
+            "Surprised_Gorilla_Frost": "Surprised_Gorilla_Frost",
+            "Surprised_Gorilla_Orange": "Surprised_Gorilla_Orange",
+            "Surprised_Gorilla_Street": "Surprised_Gorilla_Street",
+            "Surprised_Gorilla_Zombie": "Surprised_Gorilla_Zombie"
+          }
+        },
+        "Cowboy": {
+          "folder": "Cowboy",
+          "variants": {
+            "Cowboy_Acid": "Cowboy_Acid",
+            "Cowboy_Big_Glasses": "Cowboy_Big_Glasses",
+            "Cowboy_Fire": "Cowboy_Fire",
+            "Cowboy_Mexican": "Cowboy_Mexican",
+            "Cowboy_Rainbow": "Cowboy_Rainbow",
+            "Cowboy_Zombie": "Cowboy_Zombie"
+          }
+        },
+        "Gold_Tooth": {
+          "folder": "Golden_Tooth",
+          "variants": {
+            "Golden_Tooth_Backet_Hat": "Golden_Tooth_Backet_Hat",
+            "Golden_Tooth_Camo": "Golden_Tooth_Camo",
+            "Golden_Tooth_Cigar": "Golden_Tooth_Cigar",
+            "Golden_Tooth_Cyborg": "Golden_Tooth_Cyborg",
+            "Golden_Tooth_Heart_Glasses": "Golden_Tooth_Heart_Glasses",
+            "Golden_Tooth_Horns": "Golden_Tooth_Horns",
+            "Golden_Tooth_Mask": "Golden_Tooth_Mask",
+            "Golden_Tooth_Pharaoh": "Golden_Tooth_Pharaoh",
+            "Golden_Tooth_VR_Glasses": "Golden_Tooth_VR_Glasses",
+            "Golden_Tooth_Zombie": "Golden_Tooth_Zombie"
+          }
+        },
+        "Grumpy_Cyclops": {
+          "folder": "Grumpy_Cyclops",
+          "variants": {
+            "Grumpy_Cyclops_Amphibian": "Grumpy_Cyclops_Amphibian",
+            "Grumpy_Cyclops_Big_Lips": "Grumpy_Cyclops_Big_Lips",
+            "Grumpy_Cyclops_Cyborg": "Grumpy_Cyclops_Cyborg",
+            "Grumpy_Cyclops_Devil": "Grumpy_Cyclops_Devil",
+            "Grumpy_Cyclops_Driver": "Grumpy_Cyclops_Driver",
+            "Grumpy_Cyclops_Druid": "Grumpy_Cyclops_Druid",
+            "Grumpy_Cyclops_Mohawk": "Grumpy_Cyclops_Mohawk"
+          }
+        },
+        "Mad_Professor": {
+          "folder": "Mad_Professor",
+          "variants": {
+            "Mad_Professor_Cap": "Mad_Professor_Cap",
+            "Mad_Professor_Cyborg": "Mad_Professor_Cyborg",
+            "Mad_Professor_King": "Mad_Professor_King",
+            "Mad_Professor_Radioactive": "Mad_Professor_Radioactive",
+            "Mad_Professor_Skull": "Mad_Professor_Skull",
+            "Mad_Professor_Street": "Mad_Professor_Street"
+          }
+        },
+        "Rainbow_Dreads_Lady": {
+          "folder": "Rainbow_Dreads_Lady",
+          "variants": {
+            "Rainbow_Dreads_Lady_Bald": "Rainbow_Dreads_Lady_Bald",
+            "Rainbow_Dreads_Lady_Clown": "Rainbow_Dreads_Lady_Clown",
+            "Rainbow_Dreads_Lady_Dark": "Rainbow_Dreads_Lady_Dark",
+            "Rainbow_Dreads_Lady_Fire": "Rainbow_Dreads_Lady_Fire",
+            "Rainbow_Dreads_Lady_Gas_Mask": "Rainbow_Dreads_Lady_Gas_Mask",
+            "Rainbow_Dreads_Lady_Ghost": "Rainbow_Dreads_Lady_Ghost",
+            "Rainbow_Dreads_Lady_Hooded": "Rainbow_Dreads_Lady_Hooded",
+            "Rainbow_Dreads_Lady_Horns": "Rainbow_Dreads_Lady_Horns",
+            "Rainbow_Dreads_Lady_Pirate": "Rainbow_Dreads_Lady_Pirate",
+            "Rainbow_Dreads_Lady_Skull": "Rainbow_Dreads_Lady_Skull",
+            "Rainbow_Dreads_Lady_Tribal": "Rainbow_Dreads_Lady_Tribal",
+            "Rainbow_Dreads_Lady_Wings": "Rainbow_Dreads_Lady_Wings",
+            "Rainbow_Dreads_Lady_Zombie": "Rainbow_Dreads_Lady_Zombie"
+          }
+        },
+        "Red_Eye_Astro": {
+          "folder": "Red_Eye_Astro",
+          "variants": {
+            "Red_Eye_Astro_Diamonds": "Red_Eye_Astro_Diamonds",
+            "Red_Eye_Astro_Frog": "Red_Eye_Astro_Frog",
+            "Red_Eye_Astro_Horns": "Red_Eye_Astro_Horns",
+            "Red_Eye_Astro_Icy": "Red_Eye_Astro_Icy",
+            "Red_Eye_Astro_Rainbow": "Red_Eye_Astro_Rainbow"
+          }
         }
       }
     },

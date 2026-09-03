@@ -1,20 +1,12 @@
 {
-  "generated": "2026-08-25T18:32:36.137696+00:00",
-  "batch": "batch28",
+  "generated": "2026-09-03T18:31:09.244198+00:00",
+  "batch": "batch34",
   "characters": [
-    "Fat_Nerd",
-    "Goblin_Rogue",
-    "Gremlin",
-    "Split_Mask",
-    "Square_Professor"
+    "Gold_Tooth"
   ],
   "counts": {
-    "Fat_Nerd": 5,
-    "Goblin_Rogue": 12,
-    "Gremlin": 7,
-    "Split_Mask": 5,
-    "Square_Professor": 6
+    "Gold_Tooth": 10
   },
-  "total_variants": 35,
-  "catalog_characters": 192
+  "total_variants": 10,
+  "catalog_characters": 228
 }
