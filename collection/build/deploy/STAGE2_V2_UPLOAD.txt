@@ -1,5 +1,5 @@
 PIXEL TRIP — Stage 2 V2 batch upload
-Generated: 2026-09-03T18:31:09.170177+00:00
+Generated: 2026-09-04T18:06:01.701485+00:00
 
 LOCAL PACK:
   D:\Promt\Пиксель\collection\build\deploy\stage2\images
@@ -16,9 +16,12 @@ WEBSITE (rebuild after variants JSON):
   upload burn.html + assets/*
 
 CHARACTERS:
-  Gold_Tooth: 10 variants
+  Cowboy_Cactus: 6 variants
+  Cyan_Mustache_Chief: 7 variants
+  Daring_Queen: 8 variants
+  Static_Screen: 5 variants
 
-Total new GIFs: 10
+Total new GIFs: 26
 
 BURN: after upload, holders can burn 2x same Stage 1 character -> Stage 2.
 OpenSea: Refresh metadata on evolved tokens after sync.

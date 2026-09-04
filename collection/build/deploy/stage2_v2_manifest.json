@@ -1,12 +1,18 @@
 {
-  "generated": "2026-09-03T18:31:09.244198+00:00",
-  "batch": "batch34",
+  "generated": "2026-09-04T18:06:01.726132+00:00",
+  "batch": "batch35",
   "characters": [
-    "Gold_Tooth"
+    "Cowboy_Cactus",
+    "Cyan_Mustache_Chief",
+    "Daring_Queen",
+    "Static_Screen"
   ],
   "counts": {
-    "Gold_Tooth": 10
+    "Cowboy_Cactus": 6,
+    "Cyan_Mustache_Chief": 7,
+    "Daring_Queen": 8,
+    "Static_Screen": 5
   },
-  "total_variants": 10,
-  "catalog_characters": 228
+  "total_variants": 26,
+  "catalog_characters": 232
 }

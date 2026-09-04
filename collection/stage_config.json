@@ -2998,6 +2998,52 @@
             "Red_Eye_Astro_Icy": "Red_Eye_Astro_Icy",
             "Red_Eye_Astro_Rainbow": "Red_Eye_Astro_Rainbow"
           }
+        },
+        "Cowboy_Cactus": {
+          "folder": "Cowboy_Cactus",
+          "variants": {
+            "Cowboy_Cactus_Asian_Hat": "Cowboy_Cactus_Asian_Hat",
+            "Cowboy_Cactus_King": "Cowboy_Cactus_King",
+            "Cowboy_Cactus_Ninja": "Cowboy_Cactus_Ninja",
+            "Cowboy_Cactus_Octo": "Cowboy_Cactus_Octo",
+            "Cowboy_Cactus_UFO": "Cowboy_Cactus_UFO",
+            "Cowboy_Cactus_Zombie": "Cowboy_Cactus_Zombie"
+          }
+        },
+        "Cyan_Mustache_Chief": {
+          "folder": "Cyan_Mustache_Chief",
+          "variants": {
+            "Cyan_Mustache_Chief_Aviator": "Cyan_Mustache_Chief_Aviator",
+            "Cyan_Mustache_Chief_Bald": "Cyan_Mustache_Chief_Bald",
+            "Cyan_Mustache_Chief_Pirate": "Cyan_Mustache_Chief_Pirate",
+            "Cyan_Mustache_Chief_Soldier": "Cyan_Mustache_Chief_Soldier",
+            "Cyan_Mustache_Chief_VR_Glasses": "Cyan_Mustache_Chief_VR_Glasses",
+            "Cyan_Mustache_Chief_Viking": "Cyan_Mustache_Chief_Viking",
+            "Cyan_Mustache_Chief_Zombie": "Cyan_Mustache_Chief_Zombie"
+          }
+        },
+        "Daring_Queen": {
+          "folder": "Daring_Queen",
+          "variants": {
+            "Daring_Queen_Forest": "Daring_Queen_Forest",
+            "Daring_Queen_Goth": "Daring_Queen_Goth",
+            "Daring_Queen_Half_Face": "Daring_Queen_Half_Face",
+            "Daring_Queen_Horns": "Daring_Queen_Horns",
+            "Daring_Queen_Icy": "Daring_Queen_Icy",
+            "Daring_Queen_Punk": "Daring_Queen_Punk",
+            "Daring_Queen_Tribal": "Daring_Queen_Tribal",
+            "Daring_Queen_Zombie": "Daring_Queen_Zombie"
+          }
+        },
+        "Static_Screen": {
+          "folder": "Static_Screen",
+          "variants": {
+            "Static_Screen_Dead": "Static_Screen_Dead",
+            "Static_Screen_Glitch": "Static_Screen_Glitch",
+            "Static_Screen_Lady": "Static_Screen_Lady",
+            "Static_Screen_Psycho": "Static_Screen_Psycho",
+            "Static_Screen_Rainbow": "Static_Screen_Rainbow"
+          }
         }
       }
     },

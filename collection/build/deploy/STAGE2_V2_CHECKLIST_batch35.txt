@@ -1,0 +1,37 @@
+PIXEL TRIP — Stage 2 V2 deploy checklist (batch35)
+Generated: 2026-09-04T18:06:01.722058+00:00
+
+WHY BURN FAILED LAST TIME (fix all 4 steps every batch):
+  1) Remix setCharacterPaths — without it dApp shows 'enable on-chain' / evolve reverts
+  2) FTP stage2 GIFs + metadata + stage2-variants.json on pixeltripnft.website
+  3) git push website/src/burn/stage2-variants.json + config.js (Netlify rebuilds from source, NOT local dist/)
+  4) Holders need 2x same Stage 1 character (KEEP + BURN)
+
+NEW CHARACTERS:
+  Cowboy_Cactus: charId=126, 6 variants
+  Cyan_Mustache_Chief: charId=132, 7 variants
+  Daring_Queen: charId=138, 8 variants
+  Static_Screen: charId=250, 5 variants
+
+New GIFs this batch: 26
+Catalog total characters: 232
+
+STEP 1 — REMIX (owner wallet, EvolvePixelTrip):
+  setCharacterPaths(charIds, paths)  — all paths = 1
+  Data file: calldata-stage2-v2-batch35.json
+
+STEP 2 — FTP → public_html/:
+  stage2/images/*.gif (this batch only — see STAGE2_V2_BATCH_FILES.txt)
+  stage2/metadata/{Slug}
+  stage2-variants.json
+
+STEP 3 — NETLIFY:
+  git add website/src/burn/stage2-variants.json website/src/burn/config.js
+  git commit && git push
+  Footer must show: build YYYY-MM-DD-batch35-232c
+
+STEP 4 — VERIFY:
+  https://pixeltripnft.website/stage2-variants.json contains new names
+  Evolution Lab → connect wallet → token shows evolvable (not 'not in program')
+
+OPTIONAL: node refresh-opensea-metadata.mjs --ids charId,... --no-check-gif
