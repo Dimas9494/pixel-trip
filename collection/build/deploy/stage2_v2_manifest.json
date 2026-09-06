@@ -1,18 +1,22 @@
 {
-  "generated": "2026-09-04T18:06:01.726132+00:00",
+  "generated": "2026-09-06T19:22:47.767001+00:00",
   "batch": "batch35",
   "characters": [
-    "Cowboy_Cactus",
-    "Cyan_Mustache_Chief",
-    "Daring_Queen",
-    "Static_Screen"
+    "Cyan_Punk",
+    "Cyber_Ninja",
+    "Dark_Elf",
+    "Eskimo",
+    "Feather_Chief",
+    "Leaf_Elf"
   ],
   "counts": {
-    "Cowboy_Cactus": 6,
-    "Cyan_Mustache_Chief": 7,
-    "Daring_Queen": 8,
-    "Static_Screen": 5
+    "Cyan_Punk": 7,
+    "Cyber_Ninja": 5,
+    "Dark_Elf": 10,
+    "Eskimo": 10,
+    "Feather_Chief": 5,
+    "Leaf_Elf": 6
   },
-  "total_variants": 26,
-  "catalog_characters": 232
+  "total_variants": 43,
+  "catalog_characters": 234
 }

@@ -3022,6 +3022,28 @@
             "Cyan_Mustache_Chief_Zombie": "Cyan_Mustache_Chief_Zombie"
           }
         },
+        "Cyan_Punk": {
+          "folder": "Cyan_Punk",
+          "variants": {
+            "Cyan_Punk_Cap": "Cyan_Punk_Cap",
+            "Cyan_Punk_Cowboy": "Cyan_Punk_Cowboy",
+            "Cyan_Punk_Disco": "Cyan_Punk_Disco",
+            "Cyan_Punk_Horns": "Cyan_Punk_Horns",
+            "Cyan_Punk_Mohawk": "Cyan_Punk_Mohawk",
+            "Cyan_Punk_Mummie": "Cyan_Punk_Mummie",
+            "Cyan_Punk_Vamp": "Cyan_Punk_Vamp"
+          }
+        },
+        "Cyber_Ninja": {
+          "folder": "Cyber_Ninja",
+          "variants": {
+            "Cyber_Ninja_Camo": "Cyber_Ninja_Camo",
+            "Cyber_Ninja_Golden": "Cyber_Ninja_Golden",
+            "Cyber_Ninja_Hooded": "Cyber_Ninja_Hooded",
+            "Cyber_Ninja_Horns": "Cyber_Ninja_Horns",
+            "Cyber_Ninja_Mohawk": "Cyber_Ninja_Mohawk"
+          }
+        },
         "Daring_Queen": {
           "folder": "Daring_Queen",
           "variants": {
@@ -3033,6 +3055,57 @@
             "Daring_Queen_Punk": "Daring_Queen_Punk",
             "Daring_Queen_Tribal": "Daring_Queen_Tribal",
             "Daring_Queen_Zombie": "Daring_Queen_Zombie"
+          }
+        },
+        "Dark_Elf": {
+          "folder": "Dark_Elf",
+          "variants": {
+            "Dark_Elf_Beard": "Dark_Elf_Beard",
+            "Dark_Elf_Cyborg": "Dark_Elf_Cyborg",
+            "Dark_Elf_Frog_Hat": "Dark_Elf_Frog_Hat",
+            "Dark_Elf_Half_Face": "Dark_Elf_Half_Face",
+            "Dark_Elf_King": "Dark_Elf_King",
+            "Dark_Elf_Mask": "Dark_Elf_Mask",
+            "Dark_Elf_Mohawk": "Dark_Elf_Mohawk",
+            "Dark_Elf_Skull": "Dark_Elf_Skull",
+            "Dark_Elf_Underwater": "Dark_Elf_Underwater",
+            "Dark_Elf_Zombie": "Dark_Elf_Zombie"
+          }
+        },
+        "Eskimo": {
+          "folder": "Eskimo",
+          "variants": {
+            "Eskimo_Alien": "Eskimo_Alien",
+            "Eskimo_Crown": "Eskimo_Crown",
+            "Eskimo_Dark": "Eskimo_Dark",
+            "Eskimo_Frog": "Eskimo_Frog",
+            "Eskimo_Ghost": "Eskimo_Ghost",
+            "Eskimo_No_Beard": "Eskimo_No_Beard",
+            "Eskimo_Rainbow": "Eskimo_Rainbow",
+            "Eskimo_SWAT": "Eskimo_SWAT",
+            "Eskimo_Tiger_Hoodie": "Eskimo_Tiger_Hoodie",
+            "Eskimo_Zombie": "Eskimo_Zombie"
+          }
+        },
+        "Feather_Chief": {
+          "folder": "Feather_Chief",
+          "variants": {
+            "Feather_Chief_Cyber": "Feather_Chief_Cyber",
+            "Feather_Chief_Golden": "Feather_Chief_Golden",
+            "Feather_Chief_Pipe": "Feather_Chief_Pipe",
+            "Feather_Chief_Skull": "Feather_Chief_Skull",
+            "Feather_Chief_Tiger_Mask": "Feather_Chief_Tiger_Mask"
+          }
+        },
+        "Leaf_Elf": {
+          "folder": "Leaf_Elf",
+          "variants": {
+            "Leaf_Elf_Cyborg": "Leaf_Elf_Cyborg",
+            "Leaf_Elf_Horns": "Leaf_Elf_Horns",
+            "Leaf_Elf_Mask": "Leaf_Elf_Mask",
+            "Leaf_Elf_Mushroom_Hat": "Leaf_Elf_Mushroom_Hat",
+            "Leaf_Elf_Rainbow": "Leaf_Elf_Rainbow",
+            "Leaf_Elf_Zombie": "Leaf_Elf_Zombie"
           }
         },
         "Static_Screen": {

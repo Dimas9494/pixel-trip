@@ -8,21 +8,27 @@
   },
   "batch": "batch35",
   "charIds": [
-    126,
-    132,
-    138,
-    250
+    2,
+    22,
+    73,
+    135,
+    139,
+    143
   ],
   "paths": [
+    1,
+    1,
     1,
     1,
     1,
     1
   ],
   "names": [
-    "Cowboy_Cactus",
-    "Cyan_Mustache_Chief",
-    "Daring_Queen",
-    "Static_Screen"
+    "Eskimo",
+    "Leaf_Elf",
+    "Cyan_Punk",
+    "Cyber_Ninja",
+    "Dark_Elf",
+    "Feather_Chief"
   ]
 }

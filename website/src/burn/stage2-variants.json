@@ -9720,142 +9720,231 @@
       "frame": "Ion_Flash"
     }
   ],
-  "Cowboy_Cactus": [
+  "Cyan_Punk": [
     {
-      "slug": "Cowboy_Cactus_Asian_Hat",
+      "slug": "Cyan_Punk_Cap",
       "bg": "Metaball",
       "frame": "Quad_Split"
     },
     {
-      "slug": "Cowboy_Cactus_King",
+      "slug": "Cyan_Punk_Cowboy",
       "bg": "Morphogenesis",
       "frame": "Slow_Pulse"
     },
     {
-      "slug": "Cowboy_Cactus_Ninja",
+      "slug": "Cyan_Punk_Disco",
       "bg": "Quartz",
       "frame": "Fusion_Scan_Rotate"
     },
     {
-      "slug": "Cowboy_Cactus_Octo",
+      "slug": "Cyan_Punk_Horns",
       "bg": "Trails",
       "frame": "Ring_Scanner"
     },
     {
-      "slug": "Cowboy_Cactus_UFO",
+      "slug": "Cyan_Punk_Mohawk",
       "bg": "Parquet",
       "frame": "Asteroid_Belt"
     },
     {
-      "slug": "Cowboy_Cactus_Zombie",
+      "slug": "Cyan_Punk_Mummie",
       "bg": "Interference",
       "frame": "Game_Over"
-    }
-  ],
-  "Cyan_Mustache_Chief": [
-    {
-      "slug": "Cyan_Mustache_Chief_Aviator",
-      "bg": "Decoder",
-      "frame": "Ionosphere"
     },
     {
-      "slug": "Cyan_Mustache_Chief_Bald",
+      "slug": "Cyan_Punk_Vamp",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    }
+  ],
+  "Cyber_Ninja": [
+    {
+      "slug": "Cyber_Ninja_Camo",
       "bg": "Infinity_Loop",
       "frame": "Pixel_Sparkle"
     },
     {
-      "slug": "Cyan_Mustache_Chief_Pirate",
+      "slug": "Cyber_Ninja_Golden",
       "bg": "Penrose",
       "frame": "Spinning_Segments"
     },
     {
-      "slug": "Cyan_Mustache_Chief_Soldier",
+      "slug": "Cyber_Ninja_Hooded",
       "bg": "Interference",
       "frame": "Ion_Flash"
     },
     {
-      "slug": "Cyan_Mustache_Chief_VR_Glasses",
+      "slug": "Cyber_Ninja_Horns",
       "bg": "Eddy",
       "frame": "Icon_Triptych"
     },
     {
-      "slug": "Cyan_Mustache_Chief_Viking",
+      "slug": "Cyber_Ninja_Mohawk",
       "bg": "Infinity_Loop",
       "frame": "Ice_Mirror"
-    },
-    {
-      "slug": "Cyan_Mustache_Chief_Zombie",
-      "bg": "Goo_Bubbles",
-      "frame": "Bullion_Stack"
     }
   ],
-  "Daring_Queen": [
+  "Dark_Elf": [
     {
-      "slug": "Daring_Queen_Forest",
+      "slug": "Dark_Elf_Beard",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Dark_Elf_Cyborg",
       "bg": "Finale_Mandala_Pulse",
       "frame": "Slow_Pulse"
     },
     {
-      "slug": "Daring_Queen_Goth",
+      "slug": "Dark_Elf_Frog_Hat",
       "bg": "Quartz",
       "frame": "Prime_Lock"
     },
     {
-      "slug": "Daring_Queen_Half_Face",
+      "slug": "Dark_Elf_Half_Face",
       "bg": "Light_Ray",
       "frame": "Petri_Culture"
     },
     {
-      "slug": "Daring_Queen_Horns",
+      "slug": "Dark_Elf_King",
       "bg": "Bee_Grid",
       "frame": "Lichen_Growth"
     },
     {
-      "slug": "Daring_Queen_Icy",
+      "slug": "Dark_Elf_Mask",
       "bg": "Fractal_Rug",
       "frame": "Star_Chart"
     },
     {
-      "slug": "Daring_Queen_Punk",
+      "slug": "Dark_Elf_Mohawk",
       "bg": "CRT",
       "frame": "Wave_Pulse_Combo"
     },
     {
-      "slug": "Daring_Queen_Tribal",
+      "slug": "Dark_Elf_Skull",
       "bg": "Voronoi",
       "frame": "Icon_Triptych"
     },
     {
-      "slug": "Daring_Queen_Zombie",
+      "slug": "Dark_Elf_Underwater",
       "bg": "Bee_Grid",
       "frame": "Electron_Orbit"
-    }
-  ],
-  "Static_Screen": [
-    {
-      "slug": "Static_Screen_Dead",
-      "bg": "Magnetic_Goo",
-      "frame": "Proton_Glow"
     },
     {
-      "slug": "Static_Screen_Glitch",
+      "slug": "Dark_Elf_Zombie",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    }
+  ],
+  "Eskimo": [
+    {
+      "slug": "Eskimo_Alien",
       "bg": "Waves",
       "frame": "Blizzard_Wall"
     },
     {
-      "slug": "Static_Screen_Lady",
+      "slug": "Eskimo_Crown",
       "bg": "Chimera",
       "frame": "Nexus_Pulse"
     },
     {
-      "slug": "Static_Screen_Psycho",
+      "slug": "Eskimo_Dark",
       "bg": "Prism",
       "frame": "Nebula_Mist"
     },
     {
-      "slug": "Static_Screen_Rainbow",
+      "slug": "Eskimo_Frog",
       "bg": "Galaxy_Spin",
       "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Eskimo_Ghost",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Eskimo_No_Beard",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Eskimo_Rainbow",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Eskimo_SWAT",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Eskimo_Tiger_Hoodie",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Eskimo_Zombie",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    }
+  ],
+  "Feather_Chief": [
+    {
+      "slug": "Feather_Chief_Cyber",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Feather_Chief_Golden",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Feather_Chief_Pipe",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Feather_Chief_Skull",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Feather_Chief_Tiger_Mask",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    }
+  ],
+  "Leaf_Elf": [
+    {
+      "slug": "Leaf_Elf_Cyborg",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Leaf_Elf_Horns",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    },
+    {
+      "slug": "Leaf_Elf_Mask",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    },
+    {
+      "slug": "Leaf_Elf_Mushroom_Hat",
+      "bg": "Bee_Grid",
+      "frame": "Magnetic_Field"
+    },
+    {
+      "slug": "Leaf_Elf_Rainbow",
+      "bg": "Prism",
+      "frame": "Gradient_Pulse"
+    },
+    {
+      "slug": "Leaf_Elf_Zombie",
+      "bg": "Asteroid_Belt",
+      "frame": "Phantom_Trace"
     }
   ]
 }
