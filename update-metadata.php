@@ -28,6 +28,10 @@ define('STAGE3_MAP_FILE',  __DIR__ . '/stage3-variants.json');
 define('ASSIGNMENTS_FILE', __DIR__ . '/token-assignments.json');
 define('STAGE3_ASSIGNMENTS_FILE', __DIR__ . '/stage3-assignments.json');
 define('STAGE2_VARIANTS_FILE', __DIR__ . '/stage2-variants.json');
+define('STAGE2_VARIANTS_REMOTE_URL', getenv('STAGE2_VARIANTS_REMOTE_URL')
+    ?: 'https://raw.githubusercontent.com/Dimas9494/pixel-trip/main/website/src/burn/stage2-variants.json');
+define('CHAR_MAP_REMOTE_URL', getenv('CHAR_MAP_REMOTE_URL')
+    ?: 'https://raw.githubusercontent.com/Dimas9494/pixel-trip/main/website/char-map.json');
 define('EVOLUTION_LINEAGE_FILE', __DIR__ . '/evolution-lineage.json');
 define('BURN_SNAPSHOTS_DIR', __DIR__ . '/burn-snapshots/');
 define('SELF_SNAPSHOTS_DIR', __DIR__ . '/self-snapshots/');
@@ -89,9 +93,42 @@ function decodeUint16($hex): int {
     return (int) hexdec(substr($raw, -4));
 }
 
+function fetchRemoteJsonCatalog(string $url): array {
+    static $cache = [];
+    $key = md5($url);
+    if (isset($cache[$key]) && time() - $cache[$key]['ts'] < 300) {
+        return $cache[$key]['data'];
+    }
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_TIMEOUT        => 20,
+        CURLOPT_HTTPHEADER     => ['Accept: application/json'],
+    ]);
+    $res  = curl_exec($ch);
+    $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    if (!$res || $code !== 200) {
+        return [];
+    }
+    $data = json_decode($res, true);
+    if (!is_array($data)) {
+        return [];
+    }
+    $cache[$key] = ['ts' => time(), 'data' => $data];
+    return $data;
+}
+
 function loadCharIdToName(): array {
-    if (!file_exists(CHAR_MAP_FILE)) return [];
-    $nameToId = json_decode(file_get_contents(CHAR_MAP_FILE), true) ?: [];
+    $nameToId = [];
+    if (file_exists(CHAR_MAP_FILE)) {
+        $nameToId = json_decode(file_get_contents(CHAR_MAP_FILE), true) ?: [];
+    }
+    $remote = fetchRemoteJsonCatalog(CHAR_MAP_REMOTE_URL);
+    if ($remote) {
+        $nameToId = array_merge($remote, $nameToId);
+    }
     $idToName = [];
     foreach ($nameToId as $name => $id) {
         $idToName[(int)$id] = $name;
@@ -131,10 +168,16 @@ function readOnChainState(int $tokenId): array {
 }
 
 function loadStage2VariantsCatalog(): array {
-    if (!file_exists(STAGE2_VARIANTS_FILE)) {
-        return [];
+    $local = [];
+    if (file_exists(STAGE2_VARIANTS_FILE)) {
+        $local = json_decode(file_get_contents(STAGE2_VARIANTS_FILE), true) ?: [];
     }
-    return json_decode(file_get_contents(STAGE2_VARIANTS_FILE), true) ?: [];
+    $remote = fetchRemoteJsonCatalog(STAGE2_VARIANTS_REMOTE_URL);
+    if (!$remote) {
+        return $local;
+    }
+    // Git fills missing characters; FTP/local upload wins on conflict.
+    return array_merge($remote, $local);
 }
 
 function loadStage3Maps(): array {
@@ -554,6 +597,7 @@ $patchEvolution = !empty($body['patchEvolution']);
 $txHash   = preg_replace('/[^0-9a-fA-Fx]/', '', $body['txHash'] ?? '');
 $charName = preg_replace('/[^A-Za-z_]/', '', $body['charName'] ?? '');
 $newStage = intval($body['newStage'] ?? 0);
+$clientCharName = normalizeCharacterName($charName);
 
 if (!$tokenId) {
     http_response_code(400);
@@ -593,7 +637,7 @@ if ($patchEvolution) {
 if ($syncMode) {
     $onChain = readOnChainState($tokenId);
     $newStage = $onChain['stage'];
-    $charName = $onChain['charName'];
+    $charName = $onChain['charName'] ?: $clientCharName;
     if ($newStage < 2) {
         http_response_code(400);
         echo json_encode([
@@ -652,6 +696,9 @@ if (empty($STAGE2_VARIANTS)) {
 $responseAssignment = null;
 
 $charName = normalizeCharacterName($charName, $STAGE2_VARIANTS);
+if ($clientCharName && empty($STAGE2_VARIANTS[$charName])) {
+    $charName = normalizeCharacterName($clientCharName, $STAGE2_VARIANTS);
+}
 
 if ($newStage === 2) {
     $variants  = $STAGE2_VARIANTS[$charName] ?? [];

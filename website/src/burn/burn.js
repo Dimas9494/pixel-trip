@@ -707,12 +707,13 @@ async function triggerServerReconcile(tokenId = null, burnTokenId = null) {
   }
 }
 
-function scheduleMetadataRetry(tokenId, burnTokenId = null, { attempts = 4 } = {}) {
-  const delays = [3000, 8000, 20000, 45000];
+function scheduleMetadataRetry(tokenId, burnTokenId = null, { attempts = 6, charName = null } = {}) {
+  const delays = [3000, 8000, 20000, 45000, 90000, 120000];
   delays.slice(0, attempts).forEach((delay, index) => {
     setTimeout(async () => {
-      const r = await syncMetadataToServer(tokenId, burnTokenId, { retries: 2, minStage: 2 });
+      const r = await syncMetadataToServer(tokenId, burnTokenId, { retries: 2, minStage: 2, charName });
       if (r.ok) {
+        hideMetadataRetryBanner();
         applyEvolveResult(tokenId, burnTokenId, Number(r.data?.stage ?? 2));
         refreshTokenImages();
         renderGrid();
@@ -729,7 +730,7 @@ function scheduleMetadataRetry(tokenId, burnTokenId = null, { attempts = 4 } = {
   });
 }
 
-async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3, minStage = 2 } = {}) {
+async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3, minStage = 2, charName = null } = {}) {
   let lastError = "Sync failed";
   const isSlowError = (msg) => /timed out|timeout|504|gateway|load failed/i.test(msg || "");
 
@@ -740,7 +741,12 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3, 
         {
           method:  "POST",
           headers: { "Content-Type": "application/json" },
-          body:    JSON.stringify({ tokenId, sync: true, burnTokenId: burnTokenId || undefined }),
+          body:    JSON.stringify({
+            tokenId,
+            sync: true,
+            burnTokenId: burnTokenId || undefined,
+            charName: charName || undefined,
+          }),
         },
         90_000,
       );
@@ -792,6 +798,7 @@ async function syncMetadataToServer(tokenId, burnTokenId = null, { retries = 3, 
   const polled = await pollServerMetadataStage(tokenId, minStage, { timeoutMs: 90_000, intervalMs: 4_000 });
   if (polled.ok) {
     applySyncResponse(tokenId, polled.data);
+    hideMetadataRetryBanner();
     console.log(`[metadata] #${tokenId} synced via server reconcile`);
     return polled;
   }
@@ -842,7 +849,7 @@ async function syncAllEvolvedTokens() {
       const t = stale[i];
       if (i > 0) await new Promise((r) => setTimeout(r, 300));
       setMessage(`Syncing ${i + 1}/${stale.length} (#${t.tokenId})…`, "pending");
-      const r = await syncMetadataToServer(t.tokenId, null, { retries: 2, minStage: t.stage });
+      const r = await syncMetadataToServer(t.tokenId, null, { retries: 2, minStage: t.stage, charName: t.character });
       if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
       else syncedIds.push(t.tokenId);
     }
@@ -887,7 +894,7 @@ async function autoSyncStaleMetadata(stubs) {
   const failed = [];
   let synced = 0;
   for (const t of stale.slice(0, 10)) {
-    const r = await syncMetadataToServer(t.tokenId, null, { retries: 2, minStage: t.stage });
+    const r = await syncMetadataToServer(t.tokenId, null, { retries: 2, minStage: t.stage, charName: t.character });
     if (!r.ok) failed.push(`#${t.tokenId}: ${formatSyncError(r.error)}`);
     else synced++;
   }
@@ -897,35 +904,34 @@ async function autoSyncStaleMetadata(stubs) {
   return { synced, failed };
 }
 
-function showMetadataDownload(tokenId, charName, newStage) {
-  const meta = buildEvolvedMetadata(tokenId, charName, newStage);
-  if (!meta) return;
-
-  const json = JSON.stringify(meta, null, 2);
-  const blob = new Blob([json], { type: "application/json" });
-  const url  = URL.createObjectURL(blob);
-
-  // Remove old download banner if exists
+function hideMetadataRetryBanner() {
   document.getElementById("burn-meta-download")?.remove();
+}
+
+function showMetadataRetryBanner(tokenId, error) {
+  hideMetadataRetryBanner();
 
   const banner = document.createElement("div");
   banner.id = "burn-meta-download";
-  banner.style.cssText = "margin-top:12px;padding:14px;background:#111;border:1px solid #00ff88;border-radius:6px;font-size:0.85rem;line-height:1.6;color:#ccc;";
-  banner.innerHTML = `
-    <strong style="color:#00ff88">Token #${tokenId} evolved to ${newStage === 2 ? "Stage 2" : "Stage 3"}!</strong><br>
-    Скачай JSON и загрузи на сервер через WinSCP:<br>
-    <code style="color:#00e5ff">pixeltripnft.website/metadata/${tokenId}</code>
-    <br><br>
-    <a href="${url}" download="${tokenId}"
-       style="display:inline-block;padding:8px 18px;background:#00ff88;color:#000;font-weight:700;border-radius:4px;text-decoration:none;margin-right:8px;">
-      Скачать metadata/${tokenId}
-    </a>
-    <button onclick="navigator.clipboard.writeText(${JSON.stringify(json)}).then(()=>this.textContent='Скопировано!')"
-      style="padding:8px 18px;background:#222;color:#00e5ff;border:1px solid #00e5ff;border-radius:4px;cursor:pointer;">
-      Копировать JSON
-    </button>
-  `;
+  banner.style.cssText = "margin-top:12px;padding:14px;background:#111;border:1px solid #ffb347;border-radius:6px;font-size:0.85rem;line-height:1.6;color:#ccc;";
+
+  const title = document.createElement("strong");
+  title.style.color = "#ffb347";
+  title.textContent = `Token #${tokenId} evolved on-chain — metadata sync pending`;
+
+  const body = document.createElement("p");
+  body.textContent = "Retrying automatically. You can also click Sync metadata to server (OpenSea).";
+
+  const detail = document.createElement("p");
+  detail.style.cssText = "color:#888;font-size:0.8rem;margin:0";
+  detail.textContent = formatSyncError(error);
+
+  banner.append(title, document.createElement("br"), body, detail);
   els.root.appendChild(banner);
+}
+
+function showMetadataDownload(tokenId, charName, newStage) {
+  showMetadataRetryBanner(tokenId, "Server sync delayed — background retry active");
 }
 
 const els = {
@@ -1601,8 +1607,9 @@ async function evolveTokens() {
     if (account) patchOwnerInCache(keepId, account.toLowerCase());
     setMessage(`Evolved! #${keepId} → ${stageLabel}. Updating metadata…`, "success");
 
-    const updated = await syncMetadataToServer(keepId, burnId, { retries: 5, minStage: newStage });
+    const updated = await syncMetadataToServer(keepId, burnId, { retries: 5, minStage: newStage, charName });
     if (updated.ok) {
+      hideMetadataRetryBanner();
       if (burnId) delete TOKEN_ASSIGNMENTS[String(burnId)];
       applyEvolveResult(keepId, burnId, newStage);
       patchOwnerInCache(burnId, null);
@@ -1613,9 +1620,9 @@ async function evolveTokens() {
       void loadTokens({ refreshMap: true });
     } else {
       setMessage(`Evolved on-chain! Metadata sync failed: ${formatSyncError(updated.error)}`, "error");
-      showMetadataDownload(keepId, charName, newStage);
+      showMetadataRetryBanner(keepId, updated.error);
       void triggerServerReconcile(keepId, burnId);
-      scheduleMetadataRetry(keepId, burnId);
+      scheduleMetadataRetry(keepId, burnId, { charName });
     }
 
     els.evolve.disabled = false;
