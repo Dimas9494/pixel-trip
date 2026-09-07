@@ -1,22 +1,12 @@
 {
-  "generated": "2026-09-06T19:22:47.767001+00:00",
-  "batch": "batch35",
+  "generated": "2026-09-03T18:31:09.244198+00:00",
+  "batch": "batch34",
   "characters": [
-    "Cyan_Punk",
-    "Cyber_Ninja",
-    "Dark_Elf",
-    "Eskimo",
-    "Feather_Chief",
-    "Leaf_Elf"
+    "Gold_Tooth"
   ],
   "counts": {
-    "Cyan_Punk": 7,
-    "Cyber_Ninja": 5,
-    "Dark_Elf": 10,
-    "Eskimo": 10,
-    "Feather_Chief": 5,
-    "Leaf_Elf": 6
+    "Gold_Tooth": 10
   },
-  "total_variants": 43,
-  "catalog_characters": 234
+  "total_variants": 10,
+  "catalog_characters": 228
 }

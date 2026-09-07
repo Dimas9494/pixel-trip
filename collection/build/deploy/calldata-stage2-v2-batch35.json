@@ -8,12 +8,12 @@
   },
   "batch": "batch35",
   "charIds": [
-    2,
-    22,
-    73,
-    135,
-    139,
-    143
+    65,
+    136,
+    181,
+    211,
+    239,
+    256
   ],
   "paths": [
     1,
@@ -24,11 +24,11 @@
     1
   ],
   "names": [
-    "Eskimo",
-    "Leaf_Elf",
-    "Cyan_Punk",
-    "Cyber_Ninja",
-    "Dark_Elf",
-    "Feather_Chief"
+    "Smoke_Lady",
+    "Cyber_Rebel",
+    "Horned_Viking",
+    "Pink_Beanie",
+    "Skull_King",
+    "Stoned_Fox"
   ]
 }
