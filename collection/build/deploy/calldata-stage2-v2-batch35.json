@@ -7,25 +7,17 @@
     "2": "DirectToS3"
   },
   "batch": "batch35",
-  "charIds": [
-    65,
-    136,
-    181,
-    211,
-    239,
-    256
-  ],
-  "paths": [
-    1,
-    1,
-    1,
-    1,
-    1,
-    1
-  ],
+  "charIds": [2, 22, 65, 73, 135, 136, 139, 143, 181, 211, 239, 256],
+  "paths": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   "names": [
+    "Eskimo",
+    "Leaf_Elf",
     "Smoke_Lady",
+    "Cyan_Punk",
+    "Cyber_Ninja",
     "Cyber_Rebel",
+    "Dark_Elf",
+    "Feather_Chief",
     "Horned_Viking",
     "Pink_Beanie",
     "Skull_King",
