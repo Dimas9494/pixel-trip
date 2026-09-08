@@ -1,0 +1,12 @@
+PIXEL TRIP — Stage 2 V2 deploy checklist (batch36)
+
+NEW CHARACTERS:
+  Derpy_Slime: charId=76, 13 variants
+  Fin_Merman: charId=29, 7 variants
+  Grumpy_Storm: charId=173, 6 variants
+  Paper_Fan: charId=208, 12 variants
+  Specs_Witch: charId=3, 7 variants
+
+New GIFs this batch: 45
+Catalog total characters: 249
+Footer: 2026-09-08-batch36-249c

@@ -3193,6 +3193,76 @@
             "Stoned_Fox_Ninja": "Stoned_Fox_Ninja",
             "Stoned_Fox_Vamp": "Stoned_Fox_Vamp"
           }
+        },
+        "Derpy_Slime": {
+          "folder": "Derpy_Slime",
+          "variants": {
+            "Derpy_Slime_Cap": "Derpy_Slime_Cap",
+            "Derpy_Slime_Cowboy": "Derpy_Slime_Cowboy",
+            "Derpy_Slime_Crown": "Derpy_Slime_Crown",
+            "Derpy_Slime_Cyborg": "Derpy_Slime_Cyborg",
+            "Derpy_Slime_Icy": "Derpy_Slime_Icy",
+            "Derpy_Slime_Knitted_Hat": "Derpy_Slime_Knitted_Hat",
+            "Derpy_Slime_Mohawk": "Derpy_Slime_Mohawk",
+            "Derpy_Slime_Monocle": "Derpy_Slime_Monocle",
+            "Derpy_Slime_Snake_Tongue": "Derpy_Slime_Snake_Tongue",
+            "Derpy_Slime_Summer_Hat": "Derpy_Slime_Summer_Hat",
+            "Derpy_Slime_Top_Hat": "Derpy_Slime_Top_Hat",
+            "Derpy_Slime_Winter_Hat": "Derpy_Slime_Winter_Hat",
+            "Derpy_Slime_Wizard": "Derpy_Slime_Wizard"
+          }
+        },
+        "Fin_Merman": {
+          "folder": "Fin_Merman",
+          "variants": {
+            "Fin_Merman_Bandana": "Fin_Merman_Bandana",
+            "Fin_Merman_Cyborg": "Fin_Merman_Cyborg",
+            "Fin_Merman_Sailor": "Fin_Merman_Sailor",
+            "Fin_Merman_Skull": "Fin_Merman_Skull",
+            "Fin_Merman_Tech": "Fin_Merman_Tech",
+            "Fin_Merman_Third_Eye": "Fin_Merman_Third_Eye",
+            "Fin_Merman_Underwater": "Fin_Merman_Underwater"
+          }
+        },
+        "Grumpy_Storm": {
+          "folder": "Grumpy_Storm",
+          "variants": {
+            "Grumpy_Storm_Fire": "Grumpy_Storm_Fire",
+            "Grumpy_Storm_Pope": "Grumpy_Storm_Pope",
+            "Grumpy_Storm_Rainbow": "Grumpy_Storm_Rainbow",
+            "Grumpy_Storm_Rockstar": "Grumpy_Storm_Rockstar",
+            "Grumpy_Storm_Vulcano": "Grumpy_Storm_Vulcano",
+            "Grumpy_Storm_Zombie": "Grumpy_Storm_Zombie"
+          }
+        },
+        "Paper_Fan": {
+          "folder": "Paper_Fan",
+          "variants": {
+            "Paper_Fan_BackCap": "Paper_Fan_BackCap",
+            "Paper_Fan_Cup": "Paper_Fan_Cup",
+            "Paper_Fan_Demon_Mask": "Paper_Fan_Demon_Mask",
+            "Paper_Fan_Fire": "Paper_Fan_Fire",
+            "Paper_Fan_Fox": "Paper_Fan_Fox",
+            "Paper_Fan_Golden": "Paper_Fan_Golden",
+            "Paper_Fan_Kitty": "Paper_Fan_Kitty",
+            "Paper_Fan_Long_Hair": "Paper_Fan_Long_Hair",
+            "Paper_Fan_Lotus": "Paper_Fan_Lotus",
+            "Paper_Fan_Mask": "Paper_Fan_Mask",
+            "Paper_Fan_Sakura": "Paper_Fan_Sakura",
+            "Paper_Fan_Skull": "Paper_Fan_Skull"
+          }
+        },
+        "Specs_Witch": {
+          "folder": "Specs_Witch",
+          "variants": {
+            "Specs_Witch_Duo_Color": "Specs_Witch_Duo_Color",
+            "Specs_Witch_Ghost": "Specs_Witch_Ghost",
+            "Specs_Witch_Mushroom_Hat": "Specs_Witch_Mushroom_Hat",
+            "Specs_Witch_Skull": "Specs_Witch_Skull",
+            "Specs_Witch_Underwater": "Specs_Witch_Underwater",
+            "Specs_Witch_VR_Glasses": "Specs_Witch_VR_Glasses",
+            "Specs_Witch_Vamp": "Specs_Witch_Vamp"
+          }
         }
       }
     },
