@@ -1,0 +1,12 @@
+PIXEL TRIP — Stage 2 V2 deploy checklist (batch37)
+
+NEW CHARACTERS:
+  Druid: charId=141, 13 variants
+  Jester_Cat: charId=183, 12 variants
+  Lightning_Glam: charId=5, 4 variants
+  Miner: charId=57, 8 variants
+  Monk: charId=66, 6 variants
+
+New GIFs this batch: 43
+Catalog total characters: 254
+Footer: 2026-09-09-batch37-254c

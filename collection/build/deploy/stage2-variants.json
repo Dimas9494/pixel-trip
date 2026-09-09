@@ -10561,5 +10561,230 @@
       "bg": "Plasma",
       "frame": "Icon_Triptych"
     }
+  ],
+  "Druid": [
+    {
+      "slug": "Druid_Alien",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Druid_Big_Horns",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Druid_Cap",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Druid_Diver",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Druid_Duo",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Druid_Golden",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Druid_Hooded",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Druid_Knight_Helmet",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Druid_Mohawk",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Druid_Oracle",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Druid_Sheriff_Hat",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Druid_Smoking",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Druid_Tech",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    }
+  ],
+  "Jester_Cat": [
+    {
+      "slug": "Jester_Cat_Aviator",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Jester_Cat_Cigar",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Jester_Cat_Cowboy_Hat",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Jester_Cat_Devil",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Jester_Cat_Earring",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Jester_Cat_King",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Jester_Cat_Mushroom_Hat",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Jester_Cat_Skull",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Jester_Cat_Smoking",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Jester_Cat_Top_Hat",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Jester_Cat_Wizard",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Jester_Cat_Zombie",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    }
+  ],
+  "Lightning_Glam": [
+    {
+      "slug": "Lightning_Glam_Crown",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Lightning_Glam_Horns",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Lightning_Glam_Vamp",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    },
+    {
+      "slug": "Lightning_Glam_Zombie",
+      "bg": "Path_Trace",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Miner": [
+    {
+      "slug": "Miner_Crown",
+      "bg": "Grid_Moire",
+      "frame": "Penrose_Tile"
+    },
+    {
+      "slug": "Miner_Crystals",
+      "bg": "Fusion_Node_Spiro",
+      "frame": "Glitch_Rgb"
+    },
+    {
+      "slug": "Miner_Cyborg",
+      "bg": "Snowflake",
+      "frame": "Dust_Orbit"
+    },
+    {
+      "slug": "Miner_Frog_Hat",
+      "bg": "Cells",
+      "frame": "Pulse_Wave"
+    },
+    {
+      "slug": "Miner_OG",
+      "bg": "Grid_Moire",
+      "frame": "Chromosome_Paint"
+    },
+    {
+      "slug": "Miner_Steampunk",
+      "bg": "Dot_Fabric",
+      "frame": "Zoetrope_Slits"
+    },
+    {
+      "slug": "Miner_Viking",
+      "bg": "Amoeba",
+      "frame": "Pink_Glass"
+    },
+    {
+      "slug": "Miner_Zombie",
+      "bg": "Mirror",
+      "frame": "Flicker_Pulse"
+    }
+  ],
+  "Monk": [
+    {
+      "slug": "Monk_Alien",
+      "bg": "Waves",
+      "frame": "Flicker_Pulse"
+    },
+    {
+      "slug": "Monk_Beard",
+      "bg": "Distortion",
+      "frame": "Steampunk_Brass"
+    },
+    {
+      "slug": "Monk_Crown",
+      "bg": "Zebra_Turing",
+      "frame": "Auction_Hammer"
+    },
+    {
+      "slug": "Monk_Headband",
+      "bg": "Bee_Grid",
+      "frame": "Magnetic_Field"
+    },
+    {
+      "slug": "Monk_Hooded",
+      "bg": "Prism",
+      "frame": "Gradient_Pulse"
+    },
+    {
+      "slug": "Monk_Stoned",
+      "bg": "Asteroid_Belt",
+      "frame": "Phantom_Trace"
+    }
   ]
 }

@@ -38,13 +38,13 @@ CHAR_MAP = ROOT / "website/char-map.json"
 META_DIR = ROOT / "collection/build/deploy/stage2/metadata"
 DEPLOY = ROOT / "collection/build/deploy"
 
-BATCH_TAG = "batch36"
+BATCH_TAG = "batch37"
 CHARACTERS = [
-    "Derpy_Slime",
-    "Fin_Merman",
-    "Grumpy_Storm",
-    "Paper_Fan",
-    "Specs_Witch",
+    "Druid",
+    "Jester_Cat",
+    "Lightning_Glam",
+    "Miner",
+    "Monk",
 ]
 
 
@@ -182,12 +182,24 @@ def main() -> int:
     verify_names()
 
     print("\n[1/2] Copy + sync config + render GIFs…")
+    cfg = nft_load_json(CONFIG_PATH)
+    stage2_root = stage_char_dir(cfg, 2)
+    skip_copy = all(
+        (stage2_root / c).is_dir() and any((stage2_root / c).glob("*.png"))
+        for c in CHARACTERS
+    )
+    if skip_copy:
+        print("[skip] Stage_2 folders already present")
+
     stage_cfg = json.loads((COLLECTION / "stage_config.json").read_text(encoding="utf-8"))
     char_map_s2 = stage_cfg.get("stages", {}).get("2", {}).get("characterMap", {})
     skip_sync = all(c in char_map_s2 for c in CHARACTERS)
     if skip_sync:
         print("[skip] stage_config already has batch characters")
-    new_catalog, all_slugs, counts, total = render_batch(skip_copy=True, skip_sync=skip_sync)
+
+    new_catalog, all_slugs, counts, total = render_batch(
+        skip_copy=skip_copy, skip_sync=skip_sync
+    )
 
     print("\n[2/2] Merge catalog (additive)…")
     merged = merge_catalog(new_catalog)

@@ -3263,6 +3263,74 @@
             "Specs_Witch_VR_Glasses": "Specs_Witch_VR_Glasses",
             "Specs_Witch_Vamp": "Specs_Witch_Vamp"
           }
+        },
+        "Druid": {
+          "folder": "Druid",
+          "variants": {
+            "Druid_Alien": "Druid_Alien",
+            "Druid_Big_Horns": "Druid_Big_Horns",
+            "Druid_Cap": "Druid_Cap",
+            "Druid_Diver": "Druid_Diver",
+            "Druid_Duo": "Druid_Duo",
+            "Druid_Golden": "Druid_Golden",
+            "Druid_Hooded": "Druid_Hooded",
+            "Druid_Knight_Helmet": "Druid_Knight_Helmet",
+            "Druid_Mohawk": "Druid_Mohawk",
+            "Druid_Oracle": "Druid_Oracle",
+            "Druid_Sheriff_Hat": "Druid_Sheriff_Hat",
+            "Druid_Smoking": "Druid_Smoking",
+            "Druid_Tech": "Druid_Tech"
+          }
+        },
+        "Jester_Cat": {
+          "folder": "Jester_Cat",
+          "variants": {
+            "Jester_Cat_Aviator": "Jester_Cat_Aviator",
+            "Jester_Cat_Cigar": "Jester_Cat_Cigar",
+            "Jester_Cat_Cowboy_Hat": "Jester_Cat_Cowboy_Hat",
+            "Jester_Cat_Devil": "Jester_Cat_Devil",
+            "Jester_Cat_Earring": "Jester_Cat_Earring",
+            "Jester_Cat_King": "Jester_Cat_King",
+            "Jester_Cat_Mushroom_Hat": "Jester_Cat_Mushroom_Hat",
+            "Jester_Cat_Skull": "Jester_Cat_Skull",
+            "Jester_Cat_Smoking": "Jester_Cat_Smoking",
+            "Jester_Cat_Top_Hat": "Jester_Cat_Top_Hat",
+            "Jester_Cat_Wizard": "Jester_Cat_Wizard",
+            "Jester_Cat_Zombie": "Jester_Cat_Zombie"
+          }
+        },
+        "Lightning_Glam": {
+          "folder": "Lightning_Glam",
+          "variants": {
+            "Lightning_Glam_Crown": "Lightning_Glam_Crown",
+            "Lightning_Glam_Horns": "Lightning_Glam_Horns",
+            "Lightning_Glam_Vamp": "Lightning_Glam_Vamp",
+            "Lightning_Glam_Zombie": "Lightning_Glam_Zombie"
+          }
+        },
+        "Miner": {
+          "folder": "Miner",
+          "variants": {
+            "Miner_Crown": "Miner_Crown",
+            "Miner_Crystals": "Miner_Crystals",
+            "Miner_Cyborg": "Miner_Cyborg",
+            "Miner_Frog_Hat": "Miner_Frog_Hat",
+            "Miner_OG": "Miner_OG",
+            "Miner_Steampunk": "Miner_Steampunk",
+            "Miner_Viking": "Miner_Viking",
+            "Miner_Zombie": "Miner_Zombie"
+          }
+        },
+        "Monk": {
+          "folder": "Monk",
+          "variants": {
+            "Monk_Alien": "Monk_Alien",
+            "Monk_Beard": "Monk_Beard",
+            "Monk_Crown": "Monk_Crown",
+            "Monk_Headband": "Monk_Headband",
+            "Monk_Hooded": "Monk_Hooded",
+            "Monk_Stoned": "Monk_Stoned"
+          }
         }
       }
     },
