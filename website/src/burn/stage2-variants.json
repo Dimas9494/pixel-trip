@@ -10786,5 +10786,155 @@
       "bg": "Asteroid_Belt",
       "frame": "Phantom_Trace"
     }
+  ],
+  "Mint_Cyclops": [
+    {
+      "slug": "Mint_Cyclops_Blonde",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Mint_Cyclops_Cyborg",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Mint_Cyclops_Devil",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Mint_Cyclops_Farmer",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Mint_Cyclops_Mohawk",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    },
+    {
+      "slug": "Mint_Cyclops_Mustache",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Mint_Cyclops_Tuxedo",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Mint_Cyclops_Underwater",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Mint_Cyclops_Zombie",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    }
+  ],
+  "Oni_Mask": [
+    {
+      "slug": "Oni_Mask_Gas_Mask",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    },
+    {
+      "slug": "Oni_Mask_King",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    }
+  ],
+  "Painted_Mime": [
+    {
+      "slug": "Painted_Mime_Alien",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Painted_Mime_Beard",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Painted_Mime_Brush",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Painted_Mime_Bucket_Hat",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    },
+    {
+      "slug": "Painted_Mime_Clown",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Painted_Mime_Cyborg",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    },
+    {
+      "slug": "Painted_Mime_Plague_Doctor_Mask",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Painted_Mime_Smoking",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Painted_Mime_White",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    }
+  ],
+  "Pink_Fangs": [
+    {
+      "slug": "Pink_Fangs_Aviator",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Pink_Fangs_Cap",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Pink_Fangs_Cowboy_Hat",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    },
+    {
+      "slug": "Pink_Fangs_Forest",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Pink_Fangs_Kitty",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Pink_Fangs_Mask",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    }
+  ],
+  "Snow_Yeti": [
+    {
+      "slug": "Snow_Yeti_Diver",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Snow_Yeti_Pipe",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    }
   ]
 }

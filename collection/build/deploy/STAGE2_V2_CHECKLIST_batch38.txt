@@ -1,0 +1,12 @@
+PIXEL TRIP — Stage 2 V2 deploy checklist (batch38)
+
+NEW CHARACTERS:
+  Mint_Cyclops: charId=191, 9 variants
+  Oni_Mask: charId=204, 2 variants
+  Painted_Mime: charId=13, 9 variants
+  Pink_Fangs: charId=213, 6 variants
+  Snow_Yeti: charId=244, 2 variants
+
+New GIFs this batch: 28
+Catalog total characters: 259
+Footer: 2026-09-10-batch38-259c

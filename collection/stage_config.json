@@ -3331,6 +3331,59 @@
             "Monk_Hooded": "Monk_Hooded",
             "Monk_Stoned": "Monk_Stoned"
           }
+        },
+        "Mint_Cyclops": {
+          "folder": "Mint_Cyclops",
+          "variants": {
+            "Mint_Cyclops_Blonde": "Mint_Cyclops_Blonde",
+            "Mint_Cyclops_Cyborg": "Mint_Cyclops_Cyborg",
+            "Mint_Cyclops_Devil": "Mint_Cyclops_Devil",
+            "Mint_Cyclops_Farmer": "Mint_Cyclops_Farmer",
+            "Mint_Cyclops_Mohawk": "Mint_Cyclops_Mohawk",
+            "Mint_Cyclops_Mustache": "Mint_Cyclops_Mustache",
+            "Mint_Cyclops_Tuxedo": "Mint_Cyclops_Tuxedo",
+            "Mint_Cyclops_Underwater": "Mint_Cyclops_Underwater",
+            "Mint_Cyclops_Zombie": "Mint_Cyclops_Zombie"
+          }
+        },
+        "Oni_Mask": {
+          "folder": "Oni_Mask",
+          "variants": {
+            "Oni_Mask_Gas_Mask": "Oni_Mask_Gas_Mask",
+            "Oni_Mask_King": "Oni_Mask_King"
+          }
+        },
+        "Painted_Mime": {
+          "folder": "Painted_Mime",
+          "variants": {
+            "Painted_Mime_Alien": "Painted_Mime_Alien",
+            "Painted_Mime_Beard": "Painted_Mime_Beard",
+            "Painted_Mime_Brush": "Painted_Mime_Brush",
+            "Painted_Mime_Bucket_Hat": "Painted_Mime_Bucket_Hat",
+            "Painted_Mime_Clown": "Painted_Mime_Clown",
+            "Painted_Mime_Cyborg": "Painted_Mime_Cyborg",
+            "Painted_Mime_Plague_Doctor_Mask": "Painted_Mime_Plague_Doctor_Mask",
+            "Painted_Mime_Smoking": "Painted_Mime_Smoking",
+            "Painted_Mime_White": "Painted_Mime_White"
+          }
+        },
+        "Pink_Fangs": {
+          "folder": "Pink_Fangs",
+          "variants": {
+            "Pink_Fangs_Aviator": "Pink_Fangs_Aviator",
+            "Pink_Fangs_Cap": "Pink_Fangs_Cap",
+            "Pink_Fangs_Cowboy_Hat": "Pink_Fangs_Cowboy_Hat",
+            "Pink_Fangs_Forest": "Pink_Fangs_Forest",
+            "Pink_Fangs_Kitty": "Pink_Fangs_Kitty",
+            "Pink_Fangs_Mask": "Pink_Fangs_Mask"
+          }
+        },
+        "Snow_Yeti": {
+          "folder": "Snow_Yeti",
+          "variants": {
+            "Snow_Yeti_Diver": "Snow_Yeti_Diver",
+            "Snow_Yeti_Pipe": "Snow_Yeti_Pipe"
+          }
         }
       }
     },
