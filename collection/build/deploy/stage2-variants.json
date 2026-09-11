@@ -10936,5 +10936,157 @@
       "bg": "Grid_Tunnel",
       "frame": "Phantom_Trace"
     }
+  ],
+  "Pipe_Detective": [
+    {
+      "slug": "Pipe_Detective_Alien",
+      "bg": "Metaball",
+      "frame": "Quad_Split"
+    },
+    {
+      "slug": "Pipe_Detective_Bandito",
+      "bg": "Morphogenesis",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Pipe_Detective_Cyborg",
+      "bg": "Quartz",
+      "frame": "Fusion_Scan_Rotate"
+    },
+    {
+      "slug": "Pipe_Detective_Skull",
+      "bg": "Trails",
+      "frame": "Ring_Scanner"
+    },
+    {
+      "slug": "Pipe_Detective_Zombie",
+      "bg": "Parquet",
+      "frame": "Asteroid_Belt"
+    }
+  ],
+  "Purple_Grin": [
+    {
+      "slug": "Purple_Grin_Beard",
+      "bg": "Interference",
+      "frame": "Game_Over"
+    },
+    {
+      "slug": "Purple_Grin_Gas_Mask",
+      "bg": "Decoder",
+      "frame": "Ionosphere"
+    },
+    {
+      "slug": "Purple_Grin_Hooded",
+      "bg": "Infinity_Loop",
+      "frame": "Pixel_Sparkle"
+    },
+    {
+      "slug": "Purple_Grin_King",
+      "bg": "Penrose",
+      "frame": "Spinning_Segments"
+    },
+    {
+      "slug": "Purple_Grin_Winter_Hat",
+      "bg": "Interference",
+      "frame": "Ion_Flash"
+    }
+  ],
+  "Purple_Prince": [
+    {
+      "slug": "Purple_Prince_Hooded",
+      "bg": "Eddy",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Purple_Prince_Mask",
+      "bg": "Infinity_Loop",
+      "frame": "Ice_Mirror"
+    },
+    {
+      "slug": "Purple_Prince_Mohawk",
+      "bg": "Goo_Bubbles",
+      "frame": "Bullion_Stack"
+    },
+    {
+      "slug": "Purple_Prince_Pirate",
+      "bg": "Finale_Mandala_Pulse",
+      "frame": "Slow_Pulse"
+    },
+    {
+      "slug": "Purple_Prince_Skull",
+      "bg": "Quartz",
+      "frame": "Prime_Lock"
+    }
+  ],
+  "Red_Cyborg": [
+    {
+      "slug": "Red_Cyborg_Big_Eyes",
+      "bg": "Light_Ray",
+      "frame": "Petri_Culture"
+    },
+    {
+      "slug": "Red_Cyborg_Horns",
+      "bg": "Bee_Grid",
+      "frame": "Lichen_Growth"
+    }
+  ],
+  "Shadow_Ninja": [
+    {
+      "slug": "Shadow_Ninja_BackCap",
+      "bg": "Fractal_Rug",
+      "frame": "Star_Chart"
+    },
+    {
+      "slug": "Shadow_Ninja_Blonde",
+      "bg": "CRT",
+      "frame": "Wave_Pulse_Combo"
+    },
+    {
+      "slug": "Shadow_Ninja_Devil",
+      "bg": "Voronoi",
+      "frame": "Icon_Triptych"
+    },
+    {
+      "slug": "Shadow_Ninja_Icy",
+      "bg": "Bee_Grid",
+      "frame": "Electron_Orbit"
+    },
+    {
+      "slug": "Shadow_Ninja_Oni_Mask",
+      "bg": "Magnetic_Goo",
+      "frame": "Proton_Glow"
+    },
+    {
+      "slug": "Shadow_Ninja_Smoking",
+      "bg": "Waves",
+      "frame": "Blizzard_Wall"
+    }
+  ],
+  "Shocked_Face": [
+    {
+      "slug": "Shocked_Face_Bandito",
+      "bg": "Chimera",
+      "frame": "Nexus_Pulse"
+    },
+    {
+      "slug": "Shocked_Face_Cyborg",
+      "bg": "Prism",
+      "frame": "Nebula_Mist"
+    },
+    {
+      "slug": "Shocked_Face_Headphones",
+      "bg": "Galaxy_Spin",
+      "frame": "Hourglass_Turn"
+    },
+    {
+      "slug": "Shocked_Face_Mask",
+      "bg": "Prism",
+      "frame": "Deep_Space"
+    },
+    {
+      "slug": "Shocked_Face_Skull",
+      "bg": "Grid_Tunnel",
+      "frame": "Phantom_Trace"
+    }
   ]
 }

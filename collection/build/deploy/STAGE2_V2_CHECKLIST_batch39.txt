@@ -1,0 +1,13 @@
+PIXEL TRIP — Stage 2 V2 deploy checklist (batch39)
+
+NEW CHARACTERS:
+  Pipe_Detective: charId=216, 5 variants
+  Purple_Grin: charId=223, 5 variants
+  Purple_Prince: charId=34, 5 variants
+  Red_Cyborg: charId=38, 2 variants
+  Shadow_Ninja: charId=237, 6 variants
+  Shocked_Face: charId=51, 5 variants
+
+New GIFs this batch: 28
+Catalog total characters: 265
+Footer: 2026-09-11-batch39-265c

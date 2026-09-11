@@ -3384,6 +3384,64 @@
             "Snow_Yeti_Diver": "Snow_Yeti_Diver",
             "Snow_Yeti_Pipe": "Snow_Yeti_Pipe"
           }
+        },
+        "Pipe_Detective": {
+          "folder": "Pipe_Detective",
+          "variants": {
+            "Pipe_Detective_Alien": "Pipe_Detective_Alien",
+            "Pipe_Detective_Bandito": "Pipe_Detective_Bandito",
+            "Pipe_Detective_Cyborg": "Pipe_Detective_Cyborg",
+            "Pipe_Detective_Skull": "Pipe_Detective_Skull",
+            "Pipe_Detective_Zombie": "Pipe_Detective_Zombie"
+          }
+        },
+        "Purple_Grin": {
+          "folder": "Purple_Grin",
+          "variants": {
+            "Purple_Grin_Beard": "Purple_Grin_Beard",
+            "Purple_Grin_Gas_Mask": "Purple_Grin_Gas_Mask",
+            "Purple_Grin_Hooded": "Purple_Grin_Hooded",
+            "Purple_Grin_King": "Purple_Grin_King",
+            "Purple_Grin_Winter_Hat": "Purple_Grin_Winter_Hat"
+          }
+        },
+        "Purple_Prince": {
+          "folder": "Purple_Prince",
+          "variants": {
+            "Purple_Prince_Hooded": "Purple_Prince_Hooded",
+            "Purple_Prince_Mask": "Purple_Prince_Mask",
+            "Purple_Prince_Mohawk": "Purple_Prince_Mohawk",
+            "Purple_Prince_Pirate": "Purple_Prince_Pirate",
+            "Purple_Prince_Skull": "Purple_Prince_Skull"
+          }
+        },
+        "Red_Cyborg": {
+          "folder": "Red_Cyborg",
+          "variants": {
+            "Red_Cyborg_Big_Eyes": "Red_Cyborg_Big_Eyes",
+            "Red_Cyborg_Horns": "Red_Cyborg_Horns"
+          }
+        },
+        "Shadow_Ninja": {
+          "folder": "Shadow_Ninja",
+          "variants": {
+            "Shadow_Ninja_BackCap": "Shadow_Ninja_BackCap",
+            "Shadow_Ninja_Blonde": "Shadow_Ninja_Blonde",
+            "Shadow_Ninja_Devil": "Shadow_Ninja_Devil",
+            "Shadow_Ninja_Icy": "Shadow_Ninja_Icy",
+            "Shadow_Ninja_Oni_Mask": "Shadow_Ninja_Oni_Mask",
+            "Shadow_Ninja_Smoking": "Shadow_Ninja_Smoking"
+          }
+        },
+        "Shocked_Face": {
+          "folder": "Shocked_Face",
+          "variants": {
+            "Shocked_Face_Bandito": "Shocked_Face_Bandito",
+            "Shocked_Face_Cyborg": "Shocked_Face_Cyborg",
+            "Shocked_Face_Headphones": "Shocked_Face_Headphones",
+            "Shocked_Face_Mask": "Shocked_Face_Mask",
+            "Shocked_Face_Skull": "Shocked_Face_Skull"
+          }
         }
       }
     },

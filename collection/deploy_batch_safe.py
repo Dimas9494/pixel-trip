@@ -38,13 +38,14 @@ CHAR_MAP = ROOT / "website/char-map.json"
 META_DIR = ROOT / "collection/build/deploy/stage2/metadata"
 DEPLOY = ROOT / "collection/build/deploy"
 
-BATCH_TAG = "batch38"
+BATCH_TAG = "batch39"
 CHARACTERS = [
-    "Mint_Cyclops",
-    "Oni_Mask",
-    "Painted_Mime",
-    "Pink_Fangs",
-    "Snow_Yeti",
+    "Pipe_Detective",
+    "Purple_Grin",
+    "Purple_Prince",
+    "Red_Cyborg",
+    "Shadow_Ninja",
+    "Shocked_Face",
 ]
 
 
