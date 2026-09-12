@@ -1,0 +1,12 @@
+PIXEL TRIP — Stage 2 V2 deploy checklist (batch40)
+
+NEW CHARACTERS:
+  Pirate: charId=217, 5 variants
+  Shocked_Rooster: charId=27, 6 variants
+  Shroom_Knight: charId=56, 10 variants
+  Steel_Robot: charId=251, 6 variants
+  Street_Kid: charId=261, 5 variants
+
+New GIFs this batch: 32
+Catalog total characters: 270
+Footer: 2026-09-12-batch40-270c

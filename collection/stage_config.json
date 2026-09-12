@@ -3442,6 +3442,63 @@
             "Shocked_Face_Mask": "Shocked_Face_Mask",
             "Shocked_Face_Skull": "Shocked_Face_Skull"
           }
+        },
+        "Pirate": {
+          "folder": "Pirate",
+          "variants": {
+            "Pirate_Beard": "Pirate_Beard",
+            "Pirate_Duck_Cap": "Pirate_Duck_Cap",
+            "Pirate_King": "Pirate_King",
+            "Pirate_OG": "Pirate_OG",
+            "Pirate_Parrot": "Pirate_Parrot"
+          }
+        },
+        "Shocked_Rooster": {
+          "folder": "Shocked_Rooster",
+          "variants": {
+            "Shocked_Rooster_Cowboy_Hat": "Shocked_Rooster_Cowboy_Hat",
+            "Shocked_Rooster_Pirate": "Shocked_Rooster_Pirate",
+            "Shocked_Rooster_Punk": "Shocked_Rooster_Punk",
+            "Shocked_Rooster_Tech": "Shocked_Rooster_Tech",
+            "Shocked_Rooster_Top_Hat": "Shocked_Rooster_Top_Hat",
+            "Shocked_Rooster_Zombie": "Shocked_Rooster_Zombie"
+          }
+        },
+        "Shroom_Knight": {
+          "folder": "Shroom_Knight",
+          "variants": {
+            "Shroom_Knight_Frog_Hat": "Shroom_Knight_Frog_Hat",
+            "Shroom_Knight_Golden": "Shroom_Knight_Golden",
+            "Shroom_Knight_Hippie": "Shroom_Knight_Hippie",
+            "Shroom_Knight_Monocle": "Shroom_Knight_Monocle",
+            "Shroom_Knight_Neon": "Shroom_Knight_Neon",
+            "Shroom_Knight_Pinky": "Shroom_Knight_Pinky",
+            "Shroom_Knight_Rocker": "Shroom_Knight_Rocker",
+            "Shroom_Knight_Toga": "Shroom_Knight_Toga",
+            "Shroom_Knight_Vamp": "Shroom_Knight_Vamp",
+            "Shroom_Knight_Zombie": "Shroom_Knight_Zombie"
+          }
+        },
+        "Steel_Robot": {
+          "folder": "Steel_Robot",
+          "variants": {
+            "Steel_Robot_Big_Eyes": "Steel_Robot_Big_Eyes",
+            "Steel_Robot_Cap": "Steel_Robot_Cap",
+            "Steel_Robot_Cowboy_Hat": "Steel_Robot_Cowboy_Hat",
+            "Steel_Robot_Crazy": "Steel_Robot_Crazy",
+            "Steel_Robot_Mohawk": "Steel_Robot_Mohawk",
+            "Steel_Robot_Zombie": "Steel_Robot_Zombie"
+          }
+        },
+        "Street_Kid": {
+          "folder": "Street_Kid",
+          "variants": {
+            "Street_Kid_Ape": "Street_Kid_Ape",
+            "Street_Kid_Fox_Hat": "Street_Kid_Fox_Hat",
+            "Street_Kid_Frog_Hat": "Street_Kid_Frog_Hat",
+            "Street_Kid_Long_Hair": "Street_Kid_Long_Hair",
+            "Street_Kid_Skull_Mask": "Street_Kid_Skull_Mask"
+          }
         }
       }
     },

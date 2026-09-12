@@ -103,6 +103,32 @@ function isValidCatalogSlug(slug) {
   return false;
 }
 
+/** Stage 1 character key for a Stage 2 variant slug (e.g. Pop_Owl → Bowtie_Owl). */
+function parentCharacterForSlug(slug) {
+  if (!slug) return null;
+  for (const [char, variants] of Object.entries(getStage2Variants())) {
+    if (variants.some((v) => v.slug === slug)) return char;
+  }
+  return null;
+}
+
+/** On-chain charId wins; otherwise map Stage 2 slug → base character for S3 pool lookup. */
+function evolveBaseCharacter(tokenId, charId, character, stage = 0) {
+  if (isValidCharId(charId) && CHAR_ID_TO_NAME[charId]) {
+    return CHAR_ID_TO_NAME[charId];
+  }
+  const cached = METADATA_CACHE[String(tokenId)];
+  const slug = cached?.slug || (isValidCatalogSlug(character) ? character : null);
+  if (stage >= 2 && slug) {
+    const parent = parentCharacterForSlug(slug);
+    if (parent) return parent;
+  }
+  if (getBurnableChars().has(character) || isDirectToS3Char(character)) {
+    return character;
+  }
+  return normalizeCharacterName(character);
+}
+
 function getStage2Variant(tokenId, character, stage = 0) {
   const key = String(tokenId);
   const cached = METADATA_CACHE[key];
@@ -144,19 +170,30 @@ function collectUsedStage3Slugs(character, excludeTokenId = null) {
 }
 
 function resolveStage3Variant(tokenId, character, excludeTokenId = null) {
-  const pool = getStage3Pool(character);
-  if (!pool.length) {
-    return STAGE3_MAP.defaultByChar?.[character] ?? null;
+  const key = String(tokenId);
+  const s2Slug = METADATA_CACHE[key]?.slug || (isValidCatalogSlug(character) ? character : null);
+  const baseChar = parentCharacterForSlug(s2Slug || "") || character;
+
+  if (s2Slug && STAGE3_MAP.fromStage2Slug?.[s2Slug]) {
+    const mapped = STAGE3_MAP.fromStage2Slug[s2Slug];
+    const poolForBase = getStage3Pool(baseChar);
+    const entry = poolForBase.find((e) => e.slug === mapped.slug) || mapped;
+    const used = collectUsedStage3Slugs(baseChar, excludeTokenId ?? tokenId);
+    if (!used.has(entry.slug)) return entry;
   }
 
-  const key = String(tokenId);
+  const pool = getStage3Pool(baseChar);
+  if (!pool.length) {
+    return STAGE3_MAP.defaultByChar?.[baseChar] ?? null;
+  }
+
   if (STAGE3_ASSIGNMENTS[key]) {
     const hit = pool.find(e => e.slug === STAGE3_ASSIGNMENTS[key].slug);
     if (hit) return hit;
     delete STAGE3_ASSIGNMENTS[key];
   }
 
-  const used = collectUsedStage3Slugs(character, excludeTokenId ?? tokenId);
+  const used = collectUsedStage3Slugs(baseChar, excludeTokenId ?? tokenId);
   const preferred = pool[Number(tokenId) % pool.length];
   if (!used.has(preferred.slug)) return preferred;
 
@@ -204,10 +241,11 @@ function evolvePreviewVariant(tokenId, character, stage) {
   return getStage3Variant(tokenId, character, stage);
 }
 
-function canEvolveToStage3(tokenId, character, stage) {
+function canEvolveToStage3(tokenId, character, stage, charId = 0) {
   if (stage !== 2) return false;
-  if (!getBurnableChars().has(character) && !isDirectToS3Char(character)) return false;
-  return !!resolveStage3Variant(tokenId, character, tokenId);
+  const base = evolveBaseCharacter(tokenId, charId, character, stage);
+  if (!getBurnableChars().has(base) && !isDirectToS3Char(base)) return false;
+  return !!resolveStage3Variant(tokenId, base, tokenId);
 }
 
 function characterFromMetadata(tokenId) {
@@ -268,7 +306,8 @@ function charPathLabel(charId) {
 }
 
 function finalizeToken(stub) {
-  const character = resolveCharacterName(stub.tokenId, stub.charId, stub.character);
+  const character = evolveBaseCharacter(stub.tokenId, stub.charId, stub.character, stub.stage)
+    || resolveCharacterName(stub.tokenId, stub.charId, stub.character);
   const flags = tokenLabFlags(stub.tokenId, character, stub.stage, stub.charId);
   return {
     ...stub,
@@ -281,7 +320,8 @@ function finalizeToken(stub) {
 }
 
 function tokenLabFlags(tokenId, character, stage, charId = 0) {
-  const burnable = getBurnableChars().has(character) || isDirectToS3Char(character);
+  const base = evolveBaseCharacter(tokenId, charId, character, stage);
+  const burnable = getBurnableChars().has(base) || isDirectToS3Char(base);
   if (!burnable) {
     return { canEvolve: false, viewReason: "not_burnable" };
   }
@@ -298,7 +338,7 @@ function tokenLabFlags(tokenId, character, stage, charId = 0) {
     return { canEvolve: true, viewReason: null };
   }
   if (stage === 2) {
-    if (canEvolveToStage3(tokenId, character, stage)) {
+    if (canEvolveToStage3(tokenId, character, stage, charId)) {
       return { canEvolve: true, viewReason: null };
     }
     return { canEvolve: false, viewReason: "no_s3" };
@@ -1090,7 +1130,7 @@ async function loadTokens({ refreshMap = false, ownedIdsOverride = null } = {}) 
   }
 
   for (const stub of stubs) {
-    const character = CHAR_ID_TO_NAME[stub.charId] || stub.character;
+    const character = evolveBaseCharacter(stub.tokenId, stub.charId, stub.character, stub.stage);
     const flags = tokenLabFlags(stub.tokenId, character, stub.stage, stub.charId);
     stub.character = character;
     stub.canEvolve = flags.canEvolve;
@@ -1347,7 +1387,7 @@ function validateSelection() {
   if (keepToken.stage === 0 && isDirectToS3Char(keepToken.character) && !resolveStage3Variant(keepToken.tokenId, keepToken.character, keepToken.tokenId)) {
     return `No Stage 3 art uploaded for ${keepToken.character}.`;
   }
-  if (keepToken.stage === 2 && !canEvolveToStage3(keepToken.tokenId, keepToken.character, 2)) {
+  if (keepToken.stage === 2 && !canEvolveToStage3(keepToken.tokenId, keepToken.character, 2, keepToken.charId)) {
     return `All Stage 3 variants for ${keepToken.character} are already taken, or no art in pool.`;
   }
   return null;
