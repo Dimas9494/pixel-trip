@@ -140,8 +140,11 @@ export function createStage3Api(remoteGet, remotePost, useLocalRef) {
       try {
         return await remoteGet({ ...params, poll: "stage3" });
       } catch (err) {
-        useLocalRef.current = true;
-        return localGet(params);
+        if (/404|503|Failed to fetch/i.test(String(err.message))) {
+          useLocalRef.current = true;
+          return localGet(params);
+        }
+        throw err;
       }
     },
     async post(body) {

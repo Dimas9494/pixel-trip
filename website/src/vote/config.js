@@ -17,16 +17,13 @@ function defaultVoteApiUrl() {
   if (import.meta.env.VITE_VOTE_API_URL) {
     return import.meta.env.VITE_VOTE_API_URL;
   }
-  // Production Netlify build — same-origin function (works on custom domains too).
-  if (import.meta.env.PROD) {
-    return "/.netlify/functions/votes";
-  }
+  // Stage 2 + Stage 3 polls (per-character S3 votes) live on vote-api.php.
   return "https://pixeltripnft.website/vote-api.php";
 }
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-09-13-vote-stage3-per-char";
+export const VOTE_BUILD = "2026-09-13-vote-api-php-direct";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;

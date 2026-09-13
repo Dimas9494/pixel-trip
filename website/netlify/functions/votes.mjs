@@ -8,7 +8,9 @@
 
 import STAGE2_VARIANTS from "../../src/burn/stage2-variants.json" with { type: "json" };
 
-const VOTE_API_URL = (process.env.VOTE_API_URL || "").replace(/\/$/, "");
+const VOTE_API_URL = (
+  process.env.VOTE_API_URL || "https://pixeltripnft.website/vote-api.php"
+).replace(/\/$/, "");
 const STAGE1 = "0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9";
 const STAGE2_VARIANTS_URL = "https://pixeltripnft.website/stage2-variants.json";
 const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;

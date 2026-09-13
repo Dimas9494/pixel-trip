@@ -10,6 +10,7 @@
   MAINNET_RPC_URL         = "https://rpc.mevblocker.io"
   IMAGE_BASE_URL          = "https://pixeltripnft.website/stage2/images"
   STAGE1_META_BASE        = "https://pixeltripnft.website/metadata"
+  VOTE_API_URL            = "https://pixeltripnft.website/vote-api.php"
 
 [functions]
   node_bundler = "esbuild"
