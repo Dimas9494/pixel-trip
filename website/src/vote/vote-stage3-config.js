@@ -94,4 +94,19 @@ export function characterVoteProgress(baseCharacter, leaderboard, supply = CHARA
   return { cap, points, closed: cap > 0 && points >= cap };
 }
 
+export function characterStage3ArtProgress(
+  baseCharacter,
+  supply = CHARACTER_SUPPLY,
+  catalog = STAGE2_VARIANTS,
+) {
+  const artCap = maxStage3ArtSlots(baseCharacter, supply);
+  const drawn = stage3ArtCountForBase(baseCharacter, catalog);
+  return {
+    artCap,
+    drawn,
+    remaining: Math.max(0, artCap - drawn),
+    complete: artCap > 0 && drawn >= artCap,
+  };
+}
+
 export { CHARACTER_SAMPLES, CHARACTER_SUPPLY, STAGE2_VARIANTS };

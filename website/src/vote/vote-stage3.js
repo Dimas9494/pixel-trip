@@ -13,6 +13,7 @@ import {
   hasStage3Art,
   isStage3ArtCompleteForCharacter,
   characterVoteProgress,
+  characterStage3ArtProgress,
   isCharacterVoteClosed,
   CHARACTER_SAMPLES,
 } from "./vote-stage3-config.js";
@@ -259,13 +260,17 @@ export function mountStage3Vote(ctx) {
 
     els.grid.innerHTML = list.map((name) => {
       const { cap, points, closed } = characterVoteProgress(name, leaderboard);
+      const { drawn, artCap, complete: artComplete } = characterStage3ArtProgress(name);
       const img = s1Image(name);
       const sel = selectedBase === name && !selectedS2;
+      const meta = artComplete
+        ? "S3 complete"
+        : `S3 ${drawn}/${artCap} · ${points}/${cap} votes`;
       return `
         <button type="button" class="vote-char${sel ? " is-selected" : ""}${closed ? " is-closed" : ""}" data-base="${name}" ${closed ? "disabled" : ""}>
           ${img ? `<img src="${img}" alt="" width="72" height="72" loading="lazy" />` : ""}
           <span class="vote-char-name">${formatCharacter(name)}</span>
-          <span class="vote-char-meta">${closed ? "Complete" : `${points}/${cap} votes`}</span>
+          <span class="vote-char-meta">${closed ? "Complete" : meta}</span>
         </button>`;
     }).join("");
 
@@ -281,7 +286,8 @@ export function mountStage3Vote(ctx) {
     if (els.charStep) els.charStep.hidden = true;
     if (els.charTitle) {
       const { cap, points } = characterVoteProgress(baseCharacter, leaderboard);
-      els.charTitle.textContent = `${formatCharacter(baseCharacter)} — Stage 2 variants (${points}/${cap} votes)`;
+      const { drawn, artCap } = characterStage3ArtProgress(baseCharacter);
+      els.charTitle.textContent = `${formatCharacter(baseCharacter)} — S3 ${drawn}/${artCap} · votes ${points}/${cap}`;
     }
     renderVariantGrid();
     updateSelectedLabel();
