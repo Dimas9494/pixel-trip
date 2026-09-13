@@ -26,6 +26,8 @@ export function computeStage3VoteCharacters(burnableSet = BURNABLE_CHARS) {
     .filter((name) => CHARACTER_SAMPLES[name])
     .filter((name) => maxStage3Slots(name) > 0)
     .filter((name) => (STAGE2_VARIANTS[name]?.length ?? 0) > 0)
+    .filter((name) => !isStage3ArtCompleteForCharacter(name))
+    .filter((name) => voteableStage2Variants(name).length > 0)
     .sort((a, b) => a.localeCompare(b));
 }
 
@@ -39,6 +41,21 @@ export function stage2ImageUrl(slug) {
 
 export function hasStage3Art(s2Slug) {
   return Boolean(STAGE3_MAP.fromStage2Slug?.[s2Slug]);
+}
+
+export function stage3ArtCountForBase(baseCharacter, catalog = STAGE2_VARIANTS) {
+  return stage2VariantsFor(baseCharacter, catalog).filter((v) => hasStage3Art(v.slug)).length;
+}
+
+/** All Stage 3 art slots for this character are drawn (count >= floor(supply/4)). */
+export function isStage3ArtCompleteForCharacter(
+  baseCharacter,
+  supply = CHARACTER_SUPPLY,
+  catalog = STAGE2_VARIANTS,
+) {
+  const cap = maxStage3Slots(baseCharacter, supply);
+  if (cap <= 0) return true;
+  return stage3ArtCountForBase(baseCharacter, catalog) >= cap;
 }
 
 /** Variants holders can vote to prioritize for upcoming Stage 3 art. */

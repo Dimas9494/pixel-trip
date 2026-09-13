@@ -9,6 +9,9 @@ import {
   computeStage3VoteCharacters,
   voteableStage2Variants,
   stage2ImageUrl,
+  stage2VariantsFor,
+  hasStage3Art,
+  isStage3ArtCompleteForCharacter,
   characterVoteProgress,
   isCharacterVoteClosed,
   CHARACTER_SAMPLES,
@@ -95,7 +98,23 @@ function localPost(body, balance) {
   const weight = voteWeight(balance);
   if (weight <= 0) throw new Error("Wallet must hold at least 1 PIXEL TRIP NFT to vote");
 
+  const variants = stage2VariantsFor(baseCharacter);
+  if (!variants.some((v) => v.slug === s2Slug)) {
+    throw new Error("Invalid Stage 2 variant for character");
+  }
+  if (hasStage3Art(s2Slug)) {
+    throw new Error("This Stage 2 variant already has Stage 3 art");
+  }
+  if (isStage3ArtCompleteForCharacter(baseCharacter)) {
+    throw new Error("Stage 3 art is complete for this character");
+  }
+
   const votes = loadLocalVotes();
+  const lbBefore = buildLocalLeaderboard(votes).leaderboard;
+  if (isCharacterVoteClosed(baseCharacter, lbBefore)) {
+    throw new Error("Voting for this character is complete");
+  }
+
   const existing = votes[address];
   if (existing && isVoteActive(existing)) {
     throw new Error("You already voted this week. Votes cannot be changed or cancelled.");

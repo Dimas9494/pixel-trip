@@ -131,6 +131,27 @@ function loadStage3FromS2Map(): array {
     return is_array($data['fromStage2Slug'] ?? null) ? $data['fromStage2Slug'] : [];
 }
 
+function stage3ArtCountForBase(string $baseCharacter): int {
+    $variants = loadStage2Variants()[$baseCharacter] ?? [];
+    $fromS2 = loadStage3FromS2Map();
+    $n = 0;
+    foreach ($variants as $v) {
+        $slug = $v['slug'] ?? '';
+        if ($slug !== '' && isset($fromS2[$slug])) {
+            $n++;
+        }
+    }
+    return $n;
+}
+
+function isStage3ArtCompleteForCharacter(string $baseCharacter): bool {
+    $cap = maxStage3Slots($baseCharacter);
+    if ($cap <= 0) {
+        return true;
+    }
+    return stage3ArtCountForBase($baseCharacter) >= $cap;
+}
+
 function maxStage3Slots(string $baseCharacter): int {
     $supply = loadSupply();
     $n = (int) ($supply[$baseCharacter] ?? 0);
@@ -178,6 +199,9 @@ function buildLeaderboardS3(array $votes): array {
             continue;
         }
         if (isset($fromS2[$s2])) {
+            continue;
+        }
+        if (isStage3ArtCompleteForCharacter($base)) {
             continue;
         }
         $voters++;
@@ -425,6 +449,11 @@ if ($postPoll === 'stage3') {
     if (!isset($burnable[$baseCharacter])) {
         http_response_code(400);
         echo json_encode(['error' => 'Character not in Stage 2 burn program']);
+        exit;
+    }
+    if (isStage3ArtCompleteForCharacter($baseCharacter)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Stage 3 art is complete for this character']);
         exit;
     }
     $variants = loadStage2Variants()[$baseCharacter] ?? [];
