@@ -39,12 +39,17 @@
       <section class="section section-alt vote-page">
         <div class="section-head">
           <span class="kicker">Holders only</span>
-          <h2>Vote for the next character</h2>
-          <p class="sub vote-lead">
-            Not every character has Stage 2 art yet — holders vote for who should be drawn next.
-            Direct S3 characters (skip Stage 2) and legendary 1/1s are excluded.
-            <strong>One vote per wallet per week</strong> — final, no changes or cancel.
+          <h2>Holder vote</h2>
+          <p class="sub vote-lead" id="vote-lead">
+            <strong>Stage 3:</strong> pick a character, then vote for which Stage 2 variant should get Stage 3 art next.
+            Voting for a character closes when vote points reach the max possible Stage 3 count
+            (1 vote slot per 4 Stage 1 NFTs of that character).
+            <strong>One vote per wallet per week per poll</strong> — final.
           </p>
+          <div class="vote-tabs" role="tablist" aria-label="Vote type">
+            <button type="button" class="vote-tab" id="vote-tab-stage2" role="tab" aria-selected="false" data-poll="stage2">Stage 2 art</button>
+            <button type="button" class="vote-tab is-active" id="vote-tab-stage3" role="tab" aria-selected="true" data-poll="stage3">Stage 3 art</button>
+          </div>
         </div>
 
         <div class="vote-preview-banner" id="vote-local-banner" hidden role="note">
@@ -67,8 +72,8 @@
           <div class="vote-dapp-head">
             <div>
               <span class="vote-dapp-label">Character Vote</span>
-              <h3>Pick your priority</h3>
-              <p class="vote-dapp-sub">Characters without Stage 2 art — each card shows a sample NFT.</p>
+              <h3 id="vote-dapp-title">Stage 3 priorities</h3>
+              <p class="vote-dapp-sub" id="vote-dapp-sub">Click a Stage 1 character, then choose a Stage 2 variant.</p>
             </div>
             <div class="vote-dapp-actions">
               <span class="vote-network" id="vote-network">Ethereum Mainnet</span>
@@ -81,7 +86,7 @@
 
           <aside class="vote-holder" id="vote-holder" hidden></aside>
 
-          <div class="vote-layout">
+          <div class="vote-layout" id="vote-panel-stage2" hidden>
             <div class="vote-main">
               <div class="vote-toolbar">
                 <label class="vote-search-wrap">
@@ -99,6 +104,37 @@
             <aside class="vote-sidebar">
               <h3>Leaderboard</h3>
               <ol class="vote-leaderboard" id="vote-leaderboard"></ol>
+            </aside>
+          </div>
+
+          <div class="vote-layout" id="vote-panel-stage3">
+            <div class="vote-main">
+              <div class="vote-toolbar">
+                <label class="vote-search-wrap">
+                  <span class="sr-only">Search characters</span>
+                  <input type="search" id="vote-s3-search" placeholder="Search character…" autocomplete="off" />
+                </label>
+                <p class="vote-selected-label">Selected: <strong id="vote-s3-selected">Pick a character</strong></p>
+              </div>
+              <div id="vote-s3-char-step">
+                <div class="vote-grid" id="vote-s3-char-grid"></div>
+              </div>
+              <div id="vote-s3-variant-panel" hidden>
+                <div class="vote-s3-variant-head">
+                  <button type="button" class="btn btn-sm" id="vote-s3-back">← Characters</button>
+                  <h4 id="vote-s3-char-title"></h4>
+                </div>
+                <div class="vote-grid" id="vote-s3-variant-grid"></div>
+              </div>
+              <button class="btn btn-primary vote-submit-btn" id="vote-s3-submit" type="button" disabled>
+                Submit Stage 3 vote (final)
+              </button>
+              <p class="vote-stats" id="vote-s3-stats"></p>
+            </div>
+
+            <aside class="vote-sidebar">
+              <h3>Stage 3 leaderboard</h3>
+              <ol class="vote-leaderboard" id="vote-s3-leaderboard"></ol>
             </aside>
           </div>
         </div>

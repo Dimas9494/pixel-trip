@@ -23,6 +23,7 @@ import {
 } from "./config.js";
 import { loadBurnProgram, getBurnableChars } from "../burn/burn-program.js";
 import { localVoteGet, localVotePost, leaderboardFromVoteResponse } from "./vote-store.js";
+import { mountStage3Vote } from "./vote-stage3.js";
 
 const els = {
   connect:     document.getElementById("vote-connect"),
@@ -54,6 +55,10 @@ const voteEligibleSet = () => new Set(voteEligible);
 
 /** Remote vote-api unavailable — persist in localStorage for testing. */
 let useLocalStore = false;
+const useLocalRef = { current: false };
+
+let activePoll = "stage3";
+let stage3Ui = null;
 
 function filterLeaderboard(rows) {
   const burnable = getBurnableChars();
@@ -69,6 +74,7 @@ function setMessage(text, type = "info") {
 function showLocalBanner(on) {
   if (!els.banner) return;
   els.banner.hidden = !on;
+  useLocalRef.current = on || useLocalStore;
 }
 
 function shortAddress(addr) {
@@ -109,12 +115,13 @@ async function remotePost(body) {
 }
 
 async function apiGet(params) {
-  if (useLocalStore) return localVoteGet(params);
+  if (useLocalStore || useLocalRef.current) return localVoteGet(params);
   try {
     return await remoteGet(params);
   } catch (err) {
     console.warn("[vote] remote GET failed:", err.message);
     useLocalStore = true;
+    useLocalRef.current = true;
     showLocalBanner(true);
     return localVoteGet(params);
   }
@@ -389,8 +396,9 @@ async function connectWallet() {
     } else if (voteLocked) {
       setMessage(`You already voted this week for ${formatCharacter(myVote.character)}. Next vote after ${formatNextVote(myVote) || "7 days"}.`, "info");
     } else {
-      setMessage(`Connected. Your vote counts as ${voteWeightLabel(balance)}. One vote per week — final, no cancel.`, "success");
+      setMessage(`Connected. Your vote counts as ${voteWeightLabel(balance)}. One vote per week per poll — final.`, "success");
     }
+    await stage3Ui?.onWalletReady?.();
   } catch (err) {
     console.error(err);
     setMessage(err.shortMessage || err.message || "Connection failed.", "error");
@@ -436,6 +444,29 @@ async function submitVote() {
   }
 }
 
+function setActivePoll(poll) {
+  activePoll = poll;
+  const s2 = document.getElementById("vote-panel-stage2");
+  const s3 = document.getElementById("vote-panel-stage3");
+  const tab2 = document.getElementById("vote-tab-stage2");
+  const tab3 = document.getElementById("vote-tab-stage3");
+  const title = document.getElementById("vote-dapp-title");
+  const sub = document.getElementById("vote-dapp-sub");
+  if (s2) s2.hidden = poll !== "stage2";
+  if (s3) s3.hidden = poll !== "stage3";
+  tab2?.classList.toggle("is-active", poll === "stage2");
+  tab3?.classList.toggle("is-active", poll === "stage3");
+  tab2?.setAttribute("aria-selected", poll === "stage2" ? "true" : "false");
+  tab3?.setAttribute("aria-selected", poll === "stage3" ? "true" : "false");
+  if (title) title.textContent = poll === "stage3" ? "Stage 3 priorities" : "Stage 2 priorities";
+  if (sub) {
+    sub.textContent = poll === "stage3"
+      ? "Click a Stage 1 character, then choose a Stage 2 variant."
+      : "Characters without Stage 2 art — sample NFT per card.";
+  }
+  if (poll === "stage3") stage3Ui?.onTabShow?.();
+}
+
 function bindEvents() {
   els.connect?.addEventListener("click", connectWallet);
   els.submit?.addEventListener("click", submitVote);
@@ -450,6 +481,8 @@ function bindEvents() {
     renderGrid(els.search?.value || "");
     renderLeaderboard();
   });
+  document.getElementById("vote-tab-stage2")?.addEventListener("click", () => setActivePoll("stage2"));
+  document.getElementById("vote-tab-stage3")?.addEventListener("click", () => setActivePoll("stage3"));
 }
 
 async function init() {
@@ -462,7 +495,18 @@ async function init() {
   voteEligible = computeVoteEligible(getBurnableChars());
   leaderboard = filterLeaderboard(leaderboard);
 
+  stage3Ui = mountStage3Vote({
+    remoteGet,
+    remotePost,
+    useLocalRef,
+    getAccount: () => account,
+    getBalance: () => balance,
+    setMessage,
+    updateHolderPanel,
+  });
+
   bindEvents();
+  setActivePoll("stage3");
   await probeApi();
   updateSelectedLabel();
   updateSubmitButton();
@@ -470,10 +514,14 @@ async function init() {
   updateStats();
   await loadLeaderboard();
 
+  if (!voteEligible.length) {
+    renderGrid();
+  }
+
   setMessage(
     useLocalStore
       ? "Test mode — vote-api not reachable; votes save in this browser only."
-      : "Preview — connect wallet to vote. One vote per week; 1/1 characters excluded.",
+      : "Connect wallet to vote for Stage 3 art priorities.",
     "info",
   );
 }

@@ -20,8 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 define('STAGE1_ADDRESS', '0xadf9c3c2d2946b3c80913b9e022dc2ce9e93afd9');
 define('RPC_URL', 'https://ethereum-rpc.publicnode.com');
 define('VOTES_FILE', __DIR__ . '/votes.json');
+define('VOTES_S3_FILE', __DIR__ . '/votes-stage3.json');
 define('STAGE2_VARIANTS_FILE', __DIR__ . '/stage2-variants.json');
+define('STAGE3_VARIANTS_FILE', __DIR__ . '/stage3-variants.json');
 define('CHAR_MAP_FILE', __DIR__ . '/char-map.json');
+define('SUPPLY_FILE', __DIR__ . '/character-supply.json');
 define('ONE_OF_ONE_FILE', __DIR__ . '/one-of-one.json');
 define('VOTE_COOLDOWN_SEC', 7 * 24 * 3600);
 
@@ -82,11 +85,116 @@ function loadVotes(): array {
     return is_array($data) ? $data : [];
 }
 
+function loadVotesS3(): array {
+    if (!file_exists(VOTES_S3_FILE)) {
+        return [];
+    }
+    $data = json_decode(file_get_contents(VOTES_S3_FILE), true);
+    return is_array($data) ? $data : [];
+}
+
 function saveVotes(array $votes): void {
     file_put_contents(
         VOTES_FILE,
         json_encode($votes, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
     );
+}
+
+function saveVotesS3(array $votes): void {
+    file_put_contents(
+        VOTES_S3_FILE,
+        json_encode($votes, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
+    );
+}
+
+function loadSupply(): array {
+    if (!file_exists(SUPPLY_FILE)) {
+        return [];
+    }
+    $data = json_decode(file_get_contents(SUPPLY_FILE), true);
+    return is_array($data) ? $data : [];
+}
+
+function loadStage2Variants(): array {
+    if (!file_exists(STAGE2_VARIANTS_FILE)) {
+        return [];
+    }
+    $data = json_decode(file_get_contents(STAGE2_VARIANTS_FILE), true);
+    return is_array($data) ? $data : [];
+}
+
+function loadStage3FromS2Map(): array {
+    if (!file_exists(STAGE3_VARIANTS_FILE)) {
+        return [];
+    }
+    $data = json_decode(file_get_contents(STAGE3_VARIANTS_FILE), true);
+    return is_array($data['fromStage2Slug'] ?? null) ? $data['fromStage2Slug'] : [];
+}
+
+function maxStage3Slots(string $baseCharacter): int {
+    $supply = loadSupply();
+    $n = (int) ($supply[$baseCharacter] ?? 0);
+    return intdiv($n, 4);
+}
+
+function normalizeS2Slug(string $slug): ?string {
+    if (!preg_match('/^[A-Za-z_]+$/', $slug)) {
+        return null;
+    }
+    return $slug;
+}
+
+function sumStage3PointsForCharacter(array $leaderboard, string $baseCharacter): int {
+    $total = 0;
+    foreach ($leaderboard as $row) {
+        if (($row['baseCharacter'] ?? '') === $baseCharacter) {
+            $total += (int) ($row['points'] ?? 0);
+        }
+    }
+    return $total;
+}
+
+function isStage3CharacterClosed(string $baseCharacter, array $leaderboard): bool {
+    $cap = maxStage3Slots($baseCharacter);
+    if ($cap <= 0) {
+        return true;
+    }
+    return sumStage3PointsForCharacter($leaderboard, $baseCharacter) >= $cap;
+}
+
+function buildLeaderboardS3(array $votes): array {
+    $burnable = array_flip(loadBurnableChars());
+    $fromS2 = loadStage3FromS2Map();
+    $totals = [];
+    $voters = 0;
+    foreach ($votes as $row) {
+        if (!isVoteActive($row)) {
+            continue;
+        }
+        $base = $row['baseCharacter'] ?? '';
+        $s2 = $row['s2Slug'] ?? '';
+        $weight = (int) ($row['weight'] ?? 0);
+        if (!$base || !$s2 || $weight <= 0 || !isset($burnable[$base])) {
+            continue;
+        }
+        if (isset($fromS2[$s2])) {
+            continue;
+        }
+        $voters++;
+        $key = $base . "\0" . $s2;
+        $totals[$key] = ($totals[$key] ?? 0) + $weight;
+    }
+    arsort($totals);
+    $leaderboard = [];
+    foreach ($totals as $key => $points) {
+        [$baseCharacter, $s2Slug] = explode("\0", $key, 2);
+        $leaderboard[] = [
+            'baseCharacter' => $baseCharacter,
+            's2Slug'        => $s2Slug,
+            'points'        => $points,
+        ];
+    }
+    return ['leaderboard' => $leaderboard, 'voterCount' => $voters];
 }
 
 function loadBurnableChars(): array {
@@ -224,10 +332,36 @@ function eligibleCharacters(): array {
     return $out;
 }
 
+$poll = $_GET['poll'] ?? '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && $poll === 'stage3' && ($_GET['action'] ?? '') === 'leaderboard') {
+    $votes = loadVotesS3();
+    echo json_encode(['ok' => true, 'poll' => 'stage3', ...buildLeaderboardS3($votes)]);
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && $poll === 'stage3' && ($_GET['action'] ?? '') === 'mine') {
+    $address = normalizeAddress($_GET['address'] ?? '');
+    if (!$address) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid address']);
+        exit;
+    }
+    $votes = loadVotesS3();
+    $mine = $votes[$address] ?? null;
+    if ($mine && !isVoteActive($mine)) {
+        $mine = null;
+    }
+    $status = voteStatus($mine);
+    echo json_encode(['ok' => true, 'poll' => 'stage3', 'vote' => $mine, ...$status]);
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['action'] ?? '') === 'health') {
     echo json_encode([
         'ok'          => true,
         'votesFile'   => file_exists(VOTES_FILE),
+        'votesS3File' => file_exists(VOTES_S3_FILE),
         'writable'    => is_writable(dirname(VOTES_FILE)),
         'storage'     => (file_exists(VOTES_FILE) || is_writable(dirname(VOTES_FILE))) ? 'file' : 'none',
         'eligible'    => count(eligibleCharacters()),
@@ -277,6 +411,89 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $body = json_decode(file_get_contents('php://input'), true) ?: [];
 $address = normalizeAddress($body['address'] ?? '');
+$postPoll = $body['poll'] ?? 'stage2';
+
+if ($postPoll === 'stage3') {
+    $baseCharacter = normalizeCharacter($body['baseCharacter'] ?? '');
+    $s2Slug = normalizeS2Slug($body['s2Slug'] ?? '');
+    if (!$address || !$baseCharacter || !$s2Slug) {
+        http_response_code(400);
+        echo json_encode(['error' => 'address, baseCharacter and s2Slug required']);
+        exit;
+    }
+    $burnable = array_flip(loadBurnableChars());
+    if (!isset($burnable[$baseCharacter])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Character not in Stage 2 burn program']);
+        exit;
+    }
+    $variants = loadStage2Variants()[$baseCharacter] ?? [];
+    $slugOk = false;
+    foreach ($variants as $v) {
+        if (($v['slug'] ?? '') === $s2Slug) {
+            $slugOk = true;
+            break;
+        }
+    }
+    if (!$slugOk) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid Stage 2 variant for character']);
+        exit;
+    }
+    if (isset(loadStage3FromS2Map()[$s2Slug])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'This Stage 2 variant already has Stage 3 art']);
+        exit;
+    }
+    $balance = readBalance($address);
+    $weight = voteWeight($balance);
+    if ($weight <= 0) {
+        http_response_code(403);
+        echo json_encode(['error' => 'Wallet must hold at least 1 PIXEL TRIP NFT to vote', 'balance' => $balance]);
+        exit;
+    }
+    $votes = loadVotesS3();
+    $existing = $votes[$address] ?? null;
+    $status = voteStatus($existing);
+    if (!$status['canVote']) {
+        http_response_code(429);
+        echo json_encode([
+            'error'      => 'You already voted this week. Votes cannot be changed or cancelled.',
+            'nextVoteAt' => $status['nextVoteAt'],
+            'vote'       => $existing,
+        ]);
+        exit;
+    }
+    $lb = buildLeaderboardS3($votes);
+    if (isStage3CharacterClosed($baseCharacter, $lb['leaderboard'])) {
+        http_response_code(409);
+        echo json_encode(['error' => 'Voting for this character is complete (Stage 3 vote cap reached)']);
+        exit;
+    }
+    $votes[$address] = [
+        'baseCharacter' => $baseCharacter,
+        's2Slug'        => $s2Slug,
+        'weight'        => $weight,
+        'balance'       => $balance,
+        'updated'       => gmdate('c'),
+    ];
+    saveVotesS3($votes);
+    echo json_encode([
+        'ok'            => true,
+        'poll'          => 'stage3',
+        'address'       => $address,
+        'baseCharacter' => $baseCharacter,
+        's2Slug'        => $s2Slug,
+        'weight'        => $weight,
+        'balance'       => $balance,
+        'vote'          => $votes[$address],
+        'canVote'       => false,
+        'nextVoteAt'    => gmdate('c', voteTimestamp($votes[$address]) + VOTE_COOLDOWN_SEC),
+        'leaderboard'   => buildLeaderboardS3($votes)['leaderboard'],
+    ]);
+    exit;
+}
+
 $character = normalizeCharacter($body['character'] ?? '');
 
 if (!$address || !$character) {
