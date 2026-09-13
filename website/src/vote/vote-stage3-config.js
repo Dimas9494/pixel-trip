@@ -19,6 +19,15 @@ export function maxStage3Slots(baseCharacter, supply = CHARACTER_SUPPLY) {
   return Math.floor(n / 4);
 }
 
+/** Max drawable Stage 3 arts: largest even count <= floor(N/4), min 1 when cap is 1. */
+export function maxStage3ArtSlots(baseCharacter, supply = CHARACTER_SUPPLY) {
+  const n = Number(supply[baseCharacter]) || 0;
+  const cap = Math.floor(n / 4);
+  if (cap <= 0) return 0;
+  if (cap === 1) return 1;
+  return cap % 2 === 0 ? cap : cap - 1;
+}
+
 export function computeStage3VoteCharacters(burnableSet = BURNABLE_CHARS) {
   return [...burnableSet]
     .filter((name) => !DIRECT_S3.has(name))
@@ -47,15 +56,15 @@ export function stage3ArtCountForBase(baseCharacter, catalog = STAGE2_VARIANTS) 
   return stage2VariantsFor(baseCharacter, catalog).filter((v) => hasStage3Art(v.slug)).length;
 }
 
-/** All Stage 3 art slots for this character are drawn (count >= floor(supply/4)). */
+/** All drawable Stage 3 art slots filled (see maxStage3ArtSlots). */
 export function isStage3ArtCompleteForCharacter(
   baseCharacter,
   supply = CHARACTER_SUPPLY,
   catalog = STAGE2_VARIANTS,
 ) {
-  const cap = maxStage3Slots(baseCharacter, supply);
-  if (cap <= 0) return true;
-  return stage3ArtCountForBase(baseCharacter, catalog) >= cap;
+  const artCap = maxStage3ArtSlots(baseCharacter, supply);
+  if (artCap <= 0) return true;
+  return stage3ArtCountForBase(baseCharacter, catalog) >= artCap;
 }
 
 /** Variants holders can vote to prioritize for upcoming Stage 3 art. */

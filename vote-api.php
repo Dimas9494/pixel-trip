@@ -145,11 +145,23 @@ function stage3ArtCountForBase(string $baseCharacter): int {
 }
 
 function isStage3ArtCompleteForCharacter(string $baseCharacter): bool {
-    $cap = maxStage3Slots($baseCharacter);
-    if ($cap <= 0) {
+    $artCap = maxStage3ArtSlots($baseCharacter);
+    if ($artCap <= 0) {
         return true;
     }
-    return stage3ArtCountForBase($baseCharacter) >= $cap;
+    return stage3ArtCountForBase($baseCharacter) >= $artCap;
+}
+
+function maxStage3ArtSlots(string $baseCharacter): int {
+    $n = (int) ((loadSupply()[$baseCharacter] ?? 0));
+    $cap = intdiv($n, 4);
+    if ($cap <= 0) {
+        return 0;
+    }
+    if ($cap === 1) {
+        return 1;
+    }
+    return ($cap % 2 === 0) ? $cap : ($cap - 1);
 }
 
 function maxStage3Slots(string $baseCharacter): int {
