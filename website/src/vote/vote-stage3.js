@@ -1,6 +1,5 @@
 import { getBurnableChars } from "../burn/burn-program.js";
 import {
-  voteWeight,
   formatCharacter,
 } from "./config.js";
 import {
@@ -16,6 +15,7 @@ import {
   isStage3VoteRowActive,
   activeStage3VotesByCharacter,
   migrateStage3WalletVotes,
+  stage3VoteWeight,
   CHARACTER_SAMPLES,
 } from "./vote-stage3-config.js";
 import { IMAGE_STAGE1 } from "../burn/config.js";
@@ -42,10 +42,9 @@ function buildLocalLeaderboard(votes) {
     for (const [baseCharacter, row] of Object.entries(byChar)) {
       if (!isStage3VoteRowActive(row)) continue;
       const key = `${baseCharacter}\0${row.s2Slug}`;
-      const w = Number(row.weight) || 0;
-      if (!row.s2Slug || w <= 0) continue;
+      if (!row.s2Slug) continue;
       voterCount++;
-      totals.set(key, (totals.get(key) || 0) + w);
+      totals.set(key, (totals.get(key) || 0) + 1);
     }
   }
   const leaderboard = [...totals.entries()]
@@ -87,7 +86,7 @@ function localPost(body, balance) {
     throw new Error("Invalid vote target");
   }
 
-  const weight = voteWeight(balance);
+  const weight = stage3VoteWeight(balance);
   if (weight <= 0) throw new Error("Wallet must hold at least 1 PIXEL TRIP NFT to vote");
 
   const variants = stage2VariantsFor(baseCharacter);
@@ -102,11 +101,6 @@ function localPost(body, balance) {
   }
 
   const votes = loadLocalVotes();
-  const lbBefore = buildLocalLeaderboard(votes).leaderboard;
-  if (isCharacterVoteClosed(baseCharacter, lbBefore)) {
-    throw new Error("Voting for this character is complete");
-  }
-
   const active = activeStage3VotesByCharacter(votes[address]);
   if (active[baseCharacter]) {
     throw new Error("You already have an active vote for this character. Vote again after that Stage 3 art ships.");
@@ -212,7 +206,7 @@ export function mountStage3Vote(ctx) {
 
   function updateSubmit() {
     if (!els.submit) return;
-    const weight = voteWeight(ctx.getBalance());
+    const weight = stage3VoteWeight(ctx.getBalance());
     const closed = selectedBase && isCharacterVoteClosed(selectedBase, leaderboard);
     const lockedHere = hasActiveVoteForBase(selectedBase);
     const ready = ctx.getAccount() && weight > 0 && selectedBase && selectedS2 && canVote && !lockedHere && !closed;
@@ -403,7 +397,7 @@ export function mountStage3Vote(ctx) {
       if (selectedBase) renderVariantGrid();
       updateSubmit();
       updateSelectedLabel();
-      ctx.setMessage(`Vote recorded — ${label} (+${data.weight} pt). You can vote for other characters.`, "success");
+      ctx.setMessage(`Vote recorded — ${label} (+1 pt). You can vote for other characters.`, "success");
     } catch (err) {
       ctx.setMessage(err.message || "Vote failed.", "error");
       updateSubmit();

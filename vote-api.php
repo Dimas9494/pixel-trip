@@ -275,7 +275,7 @@ function buildLeaderboardS3(array $votes): array {
             }
             $voters++;
             $key = $base . "\0" . $s2;
-            $totals[$key] = ($totals[$key] ?? 0) + $weight;
+            $totals[$key] = ($totals[$key] ?? 0) + 1;
         }
     }
     arsort($totals);
@@ -549,12 +549,12 @@ if ($postPoll === 'stage3') {
         exit;
     }
     $balance = readBalance($address);
-    $weight = voteWeight($balance);
-    if ($weight <= 0) {
+    if ($balance <= 0) {
         http_response_code(403);
         echo json_encode(['error' => 'Wallet must hold at least 1 PIXEL TRIP NFT to vote', 'balance' => $balance]);
         exit;
     }
+    $weight = 1;
     $votes = loadVotesS3();
     if (!canVoteStage3Character($votes, $address, $baseCharacter)) {
         http_response_code(429);
@@ -562,12 +562,6 @@ if ($postPoll === 'stage3') {
             'error' => 'You already have an active vote for this character. Vote again after that Stage 3 art ships.',
             'vote'  => getStage3VoteForCharacter($votes, $address, $baseCharacter),
         ]);
-        exit;
-    }
-    $lb = buildLeaderboardS3($votes);
-    if (isStage3CharacterClosed($baseCharacter, $lb['leaderboard'])) {
-        http_response_code(409);
-        echo json_encode(['error' => 'Voting for this character is complete (Stage 3 vote cap reached)']);
         exit;
     }
     $wallet = migrateVotesS3Wallet($votes[$address] ?? null);

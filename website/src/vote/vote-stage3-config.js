@@ -53,6 +53,11 @@ export function hasStage3Art(s2Slug) {
 }
 
 /** Vote counts until the chosen S2 variant ships Stage 3 art (no weekly timer). */
+/** Stage 3 poll: one vote = one leaderboard point (holder tiers apply to Stage 2 only). */
+export function stage3VoteWeight(balance) {
+  return (Number(balance) || 0) > 0 ? 1 : 0;
+}
+
 export function isStage3VoteRowActive(row) {
   if (!row?.s2Slug) return false;
   return !hasStage3Art(row.s2Slug);
@@ -109,16 +114,19 @@ export function sumPointsForCharacter(leaderboard, baseCharacter) {
   return total;
 }
 
-export function isCharacterVoteClosed(baseCharacter, leaderboard, supply = CHARACTER_SUPPLY) {
-  const cap = maxStage3Slots(baseCharacter, supply);
-  if (cap <= 0) return true;
-  return sumPointsForCharacter(leaderboard, baseCharacter) >= cap;
+/** Character removed from ballot when all drawable S3 art exists — not when vote points hit a cap. */
+export function isCharacterVoteClosed(baseCharacter, _leaderboard, supply = CHARACTER_SUPPLY) {
+  return isStage3ArtCompleteForCharacter(baseCharacter, supply);
 }
 
 export function characterVoteProgress(baseCharacter, leaderboard, supply = CHARACTER_SUPPLY) {
   const cap = maxStage3Slots(baseCharacter, supply);
   const points = sumPointsForCharacter(leaderboard, baseCharacter);
-  return { cap, points, closed: cap > 0 && points >= cap };
+  return {
+    cap,
+    points,
+    closed: isStage3ArtCompleteForCharacter(baseCharacter, supply),
+  };
 }
 
 export function characterStage3ArtProgress(
