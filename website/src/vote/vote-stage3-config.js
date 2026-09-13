@@ -52,6 +52,33 @@ export function hasStage3Art(s2Slug) {
   return Boolean(STAGE3_MAP.fromStage2Slug?.[s2Slug]);
 }
 
+/** Vote counts until the chosen S2 variant ships Stage 3 art (no weekly timer). */
+export function isStage3VoteRowActive(row) {
+  if (!row?.s2Slug) return false;
+  return !hasStage3Art(row.s2Slug);
+}
+
+export function migrateStage3WalletVotes(raw) {
+  if (!raw || typeof raw !== "object") return {};
+  if (typeof raw.baseCharacter === "string" && raw.s2Slug) {
+    return { [raw.baseCharacter]: raw };
+  }
+  const out = {};
+  for (const [key, row] of Object.entries(raw)) {
+    if (row && typeof row === "object" && row.s2Slug) out[key] = row;
+  }
+  return out;
+}
+
+export function activeStage3VotesByCharacter(walletVotes) {
+  const byChar = migrateStage3WalletVotes(walletVotes);
+  const active = {};
+  for (const [base, row] of Object.entries(byChar)) {
+    if (isStage3VoteRowActive(row)) active[base] = row;
+  }
+  return active;
+}
+
 export function stage3ArtCountForBase(baseCharacter, catalog = STAGE2_VARIANTS) {
   return stage2VariantsFor(baseCharacter, catalog).filter((v) => hasStage3Art(v.slug)).length;
 }

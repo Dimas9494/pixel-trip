@@ -195,30 +195,88 @@ function isStage3CharacterClosed(string $baseCharacter, array $leaderboard): boo
     return sumStage3PointsForCharacter($leaderboard, $baseCharacter) >= $cap;
 }
 
+function migrateVotesS3Wallet(mixed $walletVotes): array
+{
+    if (!is_array($walletVotes)) {
+        return [];
+    }
+    if (isset($walletVotes['baseCharacter']) && is_string($walletVotes['baseCharacter'])) {
+        return [$walletVotes['baseCharacter'] => $walletVotes];
+    }
+    $out = [];
+    foreach ($walletVotes as $key => $row) {
+        if (!is_array($row) || !isset($row['s2Slug'])) {
+            continue;
+        }
+        $out[(string) $key] = $row;
+    }
+    return $out;
+}
+
+function isStage3VoteRowActive(array $row): bool
+{
+    $s2 = $row['s2Slug'] ?? '';
+    if ($s2 === '') {
+        return false;
+    }
+    return !isset(loadStage3FromS2Map()[$s2]);
+}
+
+function getStage3VoteForCharacter(array $votes, string $address, string $baseCharacter): ?array
+{
+    $wallet = migrateVotesS3Wallet($votes[$address] ?? null);
+    return $wallet[$baseCharacter] ?? null;
+}
+
+function canVoteStage3Character(array $votes, string $address, string $baseCharacter): bool
+{
+    $row = getStage3VoteForCharacter($votes, $address, $baseCharacter);
+    if (!$row) {
+        return true;
+    }
+    return !isStage3VoteRowActive($row);
+}
+
+function activeStage3VotesByCharacter(mixed $walletVotes): array
+{
+    $wallet = migrateVotesS3Wallet($walletVotes);
+    $active = [];
+    foreach ($wallet as $base => $row) {
+        if (isStage3VoteRowActive($row)) {
+            $active[$base] = $row;
+        }
+    }
+    return $active;
+}
+
 function buildLeaderboardS3(array $votes): array {
     $burnable = array_flip(loadBurnableChars());
     $fromS2 = loadStage3FromS2Map();
     $totals = [];
     $voters = 0;
-    foreach ($votes as $row) {
-        if (!isVoteActive($row)) {
+    foreach ($votes as $address => $walletVotes) {
+        if (!is_string($address) || !str_starts_with($address, '0x')) {
             continue;
         }
-        $base = $row['baseCharacter'] ?? '';
-        $s2 = $row['s2Slug'] ?? '';
-        $weight = (int) ($row['weight'] ?? 0);
-        if (!$base || !$s2 || $weight <= 0 || !isset($burnable[$base])) {
-            continue;
+        foreach (migrateVotesS3Wallet($walletVotes) as $base => $row) {
+            if (!isStage3VoteRowActive($row)) {
+                continue;
+            }
+            $s2 = $row['s2Slug'] ?? '';
+            $weight = (int) ($row['weight'] ?? 0);
+            if (!$base || !$s2 || $weight <= 0 || !isset($burnable[$base])) {
+                continue;
+            }
+            if (isset($fromS2[$s2])) {
+                continue;
+            }
+            if (isStage3ArtCompleteForCharacter($base)) {
+                continue;
+            }
+            $voters++;
+            $key = $base . "\0" . $s2;
+            $totals[$key] = ($totals[$key] ?? 0) + $weight;
         }
-        if (isset($fromS2[$s2])) {
-            continue;
-        }
-        if (isStage3ArtCompleteForCharacter($base)) {
-            continue;
-        }
-        $voters++;
-        $key = $base . "\0" . $s2;
-        $totals[$key] = ($totals[$key] ?? 0) + $weight;
     }
     arsort($totals);
     $leaderboard = [];
@@ -384,12 +442,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $poll === 'stage3' && ($_GET['action
         exit;
     }
     $votes = loadVotesS3();
-    $mine = $votes[$address] ?? null;
-    if ($mine && !isVoteActive($mine)) {
-        $mine = null;
-    }
-    $status = voteStatus($mine);
-    echo json_encode(['ok' => true, 'poll' => 'stage3', 'vote' => $mine, ...$status]);
+    $active = activeStage3VotesByCharacter($votes[$address] ?? null);
+    $baseFilter = normalizeCharacter($_GET['baseCharacter'] ?? '');
+    $mine = ($baseFilter && isset($active[$baseFilter])) ? $active[$baseFilter] : null;
+    echo json_encode([
+        'ok'                => true,
+        'poll'              => 'stage3',
+        'votesByCharacter'  => $active,
+        'vote'              => $mine,
+        'canVote'           => true,
+    ]);
     exit;
 }
 
@@ -494,14 +556,11 @@ if ($postPoll === 'stage3') {
         exit;
     }
     $votes = loadVotesS3();
-    $existing = $votes[$address] ?? null;
-    $status = voteStatus($existing);
-    if (!$status['canVote']) {
+    if (!canVoteStage3Character($votes, $address, $baseCharacter)) {
         http_response_code(429);
         echo json_encode([
-            'error'      => 'You already voted this week. Votes cannot be changed or cancelled.',
-            'nextVoteAt' => $status['nextVoteAt'],
-            'vote'       => $existing,
+            'error' => 'You already have an active vote for this character. Vote again after that Stage 3 art ships.',
+            'vote'  => getStage3VoteForCharacter($votes, $address, $baseCharacter),
         ]);
         exit;
     }
@@ -511,26 +570,28 @@ if ($postPoll === 'stage3') {
         echo json_encode(['error' => 'Voting for this character is complete (Stage 3 vote cap reached)']);
         exit;
     }
-    $votes[$address] = [
-        'baseCharacter' => $baseCharacter,
-        's2Slug'        => $s2Slug,
-        'weight'        => $weight,
-        'balance'       => $balance,
-        'updated'       => gmdate('c'),
+    $wallet = migrateVotesS3Wallet($votes[$address] ?? null);
+    $wallet[$baseCharacter] = [
+        's2Slug'  => $s2Slug,
+        'weight'  => $weight,
+        'balance' => $balance,
+        'updated' => gmdate('c'),
     ];
+    $votes[$address] = $wallet;
     saveVotesS3($votes);
+    $active = activeStage3VotesByCharacter($wallet);
     echo json_encode([
-        'ok'            => true,
-        'poll'          => 'stage3',
-        'address'       => $address,
-        'baseCharacter' => $baseCharacter,
-        's2Slug'        => $s2Slug,
-        'weight'        => $weight,
-        'balance'       => $balance,
-        'vote'          => $votes[$address],
-        'canVote'       => false,
-        'nextVoteAt'    => gmdate('c', voteTimestamp($votes[$address]) + VOTE_COOLDOWN_SEC),
-        'leaderboard'   => buildLeaderboardS3($votes)['leaderboard'],
+        'ok'                => true,
+        'poll'              => 'stage3',
+        'address'           => $address,
+        'baseCharacter'     => $baseCharacter,
+        's2Slug'            => $s2Slug,
+        'weight'            => $weight,
+        'balance'           => $balance,
+        'vote'              => $active[$baseCharacter] ?? null,
+        'votesByCharacter'  => $active,
+        'canVote'           => true,
+        'leaderboard'       => buildLeaderboardS3($votes)['leaderboard'],
     ]);
     exit;
 }

@@ -1,8 +1,6 @@
 import { getBurnableChars } from "../burn/burn-program.js";
 import {
-  VOTE_COOLDOWN_MS,
   voteWeight,
-  voteWeightLabel,
   formatCharacter,
 } from "./config.js";
 import {
@@ -15,22 +13,14 @@ import {
   characterVoteProgress,
   characterStage3ArtProgress,
   isCharacterVoteClosed,
+  isStage3VoteRowActive,
+  activeStage3VotesByCharacter,
+  migrateStage3WalletVotes,
   CHARACTER_SAMPLES,
 } from "./vote-stage3-config.js";
 import { IMAGE_STAGE1 } from "../burn/config.js";
 
-const STORAGE_KEY = "pixel-trip-votes-stage3-v1";
-
-function voteTimestamp(row) {
-  if (!row?.updated) return 0;
-  const ts = Date.parse(row.updated);
-  return Number.isFinite(ts) ? ts : 0;
-}
-
-function isVoteActive(row) {
-  const ts = voteTimestamp(row);
-  return ts > 0 && Date.now() - ts < VOTE_COOLDOWN_MS;
-}
+const STORAGE_KEY = "pixel-trip-votes-stage3-v2";
 
 function loadLocalVotes() {
   try {
@@ -47,13 +37,16 @@ function saveLocalVotes(votes) {
 function buildLocalLeaderboard(votes) {
   const totals = new Map();
   let voterCount = 0;
-  for (const row of Object.values(votes)) {
-    if (!isVoteActive(row)) continue;
-    const key = `${row.baseCharacter}\0${row.s2Slug}`;
-    const w = Number(row.weight) || 0;
-    if (!row.baseCharacter || !row.s2Slug || w <= 0) continue;
-    voterCount++;
-    totals.set(key, (totals.get(key) || 0) + w);
+  for (const wallet of Object.values(votes)) {
+    const byChar = activeStage3VotesByCharacter(wallet);
+    for (const [baseCharacter, row] of Object.entries(byChar)) {
+      if (!isStage3VoteRowActive(row)) continue;
+      const key = `${baseCharacter}\0${row.s2Slug}`;
+      const w = Number(row.weight) || 0;
+      if (!row.s2Slug || w <= 0) continue;
+      voterCount++;
+      totals.set(key, (totals.get(key) || 0) + w);
+    }
   }
   const leaderboard = [...totals.entries()]
     .map(([key, points]) => {
@@ -71,17 +64,15 @@ function localGet(params) {
   }
   if (params.action === "mine") {
     const address = (params.address || "").toLowerCase();
-    let mine = votes[address] || null;
-    if (mine && !isVoteActive(mine)) mine = null;
-    const canVote = !mine || !isVoteActive(mine);
+    const active = activeStage3VotesByCharacter(votes[address]);
+    const baseFilter = params.baseCharacter || "";
+    const mine = baseFilter && active[baseFilter] ? active[baseFilter] : null;
     return {
       ok: true,
       poll: "stage3",
+      votesByCharacter: active,
       vote: mine,
-      canVote,
-      nextVoteAt: mine && isVoteActive(mine)
-        ? new Date(voteTimestamp(mine) + VOTE_COOLDOWN_MS).toISOString()
-        : null,
+      canVote: true,
     };
   }
   throw new Error(`Unknown action: ${params.action}`);
@@ -116,22 +107,27 @@ function localPost(body, balance) {
     throw new Error("Voting for this character is complete");
   }
 
-  const existing = votes[address];
-  if (existing && isVoteActive(existing)) {
-    throw new Error("You already voted this week. Votes cannot be changed or cancelled.");
+  const active = activeStage3VotesByCharacter(votes[address]);
+  if (active[baseCharacter]) {
+    throw new Error("You already have an active vote for this character. Vote again after that Stage 3 art ships.");
   }
 
   const updated = new Date().toISOString();
-  votes[address] = { baseCharacter, s2Slug, weight, balance, updated };
+  const nextWallet = {
+    ...migrateStage3WalletVotes(votes[address]),
+    [baseCharacter]: { s2Slug, weight, balance, updated },
+  };
+  votes[address] = nextWallet;
   saveLocalVotes(votes);
   const lb = buildLocalLeaderboard(votes);
+  const activeAfter = activeStage3VotesByCharacter(nextWallet);
   return {
     ok: true,
     poll: "stage3",
-    vote: votes[address],
+    vote: activeAfter[baseCharacter],
+    votesByCharacter: activeAfter,
     weight,
-    canVote: false,
-    nextVoteAt: new Date(voteTimestamp(votes[address]) + VOTE_COOLDOWN_MS).toISOString(),
+    canVote: true,
     leaderboard: lb.leaderboard,
     mode: "local",
   };
@@ -187,8 +183,7 @@ export function mountStage3Vote(ctx) {
   let leaderboard = [];
   let selectedBase = null;
   let selectedS2 = null;
-  let myVote = null;
-  let voteLocked = false;
+  let myVotesByCharacter = {};
   let canVote = true;
 
   function s1Image(name) {
@@ -201,28 +196,32 @@ export function mountStage3Vote(ctx) {
   }
 
   function syncMine(data) {
-    myVote = data.vote || null;
+    myVotesByCharacter = data.votesByCharacter || {};
     canVote = data.canVote !== false;
-    voteLocked = !!(myVote && isVoteActive(myVote));
-    if (voteLocked && myVote?.s2Slug) {
-      selectedBase = myVote.baseCharacter;
-      selectedS2 = myVote.s2Slug;
+    if (selectedBase && myVotesByCharacter[selectedBase]?.s2Slug) {
+      selectedS2 = myVotesByCharacter[selectedBase].s2Slug;
     }
+  }
+
+  function hasActiveVoteForBase(base) {
+    return Boolean(base && myVotesByCharacter[base]?.s2Slug);
   }
 
   function updateSubmit() {
     if (!els.submit) return;
     const weight = voteWeight(ctx.getBalance());
     const closed = selectedBase && isCharacterVoteClosed(selectedBase, leaderboard);
-    const ready = ctx.getAccount() && weight > 0 && selectedBase && selectedS2 && canVote && !voteLocked && !closed;
+    const lockedHere = hasActiveVoteForBase(selectedBase);
+    const ready = ctx.getAccount() && weight > 0 && selectedBase && selectedS2 && canVote && !lockedHere && !closed;
     els.submit.disabled = !ready;
-    els.submit.hidden = voteLocked;
+    els.submit.hidden = lockedHere;
   }
 
   function updateSelectedLabel() {
     if (!els.selected) return;
-    if (voteLocked && myVote?.s2Slug) {
-      els.selected.textContent = `${formatCharacter(myVote.s2Slug)} (${formatCharacter(myVote.baseCharacter)})`;
+    const locked = selectedBase && myVotesByCharacter[selectedBase];
+    if (locked?.s2Slug) {
+      els.selected.textContent = `${formatCharacter(locked.s2Slug)} (${formatCharacter(selectedBase)}) — locked until art ships`;
       return;
     }
     if (!selectedS2) {
@@ -263,11 +262,14 @@ export function mountStage3Vote(ctx) {
       const { drawn, artCap, complete: artComplete } = characterStage3ArtProgress(name);
       const img = s1Image(name);
       const sel = selectedBase === name && !selectedS2;
+      const voted = hasActiveVoteForBase(name);
       const meta = artComplete
         ? "S3 complete"
-        : `S3 ${drawn}/${artCap} · ${points}/${cap} votes`;
+        : voted
+          ? `Your vote · S3 ${drawn}/${artCap}`
+          : `S3 ${drawn}/${artCap} · ${points}/${cap} votes`;
       return `
-        <button type="button" class="vote-char${sel ? " is-selected" : ""}${closed ? " is-closed" : ""}" data-base="${name}" ${closed ? "disabled" : ""}>
+        <button type="button" class="vote-char${sel ? " is-selected" : ""}${closed ? " is-closed" : ""}${voted ? " has-vote" : ""}" data-base="${name}" ${closed ? "disabled" : ""}>
           ${img ? `<img src="${img}" alt="" width="72" height="72" loading="lazy" />` : ""}
           <span class="vote-char-name">${formatCharacter(name)}</span>
           <span class="vote-char-meta">${closed ? "Complete" : meta}</span>
@@ -281,7 +283,7 @@ export function mountStage3Vote(ctx) {
 
   function showVariantPanel(baseCharacter) {
     selectedBase = baseCharacter;
-    selectedS2 = null;
+    selectedS2 = myVotesByCharacter[baseCharacter]?.s2Slug || null;
     if (els.variants) els.variants.hidden = false;
     if (els.charStep) els.charStep.hidden = true;
     if (els.charTitle) {
@@ -329,7 +331,7 @@ export function mountStage3Vote(ctx) {
       `${characters.length} characters`,
       `${open} open`,
       `${leaderboard.length ? `${leaderboard.length} variant rows` : "no votes yet"}`,
-      "weekly · Stage 3 poll",
+      "one vote per character until that S3 art ships",
     ].join(" · ");
   }
 
@@ -349,8 +351,7 @@ export function mountStage3Vote(ctx) {
   async function loadMyVote() {
     const account = ctx.getAccount();
     if (!account) {
-      myVote = null;
-      voteLocked = false;
+      myVotesByCharacter = {};
       canVote = true;
       return;
     }
@@ -358,9 +359,8 @@ export function mountStage3Vote(ctx) {
       const data = await api.get({ action: "mine", address: account });
       syncMine(data);
     } catch {
-      myVote = null;
+      myVotesByCharacter = {};
       canVote = true;
-      voteLocked = false;
     }
   }
 
@@ -376,13 +376,13 @@ export function mountStage3Vote(ctx) {
 
   async function submitVote() {
     const account = ctx.getAccount();
-    if (!account || !selectedBase || !selectedS2 || voteLocked) return;
+    if (!account || !selectedBase || !selectedS2 || hasActiveVoteForBase(selectedBase)) return;
     if (isCharacterVoteClosed(selectedBase, leaderboard)) {
       ctx.setMessage("Voting for this character is complete.", "error");
       return;
     }
     const label = `${formatCharacter(selectedS2)} (${formatCharacter(selectedBase)})`;
-    if (!window.confirm(`Vote for ${label}? One vote per week — final.`)) return;
+    if (!window.confirm(`Vote for ${label}? One vote for this character until that art ships.`)) return;
 
     els.submit.disabled = true;
     ctx.setMessage(`Submitting Stage 3 vote…`, "pending");
@@ -393,14 +393,14 @@ export function mountStage3Vote(ctx) {
         s2Slug: selectedS2,
         _balance: ctx.getBalance(),
       });
-      syncMine({ vote: data.vote, canVote: false });
+      syncMine(data);
       leaderboard = data.leaderboard || leaderboard;
       renderLeaderboard();
       renderCharGrid(els.search?.value || "");
       if (selectedBase) renderVariantGrid();
       updateSubmit();
       updateSelectedLabel();
-      ctx.setMessage(`Vote locked — ${label} (+${data.weight} pt).`, "success");
+      ctx.setMessage(`Vote recorded — ${label} (+${data.weight} pt). You can vote for other characters.`, "success");
     } catch (err) {
       ctx.setMessage(err.message || "Vote failed.", "error");
       updateSubmit();
@@ -411,13 +411,12 @@ export function mountStage3Vote(ctx) {
   els.submit?.addEventListener("click", submitVote);
   els.search?.addEventListener("input", (e) => renderCharGrid(e.target.value));
   els.grid?.addEventListener("click", (e) => {
-    if (voteLocked) return;
     const btn = e.target.closest("[data-base]");
     if (!btn || btn.disabled) return;
     showVariantPanel(btn.dataset.base);
   });
   els.variantGrid?.addEventListener("click", (e) => {
-    if (voteLocked) return;
+    if (hasActiveVoteForBase(selectedBase)) return;
     const btn = e.target.closest("[data-s2]");
     if (!btn) return;
     selectedS2 = btn.dataset.s2;
@@ -434,6 +433,7 @@ export function mountStage3Vote(ctx) {
     onTabShow() {
       refreshCharacters();
       void loadLeaderboard();
+      void loadMyVote();
       renderCharGrid(els.search?.value || "");
     },
     reload: loadLeaderboard,
