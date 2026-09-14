@@ -1,0 +1,38 @@
+PIXEL TRIP — Stage 3 V2 batch (PNG → Full_*.gif)
+
+ИСТОЧНИК АРТА
+  D:\Promt\Пиксель\Stage 3 V2\{Stage1_персonaж}\Full_{S2_variant}.png
+  Пример: Stage 3 V2\Street_Ape\Full_Street_Ape_King.png
+
+СЛОИ ДЛЯ СБОРКИ
+  Background_Stage3\   (аним. фон, 64×64 grid)
+  Frames_Stage3\       (аним. рамка)
+  PNG из Stage 3 V2    (персonaж)
+
+КОМАНДА (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2.json --seed 4242
+
+  Или:  deploy_stage3_v2.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json  (merge с текущим fromStage2Slug)
+  build/deploy/stage3/manifest-stage3-v2.json  (только этот batch)
+
+ПРОВЕРКА ЛОКАЛЬНО
+  Открыть build/deploy/stage3/images/Full_Street_Ape_King.gif
+
+FTP (production, public_html)
+  stage3/images/Full_*.gif     → только НОВЫЕ файлы из batch
+  stage3/metadata/Full_*       → metadata для них
+  stage3-variants.json         → обновлённый merge
+
+САЙТ / BURN
+  deploy_burn_assets.py синхронизирует website/src/burn/stage3-variants.json
+  (без --no-sync-frontend)
+
+ПОСЛЕ ЗАЛИВКИ
+  Holder vote: новые slug появятся в fromStage2Slug → голоса за них закрываются автоматически.

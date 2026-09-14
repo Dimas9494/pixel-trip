@@ -1,0 +1,115 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-14T18:00:49.374344+00:00",
+  "count": 15,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Bandana_Rebel_Alien",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Chrome_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bandana_Rebel_Alien.gif",
+      "stage1_character": "Bandana_Rebel"
+    },
+    {
+      "slug": "Full_Bandana_Rebel_Rasta",
+      "bg": "Band_Scroll",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bandana_Rebel_Rasta.gif",
+      "stage1_character": "Bandana_Rebel"
+    },
+    {
+      "slug": "Full_Cat_Headphones_Zombie",
+      "bg": "Chromatic_Swell",
+      "frame": "Hue_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cat_Headphones_Zombie.gif",
+      "stage1_character": "Cat_Headphones"
+    },
+    {
+      "slug": "Full_Cyber_Duck_Angel",
+      "bg": "Vapor_Phase",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyber_Duck_Angel.gif",
+      "stage1_character": "Cyber_Duck"
+    },
+    {
+      "slug": "Full_Cyber_Duck_Crying",
+      "bg": "Brick_Mosaic",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyber_Duck_Crying.gif",
+      "stage1_character": "Cyber_Duck"
+    },
+    {
+      "slug": "Full_Cyber_Duck_Punk",
+      "bg": "Grove_Mosaic",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyber_Duck_Punk.gif",
+      "stage1_character": "Cyber_Duck"
+    },
+    {
+      "slug": "Full_Cyber_Duck_VR_Glasses",
+      "bg": "Lattice_Lines",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyber_Duck_VR_Glasses.gif",
+      "stage1_character": "Cyber_Duck"
+    },
+    {
+      "slug": "Full_Shadow_Eyes_Duotone",
+      "bg": "Chromatic_Swell",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Eyes_Duotone.gif",
+      "stage1_character": "Shadow_Eyes"
+    },
+    {
+      "slug": "Full_Shadow_Eyes_Icy_King",
+      "bg": "Gem_Perimeter",
+      "frame": "Jet_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Eyes_Icy_King.gif",
+      "stage1_character": "Shadow_Eyes"
+    },
+    {
+      "slug": "Full_Street_Ape_Bachelor",
+      "bg": "Grove_Mosaic",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Ape_Bachelor.gif",
+      "stage1_character": "Street_Ape"
+    },
+    {
+      "slug": "Full_Street_Ape_Frog_Hat",
+      "bg": "Lumen_Streak",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Ape_Frog_Hat.gif",
+      "stage1_character": "Street_Ape"
+    },
+    {
+      "slug": "Full_Street_Ape_King",
+      "bg": "Chromatic_Swell",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Ape_King.gif",
+      "stage1_character": "Street_Ape"
+    },
+    {
+      "slug": "Full_Street_Ape_Pharaoh",
+      "bg": "Brick_Mosaic",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Ape_Pharaoh.gif",
+      "stage1_character": "Street_Ape"
+    },
+    {
+      "slug": "Full_Street_Ape_Sailor",
+      "bg": "Flare_Flash",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Ape_Sailor.gif",
+      "stage1_character": "Street_Ape"
+    },
+    {
+      "slug": "Full_Street_Ape_Zombie",
+      "bg": "Chromatic_Swell",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Ape_Zombie.gif",
+      "stage1_character": "Street_Ape"
+    }
+  ]
+}
