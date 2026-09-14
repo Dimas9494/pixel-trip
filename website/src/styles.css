@@ -1372,6 +1372,51 @@ img {
   align-items: start;
 }
 
+.vote-layout-s3 {
+  grid-template-columns: 1fr;
+}
+
+.vote-main-full {
+  min-width: 0;
+}
+
+.vote-s3-leader-section {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.vote-s3-leader-heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--cyan);
+  font-family: var(--pixel);
+  line-height: 1.5;
+}
+
+.vote-grid-leader {
+  max-height: none;
+  margin-bottom: 0;
+}
+
+.vote-char-lb {
+  cursor: default;
+  position: relative;
+}
+
+.vote-char-lb:hover {
+  border-color: var(--border);
+}
+
+.vote-char-rank {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.4rem;
+  font-size: 0.65rem;
+  color: var(--yellow);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
 .vote-toolbar {
   display: flex;
   flex-wrap: wrap;

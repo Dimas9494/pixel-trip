@@ -107,8 +107,8 @@
             </aside>
           </div>
 
-          <div class="vote-layout" id="vote-panel-stage3">
-            <div class="vote-main">
+          <div class="vote-layout vote-layout-s3" id="vote-panel-stage3">
+            <div class="vote-main vote-main-full">
               <div class="vote-toolbar">
                 <label class="vote-search-wrap">
                   <span class="sr-only">Search characters</span>
@@ -130,12 +130,14 @@
                 Submit Stage 3 vote (final)
               </button>
               <p class="vote-stats" id="vote-s3-stats"></p>
-            </div>
 
-            <aside class="vote-sidebar vote-sidebar-scroll">
-              <h3>Stage 3 leaderboard <span class="vote-s3-leader-total" id="vote-s3-leader-total"></span></h3>
-              <div class="vote-s3-leaderboard-wrap" id="vote-s3-leaderboard"></div>
-            </aside>
+              <section class="vote-s3-leader-section" aria-labelledby="vote-s3-leader-heading">
+                <h3 class="vote-s3-leader-heading" id="vote-s3-leader-heading">
+                  Stage 3 leaderboard <span class="vote-s3-leader-total" id="vote-s3-leader-total"></span>
+                </h3>
+                <div class="vote-grid vote-grid-leader" id="vote-s3-leaderboard"></div>
+              </section>
+            </div>
           </div>
         </div>
       </section>

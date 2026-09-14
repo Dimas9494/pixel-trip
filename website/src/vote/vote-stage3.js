@@ -228,21 +228,10 @@ export function mountStage3Vote(ctx) {
     els.selected.textContent = `${formatCharacter(selectedS2)} · ${formatCharacter(selectedBase)}`;
   }
 
-  function groupLeaderboardByCharacter(rows) {
-    const byBase = new Map();
-    for (const row of rows) {
-      const base = row.baseCharacter;
-      if (!base) continue;
-      if (!byBase.has(base)) byBase.set(base, []);
-      byBase.get(base).push(row);
-    }
-    return [...byBase.entries()]
-      .map(([base, variants]) => {
-        variants.sort((a, b) => (Number(b.points) || 0) - (Number(a.points) || 0));
-        const total = variants.reduce((sum, r) => sum + (Number(r.points) || 0), 0);
-        return { base, total, variants };
-      })
-      .sort((a, b) => b.total - a.total || a.base.localeCompare(b.base));
+  function isMyLeaderboardRow(row) {
+    return Object.entries(myVotesByCharacter).some(
+      ([base, vote]) => base === row.baseCharacter && vote?.s2Slug === row.s2Slug,
+    );
   }
 
   function renderLeaderboard() {
@@ -250,29 +239,28 @@ export function mountStage3Vote(ctx) {
     if (!els.leaderboard) return;
     if (!leaderboard.length) {
       if (totalEl) totalEl.textContent = "";
-      els.leaderboard.innerHTML = `<p class="vote-leader-empty">No Stage 3 votes yet.</p>`;
+      els.leaderboard.innerHTML = `<p class="vote-empty">No Stage 3 votes yet.</p>`;
       return;
     }
-    const groups = groupLeaderboardByCharacter(leaderboard);
-    const variantCount = leaderboard.length;
+    const sorted = [...leaderboard].sort(
+      (a, b) => (Number(b.points) || 0) - (Number(a.points) || 0)
+        || String(a.s2Slug).localeCompare(String(b.s2Slug)),
+    );
+    const variantCount = sorted.length;
     if (totalEl) {
       totalEl.textContent = `(${variantCount} variant${variantCount === 1 ? "" : "s"})`;
     }
-    els.leaderboard.innerHTML = groups.map(({ base, total, variants }) => `
-      <section class="vote-s3-lb-group">
-        <h4 class="vote-s3-lb-char">${formatCharacter(base)} <span class="vote-s3-lb-char-pts">${total} pt</span></h4>
-        <ul class="vote-s3-lb-variants">
-          ${variants.map((row) => {
-            const img = stage2ImageUrl(row.s2Slug);
-            return `
-            <li class="vote-s3-lb-variant">
-              <img src="${img}" alt="" width="24" height="24" loading="lazy" />
-              <span class="vote-s3-lb-name">${formatCharacter(row.s2Slug)}</span>
-              <span class="vote-s3-lb-pts">${row.points} pt</span>
-            </li>`;
-          }).join("")}
-        </ul>
-      </section>`).join("");
+    els.leaderboard.innerHTML = sorted.map((row, i) => {
+      const img = stage2ImageUrl(row.s2Slug);
+      const mine = isMyLeaderboardRow(row);
+      return `
+        <div class="vote-char vote-char-lb${mine ? " has-vote" : ""}" aria-label="${formatCharacter(row.s2Slug)}">
+          <span class="vote-char-rank">#${i + 1}</span>
+          <img src="${img}" alt="" width="72" height="72" loading="lazy" />
+          <span class="vote-char-name">${formatCharacter(row.s2Slug)}</span>
+          <span class="vote-char-meta">${formatCharacter(row.baseCharacter)} · ${row.points} pt</span>
+        </div>`;
+    }).join("");
   }
 
   function renderCharGrid(filter = "") {

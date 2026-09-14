@@ -23,7 +23,7 @@ function defaultVoteApiUrl() {
 
 export const VOTE_API_URL = defaultVoteApiUrl();
 
-export const VOTE_BUILD = "2026-09-14-vote-s3-leaderboard-full";
+export const VOTE_BUILD = "2026-09-14-vote-s3-leader-grid";
 
 /** Rolling 7-day window — one vote per wallet, no changes or cancel. */
 export const VOTE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
