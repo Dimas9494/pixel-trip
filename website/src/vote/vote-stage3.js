@@ -228,22 +228,51 @@ export function mountStage3Vote(ctx) {
     els.selected.textContent = `${formatCharacter(selectedS2)} · ${formatCharacter(selectedBase)}`;
   }
 
+  function groupLeaderboardByCharacter(rows) {
+    const byBase = new Map();
+    for (const row of rows) {
+      const base = row.baseCharacter;
+      if (!base) continue;
+      if (!byBase.has(base)) byBase.set(base, []);
+      byBase.get(base).push(row);
+    }
+    return [...byBase.entries()]
+      .map(([base, variants]) => {
+        variants.sort((a, b) => (Number(b.points) || 0) - (Number(a.points) || 0));
+        const total = variants.reduce((sum, r) => sum + (Number(r.points) || 0), 0);
+        return { base, total, variants };
+      })
+      .sort((a, b) => b.total - a.total || a.base.localeCompare(b.base));
+  }
+
   function renderLeaderboard() {
+    const totalEl = document.getElementById("vote-s3-leader-total");
     if (!els.leaderboard) return;
     if (!leaderboard.length) {
-      els.leaderboard.innerHTML = `<li class="vote-leader-empty">No Stage 3 votes yet.</li>`;
+      if (totalEl) totalEl.textContent = "";
+      els.leaderboard.innerHTML = `<p class="vote-leader-empty">No Stage 3 votes yet.</p>`;
       return;
     }
-    els.leaderboard.innerHTML = leaderboard.slice(0, 25).map((row, i) => {
-      const img = stage2ImageUrl(row.s2Slug);
-      return `
-      <li class="vote-leader-row">
-        <span class="vote-leader-rank">#${i + 1}</span>
-        <img class="vote-leader-thumb" src="${img}" alt="" width="32" height="32" loading="lazy" />
-        <span class="vote-leader-name">${formatCharacter(row.s2Slug)}<span class="vote-leader-sub">${formatCharacter(row.baseCharacter)}</span></span>
-        <span class="vote-leader-points">${row.points} pt</span>
-      </li>`;
-    }).join("");
+    const groups = groupLeaderboardByCharacter(leaderboard);
+    const variantCount = leaderboard.length;
+    if (totalEl) {
+      totalEl.textContent = `(${variantCount} variant${variantCount === 1 ? "" : "s"})`;
+    }
+    els.leaderboard.innerHTML = groups.map(({ base, total, variants }) => `
+      <section class="vote-s3-lb-group">
+        <h4 class="vote-s3-lb-char">${formatCharacter(base)} <span class="vote-s3-lb-char-pts">${total} pt</span></h4>
+        <ul class="vote-s3-lb-variants">
+          ${variants.map((row) => {
+            const img = stage2ImageUrl(row.s2Slug);
+            return `
+            <li class="vote-s3-lb-variant">
+              <img src="${img}" alt="" width="24" height="24" loading="lazy" />
+              <span class="vote-s3-lb-name">${formatCharacter(row.s2Slug)}</span>
+              <span class="vote-s3-lb-pts">${row.points} pt</span>
+            </li>`;
+          }).join("")}
+        </ul>
+      </section>`).join("");
   }
 
   function renderCharGrid(filter = "") {
@@ -255,7 +284,7 @@ export function mountStage3Vote(ctx) {
     });
 
     els.grid.innerHTML = list.map((name) => {
-      const { cap, points, closed } = characterVoteProgress(name, leaderboard);
+      const { points, closed } = characterVoteProgress(name, leaderboard);
       const { drawn, artCap, complete: artComplete } = characterStage3ArtProgress(name);
       const img = s1Image(name);
       const sel = selectedBase === name && !selectedS2;
@@ -264,7 +293,7 @@ export function mountStage3Vote(ctx) {
         ? "S3 complete"
         : voted
           ? `Your vote · S3 ${drawn}/${artCap}`
-          : `S3 ${drawn}/${artCap} · ${points}/${cap} votes`;
+          : `S3 ${drawn}/${artCap} · ${points} pt`;
       return `
         <button type="button" class="vote-char${sel ? " is-selected" : ""}${closed ? " is-closed" : ""}${voted ? " has-vote" : ""}" data-base="${name}" ${closed ? "disabled" : ""}>
           ${img ? `<img src="${img}" alt="" width="72" height="72" loading="lazy" />` : ""}
@@ -284,9 +313,9 @@ export function mountStage3Vote(ctx) {
     if (els.variants) els.variants.hidden = false;
     if (els.charStep) els.charStep.hidden = true;
     if (els.charTitle) {
-      const { cap, points } = characterVoteProgress(baseCharacter, leaderboard);
+      const { points } = characterVoteProgress(baseCharacter, leaderboard);
       const { drawn, artCap } = characterStage3ArtProgress(baseCharacter);
-      els.charTitle.textContent = `${formatCharacter(baseCharacter)} — S3 ${drawn}/${artCap} · votes ${points}/${cap}`;
+      els.charTitle.textContent = `${formatCharacter(baseCharacter)} — S3 ${drawn}/${artCap} · ${points} pt total`;
     }
     renderVariantGrid();
     updateSelectedLabel();
