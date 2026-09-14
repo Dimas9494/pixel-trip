@@ -35,4 +35,6 @@ FTP (production, public_html)
   (без --no-sync-frontend)
 
 ПОСЛЕ ЗАЛИВКИ
-  Holder vote: новые slug появятся в fromStage2Slug → голоса за них закрываются автоматически.
+  Holder vote: stage3VoteClosedCharacters в stage3-variants.json — 5 S1 линий полностью
+  сняты со Stage 3 голосования (программа Stage 3 для них закрыта).
+  FTP: stage3-variants.json; vote-api.php — если обновлялся в git.

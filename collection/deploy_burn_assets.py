@@ -265,11 +265,17 @@ def merge_stage3_maps(existing: dict, new_maps: dict) -> dict:
                 seen.add(row.get("slug"))
         pool[key] = merged
 
-    return {
+    closed = set(existing.get("stage3VoteClosedCharacters") or [])
+    closed.update(new_maps.get("stage3VoteClosedCharacters") or [])
+
+    out = {
         "fromStage2Slug": from_s2,
         "defaultByChar": default,
         "poolByChar": pool,
     }
+    if closed:
+        out["stage3VoteClosedCharacters"] = sorted(closed)
+    return out
 
 
 def load_existing_stage3_maps() -> dict:

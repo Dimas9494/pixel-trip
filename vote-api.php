@@ -123,12 +123,26 @@ function loadStage2Variants(): array {
     return is_array($data) ? $data : [];
 }
 
-function loadStage3FromS2Map(): array {
+function loadStage3VariantsRoot(): array {
     if (!file_exists(STAGE3_VARIANTS_FILE)) {
         return [];
     }
     $data = json_decode(file_get_contents(STAGE3_VARIANTS_FILE), true);
+    return is_array($data) ? $data : [];
+}
+
+function loadStage3FromS2Map(): array {
+    $data = loadStage3VariantsRoot();
     return is_array($data['fromStage2Slug'] ?? null) ? $data['fromStage2Slug'] : [];
+}
+
+function loadStage3VoteClosedCharacters(): array {
+    $list = loadStage3VariantsRoot()['stage3VoteClosedCharacters'] ?? [];
+    return is_array($list) ? $list : [];
+}
+
+function isStage3ProgramClosedForCharacter(string $baseCharacter): bool {
+    return in_array($baseCharacter, loadStage3VoteClosedCharacters(), true);
 }
 
 function stage3ArtCountForBase(string $baseCharacter): int {
@@ -145,6 +159,9 @@ function stage3ArtCountForBase(string $baseCharacter): int {
 }
 
 function isStage3ArtCompleteForCharacter(string $baseCharacter): bool {
+    if (isStage3ProgramClosedForCharacter($baseCharacter)) {
+        return true;
+    }
     $artCap = maxStage3ArtSlots($baseCharacter);
     if ($artCap <= 0) {
         return true;

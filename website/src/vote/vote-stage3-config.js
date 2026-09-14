@@ -12,6 +12,12 @@ import CHARACTER_SUPPLY from "./character-supply.json";
 
 const ONE_OF_ONE_SET = new Set(ONE_OF_ONE);
 const DIRECT_S3 = DIRECT_TO_S3_CHARS;
+const STAGE3_VOTE_CLOSED = new Set(STAGE3_MAP.stage3VoteClosedCharacters ?? []);
+
+/** Stage 3 art program finished for this S1 line (no ballot, no new votes). */
+export function isStage3ProgramClosedForCharacter(baseCharacter) {
+  return STAGE3_VOTE_CLOSED.has(baseCharacter);
+}
 
 /** Max Stage 3 NFTs achievable from N Stage 1 copies (pair-burn: S1→S2→S3). */
 export function maxStage3Slots(baseCharacter, supply = CHARACTER_SUPPLY) {
@@ -94,6 +100,7 @@ export function isStage3ArtCompleteForCharacter(
   supply = CHARACTER_SUPPLY,
   catalog = STAGE2_VARIANTS,
 ) {
+  if (isStage3ProgramClosedForCharacter(baseCharacter)) return true;
   const artCap = maxStage3ArtSlots(baseCharacter, supply);
   if (artCap <= 0) return true;
   return stage3ArtCountForBase(baseCharacter, catalog) >= artCap;
