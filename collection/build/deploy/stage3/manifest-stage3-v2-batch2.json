@@ -1,0 +1,66 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-15T17:06:54.725672+00:00",
+  "count": 8,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Crimson_Samurai",
+      "bg": "Haze_Mosaic",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crimson_Samurai.gif",
+      "stage1_character": "Crimson_Samurai"
+    },
+    {
+      "slug": "Full_Cyber_Bear",
+      "bg": "Hue_Pulse",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyber_Bear.gif",
+      "stage1_character": "Cyber_Bear"
+    },
+    {
+      "slug": "Full_Flame_Skull",
+      "bg": "Grid_Checker",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Flame_Skull.gif",
+      "stage1_character": "Flame_Skull"
+    },
+    {
+      "slug": "Full_Gold_Warrior",
+      "bg": "Diagonal_Streak",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gold_Warrior.gif",
+      "stage1_character": "Gold_Warrior"
+    },
+    {
+      "slug": "Full_Gray_Elvis_Frog_Hoodie",
+      "bg": "Vapor_Phase",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gray_Elvis_Frog_Hoodie.gif",
+      "stage1_character": "Gray_Elvis"
+    },
+    {
+      "slug": "Full_Gray_Elvis_Skull",
+      "bg": "Delta_Flash",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gray_Elvis_Skull.gif",
+      "stage1_character": "Gray_Elvis"
+    },
+    {
+      "slug": "Full_Gray_Elvis_Zombie",
+      "bg": "Cinder_Swell",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gray_Elvis_Zombie.gif",
+      "stage1_character": "Gray_Elvis"
+    },
+    {
+      "slug": "Full_Winged_Demon",
+      "bg": "Haze_Mosaic",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Winged_Demon.gif",
+      "stage1_character": "Winged_Demon"
+    }
+  ]
+}

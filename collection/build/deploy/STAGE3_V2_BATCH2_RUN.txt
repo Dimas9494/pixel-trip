@@ -1,0 +1,61 @@
+PIXEL TRIP — Stage 3 V2 batch 2 (PNG → Full_*.gif)
+
+BATCH 2 — 8 Full, 6 S1 линий
+  Direct S1→S3 (1 Full на линию, без Stage 2):
+    Crimson_Samurai, Cyber_Bear, Flame_Skull, Gold_Warrior, Winged_Demon
+  Normal (S2→S3, 3 Full):
+    Gray_Elvis — Frog_Hoodie, Skull, Zombie
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1_персonaж}\Full_*.png
+  Direct S3:  Full_Crimson_Samurai.png  (имя = Full_{S1})
+  Normal:     Full_Gray_Elvis_Zombie.png (имя = Full_{S2_slug})
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+  PNG из Stage 3 V2
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch2.json --seed 5150
+
+  (batch 1 использовал manifest-stage3-v2.json и seed 4242 — не перезаписывай, если нужен только batch 2)
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif       (+ 8 новых из batch 2)
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json           (merge fromStage2Slug + poolByChar)
+  build/deploy/stage3/manifest-stage3-v2-batch2.json
+  website/src/burn/stage3-variants.json       (sync автоматически)
+
+ПРОВЕРКА ЛОКАЛЬНО
+  build/deploy/stage3/images/Full_Crimson_Samurai.gif
+  build/deploy/stage3/images/Full_Gray_Elvis_Zombie.gif
+
+FTP (public_html)
+  stage3/images/     → только НОВЫЕ Full_*.gif из batch 2 (8 файлов)
+  stage3/metadata/   → Full_Crimson_Samurai, Full_Cyber_Bear, …
+  stage3-variants.json
+
+REMIX
+  Не нужен — charId и paths уже на контракте; только арт + каталог.
+
+ГОЛОСОВАНИЕ Stage 3
+  Gray_Elvis: закрыты только 3 S2 с Full-артом; линия в голосовании, пока не заполнен art cap.
+  Direct S3 линии (supply 3): в голосовании обычно не участвуют (cap 0); отдельно в stage3VoteClosedCharacters не добавлялись.
+
+ПОСЛЕ FTP
+  Evolution Lab: S1+S1→S3 для legendaries; S2→S3 для Gray_Elvis (соответствующие slug).
+  git push website/src/burn/stage3-variants.json (+ deploy runbook при необходимости).
+
+СПИСОК GIF BATCH 2
+  Full_Crimson_Samurai.gif
+  Full_Cyber_Bear.gif
+  Full_Flame_Skull.gif
+  Full_Gold_Warrior.gif
+  Full_Gray_Elvis_Frog_Hoodie.gif
+  Full_Gray_Elvis_Skull.gif
+  Full_Gray_Elvis_Zombie.gif
+  Full_Winged_Demon.gif

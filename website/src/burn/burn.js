@@ -1647,6 +1647,8 @@ async function evolveTokens() {
     if (account) patchOwnerInCache(keepId, account.toLowerCase());
     setMessage(`Evolved! #${keepId} → ${stageLabel}. Updating metadata…`, "success");
 
+    // POST can 504 while PHP still writes — reconcile reads chain and fixes metadata/assignments.
+    void triggerServerReconcile(keepId, burnId);
     const updated = await syncMetadataToServer(keepId, burnId, { retries: 5, minStage: newStage, charName });
     if (updated.ok) {
       hideMetadataRetryBanner();
