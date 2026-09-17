@@ -1,0 +1,68 @@
+PIXEL TRIP — Stage 3 V2 batch 3 (PNG → Full_*.gif)
+
+BATCH 3 — 20 Full, 5 S1 линий
+  Banana_Guy        — 1 PNG (добор сета: Cool) → итого 6/6 Full
+  Fire_Elemental    — 5 PNG (полный batch арта для линии)
+  Glitch_Cyborg     — 1 PNG (полный сет при artCap=1)
+  Glowing_Gillman   — 7 PNG (полный batch)
+  Grinning_Donkey   — 6 PNG (полный сет 6/6)
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+  Banana_Guy: Full_Banana_Guy_Cool.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch3.json --seed 6161
+
+  Или: deploy_stage3_v2_batch3.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch3.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Banana_Guy_Cool.gif
+  Full_Grinning_Donkey_King.gif
+
+FTP (только НОВЫЕ 20 файлов + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+REMIX — не нужен.
+
+ГОЛОСОВАНИЕ
+  Banana_Guy после merge: 6 Full → линия снимается с S3 vote по art cap (как Blue_Ogre).
+  Fire / Gillman / Donkey: новые slug в fromStage2Slug → эти S2 не в бюллетене.
+  Glitch_Cyborg: 1 Full → art cap закрыт для линии.
+
+СПИСОК GIF (batch 3)
+  Full_Banana_Guy_Cool.gif
+  Full_Fire_Elemental_Forest.gif
+  Full_Fire_Elemental_Ice.gif
+  Full_Fire_Elemental_Steampunk.gif
+  Full_Fire_Elemental_Straw_Hat.gif
+  Full_Fire_Elemental_VR.gif
+  Full_Glitch_Cyborg_Street_OG.gif
+  Full_Glowing_Gillman_King.gif
+  Full_Glowing_Gillman_Pinky.gif
+  Full_Glowing_Gillman_Pop_Art.gif
+  Full_Glowing_Gillman_Punk.gif
+  Full_Glowing_Gillman_White.gif
+  Full_Glowing_Gillman_Wizard.gif
+  Full_Glowing_Gillman_Zombie.gif
+  Full_Grinning_Donkey_Alien.gif
+  Full_Grinning_Donkey_Frog_Hat.gif
+  Full_Grinning_Donkey_King.gif
+  Full_Grinning_Donkey_Party_Hat.gif
+  Full_Grinning_Donkey_Street.gif
+  Full_Grinning_Donkey_Zombie.gif

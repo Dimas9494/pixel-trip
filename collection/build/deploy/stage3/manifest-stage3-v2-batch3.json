@@ -1,0 +1,150 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-17T18:04:28.341145+00:00",
+  "count": 20,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Banana_Guy_Cool",
+      "bg": "Margin_Flash",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Banana_Guy_Cool.gif",
+      "stage1_character": "Banana_Guy"
+    },
+    {
+      "slug": "Full_Fire_Elemental_Forest",
+      "bg": "Kelp_Streak",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fire_Elemental_Forest.gif",
+      "stage1_character": "Fire_Elemental"
+    },
+    {
+      "slug": "Full_Fire_Elemental_Ice",
+      "bg": "Ember_Flash",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fire_Elemental_Ice.gif",
+      "stage1_character": "Fire_Elemental"
+    },
+    {
+      "slug": "Full_Fire_Elemental_Steampunk",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fire_Elemental_Steampunk.gif",
+      "stage1_character": "Fire_Elemental"
+    },
+    {
+      "slug": "Full_Fire_Elemental_Straw_Hat",
+      "bg": "Chromatic_Swell",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fire_Elemental_Straw_Hat.gif",
+      "stage1_character": "Fire_Elemental"
+    },
+    {
+      "slug": "Full_Fire_Elemental_VR",
+      "bg": "Jolt_Checker",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fire_Elemental_VR.gif",
+      "stage1_character": "Fire_Elemental"
+    },
+    {
+      "slug": "Full_Glitch_Cyborg_Street_OG",
+      "bg": "Xenon_Wave",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glitch_Cyborg_Street_OG.gif",
+      "stage1_character": "Glitch_Cyborg"
+    },
+    {
+      "slug": "Full_Glowing_Gillman_King",
+      "bg": "Warp_Wave",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glowing_Gillman_King.gif",
+      "stage1_character": "Glowing_Gillman"
+    },
+    {
+      "slug": "Full_Glowing_Gillman_Pinky",
+      "bg": "Lumen_Streak",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glowing_Gillman_Pinky.gif",
+      "stage1_character": "Glowing_Gillman"
+    },
+    {
+      "slug": "Full_Glowing_Gillman_Pop_Art",
+      "bg": "Brick_Mosaic",
+      "frame": "Yield_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glowing_Gillman_Pop_Art.gif",
+      "stage1_character": "Glowing_Gillman"
+    },
+    {
+      "slug": "Full_Glowing_Gillman_Punk",
+      "bg": "Horizon_Wave",
+      "frame": "Glitch_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glowing_Gillman_Punk.gif",
+      "stage1_character": "Glowing_Gillman"
+    },
+    {
+      "slug": "Full_Glowing_Gillman_White",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glowing_Gillman_White.gif",
+      "stage1_character": "Glowing_Gillman"
+    },
+    {
+      "slug": "Full_Glowing_Gillman_Wizard",
+      "bg": "Delta_Flash",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glowing_Gillman_Wizard.gif",
+      "stage1_character": "Glowing_Gillman"
+    },
+    {
+      "slug": "Full_Glowing_Gillman_Zombie",
+      "bg": "Lattice_Lines",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glowing_Gillman_Zombie.gif",
+      "stage1_character": "Glowing_Gillman"
+    },
+    {
+      "slug": "Full_Grinning_Donkey_Alien",
+      "bg": "Bloom_Wave",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grinning_Donkey_Alien.gif",
+      "stage1_character": "Grinning_Donkey"
+    },
+    {
+      "slug": "Full_Grinning_Donkey_Frog_Hat",
+      "bg": "Vertical_Drift",
+      "frame": "Flux_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grinning_Donkey_Frog_Hat.gif",
+      "stage1_character": "Grinning_Donkey"
+    },
+    {
+      "slug": "Full_Grinning_Donkey_King",
+      "bg": "Grid_Checker",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grinning_Donkey_King.gif",
+      "stage1_character": "Grinning_Donkey"
+    },
+    {
+      "slug": "Full_Grinning_Donkey_Party_Hat",
+      "bg": "Stripe_Phase",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grinning_Donkey_Party_Hat.gif",
+      "stage1_character": "Grinning_Donkey"
+    },
+    {
+      "slug": "Full_Grinning_Donkey_Street",
+      "bg": "Hue_Pulse",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grinning_Donkey_Street.gif",
+      "stage1_character": "Grinning_Donkey"
+    },
+    {
+      "slug": "Full_Grinning_Donkey_Zombie",
+      "bg": "Flare_Flash",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grinning_Donkey_Zombie.gif",
+      "stage1_character": "Grinning_Donkey"
+    }
+  ]
+}
