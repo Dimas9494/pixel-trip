@@ -1124,6 +1124,86 @@
       "slug": "Full_Grinning_Donkey_Zombie",
       "bg": "Flare_Flash",
       "frame": "Byte_Pulse"
+    },
+    "Bark_Dryad_Dark_Green": {
+      "slug": "Full_Bark_Dryad_Dark_Green",
+      "bg": "Ember_Flash",
+      "frame": "Chrome_Rim"
+    },
+    "Bark_Dryad_Flower_Face": {
+      "slug": "Full_Bark_Dryad_Flower_Face",
+      "bg": "Brick_Mosaic",
+      "frame": "Unit_Ring"
+    },
+    "Bark_Dryad_Nightly": {
+      "slug": "Full_Bark_Dryad_Nightly",
+      "bg": "Rust_Perimeter",
+      "frame": "Axis_Rim"
+    },
+    "Bark_Dryad_No_Face": {
+      "slug": "Full_Bark_Dryad_No_Face",
+      "bg": "Brick_Mosaic",
+      "frame": "Mono_Rim"
+    },
+    "Bark_Dryad_Winter": {
+      "slug": "Full_Bark_Dryad_Winter",
+      "bg": "Basalt_Lines",
+      "frame": "Flow_Rim"
+    },
+    "Bucktooth_Nerd_Ape": {
+      "slug": "Full_Bucktooth_Nerd_Ape",
+      "bg": "Horizon_Wave",
+      "frame": "Onyx_Rim"
+    },
+    "Bucktooth_Nerd_Brain": {
+      "slug": "Full_Bucktooth_Nerd_Brain",
+      "bg": "Lux_Checker",
+      "frame": "Jolt_Rim"
+    },
+    "Bucktooth_Nerd_Propeller_Hat": {
+      "slug": "Full_Bucktooth_Nerd_Propeller_Hat",
+      "bg": "Tidal_Phase",
+      "frame": "Omega_Rim"
+    },
+    "Bucktooth_Nerd_Skull": {
+      "slug": "Full_Bucktooth_Nerd_Skull",
+      "bg": "Lux_Checker",
+      "frame": "Radiant_Rim"
+    },
+    "Bucktooth_Nerd_Zomb": {
+      "slug": "Full_Bucktooth_Nerd_Zomb",
+      "bg": "Fog_Blend",
+      "frame": "Nova_Rim"
+    },
+    "Cat_Woman_Choker": {
+      "slug": "Full_Cat_Woman_Choker",
+      "bg": "Brick_Mosaic",
+      "frame": "Volt_Ring"
+    },
+    "Cat_Woman_Frog_Eyes": {
+      "slug": "Full_Cat_Woman_Frog_Eyes",
+      "bg": "Haze_Mosaic",
+      "frame": "Wave_Rim"
+    },
+    "Cat_Woman_Leather_Collar": {
+      "slug": "Full_Cat_Woman_Leather_Collar",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Cycle_Rim"
+    },
+    "Cat_Woman_Leo": {
+      "slug": "Full_Cat_Woman_Leo",
+      "bg": "Fog_Blend",
+      "frame": "Bolt_Chroma"
+    },
+    "Cat_Woman_Navy_Queen": {
+      "slug": "Full_Cat_Woman_Navy_Queen",
+      "bg": "Kelp_Streak",
+      "frame": "Hue_Rim"
+    },
+    "Cat_Woman_Sewn_Up": {
+      "slug": "Full_Cat_Woman_Sewn_Up",
+      "bg": "Diagonal_Streak",
+      "frame": "Axis_Rim"
     }
   },
   "defaultByChar": {
@@ -2481,6 +2561,92 @@
         "slug": "Full_Grinning_Donkey_Zombie",
         "bg": "Flare_Flash",
         "frame": "Byte_Pulse"
+      }
+    ],
+    "Bark_Dryad": [
+      {
+        "slug": "Full_Bark_Dryad_Dark_Green",
+        "bg": "Ember_Flash",
+        "frame": "Chrome_Rim"
+      },
+      {
+        "slug": "Full_Bark_Dryad_Flower_Face",
+        "bg": "Brick_Mosaic",
+        "frame": "Unit_Ring"
+      },
+      {
+        "slug": "Full_Bark_Dryad_Nightly",
+        "bg": "Rust_Perimeter",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Bark_Dryad_No_Face",
+        "bg": "Brick_Mosaic",
+        "frame": "Mono_Rim"
+      },
+      {
+        "slug": "Full_Bark_Dryad_Winter",
+        "bg": "Basalt_Lines",
+        "frame": "Flow_Rim"
+      }
+    ],
+    "Bucktooth_Nerd": [
+      {
+        "slug": "Full_Bucktooth_Nerd_Ape",
+        "bg": "Horizon_Wave",
+        "frame": "Onyx_Rim"
+      },
+      {
+        "slug": "Full_Bucktooth_Nerd_Brain",
+        "bg": "Lux_Checker",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Bucktooth_Nerd_Propeller_Hat",
+        "bg": "Tidal_Phase",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Bucktooth_Nerd_Skull",
+        "bg": "Lux_Checker",
+        "frame": "Radiant_Rim"
+      },
+      {
+        "slug": "Full_Bucktooth_Nerd_Zomb",
+        "bg": "Fog_Blend",
+        "frame": "Nova_Rim"
+      }
+    ],
+    "Cat_Woman": [
+      {
+        "slug": "Full_Cat_Woman_Choker",
+        "bg": "Brick_Mosaic",
+        "frame": "Volt_Ring"
+      },
+      {
+        "slug": "Full_Cat_Woman_Frog_Eyes",
+        "bg": "Haze_Mosaic",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Cat_Woman_Leather_Collar",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Cycle_Rim"
+      },
+      {
+        "slug": "Full_Cat_Woman_Leo",
+        "bg": "Fog_Blend",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Cat_Woman_Navy_Queen",
+        "bg": "Kelp_Streak",
+        "frame": "Hue_Rim"
+      },
+      {
+        "slug": "Full_Cat_Woman_Sewn_Up",
+        "bg": "Diagonal_Streak",
+        "frame": "Axis_Rim"
       }
     ]
   },

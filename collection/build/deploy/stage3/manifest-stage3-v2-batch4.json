@@ -1,0 +1,122 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-18T17:59:26.761529+00:00",
+  "count": 16,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Bark_Dryad_Dark_Green",
+      "bg": "Ember_Flash",
+      "frame": "Chrome_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bark_Dryad_Dark_Green.gif",
+      "stage1_character": "Bark_Dryad"
+    },
+    {
+      "slug": "Full_Bark_Dryad_Flower_Face",
+      "bg": "Brick_Mosaic",
+      "frame": "Unit_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bark_Dryad_Flower_Face.gif",
+      "stage1_character": "Bark_Dryad"
+    },
+    {
+      "slug": "Full_Bark_Dryad_Nightly",
+      "bg": "Rust_Perimeter",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bark_Dryad_Nightly.gif",
+      "stage1_character": "Bark_Dryad"
+    },
+    {
+      "slug": "Full_Bark_Dryad_No_Face",
+      "bg": "Brick_Mosaic",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bark_Dryad_No_Face.gif",
+      "stage1_character": "Bark_Dryad"
+    },
+    {
+      "slug": "Full_Bark_Dryad_Winter",
+      "bg": "Basalt_Lines",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bark_Dryad_Winter.gif",
+      "stage1_character": "Bark_Dryad"
+    },
+    {
+      "slug": "Full_Bucktooth_Nerd_Ape",
+      "bg": "Horizon_Wave",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bucktooth_Nerd_Ape.gif",
+      "stage1_character": "Bucktooth_Nerd"
+    },
+    {
+      "slug": "Full_Bucktooth_Nerd_Brain",
+      "bg": "Lux_Checker",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bucktooth_Nerd_Brain.gif",
+      "stage1_character": "Bucktooth_Nerd"
+    },
+    {
+      "slug": "Full_Bucktooth_Nerd_Propeller_Hat",
+      "bg": "Tidal_Phase",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bucktooth_Nerd_Propeller_Hat.gif",
+      "stage1_character": "Bucktooth_Nerd"
+    },
+    {
+      "slug": "Full_Bucktooth_Nerd_Skull",
+      "bg": "Lux_Checker",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bucktooth_Nerd_Skull.gif",
+      "stage1_character": "Bucktooth_Nerd"
+    },
+    {
+      "slug": "Full_Bucktooth_Nerd_Zomb",
+      "bg": "Fog_Blend",
+      "frame": "Nova_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bucktooth_Nerd_Zomb.gif",
+      "stage1_character": "Bucktooth_Nerd"
+    },
+    {
+      "slug": "Full_Cat_Woman_Choker",
+      "bg": "Brick_Mosaic",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cat_Woman_Choker.gif",
+      "stage1_character": "Cat_Woman"
+    },
+    {
+      "slug": "Full_Cat_Woman_Frog_Eyes",
+      "bg": "Haze_Mosaic",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cat_Woman_Frog_Eyes.gif",
+      "stage1_character": "Cat_Woman"
+    },
+    {
+      "slug": "Full_Cat_Woman_Leather_Collar",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cat_Woman_Leather_Collar.gif",
+      "stage1_character": "Cat_Woman"
+    },
+    {
+      "slug": "Full_Cat_Woman_Leo",
+      "bg": "Fog_Blend",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cat_Woman_Leo.gif",
+      "stage1_character": "Cat_Woman"
+    },
+    {
+      "slug": "Full_Cat_Woman_Navy_Queen",
+      "bg": "Kelp_Streak",
+      "frame": "Hue_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cat_Woman_Navy_Queen.gif",
+      "stage1_character": "Cat_Woman"
+    },
+    {
+      "slug": "Full_Cat_Woman_Sewn_Up",
+      "bg": "Diagonal_Streak",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cat_Woman_Sewn_Up.gif",
+      "stage1_character": "Cat_Woman"
+    }
+  ]
+}

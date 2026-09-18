@@ -1,0 +1,56 @@
+PIXEL TRIP — Stage 3 V2 batch 4 (PNG → Full_*.gif)
+
+BATCH 4 — 16 Full, 3 S1 линий
+  Bark_Dryad      — 5 PNG
+  Bucktooth_Nerd  — 5 PNG
+  Cat_Woman       — 6 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch4.json --seed 7171
+
+  Или: deploy_stage3_v2_batch4.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch4.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Bark_Dryad_Winter.gif
+  Full_Cat_Woman_Leo.gif
+
+FTP (16 новых файлов + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 4)
+  Full_Bark_Dryad_Dark_Green.gif
+  Full_Bark_Dryad_Flower_Face.gif
+  Full_Bark_Dryad_Nightly.gif
+  Full_Bark_Dryad_No_Face.gif
+  Full_Bark_Dryad_Winter.gif
+  Full_Bucktooth_Nerd_Ape.gif
+  Full_Bucktooth_Nerd_Brain.gif
+  Full_Bucktooth_Nerd_Propeller_Hat.gif
+  Full_Bucktooth_Nerd_Skull.gif
+  Full_Bucktooth_Nerd_Zomb.gif
+  Full_Cat_Woman_Choker.gif
+  Full_Cat_Woman_Frog_Eyes.gif
+  Full_Cat_Woman_Leather_Collar.gif
+  Full_Cat_Woman_Leo.gif
+  Full_Cat_Woman_Navy_Queen.gif
+  Full_Cat_Woman_Sewn_Up.gif
