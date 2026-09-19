@@ -1,0 +1,55 @@
+PIXEL TRIP — Stage 3 V2 batch 5 (PNG → Full_*.gif)
+
+BATCH 5 — 10 Full, 2 S1 линий
+  Dapper_Ghoul   — 7 PNG
+  Old_Gas_Mask   — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+  (допустимо без префикса Full_: Old_Gas_Mask_Devil.png → Full_Old_Gas_Mask_Devil)
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch5.json --seed 8181
+
+  Или: deploy_stage3_v2_batch5.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch5.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Dapper_Ghoul_Vamp.gif
+  Full_Old_Gas_Mask_Devil.gif
+
+FTP (10 новых файлов + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT (после FTP)
+  website/src/burn/stage3-variants.json
+  collection/build/deploy/stage3-variants.json
+  manifest + RUN + .bat
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 5)
+  Full_Dapper_Ghoul_Bone_Crown.gif
+  Full_Dapper_Ghoul_Gas_Mask.gif
+  Full_Dapper_Ghoul_Mushroom_Hat.gif
+  Full_Dapper_Ghoul_Skulls_Hat.gif
+  Full_Dapper_Ghoul_Smile.gif
+  Full_Dapper_Ghoul_Two_Heads.gif
+  Full_Dapper_Ghoul_Vamp.gif
+  Full_Old_Gas_Mask_Devil.gif
+  Full_Old_Gas_Mask_Lizard.gif
+  Full_Old_Gas_Mask_Zombie.gif

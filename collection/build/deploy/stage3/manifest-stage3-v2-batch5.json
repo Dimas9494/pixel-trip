@@ -1,0 +1,80 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-19T19:30:38.925104+00:00",
+  "count": 10,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Dapper_Ghoul_Bone_Crown",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dapper_Ghoul_Bone_Crown.gif",
+      "stage1_character": "Dapper_Ghoul"
+    },
+    {
+      "slug": "Full_Dapper_Ghoul_Gas_Mask",
+      "bg": "Band_Scroll",
+      "frame": "Flash_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dapper_Ghoul_Gas_Mask.gif",
+      "stage1_character": "Dapper_Ghoul"
+    },
+    {
+      "slug": "Full_Dapper_Ghoul_Mushroom_Hat",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dapper_Ghoul_Mushroom_Hat.gif",
+      "stage1_character": "Dapper_Ghoul"
+    },
+    {
+      "slug": "Full_Dapper_Ghoul_Skulls_Hat",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Quad_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dapper_Ghoul_Skulls_Hat.gif",
+      "stage1_character": "Dapper_Ghoul"
+    },
+    {
+      "slug": "Full_Dapper_Ghoul_Smile",
+      "bg": "Margin_Drip",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dapper_Ghoul_Smile.gif",
+      "stage1_character": "Dapper_Ghoul"
+    },
+    {
+      "slug": "Full_Dapper_Ghoul_Two_Heads",
+      "bg": "Delta_Flash",
+      "frame": "Yield_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dapper_Ghoul_Two_Heads.gif",
+      "stage1_character": "Dapper_Ghoul"
+    },
+    {
+      "slug": "Full_Dapper_Ghoul_Vamp",
+      "bg": "Diagonal_Streak",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dapper_Ghoul_Vamp.gif",
+      "stage1_character": "Dapper_Ghoul"
+    },
+    {
+      "slug": "Full_Old_Gas_Mask_Lizard",
+      "bg": "Hue_Pulse",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Old_Gas_Mask_Lizard.gif",
+      "stage1_character": "Old_Gas_Mask"
+    },
+    {
+      "slug": "Full_Old_Gas_Mask_Zombie",
+      "bg": "Gem_Perimeter",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Old_Gas_Mask_Zombie.gif",
+      "stage1_character": "Old_Gas_Mask"
+    },
+    {
+      "slug": "Full_Old_Gas_Mask_Devil",
+      "bg": "Warp_Wave",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Old_Gas_Mask_Devil.gif",
+      "stage1_character": "Old_Gas_Mask"
+    }
+  ]
+}

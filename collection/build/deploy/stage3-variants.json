@@ -1204,6 +1204,56 @@
       "slug": "Full_Cat_Woman_Sewn_Up",
       "bg": "Diagonal_Streak",
       "frame": "Axis_Rim"
+    },
+    "Dapper_Ghoul_Bone_Crown": {
+      "slug": "Full_Dapper_Ghoul_Bone_Crown",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Omega_Rim"
+    },
+    "Dapper_Ghoul_Gas_Mask": {
+      "slug": "Full_Dapper_Ghoul_Gas_Mask",
+      "bg": "Band_Scroll",
+      "frame": "Flash_Rim"
+    },
+    "Dapper_Ghoul_Mushroom_Hat": {
+      "slug": "Full_Dapper_Ghoul_Mushroom_Hat",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Wire_Rim"
+    },
+    "Dapper_Ghoul_Skulls_Hat": {
+      "slug": "Full_Dapper_Ghoul_Skulls_Hat",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Quad_Flash"
+    },
+    "Dapper_Ghoul_Smile": {
+      "slug": "Full_Dapper_Ghoul_Smile",
+      "bg": "Margin_Drip",
+      "frame": "Arc_Chroma"
+    },
+    "Dapper_Ghoul_Two_Heads": {
+      "slug": "Full_Dapper_Ghoul_Two_Heads",
+      "bg": "Delta_Flash",
+      "frame": "Yield_Pulse"
+    },
+    "Dapper_Ghoul_Vamp": {
+      "slug": "Full_Dapper_Ghoul_Vamp",
+      "bg": "Diagonal_Streak",
+      "frame": "Byte_Pulse"
+    },
+    "Old_Gas_Mask_Lizard": {
+      "slug": "Full_Old_Gas_Mask_Lizard",
+      "bg": "Hue_Pulse",
+      "frame": "Wire_Rim"
+    },
+    "Old_Gas_Mask_Zombie": {
+      "slug": "Full_Old_Gas_Mask_Zombie",
+      "bg": "Gem_Perimeter",
+      "frame": "Split_Rim"
+    },
+    "Old_Gas_Mask_Devil": {
+      "slug": "Full_Old_Gas_Mask_Devil",
+      "bg": "Warp_Wave",
+      "frame": "Prism_Rim"
     }
   },
   "defaultByChar": {
@@ -2647,6 +2697,60 @@
         "slug": "Full_Cat_Woman_Sewn_Up",
         "bg": "Diagonal_Streak",
         "frame": "Axis_Rim"
+      }
+    ],
+    "Dapper_Ghoul": [
+      {
+        "slug": "Full_Dapper_Ghoul_Bone_Crown",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Dapper_Ghoul_Gas_Mask",
+        "bg": "Band_Scroll",
+        "frame": "Flash_Rim"
+      },
+      {
+        "slug": "Full_Dapper_Ghoul_Mushroom_Hat",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Wire_Rim"
+      },
+      {
+        "slug": "Full_Dapper_Ghoul_Skulls_Hat",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Quad_Flash"
+      },
+      {
+        "slug": "Full_Dapper_Ghoul_Smile",
+        "bg": "Margin_Drip",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Dapper_Ghoul_Two_Heads",
+        "bg": "Delta_Flash",
+        "frame": "Yield_Pulse"
+      },
+      {
+        "slug": "Full_Dapper_Ghoul_Vamp",
+        "bg": "Diagonal_Streak",
+        "frame": "Byte_Pulse"
+      }
+    ],
+    "Old_Gas_Mask": [
+      {
+        "slug": "Full_Old_Gas_Mask_Lizard",
+        "bg": "Hue_Pulse",
+        "frame": "Wire_Rim"
+      },
+      {
+        "slug": "Full_Old_Gas_Mask_Zombie",
+        "bg": "Gem_Perimeter",
+        "frame": "Split_Rim"
+      },
+      {
+        "slug": "Full_Old_Gas_Mask_Devil",
+        "bg": "Warp_Wave",
+        "frame": "Prism_Rim"
       }
     ]
   },
