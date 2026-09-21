@@ -1254,6 +1254,96 @@
       "slug": "Full_Old_Gas_Mask_Devil",
       "bg": "Warp_Wave",
       "frame": "Prism_Rim"
+    },
+    "Copper_Aviator_Alien": {
+      "slug": "Full_Copper_Aviator_Alien",
+      "bg": "Stripe_Phase",
+      "frame": "Arc_Chroma"
+    },
+    "Copper_Aviator_Crown": {
+      "slug": "Full_Copper_Aviator_Crown",
+      "bg": "Stripe_Phase",
+      "frame": "Turbo_Rim"
+    },
+    "Copper_Aviator_Devil": {
+      "slug": "Full_Copper_Aviator_Devil",
+      "bg": "Haze_Mosaic",
+      "frame": "Vivid_Rim"
+    },
+    "Copper_Aviator_Icy": {
+      "slug": "Full_Copper_Aviator_Icy",
+      "bg": "Tidal_Phase",
+      "frame": "Arc_Chroma"
+    },
+    "Copper_Aviator_Kitty": {
+      "slug": "Full_Copper_Aviator_Kitty",
+      "bg": "Jolt_Checker",
+      "frame": "Flow_Rim"
+    },
+    "Copper_Aviator_Mask": {
+      "slug": "Full_Copper_Aviator_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Flow_Rim"
+    },
+    "Copper_Aviator_Skeleton": {
+      "slug": "Full_Copper_Aviator_Skeleton",
+      "bg": "Haze_Mosaic",
+      "frame": "Mono_Rim"
+    },
+    "Gummy_Shock_BackCap": {
+      "slug": "Full_Gummy_Shock_BackCap",
+      "bg": "Bloom_Wave",
+      "frame": "Omega_Rim"
+    },
+    "Gummy_Shock_Ghost": {
+      "slug": "Full_Gummy_Shock_Ghost",
+      "bg": "Band_Scroll",
+      "frame": "Volt_Ring"
+    },
+    "Gummy_Shock_Golden_Eye": {
+      "slug": "Full_Gummy_Shock_Golden_Eye",
+      "bg": "Jolt_Checker",
+      "frame": "Split_Rim"
+    },
+    "Gummy_Shock_Gray_Haired": {
+      "slug": "Full_Gummy_Shock_Gray_Haired",
+      "bg": "Lumen_Streak",
+      "frame": "Prism_Rim"
+    },
+    "Gummy_Shock_Icy_Crown": {
+      "slug": "Full_Gummy_Shock_Icy_Crown",
+      "bg": "Band_Scroll",
+      "frame": "Rune_Rim"
+    },
+    "Gummy_Shock_Pink_Bow": {
+      "slug": "Full_Gummy_Shock_Pink_Bow",
+      "bg": "Basalt_Lines",
+      "frame": "Rune_Flicker"
+    },
+    "Gummy_Shock_Skeleton": {
+      "slug": "Full_Gummy_Shock_Skeleton",
+      "bg": "Brick_Mosaic",
+      "frame": "Flux_Flash"
+    },
+    "Ring_Girl_P_Hat": {
+      "slug": "Full_Ring_Girl_P_Hat",
+      "bg": "Brick_Mosaic",
+      "frame": "Aqua_Rim"
+    },
+    "Ring_Girl_Smile": {
+      "slug": "Full_Ring_Girl_Smile",
+      "bg": "Diagonal_Streak",
+      "frame": "Bolt_Chroma"
+    },
+    "Tribal_Chief_Dark_Tech": {
+      "slug": "Full_Tribal_Chief_Dark_Tech",
+      "bg": "Vertical_Drift",
+      "frame": "Rim_Pulse"
+    },
+    "Tribal_Chief_Tiger_Mask": {
+      "slug": "Full_Tribal_Chief_Tiger_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Pulse_Ring"
     }
   },
   "defaultByChar": {
@@ -2751,6 +2841,104 @@
         "slug": "Full_Old_Gas_Mask_Devil",
         "bg": "Warp_Wave",
         "frame": "Prism_Rim"
+      }
+    ],
+    "Copper_Aviator": [
+      {
+        "slug": "Full_Copper_Aviator_Alien",
+        "bg": "Stripe_Phase",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Copper_Aviator_Crown",
+        "bg": "Stripe_Phase",
+        "frame": "Turbo_Rim"
+      },
+      {
+        "slug": "Full_Copper_Aviator_Devil",
+        "bg": "Haze_Mosaic",
+        "frame": "Vivid_Rim"
+      },
+      {
+        "slug": "Full_Copper_Aviator_Icy",
+        "bg": "Tidal_Phase",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Copper_Aviator_Kitty",
+        "bg": "Jolt_Checker",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Copper_Aviator_Mask",
+        "bg": "Mist_Drip",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Copper_Aviator_Skeleton",
+        "bg": "Haze_Mosaic",
+        "frame": "Mono_Rim"
+      }
+    ],
+    "Gummy_Shock": [
+      {
+        "slug": "Full_Gummy_Shock_BackCap",
+        "bg": "Bloom_Wave",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Gummy_Shock_Ghost",
+        "bg": "Band_Scroll",
+        "frame": "Volt_Ring"
+      },
+      {
+        "slug": "Full_Gummy_Shock_Golden_Eye",
+        "bg": "Jolt_Checker",
+        "frame": "Split_Rim"
+      },
+      {
+        "slug": "Full_Gummy_Shock_Gray_Haired",
+        "bg": "Lumen_Streak",
+        "frame": "Prism_Rim"
+      },
+      {
+        "slug": "Full_Gummy_Shock_Icy_Crown",
+        "bg": "Band_Scroll",
+        "frame": "Rune_Rim"
+      },
+      {
+        "slug": "Full_Gummy_Shock_Pink_Bow",
+        "bg": "Basalt_Lines",
+        "frame": "Rune_Flicker"
+      },
+      {
+        "slug": "Full_Gummy_Shock_Skeleton",
+        "bg": "Brick_Mosaic",
+        "frame": "Flux_Flash"
+      }
+    ],
+    "Ring_Girl": [
+      {
+        "slug": "Full_Ring_Girl_P_Hat",
+        "bg": "Brick_Mosaic",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Ring_Girl_Smile",
+        "bg": "Diagonal_Streak",
+        "frame": "Bolt_Chroma"
+      }
+    ],
+    "Tribal_Chief": [
+      {
+        "slug": "Full_Tribal_Chief_Dark_Tech",
+        "bg": "Vertical_Drift",
+        "frame": "Rim_Pulse"
+      },
+      {
+        "slug": "Full_Tribal_Chief_Tiger_Mask",
+        "bg": "Mist_Drip",
+        "frame": "Pulse_Ring"
       }
     ]
   },

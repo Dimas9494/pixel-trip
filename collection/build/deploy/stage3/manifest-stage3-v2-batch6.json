@@ -1,0 +1,136 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-21T18:41:37.719752+00:00",
+  "count": 18,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Copper_Aviator_Alien",
+      "bg": "Stripe_Phase",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Copper_Aviator_Alien.gif",
+      "stage1_character": "Copper_Aviator"
+    },
+    {
+      "slug": "Full_Copper_Aviator_Crown",
+      "bg": "Stripe_Phase",
+      "frame": "Turbo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Copper_Aviator_Crown.gif",
+      "stage1_character": "Copper_Aviator"
+    },
+    {
+      "slug": "Full_Copper_Aviator_Devil",
+      "bg": "Haze_Mosaic",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Copper_Aviator_Devil.gif",
+      "stage1_character": "Copper_Aviator"
+    },
+    {
+      "slug": "Full_Copper_Aviator_Icy",
+      "bg": "Tidal_Phase",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Copper_Aviator_Icy.gif",
+      "stage1_character": "Copper_Aviator"
+    },
+    {
+      "slug": "Full_Copper_Aviator_Kitty",
+      "bg": "Jolt_Checker",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Copper_Aviator_Kitty.gif",
+      "stage1_character": "Copper_Aviator"
+    },
+    {
+      "slug": "Full_Copper_Aviator_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Copper_Aviator_Mask.gif",
+      "stage1_character": "Copper_Aviator"
+    },
+    {
+      "slug": "Full_Copper_Aviator_Skeleton",
+      "bg": "Haze_Mosaic",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Copper_Aviator_Skeleton.gif",
+      "stage1_character": "Copper_Aviator"
+    },
+    {
+      "slug": "Full_Gummy_Shock_BackCap",
+      "bg": "Bloom_Wave",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gummy_Shock_BackCap.gif",
+      "stage1_character": "Gummy_Shock"
+    },
+    {
+      "slug": "Full_Gummy_Shock_Ghost",
+      "bg": "Band_Scroll",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gummy_Shock_Ghost.gif",
+      "stage1_character": "Gummy_Shock"
+    },
+    {
+      "slug": "Full_Gummy_Shock_Golden_Eye",
+      "bg": "Jolt_Checker",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gummy_Shock_Golden_Eye.gif",
+      "stage1_character": "Gummy_Shock"
+    },
+    {
+      "slug": "Full_Gummy_Shock_Gray_Haired",
+      "bg": "Lumen_Streak",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gummy_Shock_Gray_Haired.gif",
+      "stage1_character": "Gummy_Shock"
+    },
+    {
+      "slug": "Full_Gummy_Shock_Icy_Crown",
+      "bg": "Band_Scroll",
+      "frame": "Rune_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gummy_Shock_Icy_Crown.gif",
+      "stage1_character": "Gummy_Shock"
+    },
+    {
+      "slug": "Full_Gummy_Shock_Pink_Bow",
+      "bg": "Basalt_Lines",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gummy_Shock_Pink_Bow.gif",
+      "stage1_character": "Gummy_Shock"
+    },
+    {
+      "slug": "Full_Gummy_Shock_Skeleton",
+      "bg": "Brick_Mosaic",
+      "frame": "Flux_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gummy_Shock_Skeleton.gif",
+      "stage1_character": "Gummy_Shock"
+    },
+    {
+      "slug": "Full_Ring_Girl_P_Hat",
+      "bg": "Brick_Mosaic",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Ring_Girl_P_Hat.gif",
+      "stage1_character": "Ring_Girl"
+    },
+    {
+      "slug": "Full_Ring_Girl_Smile",
+      "bg": "Diagonal_Streak",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Ring_Girl_Smile.gif",
+      "stage1_character": "Ring_Girl"
+    },
+    {
+      "slug": "Full_Tribal_Chief_Dark_Tech",
+      "bg": "Vertical_Drift",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tribal_Chief_Dark_Tech.gif",
+      "stage1_character": "Tribal_Chief"
+    },
+    {
+      "slug": "Full_Tribal_Chief_Tiger_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tribal_Chief_Tiger_Mask.gif",
+      "stage1_character": "Tribal_Chief"
+    }
+  ]
+}

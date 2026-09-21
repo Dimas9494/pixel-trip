@@ -1,0 +1,65 @@
+PIXEL TRIP — Stage 3 V2 batch 6 (PNG → Full_*.gif)
+
+BATCH 6 — 18 Full, 4 S1 линий
+  Copper_Aviator  — 7 PNG
+  Gummy_Shock     — 7 PNG
+  Ring_Girl       — 2 PNG
+  Tribal_Chief    — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch6.json --seed 9191
+
+  Или: deploy_stage3_v2_batch6.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch6.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Copper_Aviator_Devil.gif
+  Full_Gummy_Shock_Ghost.gif
+  Full_Tribal_Chief_Tiger_Mask.gif
+
+FTP (18 новых файлов + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT (после FTP)
+  website/src/burn/stage3-variants.json
+  collection/build/deploy/stage3-variants.json
+  manifest + RUN + .bat
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 6)
+  Full_Copper_Aviator_Alien.gif
+  Full_Copper_Aviator_Crown.gif
+  Full_Copper_Aviator_Devil.gif
+  Full_Copper_Aviator_Icy.gif
+  Full_Copper_Aviator_Kitty.gif
+  Full_Copper_Aviator_Mask.gif
+  Full_Copper_Aviator_Skeleton.gif
+  Full_Gummy_Shock_BackCap.gif
+  Full_Gummy_Shock_Ghost.gif
+  Full_Gummy_Shock_Golden_Eye.gif
+  Full_Gummy_Shock_Gray_Haired.gif
+  Full_Gummy_Shock_Icy_Crown.gif
+  Full_Gummy_Shock_Pink_Bow.gif
+  Full_Gummy_Shock_Skeleton.gif
+  Full_Ring_Girl_P_Hat.gif
+  Full_Ring_Girl_Smile.gif
+  Full_Tribal_Chief_Dark_Tech.gif
+  Full_Tribal_Chief_Tiger_Mask.gif
