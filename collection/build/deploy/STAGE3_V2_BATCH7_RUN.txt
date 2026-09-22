@@ -1,0 +1,55 @@
+PIXEL TRIP — Stage 3 V2 batch 7 (PNG → Full_*.gif)
+
+BATCH 7 — 9 Full, 3 S1 линий
+  Camo_Soldier    — 5 PNG
+  Cursed_Elmo     — 2 PNG
+  Green_Assassin  — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch7.json --seed 10101
+
+  Или: deploy_stage3_v2_batch7.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch7.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Camo_Soldier_Zombie.gif
+  Full_Cursed_Elmo_Icy.gif
+  Full_Green_Assassin_Rainbow_Camo.gif
+
+FTP (9 новых файлов + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT (после FTP)
+  website/src/burn/stage3-variants.json
+  collection/build/deploy/stage3-variants.json
+  manifest + RUN + .bat
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 7)
+  Full_Camo_Soldier_Dead.gif
+  Full_Camo_Soldier_Desert.gif
+  Full_Camo_Soldier_Gas_Mask.gif
+  Full_Camo_Soldier_Smile.gif
+  Full_Camo_Soldier_Zombie.gif
+  Full_Cursed_Elmo_Icy.gif
+  Full_Cursed_Elmo_Zombie.gif
+  Full_Green_Assassin_Mushrooms.gif
+  Full_Green_Assassin_Rainbow_Camo.gif

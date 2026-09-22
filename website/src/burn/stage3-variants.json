@@ -1344,6 +1344,51 @@
       "slug": "Full_Tribal_Chief_Tiger_Mask",
       "bg": "Mist_Drip",
       "frame": "Pulse_Ring"
+    },
+    "Camo_Soldier_Dead": {
+      "slug": "Full_Camo_Soldier_Dead",
+      "bg": "Quasar_Perimeter",
+      "frame": "Aqua_Rim"
+    },
+    "Camo_Soldier_Desert": {
+      "slug": "Full_Camo_Soldier_Desert",
+      "bg": "Tidal_Phase",
+      "frame": "Mint_Flash"
+    },
+    "Camo_Soldier_Gas_Mask": {
+      "slug": "Full_Camo_Soldier_Gas_Mask",
+      "bg": "Horizon_Wave",
+      "frame": "Core_Rim"
+    },
+    "Camo_Soldier_Smile": {
+      "slug": "Full_Camo_Soldier_Smile",
+      "bg": "Lux_Checker",
+      "frame": "Pulse_Ring"
+    },
+    "Camo_Soldier_Zombie": {
+      "slug": "Full_Camo_Soldier_Zombie",
+      "bg": "Ember_Flash",
+      "frame": "Flash_Rim"
+    },
+    "Cursed_Elmo_Icy": {
+      "slug": "Full_Cursed_Elmo_Icy",
+      "bg": "Margin_Drip",
+      "frame": "Rune_Flicker"
+    },
+    "Cursed_Elmo_Zombie": {
+      "slug": "Full_Cursed_Elmo_Zombie",
+      "bg": "Quasar_Perimeter",
+      "frame": "Ion_Rim"
+    },
+    "Green_Assassin_Mushrooms": {
+      "slug": "Full_Green_Assassin_Mushrooms",
+      "bg": "Margin_Flash",
+      "frame": "Triple_Blink"
+    },
+    "Green_Assassin_Rainbow_Camo": {
+      "slug": "Full_Green_Assassin_Rainbow_Camo",
+      "bg": "Jade_Streak",
+      "frame": "Axis_Rim"
     }
   },
   "defaultByChar": {
@@ -2939,6 +2984,57 @@
         "slug": "Full_Tribal_Chief_Tiger_Mask",
         "bg": "Mist_Drip",
         "frame": "Pulse_Ring"
+      }
+    ],
+    "Camo_Soldier": [
+      {
+        "slug": "Full_Camo_Soldier_Dead",
+        "bg": "Quasar_Perimeter",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Camo_Soldier_Desert",
+        "bg": "Tidal_Phase",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Camo_Soldier_Gas_Mask",
+        "bg": "Horizon_Wave",
+        "frame": "Core_Rim"
+      },
+      {
+        "slug": "Full_Camo_Soldier_Smile",
+        "bg": "Lux_Checker",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Camo_Soldier_Zombie",
+        "bg": "Ember_Flash",
+        "frame": "Flash_Rim"
+      }
+    ],
+    "Cursed_Elmo": [
+      {
+        "slug": "Full_Cursed_Elmo_Icy",
+        "bg": "Margin_Drip",
+        "frame": "Rune_Flicker"
+      },
+      {
+        "slug": "Full_Cursed_Elmo_Zombie",
+        "bg": "Quasar_Perimeter",
+        "frame": "Ion_Rim"
+      }
+    ],
+    "Green_Assassin": [
+      {
+        "slug": "Full_Green_Assassin_Mushrooms",
+        "bg": "Margin_Flash",
+        "frame": "Triple_Blink"
+      },
+      {
+        "slug": "Full_Green_Assassin_Rainbow_Camo",
+        "bg": "Jade_Streak",
+        "frame": "Axis_Rim"
       }
     ]
   },

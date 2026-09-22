@@ -1,0 +1,73 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-22T18:45:47.501776+00:00",
+  "count": 9,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Camo_Soldier_Dead",
+      "bg": "Quasar_Perimeter",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Camo_Soldier_Dead.gif",
+      "stage1_character": "Camo_Soldier"
+    },
+    {
+      "slug": "Full_Camo_Soldier_Desert",
+      "bg": "Tidal_Phase",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Camo_Soldier_Desert.gif",
+      "stage1_character": "Camo_Soldier"
+    },
+    {
+      "slug": "Full_Camo_Soldier_Gas_Mask",
+      "bg": "Horizon_Wave",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Camo_Soldier_Gas_Mask.gif",
+      "stage1_character": "Camo_Soldier"
+    },
+    {
+      "slug": "Full_Camo_Soldier_Smile",
+      "bg": "Lux_Checker",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Camo_Soldier_Smile.gif",
+      "stage1_character": "Camo_Soldier"
+    },
+    {
+      "slug": "Full_Camo_Soldier_Zombie",
+      "bg": "Ember_Flash",
+      "frame": "Flash_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Camo_Soldier_Zombie.gif",
+      "stage1_character": "Camo_Soldier"
+    },
+    {
+      "slug": "Full_Cursed_Elmo_Icy",
+      "bg": "Margin_Drip",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cursed_Elmo_Icy.gif",
+      "stage1_character": "Cursed_Elmo"
+    },
+    {
+      "slug": "Full_Cursed_Elmo_Zombie",
+      "bg": "Quasar_Perimeter",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cursed_Elmo_Zombie.gif",
+      "stage1_character": "Cursed_Elmo"
+    },
+    {
+      "slug": "Full_Green_Assassin_Mushrooms",
+      "bg": "Margin_Flash",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Green_Assassin_Mushrooms.gif",
+      "stage1_character": "Green_Assassin"
+    },
+    {
+      "slug": "Full_Green_Assassin_Rainbow_Camo",
+      "bg": "Jade_Streak",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Green_Assassin_Rainbow_Camo.gif",
+      "stage1_character": "Green_Assassin"
+    }
+  ]
+}
