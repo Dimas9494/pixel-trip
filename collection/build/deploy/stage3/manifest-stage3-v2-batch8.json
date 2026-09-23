@@ -1,0 +1,73 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-23T18:50:20.793736+00:00",
+  "count": 9,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\collection\\build\\stage3_v2_batch8_in",
+  "items": [
+    {
+      "slug": "Full_Chill_Goat_Golden",
+      "bg": "Rust_Blend",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Goat_Golden.gif",
+      "stage1_character": "Chill_Goat"
+    },
+    {
+      "slug": "Full_Chill_Goat_Long_Hair",
+      "bg": "Flare_Flash",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Goat_Long_Hair.gif",
+      "stage1_character": "Chill_Goat"
+    },
+    {
+      "slug": "Full_Chill_Goat_Open_Mouth",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Goat_Open_Mouth.gif",
+      "stage1_character": "Chill_Goat"
+    },
+    {
+      "slug": "Full_Chill_Goat_Pirate",
+      "bg": "Yonder_Pulse",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Goat_Pirate.gif",
+      "stage1_character": "Chill_Goat"
+    },
+    {
+      "slug": "Full_Chill_Goat_Skull",
+      "bg": "Flare_Flash",
+      "frame": "Jet_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Goat_Skull.gif",
+      "stage1_character": "Chill_Goat"
+    },
+    {
+      "slug": "Full_Chill_Goat_Wizard",
+      "bg": "Lux_Checker",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Goat_Wizard.gif",
+      "stage1_character": "Chill_Goat"
+    },
+    {
+      "slug": "Full_Chill_Goat_Zombie",
+      "bg": "Cinder_Swell",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Goat_Zombie.gif",
+      "stage1_character": "Chill_Goat"
+    },
+    {
+      "slug": "Full_Grim_Reaper_Red_Baron",
+      "bg": "Horizon_Wave",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grim_Reaper_Red_Baron.gif",
+      "stage1_character": "Grim_Reaper"
+    },
+    {
+      "slug": "Full_Zombie_Duck",
+      "bg": "Horizon_Wave",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Zombie_Duck.gif",
+      "stage1_character": "Street_Duck"
+    }
+  ]
+}

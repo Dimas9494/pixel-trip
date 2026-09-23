@@ -1,0 +1,59 @@
+PIXEL TRIP — Stage 3 V2 batch 8 (PNG → Full_*.gif)
+
+BATCH 8 — 9 Full, 3 S1 линий
+  Chill_Goat    — 7 PNG
+  Grim_Reaper   — 1 PNG
+  Street_Duck   — 1 PNG (Full_Zombie_Duck)
+
+ВАЖНО
+  В Stage 3 V2 лежали ещё папки batch 7 (Camo_Soldier, Cursed_Elmo, Green_Assassin).
+  Этот прогон сделан только по новым линиям (копия в build/stage3_v2_batch8_in).
+  Перед следующим запуском через .bat — убери из Stage 3 V2 старые папки, оставь только новый batch.
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  REM только новые папки в Stage 3 V2:
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch8.json --seed 11111
+
+  Или: deploy_stage3_v2_batch8.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif  (9 новых в этом batch)
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch8.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Chill_Goat_Pirate.gif
+  Full_Grim_Reaper_Red_Baron.gif
+  Full_Zombie_Duck.gif
+
+FTP (9 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json   ← иначе лидерборд не скроет отрисованные варианты
+
+GIT
+  website + deploy stage3-variants.json, manifest, RUN, .bat
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 8)
+  Full_Chill_Goat_Golden.gif
+  Full_Chill_Goat_Long_Hair.gif
+  Full_Chill_Goat_Open_Mouth.gif
+  Full_Chill_Goat_Pirate.gif
+  Full_Chill_Goat_Skull.gif
+  Full_Chill_Goat_Wizard.gif
+  Full_Chill_Goat_Zombie.gif
+  Full_Grim_Reaper_Red_Baron.gif
+  Full_Zombie_Duck.gif
