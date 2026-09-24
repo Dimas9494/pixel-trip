@@ -1434,6 +1434,86 @@
       "slug": "Full_Zombie_Duck",
       "bg": "Horizon_Wave",
       "frame": "Bolt_Chroma"
+    },
+    "Bubble_Girl_Flowers_Cap": {
+      "slug": "Full_Bubble_Girl_Flowers_Cap",
+      "bg": "Kinetic_Checker",
+      "frame": "Axis_Rim"
+    },
+    "Bubble_Girl_Goth": {
+      "slug": "Full_Bubble_Girl_Goth",
+      "bg": "Diagonal_Streak",
+      "frame": "Quick_Flicker"
+    },
+    "Bubble_Girl_Heart_Glasses": {
+      "slug": "Full_Bubble_Girl_Heart_Glasses",
+      "bg": "Horizon_Wave",
+      "frame": "Nova_Rim"
+    },
+    "Bubble_Girl_Horns": {
+      "slug": "Full_Bubble_Girl_Horns",
+      "bg": "Gem_Perimeter",
+      "frame": "Blade_Chroma"
+    },
+    "Bubble_Girl_Kitty_Cap": {
+      "slug": "Full_Bubble_Girl_Kitty_Cap",
+      "bg": "Grid_Checker",
+      "frame": "Bolt_Rim"
+    },
+    "Bubble_Girl_Vamp": {
+      "slug": "Full_Bubble_Girl_Vamp",
+      "bg": "Kelp_Streak",
+      "frame": "Aqua_Rim"
+    },
+    "Chill_Tabby_Big_Eyes": {
+      "slug": "Full_Chill_Tabby_Big_Eyes",
+      "bg": "Horizon_Wave",
+      "frame": "Lumen_Flicker"
+    },
+    "Chill_Tabby_Crown": {
+      "slug": "Full_Chill_Tabby_Crown",
+      "bg": "Margin_Drip",
+      "frame": "Jet_Rim"
+    },
+    "Chill_Tabby_PIMP": {
+      "slug": "Full_Chill_Tabby_PIMP",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Vector_Ring"
+    },
+    "Chill_Tabby_Painter": {
+      "slug": "Full_Chill_Tabby_Painter",
+      "bg": "Grove_Mosaic",
+      "frame": "Radiant_Rim"
+    },
+    "Chill_Tabby_Panda_Hat": {
+      "slug": "Full_Chill_Tabby_Panda_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Rim_Pulse"
+    },
+    "Chill_Tabby_Sheriff": {
+      "slug": "Full_Chill_Tabby_Sheriff",
+      "bg": "Strip_Grid",
+      "frame": "Rim_Pulse"
+    },
+    "Chill_Tabby_Zomb": {
+      "slug": "Full_Chill_Tabby_Zomb",
+      "bg": "Kinetic_Checker",
+      "frame": "Neon_Bolt"
+    },
+    "Smiley_Monitor_Broken": {
+      "slug": "Full_Smiley_Monitor_Broken",
+      "bg": "Lumen_Streak",
+      "frame": "Onyx_Rim"
+    },
+    "Surprised_Gorilla_Orange": {
+      "slug": "Full_Surprised_Gorilla_Orange",
+      "bg": "Fog_Blend",
+      "frame": "Mint_Flash"
+    },
+    "Surprised_Gorilla_Zombie": {
+      "slug": "Full_Surprised_Gorilla_Zombie",
+      "bg": "Lumen_Streak",
+      "frame": "Cycle_Rim"
     }
   },
   "defaultByChar": {
@@ -1501,6 +1581,11 @@
       "slug": "Full_Zombie_Duck",
       "bg": "Horizon_Wave",
       "frame": "Bolt_Chroma"
+    },
+    "Smiley_Monitor": {
+      "slug": "Full_Smiley_Monitor_Broken",
+      "bg": "Lumen_Streak",
+      "frame": "Onyx_Rim"
     }
   },
   "poolByChar": {
@@ -3141,6 +3226,94 @@
         "slug": "Full_Zombie_Duck",
         "bg": "Horizon_Wave",
         "frame": "Bolt_Chroma"
+      }
+    ],
+    "Bubble_Girl": [
+      {
+        "slug": "Full_Bubble_Girl_Flowers_Cap",
+        "bg": "Kinetic_Checker",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Bubble_Girl_Goth",
+        "bg": "Diagonal_Streak",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Bubble_Girl_Heart_Glasses",
+        "bg": "Horizon_Wave",
+        "frame": "Nova_Rim"
+      },
+      {
+        "slug": "Full_Bubble_Girl_Horns",
+        "bg": "Gem_Perimeter",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Bubble_Girl_Kitty_Cap",
+        "bg": "Grid_Checker",
+        "frame": "Bolt_Rim"
+      },
+      {
+        "slug": "Full_Bubble_Girl_Vamp",
+        "bg": "Kelp_Streak",
+        "frame": "Aqua_Rim"
+      }
+    ],
+    "Chill_Tabby": [
+      {
+        "slug": "Full_Chill_Tabby_Big_Eyes",
+        "bg": "Horizon_Wave",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Chill_Tabby_Crown",
+        "bg": "Margin_Drip",
+        "frame": "Jet_Rim"
+      },
+      {
+        "slug": "Full_Chill_Tabby_PIMP",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Chill_Tabby_Painter",
+        "bg": "Grove_Mosaic",
+        "frame": "Radiant_Rim"
+      },
+      {
+        "slug": "Full_Chill_Tabby_Panda_Hat",
+        "bg": "Lattice_Lines",
+        "frame": "Rim_Pulse"
+      },
+      {
+        "slug": "Full_Chill_Tabby_Sheriff",
+        "bg": "Strip_Grid",
+        "frame": "Rim_Pulse"
+      },
+      {
+        "slug": "Full_Chill_Tabby_Zomb",
+        "bg": "Kinetic_Checker",
+        "frame": "Neon_Bolt"
+      }
+    ],
+    "Smiley_Monitor": [
+      {
+        "slug": "Full_Smiley_Monitor_Broken",
+        "bg": "Lumen_Streak",
+        "frame": "Onyx_Rim"
+      }
+    ],
+    "Surprised_Gorilla": [
+      {
+        "slug": "Full_Surprised_Gorilla_Orange",
+        "bg": "Fog_Blend",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Surprised_Gorilla_Zombie",
+        "bg": "Lumen_Streak",
+        "frame": "Cycle_Rim"
       }
     ]
   },

@@ -1,0 +1,60 @@
+PIXEL TRIP — Stage 3 V2 batch 9 (PNG → Full_*.gif)
+
+BATCH 9 — 16 Full, 4 S1 линий
+  Bubble_Girl        — 6 PNG
+  Chill_Tabby        — 7 PNG
+  Smiley_Monitor     — 1 PNG
+  Surprised_Gorilla  — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch9.json --seed 12121
+
+  Или: deploy_stage3_v2_batch9.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch9.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Bubble_Girl_Vamp.gif
+  Full_Chill_Tabby_PIMP.gif
+  Full_Smiley_Monitor_Broken.gif
+
+FTP (16 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push для Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 9)
+  Full_Bubble_Girl_Flowers_Cap.gif
+  Full_Bubble_Girl_Goth.gif
+  Full_Bubble_Girl_Heart_Glasses.gif
+  Full_Bubble_Girl_Horns.gif
+  Full_Bubble_Girl_Kitty_Cap.gif
+  Full_Bubble_Girl_Vamp.gif
+  Full_Chill_Tabby_Big_Eyes.gif
+  Full_Chill_Tabby_Crown.gif
+  Full_Chill_Tabby_PIMP.gif
+  Full_Chill_Tabby_Painter.gif
+  Full_Chill_Tabby_Panda_Hat.gif
+  Full_Chill_Tabby_Sheriff.gif
+  Full_Chill_Tabby_Zomb.gif
+  Full_Smiley_Monitor_Broken.gif
+  Full_Surprised_Gorilla_Orange.gif
+  Full_Surprised_Gorilla_Zombie.gif

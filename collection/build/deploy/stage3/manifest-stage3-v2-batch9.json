@@ -1,0 +1,122 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-24T16:21:27.007108+00:00",
+  "count": 16,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Bubble_Girl_Flowers_Cap",
+      "bg": "Kinetic_Checker",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Girl_Flowers_Cap.gif",
+      "stage1_character": "Bubble_Girl"
+    },
+    {
+      "slug": "Full_Bubble_Girl_Goth",
+      "bg": "Diagonal_Streak",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Girl_Goth.gif",
+      "stage1_character": "Bubble_Girl"
+    },
+    {
+      "slug": "Full_Bubble_Girl_Heart_Glasses",
+      "bg": "Horizon_Wave",
+      "frame": "Nova_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Girl_Heart_Glasses.gif",
+      "stage1_character": "Bubble_Girl"
+    },
+    {
+      "slug": "Full_Bubble_Girl_Horns",
+      "bg": "Gem_Perimeter",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Girl_Horns.gif",
+      "stage1_character": "Bubble_Girl"
+    },
+    {
+      "slug": "Full_Bubble_Girl_Kitty_Cap",
+      "bg": "Grid_Checker",
+      "frame": "Bolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Girl_Kitty_Cap.gif",
+      "stage1_character": "Bubble_Girl"
+    },
+    {
+      "slug": "Full_Bubble_Girl_Vamp",
+      "bg": "Kelp_Streak",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Girl_Vamp.gif",
+      "stage1_character": "Bubble_Girl"
+    },
+    {
+      "slug": "Full_Chill_Tabby_Big_Eyes",
+      "bg": "Horizon_Wave",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Tabby_Big_Eyes.gif",
+      "stage1_character": "Chill_Tabby"
+    },
+    {
+      "slug": "Full_Chill_Tabby_Crown",
+      "bg": "Margin_Drip",
+      "frame": "Jet_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Tabby_Crown.gif",
+      "stage1_character": "Chill_Tabby"
+    },
+    {
+      "slug": "Full_Chill_Tabby_PIMP",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Tabby_PIMP.gif",
+      "stage1_character": "Chill_Tabby"
+    },
+    {
+      "slug": "Full_Chill_Tabby_Painter",
+      "bg": "Grove_Mosaic",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Tabby_Painter.gif",
+      "stage1_character": "Chill_Tabby"
+    },
+    {
+      "slug": "Full_Chill_Tabby_Panda_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Tabby_Panda_Hat.gif",
+      "stage1_character": "Chill_Tabby"
+    },
+    {
+      "slug": "Full_Chill_Tabby_Sheriff",
+      "bg": "Strip_Grid",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Tabby_Sheriff.gif",
+      "stage1_character": "Chill_Tabby"
+    },
+    {
+      "slug": "Full_Chill_Tabby_Zomb",
+      "bg": "Kinetic_Checker",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Chill_Tabby_Zomb.gif",
+      "stage1_character": "Chill_Tabby"
+    },
+    {
+      "slug": "Full_Smiley_Monitor_Broken",
+      "bg": "Lumen_Streak",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Smiley_Monitor_Broken.gif",
+      "stage1_character": "Smiley_Monitor"
+    },
+    {
+      "slug": "Full_Surprised_Gorilla_Orange",
+      "bg": "Fog_Blend",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Surprised_Gorilla_Orange.gif",
+      "stage1_character": "Surprised_Gorilla"
+    },
+    {
+      "slug": "Full_Surprised_Gorilla_Zombie",
+      "bg": "Lumen_Streak",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Surprised_Gorilla_Zombie.gif",
+      "stage1_character": "Surprised_Gorilla"
+    }
+  ]
+}
