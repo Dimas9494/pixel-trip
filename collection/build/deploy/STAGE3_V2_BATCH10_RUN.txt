@@ -1,0 +1,54 @@
+PIXEL TRIP — Stage 3 V2 batch 10 (PNG → Full_*.gif)
+
+BATCH 10 — 11 Full, 3 S1 линий
+  Crying_Demon  — 1 PNG
+  Gladiator     — 3 PNG
+  Grumpy_Cat    — 7 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch10.json --seed 13131
+
+  Или: deploy_stage3_v2_batch10.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch10.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Crying_Demon_Zombie.gif
+  Full_Gladiator_Skull.gif
+  Full_Grumpy_Cat_Wizard.gif
+
+FTP (11 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push для Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 10)
+  Full_Crying_Demon_Zombie.gif
+  Full_Gladiator_Angel.gif
+  Full_Gladiator_Dreadlocks.gif
+  Full_Gladiator_Skull.gif
+  Full_Grumpy_Cat_Alien.gif
+  Full_Grumpy_Cat_Cyborg.gif
+  Full_Grumpy_Cat_Frog_Hat.gif
+  Full_Grumpy_Cat_Knitted_Hat.gif
+  Full_Grumpy_Cat_Pinky.gif
+  Full_Grumpy_Cat_Wizard.gif
+  Full_Grumpy_Cat_Zombie.gif

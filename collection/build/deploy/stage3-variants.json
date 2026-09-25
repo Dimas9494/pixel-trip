@@ -1514,6 +1514,61 @@
       "slug": "Full_Surprised_Gorilla_Zombie",
       "bg": "Lumen_Streak",
       "frame": "Cycle_Rim"
+    },
+    "Crying_Demon_Zombie": {
+      "slug": "Full_Crying_Demon_Zombie",
+      "bg": "Quasar_Perimeter",
+      "frame": "Blade_Chroma"
+    },
+    "Gladiator_Angel": {
+      "slug": "Full_Gladiator_Angel",
+      "bg": "Band_Scroll",
+      "frame": "Mint_Flash"
+    },
+    "Gladiator_Dreadlocks": {
+      "slug": "Full_Gladiator_Dreadlocks",
+      "bg": "Band_Scroll",
+      "frame": "Flash_Rim"
+    },
+    "Gladiator_Skull": {
+      "slug": "Full_Gladiator_Skull",
+      "bg": "Plasma_Perimeter",
+      "frame": "Mono_Rim"
+    },
+    "Grumpy_Cat_Alien": {
+      "slug": "Full_Grumpy_Cat_Alien",
+      "bg": "Brick_Mosaic",
+      "frame": "Omega_Rim"
+    },
+    "Grumpy_Cat_Cyborg": {
+      "slug": "Full_Grumpy_Cat_Cyborg",
+      "bg": "Rust_Perimeter",
+      "frame": "Vector_Ring"
+    },
+    "Grumpy_Cat_Frog_Hat": {
+      "slug": "Full_Grumpy_Cat_Frog_Hat",
+      "bg": "Lux_Checker",
+      "frame": "Neon_Rim"
+    },
+    "Grumpy_Cat_Knitted_Hat": {
+      "slug": "Full_Grumpy_Cat_Knitted_Hat",
+      "bg": "Ember_Flash",
+      "frame": "Kinetic_Rim"
+    },
+    "Grumpy_Cat_Pinky": {
+      "slug": "Full_Grumpy_Cat_Pinky",
+      "bg": "Diagonal_Streak",
+      "frame": "Spark_Rim"
+    },
+    "Grumpy_Cat_Wizard": {
+      "slug": "Full_Grumpy_Cat_Wizard",
+      "bg": "Chromatic_Swell",
+      "frame": "Pixel_Flicker"
+    },
+    "Grumpy_Cat_Zombie": {
+      "slug": "Full_Grumpy_Cat_Zombie",
+      "bg": "Stripe_Phase",
+      "frame": "Onyx_Rim"
     }
   },
   "defaultByChar": {
@@ -1586,6 +1641,11 @@
       "slug": "Full_Smiley_Monitor_Broken",
       "bg": "Lumen_Streak",
       "frame": "Onyx_Rim"
+    },
+    "Crying_Demon": {
+      "slug": "Full_Crying_Demon_Zombie",
+      "bg": "Quasar_Perimeter",
+      "frame": "Blade_Chroma"
     }
   },
   "poolByChar": {
@@ -3314,6 +3374,67 @@
         "slug": "Full_Surprised_Gorilla_Zombie",
         "bg": "Lumen_Streak",
         "frame": "Cycle_Rim"
+      }
+    ],
+    "Crying_Demon": [
+      {
+        "slug": "Full_Crying_Demon_Zombie",
+        "bg": "Quasar_Perimeter",
+        "frame": "Blade_Chroma"
+      }
+    ],
+    "Gladiator": [
+      {
+        "slug": "Full_Gladiator_Angel",
+        "bg": "Band_Scroll",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Gladiator_Dreadlocks",
+        "bg": "Band_Scroll",
+        "frame": "Flash_Rim"
+      },
+      {
+        "slug": "Full_Gladiator_Skull",
+        "bg": "Plasma_Perimeter",
+        "frame": "Mono_Rim"
+      }
+    ],
+    "Grumpy_Cat": [
+      {
+        "slug": "Full_Grumpy_Cat_Alien",
+        "bg": "Brick_Mosaic",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Grumpy_Cat_Cyborg",
+        "bg": "Rust_Perimeter",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Grumpy_Cat_Frog_Hat",
+        "bg": "Lux_Checker",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Grumpy_Cat_Knitted_Hat",
+        "bg": "Ember_Flash",
+        "frame": "Kinetic_Rim"
+      },
+      {
+        "slug": "Full_Grumpy_Cat_Pinky",
+        "bg": "Diagonal_Streak",
+        "frame": "Spark_Rim"
+      },
+      {
+        "slug": "Full_Grumpy_Cat_Wizard",
+        "bg": "Chromatic_Swell",
+        "frame": "Pixel_Flicker"
+      },
+      {
+        "slug": "Full_Grumpy_Cat_Zombie",
+        "bg": "Stripe_Phase",
+        "frame": "Onyx_Rim"
       }
     ]
   },

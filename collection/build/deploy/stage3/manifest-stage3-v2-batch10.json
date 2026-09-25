@@ -1,0 +1,87 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-25T18:49:19.313236+00:00",
+  "count": 11,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Crying_Demon_Zombie",
+      "bg": "Quasar_Perimeter",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crying_Demon_Zombie.gif",
+      "stage1_character": "Crying_Demon"
+    },
+    {
+      "slug": "Full_Gladiator_Angel",
+      "bg": "Band_Scroll",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gladiator_Angel.gif",
+      "stage1_character": "Gladiator"
+    },
+    {
+      "slug": "Full_Gladiator_Dreadlocks",
+      "bg": "Band_Scroll",
+      "frame": "Flash_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gladiator_Dreadlocks.gif",
+      "stage1_character": "Gladiator"
+    },
+    {
+      "slug": "Full_Gladiator_Skull",
+      "bg": "Plasma_Perimeter",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gladiator_Skull.gif",
+      "stage1_character": "Gladiator"
+    },
+    {
+      "slug": "Full_Grumpy_Cat_Alien",
+      "bg": "Brick_Mosaic",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cat_Alien.gif",
+      "stage1_character": "Grumpy_Cat"
+    },
+    {
+      "slug": "Full_Grumpy_Cat_Cyborg",
+      "bg": "Rust_Perimeter",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cat_Cyborg.gif",
+      "stage1_character": "Grumpy_Cat"
+    },
+    {
+      "slug": "Full_Grumpy_Cat_Frog_Hat",
+      "bg": "Lux_Checker",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cat_Frog_Hat.gif",
+      "stage1_character": "Grumpy_Cat"
+    },
+    {
+      "slug": "Full_Grumpy_Cat_Knitted_Hat",
+      "bg": "Ember_Flash",
+      "frame": "Kinetic_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cat_Knitted_Hat.gif",
+      "stage1_character": "Grumpy_Cat"
+    },
+    {
+      "slug": "Full_Grumpy_Cat_Pinky",
+      "bg": "Diagonal_Streak",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cat_Pinky.gif",
+      "stage1_character": "Grumpy_Cat"
+    },
+    {
+      "slug": "Full_Grumpy_Cat_Wizard",
+      "bg": "Chromatic_Swell",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cat_Wizard.gif",
+      "stage1_character": "Grumpy_Cat"
+    },
+    {
+      "slug": "Full_Grumpy_Cat_Zombie",
+      "bg": "Stripe_Phase",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cat_Zombie.gif",
+      "stage1_character": "Grumpy_Cat"
+    }
+  ]
+}
