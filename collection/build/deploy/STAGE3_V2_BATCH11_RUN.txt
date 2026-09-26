@@ -1,0 +1,48 @@
+PIXEL TRIP — Stage 3 V2 batch 11 (PNG → Full_*.gif)
+
+BATCH 11 — 7 Full, 2 S1 линий
+  Dollar_Hood    — 5 PNG (имена Full_*_Hood → slug Full_Camo_Hood …)
+  Motley_Jester  — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch11.json --seed 14141
+
+  Или: deploy_stage3_v2_batch11.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch11.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Devil_Hood.gif
+  Full_Motley_Jester_MOG.gif
+
+FTP (7 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push для Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 11)
+  Full_Camo_Hood.gif
+  Full_Devil_Hood.gif
+  Full_Frog_Hood.gif
+  Full_Lizard_Hood.gif
+  Full_Skeleton_Hood.gif
+  Full_Motley_Jester_MOG.gif
+  Full_Motley_Jester_Skull.gif

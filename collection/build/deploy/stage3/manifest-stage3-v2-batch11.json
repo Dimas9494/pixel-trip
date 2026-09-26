@@ -1,0 +1,59 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-26T19:32:46.737479+00:00",
+  "count": 7,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Camo_Hood",
+      "bg": "Band_Scroll",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Camo_Hood.gif",
+      "stage1_character": "Dollar_Hood"
+    },
+    {
+      "slug": "Full_Devil_Hood",
+      "bg": "Brick_Mosaic",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Devil_Hood.gif",
+      "stage1_character": "Dollar_Hood"
+    },
+    {
+      "slug": "Full_Frog_Hood",
+      "bg": "Stripe_Phase",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Frog_Hood.gif",
+      "stage1_character": "Dollar_Hood"
+    },
+    {
+      "slug": "Full_Lizard_Hood",
+      "bg": "Margin_Flash",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Lizard_Hood.gif",
+      "stage1_character": "Dollar_Hood"
+    },
+    {
+      "slug": "Full_Skeleton_Hood",
+      "bg": "Strip_Grid",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Skeleton_Hood.gif",
+      "stage1_character": "Dollar_Hood"
+    },
+    {
+      "slug": "Full_Motley_Jester_MOG",
+      "bg": "Haze_Mosaic",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Motley_Jester_MOG.gif",
+      "stage1_character": "Motley_Jester"
+    },
+    {
+      "slug": "Full_Motley_Jester_Skull",
+      "bg": "Brick_Mosaic",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Motley_Jester_Skull.gif",
+      "stage1_character": "Motley_Jester"
+    }
+  ]
+}

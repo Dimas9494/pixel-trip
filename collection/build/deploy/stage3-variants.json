@@ -1569,6 +1569,41 @@
       "slug": "Full_Grumpy_Cat_Zombie",
       "bg": "Stripe_Phase",
       "frame": "Onyx_Rim"
+    },
+    "Camo_Hood": {
+      "slug": "Full_Camo_Hood",
+      "bg": "Band_Scroll",
+      "frame": "Lumen_Flicker"
+    },
+    "Devil_Hood": {
+      "slug": "Full_Devil_Hood",
+      "bg": "Brick_Mosaic",
+      "frame": "Aqua_Rim"
+    },
+    "Frog_Hood": {
+      "slug": "Full_Frog_Hood",
+      "bg": "Stripe_Phase",
+      "frame": "Aqua_Rim"
+    },
+    "Lizard_Hood": {
+      "slug": "Full_Lizard_Hood",
+      "bg": "Margin_Flash",
+      "frame": "Jolt_Rim"
+    },
+    "Skeleton_Hood": {
+      "slug": "Full_Skeleton_Hood",
+      "bg": "Strip_Grid",
+      "frame": "Radiant_Rim"
+    },
+    "Motley_Jester_MOG": {
+      "slug": "Full_Motley_Jester_MOG",
+      "bg": "Haze_Mosaic",
+      "frame": "Bolt_Chroma"
+    },
+    "Motley_Jester_Skull": {
+      "slug": "Full_Motley_Jester_Skull",
+      "bg": "Brick_Mosaic",
+      "frame": "Flow_Rim"
     }
   },
   "defaultByChar": {
@@ -3435,6 +3470,45 @@
         "slug": "Full_Grumpy_Cat_Zombie",
         "bg": "Stripe_Phase",
         "frame": "Onyx_Rim"
+      }
+    ],
+    "Dollar_Hood": [
+      {
+        "slug": "Full_Camo_Hood",
+        "bg": "Band_Scroll",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Devil_Hood",
+        "bg": "Brick_Mosaic",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Frog_Hood",
+        "bg": "Stripe_Phase",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Lizard_Hood",
+        "bg": "Margin_Flash",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Skeleton_Hood",
+        "bg": "Strip_Grid",
+        "frame": "Radiant_Rim"
+      }
+    ],
+    "Motley_Jester": [
+      {
+        "slug": "Full_Motley_Jester_MOG",
+        "bg": "Haze_Mosaic",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Motley_Jester_Skull",
+        "bg": "Brick_Mosaic",
+        "frame": "Flow_Rim"
       }
     ]
   },
