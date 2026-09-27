@@ -1604,6 +1604,41 @@
       "slug": "Full_Motley_Jester_Skull",
       "bg": "Brick_Mosaic",
       "frame": "Flow_Rim"
+    },
+    "Bubble_Bear_General": {
+      "slug": "Full_Bubble_Bear_General",
+      "bg": "Rust_Perimeter",
+      "frame": "Vector_Ring"
+    },
+    "Bubble_Bear_Nouns_Glasses": {
+      "slug": "Full_Bubble_Bear_Nouns_Glasses",
+      "bg": "Band_Scroll",
+      "frame": "Rim_Pulse"
+    },
+    "Unicorn_Girl_Cyber": {
+      "slug": "Full_Unicorn_Girl_Cyber",
+      "bg": "Jolt_Checker",
+      "frame": "Jolt_Rim"
+    },
+    "Unicorn_Girl_Natural": {
+      "slug": "Full_Unicorn_Girl_Natural",
+      "bg": "Cinder_Swell",
+      "frame": "Vector_Ring"
+    },
+    "Unicorn_Girl_Skull": {
+      "slug": "Full_Unicorn_Girl_Skull",
+      "bg": "Warp_Wave",
+      "frame": "Arc_Chroma"
+    },
+    "Unicorn_Girl_Vamp": {
+      "slug": "Full_Unicorn_Girl_Vamp",
+      "bg": "Mist_Drip",
+      "frame": "Ion_Rim"
+    },
+    "Unicorn_Girl_Zombie": {
+      "slug": "Full_Unicorn_Girl_Zombie",
+      "bg": "Cinder_Swell",
+      "frame": "Neon_Rim"
     }
   },
   "defaultByChar": {
@@ -3509,6 +3544,45 @@
         "slug": "Full_Motley_Jester_Skull",
         "bg": "Brick_Mosaic",
         "frame": "Flow_Rim"
+      }
+    ],
+    "Bubble_Bear": [
+      {
+        "slug": "Full_Bubble_Bear_General",
+        "bg": "Rust_Perimeter",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Bubble_Bear_Nouns_Glasses",
+        "bg": "Band_Scroll",
+        "frame": "Rim_Pulse"
+      }
+    ],
+    "Unicorn_Girl": [
+      {
+        "slug": "Full_Unicorn_Girl_Cyber",
+        "bg": "Jolt_Checker",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Unicorn_Girl_Natural",
+        "bg": "Cinder_Swell",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Unicorn_Girl_Skull",
+        "bg": "Warp_Wave",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Unicorn_Girl_Vamp",
+        "bg": "Mist_Drip",
+        "frame": "Ion_Rim"
+      },
+      {
+        "slug": "Full_Unicorn_Girl_Zombie",
+        "bg": "Cinder_Swell",
+        "frame": "Neon_Rim"
       }
     ]
   },

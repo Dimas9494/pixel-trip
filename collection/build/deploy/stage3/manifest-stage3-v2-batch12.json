@@ -1,0 +1,59 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-27T18:55:50.671092+00:00",
+  "count": 7,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Bubble_Bear_General",
+      "bg": "Rust_Perimeter",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Bear_General.gif",
+      "stage1_character": "Bubble_Bear"
+    },
+    {
+      "slug": "Full_Bubble_Bear_Nouns_Glasses",
+      "bg": "Band_Scroll",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Bear_Nouns_Glasses.gif",
+      "stage1_character": "Bubble_Bear"
+    },
+    {
+      "slug": "Full_Unicorn_Girl_Cyber",
+      "bg": "Jolt_Checker",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Unicorn_Girl_Cyber.gif",
+      "stage1_character": "Unicorn_Girl"
+    },
+    {
+      "slug": "Full_Unicorn_Girl_Natural",
+      "bg": "Cinder_Swell",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Unicorn_Girl_Natural.gif",
+      "stage1_character": "Unicorn_Girl"
+    },
+    {
+      "slug": "Full_Unicorn_Girl_Skull",
+      "bg": "Warp_Wave",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Unicorn_Girl_Skull.gif",
+      "stage1_character": "Unicorn_Girl"
+    },
+    {
+      "slug": "Full_Unicorn_Girl_Vamp",
+      "bg": "Mist_Drip",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Unicorn_Girl_Vamp.gif",
+      "stage1_character": "Unicorn_Girl"
+    },
+    {
+      "slug": "Full_Unicorn_Girl_Zombie",
+      "bg": "Cinder_Swell",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Unicorn_Girl_Zombie.gif",
+      "stage1_character": "Unicorn_Girl"
+    }
+  ]
+}
