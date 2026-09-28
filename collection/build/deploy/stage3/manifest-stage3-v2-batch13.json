@@ -1,0 +1,87 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-28T17:13:28.146296+00:00",
+  "count": 11,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Cyan_INO_Cowboy",
+      "bg": "Warp_Wave",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_INO_Cowboy.gif",
+      "stage1_character": "Cyan_INO"
+    },
+    {
+      "slug": "Full_Cyan_INO_Fresh_Eyes",
+      "bg": "Grove_Mosaic",
+      "frame": "Turbo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_INO_Fresh_Eyes.gif",
+      "stage1_character": "Cyan_INO"
+    },
+    {
+      "slug": "Full_Cyan_INO_Frog_Hat",
+      "bg": "Tidal_Phase",
+      "frame": "Yield_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_INO_Frog_Hat.gif",
+      "stage1_character": "Cyan_INO"
+    },
+    {
+      "slug": "Full_Cyan_INO_Golden",
+      "bg": "Kinetic_Checker",
+      "frame": "Quad_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_INO_Golden.gif",
+      "stage1_character": "Cyan_INO"
+    },
+    {
+      "slug": "Full_Cyan_INO_Orange_Horns",
+      "bg": "Ember_Flash",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_INO_Orange_Horns.gif",
+      "stage1_character": "Cyan_INO"
+    },
+    {
+      "slug": "Full_Cyan_INO_Pinky",
+      "bg": "Band_Scroll",
+      "frame": "Edge_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_INO_Pinky.gif",
+      "stage1_character": "Cyan_INO"
+    },
+    {
+      "slug": "Full_Moss_Titan_Golden",
+      "bg": "Brick_Mosaic",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Titan_Golden.gif",
+      "stage1_character": "Moss_Titan"
+    },
+    {
+      "slug": "Full_Moss_Titan_Horn",
+      "bg": "Flare_Flash",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Titan_Horn.gif",
+      "stage1_character": "Moss_Titan"
+    },
+    {
+      "slug": "Full_Moss_Titan_Showman",
+      "bg": "Vertical_Drift",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Titan_Showman.gif",
+      "stage1_character": "Moss_Titan"
+    },
+    {
+      "slug": "Full_Moss_Titan_Skull_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Titan_Skull_Mask.gif",
+      "stage1_character": "Moss_Titan"
+    },
+    {
+      "slug": "Full_Moss_Titan_Strow_Hat",
+      "bg": "Margin_Drip",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Titan_Strow_Hat.gif",
+      "stage1_character": "Moss_Titan"
+    }
+  ]
+}

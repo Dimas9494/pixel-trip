@@ -1,0 +1,55 @@
+PIXEL TRIP — Stage 3 V2 batch 13 (PNG → Full_*.gif)
+
+BATCH 13 — 11 Full, 2 S1 линий
+  Cyan_INO   — 6 PNG
+  Moss_Titan — 5 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch13.json --seed 16161
+
+  Или: deploy_stage3_v2_batch13.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch13.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Cyan_INO_Frog_Hat.gif
+  Full_Moss_Titan_Showman.gif
+
+FTP (11 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push для Netlify
+
+REMIX — не нужен.
+
+ЗАМЕТКА
+  Moss: файл Full_Moss_Titan_Strow_Hat.png → slug Full_Moss_Titan_Strow_Hat (опечатка Strow).
+
+СПИСОК GIF (batch 13)
+  Full_Cyan_INO_Cowboy.gif
+  Full_Cyan_INO_Fresh_Eyes.gif
+  Full_Cyan_INO_Frog_Hat.gif
+  Full_Cyan_INO_Golden.gif
+  Full_Cyan_INO_Orange_Horns.gif
+  Full_Cyan_INO_Pinky.gif
+  Full_Moss_Titan_Golden.gif
+  Full_Moss_Titan_Horn.gif
+  Full_Moss_Titan_Showman.gif
+  Full_Moss_Titan_Skull_Mask.gif
+  Full_Moss_Titan_Strow_Hat.gif

@@ -1639,6 +1639,61 @@
       "slug": "Full_Unicorn_Girl_Zombie",
       "bg": "Cinder_Swell",
       "frame": "Neon_Rim"
+    },
+    "Cyan_INO_Cowboy": {
+      "slug": "Full_Cyan_INO_Cowboy",
+      "bg": "Warp_Wave",
+      "frame": "Triple_Blink"
+    },
+    "Cyan_INO_Fresh_Eyes": {
+      "slug": "Full_Cyan_INO_Fresh_Eyes",
+      "bg": "Grove_Mosaic",
+      "frame": "Turbo_Rim"
+    },
+    "Cyan_INO_Frog_Hat": {
+      "slug": "Full_Cyan_INO_Frog_Hat",
+      "bg": "Tidal_Phase",
+      "frame": "Yield_Pulse"
+    },
+    "Cyan_INO_Golden": {
+      "slug": "Full_Cyan_INO_Golden",
+      "bg": "Kinetic_Checker",
+      "frame": "Quad_Flash"
+    },
+    "Cyan_INO_Orange_Horns": {
+      "slug": "Full_Cyan_INO_Orange_Horns",
+      "bg": "Ember_Flash",
+      "frame": "Grid_Rim"
+    },
+    "Cyan_INO_Pinky": {
+      "slug": "Full_Cyan_INO_Pinky",
+      "bg": "Band_Scroll",
+      "frame": "Edge_Flash"
+    },
+    "Moss_Titan_Golden": {
+      "slug": "Full_Moss_Titan_Golden",
+      "bg": "Brick_Mosaic",
+      "frame": "Jolt_Rim"
+    },
+    "Moss_Titan_Horn": {
+      "slug": "Full_Moss_Titan_Horn",
+      "bg": "Flare_Flash",
+      "frame": "Blade_Chroma"
+    },
+    "Moss_Titan_Showman": {
+      "slug": "Full_Moss_Titan_Showman",
+      "bg": "Vertical_Drift",
+      "frame": "Pulse_Ring"
+    },
+    "Moss_Titan_Skull_Mask": {
+      "slug": "Full_Moss_Titan_Skull_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Bright_Rim"
+    },
+    "Moss_Titan_Strow_Hat": {
+      "slug": "Full_Moss_Titan_Strow_Hat",
+      "bg": "Margin_Drip",
+      "frame": "Vivid_Rim"
     }
   },
   "defaultByChar": {
@@ -3583,6 +3638,65 @@
         "slug": "Full_Unicorn_Girl_Zombie",
         "bg": "Cinder_Swell",
         "frame": "Neon_Rim"
+      }
+    ],
+    "Cyan_INO": [
+      {
+        "slug": "Full_Cyan_INO_Cowboy",
+        "bg": "Warp_Wave",
+        "frame": "Triple_Blink"
+      },
+      {
+        "slug": "Full_Cyan_INO_Fresh_Eyes",
+        "bg": "Grove_Mosaic",
+        "frame": "Turbo_Rim"
+      },
+      {
+        "slug": "Full_Cyan_INO_Frog_Hat",
+        "bg": "Tidal_Phase",
+        "frame": "Yield_Pulse"
+      },
+      {
+        "slug": "Full_Cyan_INO_Golden",
+        "bg": "Kinetic_Checker",
+        "frame": "Quad_Flash"
+      },
+      {
+        "slug": "Full_Cyan_INO_Orange_Horns",
+        "bg": "Ember_Flash",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Cyan_INO_Pinky",
+        "bg": "Band_Scroll",
+        "frame": "Edge_Flash"
+      }
+    ],
+    "Moss_Titan": [
+      {
+        "slug": "Full_Moss_Titan_Golden",
+        "bg": "Brick_Mosaic",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Moss_Titan_Horn",
+        "bg": "Flare_Flash",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Moss_Titan_Showman",
+        "bg": "Vertical_Drift",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Moss_Titan_Skull_Mask",
+        "bg": "Mist_Drip",
+        "frame": "Bright_Rim"
+      },
+      {
+        "slug": "Full_Moss_Titan_Strow_Hat",
+        "bg": "Margin_Drip",
+        "frame": "Vivid_Rim"
       }
     ]
   },
