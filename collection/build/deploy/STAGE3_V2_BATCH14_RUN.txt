@@ -1,0 +1,61 @@
+PIXEL TRIP — Stage 3 V2 batch 14 (PNG → Full_*.gif)
+
+BATCH 14 — 17 Full, 4 S1 линий
+  Crybaby_Rocker  — 6 PNG
+  Cyan_Imp        — 2 PNG
+  Goblin_Rogue    — 6 PNG
+  Moss_Golem      — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch14.json --seed 17171
+
+  Или: deploy_stage3_v2_batch14.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch14.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Crybaby_Rocker_Angel_Ghost.gif
+  Full_Goblin_Rogue_King.gif
+  Full_Moss_Golem_Viking.gif
+
+FTP (17 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push для Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 14)
+  Full_Crybaby_Rocker_Angel_Ghost.gif
+  Full_Crybaby_Rocker_Devil.gif
+  Full_Crybaby_Rocker_Gas_Mask.gif
+  Full_Crybaby_Rocker_Long_Hair.gif
+  Full_Crybaby_Rocker_Skull.gif
+  Full_Crybaby_Rocker_Zombie.gif
+  Full_Cyan_Imp_Dead.gif
+  Full_Cyan_Imp_VR_Glasses.gif
+  Full_Goblin_Rogue_Bones.gif
+  Full_Goblin_Rogue_Fire.gif
+  Full_Goblin_Rogue_King.gif
+  Full_Goblin_Rogue_Ninja.gif
+  Full_Goblin_Rogue_Shield.gif
+  Full_Goblin_Rogue_Wizard.gif
+  Full_Moss_Golem_Icy_King.gif
+  Full_Moss_Golem_Mohawk.gif
+  Full_Moss_Golem_Viking.gif

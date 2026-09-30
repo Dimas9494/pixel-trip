@@ -1694,6 +1694,91 @@
       "slug": "Full_Moss_Titan_Strow_Hat",
       "bg": "Margin_Drip",
       "frame": "Vivid_Rim"
+    },
+    "Crybaby_Rocker_Angel_Ghost": {
+      "slug": "Full_Crybaby_Rocker_Angel_Ghost",
+      "bg": "Cinder_Swell",
+      "frame": "Xeno_Rim"
+    },
+    "Crybaby_Rocker_Devil": {
+      "slug": "Full_Crybaby_Rocker_Devil",
+      "bg": "Lux_Checker",
+      "frame": "Mint_Flash"
+    },
+    "Crybaby_Rocker_Gas_Mask": {
+      "slug": "Full_Crybaby_Rocker_Gas_Mask",
+      "bg": "Fog_Blend",
+      "frame": "Trace_Rim"
+    },
+    "Crybaby_Rocker_Long_Hair": {
+      "slug": "Full_Crybaby_Rocker_Long_Hair",
+      "bg": "Lumen_Streak",
+      "frame": "Lumen_Flicker"
+    },
+    "Crybaby_Rocker_Skull": {
+      "slug": "Full_Crybaby_Rocker_Skull",
+      "bg": "Lattice_Lines",
+      "frame": "Bright_Rim"
+    },
+    "Crybaby_Rocker_Zombie": {
+      "slug": "Full_Crybaby_Rocker_Zombie",
+      "bg": "Vertical_Drift",
+      "frame": "Mint_Bolt"
+    },
+    "Cyan_Imp_Dead": {
+      "slug": "Full_Cyan_Imp_Dead",
+      "bg": "Kelp_Streak",
+      "frame": "Lumen_Flicker"
+    },
+    "Cyan_Imp_VR_Glasses": {
+      "slug": "Full_Cyan_Imp_VR_Glasses",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Radiant_Rim"
+    },
+    "Goblin_Rogue_Bones": {
+      "slug": "Full_Goblin_Rogue_Bones",
+      "bg": "Vapor_Phase",
+      "frame": "Wave_Rim"
+    },
+    "Goblin_Rogue_Fire": {
+      "slug": "Full_Goblin_Rogue_Fire",
+      "bg": "Jade_Streak",
+      "frame": "Trace_Rim"
+    },
+    "Goblin_Rogue_King": {
+      "slug": "Full_Goblin_Rogue_King",
+      "bg": "Cinder_Swell",
+      "frame": "Blade_Chroma"
+    },
+    "Goblin_Rogue_Ninja": {
+      "slug": "Full_Goblin_Rogue_Ninja",
+      "bg": "Mist_Drip",
+      "frame": "Mint_Flash"
+    },
+    "Goblin_Rogue_Shield": {
+      "slug": "Full_Goblin_Rogue_Shield",
+      "bg": "Stripe_Phase",
+      "frame": "Pixel_Flicker"
+    },
+    "Goblin_Rogue_Wizard": {
+      "slug": "Full_Goblin_Rogue_Wizard",
+      "bg": "Rust_Perimeter",
+      "frame": "Volt_Ring"
+    },
+    "Moss_Golem_Icy_King": {
+      "slug": "Full_Moss_Golem_Icy_King",
+      "bg": "Brick_Mosaic",
+      "frame": "Axis_Rim"
+    },
+    "Moss_Golem_Mohawk": {
+      "slug": "Full_Moss_Golem_Mohawk",
+      "bg": "Horizon_Wave",
+      "frame": "Hue_Rim"
+    },
+    "Moss_Golem_Viking": {
+      "slug": "Full_Moss_Golem_Viking",
+      "bg": "Gem_Perimeter",
+      "frame": "Neon_Bolt"
     }
   },
   "defaultByChar": {
@@ -3697,6 +3782,99 @@
         "slug": "Full_Moss_Titan_Strow_Hat",
         "bg": "Margin_Drip",
         "frame": "Vivid_Rim"
+      }
+    ],
+    "Crybaby_Rocker": [
+      {
+        "slug": "Full_Crybaby_Rocker_Angel_Ghost",
+        "bg": "Cinder_Swell",
+        "frame": "Xeno_Rim"
+      },
+      {
+        "slug": "Full_Crybaby_Rocker_Devil",
+        "bg": "Lux_Checker",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Crybaby_Rocker_Gas_Mask",
+        "bg": "Fog_Blend",
+        "frame": "Trace_Rim"
+      },
+      {
+        "slug": "Full_Crybaby_Rocker_Long_Hair",
+        "bg": "Lumen_Streak",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Crybaby_Rocker_Skull",
+        "bg": "Lattice_Lines",
+        "frame": "Bright_Rim"
+      },
+      {
+        "slug": "Full_Crybaby_Rocker_Zombie",
+        "bg": "Vertical_Drift",
+        "frame": "Mint_Bolt"
+      }
+    ],
+    "Cyan_Imp": [
+      {
+        "slug": "Full_Cyan_Imp_Dead",
+        "bg": "Kelp_Streak",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Cyan_Imp_VR_Glasses",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Radiant_Rim"
+      }
+    ],
+    "Goblin_Rogue": [
+      {
+        "slug": "Full_Goblin_Rogue_Bones",
+        "bg": "Vapor_Phase",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Goblin_Rogue_Fire",
+        "bg": "Jade_Streak",
+        "frame": "Trace_Rim"
+      },
+      {
+        "slug": "Full_Goblin_Rogue_King",
+        "bg": "Cinder_Swell",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Goblin_Rogue_Ninja",
+        "bg": "Mist_Drip",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Goblin_Rogue_Shield",
+        "bg": "Stripe_Phase",
+        "frame": "Pixel_Flicker"
+      },
+      {
+        "slug": "Full_Goblin_Rogue_Wizard",
+        "bg": "Rust_Perimeter",
+        "frame": "Volt_Ring"
+      }
+    ],
+    "Moss_Golem": [
+      {
+        "slug": "Full_Moss_Golem_Icy_King",
+        "bg": "Brick_Mosaic",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Moss_Golem_Mohawk",
+        "bg": "Horizon_Wave",
+        "frame": "Hue_Rim"
+      },
+      {
+        "slug": "Full_Moss_Golem_Viking",
+        "bg": "Gem_Perimeter",
+        "frame": "Neon_Bolt"
       }
     ]
   },

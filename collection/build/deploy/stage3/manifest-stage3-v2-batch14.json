@@ -1,0 +1,129 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-09-30T17:35:26.407812+00:00",
+  "count": 17,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Crybaby_Rocker_Angel_Ghost",
+      "bg": "Cinder_Swell",
+      "frame": "Xeno_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crybaby_Rocker_Angel_Ghost.gif",
+      "stage1_character": "Crybaby_Rocker"
+    },
+    {
+      "slug": "Full_Crybaby_Rocker_Devil",
+      "bg": "Lux_Checker",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crybaby_Rocker_Devil.gif",
+      "stage1_character": "Crybaby_Rocker"
+    },
+    {
+      "slug": "Full_Crybaby_Rocker_Gas_Mask",
+      "bg": "Fog_Blend",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crybaby_Rocker_Gas_Mask.gif",
+      "stage1_character": "Crybaby_Rocker"
+    },
+    {
+      "slug": "Full_Crybaby_Rocker_Long_Hair",
+      "bg": "Lumen_Streak",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crybaby_Rocker_Long_Hair.gif",
+      "stage1_character": "Crybaby_Rocker"
+    },
+    {
+      "slug": "Full_Crybaby_Rocker_Skull",
+      "bg": "Lattice_Lines",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crybaby_Rocker_Skull.gif",
+      "stage1_character": "Crybaby_Rocker"
+    },
+    {
+      "slug": "Full_Crybaby_Rocker_Zombie",
+      "bg": "Vertical_Drift",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crybaby_Rocker_Zombie.gif",
+      "stage1_character": "Crybaby_Rocker"
+    },
+    {
+      "slug": "Full_Cyan_Imp_Dead",
+      "bg": "Kelp_Streak",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Imp_Dead.gif",
+      "stage1_character": "Cyan_Imp"
+    },
+    {
+      "slug": "Full_Cyan_Imp_VR_Glasses",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Imp_VR_Glasses.gif",
+      "stage1_character": "Cyan_Imp"
+    },
+    {
+      "slug": "Full_Goblin_Rogue_Bones",
+      "bg": "Vapor_Phase",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goblin_Rogue_Bones.gif",
+      "stage1_character": "Goblin_Rogue"
+    },
+    {
+      "slug": "Full_Goblin_Rogue_Fire",
+      "bg": "Jade_Streak",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goblin_Rogue_Fire.gif",
+      "stage1_character": "Goblin_Rogue"
+    },
+    {
+      "slug": "Full_Goblin_Rogue_King",
+      "bg": "Cinder_Swell",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goblin_Rogue_King.gif",
+      "stage1_character": "Goblin_Rogue"
+    },
+    {
+      "slug": "Full_Goblin_Rogue_Ninja",
+      "bg": "Mist_Drip",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goblin_Rogue_Ninja.gif",
+      "stage1_character": "Goblin_Rogue"
+    },
+    {
+      "slug": "Full_Goblin_Rogue_Shield",
+      "bg": "Stripe_Phase",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goblin_Rogue_Shield.gif",
+      "stage1_character": "Goblin_Rogue"
+    },
+    {
+      "slug": "Full_Goblin_Rogue_Wizard",
+      "bg": "Rust_Perimeter",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goblin_Rogue_Wizard.gif",
+      "stage1_character": "Goblin_Rogue"
+    },
+    {
+      "slug": "Full_Moss_Golem_Icy_King",
+      "bg": "Brick_Mosaic",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Golem_Icy_King.gif",
+      "stage1_character": "Moss_Golem"
+    },
+    {
+      "slug": "Full_Moss_Golem_Mohawk",
+      "bg": "Horizon_Wave",
+      "frame": "Hue_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Golem_Mohawk.gif",
+      "stage1_character": "Moss_Golem"
+    },
+    {
+      "slug": "Full_Moss_Golem_Viking",
+      "bg": "Gem_Perimeter",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Moss_Golem_Viking.gif",
+      "stage1_character": "Moss_Golem"
+    }
+  ]
+}
