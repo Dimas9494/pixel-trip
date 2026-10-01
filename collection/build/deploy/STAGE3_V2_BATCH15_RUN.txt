@@ -1,0 +1,55 @@
+PIXEL TRIP — Stage 3 V2 batch 15 (PNG → Full_*.gif)
+
+BATCH 15 — 12 Full, 3 S1 линий
+  Circuit_Hood  — 4 PNG
+  Pink_Elvis    — 5 PNG
+  Specs_Witch   — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch15.json --seed 18181
+
+  Или: deploy_stage3_v2_batch15.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch15.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Pink_Elvis_King.gif
+  Full_Circuit_Hood_Angel.gif
+  Full_Specs_Witch_Vamp.gif
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push для Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 15)
+  Full_Circuit_Hood_Angel.gif
+  Full_Circuit_Hood_Kitty.gif
+  Full_Circuit_Hood_Skull.gif
+  Full_Circuit_Hood_Sport.gif
+  Full_Pink_Elvis_Clown.gif
+  Full_Pink_Elvis_King.gif
+  Full_Pink_Elvis_Skull.gif
+  Full_Pink_Elvis_Smoking.gif
+  Full_Pink_Elvis_Zomb.gif
+  Full_Specs_Witch_Mushroom_Hat.gif
+  Full_Specs_Witch_Skull.gif
+  Full_Specs_Witch_Vamp.gif

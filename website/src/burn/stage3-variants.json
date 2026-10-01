@@ -1779,6 +1779,66 @@
       "slug": "Full_Moss_Golem_Viking",
       "bg": "Gem_Perimeter",
       "frame": "Neon_Bolt"
+    },
+    "Circuit_Hood_Angel": {
+      "slug": "Full_Circuit_Hood_Angel",
+      "bg": "Diagonal_Streak",
+      "frame": "Spark_Rim"
+    },
+    "Circuit_Hood_Kitty": {
+      "slug": "Full_Circuit_Hood_Kitty",
+      "bg": "Fog_Blend",
+      "frame": "Hue_Rim"
+    },
+    "Circuit_Hood_Skull": {
+      "slug": "Full_Circuit_Hood_Skull",
+      "bg": "Yonder_Pulse",
+      "frame": "Corner_Bolt"
+    },
+    "Circuit_Hood_Sport": {
+      "slug": "Full_Circuit_Hood_Sport",
+      "bg": "Haze_Mosaic",
+      "frame": "Chrome_Rim"
+    },
+    "Pink_Elvis_Clown": {
+      "slug": "Full_Pink_Elvis_Clown",
+      "bg": "Lumen_Streak",
+      "frame": "Mint_Bolt"
+    },
+    "Pink_Elvis_King": {
+      "slug": "Full_Pink_Elvis_King",
+      "bg": "Vapor_Phase",
+      "frame": "Corner_Bolt"
+    },
+    "Pink_Elvis_Skull": {
+      "slug": "Full_Pink_Elvis_Skull",
+      "bg": "Grid_Checker",
+      "frame": "Mono_Rim"
+    },
+    "Pink_Elvis_Smoking": {
+      "slug": "Full_Pink_Elvis_Smoking",
+      "bg": "Margin_Flash",
+      "frame": "Byte_Pulse"
+    },
+    "Pink_Elvis_Zomb": {
+      "slug": "Full_Pink_Elvis_Zomb",
+      "bg": "Gem_Perimeter",
+      "frame": "Rune_Rim"
+    },
+    "Specs_Witch_Mushroom_Hat": {
+      "slug": "Full_Specs_Witch_Mushroom_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Rune_Rim"
+    },
+    "Specs_Witch_Skull": {
+      "slug": "Full_Specs_Witch_Skull",
+      "bg": "Kinetic_Checker",
+      "frame": "Aqua_Rim"
+    },
+    "Specs_Witch_Vamp": {
+      "slug": "Full_Specs_Witch_Vamp",
+      "bg": "Hue_Pulse",
+      "frame": "Mint_Flash"
     }
   },
   "defaultByChar": {
@@ -3875,6 +3935,72 @@
         "slug": "Full_Moss_Golem_Viking",
         "bg": "Gem_Perimeter",
         "frame": "Neon_Bolt"
+      }
+    ],
+    "Circuit_Hood": [
+      {
+        "slug": "Full_Circuit_Hood_Angel",
+        "bg": "Diagonal_Streak",
+        "frame": "Spark_Rim"
+      },
+      {
+        "slug": "Full_Circuit_Hood_Kitty",
+        "bg": "Fog_Blend",
+        "frame": "Hue_Rim"
+      },
+      {
+        "slug": "Full_Circuit_Hood_Skull",
+        "bg": "Yonder_Pulse",
+        "frame": "Corner_Bolt"
+      },
+      {
+        "slug": "Full_Circuit_Hood_Sport",
+        "bg": "Haze_Mosaic",
+        "frame": "Chrome_Rim"
+      }
+    ],
+    "Pink_Elvis": [
+      {
+        "slug": "Full_Pink_Elvis_Clown",
+        "bg": "Lumen_Streak",
+        "frame": "Mint_Bolt"
+      },
+      {
+        "slug": "Full_Pink_Elvis_King",
+        "bg": "Vapor_Phase",
+        "frame": "Corner_Bolt"
+      },
+      {
+        "slug": "Full_Pink_Elvis_Skull",
+        "bg": "Grid_Checker",
+        "frame": "Mono_Rim"
+      },
+      {
+        "slug": "Full_Pink_Elvis_Smoking",
+        "bg": "Margin_Flash",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Pink_Elvis_Zomb",
+        "bg": "Gem_Perimeter",
+        "frame": "Rune_Rim"
+      }
+    ],
+    "Specs_Witch": [
+      {
+        "slug": "Full_Specs_Witch_Mushroom_Hat",
+        "bg": "Lattice_Lines",
+        "frame": "Rune_Rim"
+      },
+      {
+        "slug": "Full_Specs_Witch_Skull",
+        "bg": "Kinetic_Checker",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Specs_Witch_Vamp",
+        "bg": "Hue_Pulse",
+        "frame": "Mint_Flash"
       }
     ]
   },
