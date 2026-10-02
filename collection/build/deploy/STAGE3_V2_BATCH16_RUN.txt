@@ -1,0 +1,64 @@
+PIXEL TRIP — Stage 3 V2 batch 16 (PNG → Full_*.gif)
+
+BATCH 16 — 16 Full, 3 S1 линий
+  Cave_Man    — 7 PNG
+  Glow_Pilot  — 2 PNG
+  Gob         — 7 PNG
+
+ВАЖНО
+  В Stage 3 V2 лежали папки batch 15 (Circuit_Hood, Pink_Elvis, Specs_Witch).
+  Прогон только по новым линиям: collection/build/stage3_v2_batch16_in
+  Перед .bat — убери старые папки из Stage 3 V2, оставь только новый batch.
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/, только новые папки в Stage 3 V2)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch16.json --seed 19191
+
+  Или: deploy_stage3_v2_batch16.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch16.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Cave_Man_Neon_Glasses.gif
+  Full_Gob_King.gif
+  Full_Glow_Pilot_Crown.gif
+
+FTP (16 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 16)
+  Full_Cave_Man_Animal_Skull_Hat.gif
+  Full_Cave_Man_Bald.gif
+  Full_Cave_Man_Horns.gif
+  Full_Cave_Man_Mask.gif
+  Full_Cave_Man_Mushroom_Hat.gif
+  Full_Cave_Man_Neon_Glasses.gif
+  Full_Cave_Man_Skull.gif
+  Full_Glow_Pilot_Crown.gif
+  Full_Glow_Pilot_Skull.gif
+  Full_Gob_Bones.gif
+  Full_Gob_Dark.gif
+  Full_Gob_Gladiator.gif
+  Full_Gob_Horns.gif
+  Full_Gob_King.gif
+  Full_Gob_Red_Lips.gif
+  Full_Gob_Surprised.gif

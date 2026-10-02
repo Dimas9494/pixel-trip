@@ -1,0 +1,122 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-02T18:23:52.470461+00:00",
+  "count": 16,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\collection\\build\\stage3_v2_batch16_in",
+  "items": [
+    {
+      "slug": "Full_Cave_Man_Animal_Skull_Hat",
+      "bg": "Margin_Flash",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cave_Man_Animal_Skull_Hat.gif",
+      "stage1_character": "Cave_Man"
+    },
+    {
+      "slug": "Full_Cave_Man_Bald",
+      "bg": "Margin_Flash",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cave_Man_Bald.gif",
+      "stage1_character": "Cave_Man"
+    },
+    {
+      "slug": "Full_Cave_Man_Horns",
+      "bg": "Kelp_Streak",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cave_Man_Horns.gif",
+      "stage1_character": "Cave_Man"
+    },
+    {
+      "slug": "Full_Cave_Man_Mask",
+      "bg": "Vapor_Phase",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cave_Man_Mask.gif",
+      "stage1_character": "Cave_Man"
+    },
+    {
+      "slug": "Full_Cave_Man_Mushroom_Hat",
+      "bg": "Lux_Checker",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cave_Man_Mushroom_Hat.gif",
+      "stage1_character": "Cave_Man"
+    },
+    {
+      "slug": "Full_Cave_Man_Neon_Glasses",
+      "bg": "Lux_Checker",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cave_Man_Neon_Glasses.gif",
+      "stage1_character": "Cave_Man"
+    },
+    {
+      "slug": "Full_Cave_Man_Skull",
+      "bg": "Plasma_Perimeter",
+      "frame": "Rune_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cave_Man_Skull.gif",
+      "stage1_character": "Cave_Man"
+    },
+    {
+      "slug": "Full_Glow_Pilot_Crown",
+      "bg": "Lumen_Streak",
+      "frame": "Rune_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glow_Pilot_Crown.gif",
+      "stage1_character": "Glow_Pilot"
+    },
+    {
+      "slug": "Full_Glow_Pilot_Skull",
+      "bg": "Tidal_Phase",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glow_Pilot_Skull.gif",
+      "stage1_character": "Glow_Pilot"
+    },
+    {
+      "slug": "Full_Gob_Bones",
+      "bg": "Haze_Mosaic",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gob_Bones.gif",
+      "stage1_character": "Gob"
+    },
+    {
+      "slug": "Full_Gob_Dark",
+      "bg": "Basalt_Lines",
+      "frame": "Yield_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gob_Dark.gif",
+      "stage1_character": "Gob"
+    },
+    {
+      "slug": "Full_Gob_Gladiator",
+      "bg": "Margin_Flash",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gob_Gladiator.gif",
+      "stage1_character": "Gob"
+    },
+    {
+      "slug": "Full_Gob_Horns",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gob_Horns.gif",
+      "stage1_character": "Gob"
+    },
+    {
+      "slug": "Full_Gob_King",
+      "bg": "Grove_Mosaic",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gob_King.gif",
+      "stage1_character": "Gob"
+    },
+    {
+      "slug": "Full_Gob_Red_Lips",
+      "bg": "Chromatic_Swell",
+      "frame": "Jet_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gob_Red_Lips.gif",
+      "stage1_character": "Gob"
+    },
+    {
+      "slug": "Full_Gob_Surprised",
+      "bg": "Gem_Perimeter",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gob_Surprised.gif",
+      "stage1_character": "Gob"
+    }
+  ]
+}

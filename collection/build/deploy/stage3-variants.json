@@ -1839,6 +1839,81 @@
       "slug": "Full_Specs_Witch_Vamp",
       "bg": "Hue_Pulse",
       "frame": "Mint_Flash"
+    },
+    "Cave_Man_Animal_Skull_Hat": {
+      "slug": "Full_Cave_Man_Animal_Skull_Hat",
+      "bg": "Margin_Flash",
+      "frame": "Aqua_Rim"
+    },
+    "Cave_Man_Bald": {
+      "slug": "Full_Cave_Man_Bald",
+      "bg": "Margin_Flash",
+      "frame": "Arc_Chroma"
+    },
+    "Cave_Man_Horns": {
+      "slug": "Full_Cave_Man_Horns",
+      "bg": "Kelp_Streak",
+      "frame": "Grid_Rim"
+    },
+    "Cave_Man_Mask": {
+      "slug": "Full_Cave_Man_Mask",
+      "bg": "Vapor_Phase",
+      "frame": "Grid_Rim"
+    },
+    "Cave_Man_Mushroom_Hat": {
+      "slug": "Full_Cave_Man_Mushroom_Hat",
+      "bg": "Lux_Checker",
+      "frame": "Axis_Rim"
+    },
+    "Cave_Man_Neon_Glasses": {
+      "slug": "Full_Cave_Man_Neon_Glasses",
+      "bg": "Lux_Checker",
+      "frame": "Trace_Rim"
+    },
+    "Cave_Man_Skull": {
+      "slug": "Full_Cave_Man_Skull",
+      "bg": "Plasma_Perimeter",
+      "frame": "Rune_Rim"
+    },
+    "Glow_Pilot_Crown": {
+      "slug": "Full_Glow_Pilot_Crown",
+      "bg": "Lumen_Streak",
+      "frame": "Rune_Rim"
+    },
+    "Glow_Pilot_Skull": {
+      "slug": "Full_Glow_Pilot_Skull",
+      "bg": "Tidal_Phase",
+      "frame": "Flux_Rim"
+    },
+    "Gob_Bones": {
+      "slug": "Full_Gob_Bones",
+      "bg": "Haze_Mosaic",
+      "frame": "Static_Rim"
+    },
+    "Gob_Dark": {
+      "slug": "Full_Gob_Dark",
+      "bg": "Basalt_Lines",
+      "frame": "Yield_Pulse"
+    },
+    "Gob_Gladiator": {
+      "slug": "Full_Gob_Gladiator",
+      "bg": "Margin_Flash",
+      "frame": "Rim_Pulse"
+    },
+    "Gob_Horns": {
+      "slug": "Full_Gob_Horns",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Blade_Chroma"
+    },
+    "Gob_King": {
+      "slug": "Full_Gob_King",
+      "bg": "Grove_Mosaic",
+      "frame": "Radiant_Rim"
+    },
+    "Gob_Surprised": {
+      "slug": "Full_Gob_Surprised",
+      "bg": "Gem_Perimeter",
+      "frame": "Arc_Chroma"
     }
   },
   "defaultByChar": {
@@ -4001,6 +4076,92 @@
         "slug": "Full_Specs_Witch_Vamp",
         "bg": "Hue_Pulse",
         "frame": "Mint_Flash"
+      }
+    ],
+    "Cave_Man": [
+      {
+        "slug": "Full_Cave_Man_Animal_Skull_Hat",
+        "bg": "Margin_Flash",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Cave_Man_Bald",
+        "bg": "Margin_Flash",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Cave_Man_Horns",
+        "bg": "Kelp_Streak",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Cave_Man_Mask",
+        "bg": "Vapor_Phase",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Cave_Man_Mushroom_Hat",
+        "bg": "Lux_Checker",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Cave_Man_Neon_Glasses",
+        "bg": "Lux_Checker",
+        "frame": "Trace_Rim"
+      },
+      {
+        "slug": "Full_Cave_Man_Skull",
+        "bg": "Plasma_Perimeter",
+        "frame": "Rune_Rim"
+      }
+    ],
+    "Glow_Pilot": [
+      {
+        "slug": "Full_Glow_Pilot_Crown",
+        "bg": "Lumen_Streak",
+        "frame": "Rune_Rim"
+      },
+      {
+        "slug": "Full_Glow_Pilot_Skull",
+        "bg": "Tidal_Phase",
+        "frame": "Flux_Rim"
+      }
+    ],
+    "Gob": [
+      {
+        "slug": "Full_Gob_Bones",
+        "bg": "Haze_Mosaic",
+        "frame": "Static_Rim"
+      },
+      {
+        "slug": "Full_Gob_Dark",
+        "bg": "Basalt_Lines",
+        "frame": "Yield_Pulse"
+      },
+      {
+        "slug": "Full_Gob_Gladiator",
+        "bg": "Margin_Flash",
+        "frame": "Rim_Pulse"
+      },
+      {
+        "slug": "Full_Gob_Horns",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Gob_King",
+        "bg": "Grove_Mosaic",
+        "frame": "Radiant_Rim"
+      },
+      {
+        "slug": "Full_Gob_Red_Lips",
+        "bg": "Chromatic_Swell",
+        "frame": "Jet_Rim"
+      },
+      {
+        "slug": "Full_Gob_Surprised",
+        "bg": "Gem_Perimeter",
+        "frame": "Arc_Chroma"
       }
     ]
   },
