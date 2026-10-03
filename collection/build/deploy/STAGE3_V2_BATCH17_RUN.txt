@@ -1,0 +1,56 @@
+PIXEL TRIP — Stage 3 V2 batch 17 (PNG → Full_*.gif)
+
+BATCH 17 — 12 Full, 4 S1 линий
+  Cool_Banana      — 2 PNG
+  Funky_Geek       — 3 PNG
+  Happy_Slime      — 4 PNG
+  Square_Professor — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch17.json --seed 20202
+
+  Или: deploy_stage3_v2_batch17.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch17.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Cool_Banana_King.gif
+  Full_Happy_Slime_Wizard.gif
+  Full_Square_Professor_Clown.gif
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 17)
+  Full_Cool_Banana_King.gif
+  Full_Cool_Banana_Rotten.gif
+  Full_Funky_Geek_Golden_Chain.gif
+  Full_Funky_Geek_Rasta.gif
+  Full_Funky_Geek_Zomb.gif
+  Full_Happy_Slime_Crystal.gif
+  Full_Happy_Slime_Demon.gif
+  Full_Happy_Slime_Pinky_Puff.gif
+  Full_Happy_Slime_Wizard.gif
+  Full_Square_Professor_Archaeologist.gif
+  Full_Square_Professor_Clown.gif
+  Full_Square_Professor_Zombie.gif

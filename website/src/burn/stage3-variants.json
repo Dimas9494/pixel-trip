@@ -1914,6 +1914,66 @@
       "slug": "Full_Gob_Surprised",
       "bg": "Gem_Perimeter",
       "frame": "Arc_Chroma"
+    },
+    "Cool_Banana_King": {
+      "slug": "Full_Cool_Banana_King",
+      "bg": "Mist_Drip",
+      "frame": "Flow_Rim"
+    },
+    "Cool_Banana_Rotten": {
+      "slug": "Full_Cool_Banana_Rotten",
+      "bg": "Tidal_Phase",
+      "frame": "Quad_Flash"
+    },
+    "Funky_Geek_Golden_Chain": {
+      "slug": "Full_Funky_Geek_Golden_Chain",
+      "bg": "Flare_Flash",
+      "frame": "Byte_Pulse"
+    },
+    "Funky_Geek_Rasta": {
+      "slug": "Full_Funky_Geek_Rasta",
+      "bg": "Band_Scroll",
+      "frame": "Xeno_Rim"
+    },
+    "Funky_Geek_Zomb": {
+      "slug": "Full_Funky_Geek_Zomb",
+      "bg": "Strip_Grid",
+      "frame": "Flux_Rim"
+    },
+    "Happy_Slime_Crystal": {
+      "slug": "Full_Happy_Slime_Crystal",
+      "bg": "Gem_Perimeter",
+      "frame": "Onyx_Rim"
+    },
+    "Happy_Slime_Demon": {
+      "slug": "Full_Happy_Slime_Demon",
+      "bg": "Gem_Perimeter",
+      "frame": "Flux_Rim"
+    },
+    "Happy_Slime_Pinky_Puff": {
+      "slug": "Full_Happy_Slime_Pinky_Puff",
+      "bg": "Tidal_Phase",
+      "frame": "Axis_Rim"
+    },
+    "Happy_Slime_Wizard": {
+      "slug": "Full_Happy_Slime_Wizard",
+      "bg": "Kelp_Streak",
+      "frame": "Volt_Ring"
+    },
+    "Square_Professor_Archaeologist": {
+      "slug": "Full_Square_Professor_Archaeologist",
+      "bg": "Xenon_Wave",
+      "frame": "Arc_Chroma"
+    },
+    "Square_Professor_Clown": {
+      "slug": "Full_Square_Professor_Clown",
+      "bg": "Kelp_Streak",
+      "frame": "Rune_Flicker"
+    },
+    "Square_Professor_Zombie": {
+      "slug": "Full_Square_Professor_Zombie",
+      "bg": "Rust_Blend",
+      "frame": "Nova_Rim"
     }
   },
   "defaultByChar": {
@@ -4162,6 +4222,74 @@
         "slug": "Full_Gob_Surprised",
         "bg": "Gem_Perimeter",
         "frame": "Arc_Chroma"
+      }
+    ],
+    "Cool_Banana": [
+      {
+        "slug": "Full_Cool_Banana_King",
+        "bg": "Mist_Drip",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Cool_Banana_Rotten",
+        "bg": "Tidal_Phase",
+        "frame": "Quad_Flash"
+      }
+    ],
+    "Funky_Geek": [
+      {
+        "slug": "Full_Funky_Geek_Golden_Chain",
+        "bg": "Flare_Flash",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Funky_Geek_Rasta",
+        "bg": "Band_Scroll",
+        "frame": "Xeno_Rim"
+      },
+      {
+        "slug": "Full_Funky_Geek_Zomb",
+        "bg": "Strip_Grid",
+        "frame": "Flux_Rim"
+      }
+    ],
+    "Happy_Slime": [
+      {
+        "slug": "Full_Happy_Slime_Crystal",
+        "bg": "Gem_Perimeter",
+        "frame": "Onyx_Rim"
+      },
+      {
+        "slug": "Full_Happy_Slime_Demon",
+        "bg": "Gem_Perimeter",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_Happy_Slime_Pinky_Puff",
+        "bg": "Tidal_Phase",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Happy_Slime_Wizard",
+        "bg": "Kelp_Streak",
+        "frame": "Volt_Ring"
+      }
+    ],
+    "Square_Professor": [
+      {
+        "slug": "Full_Square_Professor_Archaeologist",
+        "bg": "Xenon_Wave",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Square_Professor_Clown",
+        "bg": "Kelp_Streak",
+        "frame": "Rune_Flicker"
+      },
+      {
+        "slug": "Full_Square_Professor_Zombie",
+        "bg": "Rust_Blend",
+        "frame": "Nova_Rim"
       }
     ]
   },
