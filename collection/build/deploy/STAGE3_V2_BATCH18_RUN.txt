@@ -1,0 +1,54 @@
+PIXEL TRIP — Stage 3 V2 batch 18 (PNG → Full_*.gif)
+
+BATCH 18 — 12 Full, 2 S1 линий
+  Jester_Cat  — 6 PNG
+  Stoned_Cat  — 6 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+  (допустимо без Full_: Jester_Cat_King.png → Full_Jester_Cat_King.gif)
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch18.json --seed 21212
+
+  Или: deploy_stage3_v2_batch18.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch18.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Jester_Cat_Wizard.gif
+  Full_Stoned_Cat_Artist.gif
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 18)
+  Full_Jester_Cat_Devil.gif
+  Full_Jester_Cat_King.gif
+  Full_Jester_Cat_Mushroom_Hat.gif
+  Full_Jester_Cat_Skull.gif
+  Full_Jester_Cat_Wizard.gif
+  Full_Jester_Cat_Zombie.gif
+  Full_Stoned_Cat_Alien.gif
+  Full_Stoned_Cat_Artist.gif
+  Full_Stoned_Cat_King.gif
+  Full_Stoned_Cat_Long_Hair.gif
+  Full_Stoned_Cat_Vamp.gif
+  Full_Stoned_Cat_Zombie.gif

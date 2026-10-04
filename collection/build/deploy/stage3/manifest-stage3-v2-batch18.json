@@ -1,0 +1,94 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-04T17:31:38.988992+00:00",
+  "count": 12,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Jester_Cat_Devil",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Jester_Cat_Devil.gif",
+      "stage1_character": "Jester_Cat"
+    },
+    {
+      "slug": "Full_Jester_Cat_Mushroom_Hat",
+      "bg": "Kelp_Streak",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Jester_Cat_Mushroom_Hat.gif",
+      "stage1_character": "Jester_Cat"
+    },
+    {
+      "slug": "Full_Jester_Cat_Skull",
+      "bg": "Bloom_Wave",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Jester_Cat_Skull.gif",
+      "stage1_character": "Jester_Cat"
+    },
+    {
+      "slug": "Full_Jester_Cat_Wizard",
+      "bg": "Warp_Wave",
+      "frame": "Edge_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Jester_Cat_Wizard.gif",
+      "stage1_character": "Jester_Cat"
+    },
+    {
+      "slug": "Full_Jester_Cat_Zombie",
+      "bg": "Lumen_Streak",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Jester_Cat_Zombie.gif",
+      "stage1_character": "Jester_Cat"
+    },
+    {
+      "slug": "Full_Jester_Cat_King",
+      "bg": "Xenon_Wave",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Jester_Cat_King.gif",
+      "stage1_character": "Jester_Cat"
+    },
+    {
+      "slug": "Full_Stoned_Cat_Alien",
+      "bg": "Rust_Blend",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Cat_Alien.gif",
+      "stage1_character": "Stoned_Cat"
+    },
+    {
+      "slug": "Full_Stoned_Cat_Artist",
+      "bg": "Ember_Flash",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Cat_Artist.gif",
+      "stage1_character": "Stoned_Cat"
+    },
+    {
+      "slug": "Full_Stoned_Cat_King",
+      "bg": "Lux_Checker",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Cat_King.gif",
+      "stage1_character": "Stoned_Cat"
+    },
+    {
+      "slug": "Full_Stoned_Cat_Long_Hair",
+      "bg": "Fog_Blend",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Cat_Long_Hair.gif",
+      "stage1_character": "Stoned_Cat"
+    },
+    {
+      "slug": "Full_Stoned_Cat_Vamp",
+      "bg": "Kinetic_Checker",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Cat_Vamp.gif",
+      "stage1_character": "Stoned_Cat"
+    },
+    {
+      "slug": "Full_Stoned_Cat_Zombie",
+      "bg": "Vertical_Drift",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Cat_Zombie.gif",
+      "stage1_character": "Stoned_Cat"
+    }
+  ]
+}

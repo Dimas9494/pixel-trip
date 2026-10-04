@@ -1974,6 +1974,66 @@
       "slug": "Full_Square_Professor_Zombie",
       "bg": "Rust_Blend",
       "frame": "Nova_Rim"
+    },
+    "Jester_Cat_Devil": {
+      "slug": "Full_Jester_Cat_Devil",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Bolt_Chroma"
+    },
+    "Jester_Cat_Mushroom_Hat": {
+      "slug": "Full_Jester_Cat_Mushroom_Hat",
+      "bg": "Kelp_Streak",
+      "frame": "Axis_Pulse"
+    },
+    "Jester_Cat_Skull": {
+      "slug": "Full_Jester_Cat_Skull",
+      "bg": "Bloom_Wave",
+      "frame": "Volt_Rim"
+    },
+    "Jester_Cat_Wizard": {
+      "slug": "Full_Jester_Cat_Wizard",
+      "bg": "Warp_Wave",
+      "frame": "Edge_Flash"
+    },
+    "Jester_Cat_Zombie": {
+      "slug": "Full_Jester_Cat_Zombie",
+      "bg": "Lumen_Streak",
+      "frame": "Jolt_Rim"
+    },
+    "Jester_Cat_King": {
+      "slug": "Full_Jester_Cat_King",
+      "bg": "Xenon_Wave",
+      "frame": "Volt_Rim"
+    },
+    "Stoned_Cat_Alien": {
+      "slug": "Full_Stoned_Cat_Alien",
+      "bg": "Rust_Blend",
+      "frame": "Blade_Rim"
+    },
+    "Stoned_Cat_Artist": {
+      "slug": "Full_Stoned_Cat_Artist",
+      "bg": "Ember_Flash",
+      "frame": "Pulse_Ring"
+    },
+    "Stoned_Cat_King": {
+      "slug": "Full_Stoned_Cat_King",
+      "bg": "Lux_Checker",
+      "frame": "Omega_Rim"
+    },
+    "Stoned_Cat_Long_Hair": {
+      "slug": "Full_Stoned_Cat_Long_Hair",
+      "bg": "Fog_Blend",
+      "frame": "Axis_Rim"
+    },
+    "Stoned_Cat_Vamp": {
+      "slug": "Full_Stoned_Cat_Vamp",
+      "bg": "Kinetic_Checker",
+      "frame": "Vector_Rim"
+    },
+    "Stoned_Cat_Zombie": {
+      "slug": "Full_Stoned_Cat_Zombie",
+      "bg": "Vertical_Drift",
+      "frame": "Edge_Chroma"
     }
   },
   "defaultByChar": {
@@ -4290,6 +4350,70 @@
         "slug": "Full_Square_Professor_Zombie",
         "bg": "Rust_Blend",
         "frame": "Nova_Rim"
+      }
+    ],
+    "Jester_Cat": [
+      {
+        "slug": "Full_Jester_Cat_Devil",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Jester_Cat_Mushroom_Hat",
+        "bg": "Kelp_Streak",
+        "frame": "Axis_Pulse"
+      },
+      {
+        "slug": "Full_Jester_Cat_Skull",
+        "bg": "Bloom_Wave",
+        "frame": "Volt_Rim"
+      },
+      {
+        "slug": "Full_Jester_Cat_Wizard",
+        "bg": "Warp_Wave",
+        "frame": "Edge_Flash"
+      },
+      {
+        "slug": "Full_Jester_Cat_Zombie",
+        "bg": "Lumen_Streak",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Jester_Cat_King",
+        "bg": "Xenon_Wave",
+        "frame": "Volt_Rim"
+      }
+    ],
+    "Stoned_Cat": [
+      {
+        "slug": "Full_Stoned_Cat_Alien",
+        "bg": "Rust_Blend",
+        "frame": "Blade_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Cat_Artist",
+        "bg": "Ember_Flash",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Stoned_Cat_King",
+        "bg": "Lux_Checker",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Cat_Long_Hair",
+        "bg": "Fog_Blend",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Cat_Vamp",
+        "bg": "Kinetic_Checker",
+        "frame": "Vector_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Cat_Zombie",
+        "bg": "Vertical_Drift",
+        "frame": "Edge_Chroma"
       }
     ]
   },
