@@ -1,0 +1,48 @@
+PIXEL TRIP — Stage 3 V2 batch 19 (PNG → Full_*.gif)
+
+BATCH 19 — 24 Full, 4 S1 линий
+  Hippie_Cyclops  — 7 PNG
+  Neko_Hood       — 5 PNG
+  Purple_Bustard  — 6 PNG
+  Sleepy_Moon     — 6 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch19.json --seed 22222
+
+  Или: deploy_stage3_v2_batch19.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch19.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Hippie_Cyclops_Queen.gif
+  Full_Neko_Hood_Bunny.gif
+  Full_Sleepy_Moon_Ice_Cream.gif
+
+FTP (24 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 19) — 24 файла
+  Full_Hippie_Cyclops_Alien.gif … Full_Hippie_Cyclops_Zomb.gif (7)
+  Full_Neko_Hood_Bear.gif … Full_Neko_Hood_Zombie.gif (5)
+  Full_Purple_Bustard_Bear.gif … Full_Purple_Bustard_Zombie.gif (6)
+  Full_Sleepy_Moon_Alien.gif … Full_Sleepy_Moon_Zombie.gif (6)

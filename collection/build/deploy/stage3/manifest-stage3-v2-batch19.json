@@ -1,0 +1,178 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-05T16:44:01.850718+00:00",
+  "count": 24,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Hippie_Cyclops_Alien",
+      "bg": "Fog_Blend",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Hippie_Cyclops_Alien.gif",
+      "stage1_character": "Hippie_Cyclops"
+    },
+    {
+      "slug": "Full_Hippie_Cyclops_Beret",
+      "bg": "Ember_Flash",
+      "frame": "Hue_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Hippie_Cyclops_Beret.gif",
+      "stage1_character": "Hippie_Cyclops"
+    },
+    {
+      "slug": "Full_Hippie_Cyclops_Hooded",
+      "bg": "Basalt_Lines",
+      "frame": "Rune_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Hippie_Cyclops_Hooded.gif",
+      "stage1_character": "Hippie_Cyclops"
+    },
+    {
+      "slug": "Full_Hippie_Cyclops_Ninja",
+      "bg": "Gem_Perimeter",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Hippie_Cyclops_Ninja.gif",
+      "stage1_character": "Hippie_Cyclops"
+    },
+    {
+      "slug": "Full_Hippie_Cyclops_Queen",
+      "bg": "Jade_Streak",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Hippie_Cyclops_Queen.gif",
+      "stage1_character": "Hippie_Cyclops"
+    },
+    {
+      "slug": "Full_Hippie_Cyclops_Tuxedo",
+      "bg": "Quasar_Perimeter",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Hippie_Cyclops_Tuxedo.gif",
+      "stage1_character": "Hippie_Cyclops"
+    },
+    {
+      "slug": "Full_Hippie_Cyclops_Zomb",
+      "bg": "Yonder_Pulse",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Hippie_Cyclops_Zomb.gif",
+      "stage1_character": "Hippie_Cyclops"
+    },
+    {
+      "slug": "Full_Neko_Hood_Bear",
+      "bg": "Quasar_Perimeter",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neko_Hood_Bear.gif",
+      "stage1_character": "Neko_Hood"
+    },
+    {
+      "slug": "Full_Neko_Hood_Bunny",
+      "bg": "Hue_Pulse",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neko_Hood_Bunny.gif",
+      "stage1_character": "Neko_Hood"
+    },
+    {
+      "slug": "Full_Neko_Hood_Golden_Smile",
+      "bg": "Tidal_Phase",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neko_Hood_Golden_Smile.gif",
+      "stage1_character": "Neko_Hood"
+    },
+    {
+      "slug": "Full_Neko_Hood_Mummy",
+      "bg": "Vapor_Phase",
+      "frame": "Bolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neko_Hood_Mummy.gif",
+      "stage1_character": "Neko_Hood"
+    },
+    {
+      "slug": "Full_Neko_Hood_Zombie",
+      "bg": "Kinetic_Checker",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neko_Hood_Zombie.gif",
+      "stage1_character": "Neko_Hood"
+    },
+    {
+      "slug": "Full_Purple_Bustard_Bear",
+      "bg": "Rust_Blend",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Bustard_Bear.gif",
+      "stage1_character": "Purple_Bustard"
+    },
+    {
+      "slug": "Full_Purple_Bustard_Cyborg",
+      "bg": "Horizon_Wave",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Bustard_Cyborg.gif",
+      "stage1_character": "Purple_Bustard"
+    },
+    {
+      "slug": "Full_Purple_Bustard_Frog_Hat",
+      "bg": "Cinder_Swell",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Bustard_Frog_Hat.gif",
+      "stage1_character": "Purple_Bustard"
+    },
+    {
+      "slug": "Full_Purple_Bustard_Gas_Mask",
+      "bg": "Plasma_Perimeter",
+      "frame": "Flux_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Bustard_Gas_Mask.gif",
+      "stage1_character": "Purple_Bustard"
+    },
+    {
+      "slug": "Full_Purple_Bustard_Nouns_Glasses",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Bustard_Nouns_Glasses.gif",
+      "stage1_character": "Purple_Bustard"
+    },
+    {
+      "slug": "Full_Purple_Bustard_Zombie",
+      "bg": "Vertical_Drift",
+      "frame": "Unit_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Bustard_Zombie.gif",
+      "stage1_character": "Purple_Bustard"
+    },
+    {
+      "slug": "Full_Sleepy_Moon_Alien",
+      "bg": "Band_Scroll",
+      "frame": "Xeno_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Moon_Alien.gif",
+      "stage1_character": "Sleepy_Moon"
+    },
+    {
+      "slug": "Full_Sleepy_Moon_Cap",
+      "bg": "Margin_Flash",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Moon_Cap.gif",
+      "stage1_character": "Sleepy_Moon"
+    },
+    {
+      "slug": "Full_Sleepy_Moon_Cyborg",
+      "bg": "Fog_Blend",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Moon_Cyborg.gif",
+      "stage1_character": "Sleepy_Moon"
+    },
+    {
+      "slug": "Full_Sleepy_Moon_Ice_Cream",
+      "bg": "Vapor_Phase",
+      "frame": "Bolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Moon_Ice_Cream.gif",
+      "stage1_character": "Sleepy_Moon"
+    },
+    {
+      "slug": "Full_Sleepy_Moon_Rasta",
+      "bg": "Kelp_Streak",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Moon_Rasta.gif",
+      "stage1_character": "Sleepy_Moon"
+    },
+    {
+      "slug": "Full_Sleepy_Moon_Zombie",
+      "bg": "Horizon_Wave",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Moon_Zombie.gif",
+      "stage1_character": "Sleepy_Moon"
+    }
+  ]
+}
