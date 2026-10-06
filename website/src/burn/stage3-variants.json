@@ -2077,8 +2077,8 @@
     },
     "Neko_Hood_Bunny": {
       "slug": "Full_Neko_Hood_Bunny",
-      "bg": "Hue_Pulse",
-      "frame": "Halo_Rim"
+      "bg": "Basalt_Lines",
+      "frame": "Nova_Bolt"
     },
     "Neko_Hood_Golden_Smile": {
       "slug": "Full_Neko_Hood_Golden_Smile",
@@ -2154,6 +2154,66 @@
       "slug": "Full_Sleepy_Moon_Zombie",
       "bg": "Horizon_Wave",
       "frame": "Vector_Ring"
+    },
+    "Satyr_Arabic": {
+      "slug": "Full_Satyr_Arabic",
+      "bg": "Rust_Perimeter",
+      "frame": "Pulse_Ring"
+    },
+    "Satyr_Fire": {
+      "slug": "Full_Satyr_Fire",
+      "bg": "Gem_Perimeter",
+      "frame": "Prism_Rim"
+    },
+    "Satyr_Golden": {
+      "slug": "Full_Satyr_Golden",
+      "bg": "Kinetic_Checker",
+      "frame": "Edge_Flash"
+    },
+    "Satyr_Mime": {
+      "slug": "Full_Satyr_Mime",
+      "bg": "Kelp_Streak",
+      "frame": "Mint_Flash"
+    },
+    "Satyr_Monk": {
+      "slug": "Full_Satyr_Monk",
+      "bg": "Haze_Mosaic",
+      "frame": "Axis_Pulse"
+    },
+    "Satyr_Monocle": {
+      "slug": "Full_Satyr_Monocle",
+      "bg": "Flare_Flash",
+      "frame": "Onyx_Rim"
+    },
+    "Sleepy_Candle_Blindfold": {
+      "slug": "Full_Sleepy_Candle_Blindfold",
+      "bg": "Rust_Perimeter",
+      "frame": "Vivid_Rim"
+    },
+    "Sleepy_Candle_Cap": {
+      "slug": "Full_Sleepy_Candle_Cap",
+      "bg": "Kinetic_Checker",
+      "frame": "Pixel_Flicker"
+    },
+    "Sleepy_Candle_Elvis": {
+      "slug": "Full_Sleepy_Candle_Elvis",
+      "bg": "Rust_Blend",
+      "frame": "Band_Rim"
+    },
+    "Sleepy_Candle_Hooded": {
+      "slug": "Full_Sleepy_Candle_Hooded",
+      "bg": "Cinder_Swell",
+      "frame": "Core_Rim"
+    },
+    "Sleepy_Candle_Wizard": {
+      "slug": "Full_Sleepy_Candle_Wizard",
+      "bg": "Horizon_Wave",
+      "frame": "Blade_Chroma"
+    },
+    "Sleepy_Candle_Zombie": {
+      "slug": "Full_Sleepy_Candle_Zombie",
+      "bg": "Delta_Flash",
+      "frame": "Neon_Rim"
     }
   },
   "defaultByChar": {
@@ -4581,8 +4641,8 @@
       },
       {
         "slug": "Full_Neko_Hood_Bunny",
-        "bg": "Hue_Pulse",
-        "frame": "Halo_Rim"
+        "bg": "Basalt_Lines",
+        "frame": "Nova_Bolt"
       },
       {
         "slug": "Full_Neko_Hood_Golden_Smile",
@@ -4662,6 +4722,70 @@
         "slug": "Full_Sleepy_Moon_Zombie",
         "bg": "Horizon_Wave",
         "frame": "Vector_Ring"
+      }
+    ],
+    "Satyr": [
+      {
+        "slug": "Full_Satyr_Arabic",
+        "bg": "Rust_Perimeter",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Satyr_Fire",
+        "bg": "Gem_Perimeter",
+        "frame": "Prism_Rim"
+      },
+      {
+        "slug": "Full_Satyr_Golden",
+        "bg": "Kinetic_Checker",
+        "frame": "Edge_Flash"
+      },
+      {
+        "slug": "Full_Satyr_Mime",
+        "bg": "Kelp_Streak",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Satyr_Monk",
+        "bg": "Haze_Mosaic",
+        "frame": "Axis_Pulse"
+      },
+      {
+        "slug": "Full_Satyr_Monocle",
+        "bg": "Flare_Flash",
+        "frame": "Onyx_Rim"
+      }
+    ],
+    "Sleepy_Candle": [
+      {
+        "slug": "Full_Sleepy_Candle_Blindfold",
+        "bg": "Rust_Perimeter",
+        "frame": "Vivid_Rim"
+      },
+      {
+        "slug": "Full_Sleepy_Candle_Cap",
+        "bg": "Kinetic_Checker",
+        "frame": "Pixel_Flicker"
+      },
+      {
+        "slug": "Full_Sleepy_Candle_Elvis",
+        "bg": "Rust_Blend",
+        "frame": "Band_Rim"
+      },
+      {
+        "slug": "Full_Sleepy_Candle_Hooded",
+        "bg": "Cinder_Swell",
+        "frame": "Core_Rim"
+      },
+      {
+        "slug": "Full_Sleepy_Candle_Wizard",
+        "bg": "Horizon_Wave",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Sleepy_Candle_Zombie",
+        "bg": "Delta_Flash",
+        "frame": "Neon_Rim"
       }
     ]
   },

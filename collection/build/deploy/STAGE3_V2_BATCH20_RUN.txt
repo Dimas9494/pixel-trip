@@ -1,0 +1,53 @@
+PIXEL TRIP — Stage 3 V2 batch 20 (PNG → Full_*.gif)
+
+BATCH 20 — 12 Full, 2 S1 линий
+  Satyr          — 6 PNG
+  Sleepy_Candle  — 6 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch20.json --seed 23232
+
+  Или: deploy_stage3_v2_batch20.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch20.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Satyr_Mime.gif
+  Full_Sleepy_Candle_Elvis.gif
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 20)
+  Full_Satyr_Arabic.gif
+  Full_Satyr_Fire.gif
+  Full_Satyr_Golden.gif
+  Full_Satyr_Mime.gif
+  Full_Satyr_Monk.gif
+  Full_Satyr_Monocle.gif
+  Full_Sleepy_Candle_Blindfold.gif
+  Full_Sleepy_Candle_Cap.gif
+  Full_Sleepy_Candle_Elvis.gif
+  Full_Sleepy_Candle_Hooded.gif
+  Full_Sleepy_Candle_Wizard.gif
+  Full_Sleepy_Candle_Zombie.gif

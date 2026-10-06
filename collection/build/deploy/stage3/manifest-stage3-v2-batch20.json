@@ -1,0 +1,94 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-06T19:27:35.001264+00:00",
+  "count": 12,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Satyr_Arabic",
+      "bg": "Rust_Perimeter",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Satyr_Arabic.gif",
+      "stage1_character": "Satyr"
+    },
+    {
+      "slug": "Full_Satyr_Fire",
+      "bg": "Gem_Perimeter",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Satyr_Fire.gif",
+      "stage1_character": "Satyr"
+    },
+    {
+      "slug": "Full_Satyr_Golden",
+      "bg": "Kinetic_Checker",
+      "frame": "Edge_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Satyr_Golden.gif",
+      "stage1_character": "Satyr"
+    },
+    {
+      "slug": "Full_Satyr_Mime",
+      "bg": "Kelp_Streak",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Satyr_Mime.gif",
+      "stage1_character": "Satyr"
+    },
+    {
+      "slug": "Full_Satyr_Monk",
+      "bg": "Haze_Mosaic",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Satyr_Monk.gif",
+      "stage1_character": "Satyr"
+    },
+    {
+      "slug": "Full_Satyr_Monocle",
+      "bg": "Flare_Flash",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Satyr_Monocle.gif",
+      "stage1_character": "Satyr"
+    },
+    {
+      "slug": "Full_Sleepy_Candle_Blindfold",
+      "bg": "Rust_Perimeter",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Candle_Blindfold.gif",
+      "stage1_character": "Sleepy_Candle"
+    },
+    {
+      "slug": "Full_Sleepy_Candle_Cap",
+      "bg": "Kinetic_Checker",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Candle_Cap.gif",
+      "stage1_character": "Sleepy_Candle"
+    },
+    {
+      "slug": "Full_Sleepy_Candle_Elvis",
+      "bg": "Rust_Blend",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Candle_Elvis.gif",
+      "stage1_character": "Sleepy_Candle"
+    },
+    {
+      "slug": "Full_Sleepy_Candle_Hooded",
+      "bg": "Cinder_Swell",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Candle_Hooded.gif",
+      "stage1_character": "Sleepy_Candle"
+    },
+    {
+      "slug": "Full_Sleepy_Candle_Wizard",
+      "bg": "Horizon_Wave",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Candle_Wizard.gif",
+      "stage1_character": "Sleepy_Candle"
+    },
+    {
+      "slug": "Full_Sleepy_Candle_Zombie",
+      "bg": "Delta_Flash",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sleepy_Candle_Zombie.gif",
+      "stage1_character": "Sleepy_Candle"
+    }
+  ]
+}

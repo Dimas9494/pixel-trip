@@ -260,9 +260,17 @@ def merge_stage3_maps(existing: dict, new_maps: dict) -> dict:
         merged = list(pool.get(key) or [])
         seen = {r.get("slug") for r in merged}
         for row in rows:
-            if row.get("slug") not in seen:
-                merged.append(row)
-                seen.add(row.get("slug"))
+            slug = row.get("slug")
+            if not slug:
+                continue
+            if slug in seen:
+                for i, prev in enumerate(merged):
+                    if prev.get("slug") == slug:
+                        merged[i] = row
+                        break
+                continue
+            merged.append(row)
+            seen.add(slug)
         pool[key] = merged
 
     closed = set(existing.get("stage3VoteClosedCharacters") or [])
