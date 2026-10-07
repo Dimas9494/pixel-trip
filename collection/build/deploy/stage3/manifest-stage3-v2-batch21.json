@@ -1,0 +1,108 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-07T17:41:18.689189+00:00",
+  "count": 14,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Gear_Owl_Cyborg_Skull",
+      "bg": "Basalt_Lines",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gear_Owl_Cyborg_Skull.gif",
+      "stage1_character": "Gear_Owl"
+    },
+    {
+      "slug": "Full_Gear_Owl_Earring",
+      "bg": "Vapor_Phase",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gear_Owl_Earring.gif",
+      "stage1_character": "Gear_Owl"
+    },
+    {
+      "slug": "Full_Gear_Owl_Golden",
+      "bg": "Bloom_Wave",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gear_Owl_Golden.gif",
+      "stage1_character": "Gear_Owl"
+    },
+    {
+      "slug": "Full_Gear_Owl_Golden_Age",
+      "bg": "Vapor_Phase",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gear_Owl_Golden_Age.gif",
+      "stage1_character": "Gear_Owl"
+    },
+    {
+      "slug": "Full_Gear_Owl_Lasers",
+      "bg": "Vertical_Drift",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gear_Owl_Lasers.gif",
+      "stage1_character": "Gear_Owl"
+    },
+    {
+      "slug": "Full_Gear_Owl_White",
+      "bg": "Vapor_Phase",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gear_Owl_White.gif",
+      "stage1_character": "Gear_Owl"
+    },
+    {
+      "slug": "Full_Neon_Mohawk_Beard",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Mohawk_Beard.gif",
+      "stage1_character": "Neon_Mohawk"
+    },
+    {
+      "slug": "Full_Neon_Mohawk_Rainbow",
+      "bg": "Lumen_Streak",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Mohawk_Rainbow.gif",
+      "stage1_character": "Neon_Mohawk"
+    },
+    {
+      "slug": "Full_Neon_Mohawk_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Mohawk_Zombie.gif",
+      "stage1_character": "Neon_Mohawk"
+    },
+    {
+      "slug": "Full_Roaring_Sage_Alien",
+      "bg": "Diagonal_Streak",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Roaring_Sage_Alien.gif",
+      "stage1_character": "Roaring_Sage"
+    },
+    {
+      "slug": "Full_Roaring_Sage_Artist",
+      "bg": "Band_Scroll",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Roaring_Sage_Artist.gif",
+      "stage1_character": "Roaring_Sage"
+    },
+    {
+      "slug": "Full_Roaring_Sage_Greek",
+      "bg": "Fog_Blend",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Roaring_Sage_Greek.gif",
+      "stage1_character": "Roaring_Sage"
+    },
+    {
+      "slug": "Full_Roaring_Sage_Street",
+      "bg": "Horizon_Wave",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Roaring_Sage_Street.gif",
+      "stage1_character": "Roaring_Sage"
+    },
+    {
+      "slug": "Full_Roaring_Sage_Wizard",
+      "bg": "Lux_Checker",
+      "frame": "Quad_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Roaring_Sage_Wizard.gif",
+      "stage1_character": "Roaring_Sage"
+    }
+  ]
+}

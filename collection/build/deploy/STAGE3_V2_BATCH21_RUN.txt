@@ -1,0 +1,56 @@
+PIXEL TRIP — Stage 3 V2 batch 21 (PNG → Full_*.gif)
+
+BATCH 21 — 14 Full, 3 S1 линий
+  Gear_Owl      — 6 PNG
+  Neon_Mohawk   — 3 PNG
+  Roaring_Sage  — 5 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch21.json --seed 24242
+
+  Или: deploy_stage3_v2_batch21.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch21.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Gear_Owl_Lasers.gif
+  Full_Roaring_Sage_Greek.gif
+
+FTP (14 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 21)
+  Full_Gear_Owl_Cyborg_Skull.gif
+  Full_Gear_Owl_Earring.gif
+  Full_Gear_Owl_Golden.gif
+  Full_Gear_Owl_Golden_Age.gif
+  Full_Gear_Owl_Lasers.gif
+  Full_Gear_Owl_White.gif
+  Full_Neon_Mohawk_Beard.gif
+  Full_Neon_Mohawk_Rainbow.gif
+  Full_Neon_Mohawk_Zombie.gif
+  Full_Roaring_Sage_Alien.gif
+  Full_Roaring_Sage_Artist.gif
+  Full_Roaring_Sage_Greek.gif
+  Full_Roaring_Sage_Street.gif
+  Full_Roaring_Sage_Wizard.gif
