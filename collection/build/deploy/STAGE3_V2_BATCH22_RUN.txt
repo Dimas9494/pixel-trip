@@ -1,0 +1,53 @@
+PIXEL TRIP — Stage 3 V2 batch 22 (PNG → Full_*.gif)
+
+BATCH 22 — 9 Full, 2 S1 линий (+ пустая папка Kabuki_Face без PNG)
+  Shadow_Ninja   — 3 PNG
+  Spiked_Bulldog — 6 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch22.json --seed 25252
+
+  Или: deploy_stage3_v2_batch22.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch22.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Shadow_Ninja_Oni_Mask.gif
+  Full_Spiked_Bulldog_King.gif
+
+FTP (9 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+ЗАМЕТКА
+  Kabuki_Face/ — 0 PNG; положи арт и перезапусти или сделай batch 22b.
+
+СПИСОК GIF (batch 22)
+  Full_Shadow_Ninja_Devil.gif
+  Full_Shadow_Ninja_Icy.gif
+  Full_Shadow_Ninja_Oni_Mask.gif
+  Full_Spiked_Bulldog_Aviator.gif
+  Full_Spiked_Bulldog_Bat_Mask.gif
+  Full_Spiked_Bulldog_Camo.gif
+  Full_Spiked_Bulldog_King.gif
+  Full_Spiked_Bulldog_Tech.gif
+  Full_Spiked_Bulldog_Tongue_Out.gif

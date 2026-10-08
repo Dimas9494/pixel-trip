@@ -1,0 +1,73 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-08T18:19:06.923504+00:00",
+  "count": 9,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Shadow_Ninja_Devil",
+      "bg": "Tidal_Phase",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Ninja_Devil.gif",
+      "stage1_character": "Shadow_Ninja"
+    },
+    {
+      "slug": "Full_Shadow_Ninja_Icy",
+      "bg": "Stripe_Phase",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Ninja_Icy.gif",
+      "stage1_character": "Shadow_Ninja"
+    },
+    {
+      "slug": "Full_Shadow_Ninja_Oni_Mask",
+      "bg": "Quasar_Perimeter",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Ninja_Oni_Mask.gif",
+      "stage1_character": "Shadow_Ninja"
+    },
+    {
+      "slug": "Full_Spiked_Bulldog_Aviator",
+      "bg": "Band_Scroll",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Spiked_Bulldog_Aviator.gif",
+      "stage1_character": "Spiked_Bulldog"
+    },
+    {
+      "slug": "Full_Spiked_Bulldog_Bat_Mask",
+      "bg": "Lumen_Streak",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Spiked_Bulldog_Bat_Mask.gif",
+      "stage1_character": "Spiked_Bulldog"
+    },
+    {
+      "slug": "Full_Spiked_Bulldog_Camo",
+      "bg": "Chromatic_Swell",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Spiked_Bulldog_Camo.gif",
+      "stage1_character": "Spiked_Bulldog"
+    },
+    {
+      "slug": "Full_Spiked_Bulldog_King",
+      "bg": "Plasma_Perimeter",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Spiked_Bulldog_King.gif",
+      "stage1_character": "Spiked_Bulldog"
+    },
+    {
+      "slug": "Full_Spiked_Bulldog_Tech",
+      "bg": "Diagonal_Streak",
+      "frame": "Glitch_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Spiked_Bulldog_Tech.gif",
+      "stage1_character": "Spiked_Bulldog"
+    },
+    {
+      "slug": "Full_Spiked_Bulldog_Tongue_Out",
+      "bg": "Grove_Mosaic",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Spiked_Bulldog_Tongue_Out.gif",
+      "stage1_character": "Spiked_Bulldog"
+    }
+  ]
+}

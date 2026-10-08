@@ -2284,6 +2284,51 @@
       "slug": "Full_Roaring_Sage_Wizard",
       "bg": "Lux_Checker",
       "frame": "Quad_Flash"
+    },
+    "Shadow_Ninja_Devil": {
+      "slug": "Full_Shadow_Ninja_Devil",
+      "bg": "Tidal_Phase",
+      "frame": "Flow_Rim"
+    },
+    "Shadow_Ninja_Icy": {
+      "slug": "Full_Shadow_Ninja_Icy",
+      "bg": "Stripe_Phase",
+      "frame": "Onyx_Rim"
+    },
+    "Shadow_Ninja_Oni_Mask": {
+      "slug": "Full_Shadow_Ninja_Oni_Mask",
+      "bg": "Quasar_Perimeter",
+      "frame": "Pulse_Ring"
+    },
+    "Spiked_Bulldog_Aviator": {
+      "slug": "Full_Spiked_Bulldog_Aviator",
+      "bg": "Band_Scroll",
+      "frame": "Axis_Rim"
+    },
+    "Spiked_Bulldog_Bat_Mask": {
+      "slug": "Full_Spiked_Bulldog_Bat_Mask",
+      "bg": "Lumen_Streak",
+      "frame": "Jolt_Rim"
+    },
+    "Spiked_Bulldog_Camo": {
+      "slug": "Full_Spiked_Bulldog_Camo",
+      "bg": "Chromatic_Swell",
+      "frame": "Static_Rim"
+    },
+    "Spiked_Bulldog_King": {
+      "slug": "Full_Spiked_Bulldog_King",
+      "bg": "Plasma_Perimeter",
+      "frame": "Quick_Flicker"
+    },
+    "Spiked_Bulldog_Tech": {
+      "slug": "Full_Spiked_Bulldog_Tech",
+      "bg": "Diagonal_Streak",
+      "frame": "Glitch_Rim"
+    },
+    "Spiked_Bulldog_Tongue_Out": {
+      "slug": "Full_Spiked_Bulldog_Tongue_Out",
+      "bg": "Grove_Mosaic",
+      "frame": "Grid_Rim"
     }
   },
   "defaultByChar": {
@@ -4932,6 +4977,55 @@
         "slug": "Full_Roaring_Sage_Wizard",
         "bg": "Lux_Checker",
         "frame": "Quad_Flash"
+      }
+    ],
+    "Shadow_Ninja": [
+      {
+        "slug": "Full_Shadow_Ninja_Devil",
+        "bg": "Tidal_Phase",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Shadow_Ninja_Icy",
+        "bg": "Stripe_Phase",
+        "frame": "Onyx_Rim"
+      },
+      {
+        "slug": "Full_Shadow_Ninja_Oni_Mask",
+        "bg": "Quasar_Perimeter",
+        "frame": "Pulse_Ring"
+      }
+    ],
+    "Spiked_Bulldog": [
+      {
+        "slug": "Full_Spiked_Bulldog_Aviator",
+        "bg": "Band_Scroll",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Spiked_Bulldog_Bat_Mask",
+        "bg": "Lumen_Streak",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Spiked_Bulldog_Camo",
+        "bg": "Chromatic_Swell",
+        "frame": "Static_Rim"
+      },
+      {
+        "slug": "Full_Spiked_Bulldog_King",
+        "bg": "Plasma_Perimeter",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Spiked_Bulldog_Tech",
+        "bg": "Diagonal_Streak",
+        "frame": "Glitch_Rim"
+      },
+      {
+        "slug": "Full_Spiked_Bulldog_Tongue_Out",
+        "bg": "Grove_Mosaic",
+        "frame": "Grid_Rim"
       }
     ]
   },
