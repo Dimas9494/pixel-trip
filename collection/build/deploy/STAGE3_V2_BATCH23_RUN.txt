@@ -1,0 +1,62 @@
+PIXEL TRIP — Stage 3 V2 batch 23 (PNG → Full_*.gif)
+
+BATCH 23 — 17 Full, 3 S1 линий
+  Kabuki_Face            — 7 PNG
+  Long_Eared_Aristocrat  — 6 PNG
+  Weary_Wizard           — 4 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch23.json --seed 26262
+
+  Или: deploy_stage3_v2_batch23.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch23.json
+  website/src/burn/stage3-variants.json
+
+ПРОВЕРКА
+  Full_Kabuki_Face_Half_Mask.gif
+  Full_Long_Eared_Aristocrat_Unicorn.gif
+
+FTP (17 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json
+
+GIT → push
+
+REMIX — не нужен.
+
+ЗАМЕТКА
+  Kabuki: Full_Kabuki_Face_Backet_Hat.png → slug Full_Kabuki_Face_Backet_Hat (опечатка Backet).
+
+СПИСОК GIF (batch 23)
+  Full_Kabuki_Face_Backet_Hat.gif
+  Full_Kabuki_Face_Frog_Hat.gif
+  Full_Kabuki_Face_Half_Mask.gif
+  Full_Kabuki_Face_Kitty.gif
+  Full_Kabuki_Face_Mask.gif
+  Full_Kabuki_Face_Surprised.gif
+  Full_Kabuki_Face_White.gif
+  Full_Long_Eared_Aristocrat_Fire.gif
+  Full_Long_Eared_Aristocrat_Green_Hair.gif
+  Full_Long_Eared_Aristocrat_Pirate.gif
+  Full_Long_Eared_Aristocrat_Skull.gif
+  Full_Long_Eared_Aristocrat_Unicorn.gif
+  Full_Long_Eared_Aristocrat_Zombie.gif
+  Full_Weary_Wizard_King.gif
+  Full_Weary_Wizard_Mushroom_Hat.gif
+  Full_Weary_Wizard_Owl.gif
+  Full_Weary_Wizard_Skull.gif

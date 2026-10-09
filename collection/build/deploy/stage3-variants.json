@@ -150,11 +150,6 @@
       "bg": "Kinetic_Checker",
       "frame": "Flux_Rim"
     },
-    "Big_Head_Alien_Cyborg": {
-      "slug": "Full_Big_Head_Alien_Cyborg",
-      "bg": "Grove_Mosaic",
-      "frame": "Onyx_Rim"
-    },
     "Big_Old_Satoshi_Doctor": {
       "slug": "Full_Big_Old_Satoshi_Doctor",
       "bg": "Cinder_Swell",
@@ -2329,14 +2324,99 @@
       "slug": "Full_Spiked_Bulldog_Tongue_Out",
       "bg": "Grove_Mosaic",
       "frame": "Grid_Rim"
-    }
-  },
-  "defaultByChar": {
-    "Big_Head_Alien": {
-      "slug": "Full_Big_Head_Alien_Cyborg",
+    },
+    "Bug_Eyed_Alien_Cyborg": {
+      "slug": "Full_Bug_Eyed_Alien_Cyborg",
       "bg": "Grove_Mosaic",
       "frame": "Onyx_Rim"
     },
+    "Kabuki_Face_Backet_Hat": {
+      "slug": "Full_Kabuki_Face_Backet_Hat",
+      "bg": "Kelp_Streak",
+      "frame": "Bright_Rim"
+    },
+    "Kabuki_Face_Frog_Hat": {
+      "slug": "Full_Kabuki_Face_Frog_Hat",
+      "bg": "Mist_Drip",
+      "frame": "Grid_Rim"
+    },
+    "Kabuki_Face_Half_Mask": {
+      "slug": "Full_Kabuki_Face_Half_Mask",
+      "bg": "Jade_Streak",
+      "frame": "Pulse_Ring"
+    },
+    "Kabuki_Face_Kitty": {
+      "slug": "Full_Kabuki_Face_Kitty",
+      "bg": "Lattice_Lines",
+      "frame": "Flow_Rim"
+    },
+    "Kabuki_Face_Mask": {
+      "slug": "Full_Kabuki_Face_Mask",
+      "bg": "Fog_Blend",
+      "frame": "Neon_Rim"
+    },
+    "Kabuki_Face_Surprised": {
+      "slug": "Full_Kabuki_Face_Surprised",
+      "bg": "Grid_Checker",
+      "frame": "Edge_Chroma"
+    },
+    "Kabuki_Face_White": {
+      "slug": "Full_Kabuki_Face_White",
+      "bg": "Gem_Perimeter",
+      "frame": "Prism_Rim"
+    },
+    "Long_Eared_Aristocrat_Fire": {
+      "slug": "Full_Long_Eared_Aristocrat_Fire",
+      "bg": "Grid_Checker",
+      "frame": "Neon_Rim"
+    },
+    "Long_Eared_Aristocrat_Green_Hair": {
+      "slug": "Full_Long_Eared_Aristocrat_Green_Hair",
+      "bg": "Margin_Drip",
+      "frame": "Rune_Flicker"
+    },
+    "Long_Eared_Aristocrat_Pirate": {
+      "slug": "Full_Long_Eared_Aristocrat_Pirate",
+      "bg": "Bloom_Wave",
+      "frame": "Edge_Chroma"
+    },
+    "Long_Eared_Aristocrat_Skull": {
+      "slug": "Full_Long_Eared_Aristocrat_Skull",
+      "bg": "Chromatic_Swell",
+      "frame": "Wave_Rim"
+    },
+    "Long_Eared_Aristocrat_Unicorn": {
+      "slug": "Full_Long_Eared_Aristocrat_Unicorn",
+      "bg": "Horizon_Wave",
+      "frame": "Nova_Rim"
+    },
+    "Long_Eared_Aristocrat_Zombie": {
+      "slug": "Full_Long_Eared_Aristocrat_Zombie",
+      "bg": "Hue_Pulse",
+      "frame": "Vivid_Rim"
+    },
+    "Weary_Wizard_King": {
+      "slug": "Full_Weary_Wizard_King",
+      "bg": "Vapor_Phase",
+      "frame": "Grid_Rim"
+    },
+    "Weary_Wizard_Mushroom_Hat": {
+      "slug": "Full_Weary_Wizard_Mushroom_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Wave_Rim"
+    },
+    "Weary_Wizard_Owl": {
+      "slug": "Full_Weary_Wizard_Owl",
+      "bg": "Quasar_Perimeter",
+      "frame": "Arc_Chroma"
+    },
+    "Weary_Wizard_Skull": {
+      "slug": "Full_Weary_Wizard_Skull",
+      "bg": "Lux_Checker",
+      "frame": "Xeno_Rim"
+    }
+  },
+  "defaultByChar": {
     "Blue_Oni": {
       "slug": "Full_Blue_Oni",
       "bg": "Kelp_Streak",
@@ -2703,13 +2783,6 @@
         "slug": "Full_Pug_Zombie",
         "bg": "Tidal_Phase",
         "frame": "Corner_Bolt"
-      }
-    ],
-    "Big_Head_Alien": [
-      {
-        "slug": "Full_Big_Head_Alien_Cyborg",
-        "bg": "Grove_Mosaic",
-        "frame": "Onyx_Rim"
       }
     ],
     "Big_Old_Satoshi": [
@@ -5027,10 +5100,109 @@
         "bg": "Grove_Mosaic",
         "frame": "Grid_Rim"
       }
+    ],
+    "Bug_Eyed_Alien": [
+      {
+        "slug": "Full_Bug_Eyed_Alien_Cyborg",
+        "bg": "Grove_Mosaic",
+        "frame": "Onyx_Rim"
+      }
+    ],
+    "Kabuki_Face": [
+      {
+        "slug": "Full_Kabuki_Face_Backet_Hat",
+        "bg": "Kelp_Streak",
+        "frame": "Bright_Rim"
+      },
+      {
+        "slug": "Full_Kabuki_Face_Frog_Hat",
+        "bg": "Mist_Drip",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Kabuki_Face_Half_Mask",
+        "bg": "Jade_Streak",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Kabuki_Face_Kitty",
+        "bg": "Lattice_Lines",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Kabuki_Face_Mask",
+        "bg": "Fog_Blend",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Kabuki_Face_Surprised",
+        "bg": "Grid_Checker",
+        "frame": "Edge_Chroma"
+      },
+      {
+        "slug": "Full_Kabuki_Face_White",
+        "bg": "Gem_Perimeter",
+        "frame": "Prism_Rim"
+      }
+    ],
+    "Long_Eared_Aristocrat": [
+      {
+        "slug": "Full_Long_Eared_Aristocrat_Fire",
+        "bg": "Grid_Checker",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Long_Eared_Aristocrat_Green_Hair",
+        "bg": "Margin_Drip",
+        "frame": "Rune_Flicker"
+      },
+      {
+        "slug": "Full_Long_Eared_Aristocrat_Pirate",
+        "bg": "Bloom_Wave",
+        "frame": "Edge_Chroma"
+      },
+      {
+        "slug": "Full_Long_Eared_Aristocrat_Skull",
+        "bg": "Chromatic_Swell",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Long_Eared_Aristocrat_Unicorn",
+        "bg": "Horizon_Wave",
+        "frame": "Nova_Rim"
+      },
+      {
+        "slug": "Full_Long_Eared_Aristocrat_Zombie",
+        "bg": "Hue_Pulse",
+        "frame": "Vivid_Rim"
+      }
+    ],
+    "Weary_Wizard": [
+      {
+        "slug": "Full_Weary_Wizard_King",
+        "bg": "Vapor_Phase",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Weary_Wizard_Mushroom_Hat",
+        "bg": "Lattice_Lines",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Weary_Wizard_Owl",
+        "bg": "Quasar_Perimeter",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Weary_Wizard_Skull",
+        "bg": "Lux_Checker",
+        "frame": "Xeno_Rim"
+      }
     ]
   },
   "stage3VoteClosedCharacters": [
     "Bandana_Rebel",
+    "Bug_Eyed_Alien",
     "Cat_Headphones",
     "Cyber_Duck",
     "Shadow_Eyes",

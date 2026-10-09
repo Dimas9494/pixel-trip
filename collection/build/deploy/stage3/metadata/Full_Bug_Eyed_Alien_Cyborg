@@ -1,0 +1,26 @@
+{
+  "name": "PIXEL TRIP — Full Bug Eyed Alien Cyborg",
+  "description": "🌀 PIXEL TRIP — 4444 animated pixel portraits on a three-layer journey: living backgrounds, unique characters, and glitch frames that loop forever. Every trip is one of a kind. A fully ascended tripper. Reached Stage 3 through the burn-to-evolve journey.",
+  "image": "https://pixeltripnft.website/stage3/images/Full_Bug_Eyed_Alien_Cyborg.gif",
+  "animation_url": "https://pixeltripnft.website/stage3/images/Full_Bug_Eyed_Alien_Cyborg.gif",
+  "external_url": "https://pixeltripnft.website",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Grove_Mosaic"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Full_Bug_Eyed_Alien_Cyborg"
+    },
+    {
+      "trait_type": "Frame",
+      "value": "Onyx_Rim"
+    },
+    {
+      "trait_type": "Stage",
+      "value": "3"
+    }
+  ],
+  "compiler": "Pixel Collection Engine"
+}

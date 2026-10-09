@@ -1,0 +1,129 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-09T17:24:43.245165+00:00",
+  "count": 17,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Kabuki_Face_Backet_Hat",
+      "bg": "Kelp_Streak",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Kabuki_Face_Backet_Hat.gif",
+      "stage1_character": "Kabuki_Face"
+    },
+    {
+      "slug": "Full_Kabuki_Face_Frog_Hat",
+      "bg": "Mist_Drip",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Kabuki_Face_Frog_Hat.gif",
+      "stage1_character": "Kabuki_Face"
+    },
+    {
+      "slug": "Full_Kabuki_Face_Half_Mask",
+      "bg": "Jade_Streak",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Kabuki_Face_Half_Mask.gif",
+      "stage1_character": "Kabuki_Face"
+    },
+    {
+      "slug": "Full_Kabuki_Face_Kitty",
+      "bg": "Lattice_Lines",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Kabuki_Face_Kitty.gif",
+      "stage1_character": "Kabuki_Face"
+    },
+    {
+      "slug": "Full_Kabuki_Face_Mask",
+      "bg": "Fog_Blend",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Kabuki_Face_Mask.gif",
+      "stage1_character": "Kabuki_Face"
+    },
+    {
+      "slug": "Full_Kabuki_Face_Surprised",
+      "bg": "Grid_Checker",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Kabuki_Face_Surprised.gif",
+      "stage1_character": "Kabuki_Face"
+    },
+    {
+      "slug": "Full_Kabuki_Face_White",
+      "bg": "Gem_Perimeter",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Kabuki_Face_White.gif",
+      "stage1_character": "Kabuki_Face"
+    },
+    {
+      "slug": "Full_Long_Eared_Aristocrat_Fire",
+      "bg": "Grid_Checker",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Long_Eared_Aristocrat_Fire.gif",
+      "stage1_character": "Long_Eared_Aristocrat"
+    },
+    {
+      "slug": "Full_Long_Eared_Aristocrat_Green_Hair",
+      "bg": "Margin_Drip",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Long_Eared_Aristocrat_Green_Hair.gif",
+      "stage1_character": "Long_Eared_Aristocrat"
+    },
+    {
+      "slug": "Full_Long_Eared_Aristocrat_Pirate",
+      "bg": "Bloom_Wave",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Long_Eared_Aristocrat_Pirate.gif",
+      "stage1_character": "Long_Eared_Aristocrat"
+    },
+    {
+      "slug": "Full_Long_Eared_Aristocrat_Skull",
+      "bg": "Chromatic_Swell",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Long_Eared_Aristocrat_Skull.gif",
+      "stage1_character": "Long_Eared_Aristocrat"
+    },
+    {
+      "slug": "Full_Long_Eared_Aristocrat_Unicorn",
+      "bg": "Horizon_Wave",
+      "frame": "Nova_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Long_Eared_Aristocrat_Unicorn.gif",
+      "stage1_character": "Long_Eared_Aristocrat"
+    },
+    {
+      "slug": "Full_Long_Eared_Aristocrat_Zombie",
+      "bg": "Hue_Pulse",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Long_Eared_Aristocrat_Zombie.gif",
+      "stage1_character": "Long_Eared_Aristocrat"
+    },
+    {
+      "slug": "Full_Weary_Wizard_King",
+      "bg": "Vapor_Phase",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Weary_Wizard_King.gif",
+      "stage1_character": "Weary_Wizard"
+    },
+    {
+      "slug": "Full_Weary_Wizard_Mushroom_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Weary_Wizard_Mushroom_Hat.gif",
+      "stage1_character": "Weary_Wizard"
+    },
+    {
+      "slug": "Full_Weary_Wizard_Owl",
+      "bg": "Quasar_Perimeter",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Weary_Wizard_Owl.gif",
+      "stage1_character": "Weary_Wizard"
+    },
+    {
+      "slug": "Full_Weary_Wizard_Skull",
+      "bg": "Lux_Checker",
+      "frame": "Xeno_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Weary_Wizard_Skull.gif",
+      "stage1_character": "Weary_Wizard"
+    }
+  ]
+}
