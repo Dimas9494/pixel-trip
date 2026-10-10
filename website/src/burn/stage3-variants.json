@@ -2414,6 +2414,41 @@
       "slug": "Full_Weary_Wizard_Skull",
       "bg": "Lux_Checker",
       "frame": "Xeno_Rim"
+    },
+    "Mint_Cyclops_Cyborg": {
+      "slug": "Full_Mint_Cyclops_Cyborg",
+      "bg": "Delta_Flash",
+      "frame": "Bolt_Chroma"
+    },
+    "Mint_Cyclops_Devil": {
+      "slug": "Full_Mint_Cyclops_Devil",
+      "bg": "Lux_Checker",
+      "frame": "Neon_Rim"
+    },
+    "Mint_Cyclops_Farmer": {
+      "slug": "Full_Mint_Cyclops_Farmer",
+      "bg": "Margin_Flash",
+      "frame": "Nova_Bolt"
+    },
+    "Mint_Cyclops_Zombie": {
+      "slug": "Full_Mint_Cyclops_Zombie",
+      "bg": "Mist_Drip",
+      "frame": "Corner_Bolt"
+    },
+    "Orange_Hound_Zombie": {
+      "slug": "Full_Orange_Hound_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Rune_Flicker"
+    },
+    "Split_Mask_Hooded": {
+      "slug": "Full_Split_Mask_Hooded",
+      "bg": "Xenon_Wave",
+      "frame": "Flux_Rim"
+    },
+    "Split_Mask_Smoking": {
+      "slug": "Full_Split_Mask_Smoking",
+      "bg": "Cinder_Swell",
+      "frame": "Radiant_Rim"
     }
   },
   "defaultByChar": {
@@ -2486,6 +2521,11 @@
       "slug": "Full_Crying_Demon_Zombie",
       "bg": "Quasar_Perimeter",
       "frame": "Blade_Chroma"
+    },
+    "Orange_Hound": {
+      "slug": "Full_Orange_Hound_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Rune_Flicker"
     }
   },
   "poolByChar": {
@@ -5197,6 +5237,47 @@
         "slug": "Full_Weary_Wizard_Skull",
         "bg": "Lux_Checker",
         "frame": "Xeno_Rim"
+      }
+    ],
+    "Mint_Cyclops": [
+      {
+        "slug": "Full_Mint_Cyclops_Cyborg",
+        "bg": "Delta_Flash",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Mint_Cyclops_Devil",
+        "bg": "Lux_Checker",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Mint_Cyclops_Farmer",
+        "bg": "Margin_Flash",
+        "frame": "Nova_Bolt"
+      },
+      {
+        "slug": "Full_Mint_Cyclops_Zombie",
+        "bg": "Mist_Drip",
+        "frame": "Corner_Bolt"
+      }
+    ],
+    "Orange_Hound": [
+      {
+        "slug": "Full_Orange_Hound_Zombie",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Rune_Flicker"
+      }
+    ],
+    "Split_Mask": [
+      {
+        "slug": "Full_Split_Mask_Hooded",
+        "bg": "Xenon_Wave",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_Split_Mask_Smoking",
+        "bg": "Cinder_Swell",
+        "frame": "Radiant_Rim"
       }
     ]
   },

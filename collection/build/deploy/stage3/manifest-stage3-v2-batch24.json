@@ -1,0 +1,59 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-10T15:55:27.318521+00:00",
+  "count": 7,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Mint_Cyclops_Cyborg",
+      "bg": "Delta_Flash",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mint_Cyclops_Cyborg.gif",
+      "stage1_character": "Mint_Cyclops"
+    },
+    {
+      "slug": "Full_Mint_Cyclops_Devil",
+      "bg": "Lux_Checker",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mint_Cyclops_Devil.gif",
+      "stage1_character": "Mint_Cyclops"
+    },
+    {
+      "slug": "Full_Mint_Cyclops_Farmer",
+      "bg": "Margin_Flash",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mint_Cyclops_Farmer.gif",
+      "stage1_character": "Mint_Cyclops"
+    },
+    {
+      "slug": "Full_Mint_Cyclops_Zombie",
+      "bg": "Mist_Drip",
+      "frame": "Corner_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mint_Cyclops_Zombie.gif",
+      "stage1_character": "Mint_Cyclops"
+    },
+    {
+      "slug": "Full_Orange_Hound_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Orange_Hound_Zombie.gif",
+      "stage1_character": "Orange_Hound"
+    },
+    {
+      "slug": "Full_Split_Mask_Hooded",
+      "bg": "Xenon_Wave",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Split_Mask_Hooded.gif",
+      "stage1_character": "Split_Mask"
+    },
+    {
+      "slug": "Full_Split_Mask_Smoking",
+      "bg": "Cinder_Swell",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Split_Mask_Smoking.gif",
+      "stage1_character": "Split_Mask"
+    }
+  ]
+}
