@@ -2325,11 +2325,6 @@
       "bg": "Grove_Mosaic",
       "frame": "Grid_Rim"
     },
-    "Bug_Eyed_Alien_Cyborg": {
-      "slug": "Full_Bug_Eyed_Alien_Cyborg",
-      "bg": "Grove_Mosaic",
-      "frame": "Onyx_Rim"
-    },
     "Kabuki_Face_Backet_Hat": {
       "slug": "Full_Kabuki_Face_Backet_Hat",
       "bg": "Kelp_Streak",
@@ -2449,6 +2444,11 @@
       "slug": "Full_Split_Mask_Smoking",
       "bg": "Cinder_Swell",
       "frame": "Radiant_Rim"
+    },
+    "Big_Head_Alien_Cyborg": {
+      "slug": "Full_Big_Head_Alien_Cyborg",
+      "bg": "Grove_Mosaic",
+      "frame": "Onyx_Rim"
     }
   },
   "defaultByChar": {
@@ -2526,6 +2526,11 @@
       "slug": "Full_Orange_Hound_Zombie",
       "bg": "Ultraviolet_Phase",
       "frame": "Rune_Flicker"
+    },
+    "Big_Head_Alien": {
+      "slug": "Full_Big_Head_Alien_Cyborg",
+      "bg": "Grove_Mosaic",
+      "frame": "Onyx_Rim"
     }
   },
   "poolByChar": {
@@ -5141,13 +5146,6 @@
         "frame": "Grid_Rim"
       }
     ],
-    "Bug_Eyed_Alien": [
-      {
-        "slug": "Full_Bug_Eyed_Alien_Cyborg",
-        "bg": "Grove_Mosaic",
-        "frame": "Onyx_Rim"
-      }
-    ],
     "Kabuki_Face": [
       {
         "slug": "Full_Kabuki_Face_Backet_Hat",
@@ -5279,11 +5277,17 @@
         "bg": "Cinder_Swell",
         "frame": "Radiant_Rim"
       }
+    ],
+    "Big_Head_Alien": [
+      {
+        "slug": "Full_Big_Head_Alien_Cyborg",
+        "bg": "Grove_Mosaic",
+        "frame": "Onyx_Rim"
+      }
     ]
   },
   "stage3VoteClosedCharacters": [
     "Bandana_Rebel",
-    "Bug_Eyed_Alien",
     "Cat_Headphones",
     "Cyber_Duck",
     "Shadow_Eyes",
