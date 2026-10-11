@@ -1,0 +1,94 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-11T18:32:03.442799+00:00",
+  "count": 12,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Blue_Oni_Japanese",
+      "bg": "Fog_Blend",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Blue_Oni_Japanese.gif",
+      "stage1_character": "Blue_Oni"
+    },
+    {
+      "slug": "Full_Fin_Merman_Cyborg",
+      "bg": "Rust_Blend",
+      "frame": "Kinetic_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fin_Merman_Cyborg.gif",
+      "stage1_character": "Fin_Merman"
+    },
+    {
+      "slug": "Full_Fin_Merman_Skull",
+      "bg": "Strip_Grid",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fin_Merman_Skull.gif",
+      "stage1_character": "Fin_Merman"
+    },
+    {
+      "slug": "Full_Fin_Merman_Third_Eye",
+      "bg": "Lumen_Streak",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fin_Merman_Third_Eye.gif",
+      "stage1_character": "Fin_Merman"
+    },
+    {
+      "slug": "Full_Mushroom_Dude_3D_Glasses",
+      "bg": "Ember_Flash",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mushroom_Dude_3D_Glasses.gif",
+      "stage1_character": "Mushroom_Dude"
+    },
+    {
+      "slug": "Full_Mushroom_Dude_Dark",
+      "bg": "Brick_Mosaic",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mushroom_Dude_Dark.gif",
+      "stage1_character": "Mushroom_Dude"
+    },
+    {
+      "slug": "Full_Mushroom_Dude_Gas_Mask",
+      "bg": "Rust_Perimeter",
+      "frame": "Turbo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mushroom_Dude_Gas_Mask.gif",
+      "stage1_character": "Mushroom_Dude"
+    },
+    {
+      "slug": "Full_Mushroom_Dude_Pipe",
+      "bg": "Hue_Pulse",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mushroom_Dude_Pipe.gif",
+      "stage1_character": "Mushroom_Dude"
+    },
+    {
+      "slug": "Full_Mushroom_Dude_Zomb",
+      "bg": "Delta_Flash",
+      "frame": "Unit_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mushroom_Dude_Zomb.gif",
+      "stage1_character": "Mushroom_Dude"
+    },
+    {
+      "slug": "Full_Pharaoh_Cat",
+      "bg": "Horizon_Wave",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pharaoh_Cat.gif",
+      "stage1_character": "Pharaoh"
+    },
+    {
+      "slug": "Full_Pharaoh_Octopus",
+      "bg": "Grove_Mosaic",
+      "frame": "Jet_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pharaoh_Octopus.gif",
+      "stage1_character": "Pharaoh"
+    },
+    {
+      "slug": "Full_Pharaoh_Skull",
+      "bg": "Lux_Checker",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pharaoh_Skull.gif",
+      "stage1_character": "Pharaoh"
+    }
+  ]
+}

@@ -2449,6 +2449,66 @@
       "slug": "Full_Big_Head_Alien_Cyborg",
       "bg": "Grove_Mosaic",
       "frame": "Onyx_Rim"
+    },
+    "Blue_Oni_Japanese": {
+      "slug": "Full_Blue_Oni_Japanese",
+      "bg": "Fog_Blend",
+      "frame": "Volt_Ring"
+    },
+    "Fin_Merman_Cyborg": {
+      "slug": "Full_Fin_Merman_Cyborg",
+      "bg": "Rust_Blend",
+      "frame": "Kinetic_Rim"
+    },
+    "Fin_Merman_Skull": {
+      "slug": "Full_Fin_Merman_Skull",
+      "bg": "Strip_Grid",
+      "frame": "Blade_Rim"
+    },
+    "Fin_Merman_Third_Eye": {
+      "slug": "Full_Fin_Merman_Third_Eye",
+      "bg": "Lumen_Streak",
+      "frame": "Triple_Blink"
+    },
+    "Mushroom_Dude_3D_Glasses": {
+      "slug": "Full_Mushroom_Dude_3D_Glasses",
+      "bg": "Ember_Flash",
+      "frame": "Neon_Rim"
+    },
+    "Mushroom_Dude_Dark": {
+      "slug": "Full_Mushroom_Dude_Dark",
+      "bg": "Brick_Mosaic",
+      "frame": "Vivid_Rim"
+    },
+    "Mushroom_Dude_Gas_Mask": {
+      "slug": "Full_Mushroom_Dude_Gas_Mask",
+      "bg": "Rust_Perimeter",
+      "frame": "Turbo_Rim"
+    },
+    "Mushroom_Dude_Pipe": {
+      "slug": "Full_Mushroom_Dude_Pipe",
+      "bg": "Hue_Pulse",
+      "frame": "Nova_Bolt"
+    },
+    "Mushroom_Dude_Zomb": {
+      "slug": "Full_Mushroom_Dude_Zomb",
+      "bg": "Delta_Flash",
+      "frame": "Unit_Ring"
+    },
+    "Pharaoh_Cat": {
+      "slug": "Full_Pharaoh_Cat",
+      "bg": "Horizon_Wave",
+      "frame": "Bolt_Chroma"
+    },
+    "Pharaoh_Octopus": {
+      "slug": "Full_Pharaoh_Octopus",
+      "bg": "Grove_Mosaic",
+      "frame": "Jet_Rim"
+    },
+    "Pharaoh_Skull": {
+      "slug": "Full_Pharaoh_Skull",
+      "bg": "Lux_Checker",
+      "frame": "Grid_Rim"
     }
   },
   "defaultByChar": {
@@ -2977,6 +3037,11 @@
         "slug": "Full_Blue_Oni",
         "bg": "Kelp_Streak",
         "frame": "Glitch_Rim"
+      },
+      {
+        "slug": "Full_Blue_Oni_Japanese",
+        "bg": "Fog_Blend",
+        "frame": "Volt_Ring"
       }
     ],
     "Blue_Skull": [
@@ -5283,6 +5348,67 @@
         "slug": "Full_Big_Head_Alien_Cyborg",
         "bg": "Grove_Mosaic",
         "frame": "Onyx_Rim"
+      }
+    ],
+    "Fin_Merman": [
+      {
+        "slug": "Full_Fin_Merman_Cyborg",
+        "bg": "Rust_Blend",
+        "frame": "Kinetic_Rim"
+      },
+      {
+        "slug": "Full_Fin_Merman_Skull",
+        "bg": "Strip_Grid",
+        "frame": "Blade_Rim"
+      },
+      {
+        "slug": "Full_Fin_Merman_Third_Eye",
+        "bg": "Lumen_Streak",
+        "frame": "Triple_Blink"
+      }
+    ],
+    "Mushroom_Dude": [
+      {
+        "slug": "Full_Mushroom_Dude_3D_Glasses",
+        "bg": "Ember_Flash",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Mushroom_Dude_Dark",
+        "bg": "Brick_Mosaic",
+        "frame": "Vivid_Rim"
+      },
+      {
+        "slug": "Full_Mushroom_Dude_Gas_Mask",
+        "bg": "Rust_Perimeter",
+        "frame": "Turbo_Rim"
+      },
+      {
+        "slug": "Full_Mushroom_Dude_Pipe",
+        "bg": "Hue_Pulse",
+        "frame": "Nova_Bolt"
+      },
+      {
+        "slug": "Full_Mushroom_Dude_Zomb",
+        "bg": "Delta_Flash",
+        "frame": "Unit_Ring"
+      }
+    ],
+    "Pharaoh": [
+      {
+        "slug": "Full_Pharaoh_Cat",
+        "bg": "Horizon_Wave",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Pharaoh_Octopus",
+        "bg": "Grove_Mosaic",
+        "frame": "Jet_Rim"
+      },
+      {
+        "slug": "Full_Pharaoh_Skull",
+        "bg": "Lux_Checker",
+        "frame": "Grid_Rim"
       }
     ]
   },

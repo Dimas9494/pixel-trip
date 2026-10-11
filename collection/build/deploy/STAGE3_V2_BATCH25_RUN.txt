@@ -1,0 +1,51 @@
+PIXEL TRIP — Stage 3 V2 batch 25 (PNG → Full_*.gif)
+
+BATCH 25 — 12 Full, 4 S1 линий
+  Blue_Oni        — 1 PNG
+  Fin_Merman      — 3 PNG
+  Mushroom_Dude   — 5 PNG
+  Pharaoh         — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch25.json --seed 28282
+
+  Или: deploy_stage3_v2_batch25.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch25.json
+  website/src/burn/stage3-variants.json
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify (bundled JSON)
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 25)
+  Full_Blue_Oni_Japanese.gif
+  Full_Fin_Merman_Cyborg.gif
+  Full_Fin_Merman_Skull.gif
+  Full_Fin_Merman_Third_Eye.gif
+  Full_Mushroom_Dude_3D_Glasses.gif
+  Full_Mushroom_Dude_Dark.gif
+  Full_Mushroom_Dude_Gas_Mask.gif
+  Full_Mushroom_Dude_Pipe.gif
+  Full_Mushroom_Dude_Zomb.gif
+  Full_Pharaoh_Cat.gif
+  Full_Pharaoh_Octopus.gif
+  Full_Pharaoh_Skull.gif
