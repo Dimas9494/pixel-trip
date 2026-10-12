@@ -2509,6 +2509,81 @@
       "slug": "Full_Pharaoh_Skull",
       "bg": "Lux_Checker",
       "frame": "Grid_Rim"
+    },
+    "Prism_Statue_Brain": {
+      "slug": "Full_Prism_Statue_Brain",
+      "bg": "Grid_Checker",
+      "frame": "Hyper_Rim"
+    },
+    "Prism_Statue_Frog_Hat": {
+      "slug": "Full_Prism_Statue_Frog_Hat",
+      "bg": "Margin_Drip",
+      "frame": "Grid_Rim"
+    },
+    "Prism_Statue_Gas_Mask": {
+      "slug": "Full_Prism_Statue_Gas_Mask",
+      "bg": "Strip_Grid",
+      "frame": "Xeno_Rim"
+    },
+    "Prism_Statue_King": {
+      "slug": "Full_Prism_Statue_King",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Omega_Rim"
+    },
+    "Prism_Statue_Pop_Art": {
+      "slug": "Full_Prism_Statue_Pop_Art",
+      "bg": "Vapor_Phase",
+      "frame": "Omega_Rim"
+    },
+    "Prism_Statue_Sunny": {
+      "slug": "Full_Prism_Statue_Sunny",
+      "bg": "Margin_Flash",
+      "frame": "Volt_Ring"
+    },
+    "Rainbow_Elf_Bat_Crown": {
+      "slug": "Full_Rainbow_Elf_Bat_Crown",
+      "bg": "Gem_Perimeter",
+      "frame": "Triple_Blink"
+    },
+    "Rainbow_Elf_Black_Hat": {
+      "slug": "Full_Rainbow_Elf_Black_Hat",
+      "bg": "Gem_Perimeter",
+      "frame": "Triple_Blink"
+    },
+    "Rainbow_Elf_Colorfull_Cap": {
+      "slug": "Full_Rainbow_Elf_Colorfull_Cap",
+      "bg": "Rust_Blend",
+      "frame": "Byte_Pulse"
+    },
+    "Rainbow_Elf_Golden": {
+      "slug": "Full_Rainbow_Elf_Golden",
+      "bg": "Plasma_Perimeter",
+      "frame": "Rim_Pulse"
+    },
+    "Rainbow_Elf_Japanese_Mask": {
+      "slug": "Full_Rainbow_Elf_Japanese_Mask",
+      "bg": "Hue_Pulse",
+      "frame": "Radiant_Rim"
+    },
+    "Rainbow_Elf_Smile": {
+      "slug": "Full_Rainbow_Elf_Smile",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Mono_Rim"
+    },
+    "Rainbow_Elf_Turban": {
+      "slug": "Full_Rainbow_Elf_Turban",
+      "bg": "Kelp_Streak",
+      "frame": "Lumen_Flicker"
+    },
+    "Viking_Banana_Party_Hat": {
+      "slug": "Full_Viking_Banana_Party_Hat",
+      "bg": "Diagonal_Streak",
+      "frame": "Triple_Blink"
+    },
+    "Viking_Banana_Zombie": {
+      "slug": "Full_Viking_Banana_Zombie",
+      "bg": "Chromatic_Swell",
+      "frame": "Split_Rim"
     }
   },
   "defaultByChar": {
@@ -5409,6 +5484,87 @@
         "slug": "Full_Pharaoh_Skull",
         "bg": "Lux_Checker",
         "frame": "Grid_Rim"
+      }
+    ],
+    "Prism_Statue": [
+      {
+        "slug": "Full_Prism_Statue_Brain",
+        "bg": "Grid_Checker",
+        "frame": "Hyper_Rim"
+      },
+      {
+        "slug": "Full_Prism_Statue_Frog_Hat",
+        "bg": "Margin_Drip",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Prism_Statue_Gas_Mask",
+        "bg": "Strip_Grid",
+        "frame": "Xeno_Rim"
+      },
+      {
+        "slug": "Full_Prism_Statue_King",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Prism_Statue_Pop_Art",
+        "bg": "Vapor_Phase",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Prism_Statue_Sunny",
+        "bg": "Margin_Flash",
+        "frame": "Volt_Ring"
+      }
+    ],
+    "Rainbow_Elf": [
+      {
+        "slug": "Full_Rainbow_Elf_Bat_Crown",
+        "bg": "Gem_Perimeter",
+        "frame": "Triple_Blink"
+      },
+      {
+        "slug": "Full_Rainbow_Elf_Black_Hat",
+        "bg": "Gem_Perimeter",
+        "frame": "Triple_Blink"
+      },
+      {
+        "slug": "Full_Rainbow_Elf_Colorfull_Cap",
+        "bg": "Rust_Blend",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Rainbow_Elf_Golden",
+        "bg": "Plasma_Perimeter",
+        "frame": "Rim_Pulse"
+      },
+      {
+        "slug": "Full_Rainbow_Elf_Japanese_Mask",
+        "bg": "Hue_Pulse",
+        "frame": "Radiant_Rim"
+      },
+      {
+        "slug": "Full_Rainbow_Elf_Smile",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Mono_Rim"
+      },
+      {
+        "slug": "Full_Rainbow_Elf_Turban",
+        "bg": "Kelp_Streak",
+        "frame": "Lumen_Flicker"
+      }
+    ],
+    "Viking_Banana": [
+      {
+        "slug": "Full_Viking_Banana_Party_Hat",
+        "bg": "Diagonal_Streak",
+        "frame": "Triple_Blink"
+      },
+      {
+        "slug": "Full_Viking_Banana_Zombie",
+        "bg": "Chromatic_Swell",
+        "frame": "Split_Rim"
       }
     ]
   },

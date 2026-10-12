@@ -1,0 +1,115 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-12T18:40:56.841750+00:00",
+  "count": 15,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Prism_Statue_Brain",
+      "bg": "Grid_Checker",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Prism_Statue_Brain.gif",
+      "stage1_character": "Prism_Statue"
+    },
+    {
+      "slug": "Full_Prism_Statue_Frog_Hat",
+      "bg": "Margin_Drip",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Prism_Statue_Frog_Hat.gif",
+      "stage1_character": "Prism_Statue"
+    },
+    {
+      "slug": "Full_Prism_Statue_Gas_Mask",
+      "bg": "Strip_Grid",
+      "frame": "Xeno_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Prism_Statue_Gas_Mask.gif",
+      "stage1_character": "Prism_Statue"
+    },
+    {
+      "slug": "Full_Prism_Statue_King",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Prism_Statue_King.gif",
+      "stage1_character": "Prism_Statue"
+    },
+    {
+      "slug": "Full_Prism_Statue_Pop_Art",
+      "bg": "Vapor_Phase",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Prism_Statue_Pop_Art.gif",
+      "stage1_character": "Prism_Statue"
+    },
+    {
+      "slug": "Full_Prism_Statue_Sunny",
+      "bg": "Margin_Flash",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Prism_Statue_Sunny.gif",
+      "stage1_character": "Prism_Statue"
+    },
+    {
+      "slug": "Full_Rainbow_Elf_Bat_Crown",
+      "bg": "Gem_Perimeter",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Elf_Bat_Crown.gif",
+      "stage1_character": "Rainbow_Elf"
+    },
+    {
+      "slug": "Full_Rainbow_Elf_Black_Hat",
+      "bg": "Gem_Perimeter",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Elf_Black_Hat.gif",
+      "stage1_character": "Rainbow_Elf"
+    },
+    {
+      "slug": "Full_Rainbow_Elf_Colorfull_Cap",
+      "bg": "Rust_Blend",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Elf_Colorfull_Cap.gif",
+      "stage1_character": "Rainbow_Elf"
+    },
+    {
+      "slug": "Full_Rainbow_Elf_Golden",
+      "bg": "Plasma_Perimeter",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Elf_Golden.gif",
+      "stage1_character": "Rainbow_Elf"
+    },
+    {
+      "slug": "Full_Rainbow_Elf_Japanese_Mask",
+      "bg": "Hue_Pulse",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Elf_Japanese_Mask.gif",
+      "stage1_character": "Rainbow_Elf"
+    },
+    {
+      "slug": "Full_Rainbow_Elf_Smile",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Elf_Smile.gif",
+      "stage1_character": "Rainbow_Elf"
+    },
+    {
+      "slug": "Full_Rainbow_Elf_Turban",
+      "bg": "Kelp_Streak",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Elf_Turban.gif",
+      "stage1_character": "Rainbow_Elf"
+    },
+    {
+      "slug": "Full_Viking_Banana_Party_Hat",
+      "bg": "Diagonal_Streak",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Viking_Banana_Party_Hat.gif",
+      "stage1_character": "Viking_Banana"
+    },
+    {
+      "slug": "Full_Viking_Banana_Zombie",
+      "bg": "Chromatic_Swell",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Viking_Banana_Zombie.gif",
+      "stage1_character": "Viking_Banana"
+    }
+  ]
+}
