@@ -2584,6 +2584,51 @@
       "slug": "Full_Viking_Banana_Zombie",
       "bg": "Chromatic_Swell",
       "frame": "Split_Rim"
+    },
+    "Cactus_Kitty": {
+      "slug": "Full_Cactus_Kitty",
+      "bg": "Grove_Mosaic",
+      "frame": "Arc_Chroma"
+    },
+    "Cactus_Mexican": {
+      "slug": "Full_Cactus_Mexican",
+      "bg": "Mist_Drip",
+      "frame": "Vector_Rim"
+    },
+    "Cactus_Vamp": {
+      "slug": "Full_Cactus_Vamp",
+      "bg": "Stripe_Phase",
+      "frame": "Blade_Rim"
+    },
+    "Cosmic_Matter_Brain": {
+      "slug": "Full_Cosmic_Matter_Brain",
+      "bg": "Cinder_Swell",
+      "frame": "Axis_Rim"
+    },
+    "Cosmic_Matter_Horns": {
+      "slug": "Full_Cosmic_Matter_Horns",
+      "bg": "Mist_Drip",
+      "frame": "Vivid_Rim"
+    },
+    "Tricorn_Skull_Ghost": {
+      "slug": "Full_Tricorn_Skull_Ghost",
+      "bg": "Jade_Streak",
+      "frame": "Neon_Bolt"
+    },
+    "Tricorn_Skull_Golden": {
+      "slug": "Full_Tricorn_Skull_Golden",
+      "bg": "Fog_Blend",
+      "frame": "Jolt_Rim"
+    },
+    "Tricorn_Skull_Long_Hair": {
+      "slug": "Full_Tricorn_Skull_Long_Hair",
+      "bg": "Delta_Flash",
+      "frame": "Cycle_Rim"
+    },
+    "Tricorn_Skull_Round_Glasses": {
+      "slug": "Full_Tricorn_Skull_Round_Glasses",
+      "bg": "Rust_Blend",
+      "frame": "Nova_Rim"
     }
   },
   "defaultByChar": {
@@ -5565,6 +5610,57 @@
         "slug": "Full_Viking_Banana_Zombie",
         "bg": "Chromatic_Swell",
         "frame": "Split_Rim"
+      }
+    ],
+    "Cactus": [
+      {
+        "slug": "Full_Cactus_Kitty",
+        "bg": "Grove_Mosaic",
+        "frame": "Arc_Chroma"
+      },
+      {
+        "slug": "Full_Cactus_Mexican",
+        "bg": "Mist_Drip",
+        "frame": "Vector_Rim"
+      },
+      {
+        "slug": "Full_Cactus_Vamp",
+        "bg": "Stripe_Phase",
+        "frame": "Blade_Rim"
+      }
+    ],
+    "Cosmic_Matter": [
+      {
+        "slug": "Full_Cosmic_Matter_Brain",
+        "bg": "Cinder_Swell",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Cosmic_Matter_Horns",
+        "bg": "Mist_Drip",
+        "frame": "Vivid_Rim"
+      }
+    ],
+    "Tricorn_Skull": [
+      {
+        "slug": "Full_Tricorn_Skull_Ghost",
+        "bg": "Jade_Streak",
+        "frame": "Neon_Bolt"
+      },
+      {
+        "slug": "Full_Tricorn_Skull_Golden",
+        "bg": "Fog_Blend",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Tricorn_Skull_Long_Hair",
+        "bg": "Delta_Flash",
+        "frame": "Cycle_Rim"
+      },
+      {
+        "slug": "Full_Tricorn_Skull_Round_Glasses",
+        "bg": "Rust_Blend",
+        "frame": "Nova_Rim"
       }
     ]
   },

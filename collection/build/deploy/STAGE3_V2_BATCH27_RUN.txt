@@ -1,0 +1,47 @@
+PIXEL TRIP — Stage 3 V2 batch 27 (PNG → Full_*.gif)
+
+BATCH 27 — 9 Full, 3 S1 линий
+  Cactus         — 3 PNG
+  Cosmic_Matter  — 2 PNG
+  Tricorn_Skull  — 4 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch27.json --seed 30303
+
+  Или: deploy_stage3_v2_batch27.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch27.json
+  website/src/burn/stage3-variants.json
+
+FTP (9 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 27)
+  Full_Cactus_Kitty.gif
+  Full_Cactus_Mexican.gif
+  Full_Cactus_Vamp.gif
+  Full_Cosmic_Matter_Brain.gif
+  Full_Cosmic_Matter_Horns.gif
+  Full_Tricorn_Skull_Ghost.gif
+  Full_Tricorn_Skull_Golden.gif
+  Full_Tricorn_Skull_Long_Hair.gif
+  Full_Tricorn_Skull_Round_Glasses.gif

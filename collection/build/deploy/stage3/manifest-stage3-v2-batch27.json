@@ -1,0 +1,73 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-13T17:03:35.293509+00:00",
+  "count": 9,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Cactus_Kitty",
+      "bg": "Grove_Mosaic",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cactus_Kitty.gif",
+      "stage1_character": "Cactus"
+    },
+    {
+      "slug": "Full_Cactus_Mexican",
+      "bg": "Mist_Drip",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cactus_Mexican.gif",
+      "stage1_character": "Cactus"
+    },
+    {
+      "slug": "Full_Cactus_Vamp",
+      "bg": "Stripe_Phase",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cactus_Vamp.gif",
+      "stage1_character": "Cactus"
+    },
+    {
+      "slug": "Full_Cosmic_Matter_Brain",
+      "bg": "Cinder_Swell",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cosmic_Matter_Brain.gif",
+      "stage1_character": "Cosmic_Matter"
+    },
+    {
+      "slug": "Full_Cosmic_Matter_Horns",
+      "bg": "Mist_Drip",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cosmic_Matter_Horns.gif",
+      "stage1_character": "Cosmic_Matter"
+    },
+    {
+      "slug": "Full_Tricorn_Skull_Ghost",
+      "bg": "Jade_Streak",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tricorn_Skull_Ghost.gif",
+      "stage1_character": "Tricorn_Skull"
+    },
+    {
+      "slug": "Full_Tricorn_Skull_Golden",
+      "bg": "Fog_Blend",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tricorn_Skull_Golden.gif",
+      "stage1_character": "Tricorn_Skull"
+    },
+    {
+      "slug": "Full_Tricorn_Skull_Long_Hair",
+      "bg": "Delta_Flash",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tricorn_Skull_Long_Hair.gif",
+      "stage1_character": "Tricorn_Skull"
+    },
+    {
+      "slug": "Full_Tricorn_Skull_Round_Glasses",
+      "bg": "Rust_Blend",
+      "frame": "Nova_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tricorn_Skull_Round_Glasses.gif",
+      "stage1_character": "Tricorn_Skull"
+    }
+  ]
+}
