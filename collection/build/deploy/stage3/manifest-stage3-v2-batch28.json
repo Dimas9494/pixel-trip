@@ -1,0 +1,115 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-14T17:40:15.795768+00:00",
+  "count": 15,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Cyan_Mustache_Chief_Bald",
+      "bg": "Diagonal_Streak",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Mustache_Chief_Bald.gif",
+      "stage1_character": "Cyan_Mustache_Chief"
+    },
+    {
+      "slug": "Full_Cyan_Mustache_Chief_Viking",
+      "bg": "Kinetic_Checker",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Mustache_Chief_Viking.gif",
+      "stage1_character": "Cyan_Mustache_Chief"
+    },
+    {
+      "slug": "Full_Cyan_Mustache_Chief_Zombie",
+      "bg": "Jolt_Checker",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Mustache_Chief_Zombie.gif",
+      "stage1_character": "Cyan_Mustache_Chief"
+    },
+    {
+      "slug": "Full_Horned_Demon_White_Mask",
+      "bg": "Jade_Streak",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Horned_Demon_White_Mask.gif",
+      "stage1_character": "Horned_Demon"
+    },
+    {
+      "slug": "Full_Steampunk_Fire",
+      "bg": "Cinder_Swell",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Steampunk_Fire.gif",
+      "stage1_character": "Steampunk"
+    },
+    {
+      "slug": "Full_Steampunk_Golden",
+      "bg": "Vapor_Phase",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Steampunk_Golden.gif",
+      "stage1_character": "Steampunk"
+    },
+    {
+      "slug": "Full_Steampunk_Pinky",
+      "bg": "Lux_Checker",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Steampunk_Pinky.gif",
+      "stage1_character": "Steampunk"
+    },
+    {
+      "slug": "Full_Steampunk_Skull",
+      "bg": "Margin_Flash",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Steampunk_Skull.gif",
+      "stage1_character": "Steampunk"
+    },
+    {
+      "slug": "Full_Tri_Cross_Bot_Afro",
+      "bg": "Bloom_Wave",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tri_Cross_Bot_Afro.gif",
+      "stage1_character": "Tri_Cross_Bot"
+    },
+    {
+      "slug": "Full_Tri_Cross_Bot_Hunter",
+      "bg": "Vapor_Phase",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tri_Cross_Bot_Hunter.gif",
+      "stage1_character": "Tri_Cross_Bot"
+    },
+    {
+      "slug": "Full_Tri_Cross_Bot_King",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tri_Cross_Bot_King.gif",
+      "stage1_character": "Tri_Cross_Bot"
+    },
+    {
+      "slug": "Full_Tri_Cross_Bot_Kitty",
+      "bg": "Warp_Wave",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tri_Cross_Bot_Kitty.gif",
+      "stage1_character": "Tri_Cross_Bot"
+    },
+    {
+      "slug": "Full_Tri_Cross_Bot_Mushroom_Hat",
+      "bg": "Grove_Mosaic",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tri_Cross_Bot_Mushroom_Hat.gif",
+      "stage1_character": "Tri_Cross_Bot"
+    },
+    {
+      "slug": "Full_Tri_Cross_Bot_Spot",
+      "bg": "Lattice_Lines",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tri_Cross_Bot_Spot.gif",
+      "stage1_character": "Tri_Cross_Bot"
+    },
+    {
+      "slug": "Full_Tri_Cross_Bot_Zombie",
+      "bg": "Vapor_Phase",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tri_Cross_Bot_Zombie.gif",
+      "stage1_character": "Tri_Cross_Bot"
+    }
+  ]
+}

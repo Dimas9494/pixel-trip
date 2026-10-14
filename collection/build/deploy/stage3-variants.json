@@ -2629,6 +2629,81 @@
       "slug": "Full_Tricorn_Skull_Round_Glasses",
       "bg": "Rust_Blend",
       "frame": "Nova_Rim"
+    },
+    "Cyan_Mustache_Chief_Bald": {
+      "slug": "Full_Cyan_Mustache_Chief_Bald",
+      "bg": "Diagonal_Streak",
+      "frame": "Blade_Chroma"
+    },
+    "Cyan_Mustache_Chief_Viking": {
+      "slug": "Full_Cyan_Mustache_Chief_Viking",
+      "bg": "Kinetic_Checker",
+      "frame": "Wave_Rim"
+    },
+    "Cyan_Mustache_Chief_Zombie": {
+      "slug": "Full_Cyan_Mustache_Chief_Zombie",
+      "bg": "Jolt_Checker",
+      "frame": "Bright_Rim"
+    },
+    "Horned_Demon_White_Mask": {
+      "slug": "Full_Horned_Demon_White_Mask",
+      "bg": "Jade_Streak",
+      "frame": "Pulse_Ring"
+    },
+    "Steampunk_Fire": {
+      "slug": "Full_Steampunk_Fire",
+      "bg": "Cinder_Swell",
+      "frame": "Hyper_Rim"
+    },
+    "Steampunk_Golden": {
+      "slug": "Full_Steampunk_Golden",
+      "bg": "Vapor_Phase",
+      "frame": "Halo_Rim"
+    },
+    "Steampunk_Pinky": {
+      "slug": "Full_Steampunk_Pinky",
+      "bg": "Lux_Checker",
+      "frame": "Split_Rim"
+    },
+    "Steampunk_Skull": {
+      "slug": "Full_Steampunk_Skull",
+      "bg": "Margin_Flash",
+      "frame": "Rune_Flicker"
+    },
+    "Tri_Cross_Bot_Afro": {
+      "slug": "Full_Tri_Cross_Bot_Afro",
+      "bg": "Bloom_Wave",
+      "frame": "Axis_Rim"
+    },
+    "Tri_Cross_Bot_Hunter": {
+      "slug": "Full_Tri_Cross_Bot_Hunter",
+      "bg": "Vapor_Phase",
+      "frame": "Spark_Rim"
+    },
+    "Tri_Cross_Bot_King": {
+      "slug": "Full_Tri_Cross_Bot_King",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Volt_Ring"
+    },
+    "Tri_Cross_Bot_Kitty": {
+      "slug": "Full_Tri_Cross_Bot_Kitty",
+      "bg": "Warp_Wave",
+      "frame": "Bright_Rim"
+    },
+    "Tri_Cross_Bot_Mushroom_Hat": {
+      "slug": "Full_Tri_Cross_Bot_Mushroom_Hat",
+      "bg": "Grove_Mosaic",
+      "frame": "Flow_Rim"
+    },
+    "Tri_Cross_Bot_Spot": {
+      "slug": "Full_Tri_Cross_Bot_Spot",
+      "bg": "Lattice_Lines",
+      "frame": "Radiant_Rim"
+    },
+    "Tri_Cross_Bot_Zombie": {
+      "slug": "Full_Tri_Cross_Bot_Zombie",
+      "bg": "Vapor_Phase",
+      "frame": "Prism_Rim"
     }
   },
   "defaultByChar": {
@@ -2711,6 +2786,11 @@
       "slug": "Full_Big_Head_Alien_Cyborg",
       "bg": "Grove_Mosaic",
       "frame": "Onyx_Rim"
+    },
+    "Horned_Demon": {
+      "slug": "Full_Horned_Demon_White_Mask",
+      "bg": "Jade_Streak",
+      "frame": "Pulse_Ring"
     }
   },
   "poolByChar": {
@@ -5661,6 +5741,89 @@
         "slug": "Full_Tricorn_Skull_Round_Glasses",
         "bg": "Rust_Blend",
         "frame": "Nova_Rim"
+      }
+    ],
+    "Cyan_Mustache_Chief": [
+      {
+        "slug": "Full_Cyan_Mustache_Chief_Bald",
+        "bg": "Diagonal_Streak",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Cyan_Mustache_Chief_Viking",
+        "bg": "Kinetic_Checker",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Cyan_Mustache_Chief_Zombie",
+        "bg": "Jolt_Checker",
+        "frame": "Bright_Rim"
+      }
+    ],
+    "Horned_Demon": [
+      {
+        "slug": "Full_Horned_Demon_White_Mask",
+        "bg": "Jade_Streak",
+        "frame": "Pulse_Ring"
+      }
+    ],
+    "Steampunk": [
+      {
+        "slug": "Full_Steampunk_Fire",
+        "bg": "Cinder_Swell",
+        "frame": "Hyper_Rim"
+      },
+      {
+        "slug": "Full_Steampunk_Golden",
+        "bg": "Vapor_Phase",
+        "frame": "Halo_Rim"
+      },
+      {
+        "slug": "Full_Steampunk_Pinky",
+        "bg": "Lux_Checker",
+        "frame": "Split_Rim"
+      },
+      {
+        "slug": "Full_Steampunk_Skull",
+        "bg": "Margin_Flash",
+        "frame": "Rune_Flicker"
+      }
+    ],
+    "Tri_Cross_Bot": [
+      {
+        "slug": "Full_Tri_Cross_Bot_Afro",
+        "bg": "Bloom_Wave",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Tri_Cross_Bot_Hunter",
+        "bg": "Vapor_Phase",
+        "frame": "Spark_Rim"
+      },
+      {
+        "slug": "Full_Tri_Cross_Bot_King",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Volt_Ring"
+      },
+      {
+        "slug": "Full_Tri_Cross_Bot_Kitty",
+        "bg": "Warp_Wave",
+        "frame": "Bright_Rim"
+      },
+      {
+        "slug": "Full_Tri_Cross_Bot_Mushroom_Hat",
+        "bg": "Grove_Mosaic",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Tri_Cross_Bot_Spot",
+        "bg": "Lattice_Lines",
+        "frame": "Radiant_Rim"
+      },
+      {
+        "slug": "Full_Tri_Cross_Bot_Zombie",
+        "bg": "Vapor_Phase",
+        "frame": "Prism_Rim"
       }
     ]
   },

@@ -1,0 +1,54 @@
+PIXEL TRIP — Stage 3 V2 batch 28 (PNG → Full_*.gif)
+
+BATCH 28 — 15 Full, 4 S1 линий
+  Cyan_Mustache_Chief — 3 PNG
+  Horned_Demon        — 1 PNG
+  Steampunk           — 4 PNG
+  Tri_Cross_Bot       — 7 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch28.json --seed 31313
+
+  Или: deploy_stage3_v2_batch28.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch28.json
+  website/src/burn/stage3-variants.json
+
+FTP (15 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 28)
+  Full_Cyan_Mustache_Chief_Bald.gif
+  Full_Cyan_Mustache_Chief_Viking.gif
+  Full_Cyan_Mustache_Chief_Zombie.gif
+  Full_Horned_Demon_White_Mask.gif
+  Full_Steampunk_Fire.gif
+  Full_Steampunk_Golden.gif
+  Full_Steampunk_Pinky.gif
+  Full_Steampunk_Skull.gif
+  Full_Tri_Cross_Bot_Afro.gif
+  Full_Tri_Cross_Bot_Hunter.gif
+  Full_Tri_Cross_Bot_King.gif
+  Full_Tri_Cross_Bot_Kitty.gif
+  Full_Tri_Cross_Bot_Mushroom_Hat.gif
+  Full_Tri_Cross_Bot_Spot.gif
+  Full_Tri_Cross_Bot_Zombie.gif
