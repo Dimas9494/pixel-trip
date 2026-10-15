@@ -1,0 +1,66 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-15T18:06:28.486047+00:00",
+  "count": 8,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Cyber_Rebel_Hooded",
+      "bg": "Tidal_Phase",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyber_Rebel_Hooded.gif",
+      "stage1_character": "Cyber_Rebel"
+    },
+    {
+      "slug": "Full_Cyber_Rebel_Horns",
+      "bg": "Bloom_Wave",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyber_Rebel_Horns.gif",
+      "stage1_character": "Cyber_Rebel"
+    },
+    {
+      "slug": "Full_Gremlin_Mohawk",
+      "bg": "Stripe_Phase",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gremlin_Mohawk.gif",
+      "stage1_character": "Gremlin"
+    },
+    {
+      "slug": "Full_Gremlin_Pope",
+      "bg": "Horizon_Wave",
+      "frame": "Jet_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gremlin_Pope.gif",
+      "stage1_character": "Gremlin"
+    },
+    {
+      "slug": "Full_Gremlin_Vamp",
+      "bg": "Basalt_Lines",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gremlin_Vamp.gif",
+      "stage1_character": "Gremlin"
+    },
+    {
+      "slug": "Full_Grumpy_Cyclops_Cyborg",
+      "bg": "Xenon_Wave",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cyclops_Cyborg.gif",
+      "stage1_character": "Grumpy_Cyclops"
+    },
+    {
+      "slug": "Full_Grumpy_Cyclops_Devil",
+      "bg": "Rust_Blend",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cyclops_Devil.gif",
+      "stage1_character": "Grumpy_Cyclops"
+    },
+    {
+      "slug": "Full_Grumpy_Cyclops_Druid",
+      "bg": "Strip_Grid",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Cyclops_Druid.gif",
+      "stage1_character": "Grumpy_Cyclops"
+    }
+  ]
+}

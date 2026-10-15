@@ -2704,6 +2704,46 @@
       "slug": "Full_Tri_Cross_Bot_Zombie",
       "bg": "Vapor_Phase",
       "frame": "Prism_Rim"
+    },
+    "Cyber_Rebel_Hooded": {
+      "slug": "Full_Cyber_Rebel_Hooded",
+      "bg": "Tidal_Phase",
+      "frame": "Ion_Rim"
+    },
+    "Cyber_Rebel_Horns": {
+      "slug": "Full_Cyber_Rebel_Horns",
+      "bg": "Bloom_Wave",
+      "frame": "Wire_Rim"
+    },
+    "Gremlin_Mohawk": {
+      "slug": "Full_Gremlin_Mohawk",
+      "bg": "Stripe_Phase",
+      "frame": "Axis_Pulse"
+    },
+    "Gremlin_Pope": {
+      "slug": "Full_Gremlin_Pope",
+      "bg": "Horizon_Wave",
+      "frame": "Jet_Rim"
+    },
+    "Gremlin_Vamp": {
+      "slug": "Full_Gremlin_Vamp",
+      "bg": "Basalt_Lines",
+      "frame": "Wave_Rim"
+    },
+    "Grumpy_Cyclops_Cyborg": {
+      "slug": "Full_Grumpy_Cyclops_Cyborg",
+      "bg": "Xenon_Wave",
+      "frame": "Hyper_Rim"
+    },
+    "Grumpy_Cyclops_Devil": {
+      "slug": "Full_Grumpy_Cyclops_Devil",
+      "bg": "Rust_Blend",
+      "frame": "Lumen_Flicker"
+    },
+    "Grumpy_Cyclops_Druid": {
+      "slug": "Full_Grumpy_Cyclops_Druid",
+      "bg": "Strip_Grid",
+      "frame": "Static_Rim"
     }
   },
   "defaultByChar": {
@@ -5824,6 +5864,52 @@
         "slug": "Full_Tri_Cross_Bot_Zombie",
         "bg": "Vapor_Phase",
         "frame": "Prism_Rim"
+      }
+    ],
+    "Cyber_Rebel": [
+      {
+        "slug": "Full_Cyber_Rebel_Hooded",
+        "bg": "Tidal_Phase",
+        "frame": "Ion_Rim"
+      },
+      {
+        "slug": "Full_Cyber_Rebel_Horns",
+        "bg": "Bloom_Wave",
+        "frame": "Wire_Rim"
+      }
+    ],
+    "Gremlin": [
+      {
+        "slug": "Full_Gremlin_Mohawk",
+        "bg": "Stripe_Phase",
+        "frame": "Axis_Pulse"
+      },
+      {
+        "slug": "Full_Gremlin_Pope",
+        "bg": "Horizon_Wave",
+        "frame": "Jet_Rim"
+      },
+      {
+        "slug": "Full_Gremlin_Vamp",
+        "bg": "Basalt_Lines",
+        "frame": "Wave_Rim"
+      }
+    ],
+    "Grumpy_Cyclops": [
+      {
+        "slug": "Full_Grumpy_Cyclops_Cyborg",
+        "bg": "Xenon_Wave",
+        "frame": "Hyper_Rim"
+      },
+      {
+        "slug": "Full_Grumpy_Cyclops_Devil",
+        "bg": "Rust_Blend",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Grumpy_Cyclops_Druid",
+        "bg": "Strip_Grid",
+        "frame": "Static_Rim"
       }
     ]
   },

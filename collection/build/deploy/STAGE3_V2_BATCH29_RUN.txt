@@ -1,0 +1,46 @@
+PIXEL TRIP — Stage 3 V2 batch 29 (PNG → Full_*.gif)
+
+BATCH 29 — 8 Full, 3 S1 линий
+  Cyber_Rebel     — 2 PNG
+  Gremlin         — 3 PNG
+  Grumpy_Cyclops   — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch29.json --seed 32323
+
+  Или: deploy_stage3_v2_batch29.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch29.json
+  website/src/burn/stage3-variants.json
+
+FTP (8 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 29)
+  Full_Cyber_Rebel_Hooded.gif
+  Full_Cyber_Rebel_Horns.gif
+  Full_Gremlin_Mohawk.gif
+  Full_Gremlin_Pope.gif
+  Full_Gremlin_Vamp.gif
+  Full_Grumpy_Cyclops_Cyborg.gif
+  Full_Grumpy_Cyclops_Devil.gif
+  Full_Grumpy_Cyclops_Druid.gif
