@@ -1,0 +1,53 @@
+PIXEL TRIP — Stage 3 V2 batch 30 (PNG → Full_*.gif)
+
+BATCH 30 — 14 Full, 4 S1 линий
+  Crying_Bling  — 6 PNG
+  Lucha_Mask    — 3 PNG
+  Pirate_Cat    — 2 PNG
+  Safari_Turkey — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch30.json --seed 33333
+
+  Или: deploy_stage3_v2_batch30.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch30.json
+  website/src/burn/stage3-variants.json
+
+FTP (14 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 30)
+  Full_Crying_Bling_Acid_Shaman.gif
+  Full_Crying_Bling_Blonde.gif
+  Full_Crying_Bling_Clown.gif
+  Full_Crying_Bling_Frog.gif
+  Full_Crying_Bling_King.gif
+  Full_Crying_Bling_Open_Mouth.gif
+  Full_Lucha_Mask_Bat.gif
+  Full_Lucha_Mask_Golden.gif
+  Full_Lucha_Mask_Lizard.gif
+  Full_Pirate_Cat_Cap_Hat.gif
+  Full_Pirate_Cat_Zombie.gif
+  Full_Safari_Turkey_Fez.gif
+  Full_Safari_Turkey_Mask.gif
+  Full_Safari_Turkey_Rasta.gif

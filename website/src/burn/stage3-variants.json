@@ -2744,6 +2744,76 @@
       "slug": "Full_Grumpy_Cyclops_Druid",
       "bg": "Strip_Grid",
       "frame": "Static_Rim"
+    },
+    "Crying_Bling_Acid_Shaman": {
+      "slug": "Full_Crying_Bling_Acid_Shaman",
+      "bg": "Diagonal_Streak",
+      "frame": "Static_Rim"
+    },
+    "Crying_Bling_Blonde": {
+      "slug": "Full_Crying_Bling_Blonde",
+      "bg": "Vapor_Phase",
+      "frame": "Spark_Rim"
+    },
+    "Crying_Bling_Clown": {
+      "slug": "Full_Crying_Bling_Clown",
+      "bg": "Chromatic_Swell",
+      "frame": "Trace_Rim"
+    },
+    "Crying_Bling_Frog": {
+      "slug": "Full_Crying_Bling_Frog",
+      "bg": "Kelp_Streak",
+      "frame": "Prism_Rim"
+    },
+    "Crying_Bling_King": {
+      "slug": "Full_Crying_Bling_King",
+      "bg": "Strip_Grid",
+      "frame": "Glyph_Rim"
+    },
+    "Crying_Bling_Open_Mouth": {
+      "slug": "Full_Crying_Bling_Open_Mouth",
+      "bg": "Band_Scroll",
+      "frame": "Arc_Chroma"
+    },
+    "Lucha_Mask_Bat": {
+      "slug": "Full_Lucha_Mask_Bat",
+      "bg": "Brick_Mosaic",
+      "frame": "Unit_Ring"
+    },
+    "Lucha_Mask_Golden": {
+      "slug": "Full_Lucha_Mask_Golden",
+      "bg": "Yonder_Pulse",
+      "frame": "Bolt_Chroma"
+    },
+    "Lucha_Mask_Lizard": {
+      "slug": "Full_Lucha_Mask_Lizard",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Hyper_Rim"
+    },
+    "Pirate_Cat_Cap_Hat": {
+      "slug": "Full_Pirate_Cat_Cap_Hat",
+      "bg": "Fog_Blend",
+      "frame": "Rune_Rim"
+    },
+    "Pirate_Cat_Zombie": {
+      "slug": "Full_Pirate_Cat_Zombie",
+      "bg": "Band_Scroll",
+      "frame": "Unit_Ring"
+    },
+    "Safari_Turkey_Fez": {
+      "slug": "Full_Safari_Turkey_Fez",
+      "bg": "Cinder_Swell",
+      "frame": "Aqua_Rim"
+    },
+    "Safari_Turkey_Mask": {
+      "slug": "Full_Safari_Turkey_Mask",
+      "bg": "Vertical_Drift",
+      "frame": "Quick_Flicker"
+    },
+    "Safari_Turkey_Rasta": {
+      "slug": "Full_Safari_Turkey_Rasta",
+      "bg": "Flare_Flash",
+      "frame": "Quad_Flash"
     }
   },
   "defaultByChar": {
@@ -5910,6 +5980,84 @@
         "slug": "Full_Grumpy_Cyclops_Druid",
         "bg": "Strip_Grid",
         "frame": "Static_Rim"
+      }
+    ],
+    "Crying_Bling": [
+      {
+        "slug": "Full_Crying_Bling_Acid_Shaman",
+        "bg": "Diagonal_Streak",
+        "frame": "Static_Rim"
+      },
+      {
+        "slug": "Full_Crying_Bling_Blonde",
+        "bg": "Vapor_Phase",
+        "frame": "Spark_Rim"
+      },
+      {
+        "slug": "Full_Crying_Bling_Clown",
+        "bg": "Chromatic_Swell",
+        "frame": "Trace_Rim"
+      },
+      {
+        "slug": "Full_Crying_Bling_Frog",
+        "bg": "Kelp_Streak",
+        "frame": "Prism_Rim"
+      },
+      {
+        "slug": "Full_Crying_Bling_King",
+        "bg": "Strip_Grid",
+        "frame": "Glyph_Rim"
+      },
+      {
+        "slug": "Full_Crying_Bling_Open_Mouth",
+        "bg": "Band_Scroll",
+        "frame": "Arc_Chroma"
+      }
+    ],
+    "Lucha_Mask": [
+      {
+        "slug": "Full_Lucha_Mask_Bat",
+        "bg": "Brick_Mosaic",
+        "frame": "Unit_Ring"
+      },
+      {
+        "slug": "Full_Lucha_Mask_Golden",
+        "bg": "Yonder_Pulse",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Lucha_Mask_Lizard",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Hyper_Rim"
+      }
+    ],
+    "Pirate_Cat": [
+      {
+        "slug": "Full_Pirate_Cat_Cap_Hat",
+        "bg": "Fog_Blend",
+        "frame": "Rune_Rim"
+      },
+      {
+        "slug": "Full_Pirate_Cat_Zombie",
+        "bg": "Band_Scroll",
+        "frame": "Unit_Ring"
+      }
+    ],
+    "Safari_Turkey": [
+      {
+        "slug": "Full_Safari_Turkey_Fez",
+        "bg": "Cinder_Swell",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Safari_Turkey_Mask",
+        "bg": "Vertical_Drift",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Safari_Turkey_Rasta",
+        "bg": "Flare_Flash",
+        "frame": "Quad_Flash"
       }
     ]
   },
