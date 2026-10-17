@@ -1,0 +1,50 @@
+PIXEL TRIP — Stage 3 V2 batch 31 (PNG → Full_*.gif)
+
+BATCH 31 — 12 Full, 3 S1 линий
+  Glitch_Smirk   — 4 PNG
+  Redeye_Cyclops — 4 PNG
+  Scarred_Cyborg — 4 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch31.json --seed 34343
+
+  Или: deploy_stage3_v2_batch31.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch31.json
+  website/src/burn/stage3-variants.json
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 31)
+  Full_Glitch_Smirk_Bandana.gif
+  Full_Glitch_Smirk_Half_Skull.gif
+  Full_Glitch_Smirk_Pharaon.gif
+  Full_Glitch_Smirk_Rainbow_Hair.gif
+  Full_Redeye_Cyclops_Dead.gif
+  Full_Redeye_Cyclops_Franky.gif
+  Full_Redeye_Cyclops_King.gif
+  Full_Redeye_Cyclops_Red_General_Hat.gif
+  Full_Scarred_Cyborg_Brain.gif
+  Full_Scarred_Cyborg_Dreadlocks.gif
+  Full_Scarred_Cyborg_Gas_Mask.gif
+  Full_Scarred_Cyborg_Skull.gif

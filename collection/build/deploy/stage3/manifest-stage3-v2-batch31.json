@@ -1,0 +1,94 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-17T17:11:21.653836+00:00",
+  "count": 12,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Glitch_Smirk_Bandana",
+      "bg": "Kelp_Streak",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glitch_Smirk_Bandana.gif",
+      "stage1_character": "Glitch_Smirk"
+    },
+    {
+      "slug": "Full_Glitch_Smirk_Half_Skull",
+      "bg": "Tidal_Phase",
+      "frame": "Unit_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glitch_Smirk_Half_Skull.gif",
+      "stage1_character": "Glitch_Smirk"
+    },
+    {
+      "slug": "Full_Glitch_Smirk_Pharaon",
+      "bg": "Warp_Wave",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glitch_Smirk_Pharaon.gif",
+      "stage1_character": "Glitch_Smirk"
+    },
+    {
+      "slug": "Full_Glitch_Smirk_Rainbow_Hair",
+      "bg": "Stripe_Phase",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Glitch_Smirk_Rainbow_Hair.gif",
+      "stage1_character": "Glitch_Smirk"
+    },
+    {
+      "slug": "Full_Redeye_Cyclops_Dead",
+      "bg": "Strip_Grid",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Redeye_Cyclops_Dead.gif",
+      "stage1_character": "Redeye_Cyclops"
+    },
+    {
+      "slug": "Full_Redeye_Cyclops_Franky",
+      "bg": "Yonder_Pulse",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Redeye_Cyclops_Franky.gif",
+      "stage1_character": "Redeye_Cyclops"
+    },
+    {
+      "slug": "Full_Redeye_Cyclops_King",
+      "bg": "Jade_Streak",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Redeye_Cyclops_King.gif",
+      "stage1_character": "Redeye_Cyclops"
+    },
+    {
+      "slug": "Full_Redeye_Cyclops_Red_General_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Flash_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Redeye_Cyclops_Red_General_Hat.gif",
+      "stage1_character": "Redeye_Cyclops"
+    },
+    {
+      "slug": "Full_Scarred_Cyborg_Brain",
+      "bg": "Gem_Perimeter",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Scarred_Cyborg_Brain.gif",
+      "stage1_character": "Scarred_Cyborg"
+    },
+    {
+      "slug": "Full_Scarred_Cyborg_Dreadlocks",
+      "bg": "Jolt_Checker",
+      "frame": "Corner_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Scarred_Cyborg_Dreadlocks.gif",
+      "stage1_character": "Scarred_Cyborg"
+    },
+    {
+      "slug": "Full_Scarred_Cyborg_Gas_Mask",
+      "bg": "Kinetic_Checker",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Scarred_Cyborg_Gas_Mask.gif",
+      "stage1_character": "Scarred_Cyborg"
+    },
+    {
+      "slug": "Full_Scarred_Cyborg_Skull",
+      "bg": "Vertical_Drift",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Scarred_Cyborg_Skull.gif",
+      "stage1_character": "Scarred_Cyborg"
+    }
+  ]
+}

@@ -2814,6 +2814,66 @@
       "slug": "Full_Safari_Turkey_Rasta",
       "bg": "Flare_Flash",
       "frame": "Quad_Flash"
+    },
+    "Glitch_Smirk_Bandana": {
+      "slug": "Full_Glitch_Smirk_Bandana",
+      "bg": "Kelp_Streak",
+      "frame": "Ion_Rim"
+    },
+    "Glitch_Smirk_Half_Skull": {
+      "slug": "Full_Glitch_Smirk_Half_Skull",
+      "bg": "Tidal_Phase",
+      "frame": "Unit_Ring"
+    },
+    "Glitch_Smirk_Pharaon": {
+      "slug": "Full_Glitch_Smirk_Pharaon",
+      "bg": "Warp_Wave",
+      "frame": "Wire_Rim"
+    },
+    "Glitch_Smirk_Rainbow_Hair": {
+      "slug": "Full_Glitch_Smirk_Rainbow_Hair",
+      "bg": "Stripe_Phase",
+      "frame": "Vector_Rim"
+    },
+    "Redeye_Cyclops_Dead": {
+      "slug": "Full_Redeye_Cyclops_Dead",
+      "bg": "Strip_Grid",
+      "frame": "Byte_Pulse"
+    },
+    "Redeye_Cyclops_Franky": {
+      "slug": "Full_Redeye_Cyclops_Franky",
+      "bg": "Yonder_Pulse",
+      "frame": "Static_Rim"
+    },
+    "Redeye_Cyclops_King": {
+      "slug": "Full_Redeye_Cyclops_King",
+      "bg": "Jade_Streak",
+      "frame": "Vivid_Rim"
+    },
+    "Redeye_Cyclops_Red_General_Hat": {
+      "slug": "Full_Redeye_Cyclops_Red_General_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Flash_Rim"
+    },
+    "Scarred_Cyborg_Brain": {
+      "slug": "Full_Scarred_Cyborg_Brain",
+      "bg": "Gem_Perimeter",
+      "frame": "Jolt_Rim"
+    },
+    "Scarred_Cyborg_Dreadlocks": {
+      "slug": "Full_Scarred_Cyborg_Dreadlocks",
+      "bg": "Jolt_Checker",
+      "frame": "Corner_Bolt"
+    },
+    "Scarred_Cyborg_Gas_Mask": {
+      "slug": "Full_Scarred_Cyborg_Gas_Mask",
+      "bg": "Kinetic_Checker",
+      "frame": "Axis_Pulse"
+    },
+    "Scarred_Cyborg_Skull": {
+      "slug": "Full_Scarred_Cyborg_Skull",
+      "bg": "Vertical_Drift",
+      "frame": "Blade_Rim"
     }
   },
   "defaultByChar": {
@@ -6058,6 +6118,72 @@
         "slug": "Full_Safari_Turkey_Rasta",
         "bg": "Flare_Flash",
         "frame": "Quad_Flash"
+      }
+    ],
+    "Glitch_Smirk": [
+      {
+        "slug": "Full_Glitch_Smirk_Bandana",
+        "bg": "Kelp_Streak",
+        "frame": "Ion_Rim"
+      },
+      {
+        "slug": "Full_Glitch_Smirk_Half_Skull",
+        "bg": "Tidal_Phase",
+        "frame": "Unit_Ring"
+      },
+      {
+        "slug": "Full_Glitch_Smirk_Pharaon",
+        "bg": "Warp_Wave",
+        "frame": "Wire_Rim"
+      },
+      {
+        "slug": "Full_Glitch_Smirk_Rainbow_Hair",
+        "bg": "Stripe_Phase",
+        "frame": "Vector_Rim"
+      }
+    ],
+    "Redeye_Cyclops": [
+      {
+        "slug": "Full_Redeye_Cyclops_Dead",
+        "bg": "Strip_Grid",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Redeye_Cyclops_Franky",
+        "bg": "Yonder_Pulse",
+        "frame": "Static_Rim"
+      },
+      {
+        "slug": "Full_Redeye_Cyclops_King",
+        "bg": "Jade_Streak",
+        "frame": "Vivid_Rim"
+      },
+      {
+        "slug": "Full_Redeye_Cyclops_Red_General_Hat",
+        "bg": "Lattice_Lines",
+        "frame": "Flash_Rim"
+      }
+    ],
+    "Scarred_Cyborg": [
+      {
+        "slug": "Full_Scarred_Cyborg_Brain",
+        "bg": "Gem_Perimeter",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Scarred_Cyborg_Dreadlocks",
+        "bg": "Jolt_Checker",
+        "frame": "Corner_Bolt"
+      },
+      {
+        "slug": "Full_Scarred_Cyborg_Gas_Mask",
+        "bg": "Kinetic_Checker",
+        "frame": "Axis_Pulse"
+      },
+      {
+        "slug": "Full_Scarred_Cyborg_Skull",
+        "bg": "Vertical_Drift",
+        "frame": "Blade_Rim"
       }
     ]
   },
