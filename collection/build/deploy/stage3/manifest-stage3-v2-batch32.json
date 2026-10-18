@@ -1,0 +1,115 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-18T16:57:51.219646+00:00",
+  "count": 15,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Druid_Alien",
+      "bg": "Chromatic_Swell",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Druid_Alien.gif",
+      "stage1_character": "Druid"
+    },
+    {
+      "slug": "Full_Druid_Diver",
+      "bg": "Band_Scroll",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Druid_Diver.gif",
+      "stage1_character": "Druid"
+    },
+    {
+      "slug": "Full_Druid_Duo",
+      "bg": "Grid_Checker",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Druid_Duo.gif",
+      "stage1_character": "Druid"
+    },
+    {
+      "slug": "Full_Druid_Hooded",
+      "bg": "Basalt_Lines",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Druid_Hooded.gif",
+      "stage1_character": "Druid"
+    },
+    {
+      "slug": "Full_Druid_Knight_Helmet",
+      "bg": "Margin_Drip",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Druid_Knight_Helmet.gif",
+      "stage1_character": "Druid"
+    },
+    {
+      "slug": "Full_Druid_Oracle",
+      "bg": "Haze_Mosaic",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Druid_Oracle.gif",
+      "stage1_character": "Druid"
+    },
+    {
+      "slug": "Full_Goggle_Fox_Burning",
+      "bg": "Fog_Blend",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Fox_Burning.gif",
+      "stage1_character": "Goggle_Fox"
+    },
+    {
+      "slug": "Full_Goggle_Fox_Frog_Hat",
+      "bg": "Margin_Flash",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Fox_Frog_Hat.gif",
+      "stage1_character": "Goggle_Fox"
+    },
+    {
+      "slug": "Full_Goggle_Fox_Jungle",
+      "bg": "Vertical_Drift",
+      "frame": "Glitch_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Fox_Jungle.gif",
+      "stage1_character": "Goggle_Fox"
+    },
+    {
+      "slug": "Full_Goggle_Fox_Punk_Kiss",
+      "bg": "Haze_Mosaic",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Fox_Punk_Kiss.gif",
+      "stage1_character": "Goggle_Fox"
+    },
+    {
+      "slug": "Full_Goggle_Fox_Scared",
+      "bg": "Xenon_Wave",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Fox_Scared.gif",
+      "stage1_character": "Goggle_Fox"
+    },
+    {
+      "slug": "Full_Goggle_Fox_VR",
+      "bg": "Mist_Drip",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Fox_VR.gif",
+      "stage1_character": "Goggle_Fox"
+    },
+    {
+      "slug": "Full_Sad_Scoop_Blueberry",
+      "bg": "Grove_Mosaic",
+      "frame": "Unit_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sad_Scoop_Blueberry.gif",
+      "stage1_character": "Sad_Scoop"
+    },
+    {
+      "slug": "Full_Sad_Scoop_Zombie",
+      "bg": "Chromatic_Swell",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Sad_Scoop_Zombie.gif",
+      "stage1_character": "Sad_Scoop"
+    },
+    {
+      "slug": "Full_Split_Cyborg_Vamp",
+      "bg": "Rust_Perimeter",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Split_Cyborg_Vamp.gif",
+      "stage1_character": "Split_Cyborg"
+    }
+  ]
+}

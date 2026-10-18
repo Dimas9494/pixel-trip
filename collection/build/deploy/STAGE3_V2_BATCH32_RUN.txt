@@ -1,0 +1,54 @@
+PIXEL TRIP — Stage 3 V2 batch 32 (PNG → Full_*.gif)
+
+BATCH 32 — 15 Full, 4 S1 линий
+  Druid        — 6 PNG
+  Goggle_Fox   — 6 PNG
+  Sad_Scoop    — 2 PNG
+  Split_Cyborg — 1 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch32.json --seed 35353
+
+  Или: deploy_stage3_v2_batch32.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch32.json
+  website/src/burn/stage3-variants.json
+
+FTP (15 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 32)
+  Full_Druid_Alien.gif
+  Full_Druid_Diver.gif
+  Full_Druid_Duo.gif
+  Full_Druid_Hooded.gif
+  Full_Druid_Knight_Helmet.gif
+  Full_Druid_Oracle.gif
+  Full_Goggle_Fox_Burning.gif
+  Full_Goggle_Fox_Frog_Hat.gif
+  Full_Goggle_Fox_Jungle.gif
+  Full_Goggle_Fox_Punk_Kiss.gif
+  Full_Goggle_Fox_Scared.gif
+  Full_Goggle_Fox_VR.gif
+  Full_Sad_Scoop_Blueberry.gif
+  Full_Sad_Scoop_Zombie.gif
+  Full_Split_Cyborg_Vamp.gif

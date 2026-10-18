@@ -2874,6 +2874,81 @@
       "slug": "Full_Scarred_Cyborg_Skull",
       "bg": "Vertical_Drift",
       "frame": "Blade_Rim"
+    },
+    "Druid_Alien": {
+      "slug": "Full_Druid_Alien",
+      "bg": "Chromatic_Swell",
+      "frame": "Grid_Rim"
+    },
+    "Druid_Diver": {
+      "slug": "Full_Druid_Diver",
+      "bg": "Band_Scroll",
+      "frame": "Radiant_Flicker"
+    },
+    "Druid_Duo": {
+      "slug": "Full_Druid_Duo",
+      "bg": "Grid_Checker",
+      "frame": "Mint_Bolt"
+    },
+    "Druid_Hooded": {
+      "slug": "Full_Druid_Hooded",
+      "bg": "Basalt_Lines",
+      "frame": "Vector_Ring"
+    },
+    "Druid_Knight_Helmet": {
+      "slug": "Full_Druid_Knight_Helmet",
+      "bg": "Margin_Drip",
+      "frame": "Pixel_Flicker"
+    },
+    "Druid_Oracle": {
+      "slug": "Full_Druid_Oracle",
+      "bg": "Haze_Mosaic",
+      "frame": "Halo_Rim"
+    },
+    "Goggle_Fox_Burning": {
+      "slug": "Full_Goggle_Fox_Burning",
+      "bg": "Fog_Blend",
+      "frame": "Cycle_Rim"
+    },
+    "Goggle_Fox_Frog_Hat": {
+      "slug": "Full_Goggle_Fox_Frog_Hat",
+      "bg": "Margin_Flash",
+      "frame": "Edge_Chroma"
+    },
+    "Goggle_Fox_Jungle": {
+      "slug": "Full_Goggle_Fox_Jungle",
+      "bg": "Vertical_Drift",
+      "frame": "Glitch_Rim"
+    },
+    "Goggle_Fox_Punk_Kiss": {
+      "slug": "Full_Goggle_Fox_Punk_Kiss",
+      "bg": "Haze_Mosaic",
+      "frame": "Flux_Rim"
+    },
+    "Goggle_Fox_Scared": {
+      "slug": "Full_Goggle_Fox_Scared",
+      "bg": "Xenon_Wave",
+      "frame": "Nova_Bolt"
+    },
+    "Goggle_Fox_VR": {
+      "slug": "Full_Goggle_Fox_VR",
+      "bg": "Mist_Drip",
+      "frame": "Halo_Rim"
+    },
+    "Sad_Scoop_Blueberry": {
+      "slug": "Full_Sad_Scoop_Blueberry",
+      "bg": "Grove_Mosaic",
+      "frame": "Unit_Ring"
+    },
+    "Sad_Scoop_Zombie": {
+      "slug": "Full_Sad_Scoop_Zombie",
+      "bg": "Chromatic_Swell",
+      "frame": "Radiant_Flicker"
+    },
+    "Split_Cyborg_Vamp": {
+      "slug": "Full_Split_Cyborg_Vamp",
+      "bg": "Rust_Perimeter",
+      "frame": "Wave_Rim"
     }
   },
   "defaultByChar": {
@@ -2961,6 +3036,11 @@
       "slug": "Full_Horned_Demon_White_Mask",
       "bg": "Jade_Streak",
       "frame": "Pulse_Ring"
+    },
+    "Split_Cyborg": {
+      "slug": "Full_Split_Cyborg_Vamp",
+      "bg": "Rust_Perimeter",
+      "frame": "Wave_Rim"
     }
   },
   "poolByChar": {
@@ -6184,6 +6264,89 @@
         "slug": "Full_Scarred_Cyborg_Skull",
         "bg": "Vertical_Drift",
         "frame": "Blade_Rim"
+      }
+    ],
+    "Druid": [
+      {
+        "slug": "Full_Druid_Alien",
+        "bg": "Chromatic_Swell",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Druid_Diver",
+        "bg": "Band_Scroll",
+        "frame": "Radiant_Flicker"
+      },
+      {
+        "slug": "Full_Druid_Duo",
+        "bg": "Grid_Checker",
+        "frame": "Mint_Bolt"
+      },
+      {
+        "slug": "Full_Druid_Hooded",
+        "bg": "Basalt_Lines",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Druid_Knight_Helmet",
+        "bg": "Margin_Drip",
+        "frame": "Pixel_Flicker"
+      },
+      {
+        "slug": "Full_Druid_Oracle",
+        "bg": "Haze_Mosaic",
+        "frame": "Halo_Rim"
+      }
+    ],
+    "Goggle_Fox": [
+      {
+        "slug": "Full_Goggle_Fox_Burning",
+        "bg": "Fog_Blend",
+        "frame": "Cycle_Rim"
+      },
+      {
+        "slug": "Full_Goggle_Fox_Frog_Hat",
+        "bg": "Margin_Flash",
+        "frame": "Edge_Chroma"
+      },
+      {
+        "slug": "Full_Goggle_Fox_Jungle",
+        "bg": "Vertical_Drift",
+        "frame": "Glitch_Rim"
+      },
+      {
+        "slug": "Full_Goggle_Fox_Punk_Kiss",
+        "bg": "Haze_Mosaic",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_Goggle_Fox_Scared",
+        "bg": "Xenon_Wave",
+        "frame": "Nova_Bolt"
+      },
+      {
+        "slug": "Full_Goggle_Fox_VR",
+        "bg": "Mist_Drip",
+        "frame": "Halo_Rim"
+      }
+    ],
+    "Sad_Scoop": [
+      {
+        "slug": "Full_Sad_Scoop_Blueberry",
+        "bg": "Grove_Mosaic",
+        "frame": "Unit_Ring"
+      },
+      {
+        "slug": "Full_Sad_Scoop_Zombie",
+        "bg": "Chromatic_Swell",
+        "frame": "Radiant_Flicker"
+      }
+    ],
+    "Split_Cyborg": [
+      {
+        "slug": "Full_Split_Cyborg_Vamp",
+        "bg": "Rust_Perimeter",
+        "frame": "Wave_Rim"
       }
     ]
   },
