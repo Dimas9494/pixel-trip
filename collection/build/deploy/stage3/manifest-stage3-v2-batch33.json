@@ -1,0 +1,108 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-19T17:35:15.040707+00:00",
+  "count": 14,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Daring_Queen_Forest",
+      "bg": "Rust_Blend",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Daring_Queen_Forest.gif",
+      "stage1_character": "Daring_Queen"
+    },
+    {
+      "slug": "Full_Daring_Queen_Goth",
+      "bg": "Lux_Checker",
+      "frame": "Nova_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Daring_Queen_Goth.gif",
+      "stage1_character": "Daring_Queen"
+    },
+    {
+      "slug": "Full_Daring_Queen_Half_Face",
+      "bg": "Basalt_Lines",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Daring_Queen_Half_Face.gif",
+      "stage1_character": "Daring_Queen"
+    },
+    {
+      "slug": "Full_Daring_Queen_Zombie",
+      "bg": "Warp_Wave",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Daring_Queen_Zombie.gif",
+      "stage1_character": "Daring_Queen"
+    },
+    {
+      "slug": "Full_Green_Alien_Franky",
+      "bg": "Lattice_Lines",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Green_Alien_Franky.gif",
+      "stage1_character": "Green_Alien"
+    },
+    {
+      "slug": "Full_Green_Alien_King",
+      "bg": "Jade_Streak",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Green_Alien_King.gif",
+      "stage1_character": "Green_Alien"
+    },
+    {
+      "slug": "Full_Green_Alien_Long_Hair",
+      "bg": "Lumen_Streak",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Green_Alien_Long_Hair.gif",
+      "stage1_character": "Green_Alien"
+    },
+    {
+      "slug": "Full_Green_Alien_Rasta",
+      "bg": "Grid_Checker",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Green_Alien_Rasta.gif",
+      "stage1_character": "Green_Alien"
+    },
+    {
+      "slug": "Full_Lightning_Glam_Horns",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Lightning_Glam_Horns.gif",
+      "stage1_character": "Lightning_Glam"
+    },
+    {
+      "slug": "Full_Lightning_Glam_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Lightning_Glam_Zombie.gif",
+      "stage1_character": "Lightning_Glam"
+    },
+    {
+      "slug": "Full_One_Straw_Patch_Octo",
+      "bg": "Diagonal_Streak",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_One_Straw_Patch_Octo.gif",
+      "stage1_character": "One_Straw_Patch"
+    },
+    {
+      "slug": "Full_One_Straw_Patch_Skull",
+      "bg": "Jolt_Checker",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_One_Straw_Patch_Skull.gif",
+      "stage1_character": "One_Straw_Patch"
+    },
+    {
+      "slug": "Full_SWAT_Alien",
+      "bg": "Delta_Flash",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_SWAT_Alien.gif",
+      "stage1_character": "SWAT"
+    },
+    {
+      "slug": "Full_SWAT_Mohawk",
+      "bg": "Stripe_Phase",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_SWAT_Mohawk.gif",
+      "stage1_character": "SWAT"
+    }
+  ]
+}

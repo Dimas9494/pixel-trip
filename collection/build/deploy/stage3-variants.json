@@ -2949,6 +2949,76 @@
       "slug": "Full_Split_Cyborg_Vamp",
       "bg": "Rust_Perimeter",
       "frame": "Wave_Rim"
+    },
+    "Daring_Queen_Forest": {
+      "slug": "Full_Daring_Queen_Forest",
+      "bg": "Rust_Blend",
+      "frame": "Core_Rim"
+    },
+    "Daring_Queen_Goth": {
+      "slug": "Full_Daring_Queen_Goth",
+      "bg": "Lux_Checker",
+      "frame": "Nova_Rim"
+    },
+    "Daring_Queen_Half_Face": {
+      "slug": "Full_Daring_Queen_Half_Face",
+      "bg": "Basalt_Lines",
+      "frame": "Vector_Ring"
+    },
+    "Daring_Queen_Zombie": {
+      "slug": "Full_Daring_Queen_Zombie",
+      "bg": "Warp_Wave",
+      "frame": "Volt_Rim"
+    },
+    "Green_Alien_Franky": {
+      "slug": "Full_Green_Alien_Franky",
+      "bg": "Lattice_Lines",
+      "frame": "Vector_Ring"
+    },
+    "Green_Alien_King": {
+      "slug": "Full_Green_Alien_King",
+      "bg": "Jade_Streak",
+      "frame": "Quick_Flicker"
+    },
+    "Green_Alien_Long_Hair": {
+      "slug": "Full_Green_Alien_Long_Hair",
+      "bg": "Lumen_Streak",
+      "frame": "Quick_Flicker"
+    },
+    "Green_Alien_Rasta": {
+      "slug": "Full_Green_Alien_Rasta",
+      "bg": "Grid_Checker",
+      "frame": "Trace_Rim"
+    },
+    "Lightning_Glam_Horns": {
+      "slug": "Full_Lightning_Glam_Horns",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Blade_Rim"
+    },
+    "Lightning_Glam_Zombie": {
+      "slug": "Full_Lightning_Glam_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Trace_Rim"
+    },
+    "One_Straw_Patch_Octo": {
+      "slug": "Full_One_Straw_Patch_Octo",
+      "bg": "Diagonal_Streak",
+      "frame": "Flux_Rim"
+    },
+    "One_Straw_Patch_Skull": {
+      "slug": "Full_One_Straw_Patch_Skull",
+      "bg": "Jolt_Checker",
+      "frame": "Byte_Pulse"
+    },
+    "SWAT_Alien": {
+      "slug": "Full_SWAT_Alien",
+      "bg": "Delta_Flash",
+      "frame": "Radiant_Flicker"
+    },
+    "SWAT_Mohawk": {
+      "slug": "Full_SWAT_Mohawk",
+      "bg": "Stripe_Phase",
+      "frame": "Edge_Chroma"
     }
   },
   "defaultByChar": {
@@ -6347,6 +6417,86 @@
         "slug": "Full_Split_Cyborg_Vamp",
         "bg": "Rust_Perimeter",
         "frame": "Wave_Rim"
+      }
+    ],
+    "Daring_Queen": [
+      {
+        "slug": "Full_Daring_Queen_Forest",
+        "bg": "Rust_Blend",
+        "frame": "Core_Rim"
+      },
+      {
+        "slug": "Full_Daring_Queen_Goth",
+        "bg": "Lux_Checker",
+        "frame": "Nova_Rim"
+      },
+      {
+        "slug": "Full_Daring_Queen_Half_Face",
+        "bg": "Basalt_Lines",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Daring_Queen_Zombie",
+        "bg": "Warp_Wave",
+        "frame": "Volt_Rim"
+      }
+    ],
+    "Green_Alien": [
+      {
+        "slug": "Full_Green_Alien_Franky",
+        "bg": "Lattice_Lines",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Green_Alien_King",
+        "bg": "Jade_Streak",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Green_Alien_Long_Hair",
+        "bg": "Lumen_Streak",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Green_Alien_Rasta",
+        "bg": "Grid_Checker",
+        "frame": "Trace_Rim"
+      }
+    ],
+    "Lightning_Glam": [
+      {
+        "slug": "Full_Lightning_Glam_Horns",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Blade_Rim"
+      },
+      {
+        "slug": "Full_Lightning_Glam_Zombie",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Trace_Rim"
+      }
+    ],
+    "One_Straw_Patch": [
+      {
+        "slug": "Full_One_Straw_Patch_Octo",
+        "bg": "Diagonal_Streak",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_One_Straw_Patch_Skull",
+        "bg": "Jolt_Checker",
+        "frame": "Byte_Pulse"
+      }
+    ],
+    "SWAT": [
+      {
+        "slug": "Full_SWAT_Alien",
+        "bg": "Delta_Flash",
+        "frame": "Radiant_Flicker"
+      },
+      {
+        "slug": "Full_SWAT_Mohawk",
+        "bg": "Stripe_Phase",
+        "frame": "Edge_Chroma"
       }
     ]
   },

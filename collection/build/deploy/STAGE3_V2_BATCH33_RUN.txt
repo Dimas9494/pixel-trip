@@ -1,0 +1,54 @@
+PIXEL TRIP — Stage 3 V2 batch 33 (PNG → Full_*.gif)
+
+BATCH 33 — 14 Full, 5 S1 линий
+  Daring_Queen      — 4 PNG
+  Green_Alien       — 4 PNG
+  Lightning_Glam    — 2 PNG
+  One_Straw_Patch   — 2 PNG
+  SWAT              — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch33.json --seed 36363
+
+  Или: deploy_stage3_v2_batch33.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch33.json
+  website/src/burn/stage3-variants.json
+
+FTP (14 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 33)
+  Full_Daring_Queen_Forest.gif
+  Full_Daring_Queen_Goth.gif
+  Full_Daring_Queen_Half_Face.gif
+  Full_Daring_Queen_Zombie.gif
+  Full_Green_Alien_Franky.gif
+  Full_Green_Alien_King.gif
+  Full_Green_Alien_Long_Hair.gif
+  Full_Green_Alien_Rasta.gif
+  Full_Lightning_Glam_Horns.gif
+  Full_Lightning_Glam_Zombie.gif
+  Full_One_Straw_Patch_Octo.gif
+  Full_One_Straw_Patch_Skull.gif
+  Full_SWAT_Alien.gif
+  Full_SWAT_Mohawk.gif
