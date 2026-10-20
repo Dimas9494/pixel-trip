@@ -1,0 +1,94 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-20T17:37:53.407942+00:00",
+  "count": 12,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Gilded_Bot_Horns",
+      "bg": "Flare_Flash",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gilded_Bot_Horns.gif",
+      "stage1_character": "Gilded_Bot"
+    },
+    {
+      "slug": "Full_Gilded_Bot_Mohawk",
+      "bg": "Kelp_Streak",
+      "frame": "Xeno_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gilded_Bot_Mohawk.gif",
+      "stage1_character": "Gilded_Bot"
+    },
+    {
+      "slug": "Full_Red_Nose_Clown_Alien",
+      "bg": "Bloom_Wave",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Nose_Clown_Alien.gif",
+      "stage1_character": "Red_Nose_Clown"
+    },
+    {
+      "slug": "Full_Red_Nose_Clown_Franky",
+      "bg": "Haze_Mosaic",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Nose_Clown_Franky.gif",
+      "stage1_character": "Red_Nose_Clown"
+    },
+    {
+      "slug": "Full_Red_Nose_Clown_King",
+      "bg": "Rust_Perimeter",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Nose_Clown_King.gif",
+      "stage1_character": "Red_Nose_Clown"
+    },
+    {
+      "slug": "Full_Red_Nose_Clown_Long_Hair",
+      "bg": "Chromatic_Swell",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Nose_Clown_Long_Hair.gif",
+      "stage1_character": "Red_Nose_Clown"
+    },
+    {
+      "slug": "Full_Red_Nose_Clown_Mushrooms",
+      "bg": "Jolt_Checker",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Nose_Clown_Mushrooms.gif",
+      "stage1_character": "Red_Nose_Clown"
+    },
+    {
+      "slug": "Full_Red_Nose_Clown_Robo",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Kinetic_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Nose_Clown_Robo.gif",
+      "stage1_character": "Red_Nose_Clown"
+    },
+    {
+      "slug": "Full_Trippy_Alien_Backcap",
+      "bg": "Xenon_Wave",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Trippy_Alien_Backcap.gif",
+      "stage1_character": "Trippy_Alien"
+    },
+    {
+      "slug": "Full_Trippy_Alien_Brain",
+      "bg": "Fog_Blend",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Trippy_Alien_Brain.gif",
+      "stage1_character": "Trippy_Alien"
+    },
+    {
+      "slug": "Full_Trippy_Alien_Crown",
+      "bg": "Warp_Wave",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Trippy_Alien_Crown.gif",
+      "stage1_character": "Trippy_Alien"
+    },
+    {
+      "slug": "Full_Trippy_Alien_Mushrooms",
+      "bg": "Brick_Mosaic",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Trippy_Alien_Mushrooms.gif",
+      "stage1_character": "Trippy_Alien"
+    }
+  ]
+}

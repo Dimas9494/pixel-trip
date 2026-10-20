@@ -1,0 +1,50 @@
+PIXEL TRIP — Stage 3 V2 batch 34 (PNG → Full_*.gif)
+
+BATCH 34 — 12 Full, 3 S1 линий
+  Gilded_Bot        — 2 PNG
+  Red_Nose_Clown    — 6 PNG
+  Trippy_Alien      — 4 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch34.json --seed 37373
+
+  Или: deploy_stage3_v2_batch34.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch34.json
+  website/src/burn/stage3-variants.json
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 34)
+  Full_Gilded_Bot_Horns.gif
+  Full_Gilded_Bot_Mohawk.gif
+  Full_Red_Nose_Clown_Alien.gif
+  Full_Red_Nose_Clown_Franky.gif
+  Full_Red_Nose_Clown_King.gif
+  Full_Red_Nose_Clown_Long_Hair.gif
+  Full_Red_Nose_Clown_Mushrooms.gif
+  Full_Red_Nose_Clown_Robo.gif
+  Full_Trippy_Alien_Backcap.gif
+  Full_Trippy_Alien_Brain.gif
+  Full_Trippy_Alien_Crown.gif
+  Full_Trippy_Alien_Mushrooms.gif

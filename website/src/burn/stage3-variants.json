@@ -3019,6 +3019,66 @@
       "slug": "Full_SWAT_Mohawk",
       "bg": "Stripe_Phase",
       "frame": "Edge_Chroma"
+    },
+    "Gilded_Bot_Horns": {
+      "slug": "Full_Gilded_Bot_Horns",
+      "bg": "Flare_Flash",
+      "frame": "Mint_Bolt"
+    },
+    "Gilded_Bot_Mohawk": {
+      "slug": "Full_Gilded_Bot_Mohawk",
+      "bg": "Kelp_Streak",
+      "frame": "Xeno_Rim"
+    },
+    "Red_Nose_Clown_Alien": {
+      "slug": "Full_Red_Nose_Clown_Alien",
+      "bg": "Bloom_Wave",
+      "frame": "Bolt_Chroma"
+    },
+    "Red_Nose_Clown_Franky": {
+      "slug": "Full_Red_Nose_Clown_Franky",
+      "bg": "Haze_Mosaic",
+      "frame": "Lumen_Flicker"
+    },
+    "Red_Nose_Clown_King": {
+      "slug": "Full_Red_Nose_Clown_King",
+      "bg": "Rust_Perimeter",
+      "frame": "Volt_Ring"
+    },
+    "Red_Nose_Clown_Long_Hair": {
+      "slug": "Full_Red_Nose_Clown_Long_Hair",
+      "bg": "Chromatic_Swell",
+      "frame": "Spark_Rim"
+    },
+    "Red_Nose_Clown_Mushrooms": {
+      "slug": "Full_Red_Nose_Clown_Mushrooms",
+      "bg": "Jolt_Checker",
+      "frame": "Mint_Flash"
+    },
+    "Red_Nose_Clown_Robo": {
+      "slug": "Full_Red_Nose_Clown_Robo",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Kinetic_Rim"
+    },
+    "Trippy_Alien_Backcap": {
+      "slug": "Full_Trippy_Alien_Backcap",
+      "bg": "Xenon_Wave",
+      "frame": "Ion_Rim"
+    },
+    "Trippy_Alien_Brain": {
+      "slug": "Full_Trippy_Alien_Brain",
+      "bg": "Fog_Blend",
+      "frame": "Jolt_Rim"
+    },
+    "Trippy_Alien_Crown": {
+      "slug": "Full_Trippy_Alien_Crown",
+      "bg": "Warp_Wave",
+      "frame": "Quick_Flicker"
+    },
+    "Trippy_Alien_Mushrooms": {
+      "slug": "Full_Trippy_Alien_Mushrooms",
+      "bg": "Brick_Mosaic",
+      "frame": "Pulse_Ring"
     }
   },
   "defaultByChar": {
@@ -6497,6 +6557,72 @@
         "slug": "Full_SWAT_Mohawk",
         "bg": "Stripe_Phase",
         "frame": "Edge_Chroma"
+      }
+    ],
+    "Gilded_Bot": [
+      {
+        "slug": "Full_Gilded_Bot_Horns",
+        "bg": "Flare_Flash",
+        "frame": "Mint_Bolt"
+      },
+      {
+        "slug": "Full_Gilded_Bot_Mohawk",
+        "bg": "Kelp_Streak",
+        "frame": "Xeno_Rim"
+      }
+    ],
+    "Red_Nose_Clown": [
+      {
+        "slug": "Full_Red_Nose_Clown_Alien",
+        "bg": "Bloom_Wave",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Red_Nose_Clown_Franky",
+        "bg": "Haze_Mosaic",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Red_Nose_Clown_King",
+        "bg": "Rust_Perimeter",
+        "frame": "Volt_Ring"
+      },
+      {
+        "slug": "Full_Red_Nose_Clown_Long_Hair",
+        "bg": "Chromatic_Swell",
+        "frame": "Spark_Rim"
+      },
+      {
+        "slug": "Full_Red_Nose_Clown_Mushrooms",
+        "bg": "Jolt_Checker",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Red_Nose_Clown_Robo",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Kinetic_Rim"
+      }
+    ],
+    "Trippy_Alien": [
+      {
+        "slug": "Full_Trippy_Alien_Backcap",
+        "bg": "Xenon_Wave",
+        "frame": "Ion_Rim"
+      },
+      {
+        "slug": "Full_Trippy_Alien_Brain",
+        "bg": "Fog_Blend",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Trippy_Alien_Crown",
+        "bg": "Warp_Wave",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Trippy_Alien_Mushrooms",
+        "bg": "Brick_Mosaic",
+        "frame": "Pulse_Ring"
       }
     ]
   },
