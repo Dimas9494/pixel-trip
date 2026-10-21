@@ -1,0 +1,54 @@
+PIXEL TRIP — Stage 3 V2 batch 35 (PNG → Full_*.gif)
+
+BATCH 35 — 15 Full, 4 S1 линий
+  Neon_Pulse          — 5 PNG
+  Pink_Goggles_Lady   — 2 PNG
+  Purple_Balaclava    — 3 PNG
+  Toxic_Mohawk        — 5 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch35.json --seed 38383
+
+  Или: deploy_stage3_v2_batch35.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch35.json
+  website/src/burn/stage3-variants.json
+
+FTP (15 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 35)
+  Full_Neon_Pulse_Horns.gif
+  Full_Neon_Pulse_Skull.gif
+  Full_Neon_Pulse_Vamp.gif
+  Full_Neon_Pulse_Visor.gif
+  Full_Neon_Pulse_Zombie.gif
+  Full_Pink_Goggles_Lady_Angel.gif
+  Full_Pink_Goggles_Lady_Skeleton.gif
+  Full_Purple_Balaclava_Big_Eyes.gif
+  Full_Purple_Balaclava_Demon.gif
+  Full_Purple_Balaclava_Skull.gif
+  Full_Toxic_Mohawk_Alien.gif
+  Full_Toxic_Mohawk_Clown.gif
+  Full_Toxic_Mohawk_Skeleton.gif
+  Full_Toxic_Mohawk_Skull_Bandana.gif
+  Full_Toxic_Mohawk_Zombie.gif

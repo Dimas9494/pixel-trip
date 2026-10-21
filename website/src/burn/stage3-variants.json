@@ -3079,6 +3079,81 @@
       "slug": "Full_Trippy_Alien_Mushrooms",
       "bg": "Brick_Mosaic",
       "frame": "Pulse_Ring"
+    },
+    "Neon_Pulse_Horns": {
+      "slug": "Full_Neon_Pulse_Horns",
+      "bg": "Flare_Flash",
+      "frame": "Mint_Flash"
+    },
+    "Neon_Pulse_Skull": {
+      "slug": "Full_Neon_Pulse_Skull",
+      "bg": "Diagonal_Streak",
+      "frame": "Kinetic_Rim"
+    },
+    "Neon_Pulse_Vamp": {
+      "slug": "Full_Neon_Pulse_Vamp",
+      "bg": "Kinetic_Checker",
+      "frame": "Axis_Pulse"
+    },
+    "Neon_Pulse_Visor": {
+      "slug": "Full_Neon_Pulse_Visor",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Edge_Flash"
+    },
+    "Neon_Pulse_Zombie": {
+      "slug": "Full_Neon_Pulse_Zombie",
+      "bg": "Vertical_Drift",
+      "frame": "Bolt_Rim"
+    },
+    "Pink_Goggles_Lady_Angel": {
+      "slug": "Full_Pink_Goggles_Lady_Angel",
+      "bg": "Grove_Mosaic",
+      "frame": "Chrome_Rim"
+    },
+    "Pink_Goggles_Lady_Skeleton": {
+      "slug": "Full_Pink_Goggles_Lady_Skeleton",
+      "bg": "Vertical_Drift",
+      "frame": "Glyph_Rim"
+    },
+    "Purple_Balaclava_Big_Eyes": {
+      "slug": "Full_Purple_Balaclava_Big_Eyes",
+      "bg": "Grid_Checker",
+      "frame": "Omega_Rim"
+    },
+    "Purple_Balaclava_Demon": {
+      "slug": "Full_Purple_Balaclava_Demon",
+      "bg": "Diagonal_Streak",
+      "frame": "Vector_Ring"
+    },
+    "Purple_Balaclava_Skull": {
+      "slug": "Full_Purple_Balaclava_Skull",
+      "bg": "Kelp_Streak",
+      "frame": "Pulse_Ring"
+    },
+    "Toxic_Mohawk_Alien": {
+      "slug": "Full_Toxic_Mohawk_Alien",
+      "bg": "Band_Scroll",
+      "frame": "Flux_Rim"
+    },
+    "Toxic_Mohawk_Clown": {
+      "slug": "Full_Toxic_Mohawk_Clown",
+      "bg": "Warp_Wave",
+      "frame": "Band_Rim"
+    },
+    "Toxic_Mohawk_Skeleton": {
+      "slug": "Full_Toxic_Mohawk_Skeleton",
+      "bg": "Basalt_Lines",
+      "frame": "Prism_Rim"
+    },
+    "Toxic_Mohawk_Skull_Bandana": {
+      "slug": "Full_Toxic_Mohawk_Skull_Bandana",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Bolt_Chroma"
+    },
+    "Toxic_Mohawk_Zombie": {
+      "slug": "Full_Toxic_Mohawk_Zombie",
+      "bg": "Lattice_Lines",
+      "frame": "Glitch_Rim"
     }
   },
   "defaultByChar": {
@@ -6623,6 +6698,89 @@
         "slug": "Full_Trippy_Alien_Mushrooms",
         "bg": "Brick_Mosaic",
         "frame": "Pulse_Ring"
+      }
+    ],
+    "Neon_Pulse": [
+      {
+        "slug": "Full_Neon_Pulse_Horns",
+        "bg": "Flare_Flash",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Neon_Pulse_Skull",
+        "bg": "Diagonal_Streak",
+        "frame": "Kinetic_Rim"
+      },
+      {
+        "slug": "Full_Neon_Pulse_Vamp",
+        "bg": "Kinetic_Checker",
+        "frame": "Axis_Pulse"
+      },
+      {
+        "slug": "Full_Neon_Pulse_Visor",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Edge_Flash"
+      },
+      {
+        "slug": "Full_Neon_Pulse_Zombie",
+        "bg": "Vertical_Drift",
+        "frame": "Bolt_Rim"
+      }
+    ],
+    "Pink_Goggles_Lady": [
+      {
+        "slug": "Full_Pink_Goggles_Lady_Angel",
+        "bg": "Grove_Mosaic",
+        "frame": "Chrome_Rim"
+      },
+      {
+        "slug": "Full_Pink_Goggles_Lady_Skeleton",
+        "bg": "Vertical_Drift",
+        "frame": "Glyph_Rim"
+      }
+    ],
+    "Purple_Balaclava": [
+      {
+        "slug": "Full_Purple_Balaclava_Big_Eyes",
+        "bg": "Grid_Checker",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Purple_Balaclava_Demon",
+        "bg": "Diagonal_Streak",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Purple_Balaclava_Skull",
+        "bg": "Kelp_Streak",
+        "frame": "Pulse_Ring"
+      }
+    ],
+    "Toxic_Mohawk": [
+      {
+        "slug": "Full_Toxic_Mohawk_Alien",
+        "bg": "Band_Scroll",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_Toxic_Mohawk_Clown",
+        "bg": "Warp_Wave",
+        "frame": "Band_Rim"
+      },
+      {
+        "slug": "Full_Toxic_Mohawk_Skeleton",
+        "bg": "Basalt_Lines",
+        "frame": "Prism_Rim"
+      },
+      {
+        "slug": "Full_Toxic_Mohawk_Skull_Bandana",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Bolt_Chroma"
+      },
+      {
+        "slug": "Full_Toxic_Mohawk_Zombie",
+        "bg": "Lattice_Lines",
+        "frame": "Glitch_Rim"
       }
     ]
   },

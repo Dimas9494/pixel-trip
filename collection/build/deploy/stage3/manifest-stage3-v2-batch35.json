@@ -1,0 +1,115 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-21T16:46:18.624248+00:00",
+  "count": 15,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Neon_Pulse_Horns",
+      "bg": "Flare_Flash",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Pulse_Horns.gif",
+      "stage1_character": "Neon_Pulse"
+    },
+    {
+      "slug": "Full_Neon_Pulse_Skull",
+      "bg": "Diagonal_Streak",
+      "frame": "Kinetic_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Pulse_Skull.gif",
+      "stage1_character": "Neon_Pulse"
+    },
+    {
+      "slug": "Full_Neon_Pulse_Vamp",
+      "bg": "Kinetic_Checker",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Pulse_Vamp.gif",
+      "stage1_character": "Neon_Pulse"
+    },
+    {
+      "slug": "Full_Neon_Pulse_Visor",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Edge_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Pulse_Visor.gif",
+      "stage1_character": "Neon_Pulse"
+    },
+    {
+      "slug": "Full_Neon_Pulse_Zombie",
+      "bg": "Vertical_Drift",
+      "frame": "Bolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Pulse_Zombie.gif",
+      "stage1_character": "Neon_Pulse"
+    },
+    {
+      "slug": "Full_Pink_Goggles_Lady_Angel",
+      "bg": "Grove_Mosaic",
+      "frame": "Chrome_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Goggles_Lady_Angel.gif",
+      "stage1_character": "Pink_Goggles_Lady"
+    },
+    {
+      "slug": "Full_Pink_Goggles_Lady_Skeleton",
+      "bg": "Vertical_Drift",
+      "frame": "Glyph_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Goggles_Lady_Skeleton.gif",
+      "stage1_character": "Pink_Goggles_Lady"
+    },
+    {
+      "slug": "Full_Purple_Balaclava_Big_Eyes",
+      "bg": "Grid_Checker",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Balaclava_Big_Eyes.gif",
+      "stage1_character": "Purple_Balaclava"
+    },
+    {
+      "slug": "Full_Purple_Balaclava_Demon",
+      "bg": "Diagonal_Streak",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Balaclava_Demon.gif",
+      "stage1_character": "Purple_Balaclava"
+    },
+    {
+      "slug": "Full_Purple_Balaclava_Skull",
+      "bg": "Kelp_Streak",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Balaclava_Skull.gif",
+      "stage1_character": "Purple_Balaclava"
+    },
+    {
+      "slug": "Full_Toxic_Mohawk_Alien",
+      "bg": "Band_Scroll",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Toxic_Mohawk_Alien.gif",
+      "stage1_character": "Toxic_Mohawk"
+    },
+    {
+      "slug": "Full_Toxic_Mohawk_Clown",
+      "bg": "Warp_Wave",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Toxic_Mohawk_Clown.gif",
+      "stage1_character": "Toxic_Mohawk"
+    },
+    {
+      "slug": "Full_Toxic_Mohawk_Skeleton",
+      "bg": "Basalt_Lines",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Toxic_Mohawk_Skeleton.gif",
+      "stage1_character": "Toxic_Mohawk"
+    },
+    {
+      "slug": "Full_Toxic_Mohawk_Skull_Bandana",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Toxic_Mohawk_Skull_Bandana.gif",
+      "stage1_character": "Toxic_Mohawk"
+    },
+    {
+      "slug": "Full_Toxic_Mohawk_Zombie",
+      "bg": "Lattice_Lines",
+      "frame": "Glitch_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Toxic_Mohawk_Zombie.gif",
+      "stage1_character": "Toxic_Mohawk"
+    }
+  ]
+}
