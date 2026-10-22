@@ -1,0 +1,59 @@
+PIXEL TRIP — Stage 3 V2 batch 36 (PNG → Full_*.gif)
+
+BATCH 36 — 17 Full, 7 S1 линий
+  Bug_Eyed_Alien     — 1 PNG
+  Fedora_Detective   — 2 PNG
+  Gnome              — 2 PNG
+  Neon_Visor         — 2 PNG
+  Purple_Grin        — 2 PNG
+  Red_Fez_Ape        — 6 PNG
+  Street_Kid         — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch36.json --seed 39393
+
+  Или: deploy_stage3_v2_batch36.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch36.json
+  website/src/burn/stage3-variants.json
+
+FTP (17 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 36)
+  Full_Bug_Eyed_Alien_Cyborg.gif
+  Full_Fedora_Detective_PIMP.gif
+  Full_Fedora_Detective_Skull.gif
+  Full_Gnome_Fairy.gif
+  Full_Gnome_Hippie.gif
+  Full_Neon_Visor_Kitty.gif
+  Full_Neon_Visor_Zombie.gif
+  Full_Purple_Grin_Gas_Mask.gif
+  Full_Purple_Grin_Hooded.gif
+  Full_Red_Fez_Ape_Asian_Hat.gif
+  Full_Red_Fez_Ape_Golden.gif
+  Full_Red_Fez_Ape_King.gif
+  Full_Red_Fez_Ape_Mask.gif
+  Full_Red_Fez_Ape_OG.gif
+  Full_Red_Fez_Ape_Skull.gif
+  Full_Street_Kid_Ape.gif
+  Full_Street_Kid_Skull_Mask.gif

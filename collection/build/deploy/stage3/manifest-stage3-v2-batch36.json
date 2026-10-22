@@ -1,0 +1,129 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-22T16:58:56.747139+00:00",
+  "count": 17,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Bug_Eyed_Alien_Cyborg",
+      "bg": "Stripe_Phase",
+      "frame": "Flux_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bug_Eyed_Alien_Cyborg.gif",
+      "stage1_character": "Bug_Eyed_Alien"
+    },
+    {
+      "slug": "Full_Fedora_Detective_PIMP",
+      "bg": "Plasma_Perimeter",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fedora_Detective_PIMP.gif",
+      "stage1_character": "Fedora_Detective"
+    },
+    {
+      "slug": "Full_Fedora_Detective_Skull",
+      "bg": "Grove_Mosaic",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fedora_Detective_Skull.gif",
+      "stage1_character": "Fedora_Detective"
+    },
+    {
+      "slug": "Full_Gnome_Fairy",
+      "bg": "Warp_Wave",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gnome_Fairy.gif",
+      "stage1_character": "Gnome"
+    },
+    {
+      "slug": "Full_Gnome_Hippie",
+      "bg": "Bloom_Wave",
+      "frame": "Chrome_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Gnome_Hippie.gif",
+      "stage1_character": "Gnome"
+    },
+    {
+      "slug": "Full_Neon_Visor_Kitty",
+      "bg": "Jolt_Checker",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Visor_Kitty.gif",
+      "stage1_character": "Neon_Visor"
+    },
+    {
+      "slug": "Full_Neon_Visor_Zombie",
+      "bg": "Hue_Pulse",
+      "frame": "Bolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Neon_Visor_Zombie.gif",
+      "stage1_character": "Neon_Visor"
+    },
+    {
+      "slug": "Full_Purple_Grin_Gas_Mask",
+      "bg": "Jolt_Checker",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Grin_Gas_Mask.gif",
+      "stage1_character": "Purple_Grin"
+    },
+    {
+      "slug": "Full_Purple_Grin_Hooded",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Bolt_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Grin_Hooded.gif",
+      "stage1_character": "Purple_Grin"
+    },
+    {
+      "slug": "Full_Red_Fez_Ape_Asian_Hat",
+      "bg": "Diagonal_Streak",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Fez_Ape_Asian_Hat.gif",
+      "stage1_character": "Red_Fez_Ape"
+    },
+    {
+      "slug": "Full_Red_Fez_Ape_Golden",
+      "bg": "Quasar_Perimeter",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Fez_Ape_Golden.gif",
+      "stage1_character": "Red_Fez_Ape"
+    },
+    {
+      "slug": "Full_Red_Fez_Ape_King",
+      "bg": "Mist_Drip",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Fez_Ape_King.gif",
+      "stage1_character": "Red_Fez_Ape"
+    },
+    {
+      "slug": "Full_Red_Fez_Ape_Mask",
+      "bg": "Margin_Drip",
+      "frame": "Glyph_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Fez_Ape_Mask.gif",
+      "stage1_character": "Red_Fez_Ape"
+    },
+    {
+      "slug": "Full_Red_Fez_Ape_OG",
+      "bg": "Kinetic_Checker",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Fez_Ape_OG.gif",
+      "stage1_character": "Red_Fez_Ape"
+    },
+    {
+      "slug": "Full_Red_Fez_Ape_Skull",
+      "bg": "Vertical_Drift",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Fez_Ape_Skull.gif",
+      "stage1_character": "Red_Fez_Ape"
+    },
+    {
+      "slug": "Full_Street_Kid_Ape",
+      "bg": "Quasar_Perimeter",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Kid_Ape.gif",
+      "stage1_character": "Street_Kid"
+    },
+    {
+      "slug": "Full_Street_Kid_Skull_Mask",
+      "bg": "Rust_Perimeter",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Street_Kid_Skull_Mask.gif",
+      "stage1_character": "Street_Kid"
+    }
+  ]
+}

@@ -3154,6 +3154,91 @@
       "slug": "Full_Toxic_Mohawk_Zombie",
       "bg": "Lattice_Lines",
       "frame": "Glitch_Rim"
+    },
+    "Bug_Eyed_Alien_Cyborg": {
+      "slug": "Full_Bug_Eyed_Alien_Cyborg",
+      "bg": "Stripe_Phase",
+      "frame": "Flux_Flash"
+    },
+    "Fedora_Detective_PIMP": {
+      "slug": "Full_Fedora_Detective_PIMP",
+      "bg": "Plasma_Perimeter",
+      "frame": "Split_Rim"
+    },
+    "Fedora_Detective_Skull": {
+      "slug": "Full_Fedora_Detective_Skull",
+      "bg": "Grove_Mosaic",
+      "frame": "Triple_Blink"
+    },
+    "Gnome_Fairy": {
+      "slug": "Full_Gnome_Fairy",
+      "bg": "Warp_Wave",
+      "frame": "Core_Rim"
+    },
+    "Gnome_Hippie": {
+      "slug": "Full_Gnome_Hippie",
+      "bg": "Bloom_Wave",
+      "frame": "Chrome_Rim"
+    },
+    "Neon_Visor_Kitty": {
+      "slug": "Full_Neon_Visor_Kitty",
+      "bg": "Jolt_Checker",
+      "frame": "Mono_Rim"
+    },
+    "Neon_Visor_Zombie": {
+      "slug": "Full_Neon_Visor_Zombie",
+      "bg": "Hue_Pulse",
+      "frame": "Bolt_Rim"
+    },
+    "Purple_Grin_Gas_Mask": {
+      "slug": "Full_Purple_Grin_Gas_Mask",
+      "bg": "Jolt_Checker",
+      "frame": "Quick_Flicker"
+    },
+    "Purple_Grin_Hooded": {
+      "slug": "Full_Purple_Grin_Hooded",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Bolt_Chroma"
+    },
+    "Red_Fez_Ape_Asian_Hat": {
+      "slug": "Full_Red_Fez_Ape_Asian_Hat",
+      "bg": "Diagonal_Streak",
+      "frame": "Neon_Rim"
+    },
+    "Red_Fez_Ape_Golden": {
+      "slug": "Full_Red_Fez_Ape_Golden",
+      "bg": "Quasar_Perimeter",
+      "frame": "Flux_Rim"
+    },
+    "Red_Fez_Ape_King": {
+      "slug": "Full_Red_Fez_Ape_King",
+      "bg": "Mist_Drip",
+      "frame": "Ion_Rim"
+    },
+    "Red_Fez_Ape_Mask": {
+      "slug": "Full_Red_Fez_Ape_Mask",
+      "bg": "Margin_Drip",
+      "frame": "Glyph_Rim"
+    },
+    "Red_Fez_Ape_OG": {
+      "slug": "Full_Red_Fez_Ape_OG",
+      "bg": "Kinetic_Checker",
+      "frame": "Vector_Rim"
+    },
+    "Red_Fez_Ape_Skull": {
+      "slug": "Full_Red_Fez_Ape_Skull",
+      "bg": "Vertical_Drift",
+      "frame": "Edge_Chroma"
+    },
+    "Street_Kid_Ape": {
+      "slug": "Full_Street_Kid_Ape",
+      "bg": "Quasar_Perimeter",
+      "frame": "Axis_Rim"
+    },
+    "Street_Kid_Skull_Mask": {
+      "slug": "Full_Street_Kid_Skull_Mask",
+      "bg": "Rust_Perimeter",
+      "frame": "Wire_Rim"
     }
   },
   "defaultByChar": {
@@ -3246,6 +3331,11 @@
       "slug": "Full_Split_Cyborg_Vamp",
       "bg": "Rust_Perimeter",
       "frame": "Wave_Rim"
+    },
+    "Bug_Eyed_Alien": {
+      "slug": "Full_Bug_Eyed_Alien_Cyborg",
+      "bg": "Stripe_Phase",
+      "frame": "Flux_Flash"
     }
   },
   "poolByChar": {
@@ -6781,6 +6871,105 @@
         "slug": "Full_Toxic_Mohawk_Zombie",
         "bg": "Lattice_Lines",
         "frame": "Glitch_Rim"
+      }
+    ],
+    "Bug_Eyed_Alien": [
+      {
+        "slug": "Full_Bug_Eyed_Alien_Cyborg",
+        "bg": "Stripe_Phase",
+        "frame": "Flux_Flash"
+      }
+    ],
+    "Fedora_Detective": [
+      {
+        "slug": "Full_Fedora_Detective_PIMP",
+        "bg": "Plasma_Perimeter",
+        "frame": "Split_Rim"
+      },
+      {
+        "slug": "Full_Fedora_Detective_Skull",
+        "bg": "Grove_Mosaic",
+        "frame": "Triple_Blink"
+      }
+    ],
+    "Gnome": [
+      {
+        "slug": "Full_Gnome_Fairy",
+        "bg": "Warp_Wave",
+        "frame": "Core_Rim"
+      },
+      {
+        "slug": "Full_Gnome_Hippie",
+        "bg": "Bloom_Wave",
+        "frame": "Chrome_Rim"
+      }
+    ],
+    "Neon_Visor": [
+      {
+        "slug": "Full_Neon_Visor_Kitty",
+        "bg": "Jolt_Checker",
+        "frame": "Mono_Rim"
+      },
+      {
+        "slug": "Full_Neon_Visor_Zombie",
+        "bg": "Hue_Pulse",
+        "frame": "Bolt_Rim"
+      }
+    ],
+    "Purple_Grin": [
+      {
+        "slug": "Full_Purple_Grin_Gas_Mask",
+        "bg": "Jolt_Checker",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Purple_Grin_Hooded",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Bolt_Chroma"
+      }
+    ],
+    "Red_Fez_Ape": [
+      {
+        "slug": "Full_Red_Fez_Ape_Asian_Hat",
+        "bg": "Diagonal_Streak",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Red_Fez_Ape_Golden",
+        "bg": "Quasar_Perimeter",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_Red_Fez_Ape_King",
+        "bg": "Mist_Drip",
+        "frame": "Ion_Rim"
+      },
+      {
+        "slug": "Full_Red_Fez_Ape_Mask",
+        "bg": "Margin_Drip",
+        "frame": "Glyph_Rim"
+      },
+      {
+        "slug": "Full_Red_Fez_Ape_OG",
+        "bg": "Kinetic_Checker",
+        "frame": "Vector_Rim"
+      },
+      {
+        "slug": "Full_Red_Fez_Ape_Skull",
+        "bg": "Vertical_Drift",
+        "frame": "Edge_Chroma"
+      }
+    ],
+    "Street_Kid": [
+      {
+        "slug": "Full_Street_Kid_Ape",
+        "bg": "Quasar_Perimeter",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Street_Kid_Skull_Mask",
+        "bg": "Rust_Perimeter",
+        "frame": "Wire_Rim"
       }
     ]
   },
