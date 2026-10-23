@@ -1,0 +1,52 @@
+PIXEL TRIP — Stage 3 V2 batch 37 (PNG → Full_*.gif)
+
+BATCH 37 — 14 Full, 3 S1 линий
+  Oracle        — 4 PNG
+  Sleepy_Koala  — 5 PNG
+  Teal_Villain  — 5 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch37.json --seed 40404
+
+  Или: deploy_stage3_v2_batch37.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch37.json
+  website/src/burn/stage3-variants.json
+
+FTP (14 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 37)
+  Full_Oracle_Devil.gif
+  Full_Oracle_Growing.gif
+  Full_Oracle_Skull.gif
+  Full_Oracle_Underwater.gif
+  Full_Sleepy_Koala_Captain.gif
+  Full_Sleepy_Koala_Hippie.gif
+  Full_Sleepy_Koala_Monk.gif
+  Full_Sleepy_Koala_Teal_Mask.gif
+  Full_Sleepy_Koala_Zombie.gif
+  Full_Teal_Villain_Hooded.gif
+  Full_Teal_Villain_Mystique.gif
+  Full_Teal_Villain_Rainbow.gif
+  Full_Teal_Villain_Skull.gif
+  Full_Teal_Villain_VR_Glasses.gif

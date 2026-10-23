@@ -3239,6 +3239,76 @@
       "slug": "Full_Street_Kid_Skull_Mask",
       "bg": "Rust_Perimeter",
       "frame": "Wire_Rim"
+    },
+    "Oracle_Devil": {
+      "slug": "Full_Oracle_Devil",
+      "bg": "Haze_Mosaic",
+      "frame": "Grid_Rim"
+    },
+    "Oracle_Growing": {
+      "slug": "Full_Oracle_Growing",
+      "bg": "Bloom_Wave",
+      "frame": "Ion_Rim"
+    },
+    "Oracle_Skull": {
+      "slug": "Full_Oracle_Skull",
+      "bg": "Warp_Wave",
+      "frame": "Aqua_Rim"
+    },
+    "Oracle_Underwater": {
+      "slug": "Full_Oracle_Underwater",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Pixel_Flicker"
+    },
+    "Sleepy_Koala_Captain": {
+      "slug": "Full_Sleepy_Koala_Captain",
+      "bg": "Diagonal_Streak",
+      "frame": "Yield_Pulse"
+    },
+    "Sleepy_Koala_Hippie": {
+      "slug": "Full_Sleepy_Koala_Hippie",
+      "bg": "Delta_Flash",
+      "frame": "Split_Rim"
+    },
+    "Sleepy_Koala_Monk": {
+      "slug": "Full_Sleepy_Koala_Monk",
+      "bg": "Plasma_Perimeter",
+      "frame": "Blade_Chroma"
+    },
+    "Sleepy_Koala_Teal_Mask": {
+      "slug": "Full_Sleepy_Koala_Teal_Mask",
+      "bg": "Delta_Flash",
+      "frame": "Glyph_Rim"
+    },
+    "Sleepy_Koala_Zombie": {
+      "slug": "Full_Sleepy_Koala_Zombie",
+      "bg": "Plasma_Perimeter",
+      "frame": "Flash_Rim"
+    },
+    "Teal_Villain_Hooded": {
+      "slug": "Full_Teal_Villain_Hooded",
+      "bg": "Jolt_Checker",
+      "frame": "Wire_Rim"
+    },
+    "Teal_Villain_Mystique": {
+      "slug": "Full_Teal_Villain_Mystique",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Rim_Pulse"
+    },
+    "Teal_Villain_Rainbow": {
+      "slug": "Full_Teal_Villain_Rainbow",
+      "bg": "Gem_Perimeter",
+      "frame": "Flash_Rim"
+    },
+    "Teal_Villain_Skull": {
+      "slug": "Full_Teal_Villain_Skull",
+      "bg": "Brick_Mosaic",
+      "frame": "Hue_Rim"
+    },
+    "Teal_Villain_VR_Glasses": {
+      "slug": "Full_Teal_Villain_VR_Glasses",
+      "bg": "Basalt_Lines",
+      "frame": "Grid_Rim"
     }
   },
   "defaultByChar": {
@@ -6970,6 +7040,82 @@
         "slug": "Full_Street_Kid_Skull_Mask",
         "bg": "Rust_Perimeter",
         "frame": "Wire_Rim"
+      }
+    ],
+    "Oracle": [
+      {
+        "slug": "Full_Oracle_Devil",
+        "bg": "Haze_Mosaic",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Oracle_Growing",
+        "bg": "Bloom_Wave",
+        "frame": "Ion_Rim"
+      },
+      {
+        "slug": "Full_Oracle_Skull",
+        "bg": "Warp_Wave",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Oracle_Underwater",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Pixel_Flicker"
+      }
+    ],
+    "Sleepy_Koala": [
+      {
+        "slug": "Full_Sleepy_Koala_Captain",
+        "bg": "Diagonal_Streak",
+        "frame": "Yield_Pulse"
+      },
+      {
+        "slug": "Full_Sleepy_Koala_Hippie",
+        "bg": "Delta_Flash",
+        "frame": "Split_Rim"
+      },
+      {
+        "slug": "Full_Sleepy_Koala_Monk",
+        "bg": "Plasma_Perimeter",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Sleepy_Koala_Teal_Mask",
+        "bg": "Delta_Flash",
+        "frame": "Glyph_Rim"
+      },
+      {
+        "slug": "Full_Sleepy_Koala_Zombie",
+        "bg": "Plasma_Perimeter",
+        "frame": "Flash_Rim"
+      }
+    ],
+    "Teal_Villain": [
+      {
+        "slug": "Full_Teal_Villain_Hooded",
+        "bg": "Jolt_Checker",
+        "frame": "Wire_Rim"
+      },
+      {
+        "slug": "Full_Teal_Villain_Mystique",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Rim_Pulse"
+      },
+      {
+        "slug": "Full_Teal_Villain_Rainbow",
+        "bg": "Gem_Perimeter",
+        "frame": "Flash_Rim"
+      },
+      {
+        "slug": "Full_Teal_Villain_Skull",
+        "bg": "Brick_Mosaic",
+        "frame": "Hue_Rim"
+      },
+      {
+        "slug": "Full_Teal_Villain_VR_Glasses",
+        "bg": "Basalt_Lines",
+        "frame": "Grid_Rim"
       }
     ]
   },
