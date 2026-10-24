@@ -1,0 +1,115 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-24T17:46:02.239679+00:00",
+  "count": 15,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Space_Chimp_Frank",
+      "bg": "Margin_Drip",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Space_Chimp_Frank.gif",
+      "stage1_character": "Space_Chimp"
+    },
+    {
+      "slug": "Full_Space_Chimp_Lasers",
+      "bg": "Jade_Streak",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Space_Chimp_Lasers.gif",
+      "stage1_character": "Space_Chimp"
+    },
+    {
+      "slug": "Full_Stoned_Rapper_Clown",
+      "bg": "Haze_Mosaic",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Rapper_Clown.gif",
+      "stage1_character": "Stoned_Rapper"
+    },
+    {
+      "slug": "Full_Stoned_Rapper_Kitty_Cap",
+      "bg": "Margin_Drip",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Rapper_Kitty_Cap.gif",
+      "stage1_character": "Stoned_Rapper"
+    },
+    {
+      "slug": "Full_Stoned_Rapper_Mask",
+      "bg": "Grove_Mosaic",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Rapper_Mask.gif",
+      "stage1_character": "Stoned_Rapper"
+    },
+    {
+      "slug": "Full_Stoned_Rapper_Skater",
+      "bg": "Rust_Blend",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Rapper_Skater.gif",
+      "stage1_character": "Stoned_Rapper"
+    },
+    {
+      "slug": "Full_Stoned_Rapper_Skeleton",
+      "bg": "Xenon_Wave",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Rapper_Skeleton.gif",
+      "stage1_character": "Stoned_Rapper"
+    },
+    {
+      "slug": "Full_Stoned_Rapper_Skull_Mask",
+      "bg": "Stripe_Phase",
+      "frame": "Edge_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Rapper_Skull_Mask.gif",
+      "stage1_character": "Stoned_Rapper"
+    },
+    {
+      "slug": "Full_Stoned_Rapper_Zomb",
+      "bg": "Stripe_Phase",
+      "frame": "Rim_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Rapper_Zomb.gif",
+      "stage1_character": "Stoned_Rapper"
+    },
+    {
+      "slug": "Full_Triple_Eye_Freak_Fire",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Freak_Fire.gif",
+      "stage1_character": "Triple_Eye_Freak"
+    },
+    {
+      "slug": "Full_Triple_Eye_Freak_Kitty",
+      "bg": "Brick_Mosaic",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Freak_Kitty.gif",
+      "stage1_character": "Triple_Eye_Freak"
+    },
+    {
+      "slug": "Full_Triple_Eye_Freak_Pearl",
+      "bg": "Chromatic_Swell",
+      "frame": "Flux_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Freak_Pearl.gif",
+      "stage1_character": "Triple_Eye_Freak"
+    },
+    {
+      "slug": "Full_Triple_Eye_Freak_Smoking",
+      "bg": "Horizon_Wave",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Freak_Smoking.gif",
+      "stage1_character": "Triple_Eye_Freak"
+    },
+    {
+      "slug": "Full_Triple_Eye_Freak_Vamp",
+      "bg": "Kinetic_Checker",
+      "frame": "Bright_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Freak_Vamp.gif",
+      "stage1_character": "Triple_Eye_Freak"
+    },
+    {
+      "slug": "Full_Triple_Eye_Freak_Winter",
+      "bg": "Fog_Blend",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Freak_Winter.gif",
+      "stage1_character": "Triple_Eye_Freak"
+    }
+  ]
+}

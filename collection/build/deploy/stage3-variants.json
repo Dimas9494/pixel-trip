@@ -3309,6 +3309,81 @@
       "slug": "Full_Teal_Villain_VR_Glasses",
       "bg": "Basalt_Lines",
       "frame": "Grid_Rim"
+    },
+    "Space_Chimp_Frank": {
+      "slug": "Full_Space_Chimp_Frank",
+      "bg": "Margin_Drip",
+      "frame": "Volt_Ring"
+    },
+    "Space_Chimp_Lasers": {
+      "slug": "Full_Space_Chimp_Lasers",
+      "bg": "Jade_Streak",
+      "frame": "Triple_Blink"
+    },
+    "Stoned_Rapper_Clown": {
+      "slug": "Full_Stoned_Rapper_Clown",
+      "bg": "Haze_Mosaic",
+      "frame": "Jolt_Rim"
+    },
+    "Stoned_Rapper_Kitty_Cap": {
+      "slug": "Full_Stoned_Rapper_Kitty_Cap",
+      "bg": "Margin_Drip",
+      "frame": "Vivid_Rim"
+    },
+    "Stoned_Rapper_Mask": {
+      "slug": "Full_Stoned_Rapper_Mask",
+      "bg": "Grove_Mosaic",
+      "frame": "Neon_Rim"
+    },
+    "Stoned_Rapper_Skater": {
+      "slug": "Full_Stoned_Rapper_Skater",
+      "bg": "Rust_Blend",
+      "frame": "Trace_Rim"
+    },
+    "Stoned_Rapper_Skeleton": {
+      "slug": "Full_Stoned_Rapper_Skeleton",
+      "bg": "Xenon_Wave",
+      "frame": "Band_Rim"
+    },
+    "Stoned_Rapper_Skull_Mask": {
+      "slug": "Full_Stoned_Rapper_Skull_Mask",
+      "bg": "Stripe_Phase",
+      "frame": "Edge_Flash"
+    },
+    "Stoned_Rapper_Zomb": {
+      "slug": "Full_Stoned_Rapper_Zomb",
+      "bg": "Stripe_Phase",
+      "frame": "Rim_Pulse"
+    },
+    "Triple_Eye_Freak_Fire": {
+      "slug": "Full_Triple_Eye_Freak_Fire",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Rune_Flicker"
+    },
+    "Triple_Eye_Freak_Kitty": {
+      "slug": "Full_Triple_Eye_Freak_Kitty",
+      "bg": "Brick_Mosaic",
+      "frame": "Nova_Bolt"
+    },
+    "Triple_Eye_Freak_Pearl": {
+      "slug": "Full_Triple_Eye_Freak_Pearl",
+      "bg": "Chromatic_Swell",
+      "frame": "Flux_Flash"
+    },
+    "Triple_Eye_Freak_Smoking": {
+      "slug": "Full_Triple_Eye_Freak_Smoking",
+      "bg": "Horizon_Wave",
+      "frame": "Neon_Rim"
+    },
+    "Triple_Eye_Freak_Vamp": {
+      "slug": "Full_Triple_Eye_Freak_Vamp",
+      "bg": "Kinetic_Checker",
+      "frame": "Bright_Rim"
+    },
+    "Triple_Eye_Freak_Winter": {
+      "slug": "Full_Triple_Eye_Freak_Winter",
+      "bg": "Fog_Blend",
+      "frame": "Nova_Bolt"
     }
   },
   "defaultByChar": {
@@ -7116,6 +7191,87 @@
         "slug": "Full_Teal_Villain_VR_Glasses",
         "bg": "Basalt_Lines",
         "frame": "Grid_Rim"
+      }
+    ],
+    "Space_Chimp": [
+      {
+        "slug": "Full_Space_Chimp_Frank",
+        "bg": "Margin_Drip",
+        "frame": "Volt_Ring"
+      },
+      {
+        "slug": "Full_Space_Chimp_Lasers",
+        "bg": "Jade_Streak",
+        "frame": "Triple_Blink"
+      }
+    ],
+    "Stoned_Rapper": [
+      {
+        "slug": "Full_Stoned_Rapper_Clown",
+        "bg": "Haze_Mosaic",
+        "frame": "Jolt_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Rapper_Kitty_Cap",
+        "bg": "Margin_Drip",
+        "frame": "Vivid_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Rapper_Mask",
+        "bg": "Grove_Mosaic",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Rapper_Skater",
+        "bg": "Rust_Blend",
+        "frame": "Trace_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Rapper_Skeleton",
+        "bg": "Xenon_Wave",
+        "frame": "Band_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Rapper_Skull_Mask",
+        "bg": "Stripe_Phase",
+        "frame": "Edge_Flash"
+      },
+      {
+        "slug": "Full_Stoned_Rapper_Zomb",
+        "bg": "Stripe_Phase",
+        "frame": "Rim_Pulse"
+      }
+    ],
+    "Triple_Eye_Freak": [
+      {
+        "slug": "Full_Triple_Eye_Freak_Fire",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Rune_Flicker"
+      },
+      {
+        "slug": "Full_Triple_Eye_Freak_Kitty",
+        "bg": "Brick_Mosaic",
+        "frame": "Nova_Bolt"
+      },
+      {
+        "slug": "Full_Triple_Eye_Freak_Pearl",
+        "bg": "Chromatic_Swell",
+        "frame": "Flux_Flash"
+      },
+      {
+        "slug": "Full_Triple_Eye_Freak_Smoking",
+        "bg": "Horizon_Wave",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Triple_Eye_Freak_Vamp",
+        "bg": "Kinetic_Checker",
+        "frame": "Bright_Rim"
+      },
+      {
+        "slug": "Full_Triple_Eye_Freak_Winter",
+        "bg": "Fog_Blend",
+        "frame": "Nova_Bolt"
       }
     ]
   },
