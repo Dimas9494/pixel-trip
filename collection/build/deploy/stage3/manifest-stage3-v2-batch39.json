@@ -1,0 +1,136 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-25T19:02:45.765173+00:00",
+  "count": 18,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Graffiti_Artist_Angry",
+      "bg": "Tidal_Phase",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Graffiti_Artist_Angry.gif",
+      "stage1_character": "Graffiti_Artist"
+    },
+    {
+      "slug": "Full_Graffiti_Artist_Gas_Mask",
+      "bg": "Chromatic_Swell",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Graffiti_Artist_Gas_Mask.gif",
+      "stage1_character": "Graffiti_Artist"
+    },
+    {
+      "slug": "Full_Graffiti_Artist_King",
+      "bg": "Fog_Blend",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Graffiti_Artist_King.gif",
+      "stage1_character": "Graffiti_Artist"
+    },
+    {
+      "slug": "Full_Graffiti_Artist_Spaceship_Hat",
+      "bg": "Mist_Drip",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Graffiti_Artist_Spaceship_Hat.gif",
+      "stage1_character": "Graffiti_Artist"
+    },
+    {
+      "slug": "Full_Pale_Vampire_Bloody",
+      "bg": "Ember_Flash",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pale_Vampire_Bloody.gif",
+      "stage1_character": "Pale_Vampire"
+    },
+    {
+      "slug": "Full_Pale_Vampire_Clown",
+      "bg": "Yonder_Pulse",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pale_Vampire_Clown.gif",
+      "stage1_character": "Pale_Vampire"
+    },
+    {
+      "slug": "Full_Pale_Vampire_Hooded",
+      "bg": "Lumen_Streak",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pale_Vampire_Hooded.gif",
+      "stage1_character": "Pale_Vampire"
+    },
+    {
+      "slug": "Full_Shadow_Mage_Bones",
+      "bg": "Strip_Grid",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Mage_Bones.gif",
+      "stage1_character": "Shadow_Mage"
+    },
+    {
+      "slug": "Full_Shadow_Mage_Fire",
+      "bg": "Flare_Flash",
+      "frame": "Nova_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Mage_Fire.gif",
+      "stage1_character": "Shadow_Mage"
+    },
+    {
+      "slug": "Full_Shadow_Mage_Gas_Mask",
+      "bg": "Kelp_Streak",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Mage_Gas_Mask.gif",
+      "stage1_character": "Shadow_Mage"
+    },
+    {
+      "slug": "Full_Shadow_Mage_Golden",
+      "bg": "Bloom_Wave",
+      "frame": "Xeno_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Mage_Golden.gif",
+      "stage1_character": "Shadow_Mage"
+    },
+    {
+      "slug": "Full_Shadow_Mage_Hooded",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Shadow_Mage_Hooded.gif",
+      "stage1_character": "Shadow_Mage"
+    },
+    {
+      "slug": "Full_Stone_Gargoyle_Beard",
+      "bg": "Fog_Blend",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stone_Gargoyle_Beard.gif",
+      "stage1_character": "Stone_Gargoyle"
+    },
+    {
+      "slug": "Full_Stone_Gargoyle_Cigar",
+      "bg": "Mist_Drip",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stone_Gargoyle_Cigar.gif",
+      "stage1_character": "Stone_Gargoyle"
+    },
+    {
+      "slug": "Full_Stone_Gargoyle_Scared",
+      "bg": "Vertical_Drift",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stone_Gargoyle_Scared.gif",
+      "stage1_character": "Stone_Gargoyle"
+    },
+    {
+      "slug": "Full_Stone_Gargoyle_Straw_Hat",
+      "bg": "Jade_Streak",
+      "frame": "Mono_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stone_Gargoyle_Straw_Hat.gif",
+      "stage1_character": "Stone_Gargoyle"
+    },
+    {
+      "slug": "Full_Teal_Cowboy_ACID",
+      "bg": "Lattice_Lines",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Teal_Cowboy_ACID.gif",
+      "stage1_character": "Teal_Cowboy"
+    },
+    {
+      "slug": "Full_Teal_Cowboy_Zomb",
+      "bg": "Kelp_Streak",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Teal_Cowboy_Zomb.gif",
+      "stage1_character": "Teal_Cowboy"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+PIXEL TRIP — Stage 3 V2 batch 39 (PNG → Full_*.gif)
+
+BATCH 39 — 18 Full, 5 S1 линий
+  Graffiti_Artist  — 4 PNG
+  Pale_Vampire     — 3 PNG
+  Shadow_Mage      — 5 PNG
+  Stone_Gargoyle   — 4 PNG
+  Teal_Cowboy      — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch39.json --seed 42424
+
+  Или: deploy_stage3_v2_batch39.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch39.json
+  website/src/burn/stage3-variants.json
+
+FTP (18 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 39)
+  Full_Graffiti_Artist_Angry.gif
+  Full_Graffiti_Artist_Gas_Mask.gif
+  Full_Graffiti_Artist_King.gif
+  Full_Graffiti_Artist_Spaceship_Hat.gif
+  Full_Pale_Vampire_Bloody.gif
+  Full_Pale_Vampire_Clown.gif
+  Full_Pale_Vampire_Hooded.gif
+  Full_Shadow_Mage_Bones.gif
+  Full_Shadow_Mage_Fire.gif
+  Full_Shadow_Mage_Gas_Mask.gif
+  Full_Shadow_Mage_Golden.gif
+  Full_Shadow_Mage_Hooded.gif
+  Full_Stone_Gargoyle_Beard.gif
+  Full_Stone_Gargoyle_Cigar.gif
+  Full_Stone_Gargoyle_Scared.gif
+  Full_Stone_Gargoyle_Straw_Hat.gif
+  Full_Teal_Cowboy_ACID.gif
+  Full_Teal_Cowboy_Zomb.gif

@@ -3384,6 +3384,96 @@
       "slug": "Full_Triple_Eye_Freak_Winter",
       "bg": "Fog_Blend",
       "frame": "Nova_Bolt"
+    },
+    "Graffiti_Artist_Angry": {
+      "slug": "Full_Graffiti_Artist_Angry",
+      "bg": "Tidal_Phase",
+      "frame": "Prism_Rim"
+    },
+    "Graffiti_Artist_Gas_Mask": {
+      "slug": "Full_Graffiti_Artist_Gas_Mask",
+      "bg": "Chromatic_Swell",
+      "frame": "Blade_Chroma"
+    },
+    "Graffiti_Artist_King": {
+      "slug": "Full_Graffiti_Artist_King",
+      "bg": "Fog_Blend",
+      "frame": "Pulse_Ring"
+    },
+    "Graffiti_Artist_Spaceship_Hat": {
+      "slug": "Full_Graffiti_Artist_Spaceship_Hat",
+      "bg": "Mist_Drip",
+      "frame": "Blade_Rim"
+    },
+    "Pale_Vampire_Bloody": {
+      "slug": "Full_Pale_Vampire_Bloody",
+      "bg": "Ember_Flash",
+      "frame": "Nova_Bolt"
+    },
+    "Pale_Vampire_Clown": {
+      "slug": "Full_Pale_Vampire_Clown",
+      "bg": "Yonder_Pulse",
+      "frame": "Spark_Rim"
+    },
+    "Pale_Vampire_Hooded": {
+      "slug": "Full_Pale_Vampire_Hooded",
+      "bg": "Lumen_Streak",
+      "frame": "Core_Rim"
+    },
+    "Shadow_Mage_Bones": {
+      "slug": "Full_Shadow_Mage_Bones",
+      "bg": "Strip_Grid",
+      "frame": "Mint_Bolt"
+    },
+    "Shadow_Mage_Fire": {
+      "slug": "Full_Shadow_Mage_Fire",
+      "bg": "Flare_Flash",
+      "frame": "Nova_Bolt"
+    },
+    "Shadow_Mage_Gas_Mask": {
+      "slug": "Full_Shadow_Mage_Gas_Mask",
+      "bg": "Kelp_Streak",
+      "frame": "Pulse_Ring"
+    },
+    "Shadow_Mage_Golden": {
+      "slug": "Full_Shadow_Mage_Golden",
+      "bg": "Bloom_Wave",
+      "frame": "Xeno_Rim"
+    },
+    "Shadow_Mage_Hooded": {
+      "slug": "Full_Shadow_Mage_Hooded",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Edge_Chroma"
+    },
+    "Stone_Gargoyle_Beard": {
+      "slug": "Full_Stone_Gargoyle_Beard",
+      "bg": "Fog_Blend",
+      "frame": "Ion_Rim"
+    },
+    "Stone_Gargoyle_Cigar": {
+      "slug": "Full_Stone_Gargoyle_Cigar",
+      "bg": "Mist_Drip",
+      "frame": "Byte_Pulse"
+    },
+    "Stone_Gargoyle_Scared": {
+      "slug": "Full_Stone_Gargoyle_Scared",
+      "bg": "Vertical_Drift",
+      "frame": "Neon_Rim"
+    },
+    "Stone_Gargoyle_Straw_Hat": {
+      "slug": "Full_Stone_Gargoyle_Straw_Hat",
+      "bg": "Jade_Streak",
+      "frame": "Mono_Rim"
+    },
+    "Teal_Cowboy_ACID": {
+      "slug": "Full_Teal_Cowboy_ACID",
+      "bg": "Lattice_Lines",
+      "frame": "Blade_Rim"
+    },
+    "Teal_Cowboy_Zomb": {
+      "slug": "Full_Teal_Cowboy_Zomb",
+      "bg": "Kelp_Streak",
+      "frame": "Volt_Rim"
     }
   },
   "defaultByChar": {
@@ -7272,6 +7362,106 @@
         "slug": "Full_Triple_Eye_Freak_Winter",
         "bg": "Fog_Blend",
         "frame": "Nova_Bolt"
+      }
+    ],
+    "Graffiti_Artist": [
+      {
+        "slug": "Full_Graffiti_Artist_Angry",
+        "bg": "Tidal_Phase",
+        "frame": "Prism_Rim"
+      },
+      {
+        "slug": "Full_Graffiti_Artist_Gas_Mask",
+        "bg": "Chromatic_Swell",
+        "frame": "Blade_Chroma"
+      },
+      {
+        "slug": "Full_Graffiti_Artist_King",
+        "bg": "Fog_Blend",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Graffiti_Artist_Spaceship_Hat",
+        "bg": "Mist_Drip",
+        "frame": "Blade_Rim"
+      }
+    ],
+    "Pale_Vampire": [
+      {
+        "slug": "Full_Pale_Vampire_Bloody",
+        "bg": "Ember_Flash",
+        "frame": "Nova_Bolt"
+      },
+      {
+        "slug": "Full_Pale_Vampire_Clown",
+        "bg": "Yonder_Pulse",
+        "frame": "Spark_Rim"
+      },
+      {
+        "slug": "Full_Pale_Vampire_Hooded",
+        "bg": "Lumen_Streak",
+        "frame": "Core_Rim"
+      }
+    ],
+    "Shadow_Mage": [
+      {
+        "slug": "Full_Shadow_Mage_Bones",
+        "bg": "Strip_Grid",
+        "frame": "Mint_Bolt"
+      },
+      {
+        "slug": "Full_Shadow_Mage_Fire",
+        "bg": "Flare_Flash",
+        "frame": "Nova_Bolt"
+      },
+      {
+        "slug": "Full_Shadow_Mage_Gas_Mask",
+        "bg": "Kelp_Streak",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Shadow_Mage_Golden",
+        "bg": "Bloom_Wave",
+        "frame": "Xeno_Rim"
+      },
+      {
+        "slug": "Full_Shadow_Mage_Hooded",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Edge_Chroma"
+      }
+    ],
+    "Stone_Gargoyle": [
+      {
+        "slug": "Full_Stone_Gargoyle_Beard",
+        "bg": "Fog_Blend",
+        "frame": "Ion_Rim"
+      },
+      {
+        "slug": "Full_Stone_Gargoyle_Cigar",
+        "bg": "Mist_Drip",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Stone_Gargoyle_Scared",
+        "bg": "Vertical_Drift",
+        "frame": "Neon_Rim"
+      },
+      {
+        "slug": "Full_Stone_Gargoyle_Straw_Hat",
+        "bg": "Jade_Streak",
+        "frame": "Mono_Rim"
+      }
+    ],
+    "Teal_Cowboy": [
+      {
+        "slug": "Full_Teal_Cowboy_ACID",
+        "bg": "Lattice_Lines",
+        "frame": "Blade_Rim"
+      },
+      {
+        "slug": "Full_Teal_Cowboy_Zomb",
+        "bg": "Kelp_Streak",
+        "frame": "Volt_Rim"
       }
     ]
   },
