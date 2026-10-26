@@ -1,0 +1,60 @@
+PIXEL TRIP — Stage 3 V2 batch 40 (PNG → Full_*.gif)
+
+BATCH 40 — 20 Full, 5 S1 линий
+  Bubble_DJ       — 5 PNG
+  Goggle_Monkey   — 6 PNG
+  Straw_Hick      — 2 PNG
+  Tentacle_Alien  — 2 PNG
+  Tiki_Mask       — 5 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch40.json --seed 43434
+
+  Или: deploy_stage3_v2_batch40.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch40.json
+  website/src/burn/stage3-variants.json
+
+FTP (20 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 40)
+  Full_Bubble_DJ_Bald.gif
+  Full_Bubble_DJ_Fire.gif
+  Full_Bubble_DJ_Horns.gif
+  Full_Bubble_DJ_Kitty.gif
+  Full_Bubble_DJ_Zombie.gif
+  Full_Goggle_Monkey_Cheef.gif
+  Full_Goggle_Monkey_Clown.gif
+  Full_Goggle_Monkey_Crazy.gif
+  Full_Goggle_Monkey_King.gif
+  Full_Goggle_Monkey_Rasta.gif
+  Full_Goggle_Monkey_Zomb.gif
+  Full_Straw_Hick_Alien.gif
+  Full_Straw_Hick_Zombie.gif
+  Full_Tentacle_Alien_Hooded.gif
+  Full_Tentacle_Alien_Triple_Glasses.gif
+  Full_Tiki_Mask_Big_Eyes.gif
+  Full_Tiki_Mask_Fire.gif
+  Full_Tiki_Mask_Lips.gif
+  Full_Tiki_Mask_Skull.gif
+  Full_Tiki_Mask_Tech.gif

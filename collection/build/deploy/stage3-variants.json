@@ -3474,6 +3474,106 @@
       "slug": "Full_Teal_Cowboy_Zomb",
       "bg": "Kelp_Streak",
       "frame": "Volt_Rim"
+    },
+    "Bubble_DJ_Bald": {
+      "slug": "Full_Bubble_DJ_Bald",
+      "bg": "Rust_Blend",
+      "frame": "Mint_Flash"
+    },
+    "Bubble_DJ_Fire": {
+      "slug": "Full_Bubble_DJ_Fire",
+      "bg": "Stripe_Phase",
+      "frame": "Aqua_Rim"
+    },
+    "Bubble_DJ_Horns": {
+      "slug": "Full_Bubble_DJ_Horns",
+      "bg": "Yonder_Pulse",
+      "frame": "Aqua_Rim"
+    },
+    "Bubble_DJ_Kitty": {
+      "slug": "Full_Bubble_DJ_Kitty",
+      "bg": "Diagonal_Streak",
+      "frame": "Wave_Rim"
+    },
+    "Bubble_DJ_Zombie": {
+      "slug": "Full_Bubble_DJ_Zombie",
+      "bg": "Brick_Mosaic",
+      "frame": "Edge_Flash"
+    },
+    "Goggle_Monkey_Cheef": {
+      "slug": "Full_Goggle_Monkey_Cheef",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Aqua_Rim"
+    },
+    "Goggle_Monkey_Clown": {
+      "slug": "Full_Goggle_Monkey_Clown",
+      "bg": "Gem_Perimeter",
+      "frame": "Quad_Flash"
+    },
+    "Goggle_Monkey_Crazy": {
+      "slug": "Full_Goggle_Monkey_Crazy",
+      "bg": "Fog_Blend",
+      "frame": "Vivid_Rim"
+    },
+    "Goggle_Monkey_King": {
+      "slug": "Full_Goggle_Monkey_King",
+      "bg": "Lux_Checker",
+      "frame": "Unit_Ring"
+    },
+    "Goggle_Monkey_Rasta": {
+      "slug": "Full_Goggle_Monkey_Rasta",
+      "bg": "Delta_Flash",
+      "frame": "Volt_Rim"
+    },
+    "Goggle_Monkey_Zomb": {
+      "slug": "Full_Goggle_Monkey_Zomb",
+      "bg": "Tidal_Phase",
+      "frame": "Onyx_Rim"
+    },
+    "Straw_Hick_Alien": {
+      "slug": "Full_Straw_Hick_Alien",
+      "bg": "Plasma_Perimeter",
+      "frame": "Wave_Rim"
+    },
+    "Straw_Hick_Zombie": {
+      "slug": "Full_Straw_Hick_Zombie",
+      "bg": "Basalt_Lines",
+      "frame": "Edge_Chroma"
+    },
+    "Tentacle_Alien_Hooded": {
+      "slug": "Full_Tentacle_Alien_Hooded",
+      "bg": "Mist_Drip",
+      "frame": "Axis_Pulse"
+    },
+    "Tentacle_Alien_Triple_Glasses": {
+      "slug": "Full_Tentacle_Alien_Triple_Glasses",
+      "bg": "Kelp_Streak",
+      "frame": "Ion_Rim"
+    },
+    "Tiki_Mask_Big_Eyes": {
+      "slug": "Full_Tiki_Mask_Big_Eyes",
+      "bg": "Chromatic_Swell",
+      "frame": "Onyx_Rim"
+    },
+    "Tiki_Mask_Fire": {
+      "slug": "Full_Tiki_Mask_Fire",
+      "bg": "Brick_Mosaic",
+      "frame": "Vector_Rim"
+    },
+    "Tiki_Mask_Lips": {
+      "slug": "Full_Tiki_Mask_Lips",
+      "bg": "Tidal_Phase",
+      "frame": "Lumen_Flicker"
+    },
+    "Tiki_Mask_Skull": {
+      "slug": "Full_Tiki_Mask_Skull",
+      "bg": "Quasar_Perimeter",
+      "frame": "Core_Rim"
+    },
+    "Tiki_Mask_Tech": {
+      "slug": "Full_Tiki_Mask_Tech",
+      "bg": "Haze_Mosaic",
+      "frame": "Core_Rim"
     }
   },
   "defaultByChar": {
@@ -7462,6 +7562,116 @@
         "slug": "Full_Teal_Cowboy_Zomb",
         "bg": "Kelp_Streak",
         "frame": "Volt_Rim"
+      }
+    ],
+    "Bubble_DJ": [
+      {
+        "slug": "Full_Bubble_DJ_Bald",
+        "bg": "Rust_Blend",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Bubble_DJ_Fire",
+        "bg": "Stripe_Phase",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Bubble_DJ_Horns",
+        "bg": "Yonder_Pulse",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Bubble_DJ_Kitty",
+        "bg": "Diagonal_Streak",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Bubble_DJ_Zombie",
+        "bg": "Brick_Mosaic",
+        "frame": "Edge_Flash"
+      }
+    ],
+    "Goggle_Monkey": [
+      {
+        "slug": "Full_Goggle_Monkey_Cheef",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Goggle_Monkey_Clown",
+        "bg": "Gem_Perimeter",
+        "frame": "Quad_Flash"
+      },
+      {
+        "slug": "Full_Goggle_Monkey_Crazy",
+        "bg": "Fog_Blend",
+        "frame": "Vivid_Rim"
+      },
+      {
+        "slug": "Full_Goggle_Monkey_King",
+        "bg": "Lux_Checker",
+        "frame": "Unit_Ring"
+      },
+      {
+        "slug": "Full_Goggle_Monkey_Rasta",
+        "bg": "Delta_Flash",
+        "frame": "Volt_Rim"
+      },
+      {
+        "slug": "Full_Goggle_Monkey_Zomb",
+        "bg": "Tidal_Phase",
+        "frame": "Onyx_Rim"
+      }
+    ],
+    "Straw_Hick": [
+      {
+        "slug": "Full_Straw_Hick_Alien",
+        "bg": "Plasma_Perimeter",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Straw_Hick_Zombie",
+        "bg": "Basalt_Lines",
+        "frame": "Edge_Chroma"
+      }
+    ],
+    "Tentacle_Alien": [
+      {
+        "slug": "Full_Tentacle_Alien_Hooded",
+        "bg": "Mist_Drip",
+        "frame": "Axis_Pulse"
+      },
+      {
+        "slug": "Full_Tentacle_Alien_Triple_Glasses",
+        "bg": "Kelp_Streak",
+        "frame": "Ion_Rim"
+      }
+    ],
+    "Tiki_Mask": [
+      {
+        "slug": "Full_Tiki_Mask_Big_Eyes",
+        "bg": "Chromatic_Swell",
+        "frame": "Onyx_Rim"
+      },
+      {
+        "slug": "Full_Tiki_Mask_Fire",
+        "bg": "Brick_Mosaic",
+        "frame": "Vector_Rim"
+      },
+      {
+        "slug": "Full_Tiki_Mask_Lips",
+        "bg": "Tidal_Phase",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Tiki_Mask_Skull",
+        "bg": "Quasar_Perimeter",
+        "frame": "Core_Rim"
+      },
+      {
+        "slug": "Full_Tiki_Mask_Tech",
+        "bg": "Haze_Mosaic",
+        "frame": "Core_Rim"
       }
     ]
   },

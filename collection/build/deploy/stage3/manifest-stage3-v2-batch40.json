@@ -1,0 +1,150 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-26T18:43:32.914353+00:00",
+  "count": 20,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Bubble_DJ_Bald",
+      "bg": "Rust_Blend",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_DJ_Bald.gif",
+      "stage1_character": "Bubble_DJ"
+    },
+    {
+      "slug": "Full_Bubble_DJ_Fire",
+      "bg": "Stripe_Phase",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_DJ_Fire.gif",
+      "stage1_character": "Bubble_DJ"
+    },
+    {
+      "slug": "Full_Bubble_DJ_Horns",
+      "bg": "Yonder_Pulse",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_DJ_Horns.gif",
+      "stage1_character": "Bubble_DJ"
+    },
+    {
+      "slug": "Full_Bubble_DJ_Kitty",
+      "bg": "Diagonal_Streak",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_DJ_Kitty.gif",
+      "stage1_character": "Bubble_DJ"
+    },
+    {
+      "slug": "Full_Bubble_DJ_Zombie",
+      "bg": "Brick_Mosaic",
+      "frame": "Edge_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_DJ_Zombie.gif",
+      "stage1_character": "Bubble_DJ"
+    },
+    {
+      "slug": "Full_Goggle_Monkey_Cheef",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Monkey_Cheef.gif",
+      "stage1_character": "Goggle_Monkey"
+    },
+    {
+      "slug": "Full_Goggle_Monkey_Clown",
+      "bg": "Gem_Perimeter",
+      "frame": "Quad_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Monkey_Clown.gif",
+      "stage1_character": "Goggle_Monkey"
+    },
+    {
+      "slug": "Full_Goggle_Monkey_Crazy",
+      "bg": "Fog_Blend",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Monkey_Crazy.gif",
+      "stage1_character": "Goggle_Monkey"
+    },
+    {
+      "slug": "Full_Goggle_Monkey_King",
+      "bg": "Lux_Checker",
+      "frame": "Unit_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Monkey_King.gif",
+      "stage1_character": "Goggle_Monkey"
+    },
+    {
+      "slug": "Full_Goggle_Monkey_Rasta",
+      "bg": "Delta_Flash",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Monkey_Rasta.gif",
+      "stage1_character": "Goggle_Monkey"
+    },
+    {
+      "slug": "Full_Goggle_Monkey_Zomb",
+      "bg": "Tidal_Phase",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Goggle_Monkey_Zomb.gif",
+      "stage1_character": "Goggle_Monkey"
+    },
+    {
+      "slug": "Full_Straw_Hick_Alien",
+      "bg": "Plasma_Perimeter",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Straw_Hick_Alien.gif",
+      "stage1_character": "Straw_Hick"
+    },
+    {
+      "slug": "Full_Straw_Hick_Zombie",
+      "bg": "Basalt_Lines",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Straw_Hick_Zombie.gif",
+      "stage1_character": "Straw_Hick"
+    },
+    {
+      "slug": "Full_Tentacle_Alien_Hooded",
+      "bg": "Mist_Drip",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tentacle_Alien_Hooded.gif",
+      "stage1_character": "Tentacle_Alien"
+    },
+    {
+      "slug": "Full_Tentacle_Alien_Triple_Glasses",
+      "bg": "Kelp_Streak",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tentacle_Alien_Triple_Glasses.gif",
+      "stage1_character": "Tentacle_Alien"
+    },
+    {
+      "slug": "Full_Tiki_Mask_Big_Eyes",
+      "bg": "Chromatic_Swell",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tiki_Mask_Big_Eyes.gif",
+      "stage1_character": "Tiki_Mask"
+    },
+    {
+      "slug": "Full_Tiki_Mask_Fire",
+      "bg": "Brick_Mosaic",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tiki_Mask_Fire.gif",
+      "stage1_character": "Tiki_Mask"
+    },
+    {
+      "slug": "Full_Tiki_Mask_Lips",
+      "bg": "Tidal_Phase",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tiki_Mask_Lips.gif",
+      "stage1_character": "Tiki_Mask"
+    },
+    {
+      "slug": "Full_Tiki_Mask_Skull",
+      "bg": "Quasar_Perimeter",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tiki_Mask_Skull.gif",
+      "stage1_character": "Tiki_Mask"
+    },
+    {
+      "slug": "Full_Tiki_Mask_Tech",
+      "bg": "Haze_Mosaic",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Tiki_Mask_Tech.gif",
+      "stage1_character": "Tiki_Mask"
+    }
+  ]
+}
