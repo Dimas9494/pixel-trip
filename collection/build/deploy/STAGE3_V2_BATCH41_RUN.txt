@@ -1,0 +1,61 @@
+PIXEL TRIP — Stage 3 V2 batch 41 (PNG → Full_*.gif)
+
+BATCH 41 — 21 Full, 5 S1 линий
+  Golden_Tooth        — 5 PNG
+  Purple_Crystal      — 2 PNG (файлы: Full_Crystal_*)
+  Rainbow_Dreads_Lady — 6 PNG
+  Stoned_Jason        — 6 PNG
+  Two_Faced_Green     — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch41.json --seed 44444
+
+  Или: deploy_stage3_v2_batch41.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch41.json
+  website/src/burn/stage3-variants.json
+
+FTP (21 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 41)
+  Full_Golden_Tooth_Cyborg.gif
+  Full_Golden_Tooth_Mask.gif
+  Full_Golden_Tooth_Pharaoh.gif
+  Full_Golden_Tooth_VR_Glasses.gif
+  Full_Golden_Tooth_Zombie.gif
+  Full_Crystal_Blue_King.gif
+  Full_Crystal_Rasta.gif
+  Full_Rainbow_Dreads_Lady_Clown.gif
+  Full_Rainbow_Dreads_Lady_Gas_Mask.gif
+  Full_Rainbow_Dreads_Lady_Skull.gif
+  Full_Rainbow_Dreads_Lady_Tribal.gif
+  Full_Rainbow_Dreads_Lady_Wings.gif
+  Full_Rainbow_Dreads_Lady_Zombie.gif
+  Full_Stoned_Jason_Clown.gif
+  Full_Stoned_Jason_Frog_Eyes.gif
+  Full_Stoned_Jason_King.gif
+  Full_Stoned_Jason_Red_Cap.gif
+  Full_Stoned_Jason_Swamp.gif
+  Full_Stoned_Jason_Winter_Hat.gif
+  Full_Two_Faced_Green_Big_Hat.gif
+  Full_Two_Faced_Green_Zombie.gif

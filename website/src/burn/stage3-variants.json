@@ -3574,6 +3574,111 @@
       "slug": "Full_Tiki_Mask_Tech",
       "bg": "Haze_Mosaic",
       "frame": "Core_Rim"
+    },
+    "Golden_Tooth_Cyborg": {
+      "slug": "Full_Golden_Tooth_Cyborg",
+      "bg": "Margin_Flash",
+      "frame": "Unit_Ring"
+    },
+    "Golden_Tooth_Mask": {
+      "slug": "Full_Golden_Tooth_Mask",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Radiant_Flicker"
+    },
+    "Golden_Tooth_Pharaoh": {
+      "slug": "Full_Golden_Tooth_Pharaoh",
+      "bg": "Diagonal_Streak",
+      "frame": "Kinetic_Rim"
+    },
+    "Golden_Tooth_VR_Glasses": {
+      "slug": "Full_Golden_Tooth_VR_Glasses",
+      "bg": "Mist_Drip",
+      "frame": "Bolt_Rim"
+    },
+    "Golden_Tooth_Zombie": {
+      "slug": "Full_Golden_Tooth_Zombie",
+      "bg": "Diagonal_Streak",
+      "frame": "Cycle_Rim"
+    },
+    "Crystal_Blue_King": {
+      "slug": "Full_Crystal_Blue_King",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Corner_Bolt"
+    },
+    "Crystal_Rasta": {
+      "slug": "Full_Crystal_Rasta",
+      "bg": "Brick_Mosaic",
+      "frame": "Jolt_Rim"
+    },
+    "Rainbow_Dreads_Lady_Clown": {
+      "slug": "Full_Rainbow_Dreads_Lady_Clown",
+      "bg": "Warp_Wave",
+      "frame": "Aqua_Rim"
+    },
+    "Rainbow_Dreads_Lady_Gas_Mask": {
+      "slug": "Full_Rainbow_Dreads_Lady_Gas_Mask",
+      "bg": "Margin_Drip",
+      "frame": "Chrome_Rim"
+    },
+    "Rainbow_Dreads_Lady_Skull": {
+      "slug": "Full_Rainbow_Dreads_Lady_Skull",
+      "bg": "Lattice_Lines",
+      "frame": "Axis_Rim"
+    },
+    "Rainbow_Dreads_Lady_Tribal": {
+      "slug": "Full_Rainbow_Dreads_Lady_Tribal",
+      "bg": "Bloom_Wave",
+      "frame": "Kinetic_Rim"
+    },
+    "Rainbow_Dreads_Lady_Wings": {
+      "slug": "Full_Rainbow_Dreads_Lady_Wings",
+      "bg": "Basalt_Lines",
+      "frame": "Lumen_Flicker"
+    },
+    "Rainbow_Dreads_Lady_Zombie": {
+      "slug": "Full_Rainbow_Dreads_Lady_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Cycle_Rim"
+    },
+    "Stoned_Jason_Clown": {
+      "slug": "Full_Stoned_Jason_Clown",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Band_Rim"
+    },
+    "Stoned_Jason_Frog_Eyes": {
+      "slug": "Full_Stoned_Jason_Frog_Eyes",
+      "bg": "Rust_Blend",
+      "frame": "Quad_Flash"
+    },
+    "Stoned_Jason_King": {
+      "slug": "Full_Stoned_Jason_King",
+      "bg": "Quasar_Perimeter",
+      "frame": "Omega_Rim"
+    },
+    "Stoned_Jason_Red_Cap": {
+      "slug": "Full_Stoned_Jason_Red_Cap",
+      "bg": "Rust_Perimeter",
+      "frame": "Lumen_Flicker"
+    },
+    "Stoned_Jason_Swamp": {
+      "slug": "Full_Stoned_Jason_Swamp",
+      "bg": "Ember_Flash",
+      "frame": "Flux_Rim"
+    },
+    "Stoned_Jason_Winter_Hat": {
+      "slug": "Full_Stoned_Jason_Winter_Hat",
+      "bg": "Basalt_Lines",
+      "frame": "Glyph_Rim"
+    },
+    "Two_Faced_Green_Big_Hat": {
+      "slug": "Full_Two_Faced_Green_Big_Hat",
+      "bg": "Grid_Checker",
+      "frame": "Blade_Rim"
+    },
+    "Two_Faced_Green_Zombie": {
+      "slug": "Full_Two_Faced_Green_Zombie",
+      "bg": "Band_Scroll",
+      "frame": "Aqua_Rim"
     }
   },
   "defaultByChar": {
@@ -7672,6 +7777,121 @@
         "slug": "Full_Tiki_Mask_Tech",
         "bg": "Haze_Mosaic",
         "frame": "Core_Rim"
+      }
+    ],
+    "Golden_Tooth": [
+      {
+        "slug": "Full_Golden_Tooth_Cyborg",
+        "bg": "Margin_Flash",
+        "frame": "Unit_Ring"
+      },
+      {
+        "slug": "Full_Golden_Tooth_Mask",
+        "bg": "Frostbite_Mosaic",
+        "frame": "Radiant_Flicker"
+      },
+      {
+        "slug": "Full_Golden_Tooth_Pharaoh",
+        "bg": "Diagonal_Streak",
+        "frame": "Kinetic_Rim"
+      },
+      {
+        "slug": "Full_Golden_Tooth_VR_Glasses",
+        "bg": "Mist_Drip",
+        "frame": "Bolt_Rim"
+      },
+      {
+        "slug": "Full_Golden_Tooth_Zombie",
+        "bg": "Diagonal_Streak",
+        "frame": "Cycle_Rim"
+      }
+    ],
+    "Purple_Crystal": [
+      {
+        "slug": "Full_Crystal_Blue_King",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Corner_Bolt"
+      },
+      {
+        "slug": "Full_Crystal_Rasta",
+        "bg": "Brick_Mosaic",
+        "frame": "Jolt_Rim"
+      }
+    ],
+    "Rainbow_Dreads_Lady": [
+      {
+        "slug": "Full_Rainbow_Dreads_Lady_Clown",
+        "bg": "Warp_Wave",
+        "frame": "Aqua_Rim"
+      },
+      {
+        "slug": "Full_Rainbow_Dreads_Lady_Gas_Mask",
+        "bg": "Margin_Drip",
+        "frame": "Chrome_Rim"
+      },
+      {
+        "slug": "Full_Rainbow_Dreads_Lady_Skull",
+        "bg": "Lattice_Lines",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Rainbow_Dreads_Lady_Tribal",
+        "bg": "Bloom_Wave",
+        "frame": "Kinetic_Rim"
+      },
+      {
+        "slug": "Full_Rainbow_Dreads_Lady_Wings",
+        "bg": "Basalt_Lines",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Rainbow_Dreads_Lady_Zombie",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Cycle_Rim"
+      }
+    ],
+    "Stoned_Jason": [
+      {
+        "slug": "Full_Stoned_Jason_Clown",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Band_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Jason_Frog_Eyes",
+        "bg": "Rust_Blend",
+        "frame": "Quad_Flash"
+      },
+      {
+        "slug": "Full_Stoned_Jason_King",
+        "bg": "Quasar_Perimeter",
+        "frame": "Omega_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Jason_Red_Cap",
+        "bg": "Rust_Perimeter",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Stoned_Jason_Swamp",
+        "bg": "Ember_Flash",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_Stoned_Jason_Winter_Hat",
+        "bg": "Basalt_Lines",
+        "frame": "Glyph_Rim"
+      }
+    ],
+    "Two_Faced_Green": [
+      {
+        "slug": "Full_Two_Faced_Green_Big_Hat",
+        "bg": "Grid_Checker",
+        "frame": "Blade_Rim"
+      },
+      {
+        "slug": "Full_Two_Faced_Green_Zombie",
+        "bg": "Band_Scroll",
+        "frame": "Aqua_Rim"
       }
     ]
   },

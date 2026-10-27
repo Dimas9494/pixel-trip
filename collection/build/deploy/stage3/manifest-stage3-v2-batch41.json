@@ -1,0 +1,157 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-27T18:09:28.051587+00:00",
+  "count": 21,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Golden_Tooth_Cyborg",
+      "bg": "Margin_Flash",
+      "frame": "Unit_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Golden_Tooth_Cyborg.gif",
+      "stage1_character": "Golden_Tooth"
+    },
+    {
+      "slug": "Full_Golden_Tooth_Mask",
+      "bg": "Frostbite_Mosaic",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Golden_Tooth_Mask.gif",
+      "stage1_character": "Golden_Tooth"
+    },
+    {
+      "slug": "Full_Golden_Tooth_Pharaoh",
+      "bg": "Diagonal_Streak",
+      "frame": "Kinetic_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Golden_Tooth_Pharaoh.gif",
+      "stage1_character": "Golden_Tooth"
+    },
+    {
+      "slug": "Full_Golden_Tooth_VR_Glasses",
+      "bg": "Mist_Drip",
+      "frame": "Bolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Golden_Tooth_VR_Glasses.gif",
+      "stage1_character": "Golden_Tooth"
+    },
+    {
+      "slug": "Full_Golden_Tooth_Zombie",
+      "bg": "Diagonal_Streak",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Golden_Tooth_Zombie.gif",
+      "stage1_character": "Golden_Tooth"
+    },
+    {
+      "slug": "Full_Crystal_Blue_King",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Corner_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crystal_Blue_King.gif",
+      "stage1_character": "Purple_Crystal"
+    },
+    {
+      "slug": "Full_Crystal_Rasta",
+      "bg": "Brick_Mosaic",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Crystal_Rasta.gif",
+      "stage1_character": "Purple_Crystal"
+    },
+    {
+      "slug": "Full_Rainbow_Dreads_Lady_Clown",
+      "bg": "Warp_Wave",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Dreads_Lady_Clown.gif",
+      "stage1_character": "Rainbow_Dreads_Lady"
+    },
+    {
+      "slug": "Full_Rainbow_Dreads_Lady_Gas_Mask",
+      "bg": "Margin_Drip",
+      "frame": "Chrome_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Dreads_Lady_Gas_Mask.gif",
+      "stage1_character": "Rainbow_Dreads_Lady"
+    },
+    {
+      "slug": "Full_Rainbow_Dreads_Lady_Skull",
+      "bg": "Lattice_Lines",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Dreads_Lady_Skull.gif",
+      "stage1_character": "Rainbow_Dreads_Lady"
+    },
+    {
+      "slug": "Full_Rainbow_Dreads_Lady_Tribal",
+      "bg": "Bloom_Wave",
+      "frame": "Kinetic_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Dreads_Lady_Tribal.gif",
+      "stage1_character": "Rainbow_Dreads_Lady"
+    },
+    {
+      "slug": "Full_Rainbow_Dreads_Lady_Wings",
+      "bg": "Basalt_Lines",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Dreads_Lady_Wings.gif",
+      "stage1_character": "Rainbow_Dreads_Lady"
+    },
+    {
+      "slug": "Full_Rainbow_Dreads_Lady_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Rainbow_Dreads_Lady_Zombie.gif",
+      "stage1_character": "Rainbow_Dreads_Lady"
+    },
+    {
+      "slug": "Full_Stoned_Jason_Clown",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Jason_Clown.gif",
+      "stage1_character": "Stoned_Jason"
+    },
+    {
+      "slug": "Full_Stoned_Jason_Frog_Eyes",
+      "bg": "Rust_Blend",
+      "frame": "Quad_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Jason_Frog_Eyes.gif",
+      "stage1_character": "Stoned_Jason"
+    },
+    {
+      "slug": "Full_Stoned_Jason_King",
+      "bg": "Quasar_Perimeter",
+      "frame": "Omega_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Jason_King.gif",
+      "stage1_character": "Stoned_Jason"
+    },
+    {
+      "slug": "Full_Stoned_Jason_Red_Cap",
+      "bg": "Rust_Perimeter",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Jason_Red_Cap.gif",
+      "stage1_character": "Stoned_Jason"
+    },
+    {
+      "slug": "Full_Stoned_Jason_Swamp",
+      "bg": "Ember_Flash",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Jason_Swamp.gif",
+      "stage1_character": "Stoned_Jason"
+    },
+    {
+      "slug": "Full_Stoned_Jason_Winter_Hat",
+      "bg": "Basalt_Lines",
+      "frame": "Glyph_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Jason_Winter_Hat.gif",
+      "stage1_character": "Stoned_Jason"
+    },
+    {
+      "slug": "Full_Two_Faced_Green_Big_Hat",
+      "bg": "Grid_Checker",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Two_Faced_Green_Big_Hat.gif",
+      "stage1_character": "Two_Faced_Green"
+    },
+    {
+      "slug": "Full_Two_Faced_Green_Zombie",
+      "bg": "Band_Scroll",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Two_Faced_Green_Zombie.gif",
+      "stage1_character": "Two_Faced_Green"
+    }
+  ]
+}
