@@ -3679,6 +3679,91 @@
       "slug": "Full_Two_Faced_Green_Zombie",
       "bg": "Band_Scroll",
       "frame": "Aqua_Rim"
+    },
+    "Eskimo_Alien": {
+      "slug": "Full_Eskimo_Alien",
+      "bg": "Stripe_Phase",
+      "frame": "Vivid_Rim"
+    },
+    "Eskimo_Crown": {
+      "slug": "Full_Eskimo_Crown",
+      "bg": "Cinder_Swell",
+      "frame": "Corner_Bolt"
+    },
+    "Eskimo_Frog": {
+      "slug": "Full_Eskimo_Frog",
+      "bg": "Brick_Mosaic",
+      "frame": "Flow_Rim"
+    },
+    "Eskimo_Ghost": {
+      "slug": "Full_Eskimo_Ghost",
+      "bg": "Basalt_Lines",
+      "frame": "Hyper_Rim"
+    },
+    "Eskimo_SWAT": {
+      "slug": "Full_Eskimo_SWAT",
+      "bg": "Vertical_Drift",
+      "frame": "Quad_Flash"
+    },
+    "Miner_Crown": {
+      "slug": "Full_Miner_Crown",
+      "bg": "Delta_Flash",
+      "frame": "Trace_Rim"
+    },
+    "Miner_Crystals": {
+      "slug": "Full_Miner_Crystals",
+      "bg": "Gem_Perimeter",
+      "frame": "Radiant_Rim"
+    },
+    "Miner_Frog_Hat": {
+      "slug": "Full_Miner_Frog_Hat",
+      "bg": "Yonder_Pulse",
+      "frame": "Quick_Flicker"
+    },
+    "Miner_Zombie": {
+      "slug": "Full_Miner_Zombie",
+      "bg": "Brick_Mosaic",
+      "frame": "Flux_Rim"
+    },
+    "Pink_Trilobe_Hooded": {
+      "slug": "Full_Pink_Trilobe_Hooded",
+      "bg": "Quasar_Perimeter",
+      "frame": "Prism_Rim"
+    },
+    "Pink_Trilobe_Mustache": {
+      "slug": "Full_Pink_Trilobe_Mustache",
+      "bg": "Ember_Flash",
+      "frame": "Hue_Rim"
+    },
+    "Pink_Trilobe_Robo": {
+      "slug": "Full_Pink_Trilobe_Robo",
+      "bg": "Vapor_Phase",
+      "frame": "Edge_Chroma"
+    },
+    "Pink_Trilobe_Sailor": {
+      "slug": "Full_Pink_Trilobe_Sailor",
+      "bg": "Lux_Checker",
+      "frame": "Flux_Rim"
+    },
+    "Pink_Trilobe_Skeleton": {
+      "slug": "Full_Pink_Trilobe_Skeleton",
+      "bg": "Brick_Mosaic",
+      "frame": "Spark_Rim"
+    },
+    "Pink_Trilobe_White_Hair": {
+      "slug": "Full_Pink_Trilobe_White_Hair",
+      "bg": "Stripe_Phase",
+      "frame": "Triple_Blink"
+    },
+    "Purple_Cyclops_Monocle": {
+      "slug": "Full_Purple_Cyclops_Monocle",
+      "bg": "Stripe_Phase",
+      "frame": "Quad_Flash"
+    },
+    "Purple_Cyclops_Zombie": {
+      "slug": "Full_Purple_Cyclops_Zombie",
+      "bg": "Delta_Flash",
+      "frame": "Yield_Pulse"
     }
   },
   "defaultByChar": {
@@ -7892,6 +7977,99 @@
         "slug": "Full_Two_Faced_Green_Zombie",
         "bg": "Band_Scroll",
         "frame": "Aqua_Rim"
+      }
+    ],
+    "Eskimo": [
+      {
+        "slug": "Full_Eskimo_Alien",
+        "bg": "Stripe_Phase",
+        "frame": "Vivid_Rim"
+      },
+      {
+        "slug": "Full_Eskimo_Crown",
+        "bg": "Cinder_Swell",
+        "frame": "Corner_Bolt"
+      },
+      {
+        "slug": "Full_Eskimo_Frog",
+        "bg": "Brick_Mosaic",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Eskimo_Ghost",
+        "bg": "Basalt_Lines",
+        "frame": "Hyper_Rim"
+      },
+      {
+        "slug": "Full_Eskimo_SWAT",
+        "bg": "Vertical_Drift",
+        "frame": "Quad_Flash"
+      }
+    ],
+    "Miner": [
+      {
+        "slug": "Full_Miner_Crown",
+        "bg": "Delta_Flash",
+        "frame": "Trace_Rim"
+      },
+      {
+        "slug": "Full_Miner_Crystals",
+        "bg": "Gem_Perimeter",
+        "frame": "Radiant_Rim"
+      },
+      {
+        "slug": "Full_Miner_Frog_Hat",
+        "bg": "Yonder_Pulse",
+        "frame": "Quick_Flicker"
+      },
+      {
+        "slug": "Full_Miner_Zombie",
+        "bg": "Brick_Mosaic",
+        "frame": "Flux_Rim"
+      }
+    ],
+    "Pink_Trilobe": [
+      {
+        "slug": "Full_Pink_Trilobe_Hooded",
+        "bg": "Quasar_Perimeter",
+        "frame": "Prism_Rim"
+      },
+      {
+        "slug": "Full_Pink_Trilobe_Mustache",
+        "bg": "Ember_Flash",
+        "frame": "Hue_Rim"
+      },
+      {
+        "slug": "Full_Pink_Trilobe_Robo",
+        "bg": "Vapor_Phase",
+        "frame": "Edge_Chroma"
+      },
+      {
+        "slug": "Full_Pink_Trilobe_Sailor",
+        "bg": "Lux_Checker",
+        "frame": "Flux_Rim"
+      },
+      {
+        "slug": "Full_Pink_Trilobe_Skeleton",
+        "bg": "Brick_Mosaic",
+        "frame": "Spark_Rim"
+      },
+      {
+        "slug": "Full_Pink_Trilobe_White_Hair",
+        "bg": "Stripe_Phase",
+        "frame": "Triple_Blink"
+      }
+    ],
+    "Purple_Cyclops": [
+      {
+        "slug": "Full_Purple_Cyclops_Monocle",
+        "bg": "Stripe_Phase",
+        "frame": "Quad_Flash"
+      },
+      {
+        "slug": "Full_Purple_Cyclops_Zombie",
+        "bg": "Delta_Flash",
+        "frame": "Yield_Pulse"
       }
     ]
   },

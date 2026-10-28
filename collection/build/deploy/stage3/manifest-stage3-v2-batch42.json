@@ -1,0 +1,129 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-28T16:32:16.951640+00:00",
+  "count": 17,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Eskimo_Alien",
+      "bg": "Stripe_Phase",
+      "frame": "Vivid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Eskimo_Alien.gif",
+      "stage1_character": "Eskimo"
+    },
+    {
+      "slug": "Full_Eskimo_Crown",
+      "bg": "Cinder_Swell",
+      "frame": "Corner_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Eskimo_Crown.gif",
+      "stage1_character": "Eskimo"
+    },
+    {
+      "slug": "Full_Eskimo_Frog",
+      "bg": "Brick_Mosaic",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Eskimo_Frog.gif",
+      "stage1_character": "Eskimo"
+    },
+    {
+      "slug": "Full_Eskimo_Ghost",
+      "bg": "Basalt_Lines",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Eskimo_Ghost.gif",
+      "stage1_character": "Eskimo"
+    },
+    {
+      "slug": "Full_Eskimo_SWAT",
+      "bg": "Vertical_Drift",
+      "frame": "Quad_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Eskimo_SWAT.gif",
+      "stage1_character": "Eskimo"
+    },
+    {
+      "slug": "Full_Miner_Crown",
+      "bg": "Delta_Flash",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Miner_Crown.gif",
+      "stage1_character": "Miner"
+    },
+    {
+      "slug": "Full_Miner_Crystals",
+      "bg": "Gem_Perimeter",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Miner_Crystals.gif",
+      "stage1_character": "Miner"
+    },
+    {
+      "slug": "Full_Miner_Frog_Hat",
+      "bg": "Yonder_Pulse",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Miner_Frog_Hat.gif",
+      "stage1_character": "Miner"
+    },
+    {
+      "slug": "Full_Miner_Zombie",
+      "bg": "Brick_Mosaic",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Miner_Zombie.gif",
+      "stage1_character": "Miner"
+    },
+    {
+      "slug": "Full_Pink_Trilobe_Hooded",
+      "bg": "Quasar_Perimeter",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Trilobe_Hooded.gif",
+      "stage1_character": "Pink_Trilobe"
+    },
+    {
+      "slug": "Full_Pink_Trilobe_Mustache",
+      "bg": "Ember_Flash",
+      "frame": "Hue_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Trilobe_Mustache.gif",
+      "stage1_character": "Pink_Trilobe"
+    },
+    {
+      "slug": "Full_Pink_Trilobe_Robo",
+      "bg": "Vapor_Phase",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Trilobe_Robo.gif",
+      "stage1_character": "Pink_Trilobe"
+    },
+    {
+      "slug": "Full_Pink_Trilobe_Sailor",
+      "bg": "Lux_Checker",
+      "frame": "Flux_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Trilobe_Sailor.gif",
+      "stage1_character": "Pink_Trilobe"
+    },
+    {
+      "slug": "Full_Pink_Trilobe_Skeleton",
+      "bg": "Brick_Mosaic",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Trilobe_Skeleton.gif",
+      "stage1_character": "Pink_Trilobe"
+    },
+    {
+      "slug": "Full_Pink_Trilobe_White_Hair",
+      "bg": "Stripe_Phase",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Trilobe_White_Hair.gif",
+      "stage1_character": "Pink_Trilobe"
+    },
+    {
+      "slug": "Full_Purple_Cyclops_Monocle",
+      "bg": "Stripe_Phase",
+      "frame": "Quad_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Cyclops_Monocle.gif",
+      "stage1_character": "Purple_Cyclops"
+    },
+    {
+      "slug": "Full_Purple_Cyclops_Zombie",
+      "bg": "Delta_Flash",
+      "frame": "Yield_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Cyclops_Zombie.gif",
+      "stage1_character": "Purple_Cyclops"
+    }
+  ]
+}

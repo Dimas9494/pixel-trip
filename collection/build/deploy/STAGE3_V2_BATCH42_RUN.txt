@@ -1,0 +1,56 @@
+PIXEL TRIP — Stage 3 V2 batch 42 (PNG → Full_*.gif)
+
+BATCH 42 — 17 Full, 4 S1 линий
+  Eskimo           — 5 PNG
+  Miner            — 4 PNG
+  Pink_Trilobe     — 6 PNG
+  Purple_Cyclops   — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch42.json --seed 45454
+
+  Или: deploy_stage3_v2_batch42.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch42.json
+  website/src/burn/stage3-variants.json
+
+FTP (17 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 42)
+  Full_Eskimo_Alien.gif
+  Full_Eskimo_Crown.gif
+  Full_Eskimo_Frog.gif
+  Full_Eskimo_Ghost.gif
+  Full_Eskimo_SWAT.gif
+  Full_Miner_Crown.gif
+  Full_Miner_Crystals.gif
+  Full_Miner_Frog_Hat.gif
+  Full_Miner_Zombie.gif
+  Full_Pink_Trilobe_Hooded.gif
+  Full_Pink_Trilobe_Mustache.gif
+  Full_Pink_Trilobe_Robo.gif
+  Full_Pink_Trilobe_Sailor.gif
+  Full_Pink_Trilobe_Skeleton.gif
+  Full_Pink_Trilobe_White_Hair.gif
+  Full_Purple_Cyclops_Monocle.gif
+  Full_Purple_Cyclops_Zombie.gif
