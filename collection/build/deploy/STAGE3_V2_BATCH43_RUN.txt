@@ -1,0 +1,51 @@
+PIXEL TRIP — Stage 3 V2 batch 43 (PNG → Full_*.gif)
+
+BATCH 43 — 13 Full, 3 S1 линий
+  Cyan_Punk       — 3 PNG
+  Grandma         — 7 PNG
+  Masked_Ranger   — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch43.json --seed 46464
+
+  Или: deploy_stage3_v2_batch43.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch43.json
+  website/src/burn/stage3-variants.json
+
+FTP (13 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 43)
+  Full_Cyan_Punk_Cowboy.gif
+  Full_Cyan_Punk_Disco.gif
+  Full_Cyan_Punk_Mummie.gif
+  Full_Grandma_Astro.gif
+  Full_Grandma_Clown.gif
+  Full_Grandma_Crazy.gif
+  Full_Grandma_Frog_Hat.gif
+  Full_Grandma_Kitty_Hat.gif
+  Full_Grandma_Queen.gif
+  Full_Grandma_Skull.gif
+  Full_Masked_Ranger_Cactus_Hat.gif
+  Full_Masked_Ranger_Cloude.gif
+  Full_Masked_Ranger_Skeleton.gif

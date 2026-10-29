@@ -3764,6 +3764,71 @@
       "slug": "Full_Purple_Cyclops_Zombie",
       "bg": "Delta_Flash",
       "frame": "Yield_Pulse"
+    },
+    "Cyan_Punk_Cowboy": {
+      "slug": "Full_Cyan_Punk_Cowboy",
+      "bg": "Kinetic_Checker",
+      "frame": "Volt_Ring"
+    },
+    "Cyan_Punk_Disco": {
+      "slug": "Full_Cyan_Punk_Disco",
+      "bg": "Vertical_Drift",
+      "frame": "Axis_Rim"
+    },
+    "Cyan_Punk_Mummie": {
+      "slug": "Full_Cyan_Punk_Mummie",
+      "bg": "Grove_Mosaic",
+      "frame": "Flux_Flash"
+    },
+    "Grandma_Astro": {
+      "slug": "Full_Grandma_Astro",
+      "bg": "Jolt_Checker",
+      "frame": "Edge_Chroma"
+    },
+    "Grandma_Clown": {
+      "slug": "Full_Grandma_Clown",
+      "bg": "Cinder_Swell",
+      "frame": "Rune_Flicker"
+    },
+    "Grandma_Crazy": {
+      "slug": "Full_Grandma_Crazy",
+      "bg": "Tidal_Phase",
+      "frame": "Flow_Rim"
+    },
+    "Grandma_Frog_Hat": {
+      "slug": "Full_Grandma_Frog_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Flash_Rim"
+    },
+    "Grandma_Kitty_Hat": {
+      "slug": "Full_Grandma_Kitty_Hat",
+      "bg": "Band_Scroll",
+      "frame": "Trace_Rim"
+    },
+    "Grandma_Queen": {
+      "slug": "Full_Grandma_Queen",
+      "bg": "Tidal_Phase",
+      "frame": "Lumen_Flicker"
+    },
+    "Grandma_Skull": {
+      "slug": "Full_Grandma_Skull",
+      "bg": "Rust_Perimeter",
+      "frame": "Vector_Rim"
+    },
+    "Masked_Ranger_Cactus_Hat": {
+      "slug": "Full_Masked_Ranger_Cactus_Hat",
+      "bg": "Lumen_Streak",
+      "frame": "Byte_Pulse"
+    },
+    "Masked_Ranger_Cloude": {
+      "slug": "Full_Masked_Ranger_Cloude",
+      "bg": "Diagonal_Streak",
+      "frame": "Pixel_Flicker"
+    },
+    "Masked_Ranger_Skeleton": {
+      "slug": "Full_Masked_Ranger_Skeleton",
+      "bg": "Strip_Grid",
+      "frame": "Wire_Rim"
     }
   },
   "defaultByChar": {
@@ -8070,6 +8135,77 @@
         "slug": "Full_Purple_Cyclops_Zombie",
         "bg": "Delta_Flash",
         "frame": "Yield_Pulse"
+      }
+    ],
+    "Cyan_Punk": [
+      {
+        "slug": "Full_Cyan_Punk_Cowboy",
+        "bg": "Kinetic_Checker",
+        "frame": "Volt_Ring"
+      },
+      {
+        "slug": "Full_Cyan_Punk_Disco",
+        "bg": "Vertical_Drift",
+        "frame": "Axis_Rim"
+      },
+      {
+        "slug": "Full_Cyan_Punk_Mummie",
+        "bg": "Grove_Mosaic",
+        "frame": "Flux_Flash"
+      }
+    ],
+    "Grandma": [
+      {
+        "slug": "Full_Grandma_Astro",
+        "bg": "Jolt_Checker",
+        "frame": "Edge_Chroma"
+      },
+      {
+        "slug": "Full_Grandma_Clown",
+        "bg": "Cinder_Swell",
+        "frame": "Rune_Flicker"
+      },
+      {
+        "slug": "Full_Grandma_Crazy",
+        "bg": "Tidal_Phase",
+        "frame": "Flow_Rim"
+      },
+      {
+        "slug": "Full_Grandma_Frog_Hat",
+        "bg": "Lattice_Lines",
+        "frame": "Flash_Rim"
+      },
+      {
+        "slug": "Full_Grandma_Kitty_Hat",
+        "bg": "Band_Scroll",
+        "frame": "Trace_Rim"
+      },
+      {
+        "slug": "Full_Grandma_Queen",
+        "bg": "Tidal_Phase",
+        "frame": "Lumen_Flicker"
+      },
+      {
+        "slug": "Full_Grandma_Skull",
+        "bg": "Rust_Perimeter",
+        "frame": "Vector_Rim"
+      }
+    ],
+    "Masked_Ranger": [
+      {
+        "slug": "Full_Masked_Ranger_Cactus_Hat",
+        "bg": "Lumen_Streak",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Masked_Ranger_Cloude",
+        "bg": "Diagonal_Streak",
+        "frame": "Pixel_Flicker"
+      },
+      {
+        "slug": "Full_Masked_Ranger_Skeleton",
+        "bg": "Strip_Grid",
+        "frame": "Wire_Rim"
       }
     ]
   },

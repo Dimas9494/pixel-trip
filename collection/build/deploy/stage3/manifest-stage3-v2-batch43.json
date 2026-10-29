@@ -1,0 +1,101 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-29T19:07:37.443956+00:00",
+  "count": 13,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Cyan_Punk_Cowboy",
+      "bg": "Kinetic_Checker",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Punk_Cowboy.gif",
+      "stage1_character": "Cyan_Punk"
+    },
+    {
+      "slug": "Full_Cyan_Punk_Disco",
+      "bg": "Vertical_Drift",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Punk_Disco.gif",
+      "stage1_character": "Cyan_Punk"
+    },
+    {
+      "slug": "Full_Cyan_Punk_Mummie",
+      "bg": "Grove_Mosaic",
+      "frame": "Flux_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cyan_Punk_Mummie.gif",
+      "stage1_character": "Cyan_Punk"
+    },
+    {
+      "slug": "Full_Grandma_Astro",
+      "bg": "Jolt_Checker",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grandma_Astro.gif",
+      "stage1_character": "Grandma"
+    },
+    {
+      "slug": "Full_Grandma_Clown",
+      "bg": "Cinder_Swell",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grandma_Clown.gif",
+      "stage1_character": "Grandma"
+    },
+    {
+      "slug": "Full_Grandma_Crazy",
+      "bg": "Tidal_Phase",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grandma_Crazy.gif",
+      "stage1_character": "Grandma"
+    },
+    {
+      "slug": "Full_Grandma_Frog_Hat",
+      "bg": "Lattice_Lines",
+      "frame": "Flash_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grandma_Frog_Hat.gif",
+      "stage1_character": "Grandma"
+    },
+    {
+      "slug": "Full_Grandma_Kitty_Hat",
+      "bg": "Band_Scroll",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grandma_Kitty_Hat.gif",
+      "stage1_character": "Grandma"
+    },
+    {
+      "slug": "Full_Grandma_Queen",
+      "bg": "Tidal_Phase",
+      "frame": "Lumen_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grandma_Queen.gif",
+      "stage1_character": "Grandma"
+    },
+    {
+      "slug": "Full_Grandma_Skull",
+      "bg": "Rust_Perimeter",
+      "frame": "Vector_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grandma_Skull.gif",
+      "stage1_character": "Grandma"
+    },
+    {
+      "slug": "Full_Masked_Ranger_Cactus_Hat",
+      "bg": "Lumen_Streak",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Masked_Ranger_Cactus_Hat.gif",
+      "stage1_character": "Masked_Ranger"
+    },
+    {
+      "slug": "Full_Masked_Ranger_Cloude",
+      "bg": "Diagonal_Streak",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Masked_Ranger_Cloude.gif",
+      "stage1_character": "Masked_Ranger"
+    },
+    {
+      "slug": "Full_Masked_Ranger_Skeleton",
+      "bg": "Strip_Grid",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Masked_Ranger_Skeleton.gif",
+      "stage1_character": "Masked_Ranger"
+    }
+  ]
+}
