@@ -1,0 +1,56 @@
+PIXEL TRIP — Stage 3 V2 batch 44 (PNG → Full_*.gif)
+
+BATCH 44 — 16 Full, 5 S1 линий
+  Leaf_Elf       — 3 PNG
+  Pale_Wraith    — 3 PNG
+  Revolutionary  — 3 PNG
+  War_Bonnet     — 4 PNG
+  Winged_Lion    — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch44.json --seed 47474
+
+  Или: deploy_stage3_v2_batch44.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch44.json
+  website/src/burn/stage3-variants.json
+
+FTP (16 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 44)
+  Full_Leaf_Elf_Mask.gif
+  Full_Leaf_Elf_Mushroom_Hat.gif
+  Full_Leaf_Elf_Zombie.gif
+  Full_Pale_Wraith_Duotone.gif
+  Full_Pale_Wraith_Galaxy.gif
+  Full_Pale_Wraith_Horns.gif
+  Full_Revolutionary_Big_Beard.gif
+  Full_Revolutionary_Earring_Cross.gif
+  Full_Revolutionary_Two_Cigarettes.gif
+  Full_War_Bonnet_Golden_Eye.gif
+  Full_War_Bonnet_Skull.gif
+  Full_War_Bonnet_Wolf_Hat.gif
+  Full_War_Bonnet_Zomb.gif
+  Full_Winged_Lion_Rainbow_King.gif
+  Full_Winged_Lion_Tribal.gif
+  Full_Winged_Lion_Violet.gif

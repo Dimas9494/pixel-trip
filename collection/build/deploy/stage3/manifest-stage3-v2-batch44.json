@@ -1,0 +1,122 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-30T17:28:19.243042+00:00",
+  "count": 16,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Leaf_Elf_Mask",
+      "bg": "Hue_Pulse",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Leaf_Elf_Mask.gif",
+      "stage1_character": "Leaf_Elf"
+    },
+    {
+      "slug": "Full_Leaf_Elf_Mushroom_Hat",
+      "bg": "Quasar_Perimeter",
+      "frame": "Kinetic_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Leaf_Elf_Mushroom_Hat.gif",
+      "stage1_character": "Leaf_Elf"
+    },
+    {
+      "slug": "Full_Leaf_Elf_Zombie",
+      "bg": "Rust_Perimeter",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Leaf_Elf_Zombie.gif",
+      "stage1_character": "Leaf_Elf"
+    },
+    {
+      "slug": "Full_Pale_Wraith_Duotone",
+      "bg": "Kelp_Streak",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pale_Wraith_Duotone.gif",
+      "stage1_character": "Pale_Wraith"
+    },
+    {
+      "slug": "Full_Pale_Wraith_Galaxy",
+      "bg": "Xenon_Wave",
+      "frame": "Pulse_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pale_Wraith_Galaxy.gif",
+      "stage1_character": "Pale_Wraith"
+    },
+    {
+      "slug": "Full_Pale_Wraith_Horns",
+      "bg": "Lattice_Lines",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pale_Wraith_Horns.gif",
+      "stage1_character": "Pale_Wraith"
+    },
+    {
+      "slug": "Full_Revolutionary_Big_Beard",
+      "bg": "Horizon_Wave",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Revolutionary_Big_Beard.gif",
+      "stage1_character": "Revolutionary"
+    },
+    {
+      "slug": "Full_Revolutionary_Earring_Cross",
+      "bg": "Diagonal_Streak",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Revolutionary_Earring_Cross.gif",
+      "stage1_character": "Revolutionary"
+    },
+    {
+      "slug": "Full_Revolutionary_Two_Cigarettes",
+      "bg": "Jolt_Checker",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Revolutionary_Two_Cigarettes.gif",
+      "stage1_character": "Revolutionary"
+    },
+    {
+      "slug": "Full_War_Bonnet_Golden_Eye",
+      "bg": "Yonder_Pulse",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_War_Bonnet_Golden_Eye.gif",
+      "stage1_character": "War_Bonnet"
+    },
+    {
+      "slug": "Full_War_Bonnet_Skull",
+      "bg": "Quasar_Perimeter",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_War_Bonnet_Skull.gif",
+      "stage1_character": "War_Bonnet"
+    },
+    {
+      "slug": "Full_War_Bonnet_Wolf_Hat",
+      "bg": "Band_Scroll",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_War_Bonnet_Wolf_Hat.gif",
+      "stage1_character": "War_Bonnet"
+    },
+    {
+      "slug": "Full_War_Bonnet_Zomb",
+      "bg": "Lattice_Lines",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_War_Bonnet_Zomb.gif",
+      "stage1_character": "War_Bonnet"
+    },
+    {
+      "slug": "Full_Winged_Lion_Rainbow_King",
+      "bg": "Grove_Mosaic",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Winged_Lion_Rainbow_King.gif",
+      "stage1_character": "Winged_Lion"
+    },
+    {
+      "slug": "Full_Winged_Lion_Tribal",
+      "bg": "Vapor_Phase",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Winged_Lion_Tribal.gif",
+      "stage1_character": "Winged_Lion"
+    },
+    {
+      "slug": "Full_Winged_Lion_Violet",
+      "bg": "Delta_Flash",
+      "frame": "Edge_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Winged_Lion_Violet.gif",
+      "stage1_character": "Winged_Lion"
+    }
+  ]
+}

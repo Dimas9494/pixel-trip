@@ -3829,6 +3829,86 @@
       "slug": "Full_Masked_Ranger_Skeleton",
       "bg": "Strip_Grid",
       "frame": "Wire_Rim"
+    },
+    "Leaf_Elf_Mask": {
+      "slug": "Full_Leaf_Elf_Mask",
+      "bg": "Hue_Pulse",
+      "frame": "Grid_Rim"
+    },
+    "Leaf_Elf_Mushroom_Hat": {
+      "slug": "Full_Leaf_Elf_Mushroom_Hat",
+      "bg": "Quasar_Perimeter",
+      "frame": "Kinetic_Rim"
+    },
+    "Leaf_Elf_Zombie": {
+      "slug": "Full_Leaf_Elf_Zombie",
+      "bg": "Rust_Perimeter",
+      "frame": "Band_Rim"
+    },
+    "Pale_Wraith_Duotone": {
+      "slug": "Full_Pale_Wraith_Duotone",
+      "bg": "Kelp_Streak",
+      "frame": "Byte_Pulse"
+    },
+    "Pale_Wraith_Galaxy": {
+      "slug": "Full_Pale_Wraith_Galaxy",
+      "bg": "Xenon_Wave",
+      "frame": "Pulse_Ring"
+    },
+    "Pale_Wraith_Horns": {
+      "slug": "Full_Pale_Wraith_Horns",
+      "bg": "Lattice_Lines",
+      "frame": "Cycle_Rim"
+    },
+    "Revolutionary_Big_Beard": {
+      "slug": "Full_Revolutionary_Big_Beard",
+      "bg": "Horizon_Wave",
+      "frame": "Byte_Pulse"
+    },
+    "Revolutionary_Earring_Cross": {
+      "slug": "Full_Revolutionary_Earring_Cross",
+      "bg": "Diagonal_Streak",
+      "frame": "Pixel_Flicker"
+    },
+    "Revolutionary_Two_Cigarettes": {
+      "slug": "Full_Revolutionary_Two_Cigarettes",
+      "bg": "Jolt_Checker",
+      "frame": "Blade_Rim"
+    },
+    "War_Bonnet_Golden_Eye": {
+      "slug": "Full_War_Bonnet_Golden_Eye",
+      "bg": "Yonder_Pulse",
+      "frame": "Edge_Chroma"
+    },
+    "War_Bonnet_Skull": {
+      "slug": "Full_War_Bonnet_Skull",
+      "bg": "Quasar_Perimeter",
+      "frame": "Triple_Blink"
+    },
+    "War_Bonnet_Wolf_Hat": {
+      "slug": "Full_War_Bonnet_Wolf_Hat",
+      "bg": "Band_Scroll",
+      "frame": "Neon_Bolt"
+    },
+    "War_Bonnet_Zomb": {
+      "slug": "Full_War_Bonnet_Zomb",
+      "bg": "Lattice_Lines",
+      "frame": "Axis_Pulse"
+    },
+    "Winged_Lion_Rainbow_King": {
+      "slug": "Full_Winged_Lion_Rainbow_King",
+      "bg": "Grove_Mosaic",
+      "frame": "Hyper_Rim"
+    },
+    "Winged_Lion_Tribal": {
+      "slug": "Full_Winged_Lion_Tribal",
+      "bg": "Vapor_Phase",
+      "frame": "Wire_Rim"
+    },
+    "Winged_Lion_Violet": {
+      "slug": "Full_Winged_Lion_Violet",
+      "bg": "Delta_Flash",
+      "frame": "Edge_Flash"
     }
   },
   "defaultByChar": {
@@ -8206,6 +8286,96 @@
         "slug": "Full_Masked_Ranger_Skeleton",
         "bg": "Strip_Grid",
         "frame": "Wire_Rim"
+      }
+    ],
+    "Leaf_Elf": [
+      {
+        "slug": "Full_Leaf_Elf_Mask",
+        "bg": "Hue_Pulse",
+        "frame": "Grid_Rim"
+      },
+      {
+        "slug": "Full_Leaf_Elf_Mushroom_Hat",
+        "bg": "Quasar_Perimeter",
+        "frame": "Kinetic_Rim"
+      },
+      {
+        "slug": "Full_Leaf_Elf_Zombie",
+        "bg": "Rust_Perimeter",
+        "frame": "Band_Rim"
+      }
+    ],
+    "Pale_Wraith": [
+      {
+        "slug": "Full_Pale_Wraith_Duotone",
+        "bg": "Kelp_Streak",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Pale_Wraith_Galaxy",
+        "bg": "Xenon_Wave",
+        "frame": "Pulse_Ring"
+      },
+      {
+        "slug": "Full_Pale_Wraith_Horns",
+        "bg": "Lattice_Lines",
+        "frame": "Cycle_Rim"
+      }
+    ],
+    "Revolutionary": [
+      {
+        "slug": "Full_Revolutionary_Big_Beard",
+        "bg": "Horizon_Wave",
+        "frame": "Byte_Pulse"
+      },
+      {
+        "slug": "Full_Revolutionary_Earring_Cross",
+        "bg": "Diagonal_Streak",
+        "frame": "Pixel_Flicker"
+      },
+      {
+        "slug": "Full_Revolutionary_Two_Cigarettes",
+        "bg": "Jolt_Checker",
+        "frame": "Blade_Rim"
+      }
+    ],
+    "War_Bonnet": [
+      {
+        "slug": "Full_War_Bonnet_Golden_Eye",
+        "bg": "Yonder_Pulse",
+        "frame": "Edge_Chroma"
+      },
+      {
+        "slug": "Full_War_Bonnet_Skull",
+        "bg": "Quasar_Perimeter",
+        "frame": "Triple_Blink"
+      },
+      {
+        "slug": "Full_War_Bonnet_Wolf_Hat",
+        "bg": "Band_Scroll",
+        "frame": "Neon_Bolt"
+      },
+      {
+        "slug": "Full_War_Bonnet_Zomb",
+        "bg": "Lattice_Lines",
+        "frame": "Axis_Pulse"
+      }
+    ],
+    "Winged_Lion": [
+      {
+        "slug": "Full_Winged_Lion_Rainbow_King",
+        "bg": "Grove_Mosaic",
+        "frame": "Hyper_Rim"
+      },
+      {
+        "slug": "Full_Winged_Lion_Tribal",
+        "bg": "Vapor_Phase",
+        "frame": "Wire_Rim"
+      },
+      {
+        "slug": "Full_Winged_Lion_Violet",
+        "bg": "Delta_Flash",
+        "frame": "Edge_Flash"
       }
     ]
   },
