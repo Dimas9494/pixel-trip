@@ -1,0 +1,108 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-10-31T17:07:06.275302+00:00",
+  "count": 14,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Fat_Nerd_Angry",
+      "bg": "Fog_Blend",
+      "frame": "Blade_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fat_Nerd_Angry.gif",
+      "stage1_character": "Fat_Nerd"
+    },
+    {
+      "slug": "Full_Fat_Nerd_Soldier",
+      "bg": "Haze_Mosaic",
+      "frame": "Trace_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fat_Nerd_Soldier.gif",
+      "stage1_character": "Fat_Nerd"
+    },
+    {
+      "slug": "Full_Flower_Zombie_Bald",
+      "bg": "Grove_Mosaic",
+      "frame": "Chrome_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Flower_Zombie_Bald.gif",
+      "stage1_character": "Flower_Zombie"
+    },
+    {
+      "slug": "Full_Flower_Zombie_Mushroom",
+      "bg": "Chromatic_Swell",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Flower_Zombie_Mushroom.gif",
+      "stage1_character": "Flower_Zombie"
+    },
+    {
+      "slug": "Full_Flower_Zombie_Sleepy",
+      "bg": "Gem_Perimeter",
+      "frame": "Prism_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Flower_Zombie_Sleepy.gif",
+      "stage1_character": "Flower_Zombie"
+    },
+    {
+      "slug": "Full_Red_Cyborg_Big_Eyes",
+      "bg": "Mist_Drip",
+      "frame": "Xeno_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Cyborg_Big_Eyes.gif",
+      "stage1_character": "Red_Cyborg"
+    },
+    {
+      "slug": "Full_Steel_Robot_Big_Eyes",
+      "bg": "Strip_Grid",
+      "frame": "Neon_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Steel_Robot_Big_Eyes.gif",
+      "stage1_character": "Steel_Robot"
+    },
+    {
+      "slug": "Full_Steel_Robot_Crazy",
+      "bg": "Grid_Checker",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Steel_Robot_Crazy.gif",
+      "stage1_character": "Steel_Robot"
+    },
+    {
+      "slug": "Full_Steel_Robot_Zombie",
+      "bg": "Kinetic_Checker",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Steel_Robot_Zombie.gif",
+      "stage1_character": "Steel_Robot"
+    },
+    {
+      "slug": "Full_Stoned_Fox_Big_Eyes",
+      "bg": "Warp_Wave",
+      "frame": "Arc_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Fox_Big_Eyes.gif",
+      "stage1_character": "Stoned_Fox"
+    },
+    {
+      "slug": "Full_Stoned_Fox_Frog_Hat",
+      "bg": "Chromatic_Swell",
+      "frame": "Turbo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Fox_Frog_Hat.gif",
+      "stage1_character": "Stoned_Fox"
+    },
+    {
+      "slug": "Full_Stoned_Fox_Ninja",
+      "bg": "Horizon_Wave",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Stoned_Fox_Ninja.gif",
+      "stage1_character": "Stoned_Fox"
+    },
+    {
+      "slug": "Full_Teal_Mindflayer_General",
+      "bg": "Fog_Blend",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Teal_Mindflayer_General.gif",
+      "stage1_character": "Teal_Mindflayer"
+    },
+    {
+      "slug": "Full_Teal_Mindflayer_VR_Glasses",
+      "bg": "Grove_Mosaic",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Teal_Mindflayer_VR_Glasses.gif",
+      "stage1_character": "Teal_Mindflayer"
+    }
+  ]
+}

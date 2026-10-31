@@ -1,0 +1,55 @@
+PIXEL TRIP — Stage 3 V2 batch 45 (PNG → Full_*.gif)
+
+BATCH 45 — 14 Full, 6 S1 линий
+  Fat_Nerd          — 2 PNG
+  Flower_Zombie     — 3 PNG
+  Red_Cyborg        — 1 PNG
+  Steel_Robot       — 3 PNG
+  Stoned_Fox        — 3 PNG
+  Teal_Mindflayer   — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{Stage2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch45.json --seed 48484
+
+  Или: deploy_stage3_v2_batch45.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch45.json
+  website/src/burn/stage3-variants.json
+
+FTP (14 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 45)
+  Full_Fat_Nerd_Angry.gif
+  Full_Fat_Nerd_Soldier.gif
+  Full_Flower_Zombie_Bald.gif
+  Full_Flower_Zombie_Mushroom.gif
+  Full_Flower_Zombie_Sleepy.gif
+  Full_Red_Cyborg_Big_Eyes.gif
+  Full_Steel_Robot_Big_Eyes.gif
+  Full_Steel_Robot_Crazy.gif
+  Full_Steel_Robot_Zombie.gif
+  Full_Stoned_Fox_Big_Eyes.gif
+  Full_Stoned_Fox_Frog_Hat.gif
+  Full_Stoned_Fox_Ninja.gif
+  Full_Teal_Mindflayer_General.gif
+  Full_Teal_Mindflayer_VR_Glasses.gif
