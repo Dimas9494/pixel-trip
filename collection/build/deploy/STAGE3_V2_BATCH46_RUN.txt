@@ -1,0 +1,50 @@
+PIXEL TRIP — Stage 3 V2 batch 46 (PNG → Full_*.gif)
+
+BATCH 46 — 12 Full, 3 S1 линий
+  Derpy_Slug     — 6 PNG
+  Fish_Diver     — 4 PNG
+  Red_Eye_Astro  — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{Stage2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch46.json --seed 49494
+
+  Или: deploy_stage3_v2_batch46.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch46.json
+  website/src/burn/stage3-variants.json
+
+FTP (12 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 46)
+  Full_Derpy_Slug_Cap.gif
+  Full_Derpy_Slug_Golden_King.gif
+  Full_Derpy_Slug_Robot.gif
+  Full_Derpy_Slug_Straw_Hat.gif
+  Full_Derpy_Slug_Wizard.gif
+  Full_Derpy_Slug_Zombie.gif
+  Full_Fish_Diver_Christmas.gif
+  Full_Fish_Diver_Jelly.gif
+  Full_Fish_Diver_Pearl.gif
+  Full_Fish_Diver_Radioactive_Eyes.gif
+  Full_Red_Eye_Astro_Diamonds.gif
+  Full_Red_Eye_Astro_Frog.gif

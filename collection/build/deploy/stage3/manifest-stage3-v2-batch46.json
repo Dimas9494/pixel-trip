@@ -1,0 +1,94 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-11-01T18:33:10.544175+00:00",
+  "count": 12,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Derpy_Slug_Cap",
+      "bg": "Brick_Mosaic",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Derpy_Slug_Cap.gif",
+      "stage1_character": "Derpy_Slug"
+    },
+    {
+      "slug": "Full_Derpy_Slug_Golden_King",
+      "bg": "Fog_Blend",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Derpy_Slug_Golden_King.gif",
+      "stage1_character": "Derpy_Slug"
+    },
+    {
+      "slug": "Full_Derpy_Slug_Robot",
+      "bg": "Delta_Flash",
+      "frame": "Axis_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Derpy_Slug_Robot.gif",
+      "stage1_character": "Derpy_Slug"
+    },
+    {
+      "slug": "Full_Derpy_Slug_Straw_Hat",
+      "bg": "Chromatic_Swell",
+      "frame": "Vector_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Derpy_Slug_Straw_Hat.gif",
+      "stage1_character": "Derpy_Slug"
+    },
+    {
+      "slug": "Full_Derpy_Slug_Wizard",
+      "bg": "Mist_Drip",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Derpy_Slug_Wizard.gif",
+      "stage1_character": "Derpy_Slug"
+    },
+    {
+      "slug": "Full_Derpy_Slug_Zombie",
+      "bg": "Jolt_Checker",
+      "frame": "Triple_Blink",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Derpy_Slug_Zombie.gif",
+      "stage1_character": "Derpy_Slug"
+    },
+    {
+      "slug": "Full_Fish_Diver_Christmas",
+      "bg": "Lux_Checker",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fish_Diver_Christmas.gif",
+      "stage1_character": "Fish_Diver"
+    },
+    {
+      "slug": "Full_Fish_Diver_Jelly",
+      "bg": "Warp_Wave",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fish_Diver_Jelly.gif",
+      "stage1_character": "Fish_Diver"
+    },
+    {
+      "slug": "Full_Fish_Diver_Pearl",
+      "bg": "Horizon_Wave",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fish_Diver_Pearl.gif",
+      "stage1_character": "Fish_Diver"
+    },
+    {
+      "slug": "Full_Fish_Diver_Radioactive_Eyes",
+      "bg": "Rust_Perimeter",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Fish_Diver_Radioactive_Eyes.gif",
+      "stage1_character": "Fish_Diver"
+    },
+    {
+      "slug": "Full_Red_Eye_Astro_Diamonds",
+      "bg": "Stripe_Phase",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Eye_Astro_Diamonds.gif",
+      "stage1_character": "Red_Eye_Astro"
+    },
+    {
+      "slug": "Full_Red_Eye_Astro_Frog",
+      "bg": "Basalt_Lines",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Red_Eye_Astro_Frog.gif",
+      "stage1_character": "Red_Eye_Astro"
+    }
+  ]
+}

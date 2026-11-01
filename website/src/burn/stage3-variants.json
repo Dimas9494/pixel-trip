@@ -3979,6 +3979,66 @@
       "slug": "Full_Teal_Mindflayer_VR_Glasses",
       "bg": "Grove_Mosaic",
       "frame": "Radiant_Rim"
+    },
+    "Derpy_Slug_Cap": {
+      "slug": "Full_Derpy_Slug_Cap",
+      "bg": "Brick_Mosaic",
+      "frame": "Radiant_Rim"
+    },
+    "Derpy_Slug_Golden_King": {
+      "slug": "Full_Derpy_Slug_Golden_King",
+      "bg": "Fog_Blend",
+      "frame": "Radiant_Flicker"
+    },
+    "Derpy_Slug_Robot": {
+      "slug": "Full_Derpy_Slug_Robot",
+      "bg": "Delta_Flash",
+      "frame": "Axis_Pulse"
+    },
+    "Derpy_Slug_Straw_Hat": {
+      "slug": "Full_Derpy_Slug_Straw_Hat",
+      "bg": "Chromatic_Swell",
+      "frame": "Vector_Ring"
+    },
+    "Derpy_Slug_Wizard": {
+      "slug": "Full_Derpy_Slug_Wizard",
+      "bg": "Mist_Drip",
+      "frame": "Core_Rim"
+    },
+    "Derpy_Slug_Zombie": {
+      "slug": "Full_Derpy_Slug_Zombie",
+      "bg": "Jolt_Checker",
+      "frame": "Triple_Blink"
+    },
+    "Fish_Diver_Christmas": {
+      "slug": "Full_Fish_Diver_Christmas",
+      "bg": "Lux_Checker",
+      "frame": "Mint_Flash"
+    },
+    "Fish_Diver_Jelly": {
+      "slug": "Full_Fish_Diver_Jelly",
+      "bg": "Warp_Wave",
+      "frame": "Split_Rim"
+    },
+    "Fish_Diver_Pearl": {
+      "slug": "Full_Fish_Diver_Pearl",
+      "bg": "Horizon_Wave",
+      "frame": "Wire_Rim"
+    },
+    "Fish_Diver_Radioactive_Eyes": {
+      "slug": "Full_Fish_Diver_Radioactive_Eyes",
+      "bg": "Rust_Perimeter",
+      "frame": "Wave_Rim"
+    },
+    "Red_Eye_Astro_Diamonds": {
+      "slug": "Full_Red_Eye_Astro_Diamonds",
+      "bg": "Stripe_Phase",
+      "frame": "Hyper_Rim"
+    },
+    "Red_Eye_Astro_Frog": {
+      "slug": "Full_Red_Eye_Astro_Frog",
+      "bg": "Basalt_Lines",
+      "frame": "Cycle_Rim"
     }
   },
   "defaultByChar": {
@@ -8533,6 +8593,72 @@
         "slug": "Full_Teal_Mindflayer_VR_Glasses",
         "bg": "Grove_Mosaic",
         "frame": "Radiant_Rim"
+      }
+    ],
+    "Derpy_Slug": [
+      {
+        "slug": "Full_Derpy_Slug_Cap",
+        "bg": "Brick_Mosaic",
+        "frame": "Radiant_Rim"
+      },
+      {
+        "slug": "Full_Derpy_Slug_Golden_King",
+        "bg": "Fog_Blend",
+        "frame": "Radiant_Flicker"
+      },
+      {
+        "slug": "Full_Derpy_Slug_Robot",
+        "bg": "Delta_Flash",
+        "frame": "Axis_Pulse"
+      },
+      {
+        "slug": "Full_Derpy_Slug_Straw_Hat",
+        "bg": "Chromatic_Swell",
+        "frame": "Vector_Ring"
+      },
+      {
+        "slug": "Full_Derpy_Slug_Wizard",
+        "bg": "Mist_Drip",
+        "frame": "Core_Rim"
+      },
+      {
+        "slug": "Full_Derpy_Slug_Zombie",
+        "bg": "Jolt_Checker",
+        "frame": "Triple_Blink"
+      }
+    ],
+    "Fish_Diver": [
+      {
+        "slug": "Full_Fish_Diver_Christmas",
+        "bg": "Lux_Checker",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Fish_Diver_Jelly",
+        "bg": "Warp_Wave",
+        "frame": "Split_Rim"
+      },
+      {
+        "slug": "Full_Fish_Diver_Pearl",
+        "bg": "Horizon_Wave",
+        "frame": "Wire_Rim"
+      },
+      {
+        "slug": "Full_Fish_Diver_Radioactive_Eyes",
+        "bg": "Rust_Perimeter",
+        "frame": "Wave_Rim"
+      }
+    ],
+    "Red_Eye_Astro": [
+      {
+        "slug": "Full_Red_Eye_Astro_Diamonds",
+        "bg": "Stripe_Phase",
+        "frame": "Hyper_Rim"
+      },
+      {
+        "slug": "Full_Red_Eye_Astro_Frog",
+        "bg": "Basalt_Lines",
+        "frame": "Cycle_Rim"
       }
     ]
   },
