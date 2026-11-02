@@ -4039,6 +4039,51 @@
       "slug": "Full_Red_Eye_Astro_Frog",
       "bg": "Basalt_Lines",
       "frame": "Cycle_Rim"
+    },
+    "Mad_Aviator_Clown": {
+      "slug": "Full_Mad_Aviator_Clown",
+      "bg": "Band_Scroll",
+      "frame": "Flux_Flash"
+    },
+    "Mad_Aviator_Punk": {
+      "slug": "Full_Mad_Aviator_Punk",
+      "bg": "Jade_Streak",
+      "frame": "Halo_Rim"
+    },
+    "Mad_Aviator_Underwater": {
+      "slug": "Full_Mad_Aviator_Underwater",
+      "bg": "Band_Scroll",
+      "frame": "Mint_Flash"
+    },
+    "Mad_Aviator_Zombie": {
+      "slug": "Full_Mad_Aviator_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Neon_Rim"
+    },
+    "Purple_Prince_Mask": {
+      "slug": "Full_Purple_Prince_Mask",
+      "bg": "Gem_Perimeter",
+      "frame": "Wave_Rim"
+    },
+    "Purple_Prince_Skull": {
+      "slug": "Full_Purple_Prince_Skull",
+      "bg": "Margin_Flash",
+      "frame": "Aqua_Rim"
+    },
+    "Teal_Luchador_Blonde": {
+      "slug": "Full_Teal_Luchador_Blonde",
+      "bg": "Vertical_Drift",
+      "frame": "Flash_Rim"
+    },
+    "Teal_Luchador_Mic": {
+      "slug": "Full_Teal_Luchador_Mic",
+      "bg": "Ember_Flash",
+      "frame": "Rune_Flicker"
+    },
+    "Teal_Luchador_Shiner": {
+      "slug": "Full_Teal_Luchador_Shiner",
+      "bg": "Vertical_Drift",
+      "frame": "Volt_Ring"
     }
   },
   "defaultByChar": {
@@ -8659,6 +8704,57 @@
         "slug": "Full_Red_Eye_Astro_Frog",
         "bg": "Basalt_Lines",
         "frame": "Cycle_Rim"
+      }
+    ],
+    "Mad_Aviator": [
+      {
+        "slug": "Full_Mad_Aviator_Clown",
+        "bg": "Band_Scroll",
+        "frame": "Flux_Flash"
+      },
+      {
+        "slug": "Full_Mad_Aviator_Punk",
+        "bg": "Jade_Streak",
+        "frame": "Halo_Rim"
+      },
+      {
+        "slug": "Full_Mad_Aviator_Underwater",
+        "bg": "Band_Scroll",
+        "frame": "Mint_Flash"
+      },
+      {
+        "slug": "Full_Mad_Aviator_Zombie",
+        "bg": "Ultraviolet_Phase",
+        "frame": "Neon_Rim"
+      }
+    ],
+    "Purple_Prince": [
+      {
+        "slug": "Full_Purple_Prince_Mask",
+        "bg": "Gem_Perimeter",
+        "frame": "Wave_Rim"
+      },
+      {
+        "slug": "Full_Purple_Prince_Skull",
+        "bg": "Margin_Flash",
+        "frame": "Aqua_Rim"
+      }
+    ],
+    "Teal_Luchador": [
+      {
+        "slug": "Full_Teal_Luchador_Blonde",
+        "bg": "Vertical_Drift",
+        "frame": "Flash_Rim"
+      },
+      {
+        "slug": "Full_Teal_Luchador_Mic",
+        "bg": "Ember_Flash",
+        "frame": "Rune_Flicker"
+      },
+      {
+        "slug": "Full_Teal_Luchador_Shiner",
+        "bg": "Vertical_Drift",
+        "frame": "Volt_Ring"
       }
     ]
   },

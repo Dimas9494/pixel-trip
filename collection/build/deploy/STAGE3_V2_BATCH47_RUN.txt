@@ -1,0 +1,47 @@
+PIXEL TRIP — Stage 3 V2 batch 47 (PNG → Full_*.gif)
+
+BATCH 47 — 9 Full, 3 S1 линий
+  Mad_Aviator    — 4 PNG
+  Purple_Prince  — 2 PNG
+  Teal_Luchador  — 3 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{Stage2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch47.json --seed 50505
+
+  Или: deploy_stage3_v2_batch47.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch47.json
+  website/src/burn/stage3-variants.json
+
+FTP (9 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 47)
+  Full_Mad_Aviator_Clown.gif
+  Full_Mad_Aviator_Punk.gif
+  Full_Mad_Aviator_Underwater.gif
+  Full_Mad_Aviator_Zombie.gif
+  Full_Purple_Prince_Mask.gif
+  Full_Purple_Prince_Skull.gif
+  Full_Teal_Luchador_Blonde.gif
+  Full_Teal_Luchador_Mic.gif
+  Full_Teal_Luchador_Shiner.gif

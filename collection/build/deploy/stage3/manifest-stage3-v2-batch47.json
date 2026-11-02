@@ -1,0 +1,73 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-11-02T20:25:44.309598+00:00",
+  "count": 9,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Mad_Aviator_Clown",
+      "bg": "Band_Scroll",
+      "frame": "Flux_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mad_Aviator_Clown.gif",
+      "stage1_character": "Mad_Aviator"
+    },
+    {
+      "slug": "Full_Mad_Aviator_Punk",
+      "bg": "Jade_Streak",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mad_Aviator_Punk.gif",
+      "stage1_character": "Mad_Aviator"
+    },
+    {
+      "slug": "Full_Mad_Aviator_Underwater",
+      "bg": "Band_Scroll",
+      "frame": "Mint_Flash",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mad_Aviator_Underwater.gif",
+      "stage1_character": "Mad_Aviator"
+    },
+    {
+      "slug": "Full_Mad_Aviator_Zombie",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mad_Aviator_Zombie.gif",
+      "stage1_character": "Mad_Aviator"
+    },
+    {
+      "slug": "Full_Purple_Prince_Mask",
+      "bg": "Gem_Perimeter",
+      "frame": "Wave_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Prince_Mask.gif",
+      "stage1_character": "Purple_Prince"
+    },
+    {
+      "slug": "Full_Purple_Prince_Skull",
+      "bg": "Margin_Flash",
+      "frame": "Aqua_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Purple_Prince_Skull.gif",
+      "stage1_character": "Purple_Prince"
+    },
+    {
+      "slug": "Full_Teal_Luchador_Blonde",
+      "bg": "Vertical_Drift",
+      "frame": "Flash_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Teal_Luchador_Blonde.gif",
+      "stage1_character": "Teal_Luchador"
+    },
+    {
+      "slug": "Full_Teal_Luchador_Mic",
+      "bg": "Ember_Flash",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Teal_Luchador_Mic.gif",
+      "stage1_character": "Teal_Luchador"
+    },
+    {
+      "slug": "Full_Teal_Luchador_Shiner",
+      "bg": "Vertical_Drift",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Teal_Luchador_Shiner.gif",
+      "stage1_character": "Teal_Luchador"
+    }
+  ]
+}
