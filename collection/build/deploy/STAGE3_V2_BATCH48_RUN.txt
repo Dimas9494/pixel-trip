@@ -1,0 +1,80 @@
+PIXEL TRIP — Stage 3 V2 batch 48 (PNG → Full_*.gif)
+
+BATCH 48 — 34 Full, 11 S1 линий
+  Crying_Mime      — 3 PNG
+  Cyan_Cloude      — 2 PNG
+  Derpy_Slime      — 6 PNG
+  Fanged_Hippie    — 3 PNG
+  Frost_Yeti       — 1 PNG
+  Gilded_Skull     — 4 PNG
+  Glow_Skull       — 3 PNG
+  Oni_Mask         — 1 PNG
+  Shocked_Face     — 2 PNG
+  Shocked_Rooster  — 3 PNG
+  Suit_Devil       — 6 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{Stage2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch48.json --seed 51515
+
+  Или: deploy_stage3_v2_batch48.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch48.json
+  website/src/burn/stage3-variants.json
+
+FTP (34 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 48)
+  Full_Crying_Mime_Ape.gif
+  Full_Crying_Mime_Hooded.gif
+  Full_Crying_Mime_Radioactive.gif
+  Full_Cyan_Cloude_Big_Eyes.gif
+  Full_Cyan_Cloude_Golden.gif
+  Full_Derpy_Slime_Cap.gif
+  Full_Derpy_Slime_Crown.gif
+  Full_Derpy_Slime_Cyborg.gif
+  Full_Derpy_Slime_Mohawk.gif
+  Full_Derpy_Slime_Top_Hat.gif
+  Full_Derpy_Slime_Wizard.gif
+  Full_Fanged_Hippie_Frog.gif
+  Full_Fanged_Hippie_Hearts_Glasses.gif
+  Full_Fanged_Hippie_Mushroom.gif
+  Full_Frost_Yeti_King.gif
+  Full_Gilded_Skull_Frog_Hat.gif
+  Full_Gilded_Skull_Hooded.gif
+  Full_Gilded_Skull_King.gif
+  Full_Gilded_Skull_Snake.gif
+  Full_Glow_Skull_Horns.gif
+  Full_Glow_Skull_Pirate.gif
+  Full_Glow_Skull_Punk.gif
+  Full_Oni_Mask_King.gif
+  Full_Shocked_Face_Bandito.gif
+  Full_Shocked_Face_Skull.gif
+  Full_Shocked_Rooster_Punk.gif
+  Full_Shocked_Rooster_Top_Hat.gif
+  Full_Shocked_Rooster_Zombie.gif
+  Full_Suit_Devil_Frozen.gif
+  Full_Suit_Devil_Irish.gif
+  Full_Suit_Devil_King.gif
+  Full_Suit_Devil_Long_Hair.gif
+  Full_Suit_Devil_Matrix.gif
+  Full_Suit_Devil_Rasta.gif
