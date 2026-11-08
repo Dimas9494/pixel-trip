@@ -1,0 +1,283 @@
+{
+  "type": "stage3_catalog",
+  "generated_at": "2026-11-08T15:16:30.895233+00:00",
+  "count": 39,
+  "image_base_url": "https://pixeltripnft.website/stage3/images",
+  "metadata_base_url": "https://pixeltripnft.website/stage3/metadata",
+  "char_root": "D:\\Promt\\Пиксель\\Stage 3 V2",
+  "items": [
+    {
+      "slug": "Full_Brain_Tentacle_Big",
+      "bg": "Tidal_Phase",
+      "frame": "Axis_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Brain_Tentacle_Big.gif",
+      "stage1_character": "Brain_Tentacle"
+    },
+    {
+      "slug": "Full_Brain_Tentacle_Cyborg",
+      "bg": "Lumen_Streak",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Brain_Tentacle_Cyborg.gif",
+      "stage1_character": "Brain_Tentacle"
+    },
+    {
+      "slug": "Full_Brain_Tentacle_Pirate",
+      "bg": "Fog_Blend",
+      "frame": "Cycle_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Brain_Tentacle_Pirate.gif",
+      "stage1_character": "Brain_Tentacle"
+    },
+    {
+      "slug": "Full_Brain_Tentacle_Scary",
+      "bg": "Delta_Flash",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Brain_Tentacle_Scary.gif",
+      "stage1_character": "Brain_Tentacle"
+    },
+    {
+      "slug": "Full_Bubble_Astronaut_Golden",
+      "bg": "Grid_Checker",
+      "frame": "Split_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Astronaut_Golden.gif",
+      "stage1_character": "Bubble_Astronaut"
+    },
+    {
+      "slug": "Full_Bubble_Astronaut_Scorpio_Mask",
+      "bg": "Bloom_Wave",
+      "frame": "Grid_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Bubble_Astronaut_Scorpio_Mask.gif",
+      "stage1_character": "Bubble_Astronaut"
+    },
+    {
+      "slug": "Full_Cowboy_Acid",
+      "bg": "Ultraviolet_Phase",
+      "frame": "Hyper_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cowboy_Acid.gif",
+      "stage1_character": "Cowboy"
+    },
+    {
+      "slug": "Full_Cowboy_Fire",
+      "bg": "Lux_Checker",
+      "frame": "Radiant_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cowboy_Fire.gif",
+      "stage1_character": "Cowboy"
+    },
+    {
+      "slug": "Full_Cowboy_Zombie",
+      "bg": "Warp_Wave",
+      "frame": "Ion_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Cowboy_Zombie.gif",
+      "stage1_character": "Cowboy"
+    },
+    {
+      "slug": "Full_Dark_Elf_Frog_Hat",
+      "bg": "Gem_Perimeter",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dark_Elf_Frog_Hat.gif",
+      "stage1_character": "Dark_Elf"
+    },
+    {
+      "slug": "Full_Dark_Elf_Half_Face",
+      "bg": "Bloom_Wave",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dark_Elf_Half_Face.gif",
+      "stage1_character": "Dark_Elf"
+    },
+    {
+      "slug": "Full_Dark_Elf_Mask",
+      "bg": "Gem_Perimeter",
+      "frame": "Glitch_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dark_Elf_Mask.gif",
+      "stage1_character": "Dark_Elf"
+    },
+    {
+      "slug": "Full_Dark_Elf_Skull",
+      "bg": "Band_Scroll",
+      "frame": "Volt_Ring",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dark_Elf_Skull.gif",
+      "stage1_character": "Dark_Elf"
+    },
+    {
+      "slug": "Full_Dark_Elf_Zombie",
+      "bg": "Warp_Wave",
+      "frame": "Blade_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Dark_Elf_Zombie.gif",
+      "stage1_character": "Dark_Elf"
+    },
+    {
+      "slug": "Full_Green_Cyborg_Elf_Skeleton",
+      "bg": "Xenon_Wave",
+      "frame": "Edge_Chroma",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Green_Cyborg_Elf_Skeleton.gif",
+      "stage1_character": "Green_Cyborg_Elf"
+    },
+    {
+      "slug": "Full_Grumpy_Storm_Fire",
+      "bg": "Margin_Drip",
+      "frame": "Band_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Storm_Fire.gif",
+      "stage1_character": "Grumpy_Storm"
+    },
+    {
+      "slug": "Full_Grumpy_Storm_Pope",
+      "bg": "Kinetic_Checker",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Storm_Pope.gif",
+      "stage1_character": "Grumpy_Storm"
+    },
+    {
+      "slug": "Full_Grumpy_Storm_Zombie",
+      "bg": "Bloom_Wave",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Grumpy_Storm_Zombie.gif",
+      "stage1_character": "Grumpy_Storm"
+    },
+    {
+      "slug": "Full_Horned_Viking_Skull",
+      "bg": "Grove_Mosaic",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Horned_Viking_Skull.gif",
+      "stage1_character": "Horned_Viking"
+    },
+    {
+      "slug": "Full_Horned_Viking_Wings",
+      "bg": "Basalt_Lines",
+      "frame": "Flow_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Horned_Viking_Wings.gif",
+      "stage1_character": "Horned_Viking"
+    },
+    {
+      "slug": "Full_Mad_Professor_Cyborg",
+      "bg": "Quasar_Perimeter",
+      "frame": "Neon_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mad_Professor_Cyborg.gif",
+      "stage1_character": "Mad_Professor"
+    },
+    {
+      "slug": "Full_Mad_Professor_Skull",
+      "bg": "Plasma_Perimeter",
+      "frame": "Chrome_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mad_Professor_Skull.gif",
+      "stage1_character": "Mad_Professor"
+    },
+    {
+      "slug": "Full_Mad_Professor_Street",
+      "bg": "Fog_Blend",
+      "frame": "Wire_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Mad_Professor_Street.gif",
+      "stage1_character": "Mad_Professor"
+    },
+    {
+      "slug": "Full_Noir_Cat_Pimp",
+      "bg": "Ember_Flash",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Noir_Cat_Pimp.gif",
+      "stage1_character": "Noir_Cat"
+    },
+    {
+      "slug": "Full_Painted_Mime_Alien",
+      "bg": "Stripe_Phase",
+      "frame": "Onyx_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Painted_Mime_Alien.gif",
+      "stage1_character": "Painted_Mime"
+    },
+    {
+      "slug": "Full_Painted_Mime_Brush",
+      "bg": "Stripe_Phase",
+      "frame": "Halo_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Painted_Mime_Brush.gif",
+      "stage1_character": "Painted_Mime"
+    },
+    {
+      "slug": "Full_Painted_Mime_Cyborg",
+      "bg": "Plasma_Perimeter",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Painted_Mime_Cyborg.gif",
+      "stage1_character": "Painted_Mime"
+    },
+    {
+      "slug": "Full_Painted_Mime_Plague_Doctor_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Spark_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Painted_Mime_Plague_Doctor_Mask.gif",
+      "stage1_character": "Painted_Mime"
+    },
+    {
+      "slug": "Full_Pink_Fangs_Forest",
+      "bg": "Grove_Mosaic",
+      "frame": "Radiant_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Fangs_Forest.gif",
+      "stage1_character": "Pink_Fangs"
+    },
+    {
+      "slug": "Full_Pink_Fangs_Kitty",
+      "bg": "Grid_Checker",
+      "frame": "Rune_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Fangs_Kitty.gif",
+      "stage1_character": "Pink_Fangs"
+    },
+    {
+      "slug": "Full_Pink_Fangs_Mask",
+      "bg": "Mist_Drip",
+      "frame": "Pixel_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pink_Fangs_Mask.gif",
+      "stage1_character": "Pink_Fangs"
+    },
+    {
+      "slug": "Full_Pirate_Beard",
+      "bg": "Xenon_Wave",
+      "frame": "Jolt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pirate_Beard.gif",
+      "stage1_character": "Pirate"
+    },
+    {
+      "slug": "Full_Pirate_Parrot",
+      "bg": "Horizon_Wave",
+      "frame": "Core_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Pirate_Parrot.gif",
+      "stage1_character": "Pirate"
+    },
+    {
+      "slug": "Full_Snow_Yeti_Diver",
+      "bg": "Band_Scroll",
+      "frame": "Mint_Bolt",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Snow_Yeti_Diver.gif",
+      "stage1_character": "Snow_Yeti"
+    },
+    {
+      "slug": "Full_Triple_Eye_Cap",
+      "bg": "Delta_Flash",
+      "frame": "Static_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Cap.gif",
+      "stage1_character": "Triple_Eye"
+    },
+    {
+      "slug": "Full_Triple_Eye_Hooded",
+      "bg": "Rust_Blend",
+      "frame": "Volt_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Hooded.gif",
+      "stage1_character": "Triple_Eye"
+    },
+    {
+      "slug": "Full_Triple_Eye_King",
+      "bg": "Jade_Streak",
+      "frame": "Byte_Pulse",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_King.gif",
+      "stage1_character": "Triple_Eye"
+    },
+    {
+      "slug": "Full_Triple_Eye_Mohawk",
+      "bg": "Hue_Pulse",
+      "frame": "Hue_Rim",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Mohawk.gif",
+      "stage1_character": "Triple_Eye"
+    },
+    {
+      "slug": "Full_Triple_Eye_Top_Hat",
+      "bg": "Vapor_Phase",
+      "frame": "Quick_Flicker",
+      "gif": "D:\\Promt\\Пиксель\\collection\\build\\deploy\\stage3\\images\\Full_Triple_Eye_Top_Hat.gif",
+      "stage1_character": "Triple_Eye"
+    }
+  ]
+}

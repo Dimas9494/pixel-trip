@@ -1,0 +1,88 @@
+PIXEL TRIP — Stage 3 V2 batch 49 (PNG → Full_*.gif)
+
+BATCH 49 — 39 Full, 14 S1 линий
+  Brain_Tentacle      — 4 PNG
+  Bubble_Astronaut    — 2 PNG
+  Cowboy              — 3 PNG
+  Dark_Elf            — 5 PNG
+  Green_Cyborg_Elf    — 1 PNG
+  Grumpy_Storm        — 3 PNG
+  Horned_Viking       — 2 PNG
+  Mad_Professor       — 3 PNG
+  Noir_Cat            — 1 PNG
+  Painted_Mime        — 4 PNG
+  Pink_Fangs          — 3 PNG
+  Pirate              — 2 PNG
+  Snow_Yeti           — 1 PNG
+  Triple_Eye          — 5 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch49.json --seed 52525
+
+  Или: deploy_stage3_v2_batch49.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch49.json
+  website/src/burn/stage3-variants.json
+
+FTP (39 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 49)
+  Full_Brain_Tentacle_Big.gif
+  Full_Brain_Tentacle_Cyborg.gif
+  Full_Brain_Tentacle_Pirate.gif
+  Full_Brain_Tentacle_Scary.gif
+  Full_Bubble_Astronaut_Golden.gif
+  Full_Bubble_Astronaut_Scorpio_Mask.gif
+  Full_Cowboy_Acid.gif
+  Full_Cowboy_Fire.gif
+  Full_Cowboy_Zombie.gif
+  Full_Dark_Elf_Frog_Hat.gif
+  Full_Dark_Elf_Half_Face.gif
+  Full_Dark_Elf_Mask.gif
+  Full_Dark_Elf_Skull.gif
+  Full_Dark_Elf_Zombie.gif
+  Full_Green_Cyborg_Elf_Skeleton.gif
+  Full_Grumpy_Storm_Fire.gif
+  Full_Grumpy_Storm_Pope.gif
+  Full_Grumpy_Storm_Zombie.gif
+  Full_Horned_Viking_Skull.gif
+  Full_Horned_Viking_Wings.gif
+  Full_Mad_Professor_Cyborg.gif
+  Full_Mad_Professor_Skull.gif
+  Full_Mad_Professor_Street.gif
+  Full_Noir_Cat_Pimp.gif
+  Full_Painted_Mime_Alien.gif
+  Full_Painted_Mime_Brush.gif
+  Full_Painted_Mime_Cyborg.gif
+  Full_Painted_Mime_Plague_Doctor_Mask.gif
+  Full_Pink_Fangs_Forest.gif
+  Full_Pink_Fangs_Kitty.gif
+  Full_Pink_Fangs_Mask.gif
+  Full_Pirate_Beard.gif
+  Full_Pirate_Parrot.gif
+  Full_Snow_Yeti_Diver.gif
+  Full_Triple_Eye_Cap.gif
+  Full_Triple_Eye_Hooded.gif
+  Full_Triple_Eye_King.gif
+  Full_Triple_Eye_Mohawk.gif
+  Full_Triple_Eye_Top_Hat.gif
