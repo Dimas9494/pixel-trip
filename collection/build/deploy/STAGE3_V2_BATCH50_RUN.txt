@@ -1,0 +1,109 @@
+PIXEL TRIP — Stage 3 V2 batch 50 (PNG → Full_*.gif)
+
+BATCH 50 — 56 Full, 18 S1 линий
+  Anaglyph_Woman       — 2 PNG
+  Bucktooth_Cyclops    — 2 PNG
+  Bushy_Brow           — 2 PNG
+  Cowboy_Cactus        — 3 PNG
+  Cyber_Ninja          — 2 PNG
+  Feather_Chief        — 2 PNG
+  Hooded_Doom          — 5 PNG
+  Laughing_Dark_Boy    — 4 PNG
+  Manic_Goblin         — 6 PNG
+  Mantis               — 5 PNG
+  Mint_Disco_Dancer    — 3 PNG
+  Monitor_Head         — 1 PNG
+  Monk                 — 3 PNG
+  Moss_Goblin          — 2 PNG
+  Mossy_Gargoyle       — 6 PNG (Night: Full_Mossy_Gargoyle__Night)
+  Office_Sloth         — 2 PNG
+  Pink_Beanie          — 4 PNG
+  Pipe_Detective       — 2 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch50.json --seed 53535
+
+  Или: deploy_stage3_v2_batch50.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch50.json
+  website/src/burn/stage3-variants.json
+
+FTP (56 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 50)
+  Full_Anaglyph_Woman_Alien.gif
+  Full_Anaglyph_Woman_Skull.gif
+  Full_Bucktooth_Cyclops_Alien.gif
+  Full_Bucktooth_Cyclops_Zombie.gif
+  Full_Bushy_Brow_Alien.gif
+  Full_Bushy_Brow_Skull.gif
+  Full_Cowboy_Cactus_Octo.gif
+  Full_Cowboy_Cactus_UFO.gif
+  Full_Cowboy_Cactus_Zombie.gif
+  Full_Cyber_Ninja_Horns.gif
+  Full_Cyber_Ninja_Mohawk.gif
+  Full_Feather_Chief_Skull.gif
+  Full_Feather_Chief_Tiger_Mask.gif
+  Full_Hooded_Doom_Fire.gif
+  Full_Hooded_Doom_Frog_Hat.gif
+  Full_Hooded_Doom_Iron.gif
+  Full_Hooded_Doom_White_Cap.gif
+  Full_Hooded_Doom_Zombie.gif
+  Full_Laughing_Dark_Boy_Alien.gif
+  Full_Laughing_Dark_Boy_Big_Eyes.gif
+  Full_Laughing_Dark_Boy_Golden.gif
+  Full_Laughing_Dark_Boy_Street.gif
+  Full_Manic_Goblin_Cap.gif
+  Full_Manic_Goblin_King.gif
+  Full_Manic_Goblin_Ninja.gif
+  Full_Manic_Goblin_Sailor.gif
+  Full_Manic_Goblin_Skull.gif
+  Full_Manic_Goblin_Third_Eye.gif
+  Full_Mantis_Big_Glasses.gif
+  Full_Mantis_Crown.gif
+  Full_Mantis_Fez.gif
+  Full_Mantis_Sandly.gif
+  Full_Mantis_VR_Glasses.gif
+  Full_Mint_Disco_Dancer_Fire.gif
+  Full_Mint_Disco_Dancer_Hippie.gif
+  Full_Mint_Disco_Dancer_White_King.gif
+  Full_Monitor_Head_Frog.gif
+  Full_Monk_Alien.gif
+  Full_Monk_Crown.gif
+  Full_Monk_Stoned.gif
+  Full_Moss_Goblin_Dead.gif
+  Full_Moss_Goblin_Mushroom_Hat.gif
+  Full_Mossy_Gargoyle_Cold.gif
+  Full_Mossy_Gargoyle_Fire.gif
+  Full_Mossy_Gargoyle_Golden.gif
+  Full_Mossy_Gargoyle_Hooded.gif
+  Full_Mossy_Gargoyle_Punk_Cap.gif
+  Full_Mossy_Gargoyle__Night.gif
+  Full_Office_Sloth_Fairy.gif
+  Full_Office_Sloth_Rasta.gif
+  Full_Pink_Beanie_Mask.gif
+  Full_Pink_Beanie_Skull.gif
+  Full_Pink_Beanie_VR_Glasses.gif
+  Full_Pink_Beanie_Vamp.gif
+  Full_Pipe_Detective_Skull.gif
+  Full_Pipe_Detective_Zombie.gif
