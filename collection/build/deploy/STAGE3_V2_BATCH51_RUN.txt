@@ -1,0 +1,98 @@
+PIXEL TRIP — Stage 3 V2 batch 51 (PNG → Full_*.gif)
+
+BATCH 51 — 50 Full, 13 S1 линий
+  Paper_Fan      — 6 PNG
+  Shroom_Knight  — 5 PNG
+  Skull_King     — 3 PNG
+  Smoke_Lady     — 7 PNG
+  Spiky_Artist   — 6 PNG
+  Spiky_Flame    — 3 PNG
+  Static_Screen  — 2 PNG
+  Stoned_Dude    — 2 PNG
+  Teal_Monster   — 2 PNG
+  Violet_Blob    — 5 PNG (файлы: Full_*_Blob_* / Full_Blob_Ghost)
+  Wire_Skull     — 3 PNG
+  Wooden_Puppet  — 2 PNG
+  Zombie_Pirate  — 4 PNG
+
+ИСТОЧНИК
+  D:\Promt\Пиксель\Stage 3 V2\{S1}\Full_{S2_slug}.png
+
+СЛОИ
+  Background_Stage3\
+  Frames_Stage3\
+
+ГЕНЕРАЦИЯ (из collection/)
+  python deploy_burn_assets.py --stage 3 --production ^
+    --char-root "../Stage 3 V2" --merge-s3-map ^
+    --s3-manifest-name manifest-stage3-v2-batch51.json --seed 54545
+
+  Или: deploy_stage3_v2_batch51.bat
+
+ВЫХОД
+  build/deploy/stage3/images/Full_*.gif
+  build/deploy/stage3/metadata/Full_*
+  build/deploy/stage3-variants.json
+  build/deploy/stage3/manifest-stage3-v2-batch51.json
+  website/src/burn/stage3-variants.json
+
+FTP (50 новых + merge JSON)
+  stage3/images/
+  stage3/metadata/
+  stage3-variants.json (корень сайта)
+
+GIT → commit/push → redeploy Netlify
+
+REMIX — не нужен.
+
+СПИСОК GIF (batch 51)
+  Full_Paper_Fan_BackCap.gif
+  Full_Paper_Fan_Cup.gif
+  Full_Paper_Fan_Fox.gif
+  Full_Paper_Fan_Kitty.gif
+  Full_Paper_Fan_Mask.gif
+  Full_Paper_Fan_Skull.gif
+  Full_Shroom_Knight_Frog_Hat.gif
+  Full_Shroom_Knight_Hippie.gif
+  Full_Shroom_Knight_Pinky.gif
+  Full_Shroom_Knight_Vamp.gif
+  Full_Shroom_Knight_Zombie.gif
+  Full_Skull_King_Golden.gif
+  Full_Skull_King_Jester.gif
+  Full_Skull_King_Zombie.gif
+  Full_Smoke_Lady_BackCap.gif
+  Full_Smoke_Lady_Bubble.gif
+  Full_Smoke_Lady_Clown.gif
+  Full_Smoke_Lady_Horns.gif
+  Full_Smoke_Lady_Mask.gif
+  Full_Smoke_Lady_Skull.gif
+  Full_Smoke_Lady_Zombie.gif
+  Full_Spiky_Artist_Crown.gif
+  Full_Spiky_Artist_Devil.gif
+  Full_Spiky_Artist_Golden_Mask.gif
+  Full_Spiky_Artist_Pirate.gif
+  Full_Spiky_Artist_Skull.gif
+  Full_Spiky_Artist_Zombie.gif
+  Full_Spiky_Flame_Big_Glasses.gif
+  Full_Spiky_Flame_Crying.gif
+  Full_Spiky_Flame_Frog_Hat.gif
+  Full_Static_Screen_Dead.gif
+  Full_Static_Screen_Glitch.gif
+  Full_Stoned_Dude_Alien.gif
+  Full_Stoned_Dude_Zombie.gif
+  Full_Teal_Monster_Mask.gif
+  Full_Teal_Monster_Rainbow_Afro.gif
+  Full_Blob_Ghost.gif
+  Full_Blue_Blob_Devil.gif
+  Full_Golden_Blob_King.gif
+  Full_Pinky_Blob_Earring.gif
+  Full_Red_Blob_Sticker_Eyes.gif
+  Full_Wire_Skull_Horns.gif
+  Full_Wire_Skull_Rasta.gif
+  Full_Wire_Skull_Winter_Hat.gif
+  Full_Wooden_Puppet_Mime.gif
+  Full_Wooden_Puppet_Zomb.gif
+  Full_Zombie_Pirate_Cap.gif
+  Full_Zombie_Pirate_Kiss_Lips.gif
+  Full_Zombie_Pirate_Octo.gif
+  Full_Zombie_Pirate_Skull.gif
