@@ -3,20 +3,62 @@ import {
   CHAR_NAME_TO_ID,
   DIRECT_TO_S3_CHARS,
   IMAGE_STAGE2,
+  SITE_BASE,
   STAGE2_VARIANTS,
 } from "../burn/config.js";
-import STAGE3_MAP from "../burn/stage3-variants.json";
+import STAGE3_MAP_BUNDLE from "../burn/stage3-variants.json";
 import ONE_OF_ONE from "./one-of-one.json";
 import CHARACTER_SAMPLES from "./character-samples.json";
 import CHARACTER_SUPPLY from "./character-supply.json";
+import { fetchWithTimeout } from "../shared/fetch-timeout.js";
 
 const ONE_OF_ONE_SET = new Set(ONE_OF_ONE);
 const DIRECT_S3 = DIRECT_TO_S3_CHARS;
-const STAGE3_VOTE_CLOSED = new Set(STAGE3_MAP.stage3VoteClosedCharacters ?? []);
+
+let stage3Map = STAGE3_MAP_BUNDLE;
+let stage3VoteClosed = new Set(STAGE3_MAP_BUNDLE.stage3VoteClosedCharacters ?? []);
+let stage3CatalogPromise = null;
+
+function applyStage3CatalogRemote(remote) {
+  if (!remote || typeof remote !== "object") return;
+  stage3Map = {
+    ...stage3Map,
+    ...remote,
+    fromStage2Slug: {
+      ...(stage3Map.fromStage2Slug || {}),
+      ...(remote.fromStage2Slug || {}),
+    },
+  };
+  const closed = remote.stage3VoteClosedCharacters ?? stage3Map.stage3VoteClosedCharacters ?? [];
+  stage3VoteClosed = new Set(closed);
+}
+
+/** Merge stage3-variants.json from metadata host (same file as burn / vote-api.php). */
+export function loadStage3VoteCatalog() {
+  if (stage3CatalogPromise) return stage3CatalogPromise;
+  stage3CatalogPromise = (async () => {
+    try {
+      const res = await fetchWithTimeout(`${SITE_BASE}/stage3-variants.json?t=${Date.now()}`, {
+        cache: "no-store",
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const remote = await res.json();
+      applyStage3CatalogRemote(remote);
+      console.log(
+        `[vote-stage3] catalog loaded (${Object.keys(remote.fromStage2Slug || {}).length} fromStage2, ` +
+          `${stage3VoteClosed.size} vote-closed)`,
+      );
+    } catch (err) {
+      console.warn("[vote-stage3] bundled stage3 catalog:", err.message);
+    }
+    return { stage3Map, stage3VoteClosed };
+  })();
+  return stage3CatalogPromise;
+}
 
 /** Stage 3 art program finished for this S1 line (no ballot, no new votes). */
 export function isStage3ProgramClosedForCharacter(baseCharacter) {
-  return STAGE3_VOTE_CLOSED.has(baseCharacter);
+  return stage3VoteClosed.has(baseCharacter);
 }
 
 /** Max Stage 3 NFTs achievable from N Stage 1 copies (pair-burn: S1→S2→S3). */
@@ -55,7 +97,7 @@ export function stage2ImageUrl(slug) {
 }
 
 export function hasStage3Art(s2Slug) {
-  return Boolean(STAGE3_MAP.fromStage2Slug?.[s2Slug]);
+  return Boolean(stage3Map.fromStage2Slug?.[s2Slug]);
 }
 
 /** Vote counts until the chosen S2 variant ships Stage 3 art (no weekly timer). */

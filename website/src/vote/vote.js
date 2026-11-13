@@ -22,6 +22,7 @@ import {
   formatNextVote,
 } from "./config.js";
 import { loadBurnProgram, getBurnableChars } from "../burn/burn-program.js";
+import { loadStage3VoteCatalog } from "./vote-stage3-config.js";
 import { localVoteGet, localVotePost, leaderboardFromVoteResponse } from "./vote-store.js";
 import { mountStage3Vote } from "./vote-stage3.js";
 
@@ -492,6 +493,7 @@ async function init() {
   }
 
   await loadBurnProgram();
+  await loadStage3VoteCatalog();
   voteEligible = computeVoteEligible(getBurnableChars());
   leaderboard = filterLeaderboard(leaderboard);
 

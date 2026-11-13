@@ -16,6 +16,7 @@ import {
   activeStage3VotesByCharacter,
   migrateStage3WalletVotes,
   stage3VoteWeight,
+  loadStage3VoteCatalog,
   CHARACTER_SAMPLES,
 } from "./vote-stage3-config.js";
 import { IMAGE_STAGE1 } from "../burn/config.js";
@@ -445,7 +446,11 @@ export function mountStage3Vote(ctx) {
   return {
     onWalletReady,
     onTabShow() {
-      refreshCharacters();
+      void loadStage3VoteCatalog().then(() => {
+        refreshCharacters();
+        renderCharGrid(els.search?.value || "");
+        updateStats();
+      });
       void loadLeaderboard();
       void loadMyVote();
       renderCharGrid(els.search?.value || "");
