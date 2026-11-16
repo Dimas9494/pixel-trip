@@ -1,0 +1,242 @@
+[
+  {
+    "id": "01",
+    "slug": "Panda_Classic",
+    "name": "Classic",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Classic.svg",
+    "png": "Characters/Panda_Classic.png",
+    "accessory": null
+  },
+  {
+    "id": "02",
+    "slug": "Panda_Golden",
+    "name": "Golden",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Golden.svg",
+    "png": "Characters/Panda_Golden.png",
+    "accessory": "crown"
+  },
+  {
+    "id": "03",
+    "slug": "Panda_Cyber_Neon",
+    "name": "Cyber Neon",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Cyber_Neon.svg",
+    "png": "Characters/Panda_Cyber_Neon.png",
+    "accessory": "visor"
+  },
+  {
+    "id": "04",
+    "slug": "Panda_Ice_Frost",
+    "name": "Ice Frost",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Ice_Frost.svg",
+    "png": "Characters/Panda_Ice_Frost.png",
+    "accessory": "snowflake"
+  },
+  {
+    "id": "05",
+    "slug": "Panda_Fire_Ember",
+    "name": "Fire Ember",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Fire_Ember.svg",
+    "png": "Characters/Panda_Fire_Ember.png",
+    "accessory": "flame"
+  },
+  {
+    "id": "06",
+    "slug": "Panda_Toxic_Zombie",
+    "name": "Toxic Zombie",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Toxic_Zombie.svg",
+    "png": "Characters/Panda_Toxic_Zombie.png",
+    "accessory": "scar"
+  },
+  {
+    "id": "07",
+    "slug": "Panda_Sakura_Pink",
+    "name": "Sakura Pink",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Sakura_Pink.svg",
+    "png": "Characters/Panda_Sakura_Pink.png",
+    "accessory": "flower"
+  },
+  {
+    "id": "08",
+    "slug": "Panda_Royal_Purple",
+    "name": "Royal Purple",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Royal_Purple.svg",
+    "png": "Characters/Panda_Royal_Purple.png",
+    "accessory": "jewel"
+  },
+  {
+    "id": "09",
+    "slug": "Panda_Camo_Ops",
+    "name": "Camo Ops",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Camo_Ops.svg",
+    "png": "Characters/Panda_Camo_Ops.png",
+    "accessory": "bandana"
+  },
+  {
+    "id": "10",
+    "slug": "Panda_Chrome_Holo",
+    "name": "Chrome Holo",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Chrome_Holo.svg",
+    "png": "Characters/Panda_Chrome_Holo.png",
+    "accessory": "glasses"
+  },
+  {
+    "id": "11",
+    "slug": "Panda_Vampire_Noir",
+    "name": "Vampire Noir",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Vampire_Noir.svg",
+    "png": "Characters/Panda_Vampire_Noir.png",
+    "accessory": "fangs"
+  },
+  {
+    "id": "12",
+    "slug": "Panda_Ocean_Aqua",
+    "name": "Ocean Aqua",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Ocean_Aqua.svg",
+    "png": "Characters/Panda_Ocean_Aqua.png",
+    "accessory": "bubbles"
+  },
+  {
+    "id": "13",
+    "slug": "Panda_Sunset_Glow",
+    "name": "Sunset Glow",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Sunset_Glow.svg",
+    "png": "Characters/Panda_Sunset_Glow.png",
+    "accessory": "sunglasses"
+  },
+  {
+    "id": "14",
+    "slug": "Panda_Forest_Moss",
+    "name": "Forest Moss",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Forest_Moss.svg",
+    "png": "Characters/Panda_Forest_Moss.png",
+    "accessory": "leaf"
+  },
+  {
+    "id": "15",
+    "slug": "Panda_Cotton_Candy",
+    "name": "Cotton Candy",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Cotton_Candy.svg",
+    "png": "Characters/Panda_Cotton_Candy.png",
+    "accessory": "bow"
+  },
+  {
+    "id": "16",
+    "slug": "Panda_Steampunk",
+    "name": "Steampunk",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Steampunk.svg",
+    "png": "Characters/Panda_Steampunk.png",
+    "accessory": "goggles"
+  },
+  {
+    "id": "17",
+    "slug": "Panda_Galaxy",
+    "name": "Galaxy",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Galaxy.svg",
+    "png": "Characters/Panda_Galaxy.png",
+    "accessory": "stars"
+  },
+  {
+    "id": "18",
+    "slug": "Panda_Invert",
+    "name": "Invert",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Invert.svg",
+    "png": "Characters/Panda_Invert.png",
+    "accessory": null
+  },
+  {
+    "id": "19",
+    "slug": "Panda_Mint_Pastel",
+    "name": "Mint Pastel",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Mint_Pastel.svg",
+    "png": "Characters/Panda_Mint_Pastel.png",
+    "accessory": null
+  },
+  {
+    "id": "20",
+    "slug": "Panda_Lava_Magma",
+    "name": "Lava Magma",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Lava_Magma.svg",
+    "png": "Characters/Panda_Lava_Magma.png",
+    "accessory": "cracks"
+  },
+  {
+    "id": "21",
+    "slug": "Panda_Shadow",
+    "name": "Shadow",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Shadow.svg",
+    "png": "Characters/Panda_Shadow.png",
+    "accessory": null
+  },
+  {
+    "id": "22",
+    "slug": "Panda_Rainbow",
+    "name": "Rainbow",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Rainbow.svg",
+    "png": "Characters/Panda_Rainbow.png",
+    "accessory": "rainbow"
+  },
+  {
+    "id": "23",
+    "slug": "Panda_Retro_80s",
+    "name": "Retro 80s",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Retro_80s.svg",
+    "png": "Characters/Panda_Retro_80s.png",
+    "accessory": "headphones"
+  },
+  {
+    "id": "24",
+    "slug": "Panda_Angelic",
+    "name": "Angelic",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Angelic.svg",
+    "png": "Characters/Panda_Angelic.png",
+    "accessory": "halo"
+  },
+  {
+    "id": "25",
+    "slug": "Panda_Demon",
+    "name": "Demon",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Demon.svg",
+    "png": "Characters/Panda_Demon.png",
+    "accessory": "horns"
+  },
+  {
+    "id": "26",
+    "slug": "Panda_Robot",
+    "name": "Robot",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Robot.svg",
+    "png": "Characters/Panda_Robot.png",
+    "accessory": "antenna"
+  },
+  {
+    "id": "27",
+    "slug": "Panda_Glitch_RGB",
+    "name": "Glitch RGB",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Glitch_RGB.svg",
+    "png": "Characters/Panda_Glitch_RGB.png",
+    "accessory": "glitch"
+  },
+  {
+    "id": "28",
+    "slug": "Panda_Bamboo_Sage",
+    "name": "Bamboo Sage",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Bamboo_Sage.svg",
+    "png": "Characters/Panda_Bamboo_Sage.png",
+    "accessory": "bamboo"
+  },
+  {
+    "id": "29",
+    "slug": "Panda_Candy_Pop",
+    "name": "Candy Pop",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Candy_Pop.svg",
+    "png": "Characters/Panda_Candy_Pop.png",
+    "accessory": "lollipop"
+  },
+  {
+    "id": "30",
+    "slug": "Panda_Sapphire",
+    "name": "Sapphire",
+    "svg": "Characters/Panda_Vector_Skins/Panda_Sapphire.svg",
+    "png": "Characters/Panda_Sapphire.png",
+    "accessory": "tiara"
+  }
+]

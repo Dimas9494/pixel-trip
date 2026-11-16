@@ -1,8 +1,13 @@
 Tier         Weight   Score  Name race
 Mythic       1        1000   Grim_Reaper  mythic
 Mythic       1        950    Crimson_Samurai  mythic
+Mythic       1        940    Panda_Invert  eldritch
+Mythic       1        930    Panda_Glitch_RGB  eldritch
+Mythic       1        920    Panda_Lava_Magma  hellspawn
+Mythic       1        910    Panda_Cyber_Neon  ironborn
+Mythic       1        900    Panda_Golden  mythic
 Mythic       1        863    Brain_Zombie  ashborn
-  --- Mythic: 3 ---
+  --- Mythic: 8 ---
 
 Legendary    3        860    Teal_Mindflayer  voidkin
 Legendary    3        860    Tentacle_Alien  voidkin
@@ -10,7 +15,12 @@ Legendary    3        766    Flame_Skull  ashborn
 Legendary    3        758    Cyber_Bear  ironborn
 Legendary    3        756    Gold_Warrior  mythic
 Legendary    3        755    Winged_Demon  hellspawn
-  --- Legendary: 6 ---
+Legendary    3        740    Panda_Rainbow  eldritch
+Legendary    3        730    Panda_Sapphire  mythic
+Legendary    3        720    Panda_Galaxy  voidkin
+Legendary    3        710    Panda_Demon  hellspawn
+Legendary    3        700    Panda_Angelic  mythic
+  --- Legendary: 11 ---
 
 Epic         10       663    Angel  highborn
 Epic         10       662    Pale_Vampire  ashborn
@@ -29,7 +39,12 @@ Epic         10       557    Monitor_Head  ironborn
 Epic         10       555    Snow_Yeti  wildkin
 Epic         10       554    Big_Head_Alien  voidkin
 Epic         10       554    Trippy_Alien  voidkin
-  --- Epic: 17 ---
+Epic         10       440    Panda_Royal_Purple  mythic
+Epic         10       430    Panda_Shadow  eldritch
+Epic         10       420    Panda_Robot  ironborn
+Epic         10       410    Panda_Toxic_Zombie  ashborn
+Epic         10       400    Panda_Vampire_Noir  ashborn
+  --- Epic: 22 ---
 
 Rare         25       553    Green_Cyborg_Elf  ironborn
 Rare         25       553    Split_Cyborg  ironborn
@@ -61,12 +76,18 @@ Rare         25       355    Cyan_Mustache_Chief  highborn
 Rare         25       355    Shadow_Ninja  corsair
 Rare         25       352    Pirate  corsair
 Rare         25       351    Bitcoin_Ninja  corsair
+Rare         25       270    Panda_Retro_80s  eldritch
 Rare         25       266    Paper_Fan  highborn
 Rare         25       265    Goggle_Monkey  wildkin
 Rare         25       264    Orange_Hound  wildkin
+Rare         25       260    Panda_Chrome_Holo  ironborn
 Rare         25       260    Spiked_Bulldog  wildkin
 Rare         25       260    Stoned_Fox  wildkin
-  --- Rare: 35 ---
+Rare         25       250    Panda_Steampunk  ironborn
+Rare         25       240    Panda_Fire_Ember  hellspawn
+Rare         25       230    Panda_Ice_Frost  voidkin
+Rare         25       220    Panda_Sunset_Glow  wildkin
+  --- Rare: 41 ---
 
 Uncommon     60       260    Cat_Woman  wildkin
 Uncommon     60       260    Goggle_Fox  wildkin
@@ -92,6 +113,12 @@ Uncommon     60       155    Fish_Diver  wildkin
 Uncommon     60       152    Roaring_Sage  highborn
 Uncommon     60       151    Brass_Diver  highborn
 Uncommon     60       151    Neko_Hood  wildkin
+Uncommon     60       145    Panda_Camo_Ops  highborn
+Uncommon     60       140    Panda_Forest_Moss  verdant
+Uncommon     60       135    Panda_Ocean_Aqua  voidkin
+Uncommon     60       130    Panda_Candy_Pop  wildkin
+Uncommon     60       125    Panda_Cotton_Candy  wildkin
+Uncommon     60       120    Panda_Sakura_Pink  verdant
 Uncommon     60       16     Banana_Cowboy  highborn
 Uncommon     60       16     Bandana_Rebel  corsair
 Uncommon     60       16     Cowboy  highborn
@@ -141,8 +168,11 @@ Uncommon     60       13     Purple_Cyclops  primal
 Uncommon     60       13     Straw_Hick  highborn
 Uncommon     60       13     Swamp_Beast  highborn
 Uncommon     60       13     Teal_Villain  highborn
-  --- Uncommon: 73 ---
+  --- Uncommon: 79 ---
 
+Common       120      60     Panda_Mint_Pastel  wildkin
+Common       120      55     Panda_Bamboo_Sage  verdant
+Common       120      50     Panda_Classic  wildkin
 Common       120      13     Blank_Bot  ironborn
 Common       120      13     Bog_Lizard  wildkin
 Common       120      13     Bubble_DJ  highborn
@@ -300,4 +330,4 @@ Common       120      0      Sad_Scoop  highborn
 Common       120      0      Satyr  wildkin
 Common       120      0      Stoned_Burrito  runeborn
 Common       120      0      War_Bonnet  mythic
-  --- Common: 157 ---
+  --- Common: 160 ---
