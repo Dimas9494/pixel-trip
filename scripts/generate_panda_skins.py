@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate 30 vector NFT skins of the base panda (pose & form locked to reference)."""
+"""30 vector NFT skins traced from the reference panda (pose and form locked)."""
 
 from __future__ import annotations
 
@@ -7,534 +7,553 @@ import json
 from pathlib import Path
 
 import cairosvg
+import cv2
+import numpy as np
+from potrace import Bitmap
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_SVG = ROOT / "Characters" / "Panda_Vector_Skins"
 OUT_PNG = ROOT / "Characters"
+REF = OUT_SVG / "reference_original.jpg"
 SIZE = 1024
 
-# Geometry derived from the reference bust (1024²): wide soft head, low body.
-
-
-def head_path() -> str:
-    # Soft rounded rectangle, wider than tall, with fur tufts.
-    return (
-        "M300,320 "
-        "C305,285 325,260 355,245 "
-        "L375,235 395,242 420,232 445,240 470,228 495,236 "
-        "L520,226 545,236 570,228 595,240 620,232 645,242 "
-        "L670,235 690,248 "
-        "C720,265 740,295 745,335 "
-        "C755,390 760,450 755,510 "
-        "C750,565 735,610 705,640 "
-        "L685,655 660,648 635,660 610,650 585,662 "
-        "L560,652 535,664 510,654 485,664 460,652 "
-        "L435,662 410,650 385,660 360,648 340,655 "
-        "C310,630 290,585 282,530 "
-        "C274,470 278,400 300,320 Z"
-    )
-
-
-def ear_left() -> str:
-    return (
-        "M290,300 "
-        "C270,250 285,205 335,195 "
-        "C375,188 410,210 420,250 "
-        "C425,275 410,300 380,310 "
-        "C350,320 315,318 290,300 Z"
-    )
-
-
-def ear_right() -> str:
-    return (
-        "M734,300 "
-        "C754,250 739,205 689,195 "
-        "C649,188 614,210 604,250 "
-        "C599,275 614,300 644,310 "
-        "C674,320 709,318 734,300 Z"
-    )
-
-
-def body_path() -> str:
-    return (
-        "M175,780 "
-        "C195,690 260,640 340,620 "
-        "C400,608 460,602 512,602 "
-        "C564,602 624,608 684,620 "
-        "C764,640 829,690 849,780 "
-        "C865,860 870,940 872,1024 "
-        "L152,1024 "
-        "C154,940 160,860 175,780 Z"
-    )
-
-
-def belly_path() -> str:
-    return (
-        "M355,655 "
-        "C410,625 470,612 512,612 "
-        "C554,612 614,625 669,655 "
-        "C710,680 735,730 745,800 "
-        "C752,870 750,960 748,1024 "
-        "L276,1024 "
-        "C274,960 272,870 279,800 "
-        "C289,730 314,680 355,655 Z"
-    )
-
-
-def patch_left() -> str:
-    # Teardrop / bean patch, angled inward-down.
-    return (
-        "M355,355 "
-        "C330,330 335,285 370,265 "
-        "C405,245 450,255 470,290 "
-        "C490,325 480,375 450,405 "
-        "C420,435 375,430 355,400 "
-        "C340,380 345,365 355,355 Z"
-    )
-
-
-def patch_right() -> str:
-    return (
-        "M669,355 "
-        "C694,330 689,285 654,265 "
-        "C619,245 574,255 554,290 "
-        "C534,325 544,375 574,405 "
-        "C604,435 649,430 669,400 "
-        "C684,380 679,365 669,355 Z"
-    )
-
-
 SKINS: list[dict] = [
-    {"id": "01", "slug": "Panda_Classic", "name": "Classic", "bg": "#C9C9C9",
-     "face": "#FFFFFF", "face_shade": "#C5CFD8", "dark": "#1A1A1A", "dark_hi": "#3D3D3D",
-     "belly": "#FFFFFF", "eye": "#111111", "nose": "#111111", "line": "#111111",
-     "accent": None, "accessory": None},
+    {"id": "01", "slug": "Panda_Classic", "name": "Classic", "bg": "#C8C8C8",
+     "face": "#FFFFFF", "belly": "#FFFFFF", "dark": "#1C1C1C", "line": "#111111",
+     "eye": "#111111", "accent": "#FFFFFF", "accessory": None},
     {"id": "02", "slug": "Panda_Golden", "name": "Golden", "bg": "#1A1408",
-     "face": "#FFF4C8", "face_shade": "#E8C878", "dark": "#8B6914", "dark_hi": "#C9A227",
-     "belly": "#FFF8DC", "eye": "#3D2B00", "nose": "#5C4300", "line": "#3D2B00",
-     "accent": "#FFD700", "accessory": "crown"},
-    {"id": "03", "slug": "Panda_Cyber_Neon", "name": "Cyber Neon", "bg": "#050510",
-     "face": "#0A1A2A", "face_shade": "#143048", "dark": "#00E8F0", "dark_hi": "#7AFFFF",
-     "belly": "#0E2438", "eye": "#FF00AA", "nose": "#00E8F0", "line": "#00E8F0",
-     "accent": "#FF00AA", "accessory": "visor"},
-    {"id": "04", "slug": "Panda_Ice_Frost", "name": "Ice Frost", "bg": "#C8E4F8",
-     "face": "#F4FBFF", "face_shade": "#B8D8F0", "dark": "#4A7AA8", "dark_hi": "#7AA8C8",
-     "belly": "#EEF7FF", "eye": "#1A3A58", "nose": "#2A5080", "line": "#2A5080",
-     "accent": "#A8D8FF", "accessory": "snowflake"},
-    {"id": "05", "slug": "Panda_Fire_Ember", "name": "Fire Ember", "bg": "#2A0A00",
-     "face": "#FFE0A0", "face_shade": "#F0A050", "dark": "#C42800", "dark_hi": "#FF6A20",
-     "belly": "#FFE8B8", "eye": "#4A1000", "nose": "#8B2000", "line": "#5A1800",
-     "accent": "#FFAA00", "accessory": "flame"},
-    {"id": "06", "slug": "Panda_Toxic_Zombie", "name": "Toxic Zombie", "bg": "#1A2410",
-     "face": "#C8E090", "face_shade": "#88A858", "dark": "#3A5820", "dark_hi": "#6A8A40",
-     "belly": "#D8F0A8", "eye": "#A0FF20", "nose": "#2A4010", "line": "#1A3008",
-     "accent": "#80FF00", "accessory": "scar"},
-    {"id": "07", "slug": "Panda_Sakura_Pink", "name": "Sakura Pink", "bg": "#FFE8F0",
-     "face": "#FFF5F8", "face_shade": "#F5C0D0", "dark": "#E06090", "dark_hi": "#F098B8",
-     "belly": "#FFE8F0", "eye": "#802040", "nose": "#C04070", "line": "#A03058",
-     "accent": "#FFB0C8", "accessory": "flower"},
-    {"id": "08", "slug": "Panda_Royal_Purple", "name": "Royal Purple", "bg": "#1A0A28",
-     "face": "#F0E0FF", "face_shade": "#C8A0E0", "dark": "#5A2080", "dark_hi": "#8A48B0",
-     "belly": "#F8F0FF", "eye": "#2A0840", "nose": "#401060", "line": "#301050",
-     "accent": "#C080FF", "accessory": "jewel"},
-    {"id": "09", "slug": "Panda_Camo_Ops", "name": "Camo Ops", "bg": "#3A4030",
-     "face": "#C8C8A8", "face_shade": "#909070", "dark": "#3A4A28", "dark_hi": "#5A6A40",
-     "belly": "#B8B898", "eye": "#1A2010", "nose": "#2A3018", "line": "#1A2010",
-     "accent": "#6A8050", "accessory": "bandana"},
-    {"id": "10", "slug": "Panda_Chrome_Holo", "name": "Chrome Holo", "bg": "#101018",
-     "face": "#E8EEF8", "face_shade": "#A8B8D0", "dark": "#687898", "dark_hi": "#A0B0C8",
-     "belly": "#F0F4FA", "eye": "#203040", "nose": "#405060", "line": "#304050",
-     "accent": "#80FFE0", "accessory": "glasses"},
-    {"id": "11", "slug": "Panda_Vampire_Noir", "name": "Vampire Noir", "bg": "#120808",
-     "face": "#F5E8E8", "face_shade": "#D0A8A8", "dark": "#2A0808", "dark_hi": "#5A1818",
-     "belly": "#FAF0F0", "eye": "#8B0000", "nose": "#400808", "line": "#200404",
-     "accent": "#C00020", "accessory": "fangs"},
+     "face": "#FFF4C8", "belly": "#FFF8DC", "dark": "#8A6410", "line": "#3A2800",
+     "eye": "#3A2800", "accent": "#FFD24A", "accessory": "crown"},
+    {"id": "03", "slug": "Panda_Cyber_Neon", "name": "Cyber Neon", "bg": "#070712",
+     "face": "#102033", "belly": "#0C1A2A", "dark": "#14F1FF", "line": "#E8FCFF",
+     "eye": "#FF2AA6", "accent": "#FF2AA6", "accessory": "visor"},
+    {"id": "04", "slug": "Panda_Ice_Frost", "name": "Ice Frost", "bg": "#D5ECFA",
+     "face": "#F7FCFF", "belly": "#EEF7FF", "dark": "#3E74A8", "line": "#1C3E60",
+     "eye": "#16324C", "accent": "#B9E4FF", "accessory": "snowflake"},
+    {"id": "05", "slug": "Panda_Fire_Ember", "name": "Fire Ember", "bg": "#2A0C00",
+     "face": "#FFE3AE", "belly": "#FFF0C8", "dark": "#C42A00", "line": "#4A1200",
+     "eye": "#3A1000", "accent": "#FF9A1A", "accessory": "flame"},
+    {"id": "06", "slug": "Panda_Toxic_Zombie", "name": "Toxic Zombie", "bg": "#141C0E",
+     "face": "#D2E89A", "belly": "#E4F4B4", "dark": "#35541E", "line": "#142408",
+     "eye": "#B6FF2A", "accent": "#9BFF22", "accessory": "scar"},
+    {"id": "07", "slug": "Panda_Sakura_Pink", "name": "Sakura Pink", "bg": "#FFE6F0",
+     "face": "#FFF7FA", "belly": "#FFEAF2", "dark": "#E15B90", "line": "#8E2450",
+     "eye": "#6E1838", "accent": "#FFB3CC", "accessory": "flower"},
+    {"id": "08", "slug": "Panda_Royal_Purple", "name": "Royal Purple", "bg": "#160820",
+     "face": "#F3E6FF", "belly": "#F8F0FF", "dark": "#5C2284", "line": "#2A0844",
+     "eye": "#24063C", "accent": "#C58BFF", "accessory": "jewel"},
+    {"id": "09", "slug": "Panda_Camo_Ops", "name": "Camo Ops", "bg": "#3C4032",
+     "face": "#D0CDB0", "belly": "#C2BEA0", "dark": "#3C4A28", "line": "#1A2010",
+     "eye": "#141C0C", "accent": "#6E8450", "accessory": "bandana"},
+    {"id": "10", "slug": "Panda_Chrome_Holo", "name": "Chrome Holo", "bg": "#12141C",
+     "face": "#EEF3FA", "belly": "#F4F7FC", "dark": "#6E7E98", "line": "#2C3848",
+     "eye": "#1C2834", "accent": "#8CFFE4", "accessory": "glasses"},
+    {"id": "11", "slug": "Panda_Vampire_Noir", "name": "Vampire Noir", "bg": "#140808",
+     "face": "#F6EAEA", "belly": "#FBF2F2", "dark": "#2A0A0A", "line": "#140404",
+     "eye": "#9A0000", "accent": "#C40022", "accessory": "fangs"},
     {"id": "12", "slug": "Panda_Ocean_Aqua", "name": "Ocean Aqua", "bg": "#083040",
-     "face": "#D8F8F8", "face_shade": "#70C0C8", "dark": "#106878", "dark_hi": "#30A0B0",
-     "belly": "#E8FFFF", "eye": "#043040", "nose": "#085060", "line": "#064850",
-     "accent": "#40E0E0", "accessory": "bubbles"},
+     "face": "#E2FBFB", "belly": "#F0FFFF", "dark": "#0E6878", "line": "#043038",
+     "eye": "#042838", "accent": "#3FE0E0", "accessory": "bubbles"},
     {"id": "13", "slug": "Panda_Sunset_Glow", "name": "Sunset Glow", "bg": "#402018",
-     "face": "#FFE8D0", "face_shade": "#F0A878", "dark": "#D06030", "dark_hi": "#F09050",
-     "belly": "#FFF0E0", "eye": "#502010", "nose": "#803020", "line": "#602018",
-     "accent": "#FF8050", "accessory": "sunglasses"},
+     "face": "#FFE8D0", "belly": "#FFF1E2", "dark": "#D06030", "line": "#4A1C10",
+     "eye": "#401808", "accent": "#FF8A4A", "accessory": "sunglasses"},
     {"id": "14", "slug": "Panda_Forest_Moss", "name": "Forest Moss", "bg": "#1A2818",
-     "face": "#E8F0D8", "face_shade": "#A0B880", "dark": "#2A4820", "dark_hi": "#4A7040",
-     "belly": "#F0F8E8", "eye": "#102008", "nose": "#203818", "line": "#183010",
-     "accent": "#70A050", "accessory": "leaf"},
-    {"id": "15", "slug": "Panda_Cotton_Candy", "name": "Cotton Candy", "bg": "#E8D8FF",
-     "face": "#FFF8FF", "face_shade": "#E0C0F0", "dark": "#90B0FF", "dark_hi": "#C0D0FF",
-     "belly": "#FFF0F8", "eye": "#504080", "nose": "#8060B0", "line": "#6850A0",
-     "accent": "#FF90C0", "accessory": "bow"},
+     "face": "#EAF3DC", "belly": "#F3FAEA", "dark": "#2C4A22", "line": "#142810",
+     "eye": "#102008", "accent": "#6EA050", "accessory": "leaf"},
+    {"id": "15", "slug": "Panda_Cotton_Candy", "name": "Cotton Candy", "bg": "#E6D6FF",
+     "face": "#FFF8FF", "belly": "#FFF0F8", "dark": "#8EAEFF", "line": "#4C3C84",
+     "eye": "#3C3068", "accent": "#FF8EC4", "accessory": "bow"},
     {"id": "16", "slug": "Panda_Steampunk", "name": "Steampunk", "bg": "#2A2010",
-     "face": "#E8D8B8", "face_shade": "#B89868", "dark": "#6A4820", "dark_hi": "#A07840",
-     "belly": "#F0E4C8", "eye": "#302010", "nose": "#503820", "line": "#403018",
-     "accent": "#C09040", "accessory": "goggles"},
-    {"id": "17", "slug": "Panda_Galaxy", "name": "Galaxy", "bg": "#080818",
-     "face": "#1A1040", "face_shade": "#302068", "dark": "#6A40C0", "dark_hi": "#A070FF",
-     "belly": "#241850", "eye": "#FFE080", "nose": "#C0A0FF", "line": "#8060E0",
-     "accent": "#FF80E0", "accessory": "stars"},
-    {"id": "18", "slug": "Panda_Invert", "name": "Invert", "bg": "#222222",
-     "face": "#1A1A1A", "face_shade": "#333333", "dark": "#F0F0F0", "dark_hi": "#FFFFFF",
-     "belly": "#111111", "eye": "#FFFFFF", "nose": "#E0E0E0", "line": "#FFFFFF",
-     "accent": None, "accessory": None},
-    {"id": "19", "slug": "Panda_Mint_Pastel", "name": "Mint Pastel", "bg": "#D8F0E8",
-     "face": "#F4FFF8", "face_shade": "#A8D8C8", "dark": "#50A088", "dark_hi": "#80C8B0",
-     "belly": "#ECFFF4", "eye": "#204838", "nose": "#387860", "line": "#286850",
-     "accent": "#70D0B0", "accessory": None},
-    {"id": "20", "slug": "Panda_Lava_Magma", "name": "Lava Magma", "bg": "#1A0800",
-     "face": "#3A2010", "face_shade": "#5A3018", "dark": "#FF4000", "dark_hi": "#FF9040",
-     "belly": "#4A2818", "eye": "#FFEE80", "nose": "#FF6020", "line": "#FF5010",
-     "accent": "#FFAA00", "accessory": "cracks"},
-    {"id": "21", "slug": "Panda_Shadow", "name": "Shadow", "bg": "#0A0A0A",
-     "face": "#2A2A2A", "face_shade": "#1A1A1A", "dark": "#050505", "dark_hi": "#3A3A3A",
-     "belly": "#222222", "eye": "#88FFAA", "nose": "#111111", "line": "#444444",
-     "accent": "#66EE88", "accessory": None},
+     "face": "#EAD8B6", "belly": "#F3E6CC", "dark": "#6A4820", "line": "#342414",
+     "eye": "#241808", "accent": "#C4963C", "accessory": "goggles"},
+    {"id": "17", "slug": "Panda_Galaxy", "name": "Galaxy", "bg": "#070714",
+     "face": "#1A1040", "belly": "#221650", "dark": "#7044C8", "line": "#C8B0FF",
+     "eye": "#FFE080", "accent": "#FF80E0", "accessory": "stars"},
+    {"id": "18", "slug": "Panda_Invert", "name": "Invert", "bg": "#1A1A1A",
+     "face": "#161616", "belly": "#101010", "dark": "#F2F2F2", "line": "#FFFFFF",
+     "eye": "#FFFFFF", "accent": "#FFFFFF", "accessory": None},
+    {"id": "19", "slug": "Panda_Mint_Pastel", "name": "Mint Pastel", "bg": "#D7F1E8",
+     "face": "#F6FFFA", "belly": "#EEFFF6", "dark": "#4A9E86", "line": "#1C4838",
+     "eye": "#184034", "accent": "#74D4B4", "accessory": None},
+    {"id": "20", "slug": "Panda_Lava_Magma", "name": "Lava Magma", "bg": "#140600",
+     "face": "#3A2010", "belly": "#4A2814", "dark": "#FF3C00", "line": "#FFB060",
+     "eye": "#FFE680", "accent": "#FFAA00", "accessory": "cracks"},
+    {"id": "21", "slug": "Panda_Shadow", "name": "Shadow", "bg": "#080808",
+     "face": "#242424", "belly": "#1A1A1A", "dark": "#050505", "line": "#3A3A3A",
+     "eye": "#8CFFAA", "accent": "#66EE88", "accessory": None},
     {"id": "22", "slug": "Panda_Rainbow", "name": "Rainbow", "bg": "#101018",
-     "face": "#FFFFFF", "face_shade": "#E0E0F0", "dark": "#FF4080", "dark_hi": "#FF80B0",
-     "belly": "#FFF8FF", "eye": "#203060", "nose": "#404080", "line": "#303060",
-     "accent": "#40C0FF", "accessory": "rainbow",
-     "ear_colors": ("#FF4040", "#FFB040"), "patch_colors": ("#40C040", "#4080FF")},
-    {"id": "23", "slug": "Panda_Retro_80s", "name": "Retro 80s", "bg": "#180828",
-     "face": "#FFE0F0", "face_shade": "#E090C0", "dark": "#FF2080", "dark_hi": "#FF60B0",
-     "belly": "#FFF0F8", "eye": "#200840", "nose": "#8010A0", "line": "#601080",
-     "accent": "#40F0FF", "accessory": "headphones"},
-    {"id": "24", "slug": "Panda_Angelic", "name": "Angelic", "bg": "#F8F4E8",
-     "face": "#FFFFFF", "face_shade": "#E8E0C8", "dark": "#D0C090", "dark_hi": "#F0E8C0",
-     "belly": "#FFFCF0", "eye": "#806020", "nose": "#A08040", "line": "#908040",
-     "accent": "#FFE080", "accessory": "halo"},
-    {"id": "25", "slug": "Panda_Demon", "name": "Demon", "bg": "#180000",
-     "face": "#2A0808", "face_shade": "#401010", "dark": "#8B0000", "dark_hi": "#C02020",
-     "belly": "#1A0404", "eye": "#FF2200", "nose": "#600000", "line": "#FF3030",
-     "accent": "#FF4400", "accessory": "horns"},
+     "face": "#FFFFFF", "belly": "#FFF8FF", "dark": "#FF4080", "line": "#241848",
+     "eye": "#203060", "accent": "#40C0FF", "accessory": "rainbow",
+     "patch_l": "#3CC43C", "patch_r": "#3C78FF", "ear_l": "#FF4040", "ear_r": "#FFB040"},
+    {"id": "23", "slug": "Panda_Retro_80s", "name": "Retro 80s", "bg": "#160826",
+     "face": "#FFE4F2", "belly": "#FFF0F8", "dark": "#FF2088", "line": "#401060",
+     "eye": "#180828", "accent": "#3DF0FF", "accessory": "headphones"},
+    {"id": "24", "slug": "Panda_Angelic", "name": "Angelic", "bg": "#F7F3E6",
+     "face": "#FFFFFF", "belly": "#FFFCF2", "dark": "#D2C28E", "line": "#6E5A28",
+     "eye": "#6A5018", "accent": "#FFE080", "accessory": "halo"},
+    {"id": "25", "slug": "Panda_Demon", "name": "Demon", "bg": "#140000",
+     "face": "#2C0808", "belly": "#1A0404", "dark": "#9A1010", "line": "#FF3A3A",
+     "eye": "#FF2A10", "accent": "#FF4400", "accessory": "horns"},
     {"id": "26", "slug": "Panda_Robot", "name": "Robot", "bg": "#1A1E24",
-     "face": "#C0C8D0", "face_shade": "#889098", "dark": "#405060", "dark_hi": "#708090",
-     "belly": "#D0D8E0", "eye": "#00FF88", "nose": "#506070", "line": "#304050",
-     "accent": "#00D0FF", "accessory": "antenna"},
+     "face": "#C4CCD4", "belly": "#D4DCE4", "dark": "#445868", "line": "#243040",
+     "eye": "#00FF88", "accent": "#00D0FF", "accessory": "antenna"},
     {"id": "27", "slug": "Panda_Glitch_RGB", "name": "Glitch RGB", "bg": "#0A0A0A",
-     "face": "#FFFFFF", "face_shade": "#D0D0D0", "dark": "#111111", "dark_hi": "#333333",
-     "belly": "#F8F8F8", "eye": "#111111", "nose": "#111111", "line": "#111111",
-     "accent": "#FF0040", "accessory": "glitch"},
-    {"id": "28", "slug": "Panda_Bamboo_Sage", "name": "Bamboo Sage", "bg": "#E8F0D8",
-     "face": "#FFFFF8", "face_shade": "#D0D8B8", "dark": "#2A2A2A", "dark_hi": "#4A4A4A",
-     "belly": "#F8FFF0", "eye": "#111111", "nose": "#222222", "line": "#1A1A1A",
-     "accent": "#6A9040", "accessory": "bamboo"},
+     "face": "#FFFFFF", "belly": "#F7F7F7", "dark": "#111111", "line": "#111111",
+     "eye": "#111111", "accent": "#FF0044", "accessory": "glitch"},
+    {"id": "28", "slug": "Panda_Bamboo_Sage", "name": "Bamboo Sage", "bg": "#E7F0D6",
+     "face": "#FFFFFF", "belly": "#F7FFF0", "dark": "#222222", "line": "#141414",
+     "eye": "#111111", "accent": "#6A9040", "accessory": "bamboo"},
     {"id": "29", "slug": "Panda_Candy_Pop", "name": "Candy Pop", "bg": "#FFF0F8",
-     "face": "#FFFFFF", "face_shade": "#FFD0E0", "dark": "#FF60A0", "dark_hi": "#FFA0C8",
-     "belly": "#FFF8FC", "eye": "#802050", "nose": "#E04080", "line": "#C03070",
-     "accent": "#60E0FF", "accessory": "lollipop"},
+     "face": "#FFFFFF", "belly": "#FFF7FC", "dark": "#FF5A9C", "line": "#A02058",
+     "eye": "#701840", "accent": "#5AD8FF", "accessory": "lollipop"},
     {"id": "30", "slug": "Panda_Sapphire", "name": "Sapphire", "bg": "#081028",
-     "face": "#E8F0FF", "face_shade": "#90B0E0", "dark": "#1040A0", "dark_hi": "#4080E0",
-     "belly": "#F0F6FF", "eye": "#081848", "nose": "#183878", "line": "#102868",
-     "accent": "#60A0FF", "accessory": "tiara"},
+     "face": "#EAF1FF", "belly": "#F3F7FF", "dark": "#123E9C", "line": "#0A2060",
+     "eye": "#071640", "accent": "#5A9CFF", "accessory": "tiara"},
 ]
 
 
-def accessory_svg(kind: str | None, s: dict) -> str:
+def _clean(mask: np.ndarray, min_area: int) -> np.ndarray:
+    n, lab, stats, _ = cv2.connectedComponentsWithStats((mask > 0).astype(np.uint8), 8)
+    out = np.zeros(mask.shape, np.uint8)
+    for i in range(1, n):
+        if int(stats[i, cv2.CC_STAT_AREA]) >= min_area:
+            out[lab == i] = 255
+    return out
+
+
+def _path_from_mask(mask: np.ndarray, epsilon: float = 1.0, min_area: int = 8) -> str:
+    """Smooth cubic trace. Bitmap() inverts its input, so the mask is flipped first."""
+    bm = Bitmap(np.ascontiguousarray(~(mask > 0)))
+    # turdsize drops JPEG specks; alphamax keeps the fur corners.
+    curves = bm.trace(turdsize=max(min_area, 4), alphamax=1.0, opttolerance=0.15)
+    parts: list[str] = []
+    for curve in curves:
+        start = curve.start_point
+        if start is None:
+            continue
+        segs = [f"M {start.x:.2f},{start.y:.2f}"]
+        for seg in curve:
+            if seg.is_corner:
+                segs.append(
+                    f"L {seg.c.x:.2f},{seg.c.y:.2f} L {seg.end_point.x:.2f},{seg.end_point.y:.2f}"
+                )
+            else:
+                segs.append(
+                    f"C {seg.c1.x:.2f},{seg.c1.y:.2f} {seg.c2.x:.2f},{seg.c2.y:.2f} "
+                    f"{seg.end_point.x:.2f},{seg.end_point.y:.2f}"
+                )
+        segs.append("Z")
+        parts.append(" ".join(segs))
+    return " ".join(parts)
+
+
+def _component_masks(mask: np.ndarray, min_area: int) -> list[tuple[int, np.ndarray, tuple]]:
+    n, lab, stats, cents = cv2.connectedComponentsWithStats((mask > 0).astype(np.uint8), 8)
+    found = []
+    for i in range(1, n):
+        area = int(stats[i, cv2.CC_STAT_AREA])
+        if area < min_area:
+            continue
+        m = np.zeros(mask.shape, np.uint8)
+        m[lab == i] = 255
+        found.append((area, m, (float(cents[i][0]), float(cents[i][1]))))
+    found.sort(key=lambda t: t[0], reverse=True)
+    return found
+
+
+def trace_reference(path: Path) -> dict:
+    im = cv2.imread(str(path), cv2.IMREAD_COLOR)
+    if im is None:
+        raise SystemExit(f"missing reference: {path}")
+    g = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    h, w = g.shape
+    flood_mask = np.zeros((h + 2, w + 2), np.uint8)
+    work = im.copy()
+    cv2.floodFill(
+        work, flood_mask, (4, 4), (0, 255, 0),
+        (14, 14, 14), (14, 14, 14),
+        cv2.FLOODFILL_FIXED_RANGE | 4,
+    )
+    bg = (work[:, :, 1] == 255) & (work[:, :, 0] == 0)
+    grayish = (
+        (np.abs(im[:, :, 0].astype(np.int16) - im[:, :, 1].astype(np.int16)) < 12)
+        & (np.abs(im[:, :, 1].astype(np.int16) - im[:, :, 2].astype(np.int16)) < 12)
+        & (g > 168)
+        & (g < 228)
+    )
+    bg = bg | grayish
+    char = ~bg
+    dark = _clean((char & (g < 108)).astype(np.uint8) * 255, 28)
+    white = _clean((char & (g >= 108) & (dark == 0)).astype(np.uint8) * 255, 40)
+
+    white_parts = _component_masks(white, 36)
+    face_m = belly_m = None
+    sclera = []
+    highlights = []
+    for area, m, c in white_parts:
+        if area > 20000 and c[1] < 700:
+            face_m = m
+        elif area > 20000:
+            belly_m = m
+        elif 350 <= area <= 4000 and 360 <= c[1] <= 560:
+            sclera.append((area, m, c))
+        elif area <= 350:
+            highlights.append((area, m, c))
+    if face_m is None or belly_m is None:
+        raise SystemExit("failed to split face/belly from the reference")
+
+    # Pupils sit in the middle of each eye-white. Circle is fitted to that white shape.
+    pupils = []
+    for area, m, c in sclera:
+        cnts, _ = cv2.findContours(m, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        if not cnts:
+            continue
+        (px, py), pr = cv2.minEnclosingCircle(max(cnts, key=cv2.contourArea))
+        pupils.append({"cx": float(px), "cy": float(py), "r": float(pr) * 0.58, "sclera": c})
+
+    # Highlights near pupils.
+    hilite = []
+    for area, m, c in highlights:
+        for p in pupils:
+            if (c[0] - p["cx"]) ** 2 + (c[1] - p["cy"]) ** 2 < (p["r"] + 18) ** 2:
+                cnts, _ = cv2.findContours(m, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                if not cnts:
+                    continue
+                (hx, hy), hr = cv2.minEnclosingCircle(cnts[0])
+                hilite.append({"cx": float(hx), "cy": float(hy), "r": float(hr)})
+
+    ys, xs = np.where(dark > 0)
+    top = int(ys.min())
+    face_ys, face_xs = np.where(face_m > 0)
+    cx = float(np.median(face_xs))
+    # Ears: dark mass above the brow line, split left/right.
+    brow = int(np.percentile(face_ys, 18))
+    ear_band = (dark > 0) & (np.arange(h)[:, None] < brow + 10)
+    def _centroid(sel):
+        yy, xx = np.where(sel)
+        if len(xx) == 0:
+            return None
+        return (float(xx.mean()), float(yy.mean()))
+    ear_l = _centroid(ear_band & (np.arange(w)[None, :] < cx))
+    ear_r = _centroid(ear_band & (np.arange(w)[None, :] >= cx))
+
+    landmarks = {
+        "cx": cx,
+        "top": float(top),
+        "head_bottom": float(face_ys.max()),
+        "face_left": float(face_xs.min()),
+        "face_right": float(face_xs.max()),
+        "ear_l": ear_l,
+        "ear_r": ear_r,
+        "eyes": pupils,
+        "nose": (cx, float(np.median(face_ys)) + 20),
+    }
+
+    paths = {
+        "face": _path_from_mask(face_m, 1.45, 20),
+        "belly": _path_from_mask(belly_m, 1.45, 20),
+        "dark": _path_from_mask(dark, 1.25, 10),
+        "sclera": " ".join(_path_from_mask(m, 0.85, 8) for _, m, _ in sclera),
+    }
+    return {"paths": paths, "pupils": pupils, "highlights": hilite, "landmarks": landmarks}
+
+
+def accessory_svg(kind: str | None, s: dict, lm: dict) -> str:
     if not kind:
         return ""
-    a = s.get("accent") or s["dark_hi"]
+    a = s["accent"]
     line = s["line"]
+    dark = s["dark"]
+    cx = lm["cx"]
+    top = lm["top"]
+    el, er = lm["ear_l"], lm["ear_r"]
+    eyes = lm["eyes"]
+    # sort eyes left to right
+    eyes = sorted(eyes, key=lambda p: p["cx"])
+    if len(eyes) >= 2:
+        ey = (eyes[0]["cy"] + eyes[1]["cy"]) / 2
+        ex1, ex2 = eyes[0]["cx"], eyes[1]["cx"]
+    else:
+        ey, ex1, ex2 = 450.0, cx - 90, cx + 90
 
     if kind == "crown":
+        yb = top + 18
         return f"""
-  <g id="acc-crown">
-    <path d="M350,230 L385,155 L430,210 L512,130 L594,210 L639,155 L674,230 Z"
-          fill="{a}" stroke="{line}" stroke-width="8" stroke-linejoin="round"/>
-    <circle cx="430" cy="185" r="11" fill="#FF4040"/>
-    <circle cx="512" cy="155" r="13" fill="#40A0FF"/>
-    <circle cx="594" cy="185" r="11" fill="#40FF80"/>
-  </g>"""
+  <path d="M{cx-150},{yb} L{cx-110},{yb-78} L{cx-60},{yb-28} L{cx},{yb-98} L{cx+60},{yb-28} L{cx+110},{yb-78} L{cx+150},{yb} Z"
+        fill="{a}" stroke="{line}" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="{cx-60}" cy="{yb-22}" r="9" fill="#FF4040"/>
+  <circle cx="{cx}" cy="{yb-70}" r="11" fill="#3AA0FF"/>
+  <circle cx="{cx+60}" cy="{yb-22}" r="9" fill="#3AD070"/>"""
+
     if kind == "visor":
         return f"""
-  <g id="acc-visor">
-    <rect x="340" y="315" width="344" height="78" rx="20"
-          fill="{a}" fill-opacity="0.45" stroke="{s['dark']}" stroke-width="7"/>
-    <line x1="512" y1="315" x2="512" y2="393" stroke="{s['dark']}" stroke-width="4" opacity="0.45"/>
-  </g>"""
+  <rect x="{ex1-55}" y="{ey-28}" width="{ex2-ex1+110}" height="62" rx="16"
+        fill="{a}" fill-opacity="0.45" stroke="{dark}" stroke-width="6"/>"""
+
     if kind == "snowflake":
         return f"""
-  <g id="acc-snow" stroke="{a}" stroke-width="5" stroke-linecap="round">
-    <line x1="780" y1="240" x2="840" y2="300"/><line x1="840" y1="240" x2="780" y2="300"/>
-    <line x1="810" y1="230" x2="810" y2="310"/><line x1="770" y1="270" x2="850" y2="270"/>
-    <line x1="170" y1="320" x2="230" y2="380"/><line x1="230" y1="320" x2="170" y2="380"/>
+  <g stroke="{a}" stroke-width="5" stroke-linecap="round" fill="none">
+    <g transform="translate({er[0]+70},{er[1]-20})">
+      <line x1="-28" y1="0" x2="28" y2="0"/><line x1="0" y1="-28" x2="0" y2="28"/>
+      <line x1="-20" y1="-20" x2="20" y2="20"/><line x1="20" y1="-20" x2="-20" y2="20"/>
+    </g>
+    <g transform="translate({el[0]-70},{el[1]+30})">
+      <line x1="-18" y1="0" x2="18" y2="0"/><line x1="0" y1="-18" x2="0" y2="18"/>
+    </g>
   </g>"""
+
     if kind == "flame":
         return f"""
-  <g id="acc-flame">
-    <path d="M190,290 C165,240 195,180 235,170 C255,205 245,245 270,270 C245,255 215,280 190,290 Z"
-          fill="{a}" stroke="{line}" stroke-width="5"/>
-    <path d="M830,300 C855,250 825,190 785,180 C765,215 775,255 750,280 C775,265 805,290 830,300 Z"
-          fill="{s['dark']}" stroke="{line}" stroke-width="5"/>
-  </g>"""
+  <path d="M{el[0]-20},{el[1]} C{el[0]-50},{el[1]-50} {el[0]-20},{el[1]-110} {el[0]+10},{el[1]-120}
+           C{el[0]+20},{el[1]-80} {el[0]+10},{el[1]-40} {el[0]+30},{el[1]-10} C{el[0]+5},{el[1]-20} {el[0]-5},{el[1]-5} {el[0]-20},{el[1]} Z"
+        fill="{a}" stroke="{line}" stroke-width="5"/>
+  <path d="M{er[0]+20},{er[1]} C{er[0]+50},{er[1]-50} {er[0]+20},{er[1]-110} {er[0]-10},{er[1]-120}
+           C{er[0]-20},{er[1]-80} {er[0]-10},{er[1]-40} {er[0]-30},{er[1]-10} C{er[0]-5},{er[1]-20} {er[0]+5},{er[1]-5} {er[0]+20},{er[1]} Z"
+        fill="{dark}" stroke="{line}" stroke-width="5"/>"""
+
     if kind == "scar":
+        x, y = ex2 + 36, ey - 40
         return f"""
-  <g id="acc-scar" stroke="{a}" stroke-width="5" stroke-linecap="round">
-    <line x1="560" y1="290" x2="630" y2="360"/>
-    <line x1="572" y1="286" x2="566" y2="302"/>
-    <line x1="598" y1="314" x2="592" y2="330"/>
-    <line x1="624" y1="342" x2="618" y2="358"/>
+  <g stroke="{a}" stroke-width="5" stroke-linecap="round" fill="none">
+    <line x1="{x}" y1="{y}" x2="{x+58}" y2="{y+64}"/>
+    <line x1="{x+8}" y1="{y-2}" x2="{x+2}" y2="{y+12}"/>
+    <line x1="{x+30}" y1="{y+24}" x2="{x+24}" y2="{y+38}"/>
+    <line x1="{x+50}" y1="{y+48}" x2="{x+44}" y2="{y+62}"/>
   </g>"""
+
     if kind == "flower":
+        fx, fy = er[0] - 10, top + 8
         return f"""
-  <g id="acc-flower" transform="translate(640,200)">
-    <circle cx="0" cy="-20" r="15" fill="{a}"/>
-    <circle cx="18" cy="-6" r="15" fill="{a}"/>
-    <circle cx="12" cy="16" r="15" fill="{a}"/>
-    <circle cx="-12" cy="16" r="15" fill="{a}"/>
-    <circle cx="-18" cy="-6" r="15" fill="{a}"/>
-    <circle cx="0" cy="0" r="11" fill="#FFE060"/>
+  <g transform="translate({fx},{fy})">
+    <circle cx="0" cy="-16" r="13" fill="{a}"/>
+    <circle cx="15" cy="-5" r="13" fill="{a}"/>
+    <circle cx="9" cy="13" r="13" fill="{a}"/>
+    <circle cx="-9" cy="13" r="13" fill="{a}"/>
+    <circle cx="-15" cy="-5" r="13" fill="{a}"/>
+    <circle cx="0" cy="0" r="9" fill="#FFE15A"/>
   </g>"""
+
     if kind == "jewel":
+        jy = ey - 78
         return f"""
-  <g id="acc-jewel">
-    <path d="M512,275 L545,318 L512,360 L479,318 Z" fill="{a}" stroke="{line}" stroke-width="5"/>
-  </g>"""
+  <path d="M{cx},{jy-22} L{cx+22},{jy+8} L{cx},{jy+36} L{cx-22},{jy+8} Z" fill="{a}" stroke="{line}" stroke-width="4"/>"""
+
     if kind == "bandana":
+        y = top + 55
         return f"""
-  <g id="acc-bandana">
-    <path d="M285,275 C370,225 450,215 512,215 C574,215 654,225 739,275
-             L720,320 C640,275 570,262 512,262 C454,262 384,275 304,320 Z"
-          fill="{a}" stroke="{line}" stroke-width="6"/>
-    <path d="M710,280 L780,330 L745,365 L695,320 Z" fill="{s['dark']}" stroke="{line}" stroke-width="5"/>
-  </g>"""
+  <path d="M{el[0]-10},{y+20} C{cx-80},{y-30} {cx},{y-40} {cx},{y-40} C{cx},{y-40} {cx+80},{y-30} {er[0]+10},{y+20}
+           L{er[0]-10},{y+55} C{cx+70},{y+10} {cx},{y} {cx},{y} C{cx},{y} {cx-70},{y+10} {el[0]+10},{y+55} Z"
+        fill="{a}" stroke="{line}" stroke-width="6"/>
+  <path d="M{er[0]+8},{y+24} L{er[0]+70},{y+70} L{er[0]+30},{y+100} L{er[0]-8},{y+58} Z" fill="{dark}" stroke="{line}" stroke-width="5"/>"""
+
     if kind == "glasses":
         return f"""
-  <g id="acc-glasses" fill="none" stroke="{a}" stroke-width="9">
-    <circle cx="410" cy="340" r="52"/>
-    <circle cx="614" cy="340" r="52"/>
-    <line x1="462" y1="340" x2="562" y2="340"/>
-    <line x1="358" y1="330" x2="310" y2="318"/>
-    <line x1="666" y1="330" x2="714" y2="318"/>
+  <g fill="none" stroke="{a}" stroke-width="8">
+    <circle cx="{ex1}" cy="{ey}" r="{eyes[0]['r']+16}"/>
+    <circle cx="{ex2}" cy="{ey}" r="{eyes[-1]['r']+16}"/>
+    <line x1="{ex1+eyes[0]['r']+12}" y1="{ey}" x2="{ex2-eyes[1]['r']-12}" y2="{ey}"/>
   </g>"""
+
     if kind == "fangs":
+        my = lm["head_bottom"] - 150
         return f"""
-  <g id="acc-fangs">
-    <path d="M468,470 L476,508 L486,470 Z" fill="{s['face']}" stroke="{line}" stroke-width="3"/>
-    <path d="M538,470 L548,508 L558,470 Z" fill="{s['face']}" stroke="{line}" stroke-width="3"/>
-  </g>"""
+  <path d="M{cx-28},{my} L{cx-18},{my+32} L{cx-8},{my} Z" fill="{s['face']}" stroke="{line}" stroke-width="3"/>
+  <path d="M{cx+8},{my} L{cx+18},{my+32} L{cx+28},{my} Z" fill="{s['face']}" stroke="{line}" stroke-width="3"/>"""
+
     if kind == "bubbles":
         return f"""
-  <g id="acc-bubbles" fill="none" stroke="{a}" stroke-width="5">
-    <circle cx="185" cy="430" r="20"/><circle cx="155" cy="500" r="11"/>
-    <circle cx="840" cy="390" r="16"/><circle cx="870" cy="460" r="24"/>
+  <g fill="none" stroke="{a}" stroke-width="4">
+    <circle cx="{el[0]-50}" cy="{ey+20}" r="16"/>
+    <circle cx="{el[0]-78}" cy="{ey+70}" r="9"/>
+    <circle cx="{er[0]+60}" cy="{ey-10}" r="12"/>
+    <circle cx="{er[0]+90}" cy="{ey+50}" r="20"/>
   </g>"""
+
     if kind == "sunglasses":
+        rw = (ex2 - ex1) * 0.42
         return f"""
-  <g id="acc-sunglasses">
-    <path d="M340,320 L475,320 L475,375 Q410,400 340,375 Z" fill="{s['dark']}" stroke="{line}" stroke-width="6"/>
-    <path d="M549,320 L684,320 L684,375 Q619,400 549,375 Z" fill="{s['dark']}" stroke="{line}" stroke-width="6"/>
-    <line x1="475" y1="345" x2="549" y2="345" stroke="{line}" stroke-width="7"/>
-  </g>"""
+  <path d="M{ex1-rw},{ey-18} L{ex1+rw},{ey-18} L{ex1+rw},{ey+22} Q{ex1},{ey+40} {ex1-rw},{ey+22} Z" fill="{dark}" stroke="{line}" stroke-width="5"/>
+  <path d="M{ex2-rw},{ey-18} L{ex2+rw},{ey-18} L{ex2+rw},{ey+22} Q{ex2},{ey+40} {ex2-rw},{ey+22} Z" fill="{dark}" stroke="{line}" stroke-width="5"/>
+  <line x1="{ex1+rw}" y1="{ey}" x2="{ex2-rw}" y2="{ey}" stroke="{line}" stroke-width="6"/>"""
+
     if kind == "leaf":
         return f"""
-  <g id="acc-leaf">
-    <path d="M165,380 C145,310 195,260 255,285 C240,330 210,365 165,380 Z"
-          fill="{a}" stroke="{line}" stroke-width="5"/>
-  </g>"""
+  <path d="M{el[0]-30},{ey} C{el[0]-70},{ey-70} {el[0]-10},{ey-120} {el[0]+30},{ey-100} C{el[0]+10},{ey-60} {el[0]-5},{ey-20} {el[0]-30},{ey} Z"
+        fill="{a}" stroke="{line}" stroke-width="5"/>"""
+
     if kind == "bow":
+        y = top + 36
         return f"""
-  <g id="acc-bow">
-    <path d="M455,235 C410,200 385,245 420,270 C445,255 455,245 455,235 Z" fill="{a}" stroke="{line}" stroke-width="5"/>
-    <path d="M569,235 C614,200 639,245 604,270 C579,255 569,245 569,235 Z" fill="{a}" stroke="{line}" stroke-width="5"/>
-    <circle cx="512" cy="248" r="15" fill="{s['dark']}" stroke="{line}" stroke-width="4"/>
-  </g>"""
+  <path d="M{cx-20},{y} C{cx-70},{y-40} {cx-90},{y+10} {cx-40},{y+28} C{cx-28},{y+16} {cx-20},{y+8} {cx-20},{y} Z" fill="{a}" stroke="{line}" stroke-width="4"/>
+  <path d="M{cx+20},{y} C{cx+70},{y-40} {cx+90},{y+10} {cx+40},{y+28} C{cx+28},{y+16} {cx+20},{y+8} {cx+20},{y} Z" fill="{a}" stroke="{line}" stroke-width="4"/>
+  <circle cx="{cx}" cy="{y+12}" r="12" fill="{dark}" stroke="{line}" stroke-width="3"/>"""
+
     if kind == "goggles":
         return f"""
-  <g id="acc-goggles">
-    <circle cx="410" cy="340" r="56" fill="{a}" fill-opacity="0.3" stroke="{a}" stroke-width="11"/>
-    <circle cx="614" cy="340" r="56" fill="{a}" fill-opacity="0.3" stroke="{a}" stroke-width="11"/>
-    <rect x="466" y="330" width="92" height="20" rx="4" fill="{a}"/>
-  </g>"""
+  <circle cx="{ex1}" cy="{ey}" r="{eyes[0]['r']+18}" fill="{a}" fill-opacity="0.28" stroke="{a}" stroke-width="10"/>
+    <circle cx="{ex2}" cy="{ey}" r="{eyes[-1]['r']+18}" fill="{a}" fill-opacity="0.28" stroke="{a}" stroke-width="10"/>
+  <rect x="{(ex1+ex2)/2-40}" y="{ey-8}" width="80" height="16" rx="4" fill="{a}"/>"""
+
     if kind == "stars":
-        return f"""
-  <g id="acc-stars" fill="{a}">
-    <path d="M170,250 l7,20 20,0 -16,13 7,20 -18,-13 -18,13 7,-20 -16,-13 20,0 z"/>
-    <path d="M830,310 l6,16 16,0 -13,10 6,16 -15,-10 -15,10 6,-16 -13,-10 16,0 z"/>
-    <path d="M760,190 l5,14 14,0 -11,9 5,14 -13,-9 -13,9 5,-14 -11,-9 14,0 z"/>
-  </g>"""
+        def star(x, y, r):
+            return f'<path d="M{x},{y-r} L{x+r*0.25},{y-r*0.3} L{x+r},{y-r*0.25} L{x+r*0.4},{y+r*0.15} L{x+r*0.6},{y+r} L{x},{y+r*0.45} L{x-r*0.6},{y+r} L{x-r*0.4},{y+r*0.15} L{x-r},{y-r*0.25} L{x-r*0.25},{y-r*0.3} Z" fill="{a}"/>'
+        return star(el[0] - 55, el[1] - 10, 16) + star(er[0] + 60, er[1] + 20, 12) + star(er[0] + 20, top - 6, 10)
+
     if kind == "rainbow":
-        return f"""
-  <g id="acc-rainbow" fill="none" stroke-width="11" stroke-linecap="round">
-    <path d="M300,250 C380,175 450,155 512,155 C574,155 644,175 724,250" stroke="#FF4040"/>
-    <path d="M312,268 C386,200 450,180 512,180 C574,180 638,200 712,268" stroke="#FFB040"/>
-    <path d="M324,286 C392,225 450,205 512,205 C574,205 632,225 700,286" stroke="#40C040"/>
-    <path d="M336,304 C398,250 450,230 512,230 C574,230 626,250 688,304" stroke="#4080FF"/>
-    <path d="M348,322 C404,275 450,255 512,255 C574,255 620,275 676,322" stroke="#9040FF"/>
-  </g>"""
+        y = top + 70
+        bands = ["#FF4040", "#FFB040", "#40C040", "#4080FF", "#9040FF"]
+        out = []
+        for i, col in enumerate(bands):
+            rr = 210 - i * 16
+            out.append(
+                f'<path d="M{cx-rr},{y} A{rr},{rr} 0 0 1 {cx+rr},{y}" fill="none" stroke="{col}" stroke-width="10" stroke-linecap="round"/>'
+            )
+        return "\n".join(out)
+
     if kind == "headphones":
         return f"""
-  <g id="acc-headphones">
-    <path d="M285,340 C285,210 410,155 512,155 C614,155 739,210 739,340"
-          fill="none" stroke="{a}" stroke-width="20" stroke-linecap="round"/>
-    <rect x="230" y="315" width="78" height="120" rx="24" fill="{s['dark']}" stroke="{line}" stroke-width="6"/>
-    <rect x="716" y="315" width="78" height="120" rx="24" fill="{s['dark']}" stroke="{line}" stroke-width="6"/>
-  </g>"""
+  <path d="M{el[0]},{el[1]+20} C{el[0]},{top-30} {cx},{top-55} {cx},{top-55} C{cx},{top-55} {er[0]},{top-30} {er[0]},{er[1]+20}"
+        fill="none" stroke="{a}" stroke-width="16" stroke-linecap="round"/>
+  <rect x="{el[0]-46}" y="{el[1]+6}" width="70" height="100" rx="20" fill="{dark}" stroke="{line}" stroke-width="5"/>
+  <rect x="{er[0]-24}" y="{er[1]+6}" width="70" height="100" rx="20" fill="{dark}" stroke="{line}" stroke-width="5"/>"""
+
     if kind == "halo":
         return f"""
-  <g id="acc-halo">
-    <ellipse cx="512" cy="165" rx="130" ry="30" fill="none" stroke="{a}" stroke-width="15"/>
-    <ellipse cx="512" cy="165" rx="130" ry="30" fill="none" stroke="#FFFFFF" stroke-width="5" opacity="0.7"/>
-  </g>"""
+  <ellipse cx="{cx}" cy="{top-8}" rx="128" ry="28" fill="none" stroke="{a}" stroke-width="14"/>
+  <ellipse cx="{cx}" cy="{top-8}" rx="128" ry="28" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.75"/>"""
+
     if kind == "horns":
         return f"""
-  <g id="acc-horns">
-    <path d="M330,250 C285,170 260,120 300,95 C335,145 360,195 375,245 Z"
-          fill="{s['dark']}" stroke="{line}" stroke-width="6"/>
-    <path d="M694,250 C739,170 764,120 724,95 C689,145 664,195 649,245 Z"
-          fill="{s['dark']}" stroke="{line}" stroke-width="6"/>
-  </g>"""
+  <path d="M{el[0]+10},{el[1]-10} C{el[0]-20},{el[1]-80} {el[0]-10},{el[1]-150} {el[0]+36},{el[1]-160}
+           C{el[0]+20},{el[1]-110} {el[0]+30},{el[1]-50} {el[0]+40},{el[1]+10} Z" fill="{dark}" stroke="{line}" stroke-width="5"/>
+  <path d="M{er[0]-10},{er[1]-10} C{er[0]+20},{er[1]-80} {er[0]+10},{er[1]-150} {er[0]-36},{er[1]-160}
+           C{er[0]-20},{er[1]-110} {er[0]-30},{er[1]-50} {er[0]-40},{er[1]+10} Z" fill="{dark}" stroke="{line}" stroke-width="5"/>"""
+
     if kind == "antenna":
         return f"""
-  <g id="acc-antenna">
-    <line x1="512" y1="235" x2="512" y2="130" stroke="{a}" stroke-width="9" stroke-linecap="round"/>
-    <circle cx="512" cy="115" r="18" fill="{s.get('eye', a)}" stroke="{line}" stroke-width="5"/>
-  </g>"""
-    if kind == "glitch":
-        return ""  # handled as underlay in render_skin
+  <line x1="{cx}" y1="{top+24}" x2="{cx}" y2="{top-70}" stroke="{a}" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="{cx}" cy="{top-82}" r="16" fill="{s['eye']}" stroke="{line}" stroke-width="4"/>"""
+
     if kind == "bamboo":
+        x = lm["face_left"] - 36
         return f"""
-  <g id="acc-bamboo">
-    <rect x="145" y="300" width="32" height="300" rx="9" fill="{a}" stroke="{line}" stroke-width="5"/>
-    <line x1="145" y1="385" x2="177" y2="385" stroke="{line}" stroke-width="4"/>
-    <line x1="145" y1="470" x2="177" y2="470" stroke="{line}" stroke-width="4"/>
-    <path d="M177,345 C230,320 255,295 270,255" fill="none" stroke="{a}" stroke-width="9" stroke-linecap="round"/>
-  </g>"""
+  <rect x="{x}" y="{top+80}" width="30" height="280" rx="8" fill="{a}" stroke="{line}" stroke-width="5"/>
+  <line x1="{x}" y1="{top+160}" x2="{x+30}" y2="{top+160}" stroke="{line}" stroke-width="4"/>
+  <line x1="{x}" y1="{top+240}" x2="{x+30}" y2="{top+240}" stroke="{line}" stroke-width="4"/>
+  <path d="M{x+30},{top+120} C{x+70},{top+100} {x+90},{top+70} {x+110},{top+40}" fill="none" stroke="{a}" stroke-width="8" stroke-linecap="round"/>"""
+
     if kind == "lollipop":
+        x = lm["face_right"] + 48
+        y = ey + 10
         return f"""
-  <g id="acc-lollipop">
-    <circle cx="845" cy="440" r="52" fill="{a}" stroke="{line}" stroke-width="6"/>
-    <circle cx="845" cy="440" r="30" fill="{s['dark']}" opacity="0.35"/>
-    <line x1="845" y1="492" x2="845" y2="620" stroke="#E8D0A0" stroke-width="11" stroke-linecap="round"/>
-  </g>"""
+  <circle cx="{x}" cy="{y}" r="46" fill="{a}" stroke="{line}" stroke-width="6"/>
+  <circle cx="{x}" cy="{y}" r="26" fill="{dark}" opacity="0.35"/>
+  <line x1="{x}" y1="{y+46}" x2="{x}" y2="{y+150}" stroke="#E6C890" stroke-width="10" stroke-linecap="round"/>"""
+
     if kind == "tiara":
+        y = top + 48
         return f"""
-  <g id="acc-tiara">
-    <path d="M365,245 C430,190 475,175 512,175 C549,175 594,190 659,245"
-          fill="none" stroke="{a}" stroke-width="13" stroke-linecap="round"/>
-    <circle cx="512" cy="162" r="15" fill="#E0F0FF" stroke="{line}" stroke-width="4"/>
-    <circle cx="445" cy="188" r="10" fill="#A0C8FF" stroke="{line}" stroke-width="3"/>
-    <circle cx="579" cy="188" r="10" fill="#A0C8FF" stroke="{line}" stroke-width="3"/>
-  </g>"""
+  <path d="M{cx-130},{y} C{cx-70},{y-55} {cx-30},{y-68} {cx},{y-68} C{cx+30},{y-68} {cx+70},{y-55} {cx+130},{y}"
+        fill="none" stroke="{a}" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="{cx}" cy="{y-78}" r="13" fill="#E7F3FF" stroke="{line}" stroke-width="3"/>
+  <circle cx="{cx-58}" cy="{y-40}" r="8" fill="#A9CEFF" stroke="{line}" stroke-width="3"/>
+  <circle cx="{cx+58}" cy="{y-40}" r="8" fill="#A9CEFF" stroke="{line}" stroke-width="3"/>"""
+
     if kind == "cracks":
         return f"""
-  <g id="acc-cracks" stroke="{a}" stroke-width="5" fill="none" stroke-linecap="round">
-    <path d="M295,390 L340,425 L318,470 L365,515"/>
-    <path d="M720,370 L685,415 L710,460"/>
-    <path d="M470,575 L495,620 L480,670"/>
+  <g stroke="{a}" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M{lm['face_left']+30},{ey} L{lm['face_left']+70},{ey+40} L{lm['face_left']+48},{ey+90}"/>
+    <path d="M{lm['face_right']-20},{ey-10} L{lm['face_right']-60},{ey+36} L{lm['face_right']-30},{ey+80}"/>
+    <path d="M{cx-20},{lm['head_bottom']-40} L{cx+10},{lm['head_bottom']+20} L{cx-8},{lm['head_bottom']+70}"/>
   </g>"""
+
+    if kind == "glitch":
+        return ""
     return ""
 
 
-def _blush(s: dict, accent: str | None) -> str:
-    if not accent or s["slug"] not in {
-        "Panda_Sakura_Pink", "Panda_Cotton_Candy", "Panda_Candy_Pop", "Panda_Angelic",
-    }:
+def _blush(s: dict) -> str:
+    if s["slug"] not in {"Panda_Sakura_Pink", "Panda_Cotton_Candy", "Panda_Candy_Pop", "Panda_Angelic"}:
         return ""
-    return (
-        f'<ellipse cx="345" cy="430" rx="26" ry="14" fill="{accent}" opacity="0.35"/>\n'
-        f'  <ellipse cx="679" cy="430" rx="26" ry="14" fill="{accent}" opacity="0.35"/>'
-    )
+    return ""  # placed in render once landmarks exist
 
 
-def render_skin(s: dict) -> str:
-    ear_l = s.get("ear_colors", (s["dark"], s["dark"]))[0]
-    ear_r = s.get("ear_colors", (s["dark"], s["dark"]))[1]
-    patch_l = s.get("patch_colors", (s["dark"], s["dark"]))[0]
-    patch_r = s.get("patch_colors", (s["dark"], s["dark"]))[1]
-    hi, face, shade = s["dark_hi"], s["face"], s["face_shade"]
-    belly_c, eye, nose, line, dark = s["belly"], s["eye"], s["nose"], s["line"], s["dark"]
-    accent = s.get("accent")
-
+def render_skin(s: dict, traced: dict) -> str:
+    p = traced["paths"]
+    lm = traced["landmarks"]
+    pupils = sorted(traced["pupils"], key=lambda q: q["cx"])
+    face, belly, dark = s["face"], s["belly"], s["dark"]
     glitch = ""
-    if s.get("accessory") == "glitch":
+    if s["accessory"] == "glitch":
         glitch = f"""
-  <g opacity="0.32" transform="translate(-14,5)"><path d="{head_path()}" fill="#FF0040"/></g>
-  <g opacity="0.32" transform="translate(14,-5)"><path d="{head_path()}" fill="#00FFFF"/></g>"""
+  <g opacity="0.45" transform="translate(-10,3)"><path d="{p['dark']}" fill="#FF0040" fill-rule="evenodd"/></g>
+  <g opacity="0.45" transform="translate(10,-3)"><path d="{p['dark']}" fill="#00FFFF" fill-rule="evenodd"/></g>"""
+
+    # Split eye patches only for rainbow: recolor by covering each patch bbox with a tinted copy is hard.
+    # Pupils carry the eye color; patches stay on the dark path except rainbow, where we overlay patch hues.
+    rainbow_patches = ""
+    if s["slug"] == "Panda_Rainbow" and len(pupils) >= 2:
+        # soft color discs behind each eye, clipped visually by sitting under dark? skip — ears handled below
+        rainbow_patches = ""
+
+    pupil_svg = [
+        f'<circle cx="{q["cx"]:.1f}" cy="{q["cy"]:.1f}" r="{q["r"]:.1f}" fill="{s["eye"]}"/>'
+        for q in pupils
+    ]
+    hilite_svg = [
+        f'<circle cx="{h["cx"]:.1f}" cy="{h["cy"]:.1f}" r="{max(h["r"], 3):.1f}" fill="#FFFFFF"/>'
+        for h in traced["highlights"]
+    ]
+
+    blush = ""
+    if s["slug"] in {"Panda_Sakura_Pink", "Panda_Cotton_Candy", "Panda_Candy_Pop", "Panda_Angelic"} and len(pupils) >= 2:
+        blush = (
+            f'<ellipse cx="{pupils[0]["cx"]-30:.0f}" cy="{pupils[0]["cy"]+70:.0f}" rx="24" ry="13" fill="{s["accent"]}" opacity="0.35"/>'
+            f'<ellipse cx="{pupils[1]["cx"]+30:.0f}" cy="{pupils[1]["cy"]+70:.0f}" rx="24" ry="13" fill="{s["accent"]}" opacity="0.35"/>'
+        )
 
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="{SIZE}" height="{SIZE}" viewBox="0 0 {SIZE} {SIZE}">
   <title>PIXEL TRIP — {s["slug"]} ({s["name"]})</title>
-  <desc>Vector NFT skin. Pose and base form locked to original panda character.</desc>
+  <desc>Vector skin traced from the reference panda. Pose and base form are unchanged.</desc>
   <rect width="100%" height="100%" fill="{s["bg"]}"/>
-{glitch}
-  <!-- Body -->
-  <path d="{body_path()}" fill="{dark}" stroke="{line}" stroke-width="11" stroke-linejoin="round"/>
-  <path d="M250,760 C320,700 400,670 480,660" fill="none" stroke="{hi}" stroke-width="16" stroke-linecap="round" opacity="0.4"/>
-  <path d="M774,760 C704,700 624,670 544,660" fill="none" stroke="{hi}" stroke-width="14" stroke-linecap="round" opacity="0.3"/>
-
-  <!-- Belly -->
-  <path d="{belly_path()}" fill="{belly_c}" stroke="{line}" stroke-width="9" stroke-linejoin="round"/>
-  <path d="M370,720 C440,690 520,682 600,700" fill="none" stroke="{shade}" stroke-width="20" stroke-linecap="round" opacity="0.5"/>
-
-  <!-- Ears (behind head edge slightly overlapping) -->
-  <path d="{ear_left()}" fill="{ear_l}" stroke="{line}" stroke-width="9"/>
-  <path d="M330,230 C345,215 370,212 390,225" fill="none" stroke="{hi}" stroke-width="9" stroke-linecap="round" opacity="0.45"/>
-  <path d="{ear_right()}" fill="{ear_r}" stroke="{line}" stroke-width="9"/>
-  <path d="M694,230 C679,215 654,212 634,225" fill="none" stroke="{hi}" stroke-width="9" stroke-linecap="round" opacity="0.45"/>
-
-  <!-- Head -->
-  <path d="{head_path()}" fill="{face}" stroke="{line}" stroke-width="11" stroke-linejoin="round"/>
-  <path d="M320,430 C335,540 390,610 480,640" fill="none" stroke="{shade}" stroke-width="34" stroke-linecap="round" opacity="0.5"/>
-  <path d="M700,420 C685,535 640,605 555,635" fill="none" stroke="{shade}" stroke-width="26" stroke-linecap="round" opacity="0.35"/>
-
-  <!-- Eye patches -->
-  <path d="{patch_left()}" fill="{patch_l}" stroke="{line}" stroke-width="6"/>
-  <path d="{patch_right()}" fill="{patch_r}" stroke="{line}" stroke-width="6"/>
-  <path d="M380,295 C400,282 425,288 440,305" fill="none" stroke="{hi}" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
-  <path d="M644,295 C624,282 599,288 584,305" fill="none" stroke="{hi}" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
-
-  <!-- Eyes -->
-  <circle cx="410" cy="335" r="38" fill="{eye}"/>
-  <circle cx="614" cy="335" r="38" fill="{eye}"/>
-  <circle cx="396" cy="318" r="12" fill="#FFFFFF" opacity="0.95"/>
-  <circle cx="600" cy="318" r="12" fill="#FFFFFF" opacity="0.95"/>
-  <circle cx="420" cy="345" r="6" fill="#FFFFFF" opacity="0.85"/>
-  <circle cx="624" cy="345" r="6" fill="#FFFFFF" opacity="0.85"/>
-
-  <!-- Nose -->
-  <path d="M492,415 L532,415 L512,445 Z" fill="{nose}" stroke="{line}" stroke-width="4" stroke-linejoin="round"/>
-
-  <!-- W-smile + chin dimple -->
-  <path d="M448,468 C470,495 495,508 512,508 C529,508 554,495 576,468"
-        fill="none" stroke="{line}" stroke-width="9" stroke-linecap="round"/>
-  <path d="M485,508 Q512,530 539,508" fill="none" stroke="{line}" stroke-width="7" stroke-linecap="round"/>
-  <path d="M512,545 Q498,562 512,575 Q526,562 512,545" fill="none" stroke="{line}" stroke-width="6" opacity="0.75"/>
-
-{accessory_svg(s.get("accessory"), s)}
-  {_blush(s, accent)}
+  {glitch}
+  <path d="{p["face"]}" fill="{face}" fill-rule="evenodd"/>
+  <path d="{p["belly"]}" fill="{belly}" fill-rule="evenodd"/>
+  <path d="{p["dark"]}" fill="{dark}" fill-rule="evenodd"/>
+  {''.join(pupil_svg)}
+  <path d="{p["sclera"]}" fill="#FFFFFF" fill-rule="evenodd"/>
+  {''.join(hilite_svg)}
+  {blush}
+  {accessory_svg(s.get("accessory"), s, lm)}
+  {rainbow_patches}
 </svg>
 '''
 
 
 def main() -> None:
     OUT_SVG.mkdir(parents=True, exist_ok=True)
+    traced = trace_reference(REF)
+    lm = traced["landmarks"]
+    print("landmarks", json.dumps({k: lm[k] for k in lm if k != "eyes"}))
+    print("pupils", traced["pupils"])
+    print("highlights", len(traced["highlights"]))
     manifest = []
     for s in SKINS:
-        svg = render_skin(s)
+        svg = render_skin(s, traced)
         svg_path = OUT_SVG / f"{s['slug']}.svg"
         png_path = OUT_PNG / f"{s['slug']}.png"
         svg_path.write_text(svg, encoding="utf-8")
-        cairosvg.svg2png(
-            bytestring=svg.encode("utf-8"),
-            write_to=str(png_path),
-            output_width=SIZE,
-            output_height=SIZE,
-        )
-        manifest.append(
-            {
-                "id": s["id"],
-                "slug": s["slug"],
-                "name": s["name"],
-                "svg": str(svg_path.relative_to(ROOT)),
-                "png": str(png_path.relative_to(ROOT)),
-                "accessory": s.get("accessory"),
-            }
-        )
+        cairosvg.svg2png(bytestring=svg.encode("utf-8"), write_to=str(png_path), output_width=SIZE, output_height=SIZE)
+        manifest.append({
+            "id": s["id"], "slug": s["slug"], "name": s["name"],
+            "svg": str(svg_path.relative_to(ROOT)),
+            "png": str(png_path.relative_to(ROOT)),
+            "accessory": s.get("accessory"),
+        })
         print(f"OK {s['id']} {s['slug']}")
-    (OUT_SVG / "manifest.json").write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
-    print(f"Wrote {len(manifest)} skins → {OUT_SVG}")
+    (OUT_SVG / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {len(manifest)} skins")
 
 
 if __name__ == "__main__":

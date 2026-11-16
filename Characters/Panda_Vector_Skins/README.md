@@ -1,6 +1,6 @@
 # Panda Vector Skins (30)
 
-Vector NFT skins based on the reference panda bust. **Pose and base silhouette are locked**; each skin changes palette, shading, and accessories only.
+Vector NFT skins traced from the reference panda bust. Pose, silhouette, ears, eye patches, nose, and smile stay on the traced paths. Each skin only recolors those paths and adds an accessory.
 
 ## Files
 - `Panda_*.svg` — true vector sources (1024×1024 viewBox)
