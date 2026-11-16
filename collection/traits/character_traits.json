@@ -2035,5 +2035,215 @@
     "score": 0,
     "weight": 120,
     "race": "highborn"
+  },
+  "Panda_Classic": {
+    "value": "Panda_Classic",
+    "tier": "Common",
+    "score": 50,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Panda_Golden": {
+    "value": "Panda_Golden",
+    "tier": "Mythic",
+    "score": 900,
+    "weight": 1,
+    "race": "mythic"
+  },
+  "Panda_Cyber_Neon": {
+    "value": "Panda_Cyber_Neon",
+    "tier": "Mythic",
+    "score": 910,
+    "weight": 1,
+    "race": "ironborn"
+  },
+  "Panda_Ice_Frost": {
+    "value": "Panda_Ice_Frost",
+    "tier": "Rare",
+    "score": 230,
+    "weight": 25,
+    "race": "voidkin"
+  },
+  "Panda_Fire_Ember": {
+    "value": "Panda_Fire_Ember",
+    "tier": "Rare",
+    "score": 240,
+    "weight": 25,
+    "race": "hellspawn"
+  },
+  "Panda_Toxic_Zombie": {
+    "value": "Panda_Toxic_Zombie",
+    "tier": "Epic",
+    "score": 410,
+    "weight": 10,
+    "race": "ashborn"
+  },
+  "Panda_Sakura_Pink": {
+    "value": "Panda_Sakura_Pink",
+    "tier": "Uncommon",
+    "score": 120,
+    "weight": 60,
+    "race": "verdant"
+  },
+  "Panda_Royal_Purple": {
+    "value": "Panda_Royal_Purple",
+    "tier": "Epic",
+    "score": 440,
+    "weight": 10,
+    "race": "mythic"
+  },
+  "Panda_Camo_Ops": {
+    "value": "Panda_Camo_Ops",
+    "tier": "Uncommon",
+    "score": 145,
+    "weight": 60,
+    "race": "highborn"
+  },
+  "Panda_Chrome_Holo": {
+    "value": "Panda_Chrome_Holo",
+    "tier": "Rare",
+    "score": 260,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Panda_Vampire_Noir": {
+    "value": "Panda_Vampire_Noir",
+    "tier": "Epic",
+    "score": 400,
+    "weight": 10,
+    "race": "ashborn"
+  },
+  "Panda_Ocean_Aqua": {
+    "value": "Panda_Ocean_Aqua",
+    "tier": "Uncommon",
+    "score": 135,
+    "weight": 60,
+    "race": "voidkin"
+  },
+  "Panda_Sunset_Glow": {
+    "value": "Panda_Sunset_Glow",
+    "tier": "Rare",
+    "score": 220,
+    "weight": 25,
+    "race": "wildkin"
+  },
+  "Panda_Forest_Moss": {
+    "value": "Panda_Forest_Moss",
+    "tier": "Uncommon",
+    "score": 140,
+    "weight": 60,
+    "race": "verdant"
+  },
+  "Panda_Cotton_Candy": {
+    "value": "Panda_Cotton_Candy",
+    "tier": "Uncommon",
+    "score": 125,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Panda_Steampunk": {
+    "value": "Panda_Steampunk",
+    "tier": "Rare",
+    "score": 250,
+    "weight": 25,
+    "race": "ironborn"
+  },
+  "Panda_Galaxy": {
+    "value": "Panda_Galaxy",
+    "tier": "Legendary",
+    "score": 720,
+    "weight": 3,
+    "race": "voidkin"
+  },
+  "Panda_Invert": {
+    "value": "Panda_Invert",
+    "tier": "Mythic",
+    "score": 940,
+    "weight": 1,
+    "race": "eldritch"
+  },
+  "Panda_Mint_Pastel": {
+    "value": "Panda_Mint_Pastel",
+    "tier": "Common",
+    "score": 60,
+    "weight": 120,
+    "race": "wildkin"
+  },
+  "Panda_Lava_Magma": {
+    "value": "Panda_Lava_Magma",
+    "tier": "Mythic",
+    "score": 920,
+    "weight": 1,
+    "race": "hellspawn"
+  },
+  "Panda_Shadow": {
+    "value": "Panda_Shadow",
+    "tier": "Epic",
+    "score": 430,
+    "weight": 10,
+    "race": "eldritch"
+  },
+  "Panda_Rainbow": {
+    "value": "Panda_Rainbow",
+    "tier": "Legendary",
+    "score": 740,
+    "weight": 3,
+    "race": "eldritch"
+  },
+  "Panda_Retro_80s": {
+    "value": "Panda_Retro_80s",
+    "tier": "Rare",
+    "score": 270,
+    "weight": 25,
+    "race": "eldritch"
+  },
+  "Panda_Angelic": {
+    "value": "Panda_Angelic",
+    "tier": "Legendary",
+    "score": 700,
+    "weight": 3,
+    "race": "mythic"
+  },
+  "Panda_Demon": {
+    "value": "Panda_Demon",
+    "tier": "Legendary",
+    "score": 710,
+    "weight": 3,
+    "race": "hellspawn"
+  },
+  "Panda_Robot": {
+    "value": "Panda_Robot",
+    "tier": "Epic",
+    "score": 420,
+    "weight": 10,
+    "race": "ironborn"
+  },
+  "Panda_Glitch_RGB": {
+    "value": "Panda_Glitch_RGB",
+    "tier": "Mythic",
+    "score": 930,
+    "weight": 1,
+    "race": "eldritch"
+  },
+  "Panda_Bamboo_Sage": {
+    "value": "Panda_Bamboo_Sage",
+    "tier": "Common",
+    "score": 55,
+    "weight": 120,
+    "race": "verdant"
+  },
+  "Panda_Candy_Pop": {
+    "value": "Panda_Candy_Pop",
+    "tier": "Uncommon",
+    "score": 130,
+    "weight": 60,
+    "race": "wildkin"
+  },
+  "Panda_Sapphire": {
+    "value": "Panda_Sapphire",
+    "tier": "Legendary",
+    "score": 730,
+    "weight": 3,
+    "race": "mythic"
   }
 }

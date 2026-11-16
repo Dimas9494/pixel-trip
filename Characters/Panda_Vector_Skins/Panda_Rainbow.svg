@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>PIXEL TRIP — Panda_Rainbow (Rainbow)</title>
+  <desc>Vector NFT skin. Pose and base form locked to original panda character.</desc>
+  <rect width="100%" height="100%" fill="#101018"/>
+
+  <!-- Body -->
+  <path d="M175,780 C195,690 260,640 340,620 C400,608 460,602 512,602 C564,602 624,608 684,620 C764,640 829,690 849,780 C865,860 870,940 872,1024 L152,1024 C154,940 160,860 175,780 Z" fill="#FF4080" stroke="#303060" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M250,760 C320,700 400,670 480,660" fill="none" stroke="#FF80B0" stroke-width="16" stroke-linecap="round" opacity="0.4"/>
+  <path d="M774,760 C704,700 624,670 544,660" fill="none" stroke="#FF80B0" stroke-width="14" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- Belly -->
+  <path d="M355,655 C410,625 470,612 512,612 C554,612 614,625 669,655 C710,680 735,730 745,800 C752,870 750,960 748,1024 L276,1024 C274,960 272,870 279,800 C289,730 314,680 355,655 Z" fill="#FFF8FF" stroke="#303060" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M370,720 C440,690 520,682 600,700" fill="none" stroke="#E0E0F0" stroke-width="20" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Ears (behind head edge slightly overlapping) -->
+  <path d="M290,300 C270,250 285,205 335,195 C375,188 410,210 420,250 C425,275 410,300 380,310 C350,320 315,318 290,300 Z" fill="#FF4040" stroke="#303060" stroke-width="9"/>
+  <path d="M330,230 C345,215 370,212 390,225" fill="none" stroke="#FF80B0" stroke-width="9" stroke-linecap="round" opacity="0.45"/>
+  <path d="M734,300 C754,250 739,205 689,195 C649,188 614,210 604,250 C599,275 614,300 644,310 C674,320 709,318 734,300 Z" fill="#FFB040" stroke="#303060" stroke-width="9"/>
+  <path d="M694,230 C679,215 654,212 634,225" fill="none" stroke="#FF80B0" stroke-width="9" stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Head -->
+  <path d="M300,320 C305,285 325,260 355,245 L375,235 395,242 420,232 445,240 470,228 495,236 L520,226 545,236 570,228 595,240 620,232 645,242 L670,235 690,248 C720,265 740,295 745,335 C755,390 760,450 755,510 C750,565 735,610 705,640 L685,655 660,648 635,660 610,650 585,662 L560,652 535,664 510,654 485,664 460,652 L435,662 410,650 385,660 360,648 340,655 C310,630 290,585 282,530 C274,470 278,400 300,320 Z" fill="#FFFFFF" stroke="#303060" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M320,430 C335,540 390,610 480,640" fill="none" stroke="#E0E0F0" stroke-width="34" stroke-linecap="round" opacity="0.5"/>
+  <path d="M700,420 C685,535 640,605 555,635" fill="none" stroke="#E0E0F0" stroke-width="26" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Eye patches -->
+  <path d="M355,355 C330,330 335,285 370,265 C405,245 450,255 470,290 C490,325 480,375 450,405 C420,435 375,430 355,400 C340,380 345,365 355,355 Z" fill="#40C040" stroke="#303060" stroke-width="6"/>
+  <path d="M669,355 C694,330 689,285 654,265 C619,245 574,255 554,290 C534,325 544,375 574,405 C604,435 649,430 669,400 C684,380 679,365 669,355 Z" fill="#4080FF" stroke="#303060" stroke-width="6"/>
+  <path d="M380,295 C400,282 425,288 440,305" fill="none" stroke="#FF80B0" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
+  <path d="M644,295 C624,282 599,288 584,305" fill="none" stroke="#FF80B0" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Eyes -->
+  <circle cx="410" cy="335" r="38" fill="#203060"/>
+  <circle cx="614" cy="335" r="38" fill="#203060"/>
+  <circle cx="396" cy="318" r="12" fill="#FFFFFF" opacity="0.95"/>
+  <circle cx="600" cy="318" r="12" fill="#FFFFFF" opacity="0.95"/>
+  <circle cx="420" cy="345" r="6" fill="#FFFFFF" opacity="0.85"/>
+  <circle cx="624" cy="345" r="6" fill="#FFFFFF" opacity="0.85"/>
+
+  <!-- Nose -->
+  <path d="M492,415 L532,415 L512,445 Z" fill="#404080" stroke="#303060" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- W-smile + chin dimple -->
+  <path d="M448,468 C470,495 495,508 512,508 C529,508 554,495 576,468"
+        fill="none" stroke="#303060" stroke-width="9" stroke-linecap="round"/>
+  <path d="M485,508 Q512,530 539,508" fill="none" stroke="#303060" stroke-width="7" stroke-linecap="round"/>
+  <path d="M512,545 Q498,562 512,575 Q526,562 512,545" fill="none" stroke="#303060" stroke-width="6" opacity="0.75"/>
+
+
+  <g id="acc-rainbow" fill="none" stroke-width="11" stroke-linecap="round">
+    <path d="M300,250 C380,175 450,155 512,155 C574,155 644,175 724,250" stroke="#FF4040"/>
+    <path d="M312,268 C386,200 450,180 512,180 C574,180 638,200 712,268" stroke="#FFB040"/>
+    <path d="M324,286 C392,225 450,205 512,205 C574,205 632,225 700,286" stroke="#40C040"/>
+    <path d="M336,304 C398,250 450,230 512,230 C574,230 626,250 688,304" stroke="#4080FF"/>
+    <path d="M348,322 C404,275 450,255 512,255 C574,255 620,275 676,322" stroke="#9040FF"/>
+  </g>
+  
+</svg>
