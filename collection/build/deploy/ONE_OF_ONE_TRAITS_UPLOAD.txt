@@ -13,6 +13,7 @@ Upload these 13 metadata files to public_html/metadata/ (overwrite):
 3594  Norm
 3664  Vitalik
 4130  Brey_Skull
+3263  OS_Gemesis  (replaces former Leaf_Elf — upload 3263.gif + metadata/3263)
 
 New traits on each: Edition=1_of_1, Tier=Legendary
 After upload: Refresh metadata on OpenSea for each (or wait for re-index).

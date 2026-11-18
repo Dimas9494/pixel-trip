@@ -42,7 +42,8 @@
     "Norm",
     "Vitalik",
     "Tinoch_Punk",
-    "TMA_Bag"
+    "TMA_Bag",
+    "OS_Gemesis"
   ],
   "oneOfOneTraits": [
     { "trait_type": "Edition", "value": "1_of_1" },
