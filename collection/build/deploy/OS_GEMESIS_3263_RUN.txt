@@ -1,0 +1,28 @@
+PIXEL TRIP — OS_Gemesis 1/1 (#3263), Stage 3 layers
+
+ПРОБЛЕМА
+  В git не попадают папки Background_Stage3 / Frames_Stage3 (как у batch Stage 3 V2).
+  Случайная подстановка рамки из Frames/ (Stage 1, напр. Pink_Glass) даёт «не ту» рамку.
+
+ИСХОДНИКИ (локально, рядом с репо)
+  Characters/OS_Gemesis.png
+  Background_Stage3/OS_Gemesis_Signature.gif   — фон в стиле S3 (как у других Full_*)
+  Frames_Stage3/OS_Gemesis_Crown.gif           — рамка в стиле S3 (Rim/Chroma, как Onyx_Rim и т.д.)
+
+  Trait-имена в metadata = имена файлов без .gif (как Adam_Beam_Crown на проде).
+
+ГЕНЕРАЦИЯ (из collection/)
+  python3 render_one_of_one_edition.py --edition 3263 --character OS_Gemesis \
+    --background OS_Gemesis_Signature --frame OS_Gemesis_Crown --stage 3
+
+  Пока нет папок Stage 3 — скрипт завершится с ошибкой (без тихого fallback на Stage 1).
+
+ВЫХОД
+  build/images/3263.gif
+  build/metadata/3263
+
+FTP (public_html)
+  images/3263.gif
+  metadata/3263
+
+OpenSea: Refresh metadata для #3263.
