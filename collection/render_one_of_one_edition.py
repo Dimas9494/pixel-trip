@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Render one 1/1 collection edition: Stage 3-style layers (or Stage 1 fallback) + metadata.
+Render one 1/1 collection edition with Stage 3 layer folders (Background_Stage3 / Frames_Stage3).
 
 Example (OS_Gemesis on #3263):
   python render_one_of_one_edition.py --edition 3263 --character OS_Gemesis \
@@ -44,7 +44,16 @@ def stage1_layer_dirs(cfg: dict) -> tuple[Path, Path]:
     return bg, fr
 
 
-def layer_dirs(cfg: dict, stage: int) -> tuple[Path, Path]:
+def layer_dirs(
+    cfg: dict,
+    stage: int,
+    *,
+    bg_dir: Path | None,
+    frame_dir: Path | None,
+    allow_stage1_fallback: bool,
+) -> tuple[Path, Path]:
+    if bg_dir is not None and frame_dir is not None:
+        return bg_dir, frame_dir
     if stage != 3:
         return stage1_layer_dirs(cfg)
     block = (cfg.get("stageAssetPaths") or {}).get("3") or {}
@@ -52,8 +61,15 @@ def layer_dirs(cfg: dict, stage: int) -> tuple[Path, Path]:
     fr = (ROOT / block.get("frames", "../Frames_Stage3")).resolve()
     if bg.is_dir() and fr.is_dir():
         return bg, fr
-    print(f"[WARN] Stage 3 asset folders missing ({bg}, {fr}); falling back to Stage 1 paths")
-    return stage1_layer_dirs(cfg)
+    msg = (
+        f"Stage 3 folders required: {bg} and {fr}\n"
+        "Add OS_Gemesis_Signature.gif / OS_Gemesis_Crown.gif there (S3-style assets), "
+        "or pass --bg-dir / --frame-dir, or --allow-stage1-fallback for dev only."
+    )
+    if allow_stage1_fallback:
+        print(f"[WARN] {msg}\n[WARN] Using Stage 1 Backgrounds/Frames — not valid for production S3 look.")
+        return stage1_layer_dirs(cfg)
+    raise SystemExit(msg)
 
 
 def write_metadata(
@@ -89,6 +105,13 @@ def main() -> None:
     p.add_argument("--background", required=True, help="Background asset stem")
     p.add_argument("--frame", required=True, help="Frame asset stem")
     p.add_argument("--stage", type=int, default=3, choices=(1, 2, 3))
+    p.add_argument("--bg-dir", type=Path, default=None, help="Override backgrounds folder")
+    p.add_argument("--frame-dir", type=Path, default=None, help="Override frames folder")
+    p.add_argument(
+        "--allow-stage1-fallback",
+        action="store_true",
+        help="If Stage 3 folders missing, use Stage 1 Backgrounds/Frames (dev only)",
+    )
     p.add_argument("--skip-gif", action="store_true", help="Only write metadata JSON")
     args = p.parse_args()
 
@@ -97,7 +120,17 @@ def main() -> None:
     if not char_png:
         raise SystemExit(f"Character PNG not found: Characters/{args.character}.png")
 
-    bg_dir, frame_dir = layer_dirs(cfg, args.stage)
+    bg_override = args.bg_dir.resolve() if args.bg_dir else None
+    fr_override = args.frame_dir.resolve() if args.frame_dir else None
+    if (bg_override is None) ^ (fr_override is None):
+        raise SystemExit("Pass both --bg-dir and --frame-dir, or neither.")
+    bg_dir, frame_dir = layer_dirs(
+        cfg,
+        args.stage,
+        bg_dir=bg_override,
+        frame_dir=fr_override,
+        allow_stage1_fallback=args.allow_stage1_fallback,
+    )
     bg_path = find_asset(bg_dir, args.background, (".gif", ".png", ".webp"))
     frame_path = find_asset(frame_dir, args.frame, (".gif", ".png", ".webp"))
     if not bg_path or not frame_path:
